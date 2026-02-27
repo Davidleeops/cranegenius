@@ -9,6 +9,8 @@ from src.utils import utc_now_iso, normalize_text
 log = logging.getLogger("cranegenius.scrapers.dallas")
 
 class DallasScraper:
+    def __init__(self, source_config=None):
+        pass
     source_id = "dallas_permits"
     jurisdiction = "Dallas, TX"
 
