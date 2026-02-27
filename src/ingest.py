@@ -62,7 +62,7 @@ def ingest_sources(sources_yaml_path: str) -> pd.DataFrame:
                 log.warning("Unknown method '%s' for source %s — skipping", method, source_id)
 
         except Exception as exc:
-            log.error("Source %s failed: %s", source_id, exc, exc_info=True)
+            log.warning("Source %s failed (skipping): %s", source_id, exc)
 
     df = pd.DataFrame(rows, columns=RAW_COLUMNS)
     log.info("Ingest complete: %d total raw rows", len(df))
