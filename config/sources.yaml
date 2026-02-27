@@ -12,12 +12,12 @@ sources:
   - id: "dallas_permits"
     source_type: "permit"
     jurisdiction: "Dallas, TX"
-    method: "csv"
-    url: "https://www.dallasopendata.com/resource/example.csv"
-    notes: "Find real URL at https://www.dallasopendata.com — search 'building permits'"
-    enabled: false
+    method: "dallas_socrata"
+    url: "https://www.dallasopendata.com/resource/e7gq-4sah.csv"
+    notes: "Dallas building permits via Socrata API - confirmed working"
+    enabled: true
 
-  # ── NASHVILLE (stub — HTML portal, needs Playwright) ──────────────────────
+    # ── NASHVILLE (stub — HTML portal, needs Playwright) ──────────────────────
   - id: "nashville_permits"
     source_type: "permit"
     jurisdiction: "Nashville, TN"
