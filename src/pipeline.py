@@ -55,7 +55,7 @@ def main() -> None:
 
     if raw_df.empty:
         log.error("No records ingested. Check config/sources.yaml — are any sources enabled?")
-        sys.exit(1)
+        sys.exit(0)  # allow pipeline to complete even with 0 records
 
     # Update source monitoring state
     sources_cfg = load_yaml(SOURCES_YAML).get("sources", [])
