@@ -1,0 +1,52 @@
+name: Run Intent Pipeline
+
+on:
+  workflow_dispatch:        # Run manually from GitHub UI
+  schedule:
+    - cron: "0 10 * * 1"   # Every Monday at 10am UTC (6am Eastern, 3am Pacific)
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install chromium --with-deps
+
+      - name: Run CraneGenius pipeline
+        env:
+          MILLIONVERIFIER_API_KEY: ${{ secrets.MILLIONVERIFIER_API_KEY }}
+        run: |
+          python -m src.pipeline
+
+      - name: Upload outputs as artifacts
+        if: always()   # Upload even if pipeline had warnings
+        uses: actions/upload-artifact@v4
+        with:
+          name: cranegenius-output-${{ github.run_number }}
+          path: |
+            data/sender_ready_hot.csv
+            data/sender_ready_warm.csv
+            data/catchall_review.csv
+            data/qa_report.json
+            data/scored_records.csv
+            data/parsing_errors.csv
+          retention-days: 30
+
+      - name: Print QA summary
+        if: always()
+        run: |
+          if [ -f data/qa_report.json ]; then
+            echo "=== QA REPORT ==="
+            cat data/qa_report.json
+          fi
