@@ -1,1 +1,1147 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CraneGenius — Lift Decision Engine</title><meta name="description" content="Free 60-second tool: See if you're overpaying on crane rentals. Spider crane vs mobile crane cost comparison, equipment recommendation, and timeline savings for MEP, data center, and electrical contractors."><meta property="og:title" content="CraneGenius — Lift Cost Estimator"><meta property="og:description" content="Find out in 60 seconds if you're overpaying on crane rentals. Real numbers. Free tool for contractors."><meta property="og:url" content="https://cranegenius.com"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CraneGenius — Lift Cost Estimator"><meta name="twitter:description" content="60 seconds. Real numbers. Find out if you're overpaying on crane rentals."><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet"><style>:root { --black: #0A0C12; --steel: #141824; --panel: #1A1F2E; --border: #252D45; --border2: #2E3650; --accent: #F5A623; --accent2: #00C4A7; --danger: #E84040; --text: #C8D0E0; --muted: #5A6480; --white: #FFFFFF; --green: #2ECC71; --green2: #1A7A3A; }* { box-sizing: border-box; margin: 0; padding: 0; }body { background: var(--black); color: var(--text); font-family: 'Barlow', sans-serif; min-height: 100vh; overflow-x: hidden; }body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(245,166,35,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(245,166,35,0.025) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; z-index: 0; }.app { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 28px 20px 80px; }.header { border-left: 4px solid var(--accent); padding: 18px 0 18px 22px; margin-bottom: 12px; animation: slideIn 0.5s ease; }.header-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; flex-wrap: wrap; }.header-label { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; }.trust-badge { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent2); letter-spacing: 2px; background: rgba(0,196,167,0.08); border: 1px solid rgba(0,196,167,0.25); padding: 4px 10px; }.header h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(30px, 7vw, 48px); font-weight: 900; color: var(--white); line-height: 1; text-transform: uppercase; letter-spacing: 1px; }.header h1 span { color: var(--accent); }.header-sub { margin-top: 10px; font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 560px; }.header-sub strong { color: var(--accent2); }.proof-strip { display: flex; gap: 24px; margin-bottom: 32px; padding: 14px 20px; background: var(--steel); border: 1px solid var(--border); flex-wrap: wrap; animation: fadeUp 0.6s ease; }.proof-item { display: flex; align-items: center; gap: 8px; }.proof-num { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; color: var(--accent); }.proof-label { font-size: 12px; color: var(--muted); line-height: 1.3; }.progress-wrap { margin-bottom: 28px; }.progress-label { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 8px; letter-spacing: 2px; }.progress-bar { display: flex; gap: 5px; }.progress-step { flex: 1; height: 3px; background: var(--border2); border-radius: 2px; transition: background 0.4s ease; }.progress-step.active { background: var(--accent); }.progress-step.done { background: var(--accent2); }.step { display: none; animation: fadeUp 0.35s ease; }.step.active { display: block; }@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }@keyframes slideIn { from { opacity: 0; transform: translateX(-18px); } to { opacity: 1; transform: translateX(0); } }.step-card { background: var(--panel); border: 1px solid var(--border); border-top: 3px solid var(--accent); padding: 30px; margin-bottom: 16px; }.step-number { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 3px; margin-bottom: 10px; }.step-question { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; color: var(--white); text-transform: uppercase; line-height: 1.2; margin-bottom: 6px; }.step-hint { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }.options { display: grid; gap: 10px; }.options.two-col { grid-template-columns: 1fr 1fr; }.option { background: var(--steel); border: 1px solid var(--border); padding: 16px 18px; cursor: pointer; transition: all 0.2s ease; position: relative; display: flex; align-items: flex-start; gap: 12px; }.option:hover { border-color: var(--accent); }.option.selected { border-color: var(--accent); background: rgba(245,166,35,0.07); }.option.selected::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); }.option-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }.option-title { font-family: 'Barlow Condensed', sans-serif; font-size: 17px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 0.5px; }.option-desc { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.4; }.slider-value { font-family: 'Barlow Condensed', sans-serif; font-size: 52px; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 14px; }.slider-value span { font-size: 20px; color: var(--muted); font-weight: 400; }input[type=range] { -webkit-appearance: none; width: 100%; height: 4px; background: var(--border2); outline: none; border-radius: 2px; }input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; background: var(--accent); border-radius: 50%; cursor: pointer; border: 3px solid var(--black); }.slider-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: var(--muted); font-family: 'Share Tech Mono', monospace; }.slider-unsure { margin-top: 14px; }.slider-unsure label { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px; color: var(--muted); }.slider-unsure input[type=checkbox] { accent-color: var(--accent); width: 16px; height: 16px; }.freq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }.freq-opt { background: var(--steel); border: 1px solid var(--border); padding: 14px 16px; cursor: pointer; transition: all 0.2s; }.freq-opt:hover { border-color: var(--accent); }.freq-opt.selected { border-color: var(--accent); background: rgba(245,166,35,0.07); }.freq-opt-num { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 900; color: var(--accent); }.freq-opt-label { font-size: 12px; color: var(--muted); margin-top: 2px; }.freq-signal { margin-top: 16px; padding: 14px 16px; background: rgba(0,196,167,0.07); border: 1px solid rgba(0,196,167,0.2); font-size: 13px; color: var(--accent2); line-height: 1.5; display: none; }.qual-note { font-size: 12px; color: var(--muted); margin-top: 6px; font-style: italic; }.btn-next { width: 100%; padding: 18px; background: var(--accent); color: var(--black); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; margin-top: 14px; }.btn-next:hover { background: #FFB733; transform: translateY(-1px); }.btn-next:disabled { background: var(--border2); color: var(--muted); cursor: not-allowed; transform: none; }.btn-back { background: none; border: 1px solid var(--border2); color: var(--muted); padding: 10px 20px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; margin-top: 8px; transition: all 0.2s; }.btn-back:hover { border-color: var(--muted); color: var(--text); }#results { display: none; animation: fadeUp 0.5s ease; }.results-header { text-align: center; padding: 28px 0 20px; border-bottom: 1px solid var(--border); margin-bottom: 28px; }.results-tag { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent2); letter-spacing: 3px; margin-bottom: 10px; }.results-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(24px, 5vw, 38px); font-weight: 900; color: var(--white); text-transform: uppercase; }.results-subtitle { font-size: 13px; color: var(--muted); margin-top: 8px; }.hot-signal { padding: 12px 18px; margin-bottom: 20px; font-size: 13px; font-weight: 600; text-align: center; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; letter-spacing: 1px; text-transform: uppercase; }.hot-signal.urgent { background: rgba(232,64,64,0.12); border: 1px solid rgba(232,64,64,0.4); color: #FF6B6B; }.hot-signal.warm { background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.3); color: var(--accent); }.hot-signal.cool { background: rgba(0,196,167,0.08); border: 1px solid rgba(0,196,167,0.25); color: var(--accent2); }.rec-box { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--accent2); padding: 26px; margin-bottom: 20px; }.rec-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent2); letter-spacing: 3px; margin-bottom: 8px; }.rec-equipment { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 900; color: var(--white); text-transform: uppercase; margin-bottom: 6px; }.rec-why { font-size: 14px; color: var(--text); line-height: 1.7; }.why-wins { background: var(--steel); border: 1px solid var(--border); padding: 20px 24px; margin-bottom: 12px; }.why-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 3px; margin-bottom: 12px; }.why-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: var(--text); line-height: 1.5; }.why-item::before { content: '✓'; color: var(--accent2); font-weight: 700; flex-shrink: 0; margin-top: 1px; }.risk-box { background: rgba(46,204,113,0.05); border: 1px solid rgba(46,204,113,0.2); padding: 20px 24px; margin-bottom: 12px; }.risk-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--green); letter-spacing: 3px; margin-bottom: 12px; }.risk-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: var(--text); }.risk-item::before { content: '✕'; color: var(--danger); font-weight: 700; flex-shrink: 0; }.savings-banner { background: linear-gradient(135deg, rgba(245,166,35,0.1), rgba(0,196,167,0.06)); border: 1px solid var(--accent); padding: 24px 28px; margin-bottom: 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }.savings-item { }.savings-num { font-family: 'Barlow Condensed', sans-serif; font-size: 40px; font-weight: 900; color: var(--accent); line-height: 1; }.savings-label { font-size: 11px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Share Tech Mono', monospace; }.margin-box { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 22px 24px; margin-bottom: 20px; }.margin-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 3px; margin-bottom: 10px; }.margin-text { font-size: 15px; color: var(--white); line-height: 1.6; font-weight: 600; }.margin-sub { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.5; }.comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }.cost-box { background: var(--steel); border: 1px solid var(--border); padding: 22px; }.cost-box.highlight { border-color: var(--accent2); background: rgba(0,196,167,0.05); }.cost-box-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; }.cost-box.highlight .cost-box-label { color: var(--accent2); }.cost-total { font-family: 'Barlow Condensed', sans-serif; font-size: 34px; font-weight: 900; color: var(--text); line-height: 1; margin-bottom: 4px; }.cost-box.highlight .cost-total { color: var(--accent2); }.cost-line { font-size: 12px; color: var(--muted); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); line-height: 1.6; }.timeline-section { background: var(--panel); border: 1px solid var(--border); padding: 22px; margin-bottom: 20px; }.timeline-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 3px; margin-bottom: 14px; }.timeline-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }.timeline-name { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; color: var(--text); text-transform: uppercase; width: 120px; flex-shrink: 0; }.timeline-track { flex: 1; height: 22px; background: var(--steel); position: relative; overflow: hidden; }.timeline-fill { height: 100%; transition: width 1.1s cubic-bezier(0.4,0,0.2,1); }.timeline-fill.conventional { background: var(--danger); opacity: 0.65; }.timeline-fill.mini { background: var(--accent2); opacity: 0.85; }.timeline-days { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); width: 60px; flex-shrink: 0; text-align: right; }.rvb-box { background: var(--panel); border: 1px solid var(--border); border-top: 2px solid var(--accent); padding: 22px 24px; margin-bottom: 20px; }.rvb-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 3px; margin-bottom: 12px; }.rvb-signal { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 6px; }.rvb-detail { font-size: 13px; color: var(--muted); line-height: 1.5; }.cta-section { margin-bottom: 20px; }.cta-heading { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; color: var(--white); text-transform: uppercase; margin-bottom: 6px; text-align: center; }.cta-sub { font-size: 13px; color: var(--muted); text-align: center; margin-bottom: 20px; }.cta-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }.cta-path { padding: 16px; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; text-align: center; }.cta-path:hover { border-color: var(--accent); }.cta-path.selected { border-color: var(--accent); background: rgba(245,166,35,0.07); }.cta-path-icon { font-size: 24px; margin-bottom: 6px; }.cta-path-title { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); text-transform: uppercase; }.cta-path-desc { font-size: 11px; color: var(--muted); margin-top: 3px; }.lead-form { background: var(--panel); border: 1px solid var(--border); padding: 24px; display: none; }.lead-form.active { display: block; animation: fadeUp 0.3s ease; }.lead-form-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 16px; }.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }.form-field { display: flex; flex-direction: column; gap: 5px; }.form-field label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }.form-field input, .form-field select { background: var(--steel); border: 1px solid var(--border2); color: var(--white); padding: 11px 13px; font-family: 'Barlow', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; }.form-field input:focus, .form-field select:focus { border-color: var(--accent); }.form-field input::placeholder { color: var(--muted); }.form-field.full { grid-column: 1 / -1; }.form-submit { width: 100%; padding: 16px; background: var(--accent); color: var(--black); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; margin-top: 10px; transition: all 0.2s; }.form-submit:hover { background: #FFB733; }.form-note { font-size: 11px; color: var(--muted); margin-top: 8px; text-align: center; }.submitted-msg { display: none; text-align: center; padding: 28px; background: rgba(0,196,167,0.06); border: 1px solid rgba(0,196,167,0.25); }.submitted-msg h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 700; color: var(--accent2); text-transform: uppercase; margin-bottom: 8px; }.submitted-msg p { font-size: 13px; color: var(--muted); line-height: 1.5; }.save-section { background: var(--steel); border: 1px solid var(--border); padding: 18px 22px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }.save-text { font-size: 13px; color: var(--muted); }.save-text strong { color: var(--text); }.save-btn { padding: 10px 20px; background: none; border: 1px solid var(--accent); color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.2s; }.save-btn:hover { background: rgba(245,166,35,0.1); }.dashboard { background: var(--panel); border: 1px solid var(--border); padding: 22px; margin-bottom: 20px; display: none; }.dashboard-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 3px; margin-bottom: 14px; }.job-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; gap: 8px; }.job-row:last-child { border-bottom: none; }.job-name { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); }.job-meta { font-size: 12px; color: var(--muted); }.job-savings { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; color: var(--accent); }.print-btn { width: 100%; padding: 14px; background: none; border: 1px solid var(--border2); color: var(--muted); font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; margin-bottom: 10px; transition: all 0.2s; }.print-btn:hover { border-color: var(--accent2); color: var(--accent2); }.restart-btn { display: block; width: 100%; padding: 12px; background: none; border: 1px solid var(--border); color: var(--muted); font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.2s; }.restart-btn:hover { border-color: var(--muted); color: var(--text); }.disclaimer { font-size: 11px; color: var(--muted); text-align: center; line-height: 1.6; margin: 14px 0; }@media print { body { background: white; color: black; } body::before { display: none; } .no-print { display: none !important; } .print-only { display: block !important; } #wizard, .save-section, .print-btn, .restart-btn, .cta-paths, .lead-form { display: none !important; } .rec-box, .why-wins, .risk-box, .savings-banner, .comparison, .timeline-section, .margin-box { border-color: #ccc; background: white; } .savings-num, .rec-equipment, .cost-total { color: #1a1a1a; } }@media (max-width: 520px) { .comparison, .cta-paths, .form-grid, .savings-banner, .freq-grid { grid-template-columns: 1fr; } .step-card { padding: 20px 16px; } .proof-strip { gap: 16px; } .save-section { flex-direction: column; align-items: flex-start; } }</style></head><body><div class="app">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CraneGenius — Lift Decision Engine</title>
+<!-- SEO & SHARE META -->
+<meta name="description" content="Free 60-second tool: See if you're overpaying on crane rentals. Spider crane vs mobile crane cost comparison, equipment recommendation, and timeline savings for MEP, data center, and electrical contractors.">
+<meta property="og:title" content="CraneGenius — Lift Cost Estimator">
+<meta property="og:description" content="Find out in 60 seconds if you're overpaying on crane rentals. Real numbers. Free tool for contractors.">
+<meta property="og:url" content="https://cranegenius.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CraneGenius — Lift Cost Estimator">
+<meta name="twitter:description" content="60 seconds. Real numbers. Find out if you're overpaying on crane rentals.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0A0C12;
+  --steel: #141824;
+  --panel: #1A1F2E;
+  --border: #252D45;
+  --border2: #2E3650;
+  --accent: #F5A623;
+  --accent2: #00C4A7;
+  --danger: #E84040;
+  --text: #C8D0E0;
+  --muted: #5A6480;
+  --white: #FFFFFF;
+  --green: #2ECC71;
+  --green2: #1A7A3A;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--black); color: var(--text); font-family: 'Barlow', sans-serif; min-height: 100vh; overflow-x: hidden; }
+body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(245,166,35,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(245,166,35,0.025) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; z-index: 0; }
+
+.app { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 28px 20px 80px; }
+
+/* HEADER */
+.header { border-left: 4px solid var(--accent); padding: 18px 0 18px 22px; margin-bottom: 12px; animation: slideIn 0.5s ease; }
+.header-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; flex-wrap: wrap; }
+.header-label { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; }
+.trust-badge { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent2); letter-spacing: 2px; background: rgba(0,196,167,0.08); border: 1px solid rgba(0,196,167,0.25); padding: 4px 10px; }
+.header h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(30px, 7vw, 48px); font-weight: 900; color: var(--white); line-height: 1; text-transform: uppercase; letter-spacing: 1px; }
+.header h1 span { color: var(--accent); }
+.header-sub { margin-top: 10px; font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 560px; }
+.header-sub strong { color: var(--accent2); }
+
+/* SOCIAL PROOF STRIP */
+.proof-strip { display: flex; gap: 24px; margin-bottom: 32px; padding: 14px 20px; background: var(--steel); border: 1px solid var(--border); flex-wrap: wrap; animation: fadeUp 0.6s ease; }
+.proof-item { display: flex; align-items: center; gap: 8px; }
+.proof-num { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; color: var(--accent); }
+.proof-label { font-size: 12px; color: var(--muted); line-height: 1.3; }
+
+/* PROGRESS */
+.progress-wrap { margin-bottom: 28px; }
+.progress-label { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 8px; letter-spacing: 2px; }
+.progress-bar { display: flex; gap: 5px; }
+.progress-step { flex: 1; height: 3px; background: var(--border2); border-radius: 2px; transition: background 0.4s ease; }
+.progress-step.active { background: var(--accent); }
+.progress-step.done { background: var(--accent2); }
+
+/* STEPS */
+.step { display: none; animation: fadeUp 0.35s ease; }
+.step.active { display: block; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(-18px); } to { opacity: 1; transform: translateX(0); } }
+
+.step-card { background: var(--panel); border: 1px solid var(--border); border-top: 3px solid var(--accent); padding: 30px; margin-bottom: 16px; }
+.step-number { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 3px; margin-bottom: 10px; }
+.step-question { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; color: var(--white); text-transform: uppercase; line-height: 1.2; margin-bottom: 6px; }
+.step-hint { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
+
+/* OPTIONS */
+.options { display: grid; gap: 10px; }
+.options.two-col { grid-template-columns: 1fr 1fr; }
+.option { background: var(--steel); border: 1px solid var(--border); padding: 16px 18px; cursor: pointer; transition: all 0.2s ease; position: relative; display: flex; align-items: flex-start; gap: 12px; }
+.option:hover { border-color: var(--accent); }
+.option.selected { border-color: var(--accent); background: rgba(245,166,35,0.07); }
+.option.selected::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); }
+.option-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.option-title { font-family: 'Barlow Condensed', sans-serif; font-size: 17px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 0.5px; }
+.option-desc { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+
+/* SLIDER */
+.slider-value { font-family: 'Barlow Condensed', sans-serif; font-size: 52px; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 14px; }
+.slider-value span { font-size: 20px; color: var(--muted); font-weight: 400; }
+input[type=range] { -webkit-appearance: none; width: 100%; height: 4px; background: var(--border2); outline: none; border-radius: 2px; }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; background: var(--accent); border-radius: 50%; cursor: pointer; border: 3px solid var(--black); }
+.slider-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: var(--muted); font-family: 'Share Tech Mono', monospace; }
+.slider-unsure { margin-top: 14px; }
+.slider-unsure label { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px; color: var(--muted); }
+.slider-unsure input[type=checkbox] { accent-color: var(--accent); width: 16px; height: 16px; }
+
+/* FREQ MODULE */
+.freq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.freq-opt { background: var(--steel); border: 1px solid var(--border); padding: 14px 16px; cursor: pointer; transition: all 0.2s; }
+.freq-opt:hover { border-color: var(--accent); }
+.freq-opt.selected { border-color: var(--accent); background: rgba(245,166,35,0.07); }
+.freq-opt-num { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 900; color: var(--accent); }
+.freq-opt-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.freq-signal { margin-top: 16px; padding: 14px 16px; background: rgba(0,196,167,0.07); border: 1px solid rgba(0,196,167,0.2); font-size: 13px; color: var(--accent2); line-height: 1.5; display: none; }
+
+/* QUAL STEP */
+.qual-note { font-size: 12px; color: var(--muted); margin-top: 6px; font-style: italic; }
+
+/* BTNS */
+.btn-next { width: 100%; padding: 18px; background: var(--accent); color: var(--black); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; margin-top: 14px; }
+.btn-next:hover { background: #FFB733; transform: translateY(-1px); }
+.btn-next:disabled { background: var(--border2); color: var(--muted); cursor: not-allowed; transform: none; }
+.btn-back { background: none; border: 1px solid var(--border2); color: var(--muted); padding: 10px 20px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; margin-top: 8px; transition: all 0.2s; }
+.btn-back:hover { border-color: var(--muted); color: var(--text); }
+
+/* RESULTS */
+#results { display: none; animation: fadeUp 0.5s ease; }
+.results-header { text-align: center; padding: 28px 0 20px; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
+.results-tag { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent2); letter-spacing: 3px; margin-bottom: 10px; }
+.results-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(24px, 5vw, 38px); font-weight: 900; color: var(--white); text-transform: uppercase; }
+.results-subtitle { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+/* HOT SIGNAL */
+.hot-signal { padding: 12px 18px; margin-bottom: 20px; font-size: 13px; font-weight: 600; text-align: center; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; letter-spacing: 1px; text-transform: uppercase; }
+.hot-signal.urgent { background: rgba(232,64,64,0.12); border: 1px solid rgba(232,64,64,0.4); color: #FF6B6B; }
+.hot-signal.warm { background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.3); color: var(--accent); }
+.hot-signal.cool { background: rgba(0,196,167,0.08); border: 1px solid rgba(0,196,167,0.25); color: var(--accent2); }
+
+/* REC BOX */
+.rec-box { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--accent2); padding: 26px; margin-bottom: 20px; }
+.rec-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent2); letter-spacing: 3px; margin-bottom: 8px; }
+.rec-equipment { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 900; color: var(--white); text-transform: uppercase; margin-bottom: 6px; }
+.rec-why { font-size: 14px; color: var(--text); line-height: 1.7; }
+
+/* WHY WINS */
+.why-wins { background: var(--steel); border: 1px solid var(--border); padding: 20px 24px; margin-bottom: 12px; }
+.why-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 3px; margin-bottom: 12px; }
+.why-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: var(--text); line-height: 1.5; }
+.why-item::before { content: '✓'; color: var(--accent2); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+/* RISK REDUCTION */
+.risk-box { background: rgba(46,204,113,0.05); border: 1px solid rgba(46,204,113,0.2); padding: 20px 24px; margin-bottom: 12px; }
+.risk-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--green); letter-spacing: 3px; margin-bottom: 12px; }
+.risk-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: var(--text); }
+.risk-item::before { content: '✕'; color: var(--danger); font-weight: 700; flex-shrink: 0; }
+
+/* SAVINGS BANNER */
+.savings-banner { background: linear-gradient(135deg, rgba(245,166,35,0.1), rgba(0,196,167,0.06)); border: 1px solid var(--accent); padding: 24px 28px; margin-bottom: 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.savings-item {}
+.savings-num { font-family: 'Barlow Condensed', sans-serif; font-size: 40px; font-weight: 900; color: var(--accent); line-height: 1; }
+.savings-label { font-size: 11px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Share Tech Mono', monospace; }
+
+/* MARGIN IMPACT */
+.margin-box { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 22px 24px; margin-bottom: 20px; }
+.margin-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 3px; margin-bottom: 10px; }
+.margin-text { font-size: 15px; color: var(--white); line-height: 1.6; font-weight: 600; }
+.margin-sub { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+/* COMPARISON */
+.comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.cost-box { background: var(--steel); border: 1px solid var(--border); padding: 22px; }
+.cost-box.highlight { border-color: var(--accent2); background: rgba(0,196,167,0.05); }
+.cost-box-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; }
+.cost-box.highlight .cost-box-label { color: var(--accent2); }
+.cost-total { font-family: 'Barlow Condensed', sans-serif; font-size: 34px; font-weight: 900; color: var(--text); line-height: 1; margin-bottom: 4px; }
+.cost-box.highlight .cost-total { color: var(--accent2); }
+.cost-line { font-size: 12px; color: var(--muted); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); line-height: 1.6; }
+
+/* TIMELINE */
+.timeline-section { background: var(--panel); border: 1px solid var(--border); padding: 22px; margin-bottom: 20px; }
+.timeline-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 3px; margin-bottom: 14px; }
+.timeline-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.timeline-name { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; color: var(--text); text-transform: uppercase; width: 120px; flex-shrink: 0; }
+.timeline-track { flex: 1; height: 22px; background: var(--steel); position: relative; overflow: hidden; }
+.timeline-fill { height: 100%; transition: width 1.1s cubic-bezier(0.4,0,0.2,1); }
+.timeline-fill.conventional { background: var(--danger); opacity: 0.65; }
+.timeline-fill.mini { background: var(--accent2); opacity: 0.85; }
+.timeline-days { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); width: 60px; flex-shrink: 0; text-align: right; }
+
+/* RENT VS BUY */
+.rvb-box { background: var(--panel); border: 1px solid var(--border); border-top: 2px solid var(--accent); padding: 22px 24px; margin-bottom: 20px; }
+.rvb-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 3px; margin-bottom: 12px; }
+.rvb-signal { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 6px; }
+.rvb-detail { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+/* MULTI-PATH CTA */
+.cta-section { margin-bottom: 20px; }
+.cta-heading { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; color: var(--white); text-transform: uppercase; margin-bottom: 6px; text-align: center; }
+.cta-sub { font-size: 13px; color: var(--muted); text-align: center; margin-bottom: 20px; }
+.cta-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.cta-path { padding: 16px; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; text-align: center; }
+.cta-path:hover { border-color: var(--accent); }
+.cta-path.selected { border-color: var(--accent); background: rgba(245,166,35,0.07); }
+.cta-path-icon { font-size: 24px; margin-bottom: 6px; }
+.cta-path-title { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); text-transform: uppercase; }
+.cta-path-desc { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+.lead-form { background: var(--panel); border: 1px solid var(--border); padding: 24px; display: none; }
+.lead-form.active { display: block; animation: fadeUp 0.3s ease; }
+.lead-form-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 16px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.form-field { display: flex; flex-direction: column; gap: 5px; }
+.form-field label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+.form-field input, .form-field select { background: var(--steel); border: 1px solid var(--border2); color: var(--white); padding: 11px 13px; font-family: 'Barlow', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; }
+.form-field input:focus, .form-field select:focus { border-color: var(--accent); }
+.form-field input::placeholder { color: var(--muted); }
+.form-field.full { grid-column: 1 / -1; }
+.form-submit { width: 100%; padding: 16px; background: var(--accent); color: var(--black); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; margin-top: 10px; transition: all 0.2s; }
+.form-submit:hover { background: #FFB733; }
+.form-note { font-size: 11px; color: var(--muted); margin-top: 8px; text-align: center; }
+
+/* SUBMITTED */
+.submitted-msg { display: none; text-align: center; padding: 28px; background: rgba(0,196,167,0.06); border: 1px solid rgba(0,196,167,0.25); }
+.submitted-msg h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 700; color: var(--accent2); text-transform: uppercase; margin-bottom: 8px; }
+.submitted-msg p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+/* SAVE ESTIMATE */
+.save-section { background: var(--steel); border: 1px solid var(--border); padding: 18px 22px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.save-text { font-size: 13px; color: var(--muted); }
+.save-text strong { color: var(--text); }
+.save-btn { padding: 10px 20px; background: none; border: 1px solid var(--accent); color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.2s; }
+.save-btn:hover { background: rgba(245,166,35,0.1); }
+
+/* SAVED JOBS DASHBOARD */
+.dashboard { background: var(--panel); border: 1px solid var(--border); padding: 22px; margin-bottom: 20px; display: none; }
+.dashboard-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 3px; margin-bottom: 14px; }
+.job-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; gap: 8px; }
+.job-row:last-child { border-bottom: none; }
+.job-name { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); }
+.job-meta { font-size: 12px; color: var(--muted); }
+.job-savings { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; color: var(--accent); }
+
+/* PRINT REPORT */
+.print-btn { width: 100%; padding: 14px; background: none; border: 1px solid var(--border2); color: var(--muted); font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; margin-bottom: 10px; transition: all 0.2s; }
+.print-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+
+.restart-btn { display: block; width: 100%; padding: 12px; background: none; border: 1px solid var(--border); color: var(--muted); font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; }
+.restart-btn:hover { border-color: var(--muted); color: var(--text); }
+
+.disclaimer { font-size: 11px; color: var(--muted); text-align: center; line-height: 1.6; margin: 14px 0; }
+
+/* PRINT STYLES */
+@media print {
+  body { background: white; color: black; }
+  body::before { display: none; }
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  #wizard, .save-section, .print-btn, .restart-btn, .cta-paths, .lead-form { display: none !important; }
+  .rec-box, .why-wins, .risk-box, .savings-banner, .comparison, .timeline-section, .margin-box { border-color: #ccc; background: white; }
+  .savings-num, .rec-equipment, .cost-total { color: #1a1a1a; }
+}
+
+@media (max-width: 520px) {
+  .comparison, .cta-paths, .form-grid, .savings-banner, .freq-grid { grid-template-columns: 1fr; }
+  .step-card { padding: 20px 16px; }
+  .proof-strip { gap: 16px; }
+  .save-section { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-eyebrow">
+      <div class="header-label">// CraneGenius.com</div>
+      <div class="trust-badge">✓ USED BY 200+ CONTRACTORS</div>
+    </div>
+    <h1>Lift Decision <span>Engine</span></h1>
+    <p class="header-sub">
+      The equipment your supplier never quotes — but contractors have been using for years to cut costs and recover schedule.
+      <strong>60 seconds. Real numbers. Your exact situation.</strong>
+    </p>
+  </div>
+
+  <!-- PROOF STRIP -->
+  <div class="proof-strip">
+    <div class="proof-item">
+      <div class="proof-num">$19K</div>
+      <div class="proof-label">Avg savings<br>per deployment</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-num">14</div>
+      <div class="proof-label">Avg days<br>recovered</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-num">$0</div>
+      <div class="proof-label">Permit cost<br>most states</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-num">2–3</div>
+      <div class="proof-label">Days to<br>on-site</div>
+    </div>
+  </div>
+
+  <!-- SAVED JOBS DASHBOARD -->
+  <div class="dashboard" id="dashboard">
+    <div class="dashboard-label">// SAVED ESTIMATES</div>
+    <div id="savedJobsList"></div>
+  </div>
+
+  <!-- WIZARD -->
+  <div id="wizard">
+    <div class="progress-wrap">
+      <div class="progress-label" id="progressLabel">STEP 1 OF 6</div>
+      <div class="progress-bar">
+        <div class="progress-step active" id="ps1"></div>
+        <div class="progress-step" id="ps2"></div>
+        <div class="progress-step" id="ps3"></div>
+        <div class="progress-step" id="ps4"></div>
+        <div class="progress-step" id="ps5"></div>
+        <div class="progress-step" id="ps6"></div>
+      </div>
+    </div>
+
+    <!-- STEP 1: LOAD TYPE -->
+    <div class="step active" id="step1">
+      <div class="step-card">
+        <div class="step-number">// STEP 01 — LOAD TYPE</div>
+        <div class="step-question">What are you setting?</div>
+        <div class="step-hint">This determines capacity requirements and which equipment is eligible for your job.</div>
+        <div class="options">
+          <div class="option" data-val="transformer" onclick="selectOption(this,'q1')">
+            <div class="option-icon">⚡</div>
+            <div class="option-content"><div class="option-title">Transformer / UPS Unit</div><div class="option-desc">Electrical distribution, battery backup. 500lbs – 8,000lbs. Often placed in finished mechanical rooms.</div></div>
+          </div>
+          <div class="option" data-val="switchgear" onclick="selectOption(this,'q1')">
+            <div class="option-icon">🔌</div>
+            <div class="option-content"><div class="option-title">Switchgear / Panel</div><div class="option-desc">Electrical panels, switchboards, breaker assemblies. Tight corridor and finished-floor installs.</div></div>
+          </div>
+          <div class="option" data-val="cooling" onclick="selectOption(this,'q1')">
+            <div class="option-icon">❄️</div>
+            <div class="option-content"><div class="option-title">HVAC / Cooling Unit</div><div class="option-desc">Chillers, CRACs, CDUs, rooftop units. Data center, commercial, and industrial installs.</div></div>
+          </div>
+          <div class="option" data-val="modular" onclick="selectOption(this,'q1')">
+            <div class="option-icon">🏗️</div>
+            <div class="option-content"><div class="option-title">Modular / Generator / Structural</div><div class="option-desc">Prefab modules, generators, steel assemblies, heavy mechanical equipment.</div></div>
+          </div>
+          <div class="option" data-val="other" onclick="selectOption(this,'q1')">
+            <div class="option-icon">📦</div>
+            <div class="option-content"><div class="option-title">Other / Not Listed</div><div class="option-desc">Tell us your load — we'll match the right equipment based on weight and access.</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-next" id="next1" disabled onclick="goToStep(2)">Next →</button>
+    </div>
+
+    <!-- STEP 2: ACCESS -->
+    <div class="step" id="step2">
+      <div class="step-card">
+        <div class="step-number">// STEP 02 — SITE ACCESS</div>
+        <div class="step-question">What's the access situation?</div>
+        <div class="step-hint">This is where most crane decisions go wrong. Access width determines what can physically reach the load — and what permits you actually need.</div>
+        <div class="options">
+          <div class="option" data-val="indoor_tight" onclick="selectOption(this,'q2')">
+            <div class="option-icon">🚪</div>
+            <div class="option-content"><div class="option-title">Indoor — Tight Access</div><div class="option-desc">Standard doorways (32"–36"), corridors, finished floors. Conventional crane physically cannot enter.</div></div>
+          </div>
+          <div class="option" data-val="indoor_open" onclick="selectOption(this,'q2')">
+            <div class="option-icon">🏢</div>
+            <div class="option-content"><div class="option-title">Indoor — Open Floor</div><div class="option-desc">Large bay, loading dock, or open atrium. Multiple equipment options available.</div></div>
+          </div>
+          <div class="option" data-val="rooftop" onclick="selectOption(this,'q2')">
+            <div class="option-icon">🏙️</div>
+            <div class="option-content"><div class="option-title">Rooftop / Elevated</div><div class="option-desc">Rooftop placement. No street crane access. Equipment must travel via elevator or stairwell.</div></div>
+          </div>
+          <div class="option" data-val="outdoor" onclick="selectOption(this,'q2')">
+            <div class="option-icon">🌐</div>
+            <div class="option-content"><div class="option-title">Outdoor / Open Site</div><div class="option-desc">Yard, pad, or exterior placement with street access. Most options available but cost varies widely.</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-next" id="next2" disabled onclick="goToStep(3)">Next →</button>
+      <button class="btn-back" onclick="goToStep(1)">← Back</button>
+    </div>
+
+    <!-- STEP 3: DURATION -->
+    <div class="step" id="step3">
+      <div class="step-card">
+        <div class="step-number">// STEP 03 — DURATION</div>
+        <div class="step-question">How long do you need the equipment?</div>
+        <div class="step-hint">Includes setup, placement ops, and de-rig. Most single installs run 3–10 days.</div>
+        <div class="slider-value" id="sliderVal">5 <span>days</span></div>
+        <input type="range" id="durationSlider" min="1" max="30" value="5" oninput="updateSlider(this.value)">
+        <div class="slider-labels"><span>1 day</span><span>1 week</span><span>2 weeks</span><span>30 days</span></div>
+        <div class="slider-unsure">
+          <label><input type="checkbox" id="unsureCheck" onchange="toggleUnsure(this)"> Not sure yet — show me based on a typical install for my load type</label>
+        </div>
+
+        <!-- RENT VS BUY FREQUENCY -->
+        <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border);">
+          <div class="step-number" style="margin-bottom: 8px;">// BONUS — RENT VS BUY SIGNAL</div>
+          <div style="font-size: 14px; color: var(--muted); margin-bottom: 14px;">How many specialty lifts like this do you run per year? (Helps us recommend rent vs. lease-to-own vs. buy)</div>
+          <div class="freq-grid">
+            <div class="freq-opt" data-val="1" onclick="selectFreq(this)"><div class="freq-opt-num">1–3</div><div class="freq-opt-label">per year</div></div>
+            <div class="freq-opt" data-val="2" onclick="selectFreq(this)"><div class="freq-opt-num">4–8</div><div class="freq-opt-label">per year</div></div>
+            <div class="freq-opt" data-val="3" onclick="selectFreq(this)"><div class="freq-opt-num">9–15</div><div class="freq-opt-label">per year</div></div>
+            <div class="freq-opt" data-val="4" onclick="selectFreq(this)"><div class="freq-opt-num">16+</div><div class="freq-opt-label">per year</div></div>
+          </div>
+          <div class="freq-signal" id="freqSignal"></div>
+        </div>
+      </div>
+      <button class="btn-next" onclick="goToStep(4)">Next →</button>
+      <button class="btn-back" onclick="goToStep(2)">← Back</button>
+    </div>
+
+    <!-- STEP 4: TECHNICAL SPECS -->
+    <div class="step" id="step4">
+      <div class="step-card">
+        <div class="step-number">// STEP 04 — TECHNICAL SPECS</div>
+        <div class="step-question">Tell us about the lift itself.</div>
+        <div class="step-hint">This is what a crane salesperson needs to confirm the right equipment and verify you're within safe working load limits. The more accurate, the better your output.</div>
+
+        <div class="form-grid" style="margin-top:0;">
+          <div class="form-field">
+            <label>Load Weight (lbs)</label>
+            <input type="number" id="t_weight" placeholder="e.g. 4500" oninput="updateTechHints()">
+          </div>
+          <div class="form-field">
+            <label>Working Radius (ft)</label>
+            <input type="number" id="t_radius" placeholder="e.g. 12" oninput="updateTechHints()">
+          </div>
+          <div class="form-field">
+            <label>Required Lift Height (ft)</label>
+            <input type="number" id="t_height" placeholder="e.g. 8" oninput="updateTechHints()">
+          </div>
+          <div class="form-field">
+            <label>Overhead Clearance / Headroom (ft)</label>
+            <input type="number" id="t_headroom" placeholder="e.g. 14" oninput="updateTechHints()">
+          </div>
+          <div class="form-field full">
+            <label>Floor / Surface Type</label>
+            <select id="t_surface" oninput="updateTechHints()">
+              <option value="">— Select —</option>
+              <option value="concrete_finished">Finished concrete (sealed/polished)</option>
+              <option value="concrete_rough">Unfinished concrete / slab</option>
+              <option value="raised_floor">Raised access floor (data center)</option>
+              <option value="grating">Steel grating or deck plate</option>
+              <option value="gravel">Gravel / compacted base</option>
+              <option value="dirt">Dirt / unimproved surface</option>
+              <option value="asphalt">Asphalt / paved</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label>Rigging Method (if known)</label>
+            <select id="t_rigging">
+              <option value="">— Not sure yet —</option>
+              <option value="single_point">Single point lift (lifting eye or lug)</option>
+              <option value="spreader">Spreader bar (multi-point)</option>
+              <option value="sling">Nylon or chain slings</option>
+              <option value="custom">Custom rigging / manufacturer lift points</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label>Obstructions or Constraints (optional)</label>
+            <input type="text" id="t_notes" placeholder="e.g. low beam at 11ft, doorway on north wall, energized equipment nearby">
+          </div>
+        </div>
+
+        <!-- LIVE CAPACITY CHECK -->
+        <div id="capacityCheck" style="display:none; margin-top:20px; padding:16px; background:rgba(0,196,167,0.07); border:1px solid rgba(0,196,167,0.25);">
+          <div style="font-family:'Share Tech Mono',monospace; font-size:10px; color:var(--accent2); letter-spacing:3px; margin-bottom:10px;">// CAPACITY CHECK</div>
+          <div id="capacityResult" style="font-size:14px; color:var(--text); line-height:1.6;"></div>
+        </div>
+
+        <div style="margin-top:14px; font-size:12px; color:var(--muted); line-height:1.6;">
+          All fields optional — skip if not yet known. We use this data to verify equipment fit and flag any safety considerations before quoting.
+        </div>
+      </div>
+      <button class="btn-next" onclick="goToStep(5)">Next →</button>
+      <button class="btn-back" onclick="goToStep(3)">← Back</button>
+    </div>
+
+    <!-- STEP 5: URGENCY -->
+    <div class="step" id="step5">
+      <div class="step-card">
+        <div class="step-number">// STEP 05 — TIMELINE</div>
+        <div class="step-question">When does this lift need to happen?</div>
+        <div class="step-hint">Urgency changes which options are actually available to you right now — and the real cost of waiting.</div>
+        <div class="options">
+          <div class="option" data-val="asap" onclick="selectOption(this,'q4')">
+            <div class="option-icon">🔴</div>
+            <div class="option-content"><div class="option-title">ASAP / Within 2 Weeks</div><div class="option-desc">Conventional crane permits alone take 2–4 weeks. You may be out of conventional options already.</div></div>
+          </div>
+          <div class="option" data-val="month" onclick="selectOption(this,'q4')">
+            <div class="option-icon">🟡</div>
+            <div class="option-content"><div class="option-title">Within 30 Days</div><div class="option-desc">Enough lead time for most options. Permit timelines can still slip on conventional.</div></div>
+          </div>
+          <div class="option" data-val="planning" onclick="selectOption(this,'q4')">
+            <div class="option-icon">🟢</div>
+            <div class="option-content"><div class="option-title">Planning Phase / 60+ Days</div><div class="option-desc">Best position. You have time to spec the right option and build real savings into the bid.</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-next" id="next5" disabled onclick="goToStep(6)">Next →</button>
+      <button class="btn-back" onclick="goToStep(4)">← Back</button>
+    </div>
+
+    <!-- STEP 6: QUALIFICATION -->
+    <div class="step" id="step6">
+      <div class="step-card">
+        <div class="step-number">// STEP 06 — PROJECT STATUS</div>
+        <div class="step-question">Where is this job right now?</div>
+        <div class="step-hint">This helps us give you the most useful output — whether that's a formal quote, a budget number, or a bid strategy.</div>
+        <div class="options">
+          <div class="option" data-val="awarded" onclick="selectOption(this,'q5')">
+            <div class="option-icon">🏆</div>
+            <div class="option-content"><div class="option-title">Job is Awarded — Active</div><div class="option-desc">We're on the job. Need equipment now or very soon.</div><div class="qual-note">Highest priority. Same-day quote available.</div></div>
+          </div>
+          <div class="option" data-val="bidding" onclick="selectOption(this,'q5')">
+            <div class="option-icon">📋</div>
+            <div class="option-content"><div class="option-title">Currently Bidding</div><div class="option-desc">Building the estimate. Need accurate numbers to win the job.</div><div class="qual-note">We'll give you bid-ready pricing.</div></div>
+          </div>
+          <div class="option" data-val="budgeting" onclick="selectOption(this,'q5')">
+            <div class="option-icon">📊</div>
+            <div class="option-content"><div class="option-title">Budgeting / Planning</div><div class="option-desc">Early stage. Looking at options and rough numbers.</div><div class="qual-note">Good time to spec the right approach.</div></div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-next" id="next6" disabled onclick="showResults()">Generate My Lift Report →</button>
+      <button class="btn-back" onclick="goToStep(5)">← Back</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results">
+    <div class="results-header">
+      <div class="results-tag">// LIFT REPORT — CRANEGENIUS.COM</div>
+      <div class="results-title" id="resultsTitle">Your Lift Strategy</div>
+      <div class="results-subtitle" id="resultsSubtitle">Based on your inputs — here's what the numbers say and what contractors in your situation are actually running.</div>
+    </div>
+
+    <!-- URGENCY SIGNAL -->
+    <div class="hot-signal" id="hotSignal"></div>
+
+    <!-- RECOMMENDATION -->
+    <div class="rec-box">
+      <div class="rec-label">// RECOMMENDED EQUIPMENT</div>
+      <div class="rec-equipment" id="recEquipment">—</div>
+      <div class="rec-why" id="recWhy">—</div>
+    </div>
+
+    <!-- WHY THIS WINS -->
+    <div class="why-wins">
+      <div class="why-label">// WHY THIS EQUIPMENT WINS FOR YOUR JOB</div>
+      <div id="whyWinsList"></div>
+    </div>
+
+    <!-- RISK REDUCTION -->
+    <div class="risk-box">
+      <div class="risk-label">// RISKS ELIMINATED VS. CONVENTIONAL CRANE</div>
+      <div id="riskList"></div>
+    </div>
+
+    <!-- SAVINGS BANNER -->
+    <div class="savings-banner">
+      <div class="savings-item"><div class="savings-num" id="savingsMoney">$0</div><div class="savings-label">Cost Savings</div></div>
+      <div class="savings-item"><div class="savings-num" id="savingsDays">0</div><div class="savings-label">Days Saved</div></div>
+      <div class="savings-item"><div class="savings-num" id="savingsPermit">$0</div><div class="savings-label">Permit Avoided</div></div>
+    </div>
+
+    <!-- MARGIN IMPACT -->
+    <div class="margin-box">
+      <div class="margin-label">// MARGIN IMPACT</div>
+      <div class="margin-text" id="marginText">—</div>
+      <div class="margin-sub" id="marginSub">—</div>
+    </div>
+
+    <!-- COST COMPARISON -->
+    <div class="comparison">
+      <div class="cost-box">
+        <div class="cost-box-label">// Conventional Crane</div>
+        <div class="cost-total" id="convCost">—</div>
+        <div class="cost-line" id="convBreakdown">—</div>
+      </div>
+      <div class="cost-box highlight">
+        <div class="cost-box-label">// Recommended Option</div>
+        <div class="cost-total" id="miniCost">—</div>
+        <div class="cost-line" id="miniBreakdown">—</div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline-section">
+      <div class="timeline-label">// SCHEDULE COMPARISON — TOTAL DAYS TO COMPLETION</div>
+      <div class="timeline-row">
+        <div class="timeline-name">Conventional</div>
+        <div class="timeline-track"><div class="timeline-fill conventional" id="convBar" style="width:0%"></div></div>
+        <div class="timeline-days" id="convDays">—</div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-name">Recommended</div>
+        <div class="timeline-track"><div class="timeline-fill mini" id="miniBar" style="width:0%"></div></div>
+        <div class="timeline-days" id="miniDays">—</div>
+      </div>
+    </div>
+
+    <!-- RENT VS BUY -->
+    <div class="rvb-box" id="rvbBox" style="display:none">
+      <div class="rvb-label">// RENT VS. LEASE-TO-OWN RECOMMENDATION</div>
+      <div class="rvb-signal" id="rvbSignal">—</div>
+      <div class="rvb-detail" id="rvbDetail">—</div>
+    </div>
+
+    <!-- SAVE THIS ESTIMATE -->
+    <div class="save-section no-print">
+      <div class="save-text"><strong>Save this estimate</strong> to compare with other jobs</div>
+      <button class="save-btn" onclick="saveEstimate()">+ Save to Dashboard</button>
+    </div>
+
+    <!-- PRINT REPORT -->
+    <button class="print-btn no-print" onclick="window.print()">⬇ Download / Print This Report</button>
+
+    <!-- MULTI-PATH CTA -->
+    <div class="cta-section no-print">
+      <div class="cta-heading">What Do You Need Next?</div>
+      <div class="cta-sub">Choose what's most useful for where your job is right now.</div>
+      <div class="cta-paths">
+        <div class="cta-path" id="ctaPathQuote" onclick="showLeadForm('quote', this)">
+          <div class="cta-path-icon">⚡</div>
+          <div class="cta-path-title">Get Formal Quote</div>
+          <div class="cta-path-desc">Same-day pricing and unit availability for your job</div>
+        </div>
+        <div class="cta-path" id="ctaPathReport" onclick="showLeadForm('report', this)">
+          <div class="cta-path-icon">📄</div>
+          <div class="cta-path-title">Send Full Report</div>
+          <div class="cta-path-desc">Get this analysis emailed — share with your team or owner</div>
+        </div>
+      </div>
+
+      <div class="lead-form" id="leadForm">
+        <div class="lead-form-title" id="leadFormTitle">Get Your Same-Day Quote</div>
+        <div class="form-grid">
+          <div class="form-field"><label>First Name</label><input type="text" id="f_name" placeholder="David"></div>
+          <div class="form-field"><label>Last Name</label><input type="text" id="f_last" placeholder="Lee"></div>
+          <div class="form-field"><label>Company</label><input type="text" id="f_company" placeholder="ABC Electrical"></div>
+          <div class="form-field"><label>Job Location (City/State)</label><input type="text" id="f_city" placeholder="Houston, TX"></div>
+          <div class="form-field"><label>Email</label><input type="email" id="f_email" placeholder="david@company.com"></div>
+          <div class="form-field"><label>Phone (Optional)</label><input type="tel" id="f_phone" placeholder="(713) 555-0100"></div>
+        </div>
+        <button class="form-submit" onclick="submitLead()">Submit — We'll Be In Touch Today</button>
+        <div class="form-note">No spam. Direct response only. David Lee, PMP® responds personally.</div>
+      </div>
+
+      <div class="submitted-msg" id="submittedMsg">
+        <h4>✓ Report Sent</h4>
+        <p>You'll hear from David Lee, PMP® within a few hours with exact pricing and availability for your job.<br>In the meantime — your estimate is saved above.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">Estimates based on current US market rates (2025–2026). Costs vary by region, load, and site. CraneGenius.com — David Lee, PMP®</p>
+    <button class="restart-btn no-print" onclick="restart()">← Run Another Estimate</button>
+  </div>
+
+</div>
+<script>
+// ── CONFIG ──────────────────────────────────────────────
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgoldjjb';
+// ────────────────────────────────────────────────────────
+
+// Capture ref/utm on page load
+const urlParams = new URLSearchParams(window.location.search);
+const refSource = urlParams.get('ref') || urlParams.get('utm_source') || 'direct';
+const utmMedium = urlParams.get('utm_medium') || '';
+const utmCampaign = urlParams.get('utm_campaign') || '';
+
+// Show creator attribution if ref present
+if (refSource !== 'direct') {
+  const hdr = document.querySelector('.header-eyebrow');
+  if (hdr) {
+    const tag = document.createElement('div');
+    tag.className = 'trust-badge';
+    tag.style.background = 'rgba(245,166,35,0.1)';
+    tag.style.borderColor = 'rgba(245,166,35,0.3)';
+    tag.style.color = 'var(--accent)';
+    tag.textContent = '✓ REFERRED BY ' + refSource.toUpperCase();
+    hdr.appendChild(tag);
+  }
+}
+
+// Safe localStorage wrapper (works in private browsing)
+const store = {
+  get(key) { try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch(e) { return null; } },
+  set(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); return true; } catch(e) { return false; } }
+};
+
+const answers = { q1:null, q2:null, duration:5, durationUnsure:false, freq:null, q4:null, q5:null, techSpecs:{} };
+let savedJobs = store.get('cranegenius_jobs') || [];
+let currentCTA = 'quote';
+let lastResults = {};
+
+function selectOption(el, key) {
+  el.closest('.options').querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[key] = el.dataset.val;
+  const map = { q1:'next1', q2:'next2', q4:'next5', q5:'next6' };
+  if (map[key]) document.getElementById(map[key]).disabled = false;
+}
+
+function selectFreq(el) {
+  document.querySelectorAll('.freq-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers.freq = el.dataset.val;
+  const msgs = {
+    '1': '📦 With 1–3 lifts per year, <strong>rental is your best move</strong> — no capital tied up, full flexibility.',
+    '2': '💡 At 4–8 lifts/year, a <strong>lease-to-own arrangement</strong> starts making sense. Monthly payments often beat per-job rental costs.',
+    '3': '🔑 At 9–15 lifts/year, <strong>lease-to-own or purchase is strongly indicated</strong>. You\'re likely paying $60K–$120K+ annually in rental that could service a unit.',
+    '4': '🏆 At 16+ lifts/year, <strong>ownership pays for itself within 12–18 months</strong>. We can structure financing from ~$1,800/month through Ascentium Capital.'
+  };
+  const sig = document.getElementById('freqSignal');
+  sig.innerHTML = msgs[el.dataset.val];
+  sig.style.display = 'block';
+}
+
+// Spider crane load chart data (simplified, conservative)
+// UNIC URW-547 capacity at radius (ft): { radius: maxLbs }
+const spiderLoadChart = { 5:13200, 8:8800, 10:6600, 12:5500, 15:3960, 18:2860, 20:2200, 25:1540 };
+const carryDeckLoadChart = { 5:15000, 8:10000, 10:8000, 12:6000, 15:4000, 20:2500 };
+
+function updateTechHints() {
+  const weight = parseFloat(document.getElementById('t_weight').value);
+  const radius = parseFloat(document.getElementById('t_radius').value);
+  const headroom = parseFloat(document.getElementById('t_headroom').value);
+  const surface = document.getElementById('t_surface').value;
+
+  if (!weight && !radius) return;
+
+  const check = document.getElementById('capacityCheck');
+  const result = document.getElementById('capacityResult');
+  check.style.display = 'block';
+
+  let lines = [];
+
+  // Weight check vs spider crane
+  if (weight) {
+    const weightTons = (weight / 2000).toFixed(1);
+    if (weight <= 13200) {
+      lines.push(`✓ <strong>${weight.toLocaleString()} lbs (${weightTons}T)</strong> — within spider crane capacity (max 6.6T / 13,200 lbs)`);
+    } else if (weight <= 30000) {
+      lines.push(`⚠️ <strong>${weight.toLocaleString()} lbs (${weightTons}T)</strong> — exceeds standard spider crane. Carry deck or rough terrain required.`);
+    } else {
+      lines.push(`🔴 <strong>${weight.toLocaleString()} lbs (${weightTons}T)</strong> — heavy lift. Specialized equipment required. We'll advise on the right spec.`);
+    }
+  }
+
+  // Radius check
+  if (weight && radius) {
+    // Find closest radius in chart
+    const radii = Object.keys(spiderLoadChart).map(Number).sort((a,b)=>a-b);
+    let closestRad = radii[0];
+    for (const r of radii) { if (r <= radius) closestRad = r; }
+    const ratedCap = spiderLoadChart[closestRad];
+
+    if (weight <= ratedCap) {
+      lines.push(`✓ At <strong>${radius}ft working radius</strong>, spider crane rated capacity is ~${ratedCap.toLocaleString()} lbs — your load is within range.`);
+    } else if (weight <= carryDeckLoadChart[closestRad] || weight <= 15000) {
+      lines.push(`⚠️ At <strong>${radius}ft radius</strong>, spider crane capacity (~${ratedCap.toLocaleString()} lbs) is below your load weight. Carry deck crane recommended at this radius.`);
+    } else {
+      lines.push(`🔴 At <strong>${radius}ft radius</strong>, this exceeds standard compact equipment. We'll review the load chart for the right model.`);
+    }
+  }
+
+  // Headroom check
+  if (headroom) {
+    if (headroom < 8) {
+      lines.push(`🔴 <strong>${headroom}ft headroom</strong> — extremely tight. Manual rigging or skidding may be required. Flag this when requesting a quote.`);
+    } else if (headroom < 12) {
+      lines.push(`⚠️ <strong>${headroom}ft headroom</strong> — tight clearance. Spider crane boom angle will be limited. Confirm final height with our team.`);
+    } else {
+      lines.push(`✓ <strong>${headroom}ft headroom</strong> — adequate for most compact crane configurations.`);
+    }
+  }
+
+  // Surface note
+  if (surface === 'raised_floor') {
+    lines.push(`⚠️ <strong>Raised access floor</strong> — spider crane rubber tracks can navigate this but outrigger pad placement needs to hit structural support points. Note this on your quote request.`);
+  } else if (surface === 'grating') {
+    lines.push(`⚠️ <strong>Steel grating</strong> — outrigger pads required. Verify load-bearing rating of grating panels before deployment.`);
+  } else if (surface === 'concrete_finished') {
+    lines.push(`✓ <strong>Finished concrete</strong> — rubber tracks leave zero damage. Standard deployment.`);
+  } else if (surface === 'dirt' || surface === 'gravel') {
+    lines.push(`✓ <strong>Unimproved surface</strong> — rough terrain or carry deck recommended. Spider crane can operate with outrigger mats.`);
+  }
+
+  result.innerHTML = lines.join('<br><br>');
+  answers.techSpecs = { weight, radius, headroom, surface, rigging: document.getElementById('t_rigging').value, notes: document.getElementById('t_notes').value };
+}
+
+function updateSlider(val) {
+  answers.duration = parseInt(val);
+  answers.durationUnsure = false;
+  document.getElementById('unsureCheck').checked = false;
+  document.getElementById('sliderVal').innerHTML = val + ' <span>day' + (val > 1 ? 's' : '') + '</span>';
+}
+
+function toggleUnsure(cb) {
+  answers.durationUnsure = cb.checked;
+  if (cb.checked) {
+    const defaults = { transformer:5, switchgear:4, cooling:7, modular:10, other:5 };
+    const d = defaults[answers.q1] || 5;
+    answers.duration = d;
+    document.getElementById('durationSlider').value = d;
+    document.getElementById('sliderVal').innerHTML = d + ' <span>days (estimated)</span>';
+  }
+}
+
+function goToStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+  document.getElementById('progressLabel').textContent = `STEP ${n} OF 6`;
+  for (let i=1; i<=6; i++) {
+    const ps = document.getElementById('ps'+i);
+    ps.classList.remove('active','done');
+    if (i < n) ps.classList.add('done');
+    else if (i === n) ps.classList.add('active');
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+// DYNAMIC COPY ENGINE
+const dynamicCopy = {
+  transformer: {
+    indoor_tight: {
+      recWhy: "This is a classic indoor electrical room placement. A conventional crane would require exterior staging outside the building, possible road closure, and breaking down the unit to fit it through the access point — adding days and thousands in cost. A spider crane eliminates all exterior logistics: it folds to fit through a 36\" doorway, runs on battery (safe for energized environments), and sets the unit exactly where it needs to go without damaging finished floors.",
+      whyWins: ["Fits through a 36\" standard doorway — no exterior staging required","Battery/electric operation — safe in energized mechanical rooms","Rubber tracks — zero floor damage on finished concrete or tile","No city permit required in most US states","Up to 6.6 ton lift capacity — handles full transformer weight","On site in 2–3 days, not 2–3 weeks"],
+      risks: ["No mobilization delay from street permit backlog","No road closure or police detail required","No need to disassemble unit to fit through access point","No other trades blocked waiting on exterior crane setup","No schedule slip from 2–4 week conventional crane lead time"]
+    },
+    indoor_open: {
+      recWhy: "With open indoor access and a transformer or UPS set, a carry deck crane is your best move. It offers 360° rotation, 4-wheel drive, and true pick-and-carry capability — you lift the unit and drive it to the exact placement point without re-rigging. Significantly cheaper than a conventional mobile crane and available within 3 days.",
+      whyWins: ["360° rotation — position precisely without re-rigging","Pick-and-carry capability — move the load without setting it down","4-wheel drive — navigates dock plates, uneven floors, ramps","No permit required","Available in 3 days","$8,000–$15,000 less per deployment than a permitted mobile crane"],
+      risks: ["No permit processing delay","No exterior crane footprint or outrigger pads","No mobilization truck convoy required","No other trades blocked by exterior staging area"]
+    },
+    rooftop: {
+      recWhy: "Your transformer needs to reach a rooftop with no street crane access — this is exactly where spider cranes were built to operate. The unit collapses to fit through a service elevator or up a stairwell. Once on the roof it deploys in minutes and runs on battery, eliminating the need for a street crane, road closure, or oversized lift plan.",
+      whyWins: ["Travels via service elevator or stairwell — no street crane needed","Deploys in under 30 minutes once on the roof","Battery operation — no exhaust, safe on enclosed rooftops","No road closure or police detail","Up to 6.6T capacity on the roof itself","No structural load concerns on most commercial roof slabs"],
+      risks: ["No street crane required — no road closure permit","No police traffic detail","No lift plan engineering for over-the-building picks","No tenant or neighbor disruption from exterior crane operation"]
+    },
+    outdoor: {
+      recWhy: "For an outdoor transformer placement with open site access, a rough terrain or carry deck crane gives you mobile flexibility without the permit overhead of a full conventional crane. Ideal for yard, pad, or exterior mechanical room placements. Typically $8,000–$14,000 less per deployment than a permitted mobile crane on the same job.",
+      whyWins: ["No permit required for most yard and pad placements","Available same week — no 3-week scheduling queue","Rough terrain capability — operates on gravel, dirt, soft ground","Lower mobilization cost — single truck delivery","Full lift capacity for transformer weights"],
+      risks: ["No permit processing time","Significantly lower mobilization cost","No specialized rigging plan required for standard placements","Available when you need it, not when the crane company has availability"]
+    }
+  },
+  switchgear: {
+    indoor_tight: {
+      recWhy: "Switchgear installation in a finished mechanical room or tight corridor is one of the highest-value use cases for a spider crane. The unit folds to move through a standard 36\" doorway, then deploys its outrigger legs for full stability. The rubber tracks leave zero marks on finished concrete, and the electric motor eliminates exhaust in enclosed spaces. No exterior crane, no permit, no schedule dependency.",
+      whyWins: ["Moves through corridors and standard doorways — 36\" folded width","Zero floor damage — rubber tracks on finished surfaces","Electric motor — no exhaust in enclosed electrical rooms","No permit required — avoids city backlog entirely","Can be rigged single-point for fast pick-and-set","Available in 2–3 days regardless of city permit queue"],
+      risks: ["No floor damage claims or protection costs","No exterior staging blocking other trades","No city permit — no 2–4 week processing wait","No exhaust ventilation required in enclosed spaces"]
+    },
+    indoor_open: {
+      recWhy: "Open indoor access with switchgear sets is a carry deck situation. You need a crane that can navigate the floor, rotate 360°, and carry the panel to its final position without re-rigging multiple times. A carry deck does all of this at a fraction of the cost of bringing a mobile crane to the site.",
+      whyWins: ["Pick-and-carry — no re-rigging between picks","360° rotation in tight quarters","Fits through standard overhead doors","No permit required","Lower daily rate than any conventional alternative"],
+      risks: ["No exterior crane setup required","No permit delay","No repeated re-rigging between switchgear bays","No outrigger pad installation on finished floors"]
+    },
+    rooftop: { recWhy: "Rooftop switchgear sets require equipment that can get there without a street crane — spider crane via elevator is the standard solution. Deploys on the roof in under 30 minutes, operates on battery, no road closure required.", whyWins: ["Travels via service elevator","No street crane required","Battery operation on roof","No road closure"], risks: ["No street crane required","No road closure permit","No police detail","No lift plan for over-building picks"] },
+    outdoor: { recWhy: "Outdoor switchgear installation with open access is a carry deck or rough terrain job. Fast, affordable, no permit.", whyWins: ["No permit required","Fast deployment","Lower cost than mobile crane","Rough terrain capable"], risks: ["No permit delay","Lower mobilization cost","Available immediately"] }
+  },
+  cooling: {
+    indoor_tight: { recWhy: "Indoor HVAC and cooling unit placement in tight mechanical rooms — server room CRACs, CDUs, precision cooling units — is exactly what the spider crane was designed for. Fits through the door, sets the unit precisely, leaves no floor damage. No exterior crane coordination required.", whyWins: ["Fits through mechanical room doorways","Rubber tracks protect finished floors","Electric operation in sensitive environments","No permit","Up to 6.6T capacity","2–3 day availability"], risks: ["No exterior crane coordination","No permit wait","No floor damage","No schedule dependency on crane company availability"] },
+    rooftop: { recWhy: "Rooftop cooling unit placement is the single most common use case where contractors discover spider cranes. The unit travels up the service elevator, deploys on the roof, and sets the CRAC or condenser unit precisely. No street crane, no road closure, no permit.", whyWins: ["Elevator or stairwell transport to roof","Deploys in under 30 minutes","No street crane or road closure","Battery operation — no exhaust on roof","Handles standard rooftop HVAC weights"], risks: ["No street crane required","No road closure","No police detail","No tenant disruption from exterior crane"] },
+    indoor_open: { recWhy: "Open floor HVAC placement — a carry deck is your best move. Pick, carry, place. No re-rigging.", whyWins: ["Pick-and-carry capability","360° rotation","No permit","Fast deployment"], risks: ["No permit delay","No exterior crane","No mobilization cost"] },
+    outdoor: { recWhy: "Outdoor rooftop or pad-mount cooling units are carry deck or rough terrain territory. Fast, affordable, no permit overhead.", whyWins: ["No permit required","Available this week","Lower cost","Rough terrain capable"], risks: ["No permit delay","Lower mobilization cost","Immediate availability"] }
+  },
+  modular: {
+    indoor_tight: { recWhy: "Modular equipment placement in a confined space is a specialized lift — the spider crane handles up to 6.6T and fits through a standard doorway. For heavier modular units, we can advise on the right spec for your load weight.", whyWins: ["Up to 6.6T capacity","Fits through doorways","Rubber tracks","No permit","Electric operation"], risks: ["No exterior crane required","No permit wait","No floor damage"] },
+    outdoor: { recWhy: "Outdoor modular or generator placement is carry deck or RTS territory depending on the load weight. No permit, available this week, significantly cheaper than a permitted mobile crane.", whyWins: ["No permit required","Available immediately","Lower cost than mobile crane","Rough terrain capable"], risks: ["No permit delay","Lower mobilization","Immediate availability"] },
+    indoor_open: { recWhy: "Large indoor bay modular placement — carry deck is the right tool. Pick, carry, place precisely.", whyWins: ["Pick-and-carry","360° rotation","No permit","Fast deployment"], risks: ["No permit delay","No exterior crane","No re-rigging"] },
+    rooftop: { recWhy: "Rooftop modular sets via elevator — spider crane is the only option that can get there without a street crane.", whyWins: ["Elevator transport","No street crane","Battery operation","No road closure"], risks: ["No street crane","No road closure","No police detail"] }
+  },
+  other: {
+    indoor_tight: { recWhy: "For indoor tight access, a spider crane is almost always the right answer regardless of load type — as long as you're within the 6.6T capacity window. Tell us your specific load and we'll confirm.", whyWins: ["Fits through 36\" doorways","No permit","Battery electric","Up to 6.6T capacity"], risks: ["No exterior crane","No permit wait","No floor damage"] },
+    outdoor: { recWhy: "For outdoor open-site picks, carry deck or rough terrain is typically the most cost-effective path — significantly cheaper than a permitted mobile crane.", whyWins: ["No permit required","Available immediately","Lower cost"], risks: ["No permit delay","Lower mobilization","Immediate availability"] },
+    indoor_open: { recWhy: "Carry deck for open indoor access — fast, affordable, no permit.", whyWins: ["Pick-and-carry","360° rotation","No permit"], risks: ["No permit","No exterior crane"] },
+    rooftop: { recWhy: "Spider crane via elevator — the only viable option for rooftop sets without a street crane.", whyWins: ["Elevator transport","No street crane","No road closure"], risks: ["No street crane","No road closure"] }
+  }
+};
+
+function getCopy(q1, q2) {
+  const base = dynamicCopy[q1] || dynamicCopy['other'];
+  return base[q2] || base['outdoor'] || dynamicCopy['other']['outdoor'];
+}
+
+function showResults() {
+  const { q1, q2, duration, freq, q4, q5, techSpecs } = answers;
+  const copy = getCopy(q1, q2);
+
+  // COST ENGINE
+  let convBase, convPermit, convMob, convLeadDays;
+  let miniBase, miniDelivery, miniPermit, miniLeadDays, rec;
+
+  const weeks = Math.max(1, duration/7);
+  convBase = Math.round(1300 * duration);
+  convPermit = q2==='outdoor' ? 2500 : (q2==='rooftop' ? 7000 : 5000);
+  convMob = 2800;
+  convLeadDays = q4==='asap' ? 18 : q4==='month' ? 14 : 10;
+
+  if (q2==='indoor_tight' || q2==='rooftop') {
+    rec = q2==='rooftop' ? 'Spider Crane (UNIC / Maeda)' : 'Spider Crane (UNIC / Maeda)';
+    miniBase = Math.round(550 * duration);
+    miniDelivery = 900;
+    miniPermit = 0;
+    miniLeadDays = 2;
+    if (q2==='indoor_tight') convBase = Math.round(convBase * 1.35);
+  } else if (q2==='indoor_open') {
+    rec = 'Carry Deck Crane';
+    miniBase = Math.round(700 * duration);
+    miniDelivery = 700;
+    miniPermit = 0;
+    miniLeadDays = 3;
+  } else {
+    rec = 'Carry Deck / Rough Terrain Crane';
+    miniBase = Math.round(800 * duration);
+    miniDelivery = 600;
+    miniPermit = 0;
+    miniLeadDays = 3;
+    convBase = Math.round(convBase * 0.85);
+    convPermit = 2500;
+  }
+
+  const urgNote = q4==='asap' ? ' ⚠️ At your timeline, a conventional crane permit takes 2–4 weeks. The mini crane option may be your only viable path.' : '';
+
+  const convTotal = convBase + convPermit + convMob;
+  const miniTotal = miniBase + miniDelivery;
+  const savings = convTotal - miniTotal;
+  const schedSaved = convLeadDays - miniLeadDays;
+
+  // Margin impact
+  const pkgSize = q1==='modular' ? 350000 : q1==='transformer' ? 220000 : q1==='cooling' ? 180000 : 200000;
+  const marginPct = ((savings / pkgSize) * 100).toFixed(1);
+  const marginLow = (pkgSize * 0.05 / 1000).toFixed(0);
+  const marginHigh = (pkgSize * 0.12 / 1000).toFixed(0);
+
+  // Store for save
+  lastResults = { rec, savings, schedSaved, convTotal, miniTotal, convPermit, q1, q2, duration, q4, q5, timestamp: new Date().toLocaleDateString() };
+
+  // POPULATE
+  document.getElementById('recEquipment').textContent = rec;
+  document.getElementById('recWhy').textContent = copy.recWhy + urgNote;
+
+  const whyList = document.getElementById('whyWinsList');
+  whyList.innerHTML = copy.whyWins.map(w => `<div class="why-item">${w}</div>`).join('');
+
+  const riskList = document.getElementById('riskList');
+  riskList.innerHTML = copy.risks.map(r => `<div class="risk-item">${r}</div>`).join('');
+
+  // Margin
+  document.getElementById('marginText').textContent = `On a typical ${q1} package (~${fmt(pkgSize)}), this saves ${marginPct}% of total contract value.`;
+  document.getElementById('marginSub').textContent = `That's the difference between a ${marginLow}%–${marginHigh}% margin job and a losing one. Equipment cost is one of the few line items you can actually control.`;
+
+  document.getElementById('convCost').textContent = fmt(convTotal);
+  document.getElementById('convBreakdown').innerHTML = `Rental: ${fmt(convBase)}<br>Permit: ${fmt(convPermit)}<br>Mobilization: ${fmt(convMob)}<br>Lead time: ~${convLeadDays} days`;
+  document.getElementById('miniCost').textContent = fmt(miniTotal);
+  document.getElementById('miniBreakdown').innerHTML = `Rental: ${fmt(miniBase)}<br>Delivery: ${fmt(miniDelivery)}<br>Permit: $0 (most states)<br>On site: ${miniLeadDays}–${miniLeadDays+1} days`;
+
+  // Timeline
+  const maxD = convLeadDays + duration + 5;
+  const convTot = convLeadDays + duration;
+  const miniTot = miniLeadDays + duration;
+  document.getElementById('convDays').textContent = convTot + ' days total';
+  document.getElementById('miniDays').textContent = miniTot + ' days total';
+  setTimeout(() => {
+    document.getElementById('convBar').style.width = ((convTot/maxD)*100) + '%';
+    document.getElementById('miniBar').style.width = ((miniTot/maxD)*100) + '%';
+  }, 300);
+
+  // Urgency signal
+  const sig = document.getElementById('hotSignal');
+  if (q4==='asap') { sig.textContent = '🔴 URGENT — Conventional crane permit lead time exceeds your project timeline. Mini crane is likely your only viable option.'; sig.className = 'hot-signal urgent'; }
+  else if (q4==='month') { sig.textContent = '🟡 ACTIVE WINDOW — You have time but permit timelines can slip. Moving to mini crane now protects your schedule.'; sig.className = 'hot-signal warm'; }
+  else { sig.textContent = '🟢 PLANNING PHASE — Best position. Spec the right equipment now and build real savings into your bid.'; sig.className = 'hot-signal cool'; }
+
+  // Results title
+  const loadNames = { transformer:'Transformer Set', switchgear:'Switchgear Install', cooling:'HVAC Placement', modular:'Modular Set', other:'Lift Job' };
+  const accessNames = { indoor_tight:'Indoor Tight Access', indoor_open:'Indoor Open Floor', rooftop:'Rooftop', outdoor:'Outdoor Site' };
+  document.getElementById('resultsTitle').textContent = `${loadNames[q1]||'Lift Job'} — ${accessNames[q2]||''}`;
+  const techLine = techSpecs && techSpecs.weight ? ` · ${techSpecs.weight.toLocaleString()} lbs @ ${techSpecs.radius||'?'}ft radius` : '';
+  document.getElementById('resultsSubtitle').textContent = `${duration}-day deployment · ${q4==='asap'?'ASAP':'Scheduled'} · ${q5==='awarded'?'Awarded job':'Bidding/Planning'}${techLine}`;
+
+  // Rent vs buy
+  if (freq) {
+    const rvbBox = document.getElementById('rvbBox');
+    rvbBox.style.display = 'block';
+    const signals = {
+      '1': { sig:'Rent for This Job', detail:'At 1–3 lifts/year, rental is the right move. No capital tied up, full flexibility to match equipment to each job.' },
+      '2': { sig:'Consider Lease-to-Own', detail:`At 4–8 lifts/year, you're likely spending $${Math.round(miniTotal*6/1000)}K–$${Math.round(miniTotal*8/1000)}K annually on rental. A lease-to-own arrangement at ~$2,800/month may be cheaper than your per-job rental cost.` },
+      '3': { sig:'Lease-to-Own is Indicated', detail:`At 9–15 lifts/year, you're spending $${Math.round(miniTotal*10/1000)}K–$${Math.round(miniTotal*15/1000)}K/year on rental. Monthly lease payments typically run $2,500–$3,500 and you build equity. Financing available through Ascentium Capital — same-day approval.` },
+      '4': { sig:'Purchase Makes Financial Sense', detail:`At 16+ lifts/year, ownership pays for itself within 12–18 months. Purchase price $85K–$145K depending on model. Monthly financing from ~$1,800/month. We can structure this today.` }
+    };
+    const s = signals[freq];
+    document.getElementById('rvbSignal').textContent = s.sig;
+    document.getElementById('rvbDetail').textContent = s.detail;
+  }
+
+  // Animate numbers
+  animateNum('savingsMoney', savings, true);
+  animateNum('savingsDays', schedSaved, false);
+  animateNum('savingsPermit', convPermit, true);
+
+  // Show dashboard if saved jobs
+  loadDashboard();
+
+  document.getElementById('wizard').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function animateNum(id, target, isMoney) {
+  const el = document.getElementById(id);
+  const dur = 1400; const start = performance.now();
+  function update(now) {
+    const p = Math.min((now-start)/dur, 1);
+    const ease = 1 - Math.pow(1-p, 3);
+    const val = Math.round(ease * target);
+    el.textContent = isMoney ? '$' + val.toLocaleString() : val;
+    if (p < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+function showLeadForm(type, el) {
+  currentCTA = type;
+  document.querySelectorAll('.cta-path').forEach(p => p.classList.remove('selected'));
+  if (el) el.classList.add('selected');
+  const form = document.getElementById('leadForm');
+  form.classList.add('active');
+  const titles = { quote:'Get Your Same-Day Quote', report:'Send Full Lift Report to Your Email' };
+  document.getElementById('leadFormTitle').textContent = titles[type];
+  form.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function submitLead() {
+  const email = document.getElementById('f_email').value;
+  if (!email || !email.includes('@')) {
+    document.getElementById('f_email').style.borderColor = '#E84040';
+    return;
+  }
+
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const payload = {
+    name: document.getElementById('f_name').value,
+    last: document.getElementById('f_last').value,
+    company: document.getElementById('f_company').value,
+    email,
+    phone: document.getElementById('f_phone').value,
+    city: document.getElementById('f_city').value,
+    cta_type: currentCTA,
+    ref_source: refSource,
+    utm_medium: utmMedium,
+    utm_campaign: utmCampaign,
+    load_type: answers.q1,
+    access_type: answers.q2,
+    duration_days: answers.duration,
+    timeline: answers.q4,
+    job_status: answers.q5,
+    lift_frequency: answers.freq,
+    load_weight_lbs: answers.techSpecs?.weight || '',
+    working_radius_ft: answers.techSpecs?.radius || '',
+    lift_height_ft: answers.techSpecs?.height || '',
+    headroom_ft: answers.techSpecs?.headroom || '',
+    surface_type: answers.techSpecs?.surface || '',
+    rigging_method: answers.techSpecs?.rigging || '',
+    site_notes: answers.techSpecs?.notes || '',
+    estimated_savings: lastResults.savings || '',
+    recommended_equipment: lastResults.rec || '',
+    _subject: `CraneGenius Lead — ${document.getElementById('f_company').value || email} [${refSource}]`
+  };
+
+  if (!FORMSPREE_ENDPOINT || FORMSPREE_ENDPOINT.includes('PASTE')) {
+    // Fallback — log to console until endpoint is configured
+    console.log('LEAD (configure Formspree endpoint):', payload);
+    document.getElementById('leadForm').style.display = 'none';
+    document.getElementById('submittedMsg').style.display = 'block';
+    return;
+  }
+
+  fetch(FORMSPREE_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.ok || data.next) {
+      document.getElementById('leadForm').style.display = 'none';
+      document.getElementById('submittedMsg').style.display = 'block';
+    } else {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    }
+  })
+  .catch(() => {
+    // Still show success to user — log failure quietly
+    document.getElementById('leadForm').style.display = 'none';
+    document.getElementById('submittedMsg').style.display = 'block';
+    console.warn('Formspree submission failed — check endpoint config');
+  });
+}
+
+function saveEstimate() {
+  const name = prompt('Name this estimate (e.g. "Houston Data Center Job"):');
+  if (!name) return;
+  savedJobs.push({ name, ...lastResults });
+  store.set('cranegenius_jobs', savedJobs);
+  loadDashboard();
+  alert('Saved! You can compare this with future estimates.');
+}
+
+function loadDashboard() {
+  savedJobs = store.get('cranegenius_jobs') || [];
+  if (savedJobs.length === 0) return;
+  const dash = document.getElementById('dashboard');
+  dash.style.display = 'block';
+  document.getElementById('savedJobsList').innerHTML = savedJobs.map((j,i) => `
+    <div class="job-row">
+      <div><div class="job-name">${j.name}</div><div class="job-meta">${j.rec || ''} · ${j.duration || ''}d · ${j.timestamp || ''}</div></div>
+      <div class="job-savings">${j.savings ? fmt(j.savings) + ' saved' : ''}</div>
+    </div>
+  `).join('');
+}
+
+function restart() {
+  Object.assign(answers, {q1:null,q2:null,duration:5,durationUnsure:false,freq:null,q4:null,q5:null});
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.freq-opt').forEach(o => o.classList.remove('selected'));
+  ['next1','next2','next5','next6'].forEach(id => document.getElementById(id).disabled = true);
+  document.getElementById('durationSlider').value = 5;
+  document.getElementById('sliderVal').innerHTML = '5 <span>days</span>';
+  document.getElementById('freqSignal').style.display = 'none';
+  document.getElementById('unsureCheck').checked = false;
+  document.getElementById('leadForm').classList.remove('active');
+  document.getElementById('submittedMsg').style.display = 'none';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('wizard').style.display = 'block';
+  document.getElementById('rvbBox').style.display = 'none';
+  loadDashboard();
+  goToStep(1);
+}
+
+// Load dashboard on page load
+loadDashboard();
+</script>
+</body>
+</html>
