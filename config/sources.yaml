@@ -4,7 +4,7 @@ sources:
     source_type: "permit"
     jurisdiction: "Phoenix, AZ"
     method: "phoenix_csv"
-    url: "https://www.phoenixopendata.com/dataset/55a7e536-5611-4a6c-b429-c40e6e35b9a7/resource/31f6b245-0b31-4020-a3f0-3dc72a6decaf/download/development-services-permits.csv"
+    url: "https://www.services.arcgis.com/ORnXvHHB8P2YFJiP/arcgis/rest/services/Phoenix_Planning_Dev_Permit_Activity/FeatureServer/0/query"
     notes: "Phoenix Open Data development permits CSV. Field names: PermitNumber, PermitType, StatusCurrent, IssuedDate, ProjectDescription, ContractorName, SiteAddress, SiteCity, SiteState"
     enabled: true
 
