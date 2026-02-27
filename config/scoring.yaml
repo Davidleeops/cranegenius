@@ -1,0 +1,57 @@
+scoring:
+  recency_days: 30
+  threshold_hot: 7
+  threshold_warm: 5
+
+  # Pipeline monitoring gates — if these thresholds are breached, export halts
+  gates:
+    min_valid_email_rate: 0.30        # Stop if fewer than 30% of emails verify valid
+    min_domain_resolution_rate: 0.25  # Warn if fewer than 25% of contractors resolve to a domain
+    max_consecutive_zero_source_runs: 2  # Quarantine source after 2 empty runs
+
+  rules:
+    - name: "transformer"
+      field: "description_raw"
+      points: 3
+      match_group: "lift_triggers.transformer"
+
+    - name: "switchgear"
+      field: "description_raw"
+      points: 3
+      match_group: "lift_triggers.switchgear"
+
+    - name: "generator_or_ups"
+      field: "description_raw"
+      points: 3
+      match_any_groups:
+        - "lift_triggers.generator"
+        - "lift_triggers.ups"
+
+    - name: "hvac_rooftop"
+      field: "description_raw"
+      points: 2
+      match_group: "lift_triggers.hvac_rooftop"
+
+    - name: "glazing_or_steel"
+      field: "description_raw"
+      points: 2
+      match_any_groups:
+        - "lift_triggers.glazing"
+        - "lift_triggers.steel"
+
+    - name: "indoor_or_tight_access"
+      field: "description_raw"
+      points: 2
+      match_any_groups:
+        - "access_signals.indoor"
+        - "access_signals.tight_access"
+
+    - name: "issued_or_awarded_status"
+      field: "record_status"
+      points: 2
+      match_any:
+        - "issued"
+        - "awarded"
+        - "approved"
+        - "active"
+        - "finaled"

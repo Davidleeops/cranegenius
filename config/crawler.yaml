@@ -1,0 +1,27 @@
+crawler:
+  max_pages_per_domain: 40
+  max_depth: 2
+  request_timeout_seconds: 20
+  rate_limit_seconds: 1.0
+  user_agent: "CraneGeniusLeadBot/1.0 (+contact: ops@cranegenius.com)"
+  include_url_keywords:
+    - "contact"
+    - "about"
+    - "team"
+    - "leadership"
+    - "directory"
+    - "staff"
+    - "locations"
+    - "people"
+    - "our-team"
+  exclude_extensions:
+    - ".jpg"
+    - ".jpeg"
+    - ".png"
+    - ".gif"
+    - ".pdf"
+    - ".zip"
+    - ".mp4"
+    - ".mov"
+    - ".svg"
+    - ".webp"

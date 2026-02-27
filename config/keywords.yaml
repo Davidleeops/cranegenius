@@ -1,0 +1,72 @@
+keywords:
+  lift_triggers:
+    transformer:
+      - "transformer"
+      - "padmount transformer"
+      - "pad mount transformer"
+      - "substation transformer"
+      - "distribution transformer"
+    switchgear:
+      - "switchgear"
+      - "gear install"
+      - "panelboard"
+      - "electrical gear"
+      - "medium voltage"
+    ups:
+      - "ups"
+      - "uninterruptible power supply"
+      - "battery backup"
+    generator:
+      - "generator"
+      - "genset"
+      - "standby generator"
+      - "emergency generator"
+    hvac_rooftop:
+      - "rooftop unit"
+      - "rtu"
+      - "chiller"
+      - "cooling unit"
+      - "hvac unit"
+      - "air handler"
+      - "ahu"
+    glazing:
+      - "curtain wall"
+      - "glazing"
+      - "glass"
+      - "window wall"
+      - "storefront"
+    steel:
+      - "steel erection"
+      - "structural steel"
+      - "steel beam"
+      - "steel column"
+
+  access_signals:
+    indoor:
+      - "electrical room"
+      - "indoors"
+      - "interior"
+      - "inside"
+      - "mechanical room"
+      - "equipment room"
+    rooftop:
+      - "roof"
+      - "rooftop"
+      - "penthouse"
+    tight_access:
+      - "tight access"
+      - "limited access"
+      - "interior corridor"
+      - "basement"
+      - "underground"
+
+role_inboxes:
+  - "estimating"
+  - "projects"
+  - "project"
+  - "operations"
+  - "dispatch"
+  - "safety"
+  - "info"
+  - "bids"
+  - "construction"

@@ -1,0 +1,45 @@
+sources:
+  # ── PHOENIX (ENABLED — real CSV endpoint) ──────────────────────────────────
+  - id: "phoenix_permits"
+    source_type: "permit"
+    jurisdiction: "Phoenix, AZ"
+    method: "phoenix_csv"
+    url: "https://www.phoenixopendata.com/dataset/55a7e536-5611-4a6c-b429-c40e6e35b9a7/resource/31f6b245-0b31-4020-a3f0-3dc72a6decaf/download/development-services-permits.csv"
+    notes: "Phoenix Open Data development permits CSV. Field names: PermitNumber, PermitType, StatusCurrent, IssuedDate, ProjectDescription, ContractorName, SiteAddress, SiteCity, SiteState"
+    enabled: true
+
+  # ── DALLAS (stub — find real URL then enable) ─────────────────────────────
+  - id: "dallas_permits"
+    source_type: "permit"
+    jurisdiction: "Dallas, TX"
+    method: "csv"
+    url: "https://www.dallasopendata.com/resource/example.csv"
+    notes: "Find real URL at https://www.dallasopendata.com — search 'building permits'"
+    enabled: false
+
+  # ── NASHVILLE (stub — HTML portal, needs Playwright) ──────────────────────
+  - id: "nashville_permits"
+    source_type: "permit"
+    jurisdiction: "Nashville, TN"
+    method: "html_list"
+    url: "https://permits.nashville.gov/permits/search"
+    notes: "Nashville permit portal — likely needs Playwright for JS rendering"
+    enabled: false
+
+  # ── CHARLOTTE (stub) ──────────────────────────────────────────────────────
+  - id: "charlotte_permits"
+    source_type: "permit"
+    jurisdiction: "Charlotte, NC"
+    method: "csv"
+    url: "https://opendata.charlottenc.gov/datasets/example.csv"
+    notes: "Find real URL at https://opendata.charlottenc.gov"
+    enabled: false
+
+  # ── DENVER (stub) ─────────────────────────────────────────────────────────
+  - id: "denver_permits"
+    source_type: "permit"
+    jurisdiction: "Denver, CO"
+    method: "csv"
+    url: "https://www.denvergov.org/opendata/dataset/city-and-county-of-denver-permits"
+    notes: "Denver Open Data — find direct CSV download link"
+    enabled: false
