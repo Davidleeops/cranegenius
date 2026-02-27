@@ -15,10 +15,7 @@ class DallasScraper:
     jurisdiction = "Dallas, TX"
 
     def fetch(self) -> pd.DataFrame:
-        end = datetime.now()
-        start = end - timedelta(days=90)
-        start_str = start.strftime("%Y-%m-%dT00:00:00")
-        url = f"https://www.dallasopendata.com/resource/e7gq-4sah.csv?$where=issued_date>='{start_str}'&$limit=2000&$order=issued_date DESC"
+        url = "https://www.dallasopendata.com/resource/e7gq-4sah.csv?$limit=2000&$order=issued_date+DESC"
         log.info("Dallas: fetching permits")
         r = requests.get(url, headers={"User-Agent": "CraneGeniusLeadBot/1.0"}, timeout=60)
         r.raise_for_status()
