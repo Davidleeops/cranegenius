@@ -84,7 +84,7 @@ def verify_with_millionverifier(candidates_df: pd.DataFrame) -> pd.DataFrame:
     result_df = pd.DataFrame(rows).drop_duplicates(subset=["email"])
 
     # Log verification summary
-    valid_count = (result_df["email_verification_status"] == "valid").sum()
+    valid_count = (result_df["email_verification_status"] == "valid").sum() if "email_verification_status" in result_df.columns else 0
     catchall_count = (result_df["email_verification_status"] == "catchall").sum()
     invalid_count = (result_df["email_verification_status"] == "invalid").sum()
     total_verified = len(result_df)
