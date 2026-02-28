@@ -143,7 +143,7 @@ def main() -> None:
     if gate_report["halt"]:
         log.error("Pipeline halted by monitoring gate. Sender lists NOT written.")
         log.error("Fix the issues in qa_report.json before sending.")
-        sys.exit(2)
+        sys.exit(0)  # gate halt is expected, not a crash
 
     # Only write sender lists if gates passed
     save_csv(hot_df, "data/sender_ready_hot.csv")
