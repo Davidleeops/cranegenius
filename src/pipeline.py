@@ -118,6 +118,9 @@ def main() -> None:
 
     # ── STAGE 8: MERGE + EXPORT ───────────────────────────────────
     log.info("\n[Stage 8] Exporting sender-ready lists...")
+    if candidates_df.empty or "contractor_domain" not in enriched_df.columns:
+        log.warning("No candidates to export — pipeline complete with 0 sender-ready leads")
+        sys.exit(0)
     scored_candidates = enriched_df.merge(
         candidates_df, on="contractor_domain", how="left"
     )
