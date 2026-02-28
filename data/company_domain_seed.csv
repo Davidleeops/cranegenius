@@ -1,14 +1,11 @@
 contractor_name_normalized,contractor_domain
-# HOW TO USE THIS FILE:
-# Add one row per contractor you know.
-# contractor_name_normalized: lowercase, no LLC/Inc/Corp suffix
-# contractor_domain: just the domain, no https:// or www
-#
-# EXAMPLE ROWS (delete these and replace with real data):
-# Pull names from: https://roc.az.gov/verify-a-license
-# Pull names from: NECA Phoenix chapter directory
-# Goal: 100 real rows before first pipeline run
-#
-# example electrical company,exampleelectrical.com
-# phoenix power systems,phoenixpowersystems.com
-# southwest mechanical,swmechanical.com
+generator supercenter,generatorsupercenter.com
+azteca enterprises,aztecaenterprisesinc.com
+enertech resources,entechresources.com
+able electric,ableelectric.com
+keiser electric,keiserelectric.com
+isl electric,islelectric.com
+schaffer construction,schafferconstruction.com
+oht construction,ohtconstruction.com
+mcrt north texas,mcrtnorthtexas.com
+quick roofing,quickroofing.com

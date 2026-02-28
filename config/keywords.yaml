@@ -1,26 +1,79 @@
 keywords:
   lift_triggers:
+    crane_direct:
+      - "crane"
+      - "tower crane"
+      - "mobile crane"
+      - "crane rental"
+      - "crane service"
+      - "crane lift"
+      - "craning"
+
+    new_construction:
+      - "new construction"
+      - "new commercial"
+      - "new office"
+      - "new hotel"
+      - "new hospital"
+      - "new warehouse"
+      - "new distribution"
+      - "new data center"
+      - "ground up"
+      - "shell building"
+
+    structural_steel:
+      - "steel erection"
+      - "structural steel"
+      - "steel beam"
+      - "steel column"
+      - "steel frame"
+      - "erect steel"
+
+    tilt_up_precast:
+      - "tilt-up"
+      - "tilt up"
+      - "tiltwall"
+      - "tilt wall"
+      - "precast"
+      - "pre-cast"
+      - "prestressed"
+
+    high_rise_multifamily:
+      - "high rise"
+      - "high-rise"
+      - "multifamily"
+      - "multi-family"
+      - "apartment"
+      - "condominium"
+      - "mixed use"
+      - "mixed-use"
+      - "podium"
+
     transformer:
       - "transformer"
       - "padmount transformer"
       - "pad mount transformer"
       - "substation transformer"
       - "distribution transformer"
+
     switchgear:
       - "switchgear"
       - "gear install"
       - "panelboard"
       - "electrical gear"
       - "medium voltage"
+
     ups:
       - "ups"
       - "uninterruptible power supply"
       - "battery backup"
+
     generator:
       - "generator"
       - "genset"
       - "standby generator"
       - "emergency generator"
+
     hvac_rooftop:
       - "rooftop unit"
       - "rtu"
@@ -29,12 +82,14 @@ keywords:
       - "hvac unit"
       - "air handler"
       - "ahu"
+
     glazing:
       - "curtain wall"
       - "glazing"
       - "glass"
       - "window wall"
       - "storefront"
+
     steel:
       - "steel erection"
       - "structural steel"

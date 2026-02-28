@@ -1,28 +1,52 @@
 scoring:
   recency_days: 30
   threshold_hot: 7
-  threshold_warm: 5
+  threshold_warm: 4
 
-  # Pipeline monitoring gates — if these thresholds are breached, export halts
   gates:
-    min_valid_email_rate: 0.30        # Stop if fewer than 30% of emails verify valid
-    min_domain_resolution_rate: 0.25  # Warn if fewer than 25% of contractors resolve to a domain
-    max_consecutive_zero_source_runs: 2  # Quarantine source after 2 empty runs
+    min_valid_email_rate: 0.30
+    min_domain_resolution_rate: 0.25
+    max_consecutive_zero_source_runs: 2
 
   rules:
-    - name: "transformer"
+    - name: "crane_direct"
+      field: "description_raw"
+      points: 6
+      match_group: "lift_triggers.crane_direct"
+
+    - name: "new_construction"
+      field: "description_raw"
+      points: 4
+      match_group: "lift_triggers.new_construction"
+
+    - name: "structural_steel"
+      field: "description_raw"
+      points: 4
+      match_group: "lift_triggers.structural_steel"
+
+    - name: "tilt_up_precast"
+      field: "description_raw"
+      points: 4
+      match_group: "lift_triggers.tilt_up_precast"
+
+    - name: "high_rise_multifamily"
       field: "description_raw"
       points: 3
+      match_group: "lift_triggers.high_rise_multifamily"
+
+    - name: "transformer"
+      field: "description_raw"
+      points: 2
       match_group: "lift_triggers.transformer"
 
     - name: "switchgear"
       field: "description_raw"
-      points: 3
+      points: 2
       match_group: "lift_triggers.switchgear"
 
     - name: "generator_or_ups"
       field: "description_raw"
-      points: 3
+      points: 2
       match_any_groups:
         - "lift_triggers.generator"
         - "lift_triggers.ups"
