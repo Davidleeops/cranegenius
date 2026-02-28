@@ -31,6 +31,9 @@ def _verify_one(api_key: str, email: str) -> Dict[str, Any]:
 
 
 def verify_with_millionverifier(candidates_df: pd.DataFrame) -> pd.DataFrame:
+    if candidates_df.empty:
+        log.info("No candidates to verify — skipping MillionVerifier")
+        return candidates_df
     api_key = os.environ.get("MILLIONVERIFIER_API_KEY", "").strip()
     if not api_key:
         raise RuntimeError(
