@@ -93,7 +93,7 @@ def _resolve_one(name: str, state: str, seed_map: Dict[str, str]) -> tuple[str, 
 
     # 2. Partial seed match (name is a substring of a seed key)
     for seed_key, domain in seed_map.items():
-        if name and len(name) > 5 and name in seed_key:
+        if seed_key and len(seed_key) > 5 and seed_key in name:
             return domain, "seed_partial"
 
     # 3. AZ ROC fallback for Arizona contractors
