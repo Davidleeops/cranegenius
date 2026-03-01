@@ -93,8 +93,7 @@ def main() -> None:
     save_csv(enriched_df, "data/enriched_companies.csv")
 
     # ── STAGE 4b: CLAUDE DOMAIN ENRICHMENT ──────────────────────
-    log.info("
-[Stage 4b] Enriching unresolved domains via Claude...")
+    log.info("[Stage 4b] Enriching unresolved domains via Claude...")
     enriched_df = enrich_domains_with_claude(enriched_df)
     save_csv(enriched_df, "data/enriched_companies.csv")
 
