@@ -13,7 +13,7 @@ log = logging.getLogger("cranegenius.domain_enricher")
 
 ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages"
 BATCH_SIZE = 20
-MODEL = "claude-haiku-4-5-20251001"
+MODEL = "claude-haiku-4-5"
 
 
 def enrich_domains_with_claude(enriched_df: pd.DataFrame) -> pd.DataFrame:
