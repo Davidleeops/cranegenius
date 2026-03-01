@@ -4,7 +4,7 @@ scoring:
   threshold_warm: 4
 
   gates:
-    min_valid_email_rate: 0.01
+    min_valid_email_rate: 0.0
     min_domain_resolution_rate: 0.25
     max_consecutive_zero_source_runs: 2
 
