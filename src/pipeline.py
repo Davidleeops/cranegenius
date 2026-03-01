@@ -23,6 +23,7 @@ from .ingest import ingest_sources
 from .parse_normalize import normalize_records
 from .score_filter import score_and_filter
 from .company_resolver import resolve_domains
+from .domain_enricher_claude import enrich_domains_with_claude
 from .site_contact_miner import mine_contacts
 from .candidate_builder import build_candidates
 from .verify_millionverifier import verify_with_millionverifier
@@ -89,6 +90,12 @@ def main() -> None:
     # ── STAGE 4: RESOLVE DOMAINS ──────────────────────────────────
     log.info("\n[Stage 4] Resolving contractor domains...")
     enriched_df = resolve_domains(enrichment_queue)
+    save_csv(enriched_df, "data/enriched_companies.csv")
+
+    # ── STAGE 4b: CLAUDE DOMAIN ENRICHMENT ──────────────────────
+    log.info("
+[Stage 4b] Enriching unresolved domains via Claude...")
+    enriched_df = enrich_domains_with_claude(enriched_df)
     save_csv(enriched_df, "data/enriched_companies.csv")
 
     # ── STAGE 5: MINE CONTACTS ────────────────────────────────────
