@@ -3,253 +3,182 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CraneGenius Marketplace</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;600&family=DM+Mono&display=swap" rel="stylesheet">
+<title>CraneGenius — List Your Crane</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
-:root{--black:#0a0a0a;--steel:#1a1f2e;--panel:#111827;--border:#1e2d3d;--accent:#f59e0b;--blue:#3b82f6;--red:#ef4444;--green:#10b981;--text:#e2e8f0;--muted:#64748b;--card:#0f1623}
+:root{--bg:#080e1a;--panel:#0d1526;--card:#111f35;--border:rgba(201,168,76,0.15);--gold:#c9a84c;--gold2:#f0d078;--blue:#3b82f6;--green:#10b981;--red:#ef4444;--text:#e8edf5;--muted:#5a7a9a}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
-body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(59,130,246,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
-header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 1.5rem;height:58px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;color:var(--accent)}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(201,168,76,.04),transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(59,130,246,.04),transparent 50%);pointer-events:none;z-index:0}
+nav{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:2px;color:var(--gold)}
 .logo span{color:var(--text)}
-.hbtns{display:flex;gap:.5rem;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.4rem 1rem;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;border:none;transition:all .15s}
-.btn-primary{background:var(--accent);color:#000}.btn-primary:hover{background:#fbbf24;transform:translateY(-1px)}
-.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
-.btn-blue{background:var(--blue);color:#fff}.btn-green{background:var(--green);color:#fff}.btn-red{background:var(--red);color:#fff}
-.btn-sm{padding:.28rem .65rem;font-size:.75rem}
-.hero{position:relative;z-index:1;padding:2rem 1.5rem 1.2rem;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(245,158,11,.04),transparent 60%)}
-.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:3px;line-height:1}
-.hero h1 em{color:var(--accent);font-style:normal}
-.hero p{color:var(--muted);font-size:.88rem;margin-top:.4rem;max-width:500px}
-.stats{display:flex;gap:2rem;margin-top:1rem;flex-wrap:wrap}
-.stat-num{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--accent);line-height:1}
-.stat-lbl{font-size:.68rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
-.layout{position:relative;z-index:1;display:grid;grid-template-columns:1fr 330px;min-height:calc(100vh - 200px)}
-.left{padding:1.5rem;border-right:1px solid var(--border)}
-.right{padding:1.2rem;display:flex;flex-direction:column;gap:1rem}
+.nav-right{display:flex;gap:.75rem;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.38rem .9rem;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;border:none;transition:all .15s}
+.btn-gold{background:var(--gold);color:#000}.btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-sm{padding:.26rem .65rem;font-size:.75rem}
+.btn-green{background:var(--green);color:#fff}.btn-red{background:var(--red);color:#fff}
+.main{position:relative;z-index:1;display:grid;grid-template-columns:1fr 420px;flex:1}
+.listings-side{padding:1.5rem;border-right:1px solid var(--border);overflow-y:auto}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;margin-bottom:1rem}
+.stats-row{display:flex;gap:1.5rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--gold);line-height:1}
+.stat-l{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
 .filters{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
-.chip{padding:.28rem .7rem;border-radius:20px;font-size:.73rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all .15s;font-family:'DM Sans',sans-serif}
-.chip.on,.chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(245,158,11,.08)}
-.card{background:var(--card);border:1px solid var(--border);border-radius:6px;margin-bottom:.7rem;overflow:hidden;animation:up .35s ease both;transition:border-color .2s,transform .2s}
-.card:hover{border-color:rgba(245,158,11,.4);transform:translateX(2px)}
-@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.card-top{display:flex;align-items:flex-start;justify-content:space-between;padding:.85rem 1rem .4rem;gap:.5rem}
-.card-title{font-weight:600;font-size:.9rem}
-.card-sub{font-size:.73rem;color:var(--muted);margin-top:.12rem}
-.badge{padding:.15rem .45rem;border-radius:3px;font-size:.67rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;font-family:'DM Mono',monospace;white-space:nowrap}
+.chip{padding:.25rem .65rem;border-radius:20px;font-size:.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all .15s;font-family:'DM Sans',sans-serif}
+.chip.on,.chip:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.08)}
+.lcard{background:var(--card);border:1px solid var(--border);border-radius:6px;margin-bottom:.65rem;overflow:hidden;animation:fu .35s ease both;transition:border-color .2s,transform .2s}
+.lcard:hover{border-color:rgba(201,168,76,.35);transform:translateX(2px)}
+@keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.lt{display:flex;align-items:flex-start;justify-content:space-between;padding:.8rem 1rem .35rem;gap:.5rem}
+.ln{font-weight:600;font-size:.88rem}
+.ls{font-size:.71rem;color:var(--muted);margin-top:.1rem}
+.badge{padding:.13rem .42rem;border-radius:3px;font-size:.65rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;font-family:'DM Mono',monospace;white-space:nowrap}
 .b-live{background:rgba(16,185,129,.15);color:var(--green);border:1px solid rgba(16,185,129,.3)}
-.b-qa{background:rgba(245,158,11,.15);color:var(--accent);border:1px solid rgba(245,158,11,.3)}
-.b-draft{background:rgba(100,116,139,.15);color:var(--muted);border:1px solid var(--border)}
-.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;padding:0 1rem .7rem}
-.spec-k{font-size:.63rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-family:'DM Mono',monospace}
-.spec-v{font-size:.8rem;font-weight:600;font-family:'DM Mono',monospace}
-.spec-v.gold{color:var(--accent)}
-.card-bot{display:flex;align-items:center;justify-content:space-between;padding:.55rem 1rem;border-top:1px solid var(--border);background:rgba(255,255,255,.01)}
-.tags{display:flex;gap:.3rem;flex-wrap:wrap}
-.tag{padding:.12rem .38rem;border-radius:3px;font-size:.63rem;background:rgba(59,130,246,.1);color:#93c5fd;border:1px solid rgba(59,130,246,.2);font-family:'DM Mono',monospace}
-.qa-btn{display:flex;align-items:center;gap:.25rem;padding:.18rem .45rem;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);border-radius:3px;font-size:.67rem;color:var(--accent);cursor:pointer;font-family:'DM Mono',monospace}
-.qa-btn:hover{background:rgba(245,158,11,.2)}
-.box{background:var(--card);border:1px solid var(--border);border-radius:6px;overflow:hidden}
-.box-head{padding:.65rem 1rem;border-bottom:1px solid var(--border);font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:1.5px;display:flex;align-items:center;gap:.4rem}
-.box-head .ic{color:var(--accent)}
-.msgs{height:200px;overflow-y:auto;padding:.65rem;display:flex;flex-direction:column;gap:.5rem;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
-.msg{max-width:90%;padding:.45rem .65rem;border-radius:5px;font-size:.77rem;line-height:1.4;animation:up .2s ease}
-.msg-bot{background:var(--steel);align-self:flex-start;border-left:2px solid var(--blue)}
-.msg-user{background:rgba(245,158,11,.12);align-self:flex-end;border-right:2px solid var(--accent)}
-.msg-typing{opacity:.6;font-style:italic}
-.chat-row{display:flex;gap:.4rem;padding:.65rem;border-top:1px solid var(--border)}
-.chat-in{flex:1;background:var(--steel);border:1px solid var(--border);border-radius:4px;padding:.38rem .55rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.8rem;outline:none}
-.chat-in:focus{border-color:var(--blue)}
-.chat-in::placeholder{color:var(--muted)}
-.drop{margin:.65rem;border:2px dashed var(--border);border-radius:5px;padding:1rem;text-align:center;cursor:pointer;transition:all .2s;position:relative}
-.drop:hover,.drop.over{border-color:var(--accent);background:rgba(245,158,11,.04)}
-.drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
-.drop .di{font-size:1.6rem;margin-bottom:.3rem}
-.drop p{font-size:.75rem;color:var(--muted);line-height:1.4}
-.drop strong{color:var(--accent)}
-.ai-box{margin:0 .65rem .65rem;padding:.65rem;background:var(--steel);border-radius:4px;border-left:2px solid var(--blue);font-size:.76rem;line-height:1.5;display:none}
-.ai-box.show{display:block;animation:up .3s ease}
-.ai-lbl{font-size:.63rem;text-transform:uppercase;color:var(--muted);letter-spacing:1px;margin-bottom:.25rem;font-family:'DM Mono',monospace}
-.qf{padding:.65rem;display:flex;flex-direction:column;gap:.5rem}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
-.fg{display:flex;flex-direction:column;gap:.18rem}
-.fg label{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-family:'DM Mono',monospace}
-.fc{background:var(--steel);border:1px solid var(--border);border-radius:4px;padding:.38rem .55rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none;width:100%;transition:border-color .15s}
-.fc:focus{border-color:var(--accent)}
-.fc::placeholder{color:var(--muted)}
-.tog{display:flex;align-items:center;gap:.45rem;padding:.45rem .65rem;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:4px;font-size:.77rem;color:var(--accent);cursor:pointer}
-.tog:hover{background:rgba(245,158,11,.12)}
-.sw{width:30px;height:16px;background:var(--border);border-radius:20px;position:relative;transition:background .2s;flex-shrink:0}
-.sw.on{background:var(--accent)}
-.sw::after{content:'';position:absolute;top:2px;left:2px;width:12px;height:12px;background:#fff;border-radius:50%;transition:left .2s}
-.sw.on::after{left:16px}
-.log{padding:.65rem;max-height:160px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
-.loge{display:flex;gap:.4rem;padding:.25rem 0;border-bottom:1px solid rgba(30,45,61,.5);font-size:.7rem;animation:up .2s ease}
-.loge:last-child{border-bottom:none}
-.logt{color:var(--muted);font-family:'DM Mono',monospace;white-space:nowrap}
-.logm{flex:1}.logm .hl{color:var(--accent)}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem}
+.b-qa{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3)}
+.lspecs{display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem;padding:0 1rem .65rem}
+.sk{font-size:.61rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-family:'DM Mono',monospace}
+.sv{font-size:.78rem;font-weight:600;font-family:'DM Mono',monospace}
+.sv.g{color:var(--gold)}
+.lbot{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem;border-top:1px solid var(--border)}
+.tags{display:flex;gap:.28rem;flex-wrap:wrap}
+.tag{padding:.1rem .35rem;border-radius:3px;font-size:.61rem;background:rgba(59,130,246,.1);color:#93c5fd;border:1px solid rgba(59,130,246,.18);font-family:'DM Mono',monospace}
+.bot-side{display:flex;flex-direction:column;background:var(--panel)}
+.bot-header{padding:1rem 1.2rem;border-bottom:1px solid var(--border);background:rgba(201,168,76,.03)}
+.bot-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1.5px;color:var(--gold);display:flex;align-items:center;gap:.5rem}
+.bot-sub{font-size:.73rem;color:var(--muted);margin-top:.2rem}
+.steps{display:flex;padding:.7rem 1.2rem;border-bottom:1px solid var(--border);gap:0;overflow-x:auto}
+.step{display:flex;flex-direction:column;align-items:center;gap:.2rem;min-width:52px;position:relative}
+.step:not(:last-child)::after{content:'';position:absolute;top:10px;left:calc(50% + 10px);width:calc(100% - 20px);height:1px;background:var(--border)}
+.step-dot{width:20px;height:20px;border-radius:50%;background:var(--border);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:var(--muted);transition:all .3s;z-index:1;position:relative}
+.step.done .step-dot{background:var(--green);border-color:var(--green);color:#fff}
+.step.active .step-dot{background:var(--gold);border-color:var(--gold);color:#000}
+.step-lbl{font-size:.58rem;color:var(--muted);text-align:center;white-space:nowrap;font-family:'DM Mono',monospace}
+.step.active .step-lbl{color:var(--gold)}
+.step.done .step-lbl{color:var(--green)}
+.chat-area{flex:1;overflow-y:auto;padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.75rem;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.msg{max-width:86%;animation:fu .2s ease}
+.msg-bot{align-self:flex-start}
+.msg-user{align-self:flex-end}
+.msg-bubble{padding:.6rem .85rem;border-radius:8px;font-size:.82rem;line-height:1.5;white-space:pre-wrap}
+.msg-bot .msg-bubble{background:var(--card);border:1px solid var(--border);border-bottom-left-radius:2px}
+.msg-user .msg-bubble{background:linear-gradient(135deg,rgba(201,168,76,.2),rgba(201,168,76,.1));border:1px solid rgba(201,168,76,.25);border-bottom-right-radius:2px}
+.msg-lbl{font-size:.63rem;color:var(--muted);margin-bottom:.2rem;font-family:'DM Mono',monospace}
+.msg-user .msg-lbl{text-align:right}
+.typing-dots{display:flex;gap:4px;padding:.6rem .85rem;background:var(--card);border:1px solid var(--border);border-radius:8px;border-bottom-left-radius:2px;width:fit-content}
+.typing-dots span{width:6px;height:6px;background:var(--muted);border-radius:50%;animation:bounce .8s infinite}
+.typing-dots span:nth-child(2){animation-delay:.15s}
+.typing-dots span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
+.quick-replies{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 1.2rem .75rem;min-height:0}
+.qr{padding:.3rem .7rem;border-radius:20px;font-size:.75rem;cursor:pointer;border:1px solid rgba(201,168,76,.3);background:rgba(201,168,76,.06);color:var(--gold);transition:all .15s;font-family:'DM Sans',sans-serif;font-weight:500}
+.qr:hover{background:rgba(201,168,76,.15);border-color:var(--gold)}
+.chat-input-area{padding:.75rem 1.2rem;border-top:1px solid var(--border);display:flex;gap:.5rem;align-items:flex-end}
+.chat-input{flex:1;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.55rem .75rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none;resize:none;max-height:100px;transition:border-color .15s;line-height:1.4}
+.chat-input:focus{border-color:var(--gold)}
+.chat-input::placeholder{color:var(--muted)}
+.send-btn{width:36px;height:36px;border-radius:8px;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:all .15s;flex-shrink:0}
+.send-btn:hover{background:var(--gold2);transform:scale(1.05)}
+.send-btn:disabled{background:var(--border);cursor:not-allowed;transform:none}
+.preview-card{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.03));border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:.85rem;margin-top:.4rem}
+.preview-title{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:1px;color:var(--gold);margin-bottom:.5rem}
+.preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:.35rem;margin-bottom:.5rem}
+.pf-label{font-size:.61rem;color:var(--muted);text-transform:uppercase;font-family:'DM Mono',monospace}
+.pf-value{font-size:.8rem;font-weight:600}
+.preview-actions{display:flex;gap:.5rem;margin-top:.5rem}
+.toasts{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;display:flex;flex-direction:column;gap:.4rem}
+.toast{padding:.6rem .9rem;border-radius:5px;font-size:.78rem;font-weight:500;display:flex;align-items:center;gap:.4rem;min-width:200px;animation:tin .2s ease;box-shadow:0 4px 20px rgba(0,0,0,.5)}
+@keyframes tin{from{transform:translateX(40px);opacity:0}to{transform:translateX(0);opacity:1}}
+.t-ok{background:var(--green);color:#fff}.t-warn{background:var(--gold);color:#000}.t-info{background:var(--blue);color:#fff}.t-err{background:var(--red);color:#fff}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(4px);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem}
 .overlay.open{display:flex}
-.modal{background:var(--panel);border:1px solid var(--border);border-radius:8px;width:100%;max-width:500px;max-height:85vh;overflow-y:auto;animation:up .22s ease}
-.mhead{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;border-bottom:1px solid var(--border)}
-.mtitle{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:1.5px}
+.modal{background:var(--panel);border:1px solid var(--border);border-radius:8px;width:100%;max-width:480px;max-height:85vh;overflow-y:auto;animation:fu .22s ease}
+.mhead{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;border-bottom:1px solid var(--border)}
+.mtitle{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1.5px}
 .mclose{background:none;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer}
 .mclose:hover{color:var(--text)}
-.mbody{padding:1.1rem}
-.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem}
-.full{grid-column:1/-1}
-.toasts{position:fixed;bottom:2rem;right:1.5rem;z-index:999;display:flex;flex-direction:column;gap:.4rem}
-.toast{padding:.65rem .9rem;border-radius:5px;font-size:.8rem;font-weight:500;display:flex;align-items:center;gap:.45rem;min-width:220px;animation:tin .22s ease;box-shadow:0 4px 18px rgba(0,0,0,.4)}
-@keyframes tin{from{transform:translateX(50px);opacity:0}to{transform:translateX(0);opacity:1}}
-.t-ok{background:var(--green);color:#fff}.t-warn{background:var(--accent);color:#000}.t-info{background:var(--blue);color:#fff}.t-err{background:var(--red);color:#fff}
-.sbar{position:fixed;bottom:0;left:0;right:0;height:26px;background:rgba(10,10,10,.95);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 1.2rem;gap:1.5rem;font-family:'DM Mono',monospace;font-size:.67rem;color:var(--muted);z-index:50}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;box-shadow:0 0 6px var(--green);animation:blink 2s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
-.si{display:flex;align-items:center;gap:.35rem}
-.info{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:4px;padding:.65rem;margin-bottom:.75rem;font-size:.77rem;color:#93c5fd}
-::-webkit-scrollbar{width:4px}
+.mbody{padding:1rem 1.1rem}
+.fg{display:flex;flex-direction:column;gap:.18rem;margin-bottom:.6rem}
+.fg label{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-family:'DM Mono',monospace}
+.fc{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:.38rem .55rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none;width:100%}
+.fc:focus{border-color:var(--gold)}
+.fc::placeholder{color:var(--muted)}
+.info-box{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:4px;padding:.65rem;margin-bottom:.75rem;font-size:.76rem;color:#93c5fd;line-height:1.5}
+.sbar{position:fixed;bottom:0;left:0;right:0;height:24px;background:rgba(8,14,26,.98);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 1.2rem;gap:1.5rem;font-family:'DM Mono',monospace;font-size:.63rem;color:var(--muted);z-index:50}
+.sdot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 5px var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.si{display:flex;align-items:center;gap:.3rem}
+::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-@media(max-width:768px){.layout{grid-template-columns:1fr}.left{border-right:none;border-bottom:1px solid var(--border)}}
+@media(max-width:820px){.main{grid-template-columns:1fr}.bot-side{min-height:500px}}
 </style>
 </head>
 <body>
-<header>
+<nav>
   <div class="logo">CRANE<span>GENIUS</span></div>
-  <div class="hbtns">
-    <span style="font-size:.72rem;color:var(--muted);font-family:'DM Mono',monospace">MARKETPLACE v2</span>
-    <button class="btn btn-ghost btn-sm" onclick="show('notifyM')">📧 Notifications</button>
+  <div class="nav-right">
+    <span style="font-size:.68rem;color:var(--muted);font-family:'DM Mono',monospace">AI MARKETPLACE</span>
+    <button class="btn btn-ghost btn-sm" onclick="show('notifyM')">📧 Alerts</button>
     <button class="btn btn-ghost btn-sm" onclick="show('sheetsM')">📊 Sheets</button>
-    <button class="btn btn-primary btn-sm" onclick="show('addM')">+ List Equipment</button>
+    <button class="btn btn-ghost btn-sm" onclick="show('allM')">📋 All Listings</button>
   </div>
-</header>
-<div class="hero">
-  <h1>INDUSTRIAL CRANE <em>EXCHANGE</em></h1>
-  <p>Live equipment marketplace powered by permit intelligence. Verified crane operators, instant spec matching.</p>
-  <div class="stats">
-    <div><div class="stat-num" id="cntLive">0</div><div class="stat-lbl">Live Listings</div></div>
-    <div><div class="stat-num" id="cntQA">0</div><div class="stat-lbl">QA Review</div></div>
-    <div><div class="stat-num">247</div><div class="stat-lbl">Active Leads</div></div>
-    <div><div class="stat-num">$4.2M</div><div class="stat-lbl">Equipment Value</div></div>
-  </div>
-</div>
-<div class="layout">
-  <div class="left">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:2px">🏗️ ACTIVE LISTINGS</span>
-      <div style="display:flex;gap:.4rem">
-        <button class="btn btn-ghost btn-sm" onclick="syncSheets()">↑ Sync Sheets</button>
-        <button class="btn btn-ghost btn-sm" onclick="render()">↻ Refresh</button>
-      </div>
+</nav>
+<div class="main">
+  <div class="listings-side">
+    <div class="section-title">🏗️ LIVE MARKETPLACE</div>
+    <div class="stats-row">
+      <div><div class="stat-n" id="cntLive">0</div><div class="stat-l">Live</div></div>
+      <div><div class="stat-n" id="cntQA">0</div><div class="stat-l">QA</div></div>
+      <div><div class="stat-n">247</div><div class="stat-l">Leads</div></div>
+      <div><div class="stat-n" id="cntAll">0</div><div class="stat-l">Total</div></div>
     </div>
     <div class="filters">
-      <button class="chip on" onclick="setFilter('all',this)">All</button>
-      <button class="chip" onclick="setFilter('live',this)">🟢 Live</button>
-      <button class="chip" onclick="setFilter('qa',this)">⚠️ QA</button>
-      <button class="chip" onclick="setFilter('draft',this)">Draft</button>
-      <button class="chip" onclick="setFilter('tower',this)">Tower</button>
-      <button class="chip" onclick="setFilter('mobile',this)">Mobile</button>
-      <button class="chip" onclick="setFilter('crawler',this)">Crawler</button>
+      <button class="chip on" onclick="filt('all',this)">All</button>
+      <button class="chip" onclick="filt('live',this)">🟢 Live</button>
+      <button class="chip" onclick="filt('qa',this)">⚠️ QA</button>
+      <button class="chip" onclick="filt('tower',this)">Tower</button>
+      <button class="chip" onclick="filt('mobile',this)">Mobile</button>
+      <button class="chip" onclick="filt('crawler',this)">Crawler</button>
     </div>
     <div id="listWrap"></div>
   </div>
-  <div class="right">
-    <div class="box">
-      <div class="box-head"><span class="ic">🤖</span> AI LISTING ASSISTANT</div>
-      <div class="msgs" id="msgs"></div>
-      <div class="chat-row">
-        <input class="chat-in" id="chatIn" placeholder="Describe your crane..." onkeydown="if(event.key==='Enter')chat()">
-        <button class="btn btn-blue btn-sm" onclick="chat()">→</button>
-      </div>
+  <div class="bot-side">
+    <div class="bot-header">
+      <div class="bot-title">🤖 CRANE LISTING ASSISTANT</div>
+      <div class="bot-sub">Answer my questions and your crane will be live in 2 minutes</div>
     </div>
-    <div class="box">
-      <div class="box-head"><span class="ic">📄</span> AI SPEC ANALYZER</div>
-      <div class="drop" id="dropZone">
-        <input type="file" accept=".pdf,.txt,.jpg,.png" onchange="uploadSpec(this)">
-        <div class="di">📋</div>
-        <p>Drop a spec sheet or photo<br><strong>AI reads it and fills the form</strong></p>
-      </div>
-      <div class="ai-box" id="aiBox">
-        <div class="ai-lbl">AI EXTRACTED SPECS</div>
-        <div id="aiContent"></div>
-        <div style="margin-top:.5rem;display:flex;gap:.4rem">
-          <button class="btn btn-primary btn-sm" onclick="applySpecs()">✓ Use These Specs</button>
-          <button class="btn btn-ghost btn-sm" onclick="document.getElementById('aiBox').classList.remove('show')">✕</button>
-        </div>
-      </div>
+    <div class="steps">
+      <div class="step active" id="s0"><div class="step-dot">1</div><div class="step-lbl">Start</div></div>
+      <div class="step" id="s1"><div class="step-dot">2</div><div class="step-lbl">Equipment</div></div>
+      <div class="step" id="s2"><div class="step-dot">3</div><div class="step-lbl">Specs</div></div>
+      <div class="step" id="s3"><div class="step-dot">4</div><div class="step-lbl">Pricing</div></div>
+      <div class="step" id="s4"><div class="step-dot">5</div><div class="step-lbl">Contact</div></div>
+      <div class="step" id="s5"><div class="step-dot">✓</div><div class="step-lbl">Publish</div></div>
     </div>
-    <div class="box">
-      <div class="box-head"><span class="ic">⚡</span> QUICK LIST</div>
-      <div class="qf">
-        <div class="row2">
-          <div class="fg"><label>Equipment Name</label><input type="text" class="fc" id="qName" placeholder="e.g. Liebherr LTM"></div>
-          <div class="fg"><label>Type</label>
-            <select class="fc" id="qType">
-              <option value="">Select...</option>
-              <option>Tower Crane</option><option>Mobile Crane</option><option>Crawler Crane</option>
-              <option>Rough Terrain</option><option>All Terrain</option><option>Boom Truck</option>
-            </select>
-          </div>
-        </div>
-        <div class="row2">
-          <div class="fg"><label>Capacity (tons)</label><input type="number" class="fc" id="qCap" placeholder="100"></div>
-          <div class="fg"><label>Year</label><input type="number" class="fc" id="qYear" placeholder="2020"></div>
-        </div>
-        <div class="row2">
-          <div class="fg"><label>Day Rate ($)</label><input type="number" class="fc" id="qRate" placeholder="3500"></div>
-          <div class="fg"><label>Location</label><input type="text" class="fc" id="qLoc" placeholder="Chicago, IL"></div>
-        </div>
-        <div class="fg"><label>Contact Email</label><input type="email" class="fc" id="qEmail" placeholder="owner@crane.com"></div>
-        <div class="tog" onclick="toggleQA('quick')">
-          <div class="sw" id="swQuick"></div>
-          <span id="lblQuick">Auto-Publish (no QA review)</span>
-        </div>
-        <button class="btn btn-primary" style="width:100%" onclick="submitQuick()">🏗️ Submit Listing</button>
-      </div>
-    </div>
-    <div class="box">
-      <div class="box-head"><span class="ic">📋</span> ACTIVITY LOG</div>
-      <div class="log" id="logWrap"></div>
+    <div class="chat-area" id="chatArea"></div>
+    <div class="quick-replies" id="qrArea"></div>
+    <div class="chat-input-area">
+      <textarea class="chat-input" id="chatInput" placeholder="Type your answer..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="send-btn" id="sendBtn" onclick="send()">→</button>
     </div>
   </div>
 </div>
 <div class="sbar">
-  <div class="si"><span class="dot"></span> LIVE</div>
+  <div class="si"><span class="sdot"></span> LIVE</div>
   <div class="si">Formspree: <span id="fsStatus" style="color:var(--muted)">NOT SET</span></div>
   <div class="si">Sheets: <span id="shStatus" style="color:var(--muted)">NOT SET</span></div>
-  <div class="si" id="lastAct">Ready</div>
+  <div class="si" id="lastAct">AI assistant ready</div>
 </div>
 <div class="toasts" id="toasts"></div>
-<div class="overlay" id="qaM">
-  <div class="modal">
-    <div class="mhead"><span class="mtitle">⚠️ QA REVIEW</span><button class="mclose" onclick="hide('qaM')">✕</button></div>
-    <div class="mbody">
-      <p style="font-size:.83rem;color:var(--muted);margin-bottom:.85rem">Check specs before going live.</p>
-      <div id="qaDetail" style="background:var(--steel);border-radius:5px;padding:.85rem;margin-bottom:.85rem;font-size:.81rem;line-height:1.8;border-left:2px solid var(--accent)"></div>
-      <div style="display:flex;gap:.6rem">
-        <button class="btn btn-green" style="flex:1" onclick="approveQA()">✓ Approve and Go Live</button>
-        <button class="btn btn-red" style="flex:1" onclick="rejectQA()">✕ Reject</button>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="overlay" id="notifyM">
   <div class="modal">
-    <div class="mhead"><span class="mtitle">📧 EMAIL NOTIFICATIONS</span><button class="mclose" onclick="hide('notifyM')">✕</button></div>
+    <div class="mhead"><span class="mtitle">📧 EMAIL ALERTS</span><button class="mclose" onclick="hide('notifyM')">✕</button></div>
     <div class="mbody">
-      <div class="info">📌 Go to formspree.io, create a free form, copy the ID (like xpzgkwvb)</div>
-      <div class="fg" style="margin-bottom:.6rem"><label>Formspree Form ID</label><input type="text" class="fc" id="fsId" placeholder="e.g. xpzgkwvb"></div>
-      <div class="fg" style="margin-bottom:.6rem"><label>Your Alert Email</label><input type="email" class="fc" id="fsEmail" placeholder="you@company.com"></div>
-      <div class="fg" style="margin-bottom:.85rem">
-        <label>Send Email When</label>
-        <div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.3rem">
-          <label style="display:flex;align-items:center;gap:.45rem;font-size:.81rem;cursor:pointer;color:var(--text)"><input type="checkbox" id="n1" checked style="accent-color:var(--accent)"> New listing submitted</label>
-          <label style="display:flex;align-items:center;gap:.45rem;font-size:.81rem;cursor:pointer;color:var(--text)"><input type="checkbox" id="n2" checked style="accent-color:var(--accent)"> Listing needs QA review</label>
-          <label style="display:flex;align-items:center;gap:.45rem;font-size:.81rem;cursor:pointer;color:var(--text)"><input type="checkbox" id="n3" checked style="accent-color:var(--accent)"> Listing approved and live</label>
-        </div>
-      </div>
-      <button class="btn btn-primary" style="width:100%" onclick="saveNotify()">💾 Save Settings</button>
+      <div class="info-box">Go to <strong>formspree.io</strong> → sign up free → New Form → copy the ID (like xpzgkwvb)</div>
+      <div class="fg"><label>Formspree Form ID</label><input type="text" class="fc" id="fsId" placeholder="xpzgkwvb"></div>
+      <div class="fg"><label>Your Email</label><input type="email" class="fc" id="fsEmail" placeholder="you@company.com"></div>
+      <button class="btn btn-gold" style="width:100%" onclick="saveNotify()">💾 Save</button>
     </div>
   </div>
 </div>
@@ -257,103 +186,164 @@ header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-
   <div class="modal">
     <div class="mhead"><span class="mtitle">📊 GOOGLE SHEETS</span><button class="mclose" onclick="hide('sheetsM')">✕</button></div>
     <div class="mbody">
-      <div class="info" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#6ee7b7">
-        📌 Google Sheets → Extensions → Apps Script → paste code below → Deploy as Web App → copy URL
+      <div class="info-box" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#6ee7b7">Sheets → Extensions → Apps Script → paste code → Deploy as Web App → copy URL</div>
+      <div style="background:var(--card);border-radius:5px;padding:.7rem;margin-bottom:.75rem;font-size:.7rem;color:var(--muted);font-family:'DM Mono',monospace;line-height:1.7;border-left:2px solid var(--green)">
+        function doPost(e) {<br>&nbsp;var d=JSON.parse(e.postData.contents);<br>&nbsp;var s=SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();<br>&nbsp;s.appendRow([d.time,d.company,d.model,d.type,d.cap,d.year,d.rate,d.loc,d.email,d.status]);<br>&nbsp;return ContentService.createTextOutput('ok');<br>}
       </div>
-      <div style="background:var(--steel);border-radius:5px;padding:.75rem;margin-bottom:.75rem;font-size:.72rem;color:var(--muted);font-family:'DM Mono',monospace;line-height:1.7;border-left:2px solid var(--green)">
-        function doPost(e) {<br>
-        &nbsp;var d=JSON.parse(e.postData.contents);<br>
-        &nbsp;var s=SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();<br>
-        &nbsp;s.appendRow([d.time,d.company,d.model,d.type,d.capacity,d.year,d.rate,d.location,d.email,d.status]);<br>
-        &nbsp;return ContentService.createTextOutput('ok');<br>
-        }
-      </div>
-      <div class="fg" style="margin-bottom:.75rem"><label>Apps Script Web App URL</label><input type="url" class="fc" id="shUrl" placeholder="https://script.google.com/macros/s/.../exec"></div>
-      <button class="btn btn-green" style="width:100%" onclick="saveSheets()">💾 Save and Connect</button>
+      <div class="fg"><label>Apps Script Web App URL</label><input type="url" class="fc" id="shUrl" placeholder="https://script.google.com/macros/s/.../exec"></div>
+      <button class="btn btn-green" style="width:100%" onclick="saveSheets()">💾 Save</button>
     </div>
   </div>
 </div>
-<div class="overlay" id="addM">
-  <div class="modal">
-    <div class="mhead"><span class="mtitle">🏗️ ADD FULL LISTING</span><button class="mclose" onclick="hide('addM')">✕</button></div>
-    <div class="mbody">
-      <div class="info">💡 Upload a spec sheet in the AI Analyzer sidebar to auto-fill everything.</div>
-      <div class="mgrid">
-        <div class="fg"><label>Company</label><input type="text" class="fc" id="mCo" placeholder="Apex Crane Co."></div>
-        <div class="fg"><label>Model</label><input type="text" class="fc" id="mMod" placeholder="LTM 1100-5.2"></div>
-        <div class="fg"><label>Type</label>
-          <select class="fc" id="mType">
-            <option>Tower Crane</option><option>Mobile Crane</option><option>Crawler Crane</option>
-            <option>Rough Terrain</option><option>All Terrain</option><option>Boom Truck</option>
-          </select>
-        </div>
-        <div class="fg"><label>Capacity (tons)</label><input type="number" class="fc" id="mCap" placeholder="100"></div>
-        <div class="fg"><label>Boom (ft)</label><input type="number" class="fc" id="mBoom" placeholder="200"></div>
-        <div class="fg"><label>Year</label><input type="number" class="fc" id="mYear" placeholder="2020"></div>
-        <div class="fg"><label>Day Rate ($)</label><input type="number" class="fc" id="mRate" placeholder="4500"></div>
-        <div class="fg"><label>Location</label><input type="text" class="fc" id="mLoc" placeholder="Chicago, IL"></div>
-        <div class="fg full"><label>Contact Email</label><input type="email" class="fc" id="mEmail" placeholder="ops@company.com"></div>
-        <div class="fg full"><label>Notes</label><input type="text" class="fc" id="mNotes" placeholder="Operator included, certified, available now..."></div>
+<div class="overlay" id="allM">
+  <div class="modal" style="max-width:600px">
+    <div class="mhead">
+      <span class="mtitle">📋 ALL LISTINGS</span>
+      <div style="display:flex;gap:.5rem;align-items:center">
+        <button class="btn btn-ghost btn-sm" onclick="syncSheets()">↑ Sync Sheets</button>
+        <button class="mclose" onclick="hide('allM')">✕</button>
       </div>
-      <div class="tog" style="margin-top:.65rem" onclick="toggleQA('modal')">
-        <div class="sw" id="swModal"></div>
-        <span id="lblModal">Auto-Publish (no QA review)</span>
-      </div>
-      <button class="btn btn-primary" style="width:100%;margin-top:.65rem" onclick="submitFull()">Submit Listing</button>
     </div>
+    <div class="mbody" id="allBody" style="padding:.75rem"></div>
   </div>
 </div>
 <script>
 const CFG={formspreeId:'',alertEmail:'',sheetsUrl:''};
-let items=[
+let listings=[
   {id:1,company:'Apex Crane Chicago',model:'Liebherr LTM 1100-5.2',type:'Mobile Crane',cap:100,boom:203,year:2019,rate:4200,loc:'Chicago, IL',email:'ops@apexcrane.com',tags:['operator-incl','certified'],status:'live',notes:'Operator included'},
   {id:2,company:'Dallas Tower Co.',model:'Potain MDT 389',type:'Tower Crane',cap:18,boom:213,year:2021,rate:5500,loc:'Dallas, TX',email:'fleet@dallastower.com',tags:['self-erect','luffing'],status:'live',notes:'Self-erecting luffing jib'},
-  {id:3,company:'Southwest Heavy Lift',model:'Manitowoc 18000',type:'Crawler Crane',cap:600,boom:312,year:2017,rate:12000,loc:'Phoenix, AZ',email:'dispatch@swheavy.com',tags:['superlift','heavy-lift'],status:'qa',notes:'Superlift config needs review'},
+  {id:3,company:'Southwest Heavy Lift',model:'Manitowoc 18000',type:'Crawler Crane',cap:600,boom:312,year:2017,rate:12000,loc:'Phoenix, AZ',email:'dispatch@swheavy.com',tags:['superlift'],status:'qa',notes:'Superlift config'},
   {id:4,company:'Pacific NW Cranes',model:'Grove GMK5250L',type:'All Terrain',cap:250,boom:236,year:2020,rate:6800,loc:'Seattle, WA',email:'rentals@pnwcranes.com',tags:['all-terrain'],status:'live',notes:'5-axle road-able'},
 ];
-let activeFilter='all',qaQuick=false,qaModal=false,qaTarget=null,pendingSpecs=null,chatHist=[];
-window.onload=()=>{render();botMsg("Hi! Describe your crane and I will create the listing for you.");log('System','Marketplace ready with 4 demo listings');log('Leads','247 active leads from Chicago and Dallas permit feeds');};
-function render(){
-  const f=activeFilter;
-  let list=items;
-  if(f!=='all'){if(['live','qa','draft'].includes(f))list=items.filter(x=>x.status===f);else list=items.filter(x=>x.type.toLowerCase().includes(f)||(x.tags||[]).some(t=>t.includes(f)));}
+let activeF='all',chatHist=[],waiting=false;
+
+function renderListings(){
+  const list=activeF==='all'?listings:['live','qa'].includes(activeF)?listings.filter(x=>x.status===activeF):listings.filter(x=>x.type.toLowerCase().includes(activeF)||(x.tags||[]).some(t=>t.includes(activeF)));
   const w=document.getElementById('listWrap');
-  if(!list.length){w.innerHTML='<div style="text-align:center;padding:3rem;color:var(--muted)"><div style="font-size:2.5rem;opacity:.3">🏗️</div><p>No listings match this filter.</p></div>';updateCounts();return;}
-  w.innerHTML=list.map((x,i)=>`<div class="card" style="animation-delay:${i*.05}s"><div class="card-top"><div><div class="card-title">${esc(x.company)} — ${esc(x.model)}</div><div class="card-sub">${esc(x.type)} · ${esc(x.loc)}</div></div><span class="badge ${x.status==='live'?'b-live':x.status==='qa'?'b-qa':'b-draft'}">${x.status==='live'?'● LIVE':x.status==='qa'?'⚠ QA':'○ DRAFT'}</span></div><div class="specs"><div><div class="spec-k">Capacity</div><div class="spec-v gold">${x.cap}t</div></div><div><div class="spec-k">Boom</div><div class="spec-v">${x.boom}ft</div></div><div><div class="spec-k">Year</div><div class="spec-v">${x.year}</div></div><div><div class="spec-k">Day Rate</div><div class="spec-v gold">$${(x.rate||0).toLocaleString()}</div></div><div><div class="spec-k">Type</div><div class="spec-v" style="font-size:.69rem">${x.type.split(' ')[0]}</div></div><div><div class="spec-k">ID</div><div class="spec-v" style="color:var(--muted)">#${String(x.id).slice(-4).padStart(4,'0')}</div></div></div><div class="card-bot"><div class="tags">${(x.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><div style="display:flex;gap:.3rem;align-items:center">${x.status==='qa'?`<span class="qa-btn" onclick="openQA(${x.id})">⚠ Review</span>`:''} ${x.status==='live'?`<button class="btn btn-ghost btn-sm" onclick="contact(${x.id})">Contact</button>`:''}<button class="btn btn-ghost btn-sm" style="color:var(--red)" onclick="del(${x.id})">✕</button></div></div></div>`).join('');
+  if(!list.length){w.innerHTML='<div style="text-align:center;padding:3rem;color:var(--muted)"><div style="font-size:2.5rem;opacity:.3">🏗️</div><p>No listings match.</p></div>';updateCounts();return;}
+  w.innerHTML=list.map((x,i)=>`<div class="lcard" style="animation-delay:${i*.04}s"><div class="lt"><div><div class="ln">${e(x.company)} — ${e(x.model)}</div><div class="ls">${e(x.type)} · ${e(x.loc)}</div></div><span class="badge ${x.status==='live'?'b-live':'b-qa'}">${x.status==='live'?'● LIVE':'⚠ QA'}</span></div><div class="lspecs"><div><div class="sk">Capacity</div><div class="sv g">${x.cap}t</div></div><div><div class="sk">Boom</div><div class="sv">${x.boom}ft</div></div><div><div class="sk">Year</div><div class="sv">${x.year}</div></div><div><div class="sk">Rate</div><div class="sv g">$${(x.rate||0).toLocaleString()}</div></div><div><div class="sk">Type</div><div class="sv" style="font-size:.67rem">${x.type.split(' ')[0]}</div></div><div><div class="sk">ID</div><div class="sv" style="color:var(--muted)">#${String(x.id).slice(-4).padStart(4,'0')}</div></div></div><div class="lbot"><div class="tags">${(x.tags||[]).map(t=>`<span class="tag">${e(t)}</span>`).join('')}</div><div style="display:flex;gap:.3rem">${x.status==='live'?`<button class="btn btn-ghost btn-sm" onclick="contactL(${x.id})">Contact</button>`:''}<button class="btn btn-ghost btn-sm" style="color:var(--red)" onclick="delL(${x.id})">✕</button></div></div></div>`).join('');
   updateCounts();
 }
-function updateCounts(){document.getElementById('cntLive').textContent=items.filter(x=>x.status==='live').length;document.getElementById('cntQA').textContent=items.filter(x=>x.status==='qa').length;}
-function setFilter(f,el){activeFilter=f;document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));el.classList.add('on');render();}
-function del(id){const x=items.find(i=>i.id===id);items=items.filter(i=>i.id!==id);render();toast('Listing removed','info');if(x)log('Removed',x.model);}
-function contact(id){const x=items.find(i=>i.id===id);if(x&&x.email){window.open(`mailto:${x.email}?subject=Inquiry - ${x.model}&body=Hi, I saw your ${x.model} on CraneGenius. Please send availability and rates.`);log('Contact',x.model);}}
-function submitQuick(){const name=val('qName'),type=val('qType'),loc=val('qLoc');if(!name||!type||!loc){toast('Fill Name, Type, and Location','warn');return;}const item={id:Date.now(),company:'New Listing',model:name,type,cap:+val('qCap')||0,boom:0,year:+val('qYear')||2020,rate:+val('qRate')||0,loc,email:val('qEmail'),tags:[type.toLowerCase().split(' ')[0]],status:qaQuick?'qa':'live',notes:''};items.unshift(item);render();onSubmit(item);['qName','qCap','qYear','qRate','qLoc','qEmail'].forEach(clearFld);document.getElementById('qType').value='';}
-function submitFull(){const item={id:Date.now(),company:val('mCo')||'New Company',model:val('mMod')||'Unknown',type:val('mType'),cap:+val('mCap')||0,boom:+val('mBoom')||0,year:+val('mYear')||2020,rate:+val('mRate')||0,loc:val('mLoc')||'Unknown',email:val('mEmail'),tags:[val('mType').toLowerCase().split(' ')[0]],status:qaModal?'qa':'live',notes:val('mNotes')};items.unshift(item);render();hide('addM');onSubmit(item);}
-function onSubmit(item){const isQA=item.status==='qa';emailNotify(item,isQA?'qa':'new');sheetLog(item);toast(isQA?`⚠ ${item.model} sent to QA`:`✓ ${item.model} is LIVE!`,isQA?'warn':'ok');log(isQA?'QA Flagged':'Published',`${item.model} → ${item.status.toUpperCase()}`);}
-function toggleQA(w){if(w==='quick'){qaQuick=!qaQuick;document.getElementById('swQuick').classList.toggle('on',qaQuick);document.getElementById('lblQuick').textContent=qaQuick?'QA Review Required':'Auto-Publish (no QA review)';}else{qaModal=!qaModal;document.getElementById('swModal').classList.toggle('on',qaModal);document.getElementById('lblModal').textContent=qaModal?'QA Review Required':'Auto-Publish (no QA review)';}}
-function openQA(id){qaTarget=items.find(x=>x.id===id);if(!qaTarget)return;const d=qaTarget;document.getElementById('qaDetail').innerHTML=`<strong style="color:var(--accent);font-family:'Bebas Neue',sans-serif">${esc(d.company)} — ${esc(d.model)}</strong><br>Type: ${esc(d.type)}<br>Capacity: <strong>${d.cap}t</strong> · Boom: <strong>${d.boom}ft</strong> · Year: <strong>${d.year}</strong><br>Rate: <strong style="color:var(--accent)">$${(d.rate||0).toLocaleString()}/day</strong><br>Location: ${esc(d.loc)}<br>Contact: ${esc(d.email)}<br>Notes: ${esc(d.notes||'none')}`;show('qaM');}
-function approveQA(){if(!qaTarget)return;qaTarget.status='live';render();hide('qaM');emailNotify(qaTarget,'approve');sheetLog(qaTarget);toast(`✓ ${qaTarget.model} approved and live!`,'ok');log('QA Approved',`${qaTarget.model} → LIVE`);qaTarget=null;}
-function rejectQA(){if(!qaTarget)return;const name=qaTarget.model;items=items.filter(x=>x.id!==qaTarget.id);render();hide('qaM');toast('Listing rejected','info');log('QA Rejected',name);qaTarget=null;}
-function emailNotify(item,evt){if(!CFG.formspreeId)return;const chk={new:'n1',qa:'n2',approve:'n3'};if(chk[evt]&&!document.getElementById(chk[evt])?.checked)return;const subj={new:`New Listing: ${item.model} — ${item.loc}`,qa:`QA Review: ${item.model}`,approve:`Approved: ${item.model}`};fetch(`https://formspree.io/f/${CFG.formspreeId}`,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({email:CFG.alertEmail||item.email,_subject:subj[evt]||'CraneGenius Alert',event:evt,company:item.company,model:item.model,type:item.type,capacity:`${item.cap}t`,rate:`$${(item.rate||0).toLocaleString()}/day`,location:item.loc,contact:item.email,status:item.status,notes:item.notes||'',timestamp:new Date().toISOString()})}).then(r=>{const el=document.getElementById('fsStatus');if(r.ok){el.textContent='SENT ✓';el.style.color='var(--green)';setTimeout(()=>{el.textContent='CONNECTED';},3000);log('Email',`${evt} notification sent`);}}).catch(()=>{});}
-function sheetLog(item){const row={time:new Date().toISOString(),company:item.company,model:item.model,type:item.type,capacity:item.cap,year:item.year,rate:item.rate,location:item.loc,email:item.email,status:item.status};console.table(row);if(!CFG.sheetsUrl)return;fetch(CFG.sheetsUrl,{method:'POST',body:JSON.stringify(row)}).then(()=>{const el=document.getElementById('shStatus');el.textContent='LOGGED ✓';el.style.color='var(--green)';setTimeout(()=>{el.textContent='READY';el.style.color='var(--accent)';},3000);log('Sheets',`${item.model} row appended`);}).catch(()=>{});}
-function syncSheets(){items.forEach(x=>sheetLog(x));toast(`${items.length} listings synced`,'info');log('Sheets',`${items.length} listings exported`);}
-function saveNotify(){CFG.formspreeId=val('fsId');CFG.alertEmail=val('fsEmail');hide('notifyM');toast('Notification settings saved','ok');log('Settings',`Formspree: ${CFG.formspreeId||'not set'}`);if(CFG.formspreeId){document.getElementById('fsStatus').textContent='CONFIGURED';document.getElementById('fsStatus').style.color='var(--green)';}}
-function saveSheets(){CFG.sheetsUrl=val('shUrl');hide('sheetsM');toast('Sheets connected!','ok');log('Settings','Sheets webhook saved');if(CFG.sheetsUrl){document.getElementById('shStatus').textContent='CONFIGURED';document.getElementById('shStatus').style.color='var(--green)';}}
-const SYS='You are the CraneGenius listing assistant. When user describes a crane, extract specs and respond ONLY in this exact JSON: {"reply":"Your brief message","listing":{"company":"","model":"","type":"Tower Crane|Mobile Crane|Crawler Crane|Rough Terrain|All Terrain|Boom Truck","cap":0,"boom":0,"year":2020,"rate":0,"loc":"City, ST","tags":[],"notes":""}} If not enough info set listing to null and ask one question.';
-function botMsg(t){addMsg('bot',t);}
-function addMsg(role,txt){const c=document.getElementById('msgs');const d=document.createElement('div');d.className=`msg msg-${role}`;d.textContent=txt;c.appendChild(d);c.scrollTop=c.scrollHeight;return d;}
-async function chat(){const inp=document.getElementById('chatIn');const msg=inp.value.trim();if(!msg)return;inp.value='';addMsg('user',msg);chatHist.push({role:'user',content:msg});const t=addMsg('bot','Thinking...');t.classList.add('msg-typing');try{const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:chatHist})});t.remove();const data=await r.json();const raw=data.content?.[0]?.text||'Sorry, try again.';let reply=raw,spec=null;try{const p=JSON.parse(raw.replace(/```json|```/g,'').trim());reply=p.reply||raw;spec=p.listing;}catch(e){}addMsg('bot',reply);chatHist.push({role:'assistant',content:raw});if(spec){pendingSpecs=spec;showAI(spec);toast('Specs extracted — click Use These Specs','ok');log('AI',`${spec.model||'Crane'} specs ready`);}}catch(e){t.remove();addMsg('bot','AI connection error. Open this page in claude.ai for AI features.');log('Error','Chat API failed');}}
-async function uploadSpec(inp){const file=inp.files[0];if(!file)return;toast(`Analyzing ${file.name}...`,'info');log('Upload',file.name);document.querySelector('#dropZone p').innerHTML='<strong style="color:var(--blue)">Processing...</strong>';const reader=new FileReader();reader.onload=async(e)=>{const b64=e.target.result.split(',')[1];const isImg=file.type.startsWith('image/');let uc=isImg?[{type:'image',source:{type:'base64',media_type:file.type,data:b64}},{type:'text',text:'Extract crane specs. Return ONLY JSON: {company,model,type,cap,boom,year,rate,loc,tags,notes}'}]:`Extract crane specs from: ${atob(b64).substring(0,2500)}\nReturn ONLY JSON: {company,model,type,cap,boom,year,rate,loc,tags,notes}`;try{const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,system:'Extract crane specs. Return ONLY valid JSON, no markdown.',messages:[{role:'user',content:uc}]})});const data=await r.json();const specs=JSON.parse((data.content?.[0]?.text||'{}').replace(/```json|```/g,'').trim());pendingSpecs=specs;showAI(specs);toast('Specs extracted!','ok');log('Specs',`${specs.model||'Unknown'} from ${file.name}`);}catch(err){toast('Error reading file','err');log('Error',`Failed: ${file.name}`);}document.querySelector('#dropZone p').innerHTML='Drop a spec sheet or photo<br><strong>AI reads it and fills the form</strong>';};reader.readAsDataURL(file);}
-function showAI(s){const keys=['company','model','type','cap','boom','year','rate','loc','notes'];document.getElementById('aiContent').innerHTML=keys.filter(k=>s[k]).map(k=>`<strong style="color:var(--muted);font-size:.67rem;text-transform:uppercase">${k}:</strong> <span>${esc(String(s[k]))}</span>`).join('<br>')+(s.tags&&s.tags.length?`<br><strong style="color:var(--muted);font-size:.67rem;text-transform:uppercase">tags:</strong> <span>${s.tags.join(', ')}</span>`:'');document.getElementById('aiBox').classList.add('show');}
-function applySpecs(){if(!pendingSpecs)return;const s=pendingSpecs;if(s.model)setFld('qName',s.model);if(s.type)setFld('qType',s.type);if(s.cap)setFld('qCap',s.cap);if(s.year)setFld('qYear',s.year);if(s.rate)setFld('qRate',s.rate);if(s.loc)setFld('qLoc',s.loc);document.getElementById('aiBox').classList.remove('show');toast('Specs loaded into Quick List form','ok');log('Specs',`${s.model||'crane'} loaded`);pendingSpecs=null;}
-function show(id){document.getElementById(id).classList.add('open');}
+function updateCounts(){document.getElementById('cntLive').textContent=listings.filter(x=>x.status==='live').length;document.getElementById('cntQA').textContent=listings.filter(x=>x.status==='qa').length;document.getElementById('cntAll').textContent=listings.length;}
+function filt(f,el){activeF=f;document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));el.classList.add('on');renderListings();}
+function delL(id){listings=listings.filter(x=>x.id!==id);renderListings();toast('Removed','info');}
+function contactL(id){const x=listings.find(l=>l.id===id);if(x?.email)window.open(`mailto:${x.email}?subject=Inquiry - ${x.model}`);}
+
+const SYS=`You are CraneGenius, an AI assistant helping crane company owners list their equipment on a marketplace. Guide them through a friendly conversation.
+
+Collect in order: 1) company name 2) equipment model/make 3) crane type (Tower Crane, Mobile Crane, Crawler Crane, Rough Terrain, All Terrain, or Boom Truck) 4) lifting capacity in tons 5) boom length in feet 6) year 7) daily rental rate in dollars 8) location city and state 9) contact email 10) special features or notes (can be "none")
+
+Rules:
+- Ask ONE question at a time. Be brief and friendly.
+- Acknowledge their answer, then ask the next thing.
+- If they give multiple pieces at once, grab all of them and ask for what is still missing.
+- Keep responses to 1-2 sentences max.
+- When you have ALL 10 fields output exactly: LISTING_READY:{"company":"...","model":"...","type":"...","cap":0,"boom":0,"year":0,"rate":0,"loc":"City, ST","email":"...","tags":[],"notes":"..."}
+- Start by greeting them warmly and asking for their company name.`;
+
+async function getAI(msg){
+  chatHist.push({role:'user',content:msg});
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,system:SYS,messages:chatHist})});
+    const d=await r.json();
+    const t=d.content?.[0]?.text||'Sorry, try again.';
+    chatHist.push({role:'assistant',content:t});
+    return t;
+  }catch(err){return 'Connection error. Make sure you are using this in the claude.ai browser.';}
+}
+
+function parseListing(text){const m=text.match(/LISTING_READY:(\{[\s\S]*?\})/);if(m){try{return JSON.parse(m[1]);}catch(e){}}return null;}
+
+function setStep(n){for(let i=0;i<=5;i++){const el=document.getElementById(`s${i}`);if(!el)continue;el.classList.remove('active','done');if(i<n)el.classList.add('done');else if(i===n)el.classList.add('active');}}
+
+function guessStep(text){const t=text.toLowerCase();if(t.includes('company'))setStep(1);else if(t.includes('model')||t.includes('make')||t.includes('equipment'))setStep(1);else if(t.includes('type')||t.includes('tower')||t.includes('mobile'))setStep(2);else if(t.includes('capacity')||t.includes('boom')||t.includes('year'))setStep(2);else if(t.includes('rate')||t.includes('rental')||t.includes('price'))setStep(3);else if(t.includes('location')||t.includes('city'))setStep(3);else if(t.includes('email')||t.includes('contact'))setStep(4);else if(t.includes('feature')||t.includes('note')||t.includes('anything else'))setStep(4);}
+
+function addBot(text,typing=true){
+  return new Promise(async res=>{
+    if(typing){
+      const td=document.createElement('div');td.className='msg msg-bot';td.id='typing';td.innerHTML='<div class="typing-dots"><span></span><span></span><span></span></div>';
+      document.getElementById('chatArea').appendChild(td);scrollC();
+      await new Promise(r=>setTimeout(r,700+Math.random()*400));td.remove();
+    }
+    const listing=parseListing(text);
+    const clean=text.replace(/LISTING_READY:\{[\s\S]*?\}/,'').trim();
+    const el=document.createElement('div');el.className='msg msg-bot';
+    if(listing){
+      el.innerHTML=`<div class="msg-lbl">CRANE GENIUS</div><div class="msg-bubble">${e(clean||"Here's your listing — ready to publish!")}</div><div class="preview-card"><div class="preview-title">🏗️ ${e(listing.company)} — ${e(listing.model)}</div><div class="preview-grid"><div><div class="pf-label">Type</div><div class="pf-value">${e(listing.type)}</div></div><div><div class="pf-label">Capacity</div><div class="pf-value">${listing.cap}t</div></div><div><div class="pf-label">Boom</div><div class="pf-value">${listing.boom}ft</div></div><div><div class="pf-label">Year</div><div class="pf-value">${listing.year}</div></div><div><div class="pf-label">Day Rate</div><div class="pf-value" style="color:var(--gold)">$${(listing.rate||0).toLocaleString()}/day</div></div><div><div class="pf-label">Location</div><div class="pf-value">${e(listing.loc)}</div></div></div><div class="preview-actions"><button class="btn btn-gold btn-sm" onclick='publish(${JSON.stringify(listing).replace(/'/g,"&#39;")})'>🚀 Publish Now</button><button class="btn btn-ghost btn-sm" onclick="addBot('What would you like to change?',false);clearQR()">✏️ Edit</button></div></div>`;
+      setStep(5);
+    }else{
+      el.innerHTML=`<div class="msg-lbl">CRANE GENIUS</div><div class="msg-bubble">${e(clean)}</div>`;
+      guessStep(clean);
+    }
+    document.getElementById('chatArea').appendChild(el);scrollC();res();
+  });
+}
+
+function addUser(text){const el=document.createElement('div');el.className='msg msg-user';el.innerHTML=`<div class="msg-lbl" style="text-align:right">YOU</div><div class="msg-bubble">${e(text)}</div>`;document.getElementById('chatArea').appendChild(el);scrollC();}
+function scrollC(){const a=document.getElementById('chatArea');a.scrollTop=a.scrollHeight;}
+function setQR(opts){document.getElementById('qrArea').innerHTML=opts.map(o=>`<button class="qr" onclick="quickReply('${o}')">${o}</button>`).join('');}
+function clearQR(){document.getElementById('qrArea').innerHTML='';}
+function quickReply(t){clearQR();document.getElementById('chatInput').value=t;send();}
+
+async function send(){
+  if(waiting)return;
+  const inp=document.getElementById('chatInput');
+  const msg=inp.value.trim();if(!msg)return;
+  inp.value='';autoResize(inp);clearQR();addUser(msg);
+  waiting=true;document.getElementById('sendBtn').disabled=true;
+  const resp=await getAI(msg);
+  await addBot(resp);
+  const low=resp.toLowerCase();
+  if(low.includes('type')&&(low.includes('crane')||low.includes('terrain')))setQR(['Tower Crane','Mobile Crane','Crawler Crane','All Terrain','Rough Terrain','Boom Truck']);
+  else if(low.includes('operator')||low.includes('included'))setQR(['Yes, operator included','Bare rental only','Both options available']);
+  waiting=false;document.getElementById('sendBtn').disabled=false;document.getElementById('chatInput').focus();
+  document.getElementById('lastAct').textContent='AI responded';
+}
+
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px';}
+
+function publish(d){
+  const item={id:Date.now(),company:d.company||'Unknown',model:d.model||'Unknown',type:d.type||'Mobile Crane',cap:parseFloat(d.cap)||0,boom:parseFloat(d.boom)||0,year:parseInt(d.year)||2020,rate:parseFloat(d.rate)||0,loc:d.loc||'Unknown',email:d.email||'',tags:d.tags||[],status:'live',notes:d.notes||''};
+  listings.unshift(item);renderListings();
+  emailNotify(item,'new');sheetLog(item);
+  toast(`🚀 ${item.model} is LIVE!`,'ok');setStep(5);
+  setTimeout(()=>{
+    addBot(`Your ${item.model} is live on the marketplace! 🎉 Construction companies searching in ${item.loc} can now find it.\n\nWant to list another crane?`,false);
+    setQR(['Yes, list another!','No, I am done','How do I get leads?']);
+    chatHist=[];setStep(0);
+  },600);
+}
+
+function emailNotify(item,evt){
+  if(!CFG.formspreeId)return;
+  fetch(`https://formspree.io/f/${CFG.formspreeId}`,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({email:CFG.alertEmail||item.email,_subject:`🏗️ New Crane Listed: ${item.model} — ${item.loc}`,...item,timestamp:new Date().toISOString()})}).then(r=>{if(r.ok){const el=document.getElementById('fsStatus');el.textContent='SENT ✓';el.style.color='var(--green)';setTimeout(()=>{el.textContent='CONNECTED';},3000);}}).catch(()=>{});
+}
+
+function sheetLog(item){
+  const row={time:new Date().toISOString(),company:item.company,model:item.model,type:item.type,cap:item.cap,year:item.year,rate:item.rate,loc:item.loc,email:item.email,status:item.status};
+  console.table(row);
+  if(!CFG.sheetsUrl)return;
+  fetch(CFG.sheetsUrl,{method:'POST',body:JSON.stringify(row)}).then(()=>{const el=document.getElementById('shStatus');el.textContent='LOGGED ✓';el.style.color='var(--green)';setTimeout(()=>{el.textContent='READY';el.style.color='var(--gold)';},3000);}).catch(()=>{});
+}
+
+function syncSheets(){listings.forEach(x=>sheetLog(x));toast(`${listings.length} listings synced`,'info');}
+function saveNotify(){CFG.formspreeId=document.getElementById('fsId').value.trim();CFG.alertEmail=document.getElementById('fsEmail').value.trim();hide('notifyM');toast('Email alerts saved!','ok');if(CFG.formspreeId){document.getElementById('fsStatus').textContent='CONFIGURED';document.getElementById('fsStatus').style.color='var(--green)';}}
+function saveSheets(){CFG.sheetsUrl=document.getElementById('shUrl').value.trim();hide('sheetsM');toast('Sheets connected!','ok');if(CFG.sheetsUrl){document.getElementById('shStatus').textContent='CONFIGURED';document.getElementById('shStatus').style.color='var(--green)';}}
+
+function showAll(){const b=document.getElementById('allBody');if(!listings.length){b.innerHTML='<p style="color:var(--muted);text-align:center;padding:2rem">No listings yet.</p>';return;}b.innerHTML=listings.map(x=>`<div style="background:var(--card);border:1px solid var(--border);border-radius:5px;padding:.7rem;margin-bottom:.5rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem"><div><div style="font-weight:600;font-size:.85rem">${e(x.company)} — ${e(x.model)}</div><div style="font-size:.72rem;color:var(--muted)">${e(x.type)} · ${e(x.loc)} · $${(x.rate||0).toLocaleString()}/day</div></div><div style="display:flex;gap:.4rem;align-items:center"><span class="badge ${x.status==='live'?'b-live':'b-qa'}">${x.status==='live'?'LIVE':'QA'}</span><button class="btn btn-ghost btn-sm" style="color:var(--red)" onclick="delL(${x.id});showAll()">✕</button></div></div>`).join('');}
+
+function show(id){document.getElementById(id).classList.add('open');if(id==='allM')showAll();}
 function hide(id){document.getElementById(id).classList.remove('open');}
-document.addEventListener('click',e=>{if(e.target.classList.contains('overlay'))e.target.classList.remove('open');});
-function val(id){return document.getElementById(id)?.value?.trim()||'';}
-function setFld(id,v){const el=document.getElementById(id);if(el)el.value=v;}
-function clearFld(id){const el=document.getElementById(id);if(el)el.value='';}
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-function toast(msg,type='info'){const c=document.getElementById('toasts');const d=document.createElement('div');const cls={ok:'t-ok',warn:'t-warn',info:'t-info',err:'t-err'};d.className=`toast ${cls[type]||'t-info'}`;const ic={ok:'✓',warn:'⚠',info:'ℹ',err:'✕'};d.innerHTML=`<span>${ic[type]||'ℹ'}</span>${msg}`;c.appendChild(d);document.getElementById('lastAct').textContent=msg;setTimeout(()=>d.remove(),4000);}
-function log(cat,msg){const w=document.getElementById('logWrap');const t=new Date().toLocaleTimeString('en-US',{hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});const e=document.createElement('div');e.className='loge';e.innerHTML=`<span class="logt">${t}</span><span class="logm"><span class="hl">[${esc(cat)}]</span> ${esc(msg)}</span>`;w.insertBefore(e,w.firstChild);if(w.children.length>40)w.lastChild.remove();}
+document.addEventListener('click',ev=>{if(ev.target.classList.contains('overlay'))ev.target.classList.remove('open');});
+function e(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function toast(msg,type='info'){const c=document.getElementById('toasts');const d=document.createElement('div');d.className=`toast t-${type==='ok'?'ok':type==='warn'?'warn':type==='err'?'err':'info'}`;const ic={ok:'✓',warn:'⚠',info:'ℹ',err:'✕'};d.innerHTML=`<span>${ic[type]||'ℹ'}</span>${msg}`;c.appendChild(d);document.getElementById('lastAct').textContent=msg;setTimeout(()=>d.remove(),4000);}
+
+window.onload=async()=>{
+  renderListings();
+  await addBot("Hey! 👋 I'm your CraneGenius listing assistant.\n\nI'll get your crane listed on the marketplace in about 2 minutes — just answer a few quick questions.\n\nFirst: what's the name of your company?",false);
+  document.getElementById('chatInput').focus();
+};
 </script>
 </body>
 </html>
