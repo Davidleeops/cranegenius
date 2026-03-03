@@ -1,1 +1,388 @@
-pbpaste > ~/Downloads/cranegenius_repo/marketplace/index.html && cd ~/Downloads/cranegenius_repo && git add marketplace/index.html && git commit -m "premium marketplace" && git push
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1">&lt;title&gt;CraneGenius - Equipment Marketplace&lt;/title&gt;</p>
+<p class="p1">&lt;link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@400;500;600&amp;family=DM+Mono&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1">:root{--bg:#080e1a;--panel:#0d1526;--card:#0f1c30;--border:rgba(201,168,76,0.15);--border2:rgba(201,168,76,0.3);--gold:#c9a84c;--gold2:#f0d078;--green:#10b981;--red:#ef4444;--blue:#3b82f6;--text:#e8edf5;--muted:#5a7a9a}</p>
+<p class="p1">*{margin:0;padding:0;box-sizing:border-box}</p>
+<p class="p1">body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;padding-right:400px}</p>
+<p class="p1">nav{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 1.5rem;height:54px;display:flex;align-items:center;justify-content:space-between}</p>
+<p class="p1">.logo{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:2px;color:var(--gold)}</p>
+<p class="p1">.logo span{color:var(--text)}</p>
+<p class="p1">.navr{display:flex;gap:.5rem;align-items:center}</p>
+<p class="p1">.nbtn{padding:.3rem .75rem;border-radius:4px;font-size:.75rem;font-weight:600;cursor:pointer;background:transparent;color:var(--text);border:1px solid var(--border);font-family:'DM Sans',sans-serif;transition:all .15s;text-decoration:none;display:inline-block}</p>
+<p class="p1">.nbtn:hover{border-color:var(--gold);color:var(--gold)}</p>
+<p class="p1">.main{padding:1.25rem 1.5rem 4rem}</p>
+<p class="p1">.hero{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.02));border:1px solid var(--border2);border-radius:8px;padding:1.1rem 1.4rem;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}</p>
+<p class="p1">.htitle{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:2px;line-height:1}</p>
+<p class="p1">.htitle span{color:var(--gold)}</p>
+<p class="p1">.hsub{font-size:.74rem;color:var(--muted);margin-top:.25rem}</p>
+<p class="p1">.hstats{display:flex;gap:1.75rem}</p>
+<p class="p1">.hsn{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--gold);line-height:1}</p>
+<p class="p1">.hsl{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}</p>
+<p class="p1">.sbar{display:flex;gap:.5rem;margin-bottom:1.25rem;flex-wrap:wrap}</p>
+<p class="p1">.sinput{flex:1;min-width:160px;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:.5rem .8rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none}</p>
+<p class="p1">.sinput:focus{border-color:var(--gold)}</p>
+<p class="p1">.sinput::placeholder{color:var(--muted)}</p>
+<p class="p1">.ssel{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:.5rem .65rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.78rem;outline:none}</p>
+<p class="p1">.sbtn{background:var(--gold);color:#000;border:none;border-radius:4px;padding:.5rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer}</p>
+<p class="p1">.sbtn:hover{background:var(--gold2)}</p>
+<p class="p1">.shd{display:flex;align-items:center;gap:.6rem;margin-bottom:.85rem;margin-top:1.25rem}</p>
+<p class="p1">.shd:first-of-type{margin-top:0}</p>
+<p class="p1">.shdtitle{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:2px;white-space:nowrap}</p>
+<p class="p1">.shdline{flex:1;height:1px;background:var(--border)}</p>
+<p class="p1">.shdtag{padding:.12rem .45rem;border-radius:3px;font-size:.6rem;font-weight:700;font-family:'DM Mono',monospace;white-space:nowrap}</p>
+<p class="p1">.t-blue{background:rgba(59,130,246,.12);color:#93c5fd;border:1px solid rgba(59,130,246,.2)}</p>
+<p class="p1">.t-purple{background:rgba(139,92,246,.12);color:#c4b5fd;border:1px solid rgba(139,92,246,.2)}</p>
+<p class="p1">.t-gold{background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.2)}</p>
+<p class="p1">.shdnote{font-size:.65rem;color:var(--muted)}</p>
+<p class="p1">.hscroll{display:flex;gap:.85rem;overflow-x:auto;padding-bottom:.65rem;margin-bottom:.25rem;scrollbar-width:thin;scrollbar-color:var(--border) transparent}</p>
+<p class="p1">.hscroll::-webkit-scrollbar{height:3px}</p>
+<p class="p1">.hscroll::-webkit-scrollbar-thumb{background:var(--border)}</p>
+<p class="p1">.spcard{flex-shrink:0;width:200px;background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;transition:all .2s}</p>
+<p class="p1">.spcard:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.4)}</p>
+<p class="p1">.spimg{height:115px;display:flex;align-items:center;justify-content:center;font-size:3.2rem;position:relative}</p>
+<p class="p1">.spov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,14,26,.95),transparent 60%)}</p>
+<p class="p1">.spsticker{position:absolute;top:.45rem;left:.45rem;padding:.1rem .35rem;border-radius:3px;font-size:.58rem;font-weight:700;font-family:'DM Mono',monospace}</p>
+<p class="p1">.stlive{background:rgba(16,185,129,.9);color:#fff}</p>
+<p class="p1">.stqa{background:rgba(201,168,76,.9);color:#000}</p>
+<p class="p1">.spbody{padding:.65rem}</p>
+<p class="p1">.spname{font-weight:600;font-size:.8rem;margin-bottom:.12rem}</p>
+<p class="p1">.spsub{font-size:.66rem;color:var(--muted)}</p>
+<p class="p1">.sprate{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--gold);margin-top:.3rem}</p>
+<p class="p1">.filters{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.85rem}</p>
+<p class="p1">.chip{padding:.25rem .65rem;border-radius:20px;font-size:.7rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all .15s;font-family:'DM Sans',sans-serif}</p>
+<p class="p1">.chip.on,.chip:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.08)}</p>
+<p class="p1">.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.85rem}</p>
+<p class="p1">.ccard{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all .2s;animation:cfu .3s ease both}</p>
+<p class="p1">.ccard:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.45)}</p>
+<p class="p1">@keyframes cfu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}</p>
+<p class="p1">.cimg{height:165px;display:flex;align-items:center;justify-content:center;font-size:3.8rem;position:relative}</p>
+<p class="p1">.cimgov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,14,26,1) 0%,rgba(8,14,26,.15) 55%,transparent 100%)}</p>
+<p class="p1">.cbadges{position:absolute;top:.55rem;left:.55rem;display:flex;gap:.28rem;z-index:2}</p>
+<p class="p1">.cb{padding:.1rem .38rem;border-radius:3px;font-size:.58rem;font-weight:700;font-family:'DM Mono',monospace}</p>
+<p class="p1">.cb-live{background:rgba(16,185,129,.9);color:#fff}</p>
+<p class="p1">.cb-qa{background:rgba(201,168,76,.9);color:#000}</p>
+<p class="p1">.cb-type{background:rgba(8,14,26,.85);color:var(--muted);border:1px solid var(--border)}</p>
+<p class="p1">.cratebadge{position:absolute;bottom:.55rem;right:.55rem;font-family:'DM Mono',monospace;font-size:.82rem;color:var(--gold);font-weight:700;z-index:2}</p>
+<p class="p1">.cbody{padding:.8rem}</p>
+<p class="p1">.cname{font-weight:600;font-size:.88rem;margin-bottom:.12rem;line-height:1.25}</p>
+<p class="p1">.cloc{font-size:.68rem;color:var(--muted);margin-bottom:.6rem}</p>
+<p class="p1">.cspecs{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-bottom:.6rem}</p>
+<p class="p1">.csl{font-size:.57rem;color:var(--muted);text-transform:uppercase;font-family:'DM Mono',monospace}</p>
+<p class="p1">.csv{font-size:.76rem;font-weight:600;font-family:'DM Mono',monospace}</p>
+<p class="p1">.csv.g{color:var(--gold)}</p>
+<p class="p1">.ctags{display:flex;gap:.25rem;flex-wrap:wrap;margin-bottom:.6rem}</p>
+<p class="p1">.ctag{padding:.08rem .3rem;border-radius:3px;font-size:.58rem;background:rgba(59,130,246,.1);color:#93c5fd;border:1px solid rgba(59,130,246,.18);font-family:'DM Mono',monospace}</p>
+<p class="p1">.cacts{display:flex;gap:.3rem}</p>
+<p class="p1">.cact{flex:1;padding:.36rem;border-radius:4px;font-size:.72rem;font-weight:600;cursor:pointer;border:none;transition:all .15s;font-family:'DM Sans',sans-serif}</p>
+<p class="p1">.ca-contact{background:var(--gold);color:#000}</p>
+<p class="p1">.ca-contact:hover{background:var(--gold2)}</p>
+<p class="p1">.ca-ai{background:transparent;color:var(--muted);border:1px solid var(--border)}</p>
+<p class="p1">.ca-ai:hover{border-color:var(--blue);color:#93c5fd}</p>
+<p class="p1">.ca-del{background:transparent;color:var(--red);border:1px solid rgba(239,68,68,.15);max-width:32px}</p>
+<p class="p1">.ca-del:hover{background:rgba(239,68,68,.1)}</p>
+<p class="p1">.bot-panel{position:fixed;top:0;right:0;width:400px;height:100vh;background:var(--panel);border-left:1px solid var(--border);z-index:200;display:flex;flex-direction:column}</p>
+<p class="p1">.bhead{padding:12px 16px;border-bottom:1px solid var(--border);background:rgba(201,168,76,.04);flex-shrink:0}</p>
+<p class="p1">.btitle{font-family:'Bebas Neue',sans-serif;font-size:.92rem;letter-spacing:2px;color:var(--gold)}</p>
+<p class="p1">.bsub{font-size:.62rem;color:var(--muted);margin-top:.18rem;font-family:'DM Mono',monospace}</p>
+<p class="p1">.bsteps{display:flex;padding:7px 16px;border-bottom:1px solid var(--border);background:rgba(0,0,0,.12);flex-shrink:0}</p>
+<p class="p1">.bs{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;position:relative}</p>
+<p class="p1">.bs:not(:last-child)::after{content:'';position:absolute;top:8px;left:60%;width:80%;height:1px;background:var(--border)}</p>
+<p class="p1">.bsdot{width:16px;height:16px;border-radius:50%;background:var(--border);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:var(--muted);z-index:1;position:relative;font-family:'DM Mono',monospace;transition:all .3s}</p>
+<p class="p1">.bs.done .bsdot{background:var(--green);border-color:var(--green);color:#fff}</p>
+<p class="p1">.bs.active .bsdot{background:var(--gold);border-color:var(--gold);color:#000}</p>
+<p class="p1">.bslbl{font-size:7px;color:var(--muted);font-family:'DM Mono',monospace;text-transform:uppercase}</p>
+<p class="p1">.bs.active .bslbl{color:var(--gold)}</p>
+<p class="p1">.bs.done .bslbl{color:var(--green)}</p>
+<p class="p1">.bmsgs{flex:1;overflow-y:auto;padding:10px 14px;display:flex;flex-direction:column;gap:7px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}</p>
+<p class="p1">.bm{max-width:92%;animation:bfu .2s ease}</p>
+<p class="p1">.bm-b{align-self:flex-start}</p>
+<p class="p1">.bm-u{align-self:flex-end}</p>
+<p class="p1">.bb{padding:7px 11px;border-radius:6px;font-size:.77rem;line-height:1.5;white-space:pre-wrap}</p>
+<p class="p1">.bm-b .bb{background:var(--card);border:1px solid var(--border);border-bottom-left-radius:2px}</p>
+<p class="p1">.bm-u .bb{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);border-bottom-right-radius:2px}</p>
+<p class="p1">.bl{font-size:.57rem;color:var(--muted);margin-bottom:3px;font-family:'DM Mono',monospace;letter-spacing:1px}</p>
+<p class="p1">.bm-u .bl{text-align:right}</p>
+<p class="p1">.bdots{display:flex;gap:3px;padding:7px 11px;background:var(--card);border:1px solid var(--border);border-radius:6px;border-bottom-left-radius:2px;width:fit-content}</p>
+<p class="p1">.bdots span{width:4px;height:4px;background:var(--muted);border-radius:50%;animation:bbo .8s infinite}</p>
+<p class="p1">.bdots span:nth-child(2){animation-delay:.15s}</p>
+<p class="p1">.bdots span:nth-child(3){animation-delay:.3s}</p>
+<p class="p1">@keyframes bbo{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-4px)}}</p>
+<p class="p1">@keyframes bfu{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}</p>
+<p class="p1">.bqrs{display:flex;flex-wrap:wrap;gap:4px;padding:0 14px 7px;flex-shrink:0}</p>
+<p class="p1">.bqr{padding:4px 9px;border-radius:20px;font-size:.68rem;cursor:pointer;border:1px solid rgba(201,168,76,.28);background:rgba(201,168,76,.05);color:var(--gold);font-family:'DM Sans',sans-serif;font-weight:600;transition:all .15s}</p>
+<p class="p1">.bqr:hover{background:rgba(201,168,76,.14)}</p>
+<p class="p1">.binrow{padding:9px 14px;border-top:1px solid var(--border);display:flex;gap:7px;align-items:flex-end;flex-shrink:0}</p>
+<p class="p1">.bin{flex:1;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:7px 10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.77rem;outline:none;resize:none;max-height:75px;line-height:1.4;transition:border-color .15s}</p>
+<p class="p1">.bin:focus{border-color:var(--gold)}</p>
+<p class="p1">.bin::placeholder{color:var(--muted)}</p>
+<p class="p1">.bsendbtn{width:30px;height:30px;border-radius:4px;background:var(--gold);border:none;cursor:pointer;font-size:12px;color:#000;font-weight:700;flex-shrink:0;transition:all .15s}</p>
+<p class="p1">.bsendbtn:hover{background:var(--gold2)}</p>
+<p class="p1">.bsendbtn:disabled{background:var(--border);cursor:not-allowed;color:var(--muted)}</p>
+<p class="p1">.bprev{background:linear-gradient(135deg,rgba(201,168,76,.1),rgba(201,168,76,.03));border:1px solid rgba(201,168,76,.28);border-radius:6px;padding:9px;margin-top:5px}</p>
+<p class="p1">.bprevt{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1px;color:var(--gold);margin-bottom:5px}</p>
+<p class="p1">.bprevg{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:5px}</p>
+<p class="p1">.bpl{font-size:.56rem;color:var(--muted);text-transform:uppercase;font-family:'DM Mono',monospace}</p>
+<p class="p1">.bpv{font-size:.72rem;font-weight:600}</p>
+<p class="p1">.bpubbtn{background:var(--gold);color:#000;border:none;padding:5px 12px;border-radius:3px;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1px;cursor:pointer;margin-right:5px}</p>
+<p class="p1">.bpubbtn:hover{background:var(--gold2)}</p>
+<p class="p1">.beditbtn{background:transparent;color:var(--text);border:1px solid var(--border);padding:5px 9px;border-radius:3px;font-family:'DM Sans',sans-serif;font-size:.7rem;cursor:pointer}</p>
+<p class="p1">.beditbtn:hover{border-color:var(--gold);color:var(--gold)}</p>
+<p class="p1">.statusbar{position:fixed;bottom:0;left:0;right:400px;height:22px;background:rgba(8,14,26,.98);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 1.25rem;gap:1.25rem;font-family:'DM Mono',monospace;font-size:.6rem;color:var(--muted);z-index:50}</p>
+<p class="p1">.sdot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 5px var(--green);animation:pulse 2s infinite;display:inline-block}</p>
+<p class="p1">@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}</p>
+<p class="p1">.toasts{position:fixed;bottom:2rem;left:1.25rem;z-index:999;display:flex;flex-direction:column;gap:.35rem}</p>
+<p class="p1">.toast{padding:.5rem .8rem;border-radius:4px;font-size:.73rem;font-weight:500;animation:tin .2s ease;box-shadow:0 4px 18px rgba(0,0,0,.5)}</p>
+<p class="p1">@keyframes tin{from{transform:translateX(-18px);opacity:0}to{transform:translateX(0);opacity:1}}</p>
+<p class="p1">.tok{background:var(--green);color:#fff}.tinfo{background:var(--blue);color:#fff}</p>
+<p class="p1">.overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);z-index:300;display:none;align-items:center;justify-content:center;padding:1rem}</p>
+<p class="p1">.overlay.open{display:flex}</p>
+<p class="p1">.modal{background:var(--panel);border:1px solid var(--border);border-radius:8px;width:100%;max-width:440px}</p>
+<p class="p1">.mhd{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;border-bottom:1px solid var(--border)}</p>
+<p class="p1">.mtitle{font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:1.5px;color:var(--gold)}</p>
+<p class="p1">.mcls{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem}</p>
+<p class="p1">.mbody{padding:.9rem 1rem}</p>
+<p class="p1">.fg{display:flex;flex-direction:column;gap:.12rem;margin-bottom:.55rem}</p>
+<p class="p1">.fg label{font-size:.6rem;color:var(--muted);text-transform:uppercase;font-family:'DM Mono',monospace}</p>
+<p class="p1">.fc{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:.35rem .5rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.8rem;outline:none;width:100%}</p>
+<p class="p1">.fc:focus{border-color:var(--gold)}</p>
+<p class="p1">.ibox{background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.18);border-radius:4px;padding:.55rem;margin-bottom:.65rem;font-size:.71rem;color:#93c5fd;line-height:1.5}</p>
+<p class="p1">::-webkit-scrollbar{width:3px}</p>
+<p class="p1">::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1">&lt;nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="logo"&gt;CRANE&lt;span&gt;GENIUS&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="navr"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="/" class="nbtn"&gt;Home&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="nbtn" onclick="openModal('notifyM')"&gt;Alerts&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="nbtn" onclick="openModal('sheetsM')"&gt;Sheets&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/nav&gt;</p>
+<p class="p1">&lt;div class="main"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hero"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="htitle"&gt;CRANE &amp;amp; LIFT &lt;span&gt;MARKETPLACE&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="hsub"&gt;Connect with verified operators across Chicago, Dallas, Phoenix and beyond&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="hstats"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;div class="hsn" id="cntLive"&gt;0&lt;/div&gt;&lt;div class="hsl"&gt;Live&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;div class="hsn"&gt;247&lt;/div&gt;&lt;div class="hsl"&gt;Leads&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;div class="hsn" id="cntAll"&gt;0&lt;/div&gt;&lt;div class="hsl"&gt;Listed&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;div class="hsn"&gt;4&lt;/div&gt;&lt;div class="hsl"&gt;Cities&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="sbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input class="sinput" id="sq" placeholder="Search crane, model, company..." oninput="doSearch()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;select class="ssel" id="scity" onchange="doSearch()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option value=""&gt;All Cities&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option&gt;Chicago, IL&lt;/option&gt;&lt;option&gt;Dallas, TX&lt;/option&gt;&lt;option&gt;Phoenix, AZ&lt;/option&gt;&lt;option&gt;Seattle, WA&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;select class="ssel" id="stype" onchange="doSearch()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option value=""&gt;All Types&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option&gt;Tower Crane&lt;/option&gt;&lt;option&gt;Mobile Crane&lt;/option&gt;&lt;option&gt;Crawler Crane&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option&gt;All Terrain&lt;/option&gt;&lt;option&gt;Mini Crane&lt;/option&gt;&lt;option&gt;Glass Lift&lt;/option&gt;&lt;option&gt;Boom Truck&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="sbtn" onclick="doSearch()"&gt;Search&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="shd"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="shdtitle"&gt;MINI CRANES&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="shdtag t-blue"&gt;INDOOR CAPABLE&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="shdline"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="shdnote"&gt;Tight access &amp;mdash; No permits &amp;mdash; Same-day&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hscroll" id="miniRow"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="shd"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="shdtitle"&gt;GLASS LIFTS &amp;amp; VACUUM&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="shdtag t-purple"&gt;SPECIALTY&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="shdline"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="shdnote"&gt;Curtain wall &amp;mdash; Glazing &amp;mdash; Facade&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hscroll" id="glassRow"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="shd"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="shdtitle"&gt;SPECIALTY EQUIPMENT&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="shdtag t-gold"&gt;FEATURED&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="shdline"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="shdnote"&gt;Boom trucks &amp;mdash; SPMTs &amp;mdash; Rigging&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hscroll" id="specialtyRow"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="shd" style="margin-top:1.4rem"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="shdtitle"&gt;ALL EQUIPMENT&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="shdline"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="filters"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="chip on" onclick="filt('all',this)"&gt;All&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="chip" onclick="filt('live',this)"&gt;Live&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="chip" onclick="filt('Tower',this)"&gt;Tower&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="chip" onclick="filt('Mobile',this)"&gt;Mobile&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="chip" onclick="filt('Crawler',this)"&gt;Crawler&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="chip" onclick="filt('Terrain',this)"&gt;All Terrain&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="chip" onclick="filt('Mini',this)"&gt;Mini&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="chip" onclick="filt('Glass',this)"&gt;Glass Lift&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="chip" onclick="filt('Boom',this)"&gt;Boom Truck&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="grid" id="craneGrid"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;div class="bot-panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="bhead"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="btitle"&gt;CRANE GENIUS AI&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="bsub"&gt;LIST YOUR EQUIPMENT OR FIND A CRANE FOR YOUR JOB&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="bsteps"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="bs active" id="bs0"&gt;&lt;div class="bsdot"&gt;1&lt;/div&gt;&lt;div class="bslbl"&gt;Start&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="bs" id="bs1"&gt;&lt;div class="bsdot"&gt;2&lt;/div&gt;&lt;div class="bslbl"&gt;Equip&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="bs" id="bs2"&gt;&lt;div class="bsdot"&gt;3&lt;/div&gt;&lt;div class="bslbl"&gt;Specs&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="bs" id="bs3"&gt;&lt;div class="bsdot"&gt;4&lt;/div&gt;&lt;div class="bslbl"&gt;Price&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="bs" id="bs4"&gt;&lt;div class="bsdot"&gt;5&lt;/div&gt;&lt;div class="bslbl"&gt;Contact&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="bs" id="bs5"&gt;&lt;div class="bsdot"&gt;V&lt;/div&gt;&lt;div class="bslbl"&gt;Done&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="bmsgs" id="bmsgs"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="bqrs" id="bqrs"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="binrow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;textarea class="bin" id="bin" placeholder="Type here..." rows="1" onkeydown="bkey(event)" oninput="bresize(this)"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="bsendbtn" id="bsendbtn" onclick="bgo()"&gt;-&gt;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;div class="statusbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;span class="sdot"&gt;&lt;/span&gt;&lt;span&gt;LIVE&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;span id="lastAct"&gt;Marketplace ready&lt;/span&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;div class="toasts" id="toasts"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;div class="overlay" id="notifyM"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="mhd"&gt;&lt;span class="mtitle"&gt;EMAIL ALERTS&lt;/span&gt;&lt;button class="mcls" onclick="closeModal('notifyM')"&gt;X&lt;/button&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="mbody"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="ibox"&gt;Go to formspree.io - New Form - copy the ID&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="fg"&gt;&lt;label&gt;Formspree Form ID&lt;/label&gt;&lt;input type="text" class="fc" id="fsId" placeholder="xpzgkwvb"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="fg"&gt;&lt;label&gt;Alert Email&lt;/label&gt;&lt;input type="email" class="fc" id="fsEmail" placeholder="you@company.com"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button style="width:100%;background:var(--gold);color:#000;border:none;padding:.45rem;border-radius:4px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif" onclick="saveNotify()"&gt;Save&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;div class="overlay" id="sheetsM"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="mhd"&gt;&lt;span class="mtitle"&gt;GOOGLE SHEETS&lt;/span&gt;&lt;button class="mcls" onclick="closeModal('sheetsM')"&gt;X&lt;/button&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="mbody"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="ibox" style="background:rgba(16,185,129,.07);border-color:rgba(16,185,129,.18);color:#6ee7b7"&gt;Sheets - Extensions - Apps Script - Deploy as Web App&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="fg"&gt;&lt;label&gt;Apps Script Web App URL&lt;/label&gt;&lt;input type="url" class="fc" id="shUrl" placeholder="https://script.google.com/macros/s/.../exec"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button style="width:100%;background:var(--green);color:#fff;border:none;padding:.45rem;border-radius:4px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif" onclick="saveSheets()"&gt;Save&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">var CFG={fsId:"",fsEmail:"",shUrl:""};</p>
+<p class="p1">var GR={"Mobile Crane":"linear-gradient(135deg,#1a2a1a,#0d1a0d)","Tower Crane":"linear-gradient(135deg,#1a1a2a,#0d0d1a)","Crawler Crane":"linear-gradient(135deg,#2a1a0d,#1a0d08)","All Terrain":"linear-gradient(135deg,#1a2a2a,#0d1a1a)","Mini Crane":"linear-gradient(135deg,#0d1520,#080e18)","Glass Lift":"linear-gradient(135deg,#101a25,#0a1218)","Boom Truck":"linear-gradient(135deg,#2a1a1a,#1a0d0d)","Specialty":"linear-gradient(135deg,#2a2a1a,#1a1a0d)"};</p>
+<p class="p1">var EM={"Mobile Crane":"&amp;#127959;","Tower Crane":"&amp;#128346;","Crawler Crane":"&amp;#9881;","All Terrain":"&amp;#128667;","Mini Crane":"&amp;#128269;","Glass Lift":"&amp;#129695;","Boom Truck":"&amp;#128666;","Specialty":"&amp;#9889;"};</p>
+<p class="p1">var listings=[</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:1,company:"Apex Crane Chicago",model:"Liebherr LTM 1100-5.2",type:"Mobile Crane",cap:100,boom:203,year:2019,rate:4200,loc:"Chicago, IL",email:"ops@apexcrane.com",tags:["operator-incl","certified"],status:"live",notes:"NCCCO certified operator included"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:2,company:"Dallas Tower Co.",model:"Potain MDT 389",type:"Tower Crane",cap:18,boom:213,year:2021,rate:5500,loc:"Dallas, TX",email:"fleet@dallastower.com",tags:["self-erect","luffing"],status:"live",notes:"Self-erecting luffing jib"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:3,company:"Southwest Heavy Lift",model:"Manitowoc 18000",type:"Crawler Crane",cap:600,boom:312,year:2017,rate:12000,loc:"Phoenix, AZ",email:"dispatch@swheavy.com",tags:["superlift","heavy"],status:"qa",notes:"Superlift config available"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:4,company:"Pacific NW Cranes",model:"Grove GMK5250L",type:"All Terrain",cap:250,boom:236,year:2020,rate:6800,loc:"Seattle, WA",email:"rentals@pnwcranes.com",tags:["all-terrain","road-able"],status:"live",notes:"5-axle road-able no escort"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:5,company:"Chicago Mini Lift",model:"Jekko SPX532",type:"Mini Crane",cap:3.2,boom:58,year:2022,rate:850,loc:"Chicago, IL",email:"info@chimini.com",tags:["indoor","radio-ctrl"],status:"live",notes:"Fits through standard doors"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:6,company:"Midwest Glass Systems",model:"Smartlift SL408",type:"Glass Lift",cap:0.4,boom:24,year:2023,rate:650,loc:"Chicago, IL",email:"ops@midwestglass.com",tags:["vacuum","glazing"],status:"live",notes:"400kg vacuum curtain wall"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:7,company:"Texas Boom Co.",model:"Manitex 50128S",type:"Boom Truck",cap:50,boom:128,year:2020,rate:1800,loc:"Dallas, TX",email:"dispatch@txboom.com",tags:["knuckle-boom","CDL-incl"],status:"live",notes:"CDL driver included"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:8,company:"Phoenix Specialty",model:"Liebherr LR 1300",type:"Crawler Crane",cap:300,boom:289,year:2018,rate:9500,loc:"Phoenix, AZ",email:"ops@pxspec.com",tags:["luffing","SHL"],status:"live",notes:"Super Heavy Lift config"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:9,company:"Windy City Crane",model:"Terex RT 130",type:"All Terrain",cap:130,boom:194,year:2021,rate:3800,loc:"Chicago, IL",email:"rentals@windycity.com",tags:["rough-terrain"],status:"live",notes:"Outrigger pads included"},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{id:10,company:"Dallas Mini Lift",model:"Jekko JF545",type:"Mini Crane",cap:5.4,boom:72,year:2023,rate:1100,loc:"Dallas, TX",email:"info@dallasmini.com",tags:["compact","electric"],status:"live",notes:"Electric zero emissions indoor"}</p>
+<p class="p1">];</p>
+<p class="p1">var activeF="all",searchR=null;</p>
+<p class="p1">function ig(type){return {g:GR[type]||GR["Specialty"],e:EM[type]||"&amp;#9889;"};}</p>
+<p class="p1">function renderSpec(cid,type){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>var items=listings.filter(function(x){return x.type===type;});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>var el=document.getElementById(cid);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!items.length){el.innerHTML="&lt;div style='color:var(--muted);font-size:.73rem;padding:.4rem 0'&gt;No "+type+" listed yet.&lt;/div&gt;";return;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>el.innerHTML=items.map(function(x){var im=ig(x.type);return "&lt;div class='spcard' onclick='contactItem("+x.id+")'&gt;&lt;div class='spimg' style='background:"+im.g+"'&gt;&lt;span style='position:relative;z-index:1'&gt;"+im.e+"&lt;/span&gt;&lt;div class='spov'&gt;&lt;/div&gt;&lt;span class='spsticker "+(x.status==="live"?"stlive":"stqa")+"'&gt;"+x.status.toUpperCase()+"&lt;/span&gt;&lt;/div&gt;&lt;div class='spbody'&gt;&lt;div class='spname'&gt;"+ev(x.model)+"&lt;/div&gt;&lt;div class='spsub'&gt;"+ev(x.company)+"&lt;/div&gt;&lt;div class='sprate'&gt;$"+(x.rate||0).toLocaleString()+"/day &amp;middot; "+x.cap+"t&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;";}).join("");</p>
+<p class="p1">}</p>
+<p class="p1">function renderGrid(){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>var list=searchR!==null?searchR:listings;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(activeF!=="all"){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(activeF==="live")list=list.filter(function(x){return x.status==="live";});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>else list=list.filter(function(x){return x.type.includes(activeF)||(x.tags||[]).some(function(t){return t.toLowerCase().includes(activeF.toLowerCase());});});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>var grid=document.getElementById("craneGrid");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!list.length){grid.innerHTML="&lt;div style='grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--muted)'&gt;No listings match.&lt;/div&gt;";updateCounts();return;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>grid.innerHTML=list.map(function(x,i){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>var im=ig(x.type);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return "&lt;div class='ccard' style='animation-delay:"+i*.04+"s'&gt;&lt;div class='cimg' style='background:"+im.g+"'&gt;&lt;span style='position:relative;z-index:1'&gt;"+im.e+"&lt;/span&gt;&lt;div class='cimgov'&gt;&lt;/div&gt;&lt;div class='cbadges'&gt;&lt;span class='cb "+(x.status==="live"?"cb-live":"cb-qa")+"'&gt;"+(x.status==="live"?"LIVE":"QA")+"&lt;/span&gt;&lt;span class='cb cb-type'&gt;"+x.type.split(" ")[0].toUpperCase()+"&lt;/span&gt;&lt;/div&gt;&lt;div class='cratebadge'&gt;$"+(x.rate||0).toLocaleString()+"/day&lt;/div&gt;&lt;/div&gt;&lt;div class='cbody'&gt;&lt;div class='cname'&gt;"+ev(x.company)+" &amp;mdash; "+ev(x.model)+"&lt;/div&gt;&lt;div class='cloc'&gt;"+ev(x.loc)+"&lt;/div&gt;&lt;div class='cspecs'&gt;&lt;div&gt;&lt;div class='csl'&gt;Capacity&lt;/div&gt;&lt;div class='csv g'&gt;"+x.cap+"t&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div class='csl'&gt;Boom&lt;/div&gt;&lt;div class='csv'&gt;"+x.boom+"ft&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div class='csl'&gt;Year&lt;/div&gt;&lt;div class='csv'&gt;"+x.year+"&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;"+(x.tags&amp;&amp;x.tags.length?"&lt;div class='ctags'&gt;"+x.tags.map(function(t){return "&lt;span class='ctag'&gt;"+ev(t)+"&lt;/span&gt;";}).join("")+"&lt;/div&gt;":"")+"&lt;div class='cacts'&gt;&lt;button class='cact ca-contact' onclick='event.stopPropagation();contactItem("+x.id+")'&gt;Contact&lt;/button&gt;&lt;button class='cact ca-ai' onclick='event.stopPropagation();askBot("+x.id+")'&gt;Ask AI&lt;/button&gt;&lt;button class='cact ca-del' onclick='event.stopPropagation();delItem("+x.id+")'&gt;X&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}).join("");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>updateCounts();</p>
+<p class="p1">}</p>
+<p class="p1">function updateCounts(){document.getElementById("cntLive").textContent=listings.filter(function(x){return x.status==="live";}).length;document.getElementById("cntAll").textContent=listings.length;}</p>
+<p class="p1">function filt(f,el){activeF=f;searchR=null;document.querySelectorAll(".chip").forEach(function(c){c.classList.remove("on");});el.classList.add("on");renderGrid();}</p>
+<p class="p1">function doSearch(){var q=document.getElementById("sq").value.toLowerCase();var city=document.getElementById("scity").value;var type=document.getElementById("stype").value;searchR=listings.filter(function(x){return(!q||x.company.toLowerCase().includes(q)||x.model.toLowerCase().includes(q)||x.type.toLowerCase().includes(q))&amp;&amp;(!city||x.loc.includes(city.split(",")[0]))&amp;&amp;(!type||x.type===type);});renderGrid();}</p>
+<p class="p1">function contactItem(id){var x=listings.find(function(l){return l.id===id;});if(x&amp;&amp;x.email)window.open("mailto:"+x.email+"?subject=Crane Inquiry - "+x.model);}</p>
+<p class="p1">function askBot(id){var x=listings.find(function(l){return l.id===id;});if(x)baddmsg("user","Tell me about the "+x.model+" in "+x.loc,false);}</p>
+<p class="p1">function delItem(id){listings=listings.filter(function(x){return x.id!==id;});renderAll();toast("Removed","tinfo");}</p>
+<p class="p1">function renderAll(){renderGrid();renderSpec("miniRow","Mini Crane");renderSpec("glassRow","Glass Lift");renderSpec("specialtyRow","Boom Truck");}</p>
+<p class="p1">var bwait=false,bhist=[];</p>
+<p class="p1">var BSYS="You are CraneGenius AI for a crane and lifting equipment marketplace. Help two types: (1) OWNERS listing equipment: collect company name, model, equipment type (Tower Crane/Mobile Crane/Crawler Crane/All Terrain/Rough Terrain/Boom Truck/Mini Crane/Glass Lift), capacity in tons, boom/reach in feet, year, daily rate in dollars, city and state, contact email, special features. Ask ONE field at a time. When you have all data output ONLY: LISTING_READY:{\"company\":\"x\",\"model\":\"x\",\"type\":\"x\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"City ST\",\"email\":\"x\",\"tags\":[],\"notes\":\"x\"} (2) CONTRACTORS finding equipment: ask crane type needed, required capacity, job location, project dates, budget range, then collect their name and email to send matches. Be brief and friendly. 1-2 sentences max per response. Always start by asking if they want to list or find.";</p>
+<p class="p1">function bsetstep(n){for(var i=0;i&lt;=5;i++){var el=document.getElementById("bs"+i);if(!el)continue;el.classList.remove("active","done");if(i&lt;n)el.classList.add("done");else if(i===n)el.classList.add("active");}}</p>
+<p class="p1">function bguessstep(t){var tl=t.toLowerCase();if(tl.includes("company"))bsetstep(1);else if(tl.includes("model")||tl.includes("make"))bsetstep(1);else if(tl.includes("type"))bsetstep(2);else if(tl.includes("capacity")||tl.includes("boom")||tl.includes("year"))bsetstep(2);else if(tl.includes("rate")||tl.includes("price")||tl.includes("budget"))bsetstep(3);else if(tl.includes("location")||tl.includes("city"))bsetstep(3);else if(tl.includes("email")||tl.includes("contact"))bsetstep(4);}</p>
+<p class="p1">function bparse(text){var m=text.match(/LISTING_READY:(\{[\s\S]*?\})/);if(m){try{return JSON.parse(m[1]);}catch(ex){}}return null;}</p>
+<p class="p1">function baddmsg(role,text,typing){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return new Promise(async function(res){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>var area=document.getElementById("bmsgs");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(typing){var td=document.createElement("div");td.className="bm bm-b";td.id="btyp";td.innerHTML="&lt;div class='bdots'&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;";area.appendChild(td);area.scrollTop=area.scrollHeight;await new Promise(function(r){setTimeout(r,650);});var te=document.getElementById("btyp");if(te)te.remove();}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>var listing=bparse(text);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>var clean=text.replace(/LISTING_READY:\{[\s\S]*?\}/,"").trim();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>var el=document.createElement("div");el.className="bm bm-"+role;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(listing&amp;&amp;role==="bot"){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>var pg="&lt;div class='bprevg'&gt;&lt;div&gt;&lt;div class='bpl'&gt;Type&lt;/div&gt;&lt;div class='bpv'&gt;"+ev(listing.type)+"&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div class='bpl'&gt;Capacity&lt;/div&gt;&lt;div class='bpv'&gt;"+listing.cap+"t&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div class='bpl'&gt;Boom&lt;/div&gt;&lt;div class='bpv'&gt;"+listing.boom+"ft&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div class='bpl'&gt;Year&lt;/div&gt;&lt;div class='bpv'&gt;"+listing.year+"&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div class='bpl'&gt;Rate&lt;/div&gt;&lt;div class='bpv' style='color:var(--gold)'&gt;$"+(listing.rate||0).toLocaleString()+"/day&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div class='bpl'&gt;Location&lt;/div&gt;&lt;div class='bpv'&gt;"+ev(listing.loc)+"&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>el.innerHTML="&lt;div class='bl'&gt;CRANE GENIUS&lt;/div&gt;&lt;div class='bb'&gt;"+ev(clean||"Here is your listing preview!")+"&lt;/div&gt;&lt;div class='bprev'&gt;&lt;div class='bprevt'&gt;"+ev(listing.company)+" - "+ev(listing.model)+"&lt;/div&gt;"+pg+"&lt;div style='margin-top:8px'&gt;&lt;button class='bpubbtn' onclick='bpublish(this)'&gt;PUBLISH NOW&lt;/button&gt;&lt;button class='beditbtn' onclick='baddmsg(\"bot\",\"What would you like to change?\",false)'&gt;Edit&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>el.querySelector(".bpubbtn").dataset.listing=JSON.stringify(listing);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>bsetstep(5);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else if(role==="bot"){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>el.innerHTML="&lt;div class='bl'&gt;CRANE GENIUS&lt;/div&gt;&lt;div class='bb'&gt;"+ev(clean)+"&lt;/div&gt;";bguessstep(clean);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>el.innerHTML="&lt;div class='bl' style='text-align:right'&gt;YOU&lt;/div&gt;&lt;div class='bb'&gt;"+ev(text)+"&lt;/div&gt;";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>area.appendChild(el);area.scrollTop=area.scrollHeight;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("lastAct").textContent="AI responded";res();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">}</p>
+<p class="p1">function bsetqr(opts){document.getElementById("bqrs").innerHTML=opts.map(function(o){return "&lt;button class='bqr' onclick='bqrc(\""+o.replace(/"/g,"&amp;quot;")+"\")'&gt;" +o+"&lt;/button&gt;";}).join("");}</p>
+<p class="p1">function bclearqr(){document.getElementById("bqrs").innerHTML="";}</p>
+<p class="p1">function bqrc(t){bclearqr();document.getElementById("bin").value=t;bgo();}</p>
+<p class="p1">async function bai(msg){bhist.push({role:"user",content:msg});try{var r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:400,system:BSYS,messages:bhist})});var d=await r.json();var t=d.content&amp;&amp;d.content[0]?d.content[0].text:"Sorry, try again.";bhist.push({role:"assistant",content:t});return t;}catch(ex){return "Connection error - please try again.";}}</p>
+<p class="p1">async function bgo(){if(bwait)return;var inp=document.getElementById("bin");var msg=inp.value.trim();if(!msg)return;inp.value="";bresize(inp);bclearqr();await baddmsg("user",msg,false);bwait=true;document.getElementById("bsendbtn").disabled=true;var resp=await bai(msg);await baddmsg("bot",resp,true);var low=resp.toLowerCase();if(low.includes("list")&amp;&amp;low.includes("find"))bsetqr(["List my crane for rent","Find a crane for my job"]);else if(low.includes("type")&amp;&amp;(low.includes("crane")||low.includes("lift")||low.includes("truck")))bsetqr(["Tower Crane","Mobile Crane","Mini Crane","Glass Lift","All Terrain","Boom Truck"]);else if(low.includes("operator"))bsetqr(["Yes operator included","Bare rental only"]);bwait=false;document.getElementById("bsendbtn").disabled=false;document.getElementById("bin").focus();}</p>
+<p class="p1">function bkey(e){if(e.key==="Enter"&amp;&amp;!e.shiftKey){e.preventDefault();bgo();}}</p>
+<p class="p1">function bresize(el){el.style.height="auto";el.style.height=Math.min(el.scrollHeight,75)+"px";}</p>
+<p class="p1">function bpublish(btn){var d=JSON.parse(btn.dataset.listing);var item={id:Date.now(),company:d.company||"Unknown",model:d.model||"Unknown",type:d.type||"Mobile Crane",cap:parseFloat(d.cap)||0,boom:parseFloat(d.boom)||0,year:parseInt(d.year)||2020,rate:parseFloat(d.rate)||0,loc:d.loc||"Unknown",email:d.email||"",tags:d.tags||[],status:"live",notes:d.notes||""};listings.unshift(item);renderAll();toast("LIVE: "+item.model,"tok");setTimeout(function(){baddmsg("bot","Your "+item.model+" is now live! Contractors in "+item.loc+" can find it.\n\nWant to list another piece of equipment?",false);bsetqr(["Yes list another","No I am done"]);bhist=[];bsetstep(0);},400);}</p>
+<p class="p1">function saveNotify(){CFG.fsId=document.getElementById("fsId").value.trim();CFG.fsEmail=document.getElementById("fsEmail").value.trim();closeModal("notifyM");toast("Alerts saved","tok");}</p>
+<p class="p1">function saveSheets(){CFG.shUrl=document.getElementById("shUrl").value.trim();closeModal("sheetsM");toast("Sheets connected","tok");}</p>
+<p class="p1">function openModal(id){document.getElementById(id).classList.add("open");}</p>
+<p class="p1">function closeModal(id){document.getElementById(id).classList.remove("open");}</p>
+<p class="p1">document.addEventListener("click",function(ev){if(ev.target.classList.contains("overlay"))ev.target.classList.remove("open");});</p>
+<p class="p1">function ev(s){return String(s||"").replace(/&amp;/g,"&amp;amp;").replace(/&lt;/g,"&amp;lt;").replace(/&gt;/g,"&amp;gt;");}</p>
+<p class="p1">function toast(msg,cls){var c=document.getElementById("toasts");var d=document.createElement("div");d.className="toast "+(cls||"tinfo");d.textContent=msg;c.appendChild(d);setTimeout(function(){d.remove();},3200);}</p>
+<p class="p1">window.onload=function(){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>setTimeout(function(){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>baddmsg("bot","Hey! Welcome to the CraneGenius Marketplace.\n\nAre you looking to list your crane for rent, or find equipment for a job?",false);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setTimeout(function(){bsetqr(["List my crane for rent","Find a crane for my job"]);},450);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("bin").focus();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},300);</p>
+<p class="p1">};</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
