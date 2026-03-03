@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CraneGenius Marketplace — Find & List Cranes</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628; --navy2: #112240; --steel: #1e3a5f;
+    --gold: #c9a84c; --gold2: #e8c76a; --orange: #e07b3a;
+    --text: #e8edf5; --muted: #6a84a0; --border: rgba(201,168,76,0.12);
+    --card-bg: #112240; --white: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--navy); color: var(--text); font-family: 'DM Sans', sans-serif; }
+
+  /* NAV */
+  nav {
+    background: rgba(10,22,40,0.97); border-bottom: 1px solid var(--border);
+    padding: 0 40px; display: flex; align-items: center; justify-content: space-between;
+    height: 64px; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px);
+  }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 3px; color: var(--gold); text-decoration: none; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--navy); padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .nav-cta:hover { opacity: 0.85; color: var(--navy); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, var(--navy2) 0%, var(--navy) 60%);
+    padding: 72px 40px 56px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-badge { display: inline-block; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); color: var(--gold); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 6vw, 72px); letter-spacing: 2px; color: var(--white); line-height: 1; margin-bottom: 16px; }
+  .hero h1 span { color: var(--gold); }
+  .hero p { font-size: 16px; color: var(--muted); max-width: 520px; margin: 0 auto 32px; line-height: 1.6; }
+  .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: var(--navy); padding: 14px 28px; border-radius: 7px; font-weight: 700; font-size: 14px; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.2s; display: inline-block; }
+  .btn-primary:hover { opacity: 0.85; color: var(--navy); }
+  .btn-outline { background: transparent; color: var(--text); padding: 14px 28px; border-radius: 7px; font-weight: 600; font-size: 14px; text-decoration: none; border: 1px solid rgba(255,255,255,0.15); transition: border-color 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--navy2); border-bottom: 1px solid var(--border);
+    padding: 20px 40px; display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-val { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--gold); }
+  .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* SEARCH BAR */
+  .search-section { padding: 32px 40px; background: var(--navy2); border-bottom: 1px solid var(--border); }
+  .search-wrap { max-width: 900px; margin: 0 auto; }
+  .search-label { font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .search-bar { display: flex; gap: 10px; flex-wrap: wrap; }
+  .search-input {
+    flex: 1; min-width: 200px; padding: 12px 16px; background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border); border-radius: 7px; color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none;
+  }
+  .search-input:focus { border-color: var(--gold); }
+  .search-select {
+    padding: 12px 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--border);
+    border-radius: 7px; color: var(--text); font-size: 13px; outline: none; cursor: pointer;
+  }
+  .search-btn { background: var(--gold); color: var(--navy); padding: 12px 24px; border: none; border-radius: 7px; font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap; }
+
+  /* MAIN CONTENT */
+  .content { max-width: 1200px; margin: 0 auto; padding: 32px 40px; }
+  .content-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+  .content-title { font-size: 13px; color: var(--muted); }
+  .content-title span { color: var(--text); font-weight: 600; }
+  .filter-tabs { display: flex; gap: 8px; }
+  .filter-tab { padding: 7px 16px; border-radius: 20px; font-size: 12px; cursor: pointer; border: 1px solid var(--border); color: var(--muted); background: transparent; transition: all 0.2s; }
+  .filter-tab.active, .filter-tab:hover { background: rgba(201,168,76,0.12); border-color: rgba(201,168,76,0.3); color: var(--gold); }
+
+  /* CRANE CARDS */
+  .crane-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+  .crane-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+    overflow: hidden; transition: border-color 0.2s, transform 0.2s;
+  }
+  .crane-card:hover { border-color: rgba(201,168,76,0.35); transform: translateY(-2px); }
+  .crane-img {
+    height: 180px; background: var(--steel);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .crane-img-placeholder { font-size: 56px; opacity: 0.15; }
+  .crane-badge-wrap { position: absolute; top: 12px; left: 12px; display: flex; gap: 6px; }
+  .crane-badge { font-size: 10px; padding: 3px 9px; border-radius: 4px; font-weight: 600; letter-spacing: 0.5px; }
+  .cb-available { background: rgba(76,175,130,0.85); color: white; }
+  .cb-featured { background: rgba(201,168,76,0.85); color: var(--navy); }
+  .cb-reserved { background: rgba(224,82,82,0.75); color: white; }
+  .crane-info { padding: 18px; }
+  .crane-type { font-size: 10px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+  .crane-name { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; color: var(--white); margin-bottom: 8px; }
+  .crane-specs { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 12px; }
+  .crane-spec { font-size: 11px; color: var(--muted); }
+  .crane-spec strong { color: var(--text); font-weight: 600; }
+  .crane-location { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+  .crane-location span { color: var(--gold); }
+  .crane-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.05); }
+  .crane-price { }
+  .crane-price .amount { font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 600; color: var(--white); }
+  .crane-price .period { font-size: 11px; color: var(--muted); margin-left: 3px; }
+  .crane-company { font-size: 11px; color: var(--muted); }
+  .btn-inquire { background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); color: var(--gold); padding: 8px 18px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+  .btn-inquire:hover { background: var(--gold); color: var(--navy); }
+
+  /* LIST YOUR CRANE CTA */
+  .list-cta {
+    background: linear-gradient(135deg, var(--steel), var(--navy2));
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 40px; margin: 40px 0; text-align: center;
+  }
+  .list-cta h2 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 2px; color: var(--white); margin-bottom: 8px; }
+  .list-cta p { color: var(--muted); font-size: 14px; max-width: 500px; margin: 0 auto 24px; line-height: 1.6; }
+  .list-benefits { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 28px; }
+  .list-benefit { text-align: center; }
+  .list-benefit .icon { font-size: 24px; margin-bottom: 6px; }
+  .list-benefit .label { font-size: 12px; color: var(--muted); }
+  .list-benefit .val { font-size: 13px; font-weight: 600; color: var(--text); }
+
+  /* HOW IT WORKS */
+  .how-section { padding: 48px 40px; border-top: 1px solid var(--border); }
+  .how-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 2px; text-align: center; margin-bottom: 8px; }
+  .how-sub { text-align: center; color: var(--muted); font-size: 14px; margin-bottom: 40px; }
+  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+  .how-card { text-align: center; padding: 28px; background: var(--navy2); border: 1px solid var(--border); border-radius: 10px; }
+  .how-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--gold); opacity: 0.3; line-height: 1; margin-bottom: 12px; }
+  .how-title { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .how-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* FOOTER */
+  footer { background: var(--navy2); border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 3px; color: var(--gold); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-copy { font-size: 11px; color: var(--muted); }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 999; align-items: center; justify-content: center; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--navy2); border: 1px solid var(--border); border-radius: 12px; padding: 36px; width: 480px; max-width: 90vw; }
+  .modal h3 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; margin-bottom: 6px; }
+  .modal-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  .form-group { margin-bottom: 14px; }
+  .form-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; display: block; }
+  .form-input { width: 100%; padding: 11px 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 13px; outline: none; }
+  .form-input:focus { border-color: var(--gold); }
+  .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+  .btn-cancel { flex: 1; padding: 12px; background: transparent; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); cursor: pointer; font-size: 13px; }
+  .btn-submit { flex: 2; padding: 12px; background: var(--gold); border: none; border-radius: 6px; color: var(--navy); font-weight: 700; font-size: 14px; cursor: pointer; }
+
+  @media(max-width:768px){
+    nav { padding: 0 20px; } .nav-links { display: none; }
+    .hero { padding: 48px 20px 40px; }
+    .stats-bar { padding: 16px 20px; gap: 24px; }
+    .search-section, .content, .how-section { padding-left: 20px; padding-right: 20px; }
+    .crane-grid { grid-template-columns: 1fr; }
+    .how-grid { grid-template-columns: 1fr; }
+    footer { padding: 20px; flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">CraneGenius</a>
+  <div class="nav-links">
+    <a href="/marketplace" class="active">Marketplace</a>
+    <a href="/#how-it-works">How It Works</a>
+    <a href="/#contact">Contact</a>
+    <a href="/command-center" style="font-size:11px;color:var(--muted);">⚙ Admin</a>
+  </div>
+  <a href="#list-crane" class="nav-cta" onclick="openListModal()">List Your Crane</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🏗 Crane Rental Marketplace</div>
+  <h1>Find the Right Crane<br><span>For Any Job</span></h1>
+  <p>Connect directly with crane rental companies across Chicago, Dallas, Phoenix and beyond. No middlemen. No wasted calls.</p>
+  <div class="hero-actions">
+    <a href="#listings" class="btn-primary">Browse Available Cranes</a>
+    <a href="#list-crane" class="btn-outline" onclick="openListModal()">List Your Equipment</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-val">12</div><div class="stat-label">Active Listings</div></div>
+  <div class="stat"><div class="stat-val">4</div><div class="stat-label">Cities Covered</div></div>
+  <div class="stat"><div class="stat-val">$0</div><div class="stat-label">Listing Fee</div></div>
+  <div class="stat"><div class="stat-val">48hr</div><div class="stat-label">Avg Response</div></div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-section">
+  <div class="search-wrap">
+    <div class="search-label">Search Available Equipment</div>
+    <div class="search-bar">
+      <input type="text" class="search-input" placeholder="Crane type, city, or company...">
+      <select class="search-select">
+        <option>All Cities</option>
+        <option>Chicago, IL</option>
+        <option>Dallas, TX</option>
+        <option>Phoenix, AZ</option>
+        <option>New York, NY</option>
+      </select>
+      <select class="search-select">
+        <option>All Types</option>
+        <option>Tower Crane</option>
+        <option>Mobile Crane</option>
+        <option>Crawler Crane</option>
+        <option>Spider Crane</option>
+        <option>Carry Deck</option>
+        <option>Rough Terrain</option>
+      </select>
+      <button class="search-btn">Search</button>
+    </div>
+  </div>
+</div>
+
+<!-- LISTINGS -->
+<div class="content" id="listings">
+  <div class="content-header">
+    <div class="content-title">Showing <span>12 cranes</span> available now</div>
+    <div class="filter-tabs">
+      <div class="filter-tab active">All</div>
+      <div class="filter-tab">Available Now</div>
+      <div class="filter-tab">Tower</div>
+      <div class="filter-tab">Mobile</div>
+      <div class="filter-tab">Specialty</div>
+    </div>
+  </div>
+
+  <div class="crane-grid">
+
+    <div class="crane-card">
+      <div class="crane-img" style="background:linear-gradient(135deg,#1e3a5f,#0d2137)">
+        <div class="crane-img-placeholder">🏗</div>
+        <div class="crane-badge-wrap"><span class="crane-badge cb-available">Available</span><span class="crane-badge cb-featured">Featured</span></div>
+      </div>
+      <div class="crane-info">
+        <div class="crane-type">Tower Crane</div>
+        <div class="crane-name">Liebherr 280 EC-H</div>
+        <div class="crane-specs">
+          <div class="crane-spec"><strong>280t</strong> Max Load</div>
+          <div class="crane-spec"><strong>72m</strong> Jib Length</div>
+          <div class="crane-spec"><strong>60m</strong> Hook Height</div>
+        </div>
+        <div class="crane-location">📍 <span>Chicago, IL</span> · Available immediately</div>
+        <div class="crane-footer">
+          <div class="crane-price"><span class="amount">$18,500</span><span class="period">/mo</span></div>
+          <a href="#" class="btn-inquire" onclick="openInquireModal('Liebherr 280 EC-H')">Inquire</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="crane-card">
+      <div class="crane-img" style="background:linear-gradient(135deg,#1e3a2f,#0d2120)">
+        <div class="crane-img-placeholder">🏗</div>
+        <div class="crane-badge-wrap"><span class="crane-badge cb-available">Available</span></div>
+      </div>
+      <div class="crane-info">
+        <div class="crane-type">Mobile Crane · All Terrain</div>
+        <div class="crane-name">Grove GMK 5150L</div>
+        <div class="crane-specs">
+          <div class="crane-spec"><strong>150t</strong> Max Load</div>
+          <div class="crane-spec"><strong>5-Axle</strong> Mobile</div>
+          <div class="crane-spec"><strong>68m</strong> Main Boom</div>
+        </div>
+        <div class="crane-location">📍 <span>Dallas, TX</span> · Available Mar 10</div>
+        <div class="crane-footer">
+          <div class="crane-price"><span class="amount">$8,200</span><span class="period">/wk</span></div>
+          <a href="#" class="btn-inquire" onclick="openInquireModal('Grove GMK 5150L')">Inquire</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="crane-card">
+      <div class="crane-img" style="background:linear-gradient(135deg,#2a1e3a,#1a0d2a)">
+        <div class="crane-img-placeholder">🏗</div>
+        <div class="crane-badge-wrap"><span class="crane-badge cb-available">Available</span></div>
+      </div>
+      <div class="crane-info">
+        <div class="crane-type">Crawler Crane</div>
+        <div class="crane-name">Manitowoc 14000</div>
+        <div class="crane-specs">
+          <div class="crane-spec"><strong>300t</strong> Max Load</div>
+          <div class="crane-spec"><strong>Crawler</strong> Track</div>
+          <div class="crane-spec"><strong>91m</strong> Boom</div>
+        </div>
+        <div class="crane-location">📍 <span>Phoenix, AZ</span> · Available now</div>
+        <div class="crane-footer">
+          <div class="crane-price"><span class="amount">$22,000</span><span class="period">/mo</span></div>
+          <a href="#" class="btn-inquire" onclick="openInquireModal('Manitowoc 14000')">Inquire</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="crane-card">
+      <div class="crane-img" style="background:linear-gradient(135deg,#2a2a1e,#1a1a0d)">
+        <div class="crane-img-placeholder">🏗</div>
+        <div class="crane-badge-wrap"><span class="crane-badge cb-available">Available</span></div>
+      </div>
+      <div class="crane-info">
+        <div class="crane-type">Spider Crane · Indoor / Tight Access</div>
+        <div class="crane-name">Jekko SPX 532</div>
+        <div class="crane-specs">
+          <div class="crane-spec"><strong>3.2t</strong> Max Load</div>
+          <div class="crane-spec"><strong>Remote</strong> Controlled</div>
+          <div class="crane-spec"><strong>Indoor</strong> Capable</div>
+        </div>
+        <div class="crane-location">📍 <span>Chicago, IL</span> · Available now</div>
+        <div class="crane-footer">
+          <div class="crane-price"><span class="amount">$2,400</span><span class="period">/wk</span></div>
+          <a href="#" class="btn-inquire" onclick="openInquireModal('Jekko SPX 532')">Inquire</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="crane-card">
+      <div class="crane-img" style="background:linear-gradient(135deg,#1a2e3a,#0d1e2a)">
+        <div class="crane-img-placeholder">🏗</div>
+        <div class="crane-badge-wrap"><span class="crane-badge cb-available">Available</span></div>
+      </div>
+      <div class="crane-info">
+        <div class="crane-type">Carry Deck Crane</div>
+        <div class="crane-name">Shuttlelift 3340</div>
+        <div class="crane-specs">
+          <div class="crane-spec"><strong>15t</strong> Max Load</div>
+          <div class="crane-spec"><strong>360°</strong> Rotation</div>
+          <div class="crane-spec"><strong>Compact</strong> Design</div>
+        </div>
+        <div class="crane-location">📍 <span>Dallas, TX</span> · Available now</div>
+        <div class="crane-footer">
+          <div class="crane-price"><span class="amount">$1,800</span><span class="period">/wk</span></div>
+          <a href="#" class="btn-inquire" onclick="openInquireModal('Shuttlelift 3340')">Inquire</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="crane-card">
+      <div class="crane-img" style="background:linear-gradient(135deg,#2a1a1e,#1a0d10)">
+        <div class="crane-img-placeholder">🏗</div>
+        <div class="crane-badge-wrap"><span class="crane-badge cb-reserved">Reserved</span></div>
+      </div>
+      <div class="crane-info">
+        <div class="crane-type">Rough Terrain Crane</div>
+        <div class="crane-name">Terex RT 130</div>
+        <div class="crane-specs">
+          <div class="crane-spec"><strong>130t</strong> Max Load</div>
+          <div class="crane-spec"><strong>4WD/4WS</strong></div>
+          <div class="crane-spec"><strong>46m</strong> Boom</div>
+        </div>
+        <div class="crane-location">📍 <span>Phoenix, AZ</span> · Available Apr 1</div>
+        <div class="crane-footer">
+          <div class="crane-price"><span class="amount">$6,500</span><span class="period">/wk</span></div>
+          <a href="#" class="btn-inquire" onclick="openInquireModal('Terex RT 130')">Inquire</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LIST CTA -->
+  <div class="list-cta" id="list-crane">
+    <h2>Own a Crane? List It Free.</h2>
+    <p>CraneGenius connects your equipment with verified construction projects actively seeking crane rentals in your market.</p>
+    <div class="list-benefits">
+      <div class="list-benefit"><div class="icon">🎯</div><div class="val">Permit-Verified</div><div class="label">Pre-qualified leads only</div></div>
+      <div class="list-benefit"><div class="icon">🔒</div><div class="val">Exclusive Territory</div><div class="label">One operator per market</div></div>
+      <div class="list-benefit"><div class="icon">💰</div><div class="val">Free to List</div><div class="label">Pay only on closed deals</div></div>
+      <div class="list-benefit"><div class="icon">📍</div><div class="val">4 Cities Active</div><div class="label">Chicago · Dallas · Phoenix · NYC</div></div>
+    </div>
+    <a href="#" class="btn-primary" onclick="openListModal()">List Your Equipment Now →</a>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section">
+  <h2>How CraneGenius Works</h2>
+  <p class="how-sub">We scan city building permits daily to find projects needing cranes — then match them to your fleet.</p>
+  <div class="how-grid">
+    <div class="how-card"><div class="how-num">01</div><div class="how-title">We Find the Jobs</div><div class="how-desc">Our system scans thousands of building permits daily across Chicago, Dallas, Phoenix and NYC — scoring each project for crane likelihood.</div></div>
+    <div class="how-card"><div class="how-num">02</div><div class="how-title">We Make the Match</div><div class="how-desc">Hot leads are matched to crane companies in the right market. You get the contractor's contact info and project details — specific, actionable intel.</div></div>
+    <div class="how-card"><div class="how-num">03</div><div class="how-title">You Close the Deal</div><div class="how-desc">Contact the contractor directly or have our team broker the introduction. You handle the rental. We take a small commission only when a job closes.</div></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">CraneGenius</div>
+  <div class="footer-links">
+    <a href="/marketplace">Marketplace</a>
+    <a href="/#how-it-works">How It Works</a>
+    <a href="mailto:david@cranegenius.com">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 CraneGenius · Built on permit intelligence</div>
+</footer>
+
+<!-- INQUIRE MODAL -->
+<div class="modal-overlay" id="inquire-modal">
+  <div class="modal">
+    <h3>Request Information</h3>
+    <p class="modal-sub" id="modal-crane-name">Get details on this crane</p>
+    <div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" placeholder="John Smith"></div>
+    <div class="form-group"><label class="form-label">Company</label><input type="text" class="form-input" placeholder="ABC Construction"></div>
+    <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="john@company.com"></div>
+    <div class="form-group"><label class="form-label">Project Location & Dates</label><input type="text" class="form-input" placeholder="Chicago, IL · Starting April 2026"></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('inquire-modal')">Cancel</button>
+      <button class="btn-submit" onclick="submitInquiry()">Send Inquiry</button>
+    </div>
+  </div>
+</div>
+
+<!-- LIST MODAL -->
+<div class="modal-overlay" id="list-modal">
+  <div class="modal">
+    <h3>List Your Crane</h3>
+    <p class="modal-sub">Free listing · We bring you qualified leads</p>
+    <div class="form-group"><label class="form-label">Company Name</label><input type="text" class="form-input" placeholder="Your crane rental company"></div>
+    <div class="form-group"><label class="form-label">Your Name & Title</label><input type="text" class="form-input" placeholder="John Smith, Owner"></div>
+    <div class="form-group"><label class="form-label">Phone</label><input type="tel" class="form-input" placeholder="(555) 000-0000"></div>
+    <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="john@company.com"></div>
+    <div class="form-group"><label class="form-label">City / Market</label><input type="text" class="form-input" placeholder="Chicago, IL"></div>
+    <div class="form-group"><label class="form-label">Equipment (brief description)</label><input type="text" class="form-input" placeholder="e.g. Tower crane 150T, mobile crane 80T"></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('list-modal')">Cancel</button>
+      <button class="btn-submit" onclick="submitListing()">Submit Listing</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openInquireModal(name) {
+  document.getElementById('modal-crane-name').textContent = 'Inquiring about: ' + name;
+  document.getElementById('inquire-modal').classList.add('open');
+}
+function openListModal() {
+  document.getElementById('list-modal').classList.add('open');
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+function submitInquiry() {
+  alert('Thank you! We\'ll connect you with the crane operator within 24 hours.');
+  closeModal('inquire-modal');
+}
+function submitListing() {
+  alert('Thank you! We\'ll be in touch within 24 hours to get your equipment listed.');
+  closeModal('list-modal');
+}
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', function(e) { if(e.target===this) this.classList.remove('open'); });
+});
+document.querySelectorAll('.filter-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
