@@ -1,0 +1,4 @@
+data/
+credentials/
+*.csv
+__pycache__/
