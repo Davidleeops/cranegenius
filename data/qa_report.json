@@ -1,0 +1,17 @@
+{
+  "total_scored_enriched": 1427,
+  "total_with_domain": 680,
+  "total_verified_valid": 8,
+  "valid_email_rate": 0.006,
+  "hot_count": 1,
+  "warm_count": 7,
+  "catchall_review_count": 136,
+  "gate_email_rate_ok": false,
+  "gate_note": "WARNING: valid email rate below 30% — review before sending",
+  "gate_report": {
+    "halt": false,
+    "failures": [],
+    "warnings": [],
+    "valid_email_rate": 0.006
+  }
+}

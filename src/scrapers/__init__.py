@@ -2,11 +2,12 @@ from __future__ import annotations
 
 from .phoenix import PhoenixScraper
 from .dallas import DallasScraper
+from .chicago import ChicagoScraper
 
-# Registry: source method name → scraper class
 SCRAPER_REGISTRY = {
     "phoenix_csv": PhoenixScraper,
     "dallas_socrata": DallasScraper,
+    "chicago_socrata": ChicagoScraper,
 }
 
-__all__ = ["SCRAPER_REGISTRY", "PhoenixScraper", "DallasScraper"]
+__all__ = ["SCRAPER_REGISTRY", "PhoenixScraper", "DallasScraper", "ChicagoScraper"]

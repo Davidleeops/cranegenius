@@ -28,6 +28,7 @@ from .site_contact_miner import mine_contacts
 from .candidate_builder import build_candidates
 from .verify_millionverifier import verify_with_millionverifier
 from .exporter import export_sender_lists
+from .sheets_exporter import export_to_sheets
 from .monitor import check_gates, load_state, save_state, update_source_state
 from .utils import load_yaml, save_csv, setup_logging
 
@@ -118,8 +119,15 @@ def main() -> None:
                     "Populate data/company_domain_seed.csv and re-run.")
 
     # ── STAGE 7: VERIFY ───────────────────────────────────────────
+    # Only verify real domains — skip name-generated fakes to save credits
+    if "contractor_domain" in enriched_df.columns and "domain_resolution_source" in enriched_df.columns:
+        real_domains = enriched_df[enriched_df["domain_resolution_source"].isin(["seed_partial","seed","enrichment_confident"])]["contractor_domain"].dropna().unique()
+        verify_candidates = candidates_df[candidates_df["contractor_domain"].isin(real_domains)].copy()
+        log.info("[Stage 7] Filtering candidates: %d → %d (skipping generated domains)", len(candidates_df), len(verify_candidates))
+    else:
+        verify_candidates = candidates_df
     log.info("\n[Stage 7] Verifying emails with MillionVerifier...")
-    verified_df = verify_with_millionverifier(candidates_df)
+    verified_df = verify_with_millionverifier(verify_candidates)
     save_csv(verified_df, "data/verified_contacts.csv")
 
     # ── STAGE 8: MERGE + EXPORT ───────────────────────────────────
@@ -137,6 +145,8 @@ def main() -> None:
         threshold_hot=threshold_hot,
         threshold_warm=threshold_warm,
     )
+
+    export_to_sheets(warm_df, hot_df, catchall_df)
 
     # ── STAGE 9: GATE CHECK + QA ──────────────────────────────────
     log.info("\n[Stage 9] Running monitoring gates...")

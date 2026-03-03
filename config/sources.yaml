@@ -43,3 +43,11 @@ sources:
     url: "https://www.denvergov.org/opendata/dataset/city-and-county-of-denver-permits"
     notes: "Denver Open Data — find direct CSV download link"
     enabled: false
+
+  - id: "chicago_permits"
+    source_type: "permit"
+    jurisdiction: "Chicago, IL"
+    method: "chicago_socrata"
+    url: "https://data.cityofchicago.org/resource/ydr8-5enu.csv"
+    notes: "Chicago building permits via Socrata - live 2026 data with GC contacts"
+    enabled: true
