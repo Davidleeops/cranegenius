@@ -340,10 +340,6 @@ function e(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').re
 function toast(msg,type='info'){const c=document.getElementById('toasts');const d=document.createElement('div');d.className=`toast t-${type==='ok'?'ok':type==='warn'?'warn':type==='err'?'err':'info'}`;const ic={ok:'✓',warn:'⚠',info:'ℹ',err:'✕'};d.innerHTML=`<span>${ic[type]||'ℹ'}</span>${msg}`;c.appendChild(d);document.getElementById('lastAct').textContent=msg;setTimeout(()=>d.remove(),4000);}
 
 window.onload=async()=>{
-  // Open bot panel immediately on marketplace page
-  document.getElementById("botPanel").classList.add("open");
-  document.getElementById("botTrig").classList.add("open");
-  bopen=true;
   renderListings();
   await addBot("Hey! 👋 I'm your CraneGenius listing assistant.\n\nI'll get your crane listed on the marketplace in about 2 minutes — just answer a few quick questions.\n\nFirst: what's the name of your company?",false);
   document.getElementById('chatInput').focus();
