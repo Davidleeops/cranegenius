@@ -38,21 +38,20 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .nav-stat strong{color:var(--accent3);}
 
 /* HEADER STRIP */
-.header{position:relative;z-index:1;padding:48px 40px 0;max-width:1400px;margin:0 auto;}
+.header{position:relative;z-index:1;padding:36px 40px 0;max-width:1400px;margin:0 auto;}
 .header-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px;}
 .header-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,5vw,64px);text-transform:uppercase;line-height:.95;letter-spacing:.01em;}
 .header-title em{font-style:normal;color:var(--accent);}
 .header-sub{font-size:14px;color:var(--muted2);max-width:420px;line-height:1.6;}
 
 /* FILTER BAR */
-.filter-bar{position:sticky;top:53px;z-index:100;background:rgba(4,8,16,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;}
-.filter-inner{max-width:1400px;margin:0 auto;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
-.filter-inner::-webkit-scrollbar{display:none;}
+.filter-bar{position:sticky;top:53px;z-index:100;background:rgba(4,8,16,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:10px 40px 12px;}
+.filter-inner{max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:10px;}
 
-.filter-group{display:flex;flex-direction:column;padding:10px 0;border-right:1px solid var(--border);min-width:0;}
-.filter-group:last-child{border-right:none;}
-.filter-group-label{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;padding:0 16px;margin-bottom:6px;}
-.filter-pills{display:flex;gap:4px;padding:0 12px;flex-wrap:nowrap;}
+.filter-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.filter-group{display:flex;align-items:center;gap:8px;min-width:0;}
+.filter-group-label{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;}
+.filter-pills{display:flex;gap:5px;flex-wrap:wrap;}
 
 .pill{font-family:'Space Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid var(--border2);color:var(--muted2);cursor:pointer;border-radius:1px;transition:all .15s;white-space:nowrap;background:transparent;letter-spacing:.04em;}
 .pill:hover{border-color:var(--accent);color:var(--accent);}
@@ -245,61 +244,67 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 <div class="filter-bar">
   <div class="filter-inner">
 
-    <div class="filter-group">
-      <div class="filter-group-label">Search</div>
-      <div class="filter-pills search-wrap">
-        <span class="search-icon">⌕</span>
-        <input class="search-input" id="searchInput" placeholder="crane type, equipment, application..." oninput="applyFilters()">
+    <!-- Row 1: Search + Build Type + Phase -->
+    <div class="filter-row">
+      <div class="filter-group">
+        <div class="filter-group-label">Search</div>
+        <div style="display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border2);padding:5px 12px;min-width:220px;">
+          <span style="color:var(--muted);font-size:13px;">⌕</span>
+          <input class="search-input" id="searchInput" placeholder="crane type, application..." oninput="applyFilters()" style="background:transparent;border:none;color:var(--text);font-family:'Barlow',sans-serif;font-size:12px;outline:none;width:100%;">
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label">Build</div>
+        <div class="filter-pills" id="buildPills">
+          <button class="pill active" data-filter="build" data-val="all" onclick="togglePill(this,'build')">ALL</button>
+          <button class="pill" data-filter="build" data-val="hyperscale" onclick="togglePill(this,'build')">HYPERSCALE</button>
+          <button class="pill" data-filter="build" data-val="colo" onclick="togglePill(this,'build')">COLO/EDGE</button>
+          <button class="pill" data-filter="build" data-val="modular" onclick="togglePill(this,'build')">MODULAR</button>
+          <button class="pill" data-filter="build" data-val="retrofit" onclick="togglePill(this,'build')">RETROFIT</button>
+          <button class="pill" data-filter="build" data-val="ai_campus" onclick="togglePill(this,'build')">AI CAMPUS</button>
+          <button class="pill" data-filter="build" data-val="federal" onclick="togglePill(this,'build')">FEDERAL</button>
+        </div>
       </div>
     </div>
 
-    <div class="filter-group">
-      <div class="filter-group-label">Build Type</div>
-      <div class="filter-pills" id="buildPills">
-        <button class="pill active" data-filter="build" data-val="all" onclick="togglePill(this,'build')">ALL</button>
-        <button class="pill" data-filter="build" data-val="hyperscale" onclick="togglePill(this,'build')">HYPERSCALE</button>
-        <button class="pill" data-filter="build" data-val="colo" onclick="togglePill(this,'build')">COLO/EDGE</button>
-        <button class="pill" data-filter="build" data-val="modular" onclick="togglePill(this,'build')">MODULAR</button>
-        <button class="pill" data-filter="build" data-val="retrofit" onclick="togglePill(this,'build')">RETROFIT</button>
-        <button class="pill" data-filter="build" data-val="ai_campus" onclick="togglePill(this,'build')">AI CAMPUS</button>
-        <button class="pill" data-filter="build" data-val="federal" onclick="togglePill(this,'build')">FEDERAL</button>
+    <!-- Row 2: Phase + Priority + Category -->
+    <div class="filter-row">
+      <div class="filter-group">
+        <div class="filter-group-label">Phase</div>
+        <div class="filter-pills" id="phasePills">
+          <button class="pill active" data-filter="phase" data-val="all" onclick="togglePill(this,'phase')">ALL</button>
+          <button class="pill" data-filter="phase" data-val="civil" onclick="togglePill(this,'phase')">CIVIL</button>
+          <button class="pill" data-filter="phase" data-val="structural" onclick="togglePill(this,'phase')">STRUCTURAL</button>
+          <button class="pill" data-filter="phase" data-val="electrical" onclick="togglePill(this,'phase')">ELECTRICAL</button>
+          <button class="pill" data-filter="phase" data-val="cooling" onclick="togglePill(this,'phase')">COOLING/MEP</button>
+          <button class="pill" data-filter="phase" data-val="fitout" onclick="togglePill(this,'phase')">FIT-OUT</button>
+          <button class="pill" data-filter="phase" data-val="site" onclick="togglePill(this,'phase')">SITE-WIDE</button>
+        </div>
       </div>
-    </div>
 
-    <div class="filter-group">
-      <div class="filter-group-label">Phase</div>
-      <div class="filter-pills" id="phasePills">
-        <button class="pill active" data-filter="phase" data-val="all" onclick="togglePill(this,'phase')">ALL</button>
-        <button class="pill" data-filter="phase" data-val="civil" onclick="togglePill(this,'phase')">CIVIL</button>
-        <button class="pill" data-filter="phase" data-val="structural" onclick="togglePill(this,'phase')">STRUCTURAL</button>
-        <button class="pill" data-filter="phase" data-val="electrical" onclick="togglePill(this,'phase')">ELECTRICAL</button>
-        <button class="pill" data-filter="phase" data-val="cooling" onclick="togglePill(this,'phase')">COOLING/MEP</button>
-        <button class="pill" data-filter="phase" data-val="fitout" onclick="togglePill(this,'phase')">FIT-OUT</button>
-        <button class="pill" data-filter="phase" data-val="site" onclick="togglePill(this,'phase')">SITE-WIDE</button>
+      <div class="filter-group">
+        <div class="filter-group-label">Priority</div>
+        <div class="filter-pills" id="priorityPills">
+          <button class="pill active" data-filter="priority" data-val="all" onclick="togglePill(this,'priority')">ALL</button>
+          <button class="pill" data-filter="priority" data-val="critical" onclick="togglePill(this,'priority')">CRITICAL</button>
+          <button class="pill" data-filter="priority" data-val="high" onclick="togglePill(this,'priority')">HIGH</button>
+          <button class="pill" data-filter="priority" data-val="medium" onclick="togglePill(this,'priority')">MEDIUM</button>
+        </div>
       </div>
-    </div>
 
-    <div class="filter-group">
-      <div class="filter-group-label">Priority</div>
-      <div class="filter-pills" id="priorityPills">
-        <button class="pill active" data-filter="priority" data-val="all" onclick="togglePill(this,'priority')">ALL</button>
-        <button class="pill" data-filter="priority" data-val="critical" onclick="togglePill(this,'priority')" style="--hover:var(--accent2);">CRITICAL</button>
-        <button class="pill" data-filter="priority" data-val="high" onclick="togglePill(this,'priority')">HIGH</button>
-        <button class="pill" data-filter="priority" data-val="medium" onclick="togglePill(this,'priority')">MEDIUM</button>
-      </div>
-    </div>
-
-    <div class="filter-group">
-      <div class="filter-group-label">Category</div>
-      <div class="filter-pills" id="catPills">
-        <button class="pill active" data-filter="category" data-val="all" onclick="togglePill(this,'category')">ALL</button>
-        <button class="pill" data-filter="category" data-val="Crawler" onclick="togglePill(this,'category')">CRAWLER</button>
-        <button class="pill" data-filter="category" data-val="All-Terrain" onclick="togglePill(this,'category')">ALL-TERRAIN</button>
-        <button class="pill" data-filter="category" data-val="Tower Crane" onclick="togglePill(this,'category')">TOWER</button>
-        <button class="pill" data-filter="category" data-val="Rough Terrain" onclick="togglePill(this,'category')">ROUGH TERRAIN</button>
-        <button class="pill" data-filter="category" data-val="Boom Truck" onclick="togglePill(this,'category')">BOOM TRUCK</button>
-        <button class="pill" data-filter="category" data-val="Specialty" onclick="togglePill(this,'category')">SPECIALTY</button>
-        <button class="pill" data-filter="category" data-val="Access / Aerial" onclick="togglePill(this,'category')">AERIAL</button>
+      <div class="filter-group">
+        <div class="filter-group-label">Category</div>
+        <div class="filter-pills" id="catPills">
+          <button class="pill active" data-filter="category" data-val="all" onclick="togglePill(this,'category')">ALL</button>
+          <button class="pill" data-filter="category" data-val="Crawler" onclick="togglePill(this,'category')">CRAWLER</button>
+          <button class="pill" data-filter="category" data-val="All-Terrain" onclick="togglePill(this,'category')">ALL-TERRAIN</button>
+          <button class="pill" data-filter="category" data-val="Tower Crane" onclick="togglePill(this,'category')">TOWER</button>
+          <button class="pill" data-filter="category" data-val="Rough Terrain" onclick="togglePill(this,'category')">ROUGH TERRAIN</button>
+          <button class="pill" data-filter="category" data-val="Boom Truck" onclick="togglePill(this,'category')">BOOM TRUCK</button>
+          <button class="pill" data-filter="category" data-val="Specialty" onclick="togglePill(this,'category')">SPECIALTY</button>
+          <button class="pill" data-filter="category" data-val="Access / Aerial" onclick="togglePill(this,'category')">AERIAL</button>
+        </div>
       </div>
     </div>
 
