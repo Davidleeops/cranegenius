@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CraneGenius — Full Data Center Lift Matrix</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #040810;
+  --surface: #080e1c;
+  --card: #0b1220;
+  --card2: #0e1628;
+  --border: #172038;
+  --border2: #1f2e50;
+  --accent: #00d4ff;
+  --accent2: #ff6b1a;
+  --accent3: #00ff9d;
+  --warn: #ffb800;
+  --purple: #a855f7;
+  --text: #e2eaf8;
+  --muted: #4a5e80;
+  --muted2: #6a7e9e;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(4,8,16,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;letter-spacing:.06em;}
+.logo span{color:var(--accent);}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.nav-tag{font-family:'Space Mono',monospace;font-size:10px;padding:3px 10px;border-radius:1px;background:rgba(255,107,26,.12);border:1px solid rgba(255,107,26,.3);color:var(--accent2);letter-spacing:.1em;}
+.nav-stat{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted2);}
+.nav-stat strong{color:var(--accent3);}
+
+/* HEADER STRIP */
+.header{position:relative;z-index:1;padding:48px 40px 0;max-width:1400px;margin:0 auto;}
+.header-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px;}
+.header-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,5vw,64px);text-transform:uppercase;line-height:.95;letter-spacing:.01em;}
+.header-title em{font-style:normal;color:var(--accent);}
+.header-sub{font-size:14px;color:var(--muted2);max-width:420px;line-height:1.6;}
+
+/* FILTER BAR */
+.filter-bar{position:sticky;top:53px;z-index:100;background:rgba(4,8,16,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px;}
+.filter-inner{max-width:1400px;margin:0 auto;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
+.filter-inner::-webkit-scrollbar{display:none;}
+
+.filter-group{display:flex;flex-direction:column;padding:10px 0;border-right:1px solid var(--border);min-width:0;}
+.filter-group:last-child{border-right:none;}
+.filter-group-label{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;padding:0 16px;margin-bottom:6px;}
+.filter-pills{display:flex;gap:4px;padding:0 12px;flex-wrap:nowrap;}
+
+.pill{font-family:'Space Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid var(--border2);color:var(--muted2);cursor:pointer;border-radius:1px;transition:all .15s;white-space:nowrap;background:transparent;letter-spacing:.04em;}
+.pill:hover{border-color:var(--accent);color:var(--accent);}
+.pill.active{background:rgba(0,212,255,.12);border-color:var(--accent);color:var(--accent);}
+.pill.active.orange{background:rgba(255,107,26,.12);border-color:var(--accent2);color:var(--accent2);}
+.pill.active.green{background:rgba(0,255,157,.1);border-color:var(--accent3);color:var(--accent3);}
+.pill.active.purple{background:rgba(168,85,247,.12);border-color:var(--purple);color:var(--purple);}
+.pill.active.yellow{background:rgba(255,184,0,.1);border-color:var(--warn);color:var(--warn);}
+
+/* SEARCH */
+.search-wrap{flex:1;padding:10px 20px;display:flex;align-items:center;gap:10px;min-width:200px;}
+.search-icon{color:var(--muted);font-size:13px;flex-shrink:0;}
+.search-input{background:transparent;border:none;color:var(--text);font-family:'Barlow',sans-serif;font-size:13px;outline:none;width:100%;min-width:120px;}
+.search-input::placeholder{color:var(--muted);}
+
+/* MAIN LAYOUT */
+.main{max-width:1400px;margin:0 auto;padding:24px 40px 80px;position:relative;z-index:1;}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:24px;}
+.stat-box{background:var(--surface);border:1px solid var(--border);padding:14px 16px;}
+.stat-n{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:28px;line-height:1;margin-bottom:2px;}
+.stat-lbl{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;line-height:1.4;}
+
+/* RESULTS HEADER */
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.results-count{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted2);}
+.results-count strong{color:var(--accent);}
+.view-toggle{display:flex;gap:4px;}
+.vtog{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:5px 10px;font-family:'Space Mono',monospace;font-size:10px;cursor:pointer;letter-spacing:.05em;transition:all .15s;}
+.vtog.active{background:var(--accent);color:var(--bg);border-color:var(--accent);}
+
+/* CARD GRID */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:12px;}
+
+/* LIFT CARD */
+.lift-card{background:var(--card);border:1px solid var(--border);transition:all .2s;cursor:pointer;position:relative;overflow:hidden;}
+.lift-card:hover{border-color:var(--border2);background:var(--card2);}
+.lift-card.expanded{border-color:var(--accent);background:var(--card2);}
+
+.card-accent-bar{height:3px;width:100%;}
+.bar-critical{background:linear-gradient(90deg,#ff2244,#ff6644);}
+.bar-high{background:linear-gradient(90deg,var(--accent2),#ffaa44);}
+.bar-medium{background:linear-gradient(90deg,var(--warn),#ffe066);}
+.bar-low{background:linear-gradient(90deg,var(--accent3),#66ffcc);}
+
+.card-header{padding:16px 18px 12px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.card-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.03em;line-height:1.2;flex:1;}
+.card-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;}
+.category-tag{font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:1px;white-space:nowrap;}
+
+.card-capacity{padding:0 18px 10px;display:flex;align-items:baseline;gap:8px;}
+.capacity-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:26px;line-height:1;}
+.capacity-label{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.05em;}
+
+.card-tags{padding:0 18px 12px;display:flex;gap:5px;flex-wrap:wrap;}
+.bt-tag{font-family:'Space Mono',monospace;font-size:9px;padding:2px 6px;border-radius:1px;background:rgba(255,255,255,.04);border:1px solid var(--border2);color:var(--muted2);}
+.bt-tag.critical{background:rgba(255,34,68,.1);border-color:rgba(255,34,68,.2);color:#ff6677;}
+.bt-tag.high{background:rgba(255,107,26,.1);border-color:rgba(255,107,26,.2);color:var(--accent2);}
+.bt-tag.medium{background:rgba(255,184,0,.08);border-color:rgba(255,184,0,.15);color:var(--warn);}
+
+.card-preview{padding:0 18px 14px;font-size:12px;color:var(--muted2);line-height:1.5;}
+
+.card-footer{padding:10px 18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.card-rate{font-family:'Space Mono',monospace;font-size:11px;color:var(--accent3);}
+.card-rate span{color:var(--muted);font-size:9px;margin-left:3px;}
+.expand-btn{font-family:'Space Mono',monospace;font-size:10px;background:transparent;border:1px solid var(--border2);color:var(--muted2);padding:4px 10px;cursor:pointer;letter-spacing:.05em;transition:all .15s;}
+.expand-btn:hover,.lift-card.expanded .expand-btn{background:var(--accent);color:var(--bg);border-color:var(--accent);}
+
+/* EXPANDED DETAIL */
+.card-detail{display:none;padding:0 18px 18px;border-top:1px solid var(--border);}
+.lift-card.expanded .card-detail{display:block;}
+
+.detail-section{margin-top:14px;}
+.detail-label{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px;}
+
+.app-list{list-style:none;display:flex;flex-direction:column;gap:3px;}
+.app-list li{font-size:12px;color:var(--muted2);padding:4px 8px;background:rgba(255,255,255,.02);border-left:2px solid var(--border2);line-height:1.4;}
+.app-list li::before{content:'→ ';}
+
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;}
+.detail-item{background:rgba(255,255,255,.02);border:1px solid var(--border);padding:8px 10px;}
+.detail-item-label{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;}
+.detail-item-val{font-size:12px;color:var(--text);line-height:1.4;}
+
+.vendor-note{background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.15);padding:10px 12px;margin-top:12px;font-size:12px;color:var(--muted2);line-height:1.5;border-left:3px solid var(--accent);}
+.vendor-note strong{color:var(--accent);font-weight:600;}
+
+.models-wrap{font-family:'Space Mono',monospace;font-size:10px;color:var(--accent2);margin-top:4px;line-height:1.6;}
+
+.priority-badge{font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:1px;letter-spacing:.08em;text-transform:uppercase;}
+.pb-critical{background:rgba(255,34,68,.15);border:1px solid rgba(255,34,68,.25);color:#ff6677;}
+.pb-high{background:rgba(255,107,26,.12);border:1px solid rgba(255,107,26,.2);color:var(--accent2);}
+.pb-medium{background:rgba(255,184,0,.1);border:1px solid rgba(255,184,0,.15);color:var(--warn);}
+.pb-low{background:rgba(0,255,157,.08);border:1px solid rgba(0,255,157,.12);color:var(--accent3);}
+
+.action-row{display:flex;gap:8px;margin-top:14px;}
+.btn-quote{flex:1;padding:9px;background:var(--accent2);color:var(--bg);border:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.1em;cursor:pointer;text-transform:uppercase;transition:all .15s;}
+.btn-quote:hover{background:#ff8444;}
+.btn-save{padding:9px 14px;background:transparent;border:1px solid var(--border2);color:var(--muted2);font-family:'Space Mono',monospace;font-size:10px;cursor:pointer;transition:all .15s;letter-spacing:.05em;}
+.btn-save:hover{border-color:var(--accent3);color:var(--accent3);}
+
+/* TABLE VIEW */
+.table-view{display:none;overflow-x:auto;}
+.lift-table{width:100%;border-collapse:collapse;}
+.lift-table th{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;padding:10px 14px;border-bottom:1px solid var(--border);text-align:left;background:var(--surface);white-space:nowrap;}
+.lift-table td{padding:11px 14px;border-bottom:1px solid rgba(23,32,56,.5);font-size:13px;vertical-align:middle;}
+.lift-table tr:hover td{background:rgba(0,212,255,.025);}
+.lift-table tr:last-child td{border-bottom:none;}
+.t-name{font-weight:600;font-size:13px;}
+.t-models{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted2);}
+.t-cap{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;color:var(--accent);}
+.t-rate{font-family:'Space Mono',monospace;font-size:11px;color:var(--accent3);}
+.t-phase{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted2);}
+.t-dur{font-size:12px;color:var(--muted2);}
+
+/* EMPTY STATE */
+.empty-state{padding:80px 20px;text-align:center;}
+.empty-icon{font-size:48px;margin-bottom:16px;}
+.empty-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;text-transform:uppercase;margin-bottom:8px;color:var(--muted2);}
+.empty-sub{font-size:14px;color:var(--muted);margin-bottom:20px;}
+
+/* SUMMARY PANEL */
+.summary-panel{position:fixed;bottom:24px;right:24px;z-index:300;background:var(--card);border:1px solid var(--border2);padding:16px 20px;min-width:240px;transform:translateY(120px);transition:transform .3s ease;box-shadow:0 8px 40px rgba(0,0,0,.6);}
+.summary-panel.show{transform:translateY(0);}
+.sp-title{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.sp-items{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;max-height:120px;overflow-y:auto;}
+.sp-item{font-size:12px;color:var(--muted2);display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.sp-remove{background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;line-height:1;padding:0 2px;transition:color .1s;}
+.sp-remove:hover{color:#ff6677;}
+.sp-count{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;color:var(--accent);margin-bottom:2px;}
+.sp-label{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.08em;}
+.sp-btn{width:100%;padding:9px;background:var(--accent2);color:var(--bg);border:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;cursor:pointer;text-transform:uppercase;letter-spacing:.08em;transition:background .15s;}
+.sp-btn:hover{background:#ff8444;}
+.sp-clear{width:100%;padding:5px;background:transparent;border:1px solid var(--border2);color:var(--muted2);font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;letter-spacing:.05em;margin-top:5px;transition:all .15s;}
+.sp-clear:hover{border-color:#ff6677;color:#ff6677;}
+
+/* LIVE DOT */
+.live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent3);animation:pulse 2s infinite;margin-right:5px;vertical-align:middle;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* PHASE COLORS */
+.phase-civil{color:#64b5f6;}
+.phase-structural{color:#ff8a65;}
+.phase-electrical{color:#ffd54f;}
+.phase-cooling{color:#80cbc4;}
+.phase-fitout{color:#ce93d8;}
+.phase-site{color:#a5d6a7;}
+
+/* PERMIT BADGE */
+.permit-yes{font-family:'Space Mono',monospace;font-size:9px;padding:2px 6px;background:rgba(255,184,0,.1);border:1px solid rgba(255,184,0,.15);color:var(--warn);border-radius:1px;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav,filter-bar{padding-left:16px;padding-right:16px;}
+  .main,.header{padding-left:16px;padding-right:16px;}
+  .card-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:repeat(3,1fr);}
+  .filter-bar{padding:0 16px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/data-centers/" style="text-decoration:none;"><div class="logo">CRANE<span>GENIUS</span></div></a>
+  <div class="nav-right">
+    <div class="nav-tag">DATA CENTERS</div>
+    <div class="nav-stat"><span class="live-dot"></span><strong id="navTotal">35</strong> lift types</div>
+    <button style="background:var(--accent2);color:var(--bg);border:none;padding:8px 18px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.1em;cursor:pointer;" onclick="openQuote()">GET QUOTES →</button>
+  </div>
+</nav>
+<div style="background:rgba(4,8,16,.97);border-bottom:1px solid #172038;padding:0 40px;position:sticky;top:53px;z-index:99;display:flex;gap:0;overflow-x:auto;">
+  <a href="/data-centers/" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;padding:10px 20px;color:#4a5e80;border-bottom:2px solid transparent;text-decoration:none;text-transform:uppercase;white-space:nowrap;">Overview</a>
+  <a href="/data-centers/ai-planner" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;padding:10px 20px;color:#4a5e80;border-bottom:2px solid transparent;text-decoration:none;text-transform:uppercase;white-space:nowrap;">AI Lift Planner</a>
+  <a href="/data-centers/lift-matrix" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;padding:10px 20px;color:#00d4ff;border-bottom:2px solid #00d4ff;text-decoration:none;text-transform:uppercase;white-space:nowrap;">Full Lift Matrix</a>
+  <a href="/" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;padding:10px 20px;color:#4a5e80;border-bottom:2px solid transparent;text-decoration:none;text-transform:uppercase;white-space:nowrap;margin-left:auto;">← Main Site</a>
+</div>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-title">Complete Data Center<br>Lift <em>Intelligence</em></div>
+    </div>
+    <div class="header-sub">Every crane type, every weight spec, every phase — across all 6 data center build categories. Filter, explore, and build your lift plan.</div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-inner">
+
+    <div class="filter-group">
+      <div class="filter-group-label">Search</div>
+      <div class="filter-pills search-wrap">
+        <span class="search-icon">⌕</span>
+        <input class="search-input" id="searchInput" placeholder="crane type, equipment, application..." oninput="applyFilters()">
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <div class="filter-group-label">Build Type</div>
+      <div class="filter-pills" id="buildPills">
+        <button class="pill active" data-filter="build" data-val="all" onclick="togglePill(this,'build')">ALL</button>
+        <button class="pill" data-filter="build" data-val="hyperscale" onclick="togglePill(this,'build')">HYPERSCALE</button>
+        <button class="pill" data-filter="build" data-val="colo" onclick="togglePill(this,'build')">COLO/EDGE</button>
+        <button class="pill" data-filter="build" data-val="modular" onclick="togglePill(this,'build')">MODULAR</button>
+        <button class="pill" data-filter="build" data-val="retrofit" onclick="togglePill(this,'build')">RETROFIT</button>
+        <button class="pill" data-filter="build" data-val="ai_campus" onclick="togglePill(this,'build')">AI CAMPUS</button>
+        <button class="pill" data-filter="build" data-val="federal" onclick="togglePill(this,'build')">FEDERAL</button>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <div class="filter-group-label">Phase</div>
+      <div class="filter-pills" id="phasePills">
+        <button class="pill active" data-filter="phase" data-val="all" onclick="togglePill(this,'phase')">ALL</button>
+        <button class="pill" data-filter="phase" data-val="civil" onclick="togglePill(this,'phase')">CIVIL</button>
+        <button class="pill" data-filter="phase" data-val="structural" onclick="togglePill(this,'phase')">STRUCTURAL</button>
+        <button class="pill" data-filter="phase" data-val="electrical" onclick="togglePill(this,'phase')">ELECTRICAL</button>
+        <button class="pill" data-filter="phase" data-val="cooling" onclick="togglePill(this,'phase')">COOLING/MEP</button>
+        <button class="pill" data-filter="phase" data-val="fitout" onclick="togglePill(this,'phase')">FIT-OUT</button>
+        <button class="pill" data-filter="phase" data-val="site" onclick="togglePill(this,'phase')">SITE-WIDE</button>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <div class="filter-group-label">Priority</div>
+      <div class="filter-pills" id="priorityPills">
+        <button class="pill active" data-filter="priority" data-val="all" onclick="togglePill(this,'priority')">ALL</button>
+        <button class="pill" data-filter="priority" data-val="critical" onclick="togglePill(this,'priority')" style="--hover:var(--accent2);">CRITICAL</button>
+        <button class="pill" data-filter="priority" data-val="high" onclick="togglePill(this,'priority')">HIGH</button>
+        <button class="pill" data-filter="priority" data-val="medium" onclick="togglePill(this,'priority')">MEDIUM</button>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <div class="filter-group-label">Category</div>
+      <div class="filter-pills" id="catPills">
+        <button class="pill active" data-filter="category" data-val="all" onclick="togglePill(this,'category')">ALL</button>
+        <button class="pill" data-filter="category" data-val="Crawler" onclick="togglePill(this,'category')">CRAWLER</button>
+        <button class="pill" data-filter="category" data-val="All-Terrain" onclick="togglePill(this,'category')">ALL-TERRAIN</button>
+        <button class="pill" data-filter="category" data-val="Tower Crane" onclick="togglePill(this,'category')">TOWER</button>
+        <button class="pill" data-filter="category" data-val="Rough Terrain" onclick="togglePill(this,'category')">ROUGH TERRAIN</button>
+        <button class="pill" data-filter="category" data-val="Boom Truck" onclick="togglePill(this,'category')">BOOM TRUCK</button>
+        <button class="pill" data-filter="category" data-val="Specialty" onclick="togglePill(this,'category')">SPECIALTY</button>
+        <button class="pill" data-filter="category" data-val="Access / Aerial" onclick="togglePill(this,'category')">AERIAL</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- STATS -->
+  <div class="stats-row" id="statsRow">
+    <div class="stat-box"><div class="stat-n" style="color:var(--accent)" id="sTotal">35</div><div class="stat-lbl">Total Lift<br>Types</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:#ff4466" id="sCritical">—</div><div class="stat-lbl">Critical<br>Priority</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:var(--accent2)" id="sHigh">—</div><div class="stat-lbl">High<br>Priority</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:var(--accent3)" id="sPermit">—</div><div class="stat-lbl">Require<br>Permits</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:var(--warn)" id="sPhases">6</div><div class="stat-lbl">Construction<br>Phases</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:var(--purple)" id="sSelected">0</div><div class="stat-lbl">In Your<br>Plan</div></div>
+  </div>
+
+  <!-- RESULTS HEADER -->
+  <div class="results-header">
+    <div class="results-count"><span class="live-dot"></span>Showing <strong id="resultCount">35</strong> lift types</div>
+    <div class="view-toggle">
+      <button class="vtog active" id="toggleGrid" onclick="setView('grid')">⊞ CARDS</button>
+      <button class="vtog" id="toggleTable" onclick="setView('table')">≡ TABLE</button>
+    </div>
+  </div>
+
+  <!-- CARD GRID -->
+  <div class="card-grid" id="cardGrid"></div>
+
+  <!-- TABLE VIEW -->
+  <div class="table-view" id="tableView">
+    <table class="lift-table">
+      <thead>
+        <tr>
+          <th>Equipment Type</th>
+          <th>Category</th>
+          <th>Phase</th>
+          <th>Capacity</th>
+          <th>Key Models</th>
+          <th>Duration</th>
+          <th>Est. Daily Rate</th>
+          <th>Priority</th>
+          <th>Permit</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- EMPTY STATE -->
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <div class="empty-icon">🏗️</div>
+    <div class="empty-title">No Lifts Match</div>
+    <div class="empty-sub">Try adjusting your filters or clearing the search.</div>
+    <button class="pill active" onclick="resetFilters()">CLEAR ALL FILTERS</button>
+  </div>
+
+</div>
+
+<!-- QUOTE PANEL -->
+<div class="summary-panel" id="summaryPanel">
+  <div class="sp-title">📋 Your Lift Plan</div>
+  <div style="display:flex;gap:16px;margin-bottom:10px;">
+    <div><div class="sp-count" id="spCount">0</div><div class="sp-label">ITEMS</div></div>
+  </div>
+  <div class="sp-items" id="spItems"></div>
+  <button class="sp-btn" onclick="openQuote()">REQUEST QUOTES →</button>
+  <button class="sp-clear" onclick="clearPlan()">CLEAR PLAN</button>
+</div>
+
+<script>
+// ─── DATABASE ──────────────────────────────────────────────────────────────────
+const LIFTS = [
+  // CIVIL
+  {id:"crawler_heavy",phase:"civil",name:"Crawler Crane — Heavy Civil",category:"Crawler",capacity:"750–1,500T",capacityTons:1500,models:"Liebherr LR 1750 / LR 11000, Manitowoc 21000, Demag CC 3800",applications:["Pile cap installation on large mat foundations","Pre-cast concrete panel placement","Caisson and drilled shaft operations","Heavy precast beam setting","Crawler self-assembly (requires assist crane)"],duration:"8–14 weeks",setup:"60×80 ft minimum cleared area",ground:"8,500–12,000 psf — verify geotech",priority:"critical",permit:true,vendorNote:"Book 12–16 weeks in advance. Mobilization/demob cost significant — maximize utilization per visit.",buildTypes:["hyperscale","ai_campus","federal"],rate:"$18,000–$32,000/day"},
+  {id:"piling_rig",phase:"civil",name:"Piling / Drilling Rig",category:"Specialty",capacity:"Rig-specific — site dependent",capacityTons:null,models:"Bauer BG 28, BG 33, BG 40 / Liebherr LB 28, LB 36",applications:["Auger cast / CFA pile installation","Drilled shaft (caisson) construction","Driven steel H-pile or pipe pile","Vibro-displacement stone columns","Micropile installation for underpinning"],duration:"4–10 weeks",setup:"30×30 ft per rig",ground:"Tracked — distribute via crane mats",priority:"critical",permit:false,vendorNote:"Pile count on hyperscale campus: 400–1,200 typical. Two rigs may be justified on large sites.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit"],rate:"$6,500–$14,000/day"},
+  {id:"rt_civil",phase:"civil",name:"Rough Terrain Crane — Civil Works",category:"Rough Terrain",capacity:"100–165T",capacityTons:165,models:"Grove RT9150E, Liebherr LTR 1100, Manitowoc MLC165",applications:["Excavation shoring installation","Formwork placement and stripping","Rebar bundle handling","Underground utility conduit placement","Dewatering equipment installation"],duration:"3–5 months (full civil phase)",setup:"Minimal — designed for site mobility",ground:"Navigates uneven/unprepared surfaces",priority:"critical",permit:false,vendorNote:"Continuous use throughout civil phase. Most cost-effective on long-term rental vs. daily call.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit","modular"],rate:"$2,800–$4,200/day"},
+  {id:"concrete_boom",phase:"civil",name:"Concrete Placing Boom",category:"Specialty",capacity:"Putzmeister / Schwing — 28–36 m reach",capacityTons:null,models:"Putzmeister MX 28, MX 32, MX 36 / Schwing HB 36, HB 40",applications:["Mat foundation slab pours (up to 8,000+ CY)","Grade beam concrete placement","Pile cap pours","Elevated equipment pads","Slab-on-grade large floor plates"],duration:"2–4 weeks per major pour",setup:"Anchor-mounted — 20×20 ft base",ground:"Minimal via anchor frame",priority:"high",permit:false,vendorNote:"Coordinate with pump trucks. Large pours run 24/7 — plan crew shifts.",buildTypes:["hyperscale","colo","ai_campus","federal"],rate:"$1,800–$3,200/day"},
+  {id:"boom_truck_civil",phase:"civil",name:"Telescopic Boom Truck — Civil Utility",category:"Boom Truck",capacity:"40–80T",capacityTons:80,models:"Manitex 50128S, Elliott 45105F, National Crane 1400H",applications:["Material handling and site staging","Small precast placement","Crane mat and outrigger pad moves","Equipment positioning for larger cranes","Survey and inspection access"],duration:"Full civil phase",setup:"Self-contained",ground:"Outrigger pads on soft ground",priority:"medium",permit:false,vendorNote:"2–3 units on large hyperscale sites for continuous productivity.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit","modular"],rate:"$1,200–$2,000/day"},
+  {id:"pick_carry",phase:"civil",name:"Pick & Carry — Site Mobility",category:"Pick & Carry",capacity:"70–100T",capacityTons:100,models:"Tadano GR-1000XL, Liebherr LTM 1070-4.2, Grove GMK3060L",applications:["Moving equipment around active site","Loading and unloading trucks","Repositioning site equipment","Assisting piling rigs and pumps","High-frequency small picks throughout day"],duration:"Full build — continuous",setup:"Road-going — no fixed position",ground:"Prepared access roads",priority:"medium",permit:false,vendorNote:"High utilization — often most cost-effective on long-term rental vs. daily.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit"],rate:"$1,400–$2,400/day"},
+  // STRUCTURAL
+  {id:"tower_luffing",phase:"structural",name:"Tower Crane — Luffing Jib",category:"Tower Crane",capacity:"12–20T tip / 32T max",capacityTons:32,models:"Liebherr 542 HC-L, Potain MR 418, Comedil CTL 320",applications:["Structural steel column and beam erection","Metal deck placement","Curtain wall panel setting","HVAC equipment on roof","Multi-story mechanical room erection"],duration:"6–12 months",setup:"Foundation pier 12×12 ft / mast ties every 150 ft",ground:"Engineered footing — ~3,000 psf",priority:"critical",permit:true,vendorNote:"Luffing jib preferred when multiple tower cranes share airspace. Anti-collision systems required.",buildTypes:["hyperscale","colo","ai_campus","federal"],rate:"$3,200–$6,800/day"},
+  {id:"tower_flattop",phase:"structural",name:"Tower Crane — Flat Top (per unit)",category:"Tower Crane",capacity:"8–16T tip / 24T max",capacityTons:24,models:"Liebherr 380 EC-B, Potain MC 435, Terex CTT 332",applications:["Steel erection — interior bays","Precast concrete panel installation","Formwork systems (table/flying forms)","Long-reach material distribution","Roof deck and insulation packages"],duration:"5–10 months",setup:"Foundation pier or rail-mounted",ground:"Engineered footing — coordinate with EOR",priority:"critical",permit:true,vendorNote:"Quantity: 2–4 units per building on large halls. Climbing kit adds lead time.",buildTypes:["hyperscale","colo","ai_campus","federal"],rate:"$2,400–$4,800/day"},
+  {id:"crawler_structural",phase:"structural",name:"Crawler Crane — Long Boom Steel",category:"Crawler",capacity:"300–600T",capacityTons:600,models:"Manitowoc 14000, Liebherr LR 1300, Demag CC 2800",applications:["Long-span truss installation (80–120 ft)","Pre-engineered building erection","Large steel transfer beams","Skylight and rooftop structure","Equipment penthouse structural steel"],duration:"4–8 weeks",setup:"40×60 ft + travel corridor",ground:"7,000–10,000 psf — crane mats required",priority:"high",permit:true,vendorNote:"One-time mobilization for specific long-span picks — batch all similar picks before demob.",buildTypes:["hyperscale","ai_campus"],rate:"$9,500–$18,000/day"},
+  {id:"at_structural",phase:"structural",name:"All-Terrain Crane — Steel Assist",category:"All-Terrain",capacity:"200–350T",capacityTons:350,models:"Liebherr LTM 1230-5.1, Grove GMK5250XL, Tadano ATF 220G-5",applications:["Steel column splices at grade","Assist picks for tower crane blind spots","Exterior structural steel low-rise","Bridge crane beam installation","Heavy precast double-tee placement"],duration:"4–10 weeks",setup:"Road-going — setup 2–4 hours",ground:"Outrigger pads — 3,500–5,000 psf",priority:"high",permit:true,vendorNote:"High flexibility vs. crawler. Good for burst erection phases.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit"],rate:"$5,500–$9,500/day"},
+  {id:"manlift_structural",phase:"structural",name:"Personnel Basket / Man Lift",category:"Access / Aerial",capacity:"Personnel access",capacityTons:null,models:"JLG 860SJ, Genie SX-180, Skyjack SJ63T",applications:["Bolt-up crews at height","Weld inspection access","Plumb and alignment verification","Cable/conduit routing on structural","Safety netting installation"],duration:"Full structural phase",setup:"Wheeled — moves as needed",ground:"Firm level surface or engineered pads",priority:"medium",permit:false,vendorNote:"4–8 units typical on active steel erection projects. Often not planned early enough.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit"],rate:"$280–$480/day"},
+  // ELECTRICAL
+  {id:"crawler_transformer",phase:"electrical",name:"Crawler Crane — Transformer Set (Heavy)",category:"Crawler",capacity:"400–1,000T",capacityTons:1000,models:"Liebherr LR 11000, Demag CC 6800, Manitowoc 31000",applications:["Primary substation transformer placement — largest single lift","Utility switchgear building placement","Large pad-mount transformer setting","Generator set > 100T placement","Transmission line structure installation"],duration:"2–4 weeks per transformer event",setup:"80×100 ft minimum — coordinate with utility",ground:"10,000–15,000 psf — engineered crane pads required",priority:"critical",permit:true,vendorNote:"Largest lift on most projects. Utility coordination required (often 6+ months lead). Transformer delivered on multi-axle transport.",buildTypes:["hyperscale","ai_campus","federal"],rate:"$28,000–$55,000/day"},
+  {id:"at_transformer",phase:"electrical",name:"All-Terrain Crane — Transformer Set (Medium)",category:"All-Terrain",capacity:"250–500T",capacityTons:500,models:"Liebherr LTM 1350-6.2, Grove GMK6400, Tadano ATF 400G-6",applications:["Medium substation transformer placement (100–250T units)","Dry-type transformer inside buildings","Switchgear room equipment placement","Secondary distribution transformer setting","UPS bypass equipment placement"],duration:"1–2 weeks per event",setup:"50×70 ft minimum",ground:"6,000–9,000 psf — check concrete pad capacity",priority:"critical",permit:true,vendorNote:"Colo and edge facilities typically use AT crane vs. crawler. More flexible setup.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit"],rate:"$12,000–$22,000/day"},
+  {id:"generator_crane",phase:"electrical",name:"RT / AT Crane — Generator Sets",category:"All-Terrain",capacity:"100–220T",capacityTons:220,models:"Grove RT9150E, Liebherr LTM 1130, Manitowoc MLC165",applications:["Emergency diesel generator placement (15–50T/unit)","Natural gas generator installation","Generator fuel tank placement","Exhaust silencer and stack placement","Automatic transfer switch (ATS) installation"],duration:"2–5 weeks (quantity dependent)",setup:"30×50 ft per generator pad",ground:"4,000–6,000 psf on equipment pads",priority:"critical",permit:true,vendorNote:"Hyperscale: 20–60+ generator units. Schedule serially or parallel with multiple cranes.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit"],rate:"$3,200–$6,500/day"},
+  {id:"boom_electrical",phase:"electrical",name:"Boom Truck — Medium Electrical Equipment",category:"Boom Truck",capacity:"30–60T",capacityTons:60,models:"Manitex 40124SHL, National Crane 900A, Elliott 43105F",applications:["Switchgear sections — set and sequence","MV ring bus gear placement","PDU placement in white space","Battery cabinet placement — BESS or UPS","Medium-sized generator placement (< 30T)"],duration:"3–6 months",setup:"Street or yard access required",ground:"Outrigger pads on soft surfaces",priority:"high",permit:false,vendorNote:"Continuous need through electrical phase — keep under contract vs. day-call.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit"],rate:"$1,400–$2,600/day"},
+  {id:"articulating_electrical",phase:"electrical",name:"Articulating Boom — Electrical Work",category:"Access / Aerial",capacity:"Personnel + 500 lb",capacityTons:null,models:"JLG 600AJ, Genie Z-60/37FE, Skyjack SJ46AJ",applications:["Overhead cable tray installation","Bus duct installation — overhead routing","MV switchgear inspection","Lighting fixture installation","Panel board and meter installation at height"],duration:"4–8 months",setup:"Compact — designed for indoor use",ground:"Indoor concrete slab — verify capacity",priority:"high",permit:false,vendorNote:"Indoor electric-powered models required. Quantity: 8–20 on large projects.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit"],rate:"$180–$320/day"},
+  // COOLING/MEP
+  {id:"crawler_cooling",phase:"cooling",name:"Crawler Crane — Cooling Tower Install",category:"Crawler",capacity:"250–500T",capacityTons:500,models:"Liebherr LR 1250, Manitowoc 16000, Demag CC 2800-1",applications:["Cooling tower modules on grade or elevated steel","Evaporative cooling tower cells (50–120T/section)","Adiabatic cooler placement","Chiller plant — large centrifugal units","Primary chilled water pump / heat exchanger"],duration:"3–6 weeks per cooling tower event",setup:"50×70 ft — often on finished concrete",ground:"8,000 psf — verify yard slab capacity",priority:"critical",permit:true,vendorNote:"Cooling tower weight varies widely — verify manufacturer drawings. Hyperscale: 8–24 cells typical.",buildTypes:["hyperscale","ai_campus","federal"],rate:"$9,000–$18,000/day"},
+  {id:"at_mep",phase:"cooling",name:"All-Terrain Crane — MEP Equipment",category:"All-Terrain",capacity:"100–250T",capacityTons:250,models:"Liebherr LTM 1130-5.1, Grove GMK4100, Tadano ATF 100G-4",applications:["Air handling unit (AHU) roof placement","CRAH/CRAC unit installation","Precision cooling via roof hatch","Chiller plant — medium units (30–80T)","Dry cooler and adiabatic system placement"],duration:"4–10 weeks",setup:"30×50 ft minimum",ground:"Verify yard slab or road capacity",priority:"critical",permit:true,vendorNote:"Sequence with roof completion — need watertight roof before placements via openings.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit"],rate:"$4,500–$8,000/day"},
+  {id:"rt_cooling",phase:"cooling",name:"Rough Terrain — Piping & Mechanical",category:"Rough Terrain",capacity:"80–150T",capacityTons:150,models:"Grove RT765E, Liebherr LTR 1060, Manitowoc MLC100",applications:["Large diameter piping spools (CHW, condenser)","Prefabricated pipe rack placement","Mechanical room equipment sequencing","Pump skid placement","Chemical treatment skid installation"],duration:"3–5 months",setup:"Yard and interior access required",ground:"Mats required on unprepared surfaces",priority:"high",permit:false,vendorNote:"Often overlaps with electrical phase — coordinate schedules to avoid crane conflicts.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit"],rate:"$2,400–$4,000/day"},
+  {id:"boom_mep",phase:"cooling",name:"Boom Truck — Small MEP Equipment",category:"Boom Truck",capacity:"20–50T",capacityTons:50,models:"National Crane 600E, Manitex 26101, Elliott 30105",applications:["Rooftop HVAC units (RTUs) — small/mid-size","Exhaust fan placement","Cooling coil sections","Condenser unit placement","Fire suppression system tanks","Electrical panel placement on exterior"],duration:"2–4 months",setup:"Street or yard access",ground:"Outrigger pads required",priority:"medium",permit:false,vendorNote:"High frequency of small picks — cost-effective as continuously retained unit.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit","modular"],rate:"$900–$1,600/day"},
+  {id:"rigging_specialty",phase:"cooling",name:"Specialized Rigging — Precision Placements",category:"Specialty",capacity:"Custom engineered per lift",capacityTons:null,models:"Engineered rigging: spreader beams, custom slings, below-hook devices",applications:["Chiller replacement through building openings","Transformer sliding into tight electrical rooms","Equipment placement through roof hatches","Precision picks with limited approach angles","Tandem crane lifts exceeding single crane capacity"],duration:"Per event — 1 day to 2 weeks",setup:"Custom per lift — engineer review required",ground:"Per engineered lift plan",priority:"high",permit:true,vendorNote:"Rigging engineer required on all engineered lifts. Lift plans required by OSHA when > 75% crane capacity.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit"],rate:"$3,500–$15,000 (event-based)"},
+  // FIT-OUT
+  {id:"telehandler",phase:"fitout",name:"Telehandler / RT Forklift",category:"Material Handling",capacity:"6,000–15,000 lb",capacityTons:7.5,models:"JLG 1255, Manitou MRT 2470, Genie GTH-1056",applications:["Server rack delivery and staging","Cable management system installation","Raised floor panel placement","Battery cabinet positioning","UPS module placement","IT infrastructure delivery in white space"],duration:"4–8 months",setup:"Aisles and corridors — check clearances",ground:"Finished concrete — non-marking tires required",priority:"high",permit:false,vendorNote:"Quantity: 4–10 units on large fit-out. Non-marking tires mandatory on finished surfaces.",buildTypes:["hyperscale","colo","ai_campus","federal"],rate:"$320–$580/day"},
+  {id:"scissor_lift",phase:"fitout",name:"Scissor Lift — Overhead Work",category:"Access / Aerial",capacity:"Personnel + 500–1,000 lb materials",capacityTons:null,models:"JLG 3246ES, Genie GS-3246, Skyjack SJ3232",applications:["Cable tray installation at height","Overhead bus duct final connections","Sprinkler head installation","Ceiling tile and access panel installation","PDU overhead connection work","Camera and security system installation"],duration:"4–8 months",setup:"Indoor — tight turning radius",ground:"Finished concrete — verify load limits",priority:"high",permit:false,vendorNote:"Largest quantity of any lift type during fit-out. Track utilization closely for budget control.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit"],rate:"$160–$280/day"},
+  {id:"boom_fitout",phase:"fitout",name:"Boom Truck — Final Exterior Picks",category:"Boom Truck",capacity:"25–40T",capacityTons:40,models:"National Crane 500E, Manitex 2892C, Elliott 28105",applications:["Final rooftop equipment picks","Exterior generator exhaust cap placement","Satellite and antenna installation","Exterior signage elements","Final HVAC trim items","Security camera pole installation"],duration:"2–4 weeks scattered",setup:"Street or perimeter access",ground:"Outrigger pads — finished paving may restrict",priority:"medium",permit:false,vendorNote:"Call-in basis during fit-out — don't retain continuously.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit"],rate:"$950–$1,600/day"},
+  // MODULAR SPECIFIC
+  {id:"modular_crawler",phase:"civil",name:"Crawler Crane — Module Placement",category:"Crawler",capacity:"400–750T",capacityTons:750,models:"Liebherr LR 1750, Manitowoc 16000, Demag CC 3800",applications:["Pre-built IT module placement (40–120T each)","Modular electrical room placement","Prefabricated cooling plant placement","Containerized generator sets — stacked","Tandem lifts for oversized modules"],duration:"1–3 weeks per deployment event",setup:"60×80 ft — must access each module pad",ground:"10,000 psf on crane pads",priority:"critical",permit:true,vendorNote:"Precision placement critical — modules have tight tolerances for utility connections. Use GPS guidance.",buildTypes:["modular"],rate:"$18,000–$32,000/day"},
+  {id:"tandem_lift",phase:"civil",name:"Tandem Lift — Dual Crawler Config",category:"Specialty",capacity:"Up to 1,000T combined",capacityTons:1000,models:"Any two matched crawlers — engineered per lift",applications:["Oversized modules exceeding single crane capacity","Long prefabricated pipe bridges","Large pre-assembled electrical buildings","Pre-built cooling towers as single unit","Turbine / large mechanical assembly placement"],duration:"1–3 days per tandem event",setup:"Custom — two separate crane pads required",ground:"Engineered — significant clearance required",priority:"critical",permit:true,vendorNote:"OSHA requires written lift plan for all critical and tandem lifts. Two qualified riggers minimum.",buildTypes:["modular","hyperscale","ai_campus"],rate:"$40,000–$80,000 (event-based)"},
+  // RETROFIT SPECIFIC
+  {id:"compact_crane",phase:"civil",name:"Compact Crane — Constrained Access",category:"Specialty",capacity:"10–50T",capacityTons:50,models:"Liebherr MK 88, Spierings SK1265-AT8, Potain IGO T 130",applications:["Urban site with limited footprint","Work adjacent to live facilities","Narrow corridor placement","Rooftop additions without disrupting ground ops","Floor-mounted self-erecting inside buildings"],duration:"2–8 weeks",setup:"10×10 ft minimum — some models fold for transport",ground:"4,000–6,000 psf — engineered footing",priority:"high",permit:true,vendorNote:"Critical for retrofit projects. Self-erecting models need no assist crane. Very limited availability — book early.",buildTypes:["retrofit","colo"],rate:"$2,800–$5,200/day"},
+  {id:"indoor_gantry",phase:"cooling",name:"Portable Gantry / Indoor Crane",category:"Specialty",capacity:"5–100T",capacityTons:100,models:"Engineered portable gantry, Enerpac hydraulic gantry, Hydra-Slide",applications:["Chiller replacement in existing mechanical rooms","Transformer installation inside buildings","Engine / generator replacement in constrained spaces","Equipment skidding on hydraulic rollers","Moving equipment through doorways and corridors"],duration:"1–5 days per event",setup:"Custom — fits through standard doorways",ground:"Load distributed via custom base plates",priority:"high",permit:false,vendorNote:"Essential for retrofit work. Specialty rigging contractors required — general crane companies often can't provide this.",buildTypes:["retrofit","colo","federal"],rate:"$3,500–$12,000 (event-based)"},
+  {id:"hydraulic_skid",phase:"cooling",name:"Hydraulic Skidding / Roll-in System",category:"Specialty",capacity:"Up to 2,000T on engineered rails",capacityTons:2000,models:"Hilman rollers, Enerpac SL series, Hydra-Slide HS300",applications:["Transformer roll-in through building openings","Generator slide-in through constrained access","Equipment placement in basement/lower levels","Switchgear section sequencing into pre-existing rooms","Heavy placement with < 10 ft overhead clearance"],duration:"1–3 days per event",setup:"Rail system installed ahead of equipment delivery",ground:"Load distributed via steel rails — very low PSF achievable",priority:"medium",permit:false,vendorNote:"Best alternative when cranes cannot access placement area. Often combined with portable gantry.",buildTypes:["retrofit","colo","federal"],rate:"$4,000–$10,000 (event-based)"},
+  // AI CAMPUS SPECIFIC
+  {id:"supertransformer",phase:"electrical",name:"Crawler — Ultra-Heavy Transformer",category:"Crawler",capacity:"1,000–3,500T",capacityTons:3500,models:"Liebherr LR 13000, Demag CC 8800, Mammoet PTC 200-DS",applications:["EHV autotransformers — 400–900T units","Phase-to-phase 500kV transformer bank placement","Large shunt reactor placement","Transmission substation equipment erection","GSU transformer for on-site generation"],duration:"3–6 weeks per transformer event",setup:"100×120 ft minimum — dedicated engineered crane pad",ground:"15,000–25,000 psf — specialized engineered crane pad",priority:"critical",permit:true,vendorNote:"AI campuses requiring 300–1,000 MW need utility-grade transformers. Very limited crane availability — book 18–24 months ahead.",buildTypes:["ai_campus"],rate:"$65,000–$120,000/day"},
+  {id:"overhead_bridge",phase:"fitout",name:"Overhead Bridge Crane — IT Hall",category:"Specialty",capacity:"2–10T installed",capacityTons:10,models:"Konecranes, Demag, Gorbel — permanent installation",applications:["GPU server rack installation and maintenance","Liquid-cooled compute node placement","Infrastructure replacement during live operations","Future hardware refresh operations","Rear-door heat exchanger installation"],duration:"Permanent — 3–6 weeks to install",setup:"Designed into building structure",ground:"Loads transferred to building structure — structural EOR required",priority:"high",permit:false,vendorNote:"Critical for AI/GPU campuses — racks weigh 2–8T each and change frequently. Design in during SD/DD phase.",buildTypes:["ai_campus"],rate:"$180,000–$450,000 installed"},
+  // FEDERAL SPECIFIC
+  {id:"cleared_ops",phase:"site",name:"Security-Cleared Crane Operations",category:"Specialty",capacity:"All sizes — clearance overlay",capacityTons:null,models:"Any equipment — operator/rigger clearance required",applications:["All crane operations within secure perimeter","SCIF construction support","Classified area equipment placement","CAC or clearance-required access operations","Restricted airspace operations near sensitive facilities"],duration:"Duration of cleared construction scope",setup:"Per lift + security access control",ground:"Per standard crane requirements",priority:"critical",permit:true,vendorNote:"Clearance processing: 6–18 months. Identify cleared vendors immediately. Not all crane companies have cleared operators.",buildTypes:["federal"],rate:"Standard rate + 15–25% clearance premium"},
+  // SITE-WIDE
+  {id:"material_hoist",phase:"site",name:"Construction Hoist / Material Elevator",category:"Vertical Transport",capacity:"3,000–6,000 lb per car",capacityTons:3,models:"Alimak SE 1000, Mast Climbing Work Platform, Harsco Geda",applications:["Personnel and material vertical transport","Reducing tower crane picks for small materials","Tool crib and supply delivery to upper floors","Continuous vertical access during framing/fit-out","Temporary elevator before permanent lifts active"],duration:"Structural through fit-out — 12–18 months",setup:"10×10 ft footprint — mast-climbing",ground:"Engineered base plate — 3,000–5,000 psf",priority:"medium",permit:true,vendorNote:"Often overlooked — dramatically improves labor productivity on multi-story buildings.",buildTypes:["hyperscale","colo","ai_campus","federal"],rate:"$580–$980/day"},
+  {id:"mcwp",phase:"site",name:"Mast Climbing Work Platform (MCWP)",category:"Access / Aerial",capacity:"3,000–10,000 lb platform",capacityTons:5,models:"Harsco SKYTABLE, Alimak Scando 65/32, Fraco SCAF",applications:["Facade and curtain wall installation","Exterior waterproofing and cladding","Window installation multi-story","Tilt-up panel joint caulking","Exterior signage installation"],duration:"3–8 months during facade work",setup:"Wall-mounted — follows building perimeter",ground:"Anchored to building structure",priority:"medium",permit:true,vendorNote:"Far safer and more productive than traditional scaffolding on multi-story facades.",buildTypes:["hyperscale","colo","ai_campus","federal"],rate:"$420–$720/day"},
+  {id:"heavy_transport",phase:"site",name:"Heavy Transport — Multi-Axle Lowboy",category:"Transport",capacity:"Up to 1,000T on specialized trailers",capacityTons:1000,models:"Goldhofer SPZ-DL, Scheuerle SPMT, Nicolas multi-axle",applications:["Transformer delivery from rail siding to final location","Crawler crane component transport on site","Generator set delivery and positioning","Pre-assembled module transport within site","Heavy equipment migration between buildings"],duration:"Per delivery event",setup:"Requires planned haul route — bridge/pavement analysis",ground:"Route engineering required for heavy haul",priority:"high",permit:true,vendorNote:"Coordinate transformer haul route with utility and municipality 6+ months ahead. Route surveys required.",buildTypes:["hyperscale","colo","ai_campus","federal","modular","retrofit"],rate:"$8,000–$25,000 per move"},
+  {id:"awp_fleet",phase:"site",name:"Aerial Work Platforms — Mixed Fleet",category:"Access / Aerial",capacity:"Personnel + light materials",capacityTons:null,models:"JLG, Genie, Skyjack — full fleet mix",applications:["General access across all phases","Painting and coating","Insulation installation","Fire protection system work","General labor productivity support"],duration:"Full project duration",setup:"Various — wheeled and tracked units",ground:"Indoor and outdoor options available",priority:"medium",permit:false,vendorNote:"Largest quantity category. Blanket rental agreement for best pricing.",buildTypes:["hyperscale","colo","ai_campus","federal","retrofit","modular"],rate:"$120–$480/unit/day"},
+  {id:"crane_mats",phase:"site",name:"Crane Mat / Ground Protection System",category:"Site Support",capacity:"Site-wide ground bearing support",capacityTons:null,models:"DICA FiberMax, Bigfoot crane mats, DECKMATE composite",applications:["Crawler crane travel paths and working areas","All-terrain outrigger pad placement","Access road reinforcement for heavy haul","Temporary bridge over utilities","Ground protection on poor/soft soils"],duration:"Full project — managed inventory",setup:"Distributed across site",ground:"Increases effective bearing 3–8×",priority:"high",permit:false,vendorNote:"Rent vs. buy depends on project duration. Often owned by crane contractor — confirm in RFP.",buildTypes:["hyperscale","colo","ai_campus","federal","modular"],rate:"$15–40/mat/day or included with crane"},
+];
+
+// ─── STATE ─────────────────────────────────────────────────────────────────────
+const filters = { build: "all", phase: "all", priority: "all", category: "all" };
+let searchQuery = "";
+let currentView = "grid";
+const plan = new Set();
+
+// ─── FILTER LOGIC ──────────────────────────────────────────────────────────────
+function getFiltered() {
+  return LIFTS.filter(l => {
+    if (filters.build !== "all" && !l.buildTypes.includes(filters.build)) return false;
+    if (filters.phase !== "all" && l.phase !== filters.phase) return false;
+    if (filters.priority !== "all" && l.priority !== filters.priority) return false;
+    if (filters.category !== "all" && l.category !== filters.category) return false;
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      const searchable = `${l.name} ${l.category} ${l.models} ${l.applications.join(" ")} ${l.capacity} ${l.vendorNote}`.toLowerCase();
+      if (!searchable.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function applyFilters() {
+  searchQuery = document.getElementById("searchInput").value;
+  renderAll();
+}
+
+function togglePill(el, filterKey) {
+  const val = el.dataset.val;
+  document.querySelectorAll(`[data-filter="${filterKey}"]`).forEach(p => p.classList.remove("active","orange","green","purple","yellow"));
+  el.classList.add("active");
+  if (val === "hyperscale" || val === "ai_campus") el.classList.add("orange");
+  if (val === "colo" || val === "modular") el.classList.add("green");
+  if (val === "federal") el.classList.add("purple");
+  if (val === "retrofit") el.classList.add("yellow");
+  if (val === "critical") el.classList.add("orange");
+  if (val === "high") el.classList.add("yellow");
+  filters[filterKey] = val;
+  applyFilters();
+}
+
+function resetFilters() {
+  filters.build = filters.phase = filters.priority = filters.category = "all";
+  searchQuery = "";
+  document.getElementById("searchInput").value = "";
+  document.querySelectorAll(".pill").forEach(p => {
+    p.classList.remove("active","orange","green","purple","yellow");
+    if (p.dataset.val === "all") p.classList.add("active");
+  });
+  applyFilters();
+}
+
+// ─── RENDER ────────────────────────────────────────────────────────────────────
+const phaseColors = {civil:"#64b5f6",structural:"#ff8a65",electrical:"#ffd54f",cooling:"#80cbc4",fitout:"#ce93d8",site:"#a5d6a7"};
+const catColors = {"Crawler":"rgba(0,212,255,.12)","All-Terrain":"rgba(255,107,26,.1)","Tower Crane":"rgba(168,85,247,.1)","Rough Terrain":"rgba(255,184,0,.08)","Boom Truck":"rgba(100,181,246,.1)","Specialty":"rgba(255,68,100,.1)","Access / Aerial":"rgba(0,255,157,.08)","Pick & Carry":"rgba(255,107,26,.08)","Material Handling":"rgba(200,200,200,.06)","Vertical Transport":"rgba(200,200,200,.06)","Transport":"rgba(200,200,200,.06)","Site Support":"rgba(200,200,200,.06)"};
+const catBorderColors = {"Crawler":"rgba(0,212,255,.25)","All-Terrain":"rgba(255,107,26,.2)","Tower Crane":"rgba(168,85,247,.2)","Rough Terrain":"rgba(255,184,0,.15)","Boom Truck":"rgba(100,181,246,.2)","Specialty":"rgba(255,68,100,.2)","Access / Aerial":"rgba(0,255,157,.15)","Pick & Carry":"rgba(255,107,26,.15)","Material Handling":"rgba(200,200,200,.1)","Vertical Transport":"rgba(200,200,200,.1)","Transport":"rgba(200,200,200,.1)","Site Support":"rgba(200,200,200,.1)"};
+const buildLabels = {hyperscale:"Hyperscale",colo:"Colo/Edge",modular:"Modular",retrofit:"Retrofit",ai_campus:"AI Campus",federal:"Federal"};
+
+function renderAll() {
+  const items = getFiltered();
+  document.getElementById("resultCount").textContent = items.length;
+  document.getElementById("navTotal").textContent = LIFTS.length;
+  updateStats(items);
+  if (currentView === "grid") renderCards(items);
+  else renderTable(items);
+  document.getElementById("emptyState").style.display = items.length === 0 ? "block" : "none";
+}
+
+function updateStats(items) {
+  document.getElementById("sTotal").textContent = items.length;
+  document.getElementById("sCritical").textContent = items.filter(l=>l.priority==="critical").length;
+  document.getElementById("sHigh").textContent = items.filter(l=>l.priority==="high").length;
+  document.getElementById("sPermit").textContent = items.filter(l=>l.permit).length;
+  document.getElementById("sSelected").textContent = plan.size;
+}
+
+function renderCards(items) {
+  const grid = document.getElementById("cardGrid");
+  grid.style.display = "";
+  document.getElementById("tableView").style.display = "none";
+  if (items.length === 0) { grid.innerHTML = ""; return; }
+  grid.innerHTML = items.map(l => cardHTML(l)).join("");
+}
+
+function cardHTML(l) {
+  const inPlan = plan.has(l.id);
+  const pClass = `bar-${l.priority}`;
+  const catStyle = `background:${catColors[l.category]||"rgba(255,255,255,.04)"};border:1px solid ${catBorderColors[l.category]||"var(--border2)"};color:var(--muted2);`;
+  const phaseColor = phaseColors[l.phase] || "var(--muted2)";
+  const priorityBadge = `<span class="priority-badge pb-${l.priority}">${l.priority.toUpperCase()}</span>`;
+  const btTags = l.buildTypes.map(bt => `<span class="bt-tag">${buildLabels[bt]||bt}</span>`).join("");
+  const permitBadge = l.permit ? `<span class="permit-yes">PERMIT REQ</span>` : "";
+  const preview = l.applications.slice(0,2).join(" · ");
+
+  return `<div class="lift-card${inPlan?' expanded':''}" id="card-${l.id}">
+    <div class="card-accent-bar ${pClass}"></div>
+    <div class="card-header">
+      <div class="card-name">${l.name}</div>
+      <div class="card-meta">
+        <span class="category-tag" style="${catStyle}">${l.category.toUpperCase()}</span>
+        ${priorityBadge}
+      </div>
+    </div>
+    <div class="card-capacity">
+      <div class="capacity-num" style="color:${phaseColor}">${l.capacity}</div>
+      <div class="capacity-label">CAPACITY</div>
+    </div>
+    <div class="card-tags">${btTags}${l.permit?`<span class="bt-tag" style="color:var(--warn);border-color:rgba(255,184,0,.2);">PERMIT REQ'D</span>`:""}</div>
+    <div class="card-preview">${preview}</div>
+    <div class="card-footer">
+      <div class="card-rate">${l.rate||"On request"}<span>EST RATE</span></div>
+      <button class="expand-btn" onclick="toggleExpand('${l.id}')">${inPlan?'IN PLAN ✓':'+ DETAILS'}</button>
+    </div>
+    <div class="card-detail">
+      <div class="detail-section">
+        <div class="detail-label">Applications</div>
+        <ul class="app-list">${l.applications.map(a=>`<li>${a}</li>`).join("")}</ul>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Key Models</div>
+        <div class="models-wrap">${l.models}</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-grid">
+          <div class="detail-item"><div class="detail-item-label">Duration</div><div class="detail-item-val">${l.duration}</div></div>
+          <div class="detail-item"><div class="detail-item-label">Setup Space</div><div class="detail-item-val">${l.setup}</div></div>
+          <div class="detail-item"><div class="detail-item-label">Ground Bearing</div><div class="detail-item-val">${l.ground}</div></div>
+          <div class="detail-item"><div class="detail-item-label">Phase</div><div class="detail-item-val" style="color:${phaseColor}">${l.phase.charAt(0).toUpperCase()+l.phase.slice(1)}</div></div>
+        </div>
+      </div>
+      <div class="vendor-note"><strong>VENDOR NOTE:</strong> ${l.vendorNote}</div>
+      <div class="action-row">
+        <button class="btn-quote" onclick="addToPlan('${l.id}')">+ ADD TO PLAN</button>
+        <button class="btn-save" onclick="requestQuote('${l.id}')">REQUEST QUOTE</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderTable(items) {
+  document.getElementById("cardGrid").style.display = "none";
+  const tv = document.getElementById("tableView");
+  tv.style.display = "block";
+  const phaseLabel = {civil:"Civil",structural:"Structural",electrical:"Electrical",cooling:"Cooling/MEP",fitout:"Fit-Out",site:"Site-Wide"};
+  document.getElementById("tableBody").innerHTML = items.map(l => `
+    <tr onclick="setView('grid');setTimeout(()=>toggleExpand('${l.id}'),100)">
+      <td><div class="t-name">${l.name}</div><div class="t-models">${l.models.split(",")[0].trim()}</div></td>
+      <td><span class="category-tag" style="background:${catColors[l.category]||"rgba(255,255,255,.04)"};border:1px solid ${catBorderColors[l.category]||"var(--border2)"};color:var(--muted2);font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;">${l.category}</span></td>
+      <td class="t-phase" style="color:${phaseColors[l.phase]}">${phaseLabel[l.phase]||l.phase}</td>
+      <td class="t-cap">${l.capacity}</td>
+      <td class="t-models">${l.models.split(",").slice(0,2).join(", ")}</td>
+      <td class="t-dur">${l.duration}</td>
+      <td class="t-rate">${l.rate||"—"}</td>
+      <td><span class="priority-badge pb-${l.priority}">${l.priority.toUpperCase()}</span></td>
+      <td>${l.permit?'<span class="permit-yes">YES</span>':'<span style="color:var(--muted);font-size:11px;">No</span>'}</td>
+    </tr>`).join("");
+}
+
+// ─── INTERACTIONS ──────────────────────────────────────────────────────────────
+function toggleExpand(id) {
+  const card = document.getElementById(`card-${id}`);
+  if (!card) return;
+  card.classList.toggle("expanded");
+  const btn = card.querySelector(".expand-btn");
+  if (card.classList.contains("expanded")) {
+    btn.textContent = "COLLAPSE";
+    card.scrollIntoView({behavior:"smooth",block:"nearest"});
+  } else {
+    btn.textContent = plan.has(id) ? "IN PLAN ✓" : "+ DETAILS";
+  }
+}
+
+function addToPlan(id) {
+  const l = LIFTS.find(x=>x.id===id);
+  if (!l) return;
+  plan.add(id);
+  const card = document.getElementById(`card-${id}`);
+  if (card) {
+    const btn = card.querySelector(".expand-btn");
+    if (btn) btn.textContent = "IN PLAN ✓";
+    const addBtn = card.querySelector(".btn-quote");
+    if (addBtn) { addBtn.textContent = "✓ ADDED TO PLAN"; addBtn.style.background = "var(--accent3)"; addBtn.style.color = "var(--bg)"; }
+  }
+  updatePlanPanel();
+  document.getElementById("sSelected").textContent = plan.size;
+}
+
+function updatePlanPanel() {
+  const panel = document.getElementById("summaryPanel");
+  const items = document.getElementById("spItems");
+  const count = document.getElementById("spCount");
+  count.textContent = plan.size;
+  if (plan.size > 0) {
+    panel.classList.add("show");
+    items.innerHTML = Array.from(plan).map(id => {
+      const l = LIFTS.find(x=>x.id===id);
+      return l ? `<div class="sp-item"><span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px;">${l.name}</span><button class="sp-remove" onclick="removeFromPlan('${id}')">×</button></div>` : "";
+    }).join("");
+  } else {
+    panel.classList.remove("show");
+  }
+}
+
+function removeFromPlan(id) {
+  plan.delete(id);
+  updatePlanPanel();
+  document.getElementById("sSelected").textContent = plan.size;
+  renderAll();
+}
+
+function clearPlan() {
+  plan.clear();
+  updatePlanPanel();
+  renderAll();
+}
+
+function setView(v) {
+  currentView = v;
+  document.getElementById("toggleGrid").classList.toggle("active", v==="grid");
+  document.getElementById("toggleTable").classList.toggle("active", v==="table");
+  renderAll();
+}
+
+function requestQuote(id) {
+  addToPlan(id);
+  setTimeout(() => openQuote(), 200);
+}
+
+function openQuote() {
+  const names = Array.from(plan).map(id => LIFTS.find(x=>x.id===id)?.name).filter(Boolean);
+  const msg = plan.size > 0
+    ? `Request quotes for:\n${names.map(n=>"• "+n).join("\n")}\n\n(In a live app, this would open a quote form or connect you directly to matched vendors.)`
+    : "Add equipment to your plan first, then request quotes.";
+  alert(msg);
+}
+
+// ─── INIT ──────────────────────────────────────────────────────────────────────
+renderAll();
+</script>
+</body>
+</html>

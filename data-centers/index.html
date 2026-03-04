@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CraneGenius — Data Centers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050810;
+    --surface: #0a0f1e;
+    --card: #0d1525;
+    --border: #1a2540;
+    --accent: #00d4ff;
+    --accent2: #ff6b1a;
+    --accent3: #00ff9d;
+    --text: #e8eef8;
+    --muted: #5a6a8a;
+    --warn: #ffb800;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    background: rgba(5,8,16,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 0.05em;
+    color: var(--text);
+  }
+  .logo span { color: var(--accent); }
+
+  .nav-pill {
+    background: rgba(255,107,26,0.15);
+    border: 1px solid var(--accent2);
+    color: var(--accent2);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+  }
+
+  nav-links { display: flex; gap: 32px; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding: 80px 40px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .vertical-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  .vertical-tag::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 580px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 64px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat {
+    background: var(--surface);
+    padding: 24px 32px;
+  }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-num.orange { color: var(--accent2); }
+  .stat-num.green { color: var(--accent3); }
+  .stat-num.yellow { color: var(--warn); }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* AI ANALYZER SECTION */
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .section-desc {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  /* BUILD TYPE SELECTOR */
+  .build-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .build-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .build-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--accent);
+    transform: scaleY(0);
+    transition: transform 0.2s;
+    transform-origin: bottom;
+  }
+
+  .build-card:hover, .build-card.active {
+    border-color: var(--accent);
+    background: rgba(0,212,255,0.05);
+  }
+
+  .build-card:hover::before, .build-card.active::before {
+    transform: scaleY(1);
+  }
+
+  .build-card.active { border-color: var(--accent); }
+
+  .build-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .build-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .build-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .build-badge {
+    position: absolute;
+    top: 12px; right: 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+  .build-badge.hot { background: rgba(255,107,26,0.2); color: var(--accent2); border: 1px solid rgba(255,107,26,0.3); }
+  .build-badge.new { background: rgba(0,255,157,0.15); color: var(--accent3); border: 1px solid rgba(0,255,157,0.2); }
+
+  /* RESULTS PANEL */
+  .results-panel {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 16px;
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .equipment-list {
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+
+  .list-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .list-header-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+
+  .phase-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+
+  .phase-tab {
+    padding: 10px 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+  }
+
+  .phase-tab:hover { color: var(--text); }
+  .phase-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .equipment-rows { padding: 8px 0; }
+
+  .equip-row {
+    padding: 14px 24px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: start;
+    border-bottom: 1px solid rgba(26,37,64,0.5);
+    transition: background 0.15s;
+    cursor: pointer;
+  }
+
+  .equip-row:hover { background: rgba(0,212,255,0.04); }
+  .equip-row:last-child { border-bottom: none; }
+
+  .equip-name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+
+  .equip-spec {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .equip-spec strong { color: var(--accent2); }
+
+  .equip-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .priority-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-top: 4px;
+  }
+  .p-critical { background: #ff4444; box-shadow: 0 0 8px #ff4444; }
+  .p-high { background: var(--accent2); box-shadow: 0 0 8px var(--accent2); }
+  .p-medium { background: var(--warn); }
+  .p-low { background: var(--accent3); }
+
+  .quote-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    padding: 4px 10px;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .quote-btn:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  /* SIDE PANEL */
+  .side-panel { display: flex; flex-direction: column; gap: 12px; }
+
+  .info-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 20px;
+  }
+
+  .info-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .weight-bar {
+    margin-bottom: 12px;
+  }
+
+  .weight-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: var(--text);
+  }
+  .weight-label span:last-child {
+    font-family: 'Space Mono', monospace;
+    color: var(--accent);
+    font-size: 11px;
+  }
+
+  .weight-track {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .weight-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transition: width 0.5s ease;
+  }
+
+  .vendor-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .vendor-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: border-color 0.15s;
+    cursor: pointer;
+  }
+
+  .vendor-item:hover { border-color: var(--accent); }
+
+  .vendor-name {
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .vendor-region {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .vendor-rating {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent3);
+  }
+
+  .cta-card {
+    background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(255,107,26,0.06));
+    border: 1px solid rgba(0,212,255,0.3);
+    padding: 24px;
+  }
+
+  .cta-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .cta-desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .cta-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .cta-btn:hover { background: #22e0ff; transform: translateY(-1px); }
+
+  /* AI CHAT STRIP */
+  .ai-strip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent3);
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .ai-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(0,255,157,0.15);
+    border: 1px solid var(--accent3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .ai-text {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .ai-text strong { color: var(--accent3); }
+
+  .ai-input-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .ai-input {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 14px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    outline: none;
+  }
+
+  .ai-input:focus { border-color: var(--accent3); }
+  .ai-input::placeholder { color: var(--muted); }
+
+  .ai-send {
+    background: var(--accent3);
+    color: var(--bg);
+    border: none;
+    padding: 8px 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+  }
+
+  /* PHASE TIMELINE */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 20px; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    z-index: 0;
+  }
+
+  .timeline-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .t-dot {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin-bottom: 12px;
+    transition: all 0.2s;
+  }
+
+  .timeline-step.active .t-dot {
+    border-color: var(--accent);
+    background: rgba(0,212,255,0.15);
+    box-shadow: 0 0 20px rgba(0,212,255,0.3);
+  }
+
+  .t-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+    color: var(--muted);
+  }
+
+  .timeline-step.active .t-label { color: var(--accent); }
+
+  .t-duration {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 3px;
+    text-align: center;
+  }
+
+  /* COMPARISON TABLE */
+  .comparison-grid {
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .comp-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .comp-cell {
+    padding: 12px 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-right: 1px solid var(--border);
+  }
+  .comp-cell:last-child { border-right: none; }
+
+  .comp-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    border-bottom: 1px solid rgba(26,37,64,0.5);
+    transition: background 0.15s;
+  }
+  .comp-row:hover { background: rgba(0,212,255,0.03); }
+  .comp-row:last-child { border-bottom: none; }
+
+  .comp-row .comp-cell {
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .comp-row .comp-cell:first-child { font-weight: 600; }
+
+  .tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  .tag-req { background: rgba(255,68,68,0.15); color: #ff6666; border: 1px solid rgba(255,68,68,0.2); }
+  .tag-rec { background: rgba(255,184,0,0.15); color: var(--warn); border: 1px solid rgba(255,184,0,0.2); }
+  .tag-opt { background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.15); }
+
+  /* FOOTER CTA */
+  .footer-cta {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-cta h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 56px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .footer-cta h2 em {
+    font-style: normal;
+    color: var(--accent2);
+  }
+
+  .footer-cta p {
+    color: var(--muted);
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .cta-group { display: flex; gap: 12px; justify-content: center; }
+
+  .btn-primary {
+    padding: 14px 36px;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary {
+    padding: 14px 36px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--text); }
+  .btn-primary:hover { background: #22e0ff; }
+
+  /* LOADING STATE */
+  .loading-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,8,16,0.92);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .loading-overlay.show { display: flex; }
+
+  .loader-ring {
+    width: 60px; height: 60px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loader-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .loader-steps {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-align: center;
+    line-height: 2;
+  }
+
+  /* PULSE */
+  .live-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent3);
+    animation: pulse 2s infinite;
+    margin-right: 6px;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  @media (max-width: 900px) {
+    .build-selector { grid-template-columns: 1fr 1fr; }
+    .results-panel { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .timeline { grid-template-columns: repeat(3, 1fr); }
+    nav { padding: 12px 20px; }
+    .hero, .section { padding-left: 20px; padding-right: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loader">
+  <div class="loader-ring"></div>
+  <div class="loader-text">Analyzing Build Type</div>
+  <div class="loader-steps" id="loaderSteps">
+    Scanning structural requirements...<br>
+    Matching crane specifications...<br>
+    Checking vendor availability...
+  </div>
+</div>
+
+<nav>
+  <div class="logo">CRANE<span>GENIUS</span></div>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <div class="nav-pill">DATA CENTERS</div>
+    <a href="/" style="color:var(--muted);text-decoration:none;font-size:13px;">Home</a>
+    <a href="/command-center" style="color:var(--muted);text-decoration:none;font-size:13px;">Command Center</a>
+    <button style="background:var(--accent2);color:var(--bg);border:none;padding:8px 20px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.1em;cursor:pointer;">GET QUOTES</button>
+  </div>
+</nav>
+
+<div style="background:var(--surface);border-bottom:1px solid var(--border);padding:0 40px;position:sticky;top:53px;z-index:99;display:flex;gap:0;overflow-x:auto;">
+  <a href="/data-centers/" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;padding:10px 20px;color:var(--accent);border-bottom:2px solid var(--accent);text-decoration:none;text-transform:uppercase;white-space:nowrap;">Overview</a>
+  <a href="/data-centers/ai-planner" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;padding:10px 20px;color:var(--muted);border-bottom:2px solid transparent;text-decoration:none;text-transform:uppercase;white-space:nowrap;">AI Lift Planner</a>
+  <a href="/data-centers/lift-matrix" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;padding:10px 20px;color:var(--muted);border-bottom:2px solid transparent;text-decoration:none;text-transform:uppercase;white-space:nowrap;">Full Lift Matrix</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="vertical-tag">Data Center Construction Intelligence</div>
+  <h1>Know Every<br>Lift Before<br>Day <em>One.</em></h1>
+  <p class="hero-sub">
+    AI-powered equipment planning for data center builds. From civil groundwork to module placement — we map <strong>every crane, every weight, every vendor</strong> before you break ground.
+  </p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;">
+    <button class="btn-primary" onclick="window.location='ai-planner'">ANALYZE MY BUILD</button>
+    <button class="btn-secondary" onclick="window.location='lift-matrix'">FULL LIFT MATRIX →</button>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">$2.4T</div>
+    <div class="stat-label">DATA CENTER CAPEX 2025-2030</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num orange">47+</div>
+    <div class="stat-label">DISTINCT LIFT TYPES PER BUILD</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num green">380T</div>
+    <div class="stat-label">MAX LOAD — TRANSFORMER PLACEMENT</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num yellow">3-7</div>
+    <div class="stat-label">CRANE TYPES PER MAJOR CAMPUS</div>
+  </div>
+</div>
+
+<!-- ANALYZER SECTION -->
+<div class="section" id="analyzer">
+  <div class="section-label">Step 1 — Build Intelligence</div>
+  <div class="section-title">Select Your Build Type</div>
+  <p class="section-desc">CraneGenius AI identifies all lift requirements, weight specs, and critical path crane needs based on your facility type.</p>
+
+  <div class="build-selector">
+    <div class="build-card active" onclick="selectBuild(this, 'hyperscale')">
+      <span class="build-icon">🏗️</span>
+      <div class="build-badge hot">HOT</div>
+      <div class="build-name">Hyperscale Campus</div>
+      <div class="build-desc">500k–2M+ sq ft. Multiple buildings, central utility plant, large transformer banks. Think AWS, Microsoft, Google.</div>
+    </div>
+    <div class="build-card" onclick="selectBuild(this, 'colo')">
+      <span class="build-icon">🔲</span>
+      <div class="build-badge new">GROWING</div>
+      <div class="build-name">Colo / Edge Facility</div>
+      <div class="build-desc">50k–200k sq ft. Multi-tenant. High-density power requirements. Urban infill or suburban campus.</div>
+    </div>
+    <div class="build-card" onclick="selectBuild(this, 'modular')">
+      <span class="build-icon">📦</span>
+      <div class="build-badge new">NEW</div>
+      <div class="build-name">Modular / Prefab</div>
+      <div class="build-desc">Factory-built modules placed on site. Critical precision lifts. Rapid deployment timeline.</div>
+    </div>
+    <div class="build-card" onclick="selectBuild(this, 'retrofit')">
+      <span class="build-icon">🔧</span>
+      <div class="build-name">Retrofit / Expansion</div>
+      <div class="build-desc">Existing facility expansion. Generator additions, cooling retrofits, PDU upgrades. Constrained access.</div>
+    </div>
+    <div class="build-card" onclick="selectBuild(this, 'ai-campus')">
+      <span class="build-icon">⚡</span>
+      <div class="build-badge hot">AI BOOM</div>
+      <div class="build-name">AI Training Campus</div>
+      <div class="build-desc">GPU cluster facilities. Extreme power density. Specialized cooling infrastructure. 100MW+ sites.</div>
+    </div>
+    <div class="build-card" onclick="selectBuild(this, 'government')">
+      <span class="build-icon">🏛️</span>
+      <div class="build-name">Federal / Secured</div>
+      <div class="build-desc">DoD, government classified facilities. Stringent access control. Specialized compliance requirements.</div>
+    </div>
+  </div>
+
+  <!-- AI STRIP -->
+  <div class="ai-strip">
+    <div class="ai-icon">🤖</div>
+    <div style="flex:1;">
+      <div class="ai-text"><strong>CraneGenius AI:</strong> Analyzing Hyperscale Campus build pattern. I've identified <strong>7 construction phases</strong> with <strong>23 distinct crane requirements</strong>. The heaviest critical path lift is transformer bank placement at <strong>280–380 tons</strong>. Your build will likely require a crawler crane (Liebherr LR 1750 or equiv.) for civil, plus 2–3 tower cranes for vertical steel, and specialized rigging for MEP and electrical gear placement.</div>
+      <div class="ai-input-row">
+        <input class="ai-input" placeholder="Ask about specific equipment, weights, access constraints..." id="aiQuestion">
+        <button class="ai-send" onclick="askAI()">ASK →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE TIMELINE -->
+  <div class="section-label">Step 2 — Construction Phases</div>
+  <div class="timeline" id="timeline">
+    <div class="timeline-step active" onclick="selectPhase(this, 0)">
+      <div class="t-dot">🏔️</div>
+      <div class="t-label">Civil &<br>Foundation</div>
+      <div class="t-duration">Mo. 1–4</div>
+    </div>
+    <div class="timeline-step" onclick="selectPhase(this, 1)">
+      <div class="t-dot">🔩</div>
+      <div class="t-label">Structural<br>Steel</div>
+      <div class="t-duration">Mo. 3–8</div>
+    </div>
+    <div class="timeline-step" onclick="selectPhase(this, 2)">
+      <div class="t-dot">⚡</div>
+      <div class="t-label">Electrical<br>& Power</div>
+      <div class="t-duration">Mo. 6–14</div>
+    </div>
+    <div class="timeline-step" onclick="selectPhase(this, 3)">
+      <div class="t-dot">❄️</div>
+      <div class="t-label">Cooling<br>& MEP</div>
+      <div class="t-duration">Mo. 8–16</div>
+    </div>
+    <div class="timeline-step" onclick="selectPhase(this, 4)">
+      <div class="t-dot">🖥️</div>
+      <div class="t-label">IT Fit-Out<br>& Commissioning</div>
+      <div class="t-duration">Mo. 14–20</div>
+    </div>
+  </div>
+
+  <!-- RESULTS PANEL -->
+  <div class="results-panel" id="resultsPanel">
+    <!-- LEFT: Equipment List -->
+    <div class="equipment-list">
+      <div class="list-header">
+        <div class="list-header-title">
+          <span class="live-dot"></span>
+          CIVIL & FOUNDATION — Crane Requirements
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);">7 EQUIPMENT TYPES</div>
+      </div>
+
+      <div class="equipment-rows">
+
+        <div class="equip-row">
+          <div>
+            <div class="equip-name">Crawler Crane — Heavy Lift</div>
+            <div class="equip-spec">
+              <strong>750–1,500 ton capacity</strong> · Liebherr LR 1750 / Manitowoc 21000<br>
+              Pile cap installation, caisson work, pre-cast concrete panels<br>
+              Duration: 8–12 weeks · Setup space: 60×80 ft minimum
+            </div>
+          </div>
+          <div class="equip-action">
+            <div class="priority-dot p-critical"></div>
+            <button class="quote-btn">QUOTE</button>
+          </div>
+        </div>
+
+        <div class="equip-row">
+          <div>
+            <div class="equip-name">Rough Terrain Crane</div>
+            <div class="equip-spec">
+              <strong>100–165 ton capacity</strong> · Grove RT9150E / Liebherr LTR 1100<br>
+              Excavation shoring, formwork placement, rebar bundle picks<br>
+              Duration: Full civil phase · High mobility req'd
+            </div>
+          </div>
+          <div class="equip-action">
+            <div class="priority-dot p-critical"></div>
+            <button class="quote-btn">QUOTE</button>
+          </div>
+        </div>
+
+        <div class="equip-row">
+          <div>
+            <div class="equip-name">Piling Rig / Drilling Crane</div>
+            <div class="equip-spec">
+              <strong>Bauer BG 28 or equiv.</strong> · Driven or drilled piles per geotech<br>
+              Critical if poor soil conditions · Typical 400–800 pile locations<br>
+              May need Vibro hammer attachment
+            </div>
+          </div>
+          <div class="equip-action">
+            <div class="priority-dot p-high"></div>
+            <button class="quote-btn">QUOTE</button>
+          </div>
+        </div>
+
+        <div class="equip-row">
+          <div>
+            <div class="equip-name">Telescopic Boom Truck</div>
+            <div class="equip-spec">
+              <strong>40–80 ton · Manitex / Elliott</strong><br>
+              Utility work, light picks, material staging throughout site<br>
+              Quantity: 2–3 units recommended
+            </div>
+          </div>
+          <div class="equip-action">
+            <div class="priority-dot p-medium"></div>
+            <button class="quote-btn">QUOTE</button>
+          </div>
+        </div>
+
+        <div class="equip-row">
+          <div>
+            <div class="equip-name">Pick & Carry — Site Logistics</div>
+            <div class="equip-spec">
+              <strong>Tadano GR-1000XL / Liebherr LTM 1070</strong> · 70–100T<br>
+              Constant movement crane, concrete elements, misc picks<br>
+              Owned or long-term rental recommended
+            </div>
+          </div>
+          <div class="equip-action">
+            <div class="priority-dot p-medium"></div>
+            <button class="quote-btn">QUOTE</button>
+          </div>
+        </div>
+
+        <div class="equip-row">
+          <div>
+            <div class="equip-name">Concrete Placing Boom</div>
+            <div class="equip-spec">
+              <strong>Putzmeister MX 28/32</strong> · Foundation slab pours<br>
+              Coordinates with crawler for reinforcement placement<br>
+              2–4 units for large slab pours
+            </div>
+          </div>
+          <div class="equip-action">
+            <div class="priority-dot p-low"></div>
+            <button class="quote-btn">QUOTE</button>
+          </div>
+        </div>
+
+        <div class="equip-row">
+          <div>
+            <div class="equip-name">Rigging / Heavy Transport</div>
+            <div class="equip-spec">
+              <strong>Goldhofer SPZ / Scheuerle multi-axle</strong><br>
+              Moving heavy equipment on site, crawler mobilization<br>
+              Coordinate with utility crane for crawler assembly
+            </div>
+          </div>
+          <div class="equip-action">
+            <div class="priority-dot p-low"></div>
+            <button class="quote-btn">QUOTE</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT: Side Panel -->
+    <div class="side-panel">
+
+      <div class="info-card">
+        <div class="info-card-title">Critical Weight Specs</div>
+        <div class="weight-bar">
+          <div class="weight-label"><span>Transformer Banks</span><span>280–380T</span></div>
+          <div class="weight-track"><div class="weight-fill" style="width:100%"></div></div>
+        </div>
+        <div class="weight-bar">
+          <div class="weight-label"><span>Pre-Cast Panels</span><span>40–80T</span></div>
+          <div class="weight-track"><div class="weight-fill" style="width:25%"></div></div>
+        </div>
+        <div class="weight-bar">
+          <div class="weight-label"><span>Cooling Towers</span><span>60–120T</span></div>
+          <div class="weight-track"><div class="weight-fill" style="width:35%"></div></div>
+        </div>
+        <div class="weight-bar">
+          <div class="weight-label"><span>Generator Sets</span><span>20–45T</span></div>
+          <div class="weight-track"><div class="weight-fill" style="width:14%"></div></div>
+        </div>
+        <div class="weight-bar">
+          <div class="weight-label"><span>UPS Modules</span><span>8–15T</span></div>
+          <div class="weight-track"><div class="weight-fill" style="width:5%"></div></div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title">Matched Vendors Near You</div>
+        <div class="vendor-list">
+          <div class="vendor-item">
+            <div>
+              <div class="vendor-name">Barnhart Crane</div>
+              <div class="vendor-region">National · Heavy Lift Specialist</div>
+            </div>
+            <div class="vendor-rating">★ 4.9</div>
+          </div>
+          <div class="vendor-item">
+            <div>
+              <div class="vendor-name">ALL Crane Rental</div>
+              <div class="vendor-region">Multi-Regional · Full Fleet</div>
+            </div>
+            <div class="vendor-rating">★ 4.7</div>
+          </div>
+          <div class="vendor-item">
+            <div>
+              <div class="vendor-name">BrandSafway</div>
+              <div class="vendor-region">National · Access + Crane</div>
+            </div>
+            <div class="vendor-rating">★ 4.6</div>
+          </div>
+          <div class="vendor-item">
+            <div>
+              <div class="vendor-name">AmQuip Equipment</div>
+              <div class="vendor-region">Northeast / Mid-Atlantic</div>
+            </div>
+            <div class="vendor-rating">★ 4.5</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-card">
+        <div class="cta-title">Get Your Full Lift Plan</div>
+        <div class="cta-desc">Complete crane schedule, vendor bids, and financing options — delivered in 24 hours.</div>
+        <button class="cta-btn">REQUEST FULL ANALYSIS →</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div style="margin-top:48px;">
+    <div class="section-label">Full Equipment Matrix</div>
+    <div class="section-title">All 23 Crane Requirements — Hyperscale Campus</div>
+    <p class="section-desc" style="margin-bottom:24px;">Scroll through every required and recommended lift across all construction phases.</p>
+
+    <div class="comparison-grid">
+      <div class="comp-header">
+        <div class="comp-cell">Equipment Type</div>
+        <div class="comp-cell">Phase</div>
+        <div class="comp-cell">Capacity</div>
+        <div class="comp-cell">Duration</div>
+        <div class="comp-cell">Status</div>
+      </div>
+
+      <div class="comp-row">
+        <div class="comp-cell">Crawler Crane — Heavy Lift</div>
+        <div class="comp-cell" style="color:var(--muted);font-size:12px;">Civil</div>
+        <div class="comp-cell" style="color:var(--accent);font-family:'Space Mono',monospace;font-size:12px;">750–1500T</div>
+        <div class="comp-cell" style="font-size:12px;color:var(--muted);">8–12 wk</div>
+        <div class="comp-cell"><span class="tag tag-req">REQUIRED</span></div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Tower Crane — Luffing Jib</div>
+        <div class="comp-cell" style="color:var(--muted);font-size:12px;">Structural</div>
+        <div class="comp-cell" style="color:var(--accent);font-family:'Space Mono',monospace;font-size:12px;">12–18T tip</div>
+        <div class="comp-cell" style="font-size:12px;color:var(--muted);">6–10 mo</div>
+        <div class="comp-cell"><span class="tag tag-req">REQUIRED</span></div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Tower Crane — Flat Top (×2)</div>
+        <div class="comp-cell" style="color:var(--muted);font-size:12px;">Structural</div>
+        <div class="comp-cell" style="color:var(--accent);font-family:'Space Mono',monospace;font-size:12px;">8–16T tip</div>
+        <div class="comp-cell" style="font-size:12px;color:var(--muted);">5–8 mo</div>
+        <div class="comp-cell"><span class="tag tag-req">REQUIRED</span></div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">All-Terrain Crane — Transformer Set</div>
+        <div class="comp-cell" style="color:var(--muted);font-size:12px;">Electrical</div>
+        <div class="comp-cell" style="color:var(--accent2);font-family:'Space Mono',monospace;font-size:12px;">400–500T</div>
+        <div class="comp-cell" style="font-size:12px;color:var(--muted);">2–3 wk</div>
+        <div class="comp-cell"><span class="tag tag-req">REQUIRED</span></div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Rough Terrain — General Works</div>
+        <div class="comp-cell" style="color:var(--muted);font-size:12px;">All Phases</div>
+        <div class="comp-cell" style="color:var(--accent);font-family:'Space Mono',monospace;font-size:12px;">100–165T</div>
+        <div class="comp-cell" style="font-size:12px;color:var(--muted);">Full build</div>
+        <div class="comp-cell"><span class="tag tag-req">REQUIRED</span></div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Pick & Carry — Site Mobility</div>
+        <div class="comp-cell" style="color:var(--muted);font-size:12px;">All Phases</div>
+        <div class="comp-cell" style="color:var(--accent);font-family:'Space Mono',monospace;font-size:12px;">70–100T</div>
+        <div class="comp-cell" style="font-size:12px;color:var(--muted);">Full build</div>
+        <div class="comp-cell"><span class="tag tag-rec">RECOMMENDED</span></div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Boom Truck — MEP Install (×3)</div>
+        <div class="comp-cell" style="color:var(--muted);font-size:12px;">MEP / Fit-Out</div>
+        <div class="comp-cell" style="color:var(--accent);font-family:'Space Mono',monospace;font-size:12px;">30–50T</div>
+        <div class="comp-cell" style="font-size:12px;color:var(--muted);">4–6 mo</div>
+        <div class="comp-cell"><span class="tag tag-req">REQUIRED</span></div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Crawler — Cooling Tower Set</div>
+        <div class="comp-cell" style="color:var(--muted);font-size:12px;">Cooling</div>
+        <div class="comp-cell" style="color:var(--accent);font-family:'Space Mono',monospace;font-size:12px;">250–350T</div>
+        <div class="comp-cell" style="font-size:12px;color:var(--muted);">3–5 wk</div>
+        <div class="comp-cell"><span class="tag tag-req">REQUIRED</span></div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Knuckle Boom — Rooftop Work</div>
+        <div class="comp-cell" style="color:var(--muted);font-size:12px;">MEP / Roof</div>
+        <div class="comp-cell" style="color:var(--accent);font-family:'Space Mono',monospace;font-size:12px;">20–40T</div>
+        <div class="comp-cell" style="font-size:12px;color:var(--muted);">2–3 mo</div>
+        <div class="comp-cell"><span class="tag tag-opt">OPTIONAL</span></div>
+      </div>
+      <div class="comp-row" style="background:rgba(0,212,255,0.03);">
+        <div class="comp-cell" style="color:var(--muted);font-style:italic;">+ 14 more equipment types in full report</div>
+        <div class="comp-cell"></div>
+        <div class="comp-cell"></div>
+        <div class="comp-cell"></div>
+        <div class="comp-cell">
+          <button onclick="showAllEquipment()" style="background:transparent;border:1px solid var(--accent);color:var(--accent);font-family:'Space Mono',monospace;font-size:10px;padding:4px 10px;cursor:pointer;letter-spacing:0.05em;">VIEW ALL →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER CTA -->
+<div class="footer-cta">
+  <div class="vertical-tag" style="justify-content:center;margin-bottom:20px;">Ready to Plan Your Build</div>
+  <h2>Stop Guessing.<br>Start <em>Lifting.</em></h2>
+  <p>Get a complete lift plan, vendor matches, and financing options for your data center project.</p>
+  <div class="cta-group">
+    <button class="btn-primary">GET MY LIFT PLAN →</button>
+    <button class="btn-secondary">TALK TO AN EXPERT</button>
+  </div>
+</div>
+
+<script>
+  function scrollToAnalyzer() {
+    document.getElementById('analyzer').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function selectBuild(el, type) {
+    document.querySelectorAll('.build-card').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+
+    const aiMessages = {
+      hyperscale: 'Analyzing <strong>Hyperscale Campus</strong> build. I\'ve identified <strong>7 construction phases</strong> with <strong>23 distinct crane requirements</strong>. Heaviest lift: transformer banks at <strong>280–380 tons</strong>. Expect crawler crane, 2-3 tower cranes, and specialized rigging.',
+      colo: 'Analyzing <strong>Colo / Edge Facility</strong> build. Identified <strong>5 construction phases</strong> with <strong>14 crane requirements</strong>. Key lifts: rooftop generator sets and rooftop cooling. AT crane for transformer placement at <strong>120–180 tons</strong>.',
+      modular: 'Analyzing <strong>Modular / Prefab</strong> build. Critical precision requirements identified. Module placement requires <strong>tandem lift planning</strong> — typical module weights <strong>40–120 tons each</strong>. High-capacity crawlers with precision rigging essential.',
+      retrofit: 'Analyzing <strong>Retrofit / Expansion</strong> build. Constrained site access identified as primary challenge. Compact cranes and <strong>custom rigging solutions</strong> required. New generator sets typically <strong>20–45 tons</strong> per unit.',
+      'ai-campus': 'Analyzing <strong>AI Training Campus</strong>. Extreme power infrastructure requirements detected. Transformer banks will reach <strong>400–500 tons</strong> — this is your critical path lift. Multiple crawlers required for parallel transformer setting.',
+      government: 'Analyzing <strong>Federal / Secured Facility</strong>. Additional compliance requirements noted. All crane operators require background clearance. Recommend <strong>pre-qualified vendor list</strong> with federal contracting experience.'
+    };
+
+    const aiEl = document.querySelector('.ai-text');
+    aiEl.innerHTML = '<strong>CraneGenius AI:</strong> ' + aiMessages[type];
+
+    // Show loader
+    const loader = document.getElementById('loader');
+    loader.classList.add('show');
+    setTimeout(() => loader.classList.remove('show'), 1800);
+  }
+
+  function selectPhase(el, idx) {
+    document.querySelectorAll('.timeline-step').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+
+    const phases = [
+      { title: 'CIVIL & FOUNDATION — Crane Requirements', count: '7 EQUIPMENT TYPES' },
+      { title: 'STRUCTURAL STEEL — Crane Requirements', count: '5 EQUIPMENT TYPES' },
+      { title: 'ELECTRICAL & POWER — Crane Requirements', count: '6 EQUIPMENT TYPES' },
+      { title: 'COOLING & MEP — Crane Requirements', count: '4 EQUIPMENT TYPES' },
+      { title: 'IT FIT-OUT — Crane Requirements', count: '3 EQUIPMENT TYPES' }
+    ];
+
+    const header = document.querySelector('.list-header-title');
+    const count = document.querySelector('.list-header div:last-child');
+    header.innerHTML = `<span class="live-dot"></span>${phases[idx].title}`;
+    count.textContent = phases[idx].count;
+  }
+
+  function askAI() {
+    const q = document.getElementById('aiQuestion').value;
+    if (!q) return;
+
+    const aiEl = document.querySelector('.ai-text');
+    aiEl.innerHTML = '<strong>CraneGenius AI:</strong> Analyzing your question...';
+
+    // Simulate AI response
+    const loader = document.getElementById('loader');
+    document.getElementById('loaderSteps').innerHTML = 'Processing query...<br>Cross-referencing specs...<br>Generating response...';
+    loader.classList.add('show');
+
+    setTimeout(() => {
+      loader.classList.remove('show');
+      aiEl.innerHTML = `<strong>CraneGenius AI:</strong> Based on your question about "<em>${q}</em>": For hyperscale data center builds, this typically involves coordination between your civil GC and the crane rental firm 8–12 weeks ahead of the lift. I recommend getting <strong>3 competitive quotes</strong> from vendors with data center experience — Barnhart, ALL Crane, and regional specialists. Want me to identify vendors in your project's geography?`;
+      document.getElementById('aiQuestion').value = '';
+    }, 1800);
+  }
+
+  document.getElementById('aiQuestion').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') askAI();
+  });
+
+  function showAllEquipment() {
+    alert('Full equipment matrix would open — all 23 crane types with full specs, pricing ranges, and vendor matches.');
+  }
+</script>
+</body>
+</html>
