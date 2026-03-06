@@ -717,6 +717,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opac
   </div>
 
 </div>
+<script src="/config.js"></script>
 <script>
 // ── CONFIG — REPLACE KEYS BEFORE LAUNCH ─────────────────
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgoldjjb';
@@ -1254,12 +1255,12 @@ loadDashboard();
 <script>
 // FIX #7 + #8: Bot API call with proper auth headers + publish wired to Formspree
 var bopen=false,bwait=false,bhist=[];
-var BSYS="You are CraneGenius AI helping crane owners list equipment. Be brief and friendly. Collect in order: 1)company name 2)model/make 3)type(Tower Crane,Mobile Crane,Crawler Crane,Rough Terrain,All Terrain,Boom Truck) 4)capacity tons 5)boom feet 6)year 7)daily rate dollars 8)location city and state 9)email 10)notes. Ask ONE question at a time, 1-2 sentences max. When you have all 10 fields output only: LISTING_READY:{\"company\":\"...\",\"model\":\"...\",\"type\":\"...\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"...\",\"email\":\"...\",\"notes\":\"...\"} using valid JSON.";
+var BSYS="You are CraneGenius AI for crane rentals, heavy lift planning, and equipment listings. You help with two intents. INTENT A: BUYER / PROJECT QUOTE. If user asks for quote, lift plan, pricing, or availability, gather: project type, required crane/equipment, capacity range, city/state, timeline, and contact email. Keep it concise and practical. INTENT B: OWNER LISTING EQUIPMENT. Collect: company, model, type, capacity, boom, year, rate, location, email, notes. Ask ONE question at a time, 1-2 sentences max. If listing details are complete, output only LISTING_READY:{\"company\":\"...\",\"model\":\"...\",\"type\":\"...\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"...\",\"email\":\"...\",\"notes\":\"...\"}. Start by identifying intent: quote/help finding equipment OR list equipment.";
 
-function toggleBot(){bopen=!bopen;document.getElementById("botPanel").classList.toggle("open",bopen);document.getElementById("botTrig").classList.toggle("open",bopen);if(bopen&&bhist.length===0){setTimeout(function(){baddmsg("bot","Hey! I'll get your crane listed in 2 minutes. What's the name of your company?",false);},300);}if(bopen)document.getElementById("bin").focus();}
+function toggleBot(silent){bopen=!bopen;document.getElementById("botPanel").classList.toggle("open",bopen);document.getElementById("botTrig").classList.toggle("open",bopen);if(bopen&&bhist.length===0&&!silent){setTimeout(function(){baddmsg("bot","Hey - I can help with a crane quote, lift planning, or listing equipment. What do you need?",false);},300);}if(bopen)document.getElementById("bin").focus();}
 
 function openBotWithPrefill(msg){
-  if(!bopen) toggleBot();
+  if(!bopen) toggleBot(true);
   var input = document.getElementById("bin");
   if(!input) return;
   input.value = msg || "";
@@ -1281,6 +1282,9 @@ function bootstrapBotFromQuery(){
 
 // FIX #8: Added x-api-key and anthropic-version headers
 async function bai(msg){
+  if(!ANTHROPIC_API_KEY){
+    return "AI is temporarily unavailable. Call 1 (503) 773-4659 or email info@cranegenius.com for live quote support now.";
+  }
   bhist.push({role:"user",content:msg});
   try{
     var r=await fetch("https://api.anthropic.com/v1/messages",{
@@ -1294,10 +1298,13 @@ async function bai(msg){
       body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:400,system:BSYS,messages:bhist})
     });
     var d=await r.json();
-    var t=d.content&&d.content[0]?d.content[0].text:"Sorry, try again.";
+    if(!r.ok){
+      return "Connection issue ("+(d.error&&d.error.message?d.error.message:r.status)+"). Call 1 (503) 773-4659 for live support.";
+    }
+    var t=d.content&&d.content[0]?d.content[0].text:"I can help with quotes, lift plans, or listing cranes. What would you like to do next?";
     bhist.push({role:"assistant",content:t});
     return t;
-  }catch(e){return "Connection error. Please try again.";}
+  }catch(e){return "Network error. Call 1 (503) 773-4659 for live support.";}
 }
 
 function bparse(text){var m=text.match(/LISTING_READY:({[\s\S]*?})/);if(m){try{return JSON.parse(m[1]);}catch(e){}}return null;}
@@ -1310,7 +1317,7 @@ function bsetqr(opts){document.getElementById("bqrs").innerHTML=opts.map(functio
 function bclearqr(){document.getElementById("bqrs").innerHTML="";}
 function bqrc(t){bclearqr();document.getElementById("bin").value=t;bgo();}
 
-async function bgo(){if(bwait)return;var inp=document.getElementById("bin");var msg=inp.value.trim();if(!msg)return;inp.value="";bresize(inp);bclearqr();await baddmsg("user",msg,false);bwait=true;document.getElementById("bsend").disabled=true;var resp=await bai(msg);await baddmsg("bot",resp,true);var low=resp.toLowerCase();if(low.includes("type")&&(low.includes("crane")||low.includes("terrain")))bsetqr(["Tower Crane","Mobile Crane","Crawler Crane","All Terrain","Rough Terrain","Boom Truck"]);bwait=false;document.getElementById("bsend").disabled=false;document.getElementById("bin").focus();}
+async function bgo(){if(bwait)return;var inp=document.getElementById("bin");var msg=inp.value.trim();if(!msg)return;inp.value="";bresize(inp);bclearqr();await baddmsg("user",msg,false);bwait=true;document.getElementById("bsend").disabled=true;var resp=await bai(msg);await baddmsg("bot",resp,true);var low=resp.toLowerCase();if(low.includes("type")&&(low.includes("crane")||low.includes("terrain")))bsetqr(["Tower Crane","Mobile Crane","Crawler Crane","All Terrain","Rough Terrain","Boom Truck"]);else if(low.includes("quote")||low.includes("project")||low.includes("availability"))bsetqr(["Get same-day quote","Need full lift plan","Talk to a specialist"]);bwait=false;document.getElementById("bsend").disabled=false;document.getElementById("bin").focus();}
 
 function bkey(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();bgo();}}
 function bresize(el){el.style.height="auto";el.style.height=Math.min(el.scrollHeight,80)+"px";}

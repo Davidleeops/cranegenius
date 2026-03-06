@@ -354,6 +354,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opac
     </div>
   </div>
 </div>
+<script src="/config.js"></script>
 <script>
 const ANTHROPIC_API_KEY = window.__CG_KEY__ || '';
 var CFG={fsId:"",fsEmail:"",shUrl:""};
@@ -477,7 +478,7 @@ window.onload=function(){
   renderAll();
   setTimeout(function(){
     baddmsg("bot","Hey! Welcome to the CraneGenius Marketplace.\n\nAre you looking to list for rent, list for sale, find equipment to rent, or acquire equipment with a lease purchase option?",false);
-    setTimeout(function(){bsetqr(["List for rent","List for sale","Find equipment"]);},450);
+    setTimeout(function(){bsetqr(["List for rent","List for sale","Find equipment","Acquire with lease purchase"]);},450);
     document.getElementById("bin").focus();
   },300);
 };
