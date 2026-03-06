@@ -355,6 +355,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opac
   </div>
 </div>
 <script>
+const ANTHROPIC_API_KEY = window.__CG_KEY__ || '';
 var CFG={fsId:"",fsEmail:"",shUrl:""};
 var GR={"Mobile Crane":"linear-gradient(135deg,#1a2a1a,#0d1a0d)","Tower Crane":"linear-gradient(135deg,#1a1a2a,#0d0d1a)","Crawler Crane":"linear-gradient(135deg,#2a1a0d,#1a0d08)","All Terrain":"linear-gradient(135deg,#1a2a2a,#0d1a1a)","Mini Crane":"linear-gradient(135deg,#0d1520,#080e18)","Glass Lift":"linear-gradient(135deg,#101a25,#0a1218)","Boom Truck":"linear-gradient(135deg,#2a1a1a,#1a0d0d)","Specialty":"linear-gradient(135deg,#2a2a1a,#1a1a0d)"};
 var EM={"Mobile Crane":"&#127959;","Tower Crane":"&#128346;","Crawler Crane":"&#9881;","All Terrain":"&#128667;","Mini Crane":"&#128269;","Glass Lift":"&#129695;","Boom Truck":"&#128666;","Specialty":"&#9889;"};
@@ -395,7 +396,7 @@ function renderGrid(){
 function updateCounts(){document.getElementById("cntLive").textContent=listings.filter(function(x){return x.status==="live";}).length;document.getElementById("cntAll").textContent=listings.length;}
 function filt(f,el){activeF=f;searchR=null;document.querySelectorAll(".chip").forEach(function(c){c.classList.remove("on");});el.classList.add("on");renderGrid();}
 function doSearch(){var q=document.getElementById("sq").value.toLowerCase();var city=document.getElementById("scity").value;var type=document.getElementById("stype").value;searchR=listings.filter(function(x){return(!q||x.company.toLowerCase().includes(q)||x.model.toLowerCase().includes(q)||x.type.toLowerCase().includes(q))&&(!city||x.loc.includes(city.split(",")[0]))&&(!type||x.type===type);});renderGrid();}
-function contactItem(id){var x=listings.find(function(l){return l.id===id;});if(x&&x.email)window.open("mailto:"+x.email+"?subject=Crane Inquiry - "+x.model);}
+function contactItem(id){var x=listings.find(function(l){return l.id===id;});if(!x)return;baddmsg("user","I need to connect live about "+x.model+" in "+x.loc+". Is this available for rent, sale, or lease purchase?",false);}
 function askBot(id){var x=listings.find(function(l){return l.id===id;});if(x)baddmsg("user","Tell me about the "+x.model+" in "+x.loc,false);}
 function delItem(id){listings=listings.filter(function(x){return x.id!==id;});renderAll();toast("Removed","tinfo");}
 function renderAll(){renderGrid();renderSpec("miniRow","Mini Crane");renderSpec("glassRow","Glass Lift");renderSpec("specialtyRow","Boom Truck");}
@@ -429,6 +430,9 @@ function bsetqr(opts){document.getElementById("bqrs").innerHTML=opts.map(functio
 function bclearqr(){document.getElementById("bqrs").innerHTML="";}
 function bqrc(t){bclearqr();document.getElementById("bin").value=t;bgo();}
 async function bai(userMsg) {
+  if (!ANTHROPIC_API_KEY) {
+    return 'AI is temporarily unavailable. Call 503-773-4659 or email info@cranegenius.com for live help right now.';
+  }
   bhist.push({role:'user', content:userMsg});
   var msgs = bhist.slice(-12);
   try {
@@ -472,21 +476,21 @@ function toast(msg,cls){var c=document.getElementById("toasts");var d=document.c
 window.onload=function(){
   renderAll();
   setTimeout(function(){
-    baddmsg("bot","Hey! Welcome to the CraneGenius Marketplace.\n\nAre you looking to list your crane for rent, or find equipment for a job?",false);
+    baddmsg("bot","Hey! Welcome to the CraneGenius Marketplace.\n\nAre you looking to list for rent, list for sale, find equipment to rent, or acquire equipment with a lease purchase option?",false);
     setTimeout(function(){bsetqr(["List for rent","List for sale","Find equipment"]);},450);
     document.getElementById("bin").focus();
   },300);
 };
 </script>
 
-  <div id="cg-credibility" style="background:#060b14;border-top:1px solid #c9a84c22;padding:16px 24px;text-align:center;font-family:'DM Sans',sans-serif;font-size:12px;color:#8899aa;letter-spacing:0.04em;">
-    Built with <strong style="color:#c9a84c;">NCCCO-certified crane operators &amp; operating engineers</strong>, crane account managers, and a <strong style="color:#c9a84c;">PMP&reg;-certified project manager</strong>.
+  <div id="cg-credibility" style="background:#060b14;border-top:1px solid #F5A62322;padding:16px 24px;text-align:center;font-family:'DM Sans',sans-serif;font-size:12px;color:#8899aa;letter-spacing:0.04em;">
+    Built with <strong style="color:#F5A623;">NCCCO-certified crane operators &amp; operating engineers</strong>, crane account managers, and a <strong style="color:#F5A623;">PMP&reg;-certified project manager</strong>.
   </div>
-  <footer id="cg-footer" style="background:#03060f;border-top:1px solid #c9a84c33;padding:20px 24px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;font-family:'DM Sans',sans-serif;font-size:13px;color:#6677aa;">
-    <span><a href="tel:+15037734659" style="color:#c9a84c;text-decoration:none;font-weight:600;">📞 1 (503) 773-4659</a></span>
-    <span style="color:#c9a84c33;">|</span>
-    <span><a href="mailto:info@cranegenius.com" style="color:#c9a84c;text-decoration:none;font-weight:600;">✉️ info@cranegenius.com</a></span>
-    <span style="color:#c9a84c33;">|</span>
+  <footer id="cg-footer" style="background:#03060f;border-top:1px solid #F5A62333;padding:20px 24px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;font-family:'DM Sans',sans-serif;font-size:13px;color:#6677aa;">
+    <span><a href="tel:+15037734659" style="color:#F5A623;text-decoration:none;font-weight:600;">📞 1 (503) 773-4659</a></span>
+    <span style="color:#F5A62333;">|</span>
+    <span><a href="mailto:info@cranegenius.com" style="color:#F5A623;text-decoration:none;font-weight:600;">✉️ info@cranegenius.com</a></span>
+    <span style="color:#F5A62333;">|</span>
     <span style="color:#334455;">&copy; 2026 CraneGenius</span>
   </footer>
 <script>

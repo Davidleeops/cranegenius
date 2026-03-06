@@ -339,8 +339,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opac
     <a href="/marketplace/">Crane Marketplace</a>
   </div>
 </nav>
-  <button class="disc-close" onclick="cgDismissDisclaimer()" aria-label="Dismiss">DISMISS &#10005;</button>
-</div>
 <div id="cg-disclaimer">
   <div class="disc-left">
     <span class="disc-icon">&#9888; BETA v0.1</span>
@@ -1105,6 +1103,8 @@ function submitLead() {
     if (data.ok || data.next) {
       document.getElementById('leadForm').style.display = 'none';
       document.getElementById('submittedMsg').style.display = 'block';
+      const flowMsg = "I just submitted a " + (currentCTA === 'quote' ? 'formal quote request' : 'full lift report request') + ". Company: " + (payload.company || 'N/A') + ", city: " + (payload.city || 'N/A') + ", load: " + (payload.load_type || 'N/A') + ". Please connect me with a live specialist.";
+      setTimeout(function(){ openBotWithPrefill(flowMsg); }, 700);
     } else {
       btn.textContent = 'Try Again';
       btn.disabled = false;
@@ -1114,6 +1114,7 @@ function submitLead() {
     document.getElementById('leadForm').style.display = 'none';
     document.getElementById('submittedMsg').style.display = 'block';
     console.warn('Formspree submission failed — check endpoint config');
+    setTimeout(function(){ openBotWithPrefill("I need a formal crane quote and a live specialist follow-up."); }, 700);
   });
 }
 
@@ -1257,6 +1258,27 @@ var BSYS="You are CraneGenius AI helping crane owners list equipment. Be brief a
 
 function toggleBot(){bopen=!bopen;document.getElementById("botPanel").classList.toggle("open",bopen);document.getElementById("botTrig").classList.toggle("open",bopen);if(bopen&&bhist.length===0){setTimeout(function(){baddmsg("bot","Hey! I'll get your crane listed in 2 minutes. What's the name of your company?",false);},300);}if(bopen)document.getElementById("bin").focus();}
 
+function openBotWithPrefill(msg){
+  if(!bopen) toggleBot();
+  var input = document.getElementById("bin");
+  if(!input) return;
+  input.value = msg || "";
+  bresize(input);
+  setTimeout(function(){ bgo(); }, 120);
+}
+
+function bootstrapBotFromQuery(){
+  try{
+    var qp = new URLSearchParams(window.location.search);
+    if(qp.get("bot")==="1"){
+      var qmsg = qp.get("msg") || "I need help with crane pricing and availability.";
+      setTimeout(function(){ openBotWithPrefill(qmsg); }, 600);
+    }
+  }catch(e){
+    console.warn("Bot query bootstrap skipped", e);
+  }
+}
+
 // FIX #8: Added x-api-key and anthropic-version headers
 async function bai(msg){
   bhist.push({role:"user",content:msg});
@@ -1340,6 +1362,7 @@ function bpublish(btn){
 }
 
 function be(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+bootstrapBotFromQuery();
 </script>
 
 <div id="cg-credibility" style="background:#060b14;border-top:1px solid #F5A62322;padding:16px 24px;text-align:center;font-family:'DM Sans',sans-serif;font-size:12px;color:#8899aa;letter-spacing:0.04em;">
@@ -1349,4 +1372,29 @@ function be(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").r
 <footer id="cg-footer" style="background:#03060f;border-top:1px solid #F5A62333;padding:20px 24px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;font-family:'DM Sans',sans-serif;font-size:13px;color:#6677aa;">
   <span><a href="tel:+15037734659" style="color:#F5A623;text-decoration:none;font-weight:600;">📞 1 (503) 773-4659</a></span>
   <span style="color:#F5A62333;">|</span>
-  <span><a href="/cdn-cgi/l/email-protection#82ebece4edc2e1f0e3ece7e5e7ecebf7f1ace1edef" style="color:#F5A623;text-decoration:none;font-weight:600;">✉️ <span class="__cf_email__" data-cfemail="c8a1a6aea788abbaa9a6adafada6a1bdbbe6aba7a5">[email&#160;protected]</span></a>
+  <span><a href="mailto:info@cranegenius.com" style="color:#F5A623;text-decoration:none;font-weight:600;">✉️ info@cranegenius.com</a></span>
+  <span style="color:#F5A62333;">|</span>
+  <span style="color:#334455;">&copy; 2026 CraneGenius</span>
+</footer>
+<script>
+(function(){
+  try{
+    if(sessionStorage.getItem('cg_disc_dismissed')==='1'){
+      var el=document.getElementById('cg-disclaimer');
+      if(el) el.classList.add('hidden');
+    }
+  }catch(e){}
+})();
+
+function cgDismissDisclaimer(){
+  try{sessionStorage.setItem('cg_disc_dismissed','1');}catch(e){}
+  var el=document.getElementById('cg-disclaimer');
+  if(el){
+    el.style.transition='opacity 0.3s';
+    el.style.opacity='0';
+    setTimeout(function(){el.classList.add('hidden');},300);
+  }
+}
+</script>
+</body>
+</html>

@@ -355,7 +355,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opac
           <div class="equip-desc">Pile cap installation, caisson work, pre-cast concrete panels.</div>
           <div class="equip-meta">Duration: 8–12 weeks · Setup: 60×80 ft minimum</div>
         </div>
-        <button class="quote-btn" onclick="alert('Quote request sent for Crawler Crane — Heavy Lift')">Quote</button>
+        <button class="quote-btn" onclick="routeToLiveBot('I need a quote for Crawler Crane - Heavy Lift (750-1500 ton) for my data center project.')">Quote</button>
       </div>
       <div class="equip-item">
         <div>
@@ -364,7 +364,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opac
           <div class="equip-desc">Excavation shoring, formwork placement, rebar bundle picks.</div>
           <div class="equip-meta">Duration: Full civil phase · High mobility required</div>
         </div>
-        <button class="quote-btn" onclick="alert('Quote request sent')">Quote</button>
+        <button class="quote-btn" onclick="routeToLiveBot('I need a quote for Rough Terrain Crane (100-165 ton) for my data center project.')">Quote</button>
       </div>
       <div class="equip-item">
         <div>
@@ -373,7 +373,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opac
           <div class="equip-desc">Critical if poor soil conditions. Typical 400–800 pile locations.</div>
           <div class="equip-meta">May need vibro hammer attachment</div>
         </div>
-        <button class="quote-btn" onclick="alert('Quote request sent')">Quote</button>
+        <button class="quote-btn" onclick="routeToLiveBot('I need a quote for a Piling Rig / Drilling Crane for my data center project.')">Quote</button>
       </div>
       <div class="equip-item">
         <div>
@@ -382,7 +382,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opac
           <div class="equip-desc">Utility work, light picks, material staging throughout site.</div>
           <div class="equip-meta">Quantity: 2–3 units recommended</div>
         </div>
-        <button class="quote-btn" onclick="alert('Quote request sent')">Quote</button>
+        <button class="quote-btn" onclick="routeToLiveBot('I need a quote for a Telescopic Boom Truck (40-80 ton) for my data center project.')">Quote</button>
       </div>
     </div>
 
@@ -417,7 +417,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opac
       <div class="cta-box-title">Get Your Full Lift Plan</div>
       <div class="cta-box-sub">Complete crane schedule, vendor bids, and financing options — delivered in 24 hours.</div>
       <div class="cta-box-btns">
-        <a href="mailto:info@cranegenius.com?subject=Full Lift Plan Request" class="btn-primary">Get My Lift Plan →</a>
+        <a href="#" onclick="event.preventDefault();routeToLiveBot('I need a full lift plan for my data center build, including crane schedule and vendor options.');" class="btn-primary">Get My Lift Plan →</a>
         <a href="tel:15037734659" class="btn-ghost">Talk to an Expert</a>
       </div>
     </div>
@@ -476,7 +476,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opac
       <div class="cta-box-title">Want All 23 Equipment Types?</div>
       <div class="cta-box-sub">Full specs, pricing ranges, and vendor matches included in the complete lift plan.</div>
       <div class="cta-box-btns">
-        <a href="mailto:info@cranegenius.com?subject=Full Lift Matrix Request" class="btn-primary">Request Full Analysis →</a>
+        <a href="#" onclick="event.preventDefault();routeToLiveBot('I need the full 23-equipment lift matrix and pricing analysis for my project.');" class="btn-primary">Request Full Analysis →</a>
       </div>
     </div>
   </div>
@@ -564,6 +564,11 @@ function cgDismissDisclaimer(){
   try{sessionStorage.setItem('cg_disc_dismissed','1');}catch(e){}
   var el=document.getElementById('cg-disclaimer');
   if(el){el.style.transition='opacity 0.3s';el.style.opacity='0';setTimeout(function(){el.classList.add('hidden');},300);}
+}
+
+function routeToLiveBot(message){
+  var msg = encodeURIComponent(message || "I need help with crane planning for a data center build.");
+  window.location.href = "/?bot=1&msg=" + msg + "&src=data-centers";
 }
 </script>
 </body>
