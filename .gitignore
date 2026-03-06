@@ -2,3 +2,4 @@ data/
 credentials/
 *.csv
 __pycache__/
+.env
