@@ -721,7 +721,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opac
 <script>
 // ── CONFIG — REPLACE KEYS BEFORE LAUNCH ─────────────────
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgoldjjb';
-const ANTHROPIC_API_KEY = window.__CG_KEY__ || '';
+const AI_PROXY_URL = window.__CG_PROXY_URL__ || '';
 // ────────────────────────────────────────────────────────
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -1280,20 +1280,17 @@ function bootstrapBotFromQuery(){
   }
 }
 
-// FIX #8: Added x-api-key and anthropic-version headers
+// AI calls must go through proxy (Cloudflare Worker)
 async function bai(msg){
-  if(!ANTHROPIC_API_KEY){
-    return "AI is temporarily unavailable. Call 1 (503) 773-4659 or email info@cranegenius.com for live quote support now.";
+  if(!AI_PROXY_URL){
+    return "AI proxy is not configured yet. Call 1 (503) 773-4659 or email info@cranegenius.com for live quote support now.";
   }
   bhist.push({role:"user",content:msg});
   try{
-    var r=await fetch("https://api.anthropic.com/v1/messages",{
+    var r=await fetch(AI_PROXY_URL,{
       method:"POST",
       headers:{
-        "Content-Type":"application/json",
-        "x-api-key": ANTHROPIC_API_KEY,
-        "anthropic-version":"2023-06-01",
-        "anthropic-dangerous-direct-browser-access":"true"
+        "Content-Type":"application/json"
       },
       body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:400,system:BSYS,messages:bhist})
     });

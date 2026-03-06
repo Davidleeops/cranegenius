@@ -356,7 +356,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opac
 </div>
 <script src="/config.js"></script>
 <script>
-const ANTHROPIC_API_KEY = window.__CG_KEY__ || '';
+const AI_PROXY_URL = window.__CG_PROXY_URL__ || '';
 var CFG={fsId:"",fsEmail:"",shUrl:""};
 var GR={"Mobile Crane":"linear-gradient(135deg,#1a2a1a,#0d1a0d)","Tower Crane":"linear-gradient(135deg,#1a1a2a,#0d0d1a)","Crawler Crane":"linear-gradient(135deg,#2a1a0d,#1a0d08)","All Terrain":"linear-gradient(135deg,#1a2a2a,#0d1a1a)","Mini Crane":"linear-gradient(135deg,#0d1520,#080e18)","Glass Lift":"linear-gradient(135deg,#101a25,#0a1218)","Boom Truck":"linear-gradient(135deg,#2a1a1a,#1a0d0d)","Specialty":"linear-gradient(135deg,#2a2a1a,#1a1a0d)"};
 var EM={"Mobile Crane":"&#127959;","Tower Crane":"&#128346;","Crawler Crane":"&#9881;","All Terrain":"&#128667;","Mini Crane":"&#128269;","Glass Lift":"&#129695;","Boom Truck":"&#128666;","Specialty":"&#9889;"};
@@ -431,19 +431,16 @@ function bsetqr(opts){document.getElementById("bqrs").innerHTML=opts.map(functio
 function bclearqr(){document.getElementById("bqrs").innerHTML="";}
 function bqrc(t){bclearqr();document.getElementById("bin").value=t;bgo();}
 async function bai(userMsg) {
-  if (!ANTHROPIC_API_KEY) {
-    return 'AI is temporarily unavailable. Call 503-773-4659 or email info@cranegenius.com for live help right now.';
+  if (!AI_PROXY_URL) {
+    return 'AI proxy is not configured yet. Call 503-773-4659 or email info@cranegenius.com for live help right now.';
   }
   bhist.push({role:'user', content:userMsg});
   var msgs = bhist.slice(-12);
   try {
-    var res = await fetch('https://api.anthropic.com/v1/messages', {
+    var res = await fetch(AI_PROXY_URL, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
