@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CraneGenius — Lift Decision Engine</title>
-<!-- SEO & SHARE META -->
 <meta name="description" content="Free 60-second tool: See if you're overpaying on crane rentals. Spider crane vs mobile crane cost comparison, equipment recommendation, and timeline savings for MEP, data center, and electrical contractors.">
 <meta property="og:title" content="CraneGenius — Lift Cost Estimator">
 <meta property="og:description" content="Find out in 60 seconds if you're overpaying on crane rentals. Real numbers. Free tool for contractors.">
@@ -13,7 +12,8 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CraneGenius — Lift Cost Estimator">
 <meta name="twitter:description" content="60 seconds. Real numbers. Find out if you're overpaying on crane rentals.">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<!-- FIX #4: Added DM Sans to font load -->
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&family=DM+Sans:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
 :root {
   --black: #0A0C12;
@@ -35,6 +35,14 @@ body { background: var(--black); color: var(--text); font-family: 'Barlow', sans
 body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(245,166,35,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(245,166,35,0.025) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; z-index: 0; }
 
 .app { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 28px 20px 80px; }
+
+/* FIX #9: NAV BAR */
+.site-nav { background: #060b14; border-bottom: 1px solid #c9a84c33; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; position: sticky; top: 0; z-index: 9998; }
+.site-nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 18px; color: #c9a84c; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; }
+.site-nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.site-nav-links a { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; color: #8899aa; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+.site-nav-links a:hover { color: #c9a84c; }
+.site-nav-links a.active { color: #c9a84c; }
 
 /* HEADER */
 .header { border-left: 4px solid var(--accent); padding: 18px 0 18px 22px; margin-bottom: 12px; animation: slideIn 0.5s ease; }
@@ -212,12 +220,17 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
 .submitted-msg h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 700; color: var(--accent2); text-transform: uppercase; margin-bottom: 8px; }
 .submitted-msg p { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
-/* SAVE ESTIMATE */
-.save-section { background: var(--steel); border: 1px solid var(--border); padding: 18px 22px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.save-text { font-size: 13px; color: var(--muted); }
+/* FIX #6: SAVE ESTIMATE — inline UI replaces alert/prompt */
+.save-section { background: var(--steel); border: 1px solid var(--border); padding: 18px 22px; margin-bottom: 16px; }
+.save-text { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
 .save-text strong { color: var(--text); }
-.save-btn { padding: 10px 20px; background: none; border: 1px solid var(--accent); color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.2s; }
+.save-inline { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.save-inline input { flex: 1; min-width: 180px; background: var(--panel); border: 1px solid var(--border2); color: var(--white); padding: 9px 12px; font-family: 'Barlow', sans-serif; font-size: 13px; outline: none; transition: border-color 0.2s; }
+.save-inline input:focus { border-color: var(--accent); }
+.save-inline input::placeholder { color: var(--muted); }
+.save-btn { padding: 10px 20px; background: none; border: 1px solid var(--accent); color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
 .save-btn:hover { background: rgba(245,166,35,0.1); }
+.save-confirm { font-size: 12px; color: var(--accent2); margin-top: 8px; display: none; }
 
 /* SAVED JOBS DASHBOARD */
 .dashboard { background: var(--panel); border: 1px solid var(--border); padding: 22px; margin-bottom: 20px; display: none; }
@@ -253,17 +266,29 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
   .step-card { padding: 20px 16px; }
   .proof-strip { gap: 16px; }
   .save-section { flex-direction: column; align-items: flex-start; }
+  .site-nav-links { gap: 12px; }
 }
 </style>
 </head>
 <body>
+
+<!-- FIX #9: Navigation bar -->
+<nav class="site-nav">
+  <a href="/" class="site-nav-logo">CraneGenius</a>
+  <div class="site-nav-links">
+    <a href="/" class="active">Lift Estimator</a>
+    <a href="/data-centers/">Data Centers</a>
+    <a href="/marketplace/">Crane Marketplace</a>
+  </div>
+</nav>
+
 <div class="app">
 
   <!-- HEADER -->
   <div class="header">
     <div class="header-eyebrow">
       <div class="header-label">// CraneGenius.com</div>
-      <div class="trust-badge">✓ USED BY 200+ CONTRACTORS</div>
+      <div class="trust-badge">✓ CRANE OPERATORS IN CHICAGO, DALLAS &amp; PHOENIX</div>
     </div>
     <h1>Lift Decision <span>Engine</span></h1>
     <p class="header-sub">
@@ -312,7 +337,7 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
       </div>
     </div>
 
-    <!-- STEP 1: LOAD TYPE -->
+    <!-- STEP 1 -->
     <div class="step active" id="step1">
       <div class="step-card">
         <div class="step-number">// STEP 01 — LOAD TYPE</div>
@@ -344,7 +369,7 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
       <button class="btn-next" id="next1" disabled onclick="goToStep(2)">Next →</button>
     </div>
 
-    <!-- STEP 2: ACCESS -->
+    <!-- STEP 2 -->
     <div class="step" id="step2">
       <div class="step-card">
         <div class="step-number">// STEP 02 — SITE ACCESS</div>
@@ -373,7 +398,7 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
       <button class="btn-back" onclick="goToStep(1)">← Back</button>
     </div>
 
-    <!-- STEP 3: DURATION -->
+    <!-- STEP 3 -->
     <div class="step" id="step3">
       <div class="step-card">
         <div class="step-number">// STEP 03 — DURATION</div>
@@ -385,8 +410,6 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
         <div class="slider-unsure">
           <label><input type="checkbox" id="unsureCheck" onchange="toggleUnsure(this)"> Not sure yet — show me based on a typical install for my load type</label>
         </div>
-
-        <!-- RENT VS BUY FREQUENCY -->
         <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border);">
           <div class="step-number" style="margin-bottom: 8px;">// BONUS — RENT VS BUY SIGNAL</div>
           <div style="font-size: 14px; color: var(--muted); margin-bottom: 14px;">How many specialty lifts like this do you run per year? (Helps us recommend rent vs. lease-to-own vs. buy)</div>
@@ -403,13 +426,12 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
       <button class="btn-back" onclick="goToStep(2)">← Back</button>
     </div>
 
-    <!-- STEP 4: TECHNICAL SPECS -->
+    <!-- STEP 4 -->
     <div class="step" id="step4">
       <div class="step-card">
         <div class="step-number">// STEP 04 — TECHNICAL SPECS</div>
         <div class="step-question">Tell us about the lift itself.</div>
         <div class="step-hint">This is what a crane salesperson needs to confirm the right equipment and verify you're within safe working load limits. The more accurate, the better your output.</div>
-
         <div class="form-grid" style="margin-top:0;">
           <div class="form-field">
             <label>Load Weight (lbs)</label>
@@ -455,13 +477,10 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
             <input type="text" id="t_notes" placeholder="e.g. low beam at 11ft, doorway on north wall, energized equipment nearby">
           </div>
         </div>
-
-        <!-- LIVE CAPACITY CHECK -->
         <div id="capacityCheck" style="display:none; margin-top:20px; padding:16px; background:rgba(0,196,167,0.07); border:1px solid rgba(0,196,167,0.25);">
           <div style="font-family:'Share Tech Mono',monospace; font-size:10px; color:var(--accent2); letter-spacing:3px; margin-bottom:10px;">// CAPACITY CHECK</div>
           <div id="capacityResult" style="font-size:14px; color:var(--text); line-height:1.6;"></div>
         </div>
-
         <div style="margin-top:14px; font-size:12px; color:var(--muted); line-height:1.6;">
           All fields optional — skip if not yet known. We use this data to verify equipment fit and flag any safety considerations before quoting.
         </div>
@@ -470,7 +489,7 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
       <button class="btn-back" onclick="goToStep(3)">← Back</button>
     </div>
 
-    <!-- STEP 5: URGENCY -->
+    <!-- STEP 5 -->
     <div class="step" id="step5">
       <div class="step-card">
         <div class="step-number">// STEP 05 — TIMELINE</div>
@@ -495,7 +514,7 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
       <button class="btn-back" onclick="goToStep(4)">← Back</button>
     </div>
 
-    <!-- STEP 6: QUALIFICATION -->
+    <!-- STEP 6 -->
     <div class="step" id="step6">
       <div class="step-card">
         <div class="step-number">// STEP 06 — PROJECT STATUS</div>
@@ -528,89 +547,73 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
       <div class="results-title" id="resultsTitle">Your Lift Strategy</div>
       <div class="results-subtitle" id="resultsSubtitle">Based on your inputs — here's what the numbers say and what contractors in your situation are actually running.</div>
     </div>
-
-    <!-- URGENCY SIGNAL -->
     <div class="hot-signal" id="hotSignal"></div>
-
-    <!-- RECOMMENDATION -->
     <div class="rec-box">
       <div class="rec-label">// RECOMMENDED EQUIPMENT</div>
-      <div class="rec-equipment" id="recEquipment">—</div>
-      <div class="rec-why" id="recWhy">—</div>
+      <div class="rec-equipment" id="recEquipment"></div>
+      <div class="rec-why" id="recWhy"></div>
     </div>
-
-    <!-- WHY THIS WINS -->
     <div class="why-wins">
       <div class="why-label">// WHY THIS EQUIPMENT WINS FOR YOUR JOB</div>
       <div id="whyWinsList"></div>
     </div>
-
-    <!-- RISK REDUCTION -->
     <div class="risk-box">
       <div class="risk-label">// RISKS ELIMINATED VS. CONVENTIONAL CRANE</div>
       <div id="riskList"></div>
     </div>
-
-    <!-- SAVINGS BANNER -->
     <div class="savings-banner">
       <div class="savings-item"><div class="savings-num" id="savingsMoney">$0</div><div class="savings-label">Cost Savings</div></div>
       <div class="savings-item"><div class="savings-num" id="savingsDays">0</div><div class="savings-label">Days Saved</div></div>
       <div class="savings-item"><div class="savings-num" id="savingsPermit">$0</div><div class="savings-label">Permit Avoided</div></div>
     </div>
-
-    <!-- MARGIN IMPACT -->
     <div class="margin-box">
       <div class="margin-label">// MARGIN IMPACT</div>
-      <div class="margin-text" id="marginText">—</div>
-      <div class="margin-sub" id="marginSub">—</div>
+      <div class="margin-text" id="marginText"></div>
+      <div class="margin-sub" id="marginSub"></div>
     </div>
-
-    <!-- COST COMPARISON -->
     <div class="comparison">
       <div class="cost-box">
         <div class="cost-box-label">// Conventional Crane</div>
-        <div class="cost-total" id="convCost">—</div>
-        <div class="cost-line" id="convBreakdown">—</div>
+        <div class="cost-total" id="convCost"></div>
+        <div class="cost-line" id="convBreakdown"></div>
       </div>
       <div class="cost-box highlight">
         <div class="cost-box-label">// Recommended Option</div>
-        <div class="cost-total" id="miniCost">—</div>
-        <div class="cost-line" id="miniBreakdown">—</div>
+        <div class="cost-total" id="miniCost"></div>
+        <div class="cost-line" id="miniBreakdown"></div>
       </div>
     </div>
-
-    <!-- TIMELINE -->
     <div class="timeline-section">
       <div class="timeline-label">// SCHEDULE COMPARISON — TOTAL DAYS TO COMPLETION</div>
       <div class="timeline-row">
         <div class="timeline-name">Conventional</div>
         <div class="timeline-track"><div class="timeline-fill conventional" id="convBar" style="width:0%"></div></div>
-        <div class="timeline-days" id="convDays">—</div>
+        <div class="timeline-days" id="convDays"></div>
       </div>
       <div class="timeline-row">
         <div class="timeline-name">Recommended</div>
         <div class="timeline-track"><div class="timeline-fill mini" id="miniBar" style="width:0%"></div></div>
-        <div class="timeline-days" id="miniDays">—</div>
+        <div class="timeline-days" id="miniDays"></div>
       </div>
     </div>
-
-    <!-- RENT VS BUY -->
     <div class="rvb-box" id="rvbBox" style="display:none">
       <div class="rvb-label">// RENT VS. LEASE-TO-OWN RECOMMENDATION</div>
-      <div class="rvb-signal" id="rvbSignal">—</div>
-      <div class="rvb-detail" id="rvbDetail">—</div>
+      <div class="rvb-signal" id="rvbSignal"></div>
+      <div class="rvb-detail" id="rvbDetail"></div>
     </div>
 
-    <!-- SAVE THIS ESTIMATE -->
+    <!-- FIX #6: Inline save UI — no alert/prompt -->
     <div class="save-section no-print">
       <div class="save-text"><strong>Save this estimate</strong> to compare with other jobs</div>
-      <button class="save-btn" onclick="saveEstimate()">+ Save to Dashboard</button>
+      <div class="save-inline">
+        <input type="text" id="saveNameInput" placeholder='e.g. "Houston Data Center Job"'>
+        <button class="save-btn" onclick="saveEstimate()">+ Save</button>
+      </div>
+      <div class="save-confirm" id="saveConfirm">✓ Saved to your dashboard above</div>
     </div>
 
-    <!-- PRINT REPORT -->
     <button class="print-btn no-print" onclick="window.print()">⬇ Download / Print This Report</button>
 
-    <!-- MULTI-PATH CTA -->
     <div class="cta-section no-print">
       <div class="cta-heading">What Do You Need Next?</div>
       <div class="cta-sub">Choose what's most useful for where your job is right now.</div>
@@ -626,7 +629,6 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
           <div class="cta-path-desc">Get this analysis emailed — share with your team or owner</div>
         </div>
       </div>
-
       <div class="lead-form" id="leadForm">
         <div class="lead-form-title" id="leadFormTitle">Get Your Same-Day Quote</div>
         <div class="form-grid">
@@ -640,7 +642,6 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
         <button class="form-submit" onclick="submitLead()">Submit — We'll Be In Touch Today</button>
         <div class="form-note">No spam. Direct response only. David Lee, PMP® responds personally.</div>
       </div>
-
       <div class="submitted-msg" id="submittedMsg">
         <h4>✓ Report Sent</h4>
         <p>You'll hear from David Lee, PMP® within a few hours with exact pricing and availability for your job.<br>In the meantime — your estimate is saved above.</p>
@@ -653,17 +654,16 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
 
 </div>
 <script>
-// ── CONFIG ──────────────────────────────────────────────
+// ── CONFIG — REPLACE KEYS BEFORE LAUNCH ─────────────────
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgoldjjb';
+const ANTHROPIC_API_KEY  = 'sk-ant-api03-cSQvECIRtMzDh0P5LcgcGMy4OB3_TYy6eW79lpPCFiAKp7xFNYfhSYFYcY_hJxcJZSRHbGMmZtCVCGi9W1mUw-8MKdgAAA';
 // ────────────────────────────────────────────────────────
 
-// Capture ref/utm on page load
 const urlParams = new URLSearchParams(window.location.search);
 const refSource = urlParams.get('ref') || urlParams.get('utm_source') || 'direct';
 const utmMedium = urlParams.get('utm_medium') || '';
 const utmCampaign = urlParams.get('utm_campaign') || '';
 
-// Show creator attribution if ref present
 if (refSource !== 'direct') {
   const hdr = document.querySelector('.header-eyebrow');
   if (hdr) {
@@ -677,7 +677,6 @@ if (refSource !== 'direct') {
   }
 }
 
-// Safe localStorage wrapper (works in private browsing)
 const store = {
   get(key) { try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch(e) { return null; } },
   set(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); return true; } catch(e) { return false; } }
@@ -711,8 +710,6 @@ function selectFreq(el) {
   sig.style.display = 'block';
 }
 
-// Spider crane load chart data (simplified, conservative)
-// UNIC URW-547 capacity at radius (ft): { radius: maxLbs }
 const spiderLoadChart = { 5:13200, 8:8800, 10:6600, 12:5500, 15:3960, 18:2860, 20:2200, 25:1540 };
 const carryDeckLoadChart = { 5:15000, 8:10000, 10:8000, 12:6000, 15:4000, 20:2500 };
 
@@ -721,66 +718,35 @@ function updateTechHints() {
   const radius = parseFloat(document.getElementById('t_radius').value);
   const headroom = parseFloat(document.getElementById('t_headroom').value);
   const surface = document.getElementById('t_surface').value;
-
   if (!weight && !radius) return;
-
   const check = document.getElementById('capacityCheck');
   const result = document.getElementById('capacityResult');
   check.style.display = 'block';
-
   let lines = [];
-
-  // Weight check vs spider crane
   if (weight) {
     const weightTons = (weight / 2000).toFixed(1);
-    if (weight <= 13200) {
-      lines.push(`✓ <strong>${weight.toLocaleString()} lbs (${weightTons}T)</strong> — within spider crane capacity (max 6.6T / 13,200 lbs)`);
-    } else if (weight <= 30000) {
-      lines.push(`⚠️ <strong>${weight.toLocaleString()} lbs (${weightTons}T)</strong> — exceeds standard spider crane. Carry deck or rough terrain required.`);
-    } else {
-      lines.push(`🔴 <strong>${weight.toLocaleString()} lbs (${weightTons}T)</strong> — heavy lift. Specialized equipment required. We'll advise on the right spec.`);
-    }
+    if (weight <= 13200) lines.push('✓ <strong>' + weight.toLocaleString() + ' lbs (' + weightTons + 'T)</strong> — within spider crane capacity (max 6.6T / 13,200 lbs)');
+    else if (weight <= 30000) lines.push('⚠️ <strong>' + weight.toLocaleString() + ' lbs (' + weightTons + 'T)</strong> — exceeds standard spider crane. Carry deck or rough terrain required.');
+    else lines.push('🔴 <strong>' + weight.toLocaleString() + ' lbs (' + weightTons + 'T)</strong> — heavy lift. Specialized equipment required. We\'ll advise on the right spec.');
   }
-
-  // Radius check
   if (weight && radius) {
-    // Find closest radius in chart
     const radii = Object.keys(spiderLoadChart).map(Number).sort((a,b)=>a-b);
     let closestRad = radii[0];
     for (const r of radii) { if (r <= radius) closestRad = r; }
     const ratedCap = spiderLoadChart[closestRad];
-
-    if (weight <= ratedCap) {
-      lines.push(`✓ At <strong>${radius}ft working radius</strong>, spider crane rated capacity is ~${ratedCap.toLocaleString()} lbs — your load is within range.`);
-    } else if (weight <= carryDeckLoadChart[closestRad] || weight <= 15000) {
-      lines.push(`⚠️ At <strong>${radius}ft radius</strong>, spider crane capacity (~${ratedCap.toLocaleString()} lbs) is below your load weight. Carry deck crane recommended at this radius.`);
-    } else {
-      lines.push(`🔴 At <strong>${radius}ft radius</strong>, this exceeds standard compact equipment. We'll review the load chart for the right model.`);
-    }
+    if (weight <= ratedCap) lines.push('✓ At <strong>' + radius + 'ft working radius</strong>, spider crane rated capacity is ~' + ratedCap.toLocaleString() + ' lbs — your load is within range.');
+    else if (weight <= (carryDeckLoadChart[closestRad] || 15000)) lines.push('⚠️ At <strong>' + radius + 'ft radius</strong>, spider crane capacity (~' + ratedCap.toLocaleString() + ' lbs) is below your load weight. Carry deck crane recommended at this radius.');
+    else lines.push('🔴 At <strong>' + radius + 'ft radius</strong>, this exceeds standard compact equipment. We\'ll review the load chart for the right model.');
   }
-
-  // Headroom check
   if (headroom) {
-    if (headroom < 8) {
-      lines.push(`🔴 <strong>${headroom}ft headroom</strong> — extremely tight. Manual rigging or skidding may be required. Flag this when requesting a quote.`);
-    } else if (headroom < 12) {
-      lines.push(`⚠️ <strong>${headroom}ft headroom</strong> — tight clearance. Spider crane boom angle will be limited. Confirm final height with our team.`);
-    } else {
-      lines.push(`✓ <strong>${headroom}ft headroom</strong> — adequate for most compact crane configurations.`);
-    }
+    if (headroom < 8) lines.push('🔴 <strong>' + headroom + 'ft headroom</strong> — extremely tight. Manual rigging or skidding may be required. Flag this when requesting a quote.');
+    else if (headroom < 12) lines.push('⚠️ <strong>' + headroom + 'ft headroom</strong> — tight clearance. Spider crane boom angle will be limited. Confirm final height with our team.');
+    else lines.push('✓ <strong>' + headroom + 'ft headroom</strong> — adequate for most compact crane configurations.');
   }
-
-  // Surface note
-  if (surface === 'raised_floor') {
-    lines.push(`⚠️ <strong>Raised access floor</strong> — spider crane rubber tracks can navigate this but outrigger pad placement needs to hit structural support points. Note this on your quote request.`);
-  } else if (surface === 'grating') {
-    lines.push(`⚠️ <strong>Steel grating</strong> — outrigger pads required. Verify load-bearing rating of grating panels before deployment.`);
-  } else if (surface === 'concrete_finished') {
-    lines.push(`✓ <strong>Finished concrete</strong> — rubber tracks leave zero damage. Standard deployment.`);
-  } else if (surface === 'dirt' || surface === 'gravel') {
-    lines.push(`✓ <strong>Unimproved surface</strong> — rough terrain or carry deck recommended. Spider crane can operate with outrigger mats.`);
-  }
-
+  if (surface === 'raised_floor') lines.push('⚠️ <strong>Raised access floor</strong> — spider crane rubber tracks can navigate this but outrigger pad placement needs to hit structural support points. Note this on your quote request.');
+  else if (surface === 'grating') lines.push('⚠️ <strong>Steel grating</strong> — outrigger pads required. Verify load-bearing rating of grating panels before deployment.');
+  else if (surface === 'concrete_finished') lines.push('✓ <strong>Finished concrete</strong> — rubber tracks leave zero damage. Standard deployment.');
+  else if (surface === 'dirt' || surface === 'gravel') lines.push('✓ <strong>Unimproved surface</strong> — rough terrain or carry deck recommended. Spider crane can operate with outrigger mats.');
   result.innerHTML = lines.join('<br><br>');
   answers.techSpecs = { weight, radius, headroom, surface, rigging: document.getElementById('t_rigging').value, notes: document.getElementById('t_notes').value };
 }
@@ -806,7 +772,7 @@ function toggleUnsure(cb) {
 function goToStep(n) {
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
   document.getElementById('step'+n).classList.add('active');
-  document.getElementById('progressLabel').textContent = `STEP ${n} OF 6`;
+  document.getElementById('progressLabel').textContent = 'STEP ' + n + ' OF 6';
   for (let i=1; i<=6; i++) {
     const ps = document.getElementById('ps'+i);
     ps.classList.remove('active','done');
@@ -818,7 +784,6 @@ function goToStep(n) {
 
 function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
 
-// DYNAMIC COPY ENGINE
 const dynamicCopy = {
   transformer: {
     indoor_tight: {
@@ -885,29 +850,41 @@ function showResults() {
   const { q1, q2, duration, freq, q4, q5, techSpecs } = answers;
   const copy = getCopy(q1, q2);
 
-  // COST ENGINE
   let convBase, convPermit, convMob, convLeadDays;
   let miniBase, miniDelivery, miniPermit, miniLeadDays, rec;
 
-  const weeks = Math.max(1, duration/7);
   convBase = Math.round(1300 * duration);
-  convPermit = q2==='outdoor' ? 2500 : (q2==='rooftop' ? 7000 : 5000);
   convMob = 2800;
   convLeadDays = q4==='asap' ? 18 : q4==='month' ? 14 : 10;
 
+  // FIX #5: Indoor access scenarios have $0 permit cost — that IS the value prop
+  if (q2 === 'outdoor') {
+    convPermit = 2500;
+  } else if (q2 === 'rooftop') {
+    convPermit = 7000;
+  } else {
+    // indoor_tight and indoor_open — conventional crane can't even enter, so
+    // permit cost shown is the "street crane permit you'd need if you tried anyway"
+    // but we show $0 for the recommended option's permit savings accurately
+    convPermit = 0;
+  }
+
   if (q2==='indoor_tight' || q2==='rooftop') {
-    rec = q2==='rooftop' ? 'Spider Crane (UNIC / Maeda)' : 'Spider Crane (UNIC / Maeda)';
+    rec = 'Spider Crane (UNIC / Maeda)';
     miniBase = Math.round(550 * duration);
     miniDelivery = 900;
     miniPermit = 0;
     miniLeadDays = 2;
     if (q2==='indoor_tight') convBase = Math.round(convBase * 1.35);
+    // For indoor tight, there IS no viable conventional crane — set permit to reflect real street crane cost
+    convPermit = q2==='rooftop' ? 7000 : 5000;
   } else if (q2==='indoor_open') {
     rec = 'Carry Deck Crane';
     miniBase = Math.round(700 * duration);
     miniDelivery = 700;
     miniPermit = 0;
     miniLeadDays = 3;
+    convPermit = 0; // open floor — no permit needed for conventional either, cost savings come from rental rate
   } else {
     rec = 'Carry Deck / Rough Terrain Crane';
     miniBase = Math.round(800 * duration);
@@ -919,41 +896,33 @@ function showResults() {
   }
 
   const urgNote = q4==='asap' ? ' ⚠️ At your timeline, a conventional crane permit takes 2–4 weeks. The mini crane option may be your only viable path.' : '';
-
   const convTotal = convBase + convPermit + convMob;
   const miniTotal = miniBase + miniDelivery;
   const savings = convTotal - miniTotal;
   const schedSaved = convLeadDays - miniLeadDays;
 
-  // Margin impact
   const pkgSize = q1==='modular' ? 350000 : q1==='transformer' ? 220000 : q1==='cooling' ? 180000 : 200000;
   const marginPct = ((savings / pkgSize) * 100).toFixed(1);
   const marginLow = (pkgSize * 0.05 / 1000).toFixed(0);
   const marginHigh = (pkgSize * 0.12 / 1000).toFixed(0);
 
-  // Store for save
   lastResults = { rec, savings, schedSaved, convTotal, miniTotal, convPermit, q1, q2, duration, q4, q5, timestamp: new Date().toLocaleDateString() };
 
-  // POPULATE
   document.getElementById('recEquipment').textContent = rec;
   document.getElementById('recWhy').textContent = copy.recWhy + urgNote;
 
-  const whyList = document.getElementById('whyWinsList');
-  whyList.innerHTML = copy.whyWins.map(w => `<div class="why-item">${w}</div>`).join('');
+  document.getElementById('whyWinsList').innerHTML = copy.whyWins.map(w => '<div class="why-item">' + w + '</div>').join('');
+  document.getElementById('riskList').innerHTML = copy.risks.map(r => '<div class="risk-item">' + r + '</div>').join('');
 
-  const riskList = document.getElementById('riskList');
-  riskList.innerHTML = copy.risks.map(r => `<div class="risk-item">${r}</div>`).join('');
-
-  // Margin
-  document.getElementById('marginText').textContent = `On a typical ${q1} package (~${fmt(pkgSize)}), this saves ${marginPct}% of total contract value.`;
-  document.getElementById('marginSub').textContent = `That's the difference between a ${marginLow}%–${marginHigh}% margin job and a losing one. Equipment cost is one of the few line items you can actually control.`;
+  document.getElementById('marginText').textContent = 'On a typical ' + q1 + ' package (~' + fmt(pkgSize) + '), this saves ' + marginPct + '% of total contract value.';
+  document.getElementById('marginSub').textContent = 'That\'s the difference between a ' + marginLow + '%–' + marginHigh + '% margin job and a losing one. Equipment cost is one of the few line items you can actually control.';
 
   document.getElementById('convCost').textContent = fmt(convTotal);
-  document.getElementById('convBreakdown').innerHTML = `Rental: ${fmt(convBase)}<br>Permit: ${fmt(convPermit)}<br>Mobilization: ${fmt(convMob)}<br>Lead time: ~${convLeadDays} days`;
+  document.getElementById('convBreakdown').innerHTML = 'Rental: ' + fmt(convBase) + '<br>Permit: ' + fmt(convPermit) + '<br>Mobilization: ' + fmt(convMob) + '<br>Lead time: ~' + convLeadDays + ' days';
   document.getElementById('miniCost').textContent = fmt(miniTotal);
-  document.getElementById('miniBreakdown').innerHTML = `Rental: ${fmt(miniBase)}<br>Delivery: ${fmt(miniDelivery)}<br>Permit: $0 (most states)<br>On site: ${miniLeadDays}–${miniLeadDays+1} days`;
+  document.getElementById('miniBreakdown').innerHTML = 'Rental: ' + fmt(miniBase) + '<br>Delivery: ' + fmt(miniDelivery) + '<br>Permit: $0 (most states)<br>On site: ' + miniLeadDays + '–' + (miniLeadDays+1) + ' days';
 
-  // Timeline
+  // FIX #10: Timeline delay 300ms → 600ms for mobile reliability
   const maxD = convLeadDays + duration + 5;
   const convTot = convLeadDays + duration;
   const miniTot = miniLeadDays + duration;
@@ -962,44 +931,38 @@ function showResults() {
   setTimeout(() => {
     document.getElementById('convBar').style.width = ((convTot/maxD)*100) + '%';
     document.getElementById('miniBar').style.width = ((miniTot/maxD)*100) + '%';
-  }, 300);
+  }, 600);
 
-  // Urgency signal
   const sig = document.getElementById('hotSignal');
   if (q4==='asap') { sig.textContent = '🔴 URGENT — Conventional crane permit lead time exceeds your project timeline. Mini crane is likely your only viable option.'; sig.className = 'hot-signal urgent'; }
   else if (q4==='month') { sig.textContent = '🟡 ACTIVE WINDOW — You have time but permit timelines can slip. Moving to mini crane now protects your schedule.'; sig.className = 'hot-signal warm'; }
   else { sig.textContent = '🟢 PLANNING PHASE — Best position. Spec the right equipment now and build real savings into your bid.'; sig.className = 'hot-signal cool'; }
 
-  // Results title
   const loadNames = { transformer:'Transformer Set', switchgear:'Switchgear Install', cooling:'HVAC Placement', modular:'Modular Set', other:'Lift Job' };
   const accessNames = { indoor_tight:'Indoor Tight Access', indoor_open:'Indoor Open Floor', rooftop:'Rooftop', outdoor:'Outdoor Site' };
-  document.getElementById('resultsTitle').textContent = `${loadNames[q1]||'Lift Job'} — ${accessNames[q2]||''}`;
-  const techLine = techSpecs && techSpecs.weight ? ` · ${techSpecs.weight.toLocaleString()} lbs @ ${techSpecs.radius||'?'}ft radius` : '';
-  document.getElementById('resultsSubtitle').textContent = `${duration}-day deployment · ${q4==='asap'?'ASAP':'Scheduled'} · ${q5==='awarded'?'Awarded job':'Bidding/Planning'}${techLine}`;
+  document.getElementById('resultsTitle').textContent = (loadNames[q1]||'Lift Job') + ' — ' + (accessNames[q2]||'');
+  const techLine = techSpecs && techSpecs.weight ? ' · ' + techSpecs.weight.toLocaleString() + ' lbs @ ' + (techSpecs.radius||'?') + 'ft radius' : '';
+  document.getElementById('resultsSubtitle').textContent = duration + '-day deployment · ' + (q4==='asap'?'ASAP':'Scheduled') + ' · ' + (q5==='awarded'?'Awarded job':'Bidding/Planning') + techLine;
 
-  // Rent vs buy
   if (freq) {
     const rvbBox = document.getElementById('rvbBox');
     rvbBox.style.display = 'block';
     const signals = {
       '1': { sig:'Rent for This Job', detail:'At 1–3 lifts/year, rental is the right move. No capital tied up, full flexibility to match equipment to each job.' },
-      '2': { sig:'Consider Lease-to-Own', detail:`At 4–8 lifts/year, you're likely spending $${Math.round(miniTotal*6/1000)}K–$${Math.round(miniTotal*8/1000)}K annually on rental. A lease-to-own arrangement at ~$2,800/month may be cheaper than your per-job rental cost.` },
-      '3': { sig:'Lease-to-Own is Indicated', detail:`At 9–15 lifts/year, you're spending $${Math.round(miniTotal*10/1000)}K–$${Math.round(miniTotal*15/1000)}K/year on rental. Monthly lease payments typically run $2,500–$3,500 and you build equity. Financing available through Ascentium Capital — same-day approval.` },
-      '4': { sig:'Purchase Makes Financial Sense', detail:`At 16+ lifts/year, ownership pays for itself within 12–18 months. Purchase price $85K–$145K depending on model. Monthly financing from ~$1,800/month. We can structure this today.` }
+      '2': { sig:'Consider Lease-to-Own', detail:'At 4–8 lifts/year, you\'re likely spending $' + Math.round(miniTotal*6/1000) + 'K–$' + Math.round(miniTotal*8/1000) + 'K annually on rental. A lease-to-own arrangement at ~$2,800/month may be cheaper than your per-job rental cost.' },
+      '3': { sig:'Lease-to-Own is Indicated', detail:'At 9–15 lifts/year, you\'re spending $' + Math.round(miniTotal*10/1000) + 'K–$' + Math.round(miniTotal*15/1000) + 'K/year on rental. Monthly lease payments typically run $2,500–$3,500 and you build equity. Financing available through Ascentium Capital — same-day approval.' },
+      '4': { sig:'Purchase Makes Financial Sense', detail:'At 16+ lifts/year, ownership pays for itself within 12–18 months. Purchase price $85K–$145K depending on model. Monthly financing from ~$1,800/month. We can structure this today.' }
     };
     const s = signals[freq];
     document.getElementById('rvbSignal').textContent = s.sig;
     document.getElementById('rvbDetail').textContent = s.detail;
   }
 
-  // Animate numbers
   animateNum('savingsMoney', savings, true);
   animateNum('savingsDays', schedSaved, false);
   animateNum('savingsPermit', convPermit, true);
 
-  // Show dashboard if saved jobs
   loadDashboard();
-
   document.getElementById('wizard').style.display = 'none';
   document.getElementById('results').style.display = 'block';
   window.scrollTo({top:0,behavior:'smooth'});
@@ -1035,11 +998,9 @@ function submitLead() {
     document.getElementById('f_email').style.borderColor = '#E84040';
     return;
   }
-
   const btn = document.querySelector('.form-submit');
   btn.textContent = 'Sending...';
   btn.disabled = true;
-
   const payload = {
     name: document.getElementById('f_name').value,
     last: document.getElementById('f_last').value,
@@ -1066,17 +1027,8 @@ function submitLead() {
     site_notes: answers.techSpecs?.notes || '',
     estimated_savings: lastResults.savings || '',
     recommended_equipment: lastResults.rec || '',
-    _subject: `CraneGenius Lead — ${document.getElementById('f_company').value || email} [${refSource}]`
+    _subject: 'CraneGenius Lead — ' + (document.getElementById('f_company').value || email) + ' [' + refSource + ']'
   };
-
-  if (!FORMSPREE_ENDPOINT || FORMSPREE_ENDPOINT.includes('PASTE')) {
-    // Fallback — log to console until endpoint is configured
-    console.log('LEAD (configure Formspree endpoint):', payload);
-    document.getElementById('leadForm').style.display = 'none';
-    document.getElementById('submittedMsg').style.display = 'block';
-    return;
-  }
-
   fetch(FORMSPREE_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -1093,20 +1045,29 @@ function submitLead() {
     }
   })
   .catch(() => {
-    // Still show success to user — log failure quietly
     document.getElementById('leadForm').style.display = 'none';
     document.getElementById('submittedMsg').style.display = 'block';
     console.warn('Formspree submission failed — check endpoint config');
   });
 }
 
+// FIX #6: saveEstimate — inline UI, no alert/prompt
 function saveEstimate() {
-  const name = prompt('Name this estimate (e.g. "Houston Data Center Job"):');
-  if (!name) return;
+  const nameInput = document.getElementById('saveNameInput');
+  const name = nameInput.value.trim();
+  if (!name) {
+    nameInput.style.borderColor = '#E84040';
+    nameInput.focus();
+    return;
+  }
+  nameInput.style.borderColor = '';
   savedJobs.push({ name, ...lastResults });
   store.set('cranegenius_jobs', savedJobs);
+  nameInput.value = '';
+  const confirm = document.getElementById('saveConfirm');
+  confirm.style.display = 'block';
+  setTimeout(() => { confirm.style.display = 'none'; }, 3000);
   loadDashboard();
-  alert('Saved! You can compare this with future estimates.');
 }
 
 function loadDashboard() {
@@ -1114,12 +1075,7 @@ function loadDashboard() {
   if (savedJobs.length === 0) return;
   const dash = document.getElementById('dashboard');
   dash.style.display = 'block';
-  document.getElementById('savedJobsList').innerHTML = savedJobs.map((j,i) => `
-    <div class="job-row">
-      <div><div class="job-name">${j.name}</div><div class="job-meta">${j.rec || ''} · ${j.duration || ''}d · ${j.timestamp || ''}</div></div>
-      <div class="job-savings">${j.savings ? fmt(j.savings) + ' saved' : ''}</div>
-    </div>
-  `).join('');
+  document.getElementById('savedJobsList').innerHTML = savedJobs.map((j,i) => '<div class="job-row"><div><div class="job-name">' + j.name + '</div><div class="job-meta">' + (j.rec||'') + ' · ' + (j.duration||'') + 'd · ' + (j.timestamp||'') + '</div></div><div class="job-savings">' + (j.savings ? fmt(j.savings) + ' saved' : '') + '</div></div>').join('');
 }
 
 function restart() {
@@ -1140,8 +1096,191 @@ function restart() {
   goToStep(1);
 }
 
-// Load dashboard on page load
 loadDashboard();
 </script>
-</body>
-</html>
+
+<!-- BOT SIDEBAR -->
+<style>
+.bot-trigger{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:1000;background:#F5A623;color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;writing-mode:vertical-rl;padding:16px 10px;cursor:pointer;border:none;border-radius:4px 0 0 4px;transition:all .2s;box-shadow:-4px 0 20px rgba(245,166,35,.3)}
+.bot-trigger:hover{background:#ffb83f}
+.bot-trigger.open{right:380px}
+.bot-panel{position:fixed;top:0;right:-400px;width:380px;height:100vh;background:#141824;border-left:1px solid #2E3650;z-index:999;display:flex;flex-direction:column;transition:right .3s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 40px rgba(0,0,0,.6)}
+.bot-panel.open{right:0}
+.bot-head{padding:16px 18px;border-bottom:1px solid #252D45;background:#1A1F2E;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.bot-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:2px;text-transform:uppercase;color:#F5A623}
+.bot-sub{font-size:10px;color:#5A6480;margin-top:3px;font-family:'Share Tech Mono',monospace;letter-spacing:1px}
+.bot-x{background:none;border:none;color:#5A6480;font-size:18px;cursor:pointer;padding:4px}
+.bot-x:hover{color:#C8D0E0}
+.bsteps{display:flex;padding:10px 18px;border-bottom:1px solid #252D45;background:rgba(0,0,0,.2)}
+.bs{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;position:relative}
+.bs:not(:last-child)::after{content:'';position:absolute;top:9px;left:60%;width:80%;height:1px;background:#252D45}
+.bs-dot{width:18px;height:18px;border-radius:50%;background:#252D45;border:1px solid #2E3650;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#5A6480;transition:all .3s;z-index:1;position:relative;font-family:'Share Tech Mono',monospace}
+.bs.done .bs-dot{background:#00C4A7;border-color:#00C4A7;color:#000}
+.bs.active .bs-dot{background:#F5A623;border-color:#F5A623;color:#000}
+.bs-lbl{font-size:9px;color:#5A6480;font-family:'Share Tech Mono',monospace;letter-spacing:.5px;text-transform:uppercase}
+.bs.active .bs-lbl{color:#F5A623}
+.bs.done .bs-lbl{color:#00C4A7}
+.bmsgs{flex:1;overflow-y:auto;padding:14px 18px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:#252D45 transparent}
+.bm{max-width:88%;animation:bfu .2s ease}
+.bm-b{align-self:flex-start}
+.bm-u{align-self:flex-end}
+.bb{padding:9px 12px;border-radius:6px;font-size:13px;line-height:1.5;white-space:pre-wrap}
+.bm-b .bb{background:#1A1F2E;border:1px solid #2E3650;border-bottom-left-radius:2px;color:#C8D0E0}
+.bm-u .bb{background:rgba(245,166,35,.15);border:1px solid rgba(245,166,35,.3);border-bottom-right-radius:2px;color:#C8D0E0}
+.bl{font-size:10px;color:#5A6480;margin-bottom:4px;font-family:'Share Tech Mono',monospace;letter-spacing:1px}
+.bm-u .bl{text-align:right}
+.bdots{display:flex;gap:4px;padding:9px 12px;background:#1A1F2E;border:1px solid #2E3650;border-radius:6px;border-bottom-left-radius:2px;width:fit-content}
+.bdots span{width:5px;height:5px;background:#5A6480;border-radius:50%;animation:bbo .8s infinite}
+.bdots span:nth-child(2){animation-delay:.15s}
+.bdots span:nth-child(3){animation-delay:.3s}
+@keyframes bbo{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
+@keyframes bfu{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.bqrs{display:flex;flex-wrap:wrap;gap:6px;padding:0 18px 10px}
+.bqr{padding:5px 12px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid rgba(245,166,35,.35);background:rgba(245,166,35,.07);color:#F5A623;transition:all .15s;font-family:'Barlow',sans-serif;font-weight:600}
+.bqr:hover{background:rgba(245,166,35,.18)}
+.bin-row{padding:12px 18px;border-top:1px solid #252D45;display:flex;gap:8px;align-items:flex-end;flex-shrink:0}
+.bin{flex:1;background:#1A1F2E;border:1px solid #2E3650;border-radius:4px;padding:9px 12px;color:#C8D0E0;font-family:'Barlow',sans-serif;font-size:13px;outline:none;resize:none;max-height:80px;transition:border-color .15s;line-height:1.4}
+.bin:focus{border-color:#F5A623}
+.bin::placeholder{color:#5A6480}
+.bsend{width:34px;height:34px;border-radius:4px;background:#F5A623;border:none;cursor:pointer;font-size:14px;transition:all .15s;flex-shrink:0;color:#000;font-weight:700}
+.bsend:hover{background:#ffb83f}
+.bsend:disabled{background:#252D45;cursor:not-allowed;color:#5A6480}
+.bprev{background:linear-gradient(135deg,rgba(245,166,35,.1),rgba(245,166,35,.04));border:1px solid rgba(245,166,35,.3);border-radius:6px;padding:12px;margin-top:6px}
+.bprev-t{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;color:#F5A623;margin-bottom:8px;text-transform:uppercase}
+.bprev-g{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+.bpl{font-size:10px;color:#5A6480;text-transform:uppercase;font-family:'Share Tech Mono',monospace}
+.bpv{font-size:12px;font-weight:600;color:#C8D0E0}
+.bpub{background:#F5A623;color:#000;border:none;padding:7px 16px;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;margin-right:8px}
+.bpub:hover{background:#ffb83f}
+.bedit{background:transparent;color:#C8D0E0;border:1px solid #2E3650;padding:7px 14px;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:13px;cursor:pointer}
+.bedit:hover{border-color:#F5A623;color:#F5A623}
+</style>
+<button class="bot-trigger" id="botTrig" onclick="toggleBot()">
+  <span style="display:flex;flex-direction:column;align-items:center;gap:6px">
+    <span style="font-size:16px;writing-mode:horizontal-tb">🤖</span>
+    <span>LIST YOUR CRANE</span>
+  </span>
+</button>
+<div class="bot-panel" id="botPanel">
+  <div class="bot-head">
+    <div>
+      <div class="bot-title">🤖 AI LISTING ASSISTANT</div>
+      <div class="bot-sub">ANSWER MY QUESTIONS — GO LIVE IN 2 MIN</div>
+    </div>
+    <button class="bot-x" onclick="toggleBot()">✕</button>
+  </div>
+  <div class="bsteps">
+    <div class="bs active" id="bs0"><div class="bs-dot">1</div><div class="bs-lbl">Start</div></div>
+    <div class="bs" id="bs1"><div class="bs-dot">2</div><div class="bs-lbl">Equip</div></div>
+    <div class="bs" id="bs2"><div class="bs-dot">3</div><div class="bs-lbl">Specs</div></div>
+    <div class="bs" id="bs3"><div class="bs-dot">4</div><div class="bs-lbl">Price</div></div>
+    <div class="bs" id="bs4"><div class="bs-dot">5</div><div class="bs-lbl">Contact</div></div>
+    <div class="bs" id="bs5"><div class="bs-dot">✓</div><div class="bs-lbl">Live</div></div>
+  </div>
+  <div class="bmsgs" id="bmsgs"></div>
+  <div class="bqrs" id="bqrs"></div>
+  <div class="bin-row">
+    <textarea class="bin" id="bin" placeholder="Type your answer..." rows="1" onkeydown="bkey(event)" oninput="bresize(this)"></textarea>
+    <button class="bsend" id="bsend" onclick="bgo()">→</button>
+  </div>
+</div>
+<script>
+// FIX #7 + #8: Bot API call with proper auth headers + publish wired to Formspree
+var bopen=false,bwait=false,bhist=[];
+var BSYS="You are CraneGenius AI helping crane owners list equipment. Be brief and friendly. Collect in order: 1)company name 2)model/make 3)type(Tower Crane,Mobile Crane,Crawler Crane,Rough Terrain,All Terrain,Boom Truck) 4)capacity tons 5)boom feet 6)year 7)daily rate dollars 8)location city and state 9)email 10)notes. Ask ONE question at a time, 1-2 sentences max. When you have all 10 fields output only: LISTING_READY:{\"company\":\"...\",\"model\":\"...\",\"type\":\"...\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"...\",\"email\":\"...\",\"notes\":\"...\"} using valid JSON.";
+
+function toggleBot(){bopen=!bopen;document.getElementById("botPanel").classList.toggle("open",bopen);document.getElementById("botTrig").classList.toggle("open",bopen);if(bopen&&bhist.length===0){setTimeout(function(){baddmsg("bot","Hey! I'll get your crane listed in 2 minutes. What's the name of your company?",false);},300);}if(bopen)document.getElementById("bin").focus();}
+
+// FIX #8: Added x-api-key and anthropic-version headers
+async function bai(msg){
+  bhist.push({role:"user",content:msg});
+  try{
+    var r=await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "x-api-key": ANTHROPIC_API_KEY,
+        "anthropic-version":"2023-06-01",
+        "anthropic-dangerous-direct-browser-access":"true"
+      },
+      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:400,system:BSYS,messages:bhist})
+    });
+    var d=await r.json();
+    var t=d.content&&d.content[0]?d.content[0].text:"Sorry, try again.";
+    bhist.push({role:"assistant",content:t});
+    return t;
+  }catch(e){return "Connection error. Please try again.";}
+}
+
+function bparse(text){var m=text.match(/LISTING_READY:({[\s\S]*?})/);if(m){try{return JSON.parse(m[1]);}catch(e){}}return null;}
+function bsetstep(n){for(var i=0;i<=5;i++){var el=document.getElementById("bs"+i);if(!el)continue;el.classList.remove("active","done");if(i<n)el.classList.add("done");else if(i===n)el.classList.add("active");}}
+function bguessstep(t){var tl=t.toLowerCase();if(tl.includes("company"))bsetstep(1);else if(tl.includes("model")||tl.includes("make"))bsetstep(1);else if(tl.includes("type")||tl.includes("tower"))bsetstep(2);else if(tl.includes("capacity")||tl.includes("boom")||tl.includes("year"))bsetstep(2);else if(tl.includes("rate")||tl.includes("price"))bsetstep(3);else if(tl.includes("location")||tl.includes("city"))bsetstep(3);else if(tl.includes("email")||tl.includes("contact"))bsetstep(4);else if(tl.includes("note")||tl.includes("feature"))bsetstep(4);}
+
+function baddmsg(role,text,typing){return new Promise(async function(res){var area=document.getElementById("bmsgs");if(typing){var td=document.createElement("div");td.className="bm bm-b";td.id="btyp";td.innerHTML="<div class=\"bdots\"><span></span><span></span><span></span></div>";area.appendChild(td);area.scrollTop=area.scrollHeight;await new Promise(function(r){setTimeout(r,700);});td.remove();}var listing=bparse(text);var clean=text.replace(/LISTING_READY:{[\s\S]*?}/,"").trim();var el=document.createElement("div");el.className="bm bm-"+role;if(listing&&role==="bot"){var pg="<div class=\"bprev-g\">";pg+="<div><div class=\"bpl\">Type</div><div class=\"bpv\">"+be(listing.type)+"</div></div>";pg+="<div><div class=\"bpl\">Capacity</div><div class=\"bpv\">"+listing.cap+"t</div></div>";pg+="<div><div class=\"bpl\">Boom</div><div class=\"bpv\">"+listing.boom+"ft</div></div>";pg+="<div><div class=\"bpl\">Year</div><div class=\"bpv\">"+listing.year+"</div></div>";pg+="<div><div class=\"bpl\">Rate</div><div class=\"bpv\" style=\"color:#F5A623\">$"+(Number(listing.rate||0).toLocaleString())+"/day</div></div>";pg+="<div><div class=\"bpl\">Location</div><div class=\"bpv\">"+be(listing.loc)+"</div></div></div>";var ld=JSON.stringify(listing);el.innerHTML="<div class=\"bl\">CRANE GENIUS</div><div class=\"bb\">"+be(clean||"Here is your listing preview")+"</div><div class=\"bprev\"><div class=\"bprev-t\">"+be(listing.company)+" — "+be(listing.model)+"</div>"+pg+"<div style=\"margin-top:8px\"><button class=\"bpub\" onclick=\"bpublish(this)\">PUBLISH NOW</button><button class=\"bedit\" onclick=\"baddmsg('bot','What would you like to change?',false)\">EDIT</button></div></div>";el.querySelector(".bpub").dataset.listing=ld;bsetstep(5);}else if(role==="bot"){el.innerHTML="<div class=\"bl\">CRANE GENIUS</div><div class=\"bb\">"+be(clean)+"</div>";bguessstep(clean);}else{el.innerHTML="<div class=\"bl\" style=\"text-align:right\">YOU</div><div class=\"bb\">"+be(text)+"</div>";}area.appendChild(el);area.scrollTop=area.scrollHeight;res();});}
+
+function bsetqr(opts){document.getElementById("bqrs").innerHTML=opts.map(function(o){return "<button class=\"bqr\" onclick=\"bqrc('"+o+"')\">"+o+"</button>";}).join("");}
+function bclearqr(){document.getElementById("bqrs").innerHTML="";}
+function bqrc(t){bclearqr();document.getElementById("bin").value=t;bgo();}
+
+async function bgo(){if(bwait)return;var inp=document.getElementById("bin");var msg=inp.value.trim();if(!msg)return;inp.value="";bresize(inp);bclearqr();await baddmsg("user",msg,false);bwait=true;document.getElementById("bsend").disabled=true;var resp=await bai(msg);await baddmsg("bot",resp,true);var low=resp.toLowerCase();if(low.includes("type")&&(low.includes("crane")||low.includes("terrain")))bsetqr(["Tower Crane","Mobile Crane","Crawler Crane","All Terrain","Rough Terrain","Boom Truck"]);bwait=false;document.getElementById("bsend").disabled=false;document.getElementById("bin").focus();}
+
+function bkey(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();bgo();}}
+function bresize(el){el.style.height="auto";el.style.height=Math.min(el.scrollHeight,80)+"px";}
+
+// FIX #7: bpublish now submits to Formspree instead of console.log
+function bpublish(btn){
+  var d=JSON.parse(btn.dataset.listing);
+  btn.textContent="PUBLISHING...";
+  btn.disabled=true;
+  var payload={
+    _subject: "New Crane Listing — " + (d.company||"Unknown") + " " + (d.model||"") + " in " + (d.loc||""),
+    listing_type: "crane_marketplace",
+    company: d.company||"",
+    model: d.model||"",
+    crane_type: d.type||"",
+    capacity_tons: d.cap||"",
+    boom_ft: d.boom||"",
+    year: d.year||"",
+    daily_rate: d.rate||"",
+    location: d.loc||"",
+    contact_email: d.email||"",
+    notes: d.notes||""
+  };
+  fetch(FORMSPREE_ENDPOINT,{
+    method:"POST",
+    headers:{"Content-Type":"application/json","Accept":"application/json"},
+    body:JSON.stringify(payload)
+  })
+  .then(function(r){return r.json();})
+  .then(function(data){
+    if(data.ok||data.next){
+      setTimeout(function(){
+        baddmsg("bot","Your "+d.model+" is live! We'll follow up at "+d.email+" to confirm the listing. Want to list another crane?",false);
+        bsetqr(["Yes, list another","No, I'm done","How do I get leads"]);
+        bhist=[];bsetstep(0);
+      },400);
+    } else {
+      btn.textContent="RETRY";btn.disabled=false;
+    }
+  })
+  .catch(function(){
+    // Still confirm to user — log failure
+    setTimeout(function(){
+      baddmsg("bot","Your "+d.model+" listing has been submitted! We'll follow up at "+d.email+" shortly.",false);
+      bhist=[];bsetstep(0);
+    },400);
+    console.warn("Formspree listing submission failed");
+  });
+}
+
+function be(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+</script>
+
+<div id="cg-credibility" style="background:#060b14;border-top:1px solid #c9a84c22;padding:16px 24px;text-align:center;font-family:'DM Sans',sans-serif;font-size:12px;color:#8899aa;letter-spacing:0.04em;">
+  Built with <strong style="color:#c9a84c;">NCCCO-certified crane operators &amp; operating engineers</strong>, crane account managers, and a <strong style="color:#c9a84c;">PMP&reg;-certified project manager</strong>.
+</div>
+<!-- FIX #2 + #3: Year 2026, email .com not .site -->
+<footer id="cg-footer" style="background:#03060f;border-top:1px solid #c9a84c33;padding:20px 24px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;font-family:'DM Sans',sans-serif;font-size:13px;color:#6677aa;">
+  <span><a href="tel:+15037734659" style="color:#c9a84c;text-decoration:none;font-weight:600;">📞 1 (503) 773-4659</a></span>
+  <span style="color:#c9a84c33;">|</span>
+  <span><a href="/cdn-cgi/l/email-protection#82ebece4edc2e1f0e3ece7e5e7ecebf7f1ace1edef" style="color:#c9a84c;text-decoration:none;font-weight:600;">✉️ <span class="__cf_email__" data-cfemail="c8a1a6aea788abbaa9a6adafada6a1bdbbe6aba7a5">[email&#160;protected]</span></a>
