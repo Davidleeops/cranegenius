@@ -547,17 +547,12 @@ document.getElementById('plannerQuestion').addEventListener('keypress', e => { i
 </script>
 <script>
 (function(){
-  try {
-    if(sessionStorage.getItem('cg_disc_dismissed')==='1'){
-      var el=document.getElementById('cg-disclaimer');
-      if(el) el.classList.add('hidden');
-    }
-  } catch(e){}
+  try{if(sessionStorage.getItem('cg_disc_dismissed')==='1'){var el=document.getElementById('cg-disclaimer');if(el)el.classList.add('hidden');}}catch(e){}
 })();
 function cgDismissDisclaimer(){
-  try { sessionStorage.setItem('cg_disc_dismissed','1'); } catch(e){}
+  try{sessionStorage.setItem('cg_disc_dismissed','1');}catch(e){}
   var el=document.getElementById('cg-disclaimer');
-  if(el){ el.style.transition='opacity 0.3s'; el.style.opacity='0'; setTimeout(function(){ el.classList.add('hidden'); },300); }
+  if(el){el.style.transition='opacity 0.3s';el.style.opacity='0';setTimeout(function(){el.classList.add('hidden');},300);}
 }
 </script>
 </body>
