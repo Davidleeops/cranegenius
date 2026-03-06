@@ -403,7 +403,7 @@ function askBot(id){var x=listings.find(function(l){return l.id===id;});if(x)bad
 function delItem(id){listings=listings.filter(function(x){return x.id!==id;});renderAll();toast("Removed","tinfo");}
 function renderAll(){renderGrid();renderSpec("miniRow","Mini Crane");renderSpec("glassRow","Glass Lift");renderSpec("specialtyRow","Boom Truck");}
 var bwait=false,bhist=[],liveFallbackSent=false;
-var BSYS="You are CraneGenius AI, a crane equipment specialist. You help three types of users. First: OWNERS LISTING FOR RENT. Collect company name, crane model, equipment type (Tower Crane, Mobile Crane, Crawler Crane, All Terrain, Rough Terrain, Boom Truck, Mini Crane, Glass Lift), capacity in tons, boom in feet, year, daily rate, city and state, contact email, special features. Ask ONE field at a time. When complete output exactly: LISTING_READY:{\"company\":\"x\",\"model\":\"x\",\"type\":\"x\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"City ST\",\"email\":\"x\",\"tags\":[\"for-rent\"],\"notes\":\"x\"} Second: OWNERS LISTING FOR SALE. Same fields but ask for asking price instead of daily rate. Ask if they are open to a lease purchase option where the buyer pays monthly and owns the equipment outright at the end with no bank required. When complete output exactly: LISTING_READY:{\"company\":\"x\",\"model\":\"x\",\"type\":\"x\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"City ST\",\"email\":\"x\",\"tags\":[\"for-sale\"],\"notes\":\"x\"} Third: BUYERS AND CONTRACTORS FINDING EQUIPMENT. Ask if they need it for a job (rent) or want to acquire it (buy). If buying, mention that many sellers offer lease purchase options where the buyer pays monthly and owns the equipment at the end with no bank financing required. Collect: crane type needed, required capacity, job location, timeline, budget range, then name and email to send matches. Be brief and peer to peer. One to two sentences max per response. Always start by asking: are you looking to list for rent, list for sale, find equipment to rent, or acquire equipment with a lease purchase option?";
+var BSYS="You are CraneGenius Marketplace AI. You support 3 flows with practical, direct responses. FLOW 1: LIST FOR RENT. Collect company, model, type, capacity tons, boom feet, year, daily rate, city/state, email, notes. Ask one field at a time. FLOW 2: LIST FOR SALE. Collect same fields but use asking price instead of daily rate, and ask whether lease purchase is available. FLOW 3: FIND EQUIPMENT. Determine rent vs buy intent, then collect equipment type, minimum capacity, city/state, required date/timeline, budget range, and contact email. If buy intent, explain lease purchase option in one sentence. Keep replies 1-2 short sentences, no fluff. If a listing is complete, output exactly LISTING_READY:{\"company\":\"x\",\"model\":\"x\",\"type\":\"x\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"City ST\",\"email\":\"x\",\"tags\":[\"for-rent\"],\"notes\":\"x\"} (or tags for-sale). Start by asking which flow they want.";
 function bsetstep(n){for(var i=0;i<=5;i++){var el=document.getElementById("bs"+i);if(!el)continue;el.classList.remove("active","done");if(i<n)el.classList.add("done");else if(i===n)el.classList.add("active");}}
 function bguessstep(t){var tl=t.toLowerCase();if(tl.includes("company"))bsetstep(1);else if(tl.includes("model")||tl.includes("make"))bsetstep(1);else if(tl.includes("type"))bsetstep(2);else if(tl.includes("capacity")||tl.includes("boom")||tl.includes("year"))bsetstep(2);else if(tl.includes("rate")||tl.includes("price")||tl.includes("budget"))bsetstep(3);else if(tl.includes("location")||tl.includes("city"))bsetstep(3);else if(tl.includes("email")||tl.includes("contact"))bsetstep(4);}
 function bparse(text){var m=text.match(/LISTING_READY:(\{[\s\S]*?\})/);if(m){try{return JSON.parse(m[1]);}catch(ex){}}return null;}
@@ -456,11 +456,21 @@ function notifyLiveFallback(userMsg, aiReply){
     page_url: window.location.href,
     occurred_at: new Date().toISOString()
   };
-  fetch(LIVE_FALLBACK_ENDPOINT,{
+  var baseProxy = (AI_PROXY_URL || "").replace(/\/+$/,"");
+  var alertUrl = baseProxy ? (baseProxy + "/alert") : "";
+  var twilioAttempt = alertUrl ? fetch(alertUrl,{
     method:"POST",
-    headers:{"Content-Type":"application/json","Accept":"application/json"},
+    headers:{"Content-Type":"application/json"},
     body:JSON.stringify(payload)
-  }).catch(function(){});
+  }) : Promise.reject(new Error("missing_proxy_url"));
+
+  twilioAttempt.catch(function(){
+    fetch(LIVE_FALLBACK_ENDPOINT,{
+      method:"POST",
+      headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify(payload)
+    }).catch(function(){});
+  });
 }
 async function bai(userMsg) {
   if (!AI_PROXY_URL) {
