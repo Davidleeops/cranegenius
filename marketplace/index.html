@@ -168,6 +168,60 @@ nav{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.97);backdrop-filt
 .site-nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:#5A6480;text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.2s;padding:4px 0;border-bottom:2px solid transparent;}
 .site-nav-links a:hover{color:#C8D0E0;}
 .site-nav-links a.active{color:#F5A623;border-bottom-color:#F5A623;}
+
+/* ── DISCLAIMER BANNER ── */
+#cg-disclaimer{
+  background:rgba(6,8,15,0.97);
+  border-bottom:1px solid rgba(245,166,35,0.25);
+  padding:10px 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  position:relative;
+  z-index:9999;
+}
+#cg-disclaimer.hidden{display:none;}
+.disc-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0;}
+.disc-icon{
+  font-family:'Share Tech Mono',monospace;
+  font-size:9px;
+  letter-spacing:2px;
+  color:#F5A623;
+  background:rgba(245,166,35,0.1);
+  border:1px solid rgba(245,166,35,0.3);
+  padding:3px 8px;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.disc-text{
+  font-family:'Barlow',sans-serif;
+  font-size:11px;
+  color:#5A6480;
+  line-height:1.5;
+}
+.disc-text strong{color:#8A94A8;font-weight:600;}
+.disc-text a{color:#5A6480;text-decoration:underline;}
+.disc-text a:hover{color:#C8D0E0;}
+.disc-close{
+  font-family:'Share Tech Mono',monospace;
+  font-size:11px;
+  color:#5A6480;
+  background:none;
+  border:1px solid rgba(90,100,128,0.3);
+  padding:4px 12px;
+  cursor:pointer;
+  letter-spacing:1px;
+  flex-shrink:0;
+  transition:all 0.2s;
+}
+.disc-close:hover{color:#C8D0E0;border-color:rgba(200,208,224,0.4);}
+@media(max-width:600px){
+  #cg-disclaimer{padding:10px 16px;}
+  .disc-text{font-size:10px;}
+}
+
 </style>
 </head>
 <body>
@@ -395,5 +449,20 @@ window.onload=function(){
     <span style="color:#c9a84c33;">|</span>
     <span style="color:#334455;">&copy; 2026 CraneGenius</span>
   </footer>
+<script>
+(function(){
+  try {
+    if(sessionStorage.getItem('cg_disc_dismissed')==='1'){
+      var el=document.getElementById('cg-disclaimer');
+      if(el) el.classList.add('hidden');
+    }
+  } catch(e){}
+})();
+function cgDismissDisclaimer(){
+  try { sessionStorage.setItem('cg_disc_dismissed','1'); } catch(e){}
+  var el=document.getElementById('cg-disclaimer');
+  if(el){ el.style.transition='opacity 0.3s'; el.style.opacity='0'; setTimeout(function(){ el.classList.add('hidden'); },300); }
+}
+</script>
 </body>
 </html>

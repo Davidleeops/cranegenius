@@ -3,3 +3,4 @@ credentials/
 *.csv
 __pycache__/
 .env
+config.js
