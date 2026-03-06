@@ -224,6 +224,70 @@ footer{background:var(--steel);border-top:1px solid var(--border);padding:28px;t
 /* GRAIN TEXTURE */
 body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.032;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:128px 128px;}
 
+
+/* PREMIUM UI V1 */
+:root{
+  --radius-lg:18px;
+  --radius-md:12px;
+  --shadow-soft:0 14px 40px rgba(0,0,0,.34);
+  --shadow-edge:0 0 0 1px rgba(245,166,35,.08) inset;
+}
+body{
+  background:
+    radial-gradient(1100px 500px at 12% -8%, rgba(245,166,35,.10), transparent 60%),
+    radial-gradient(1000px 520px at 88% 0%, rgba(0,196,167,.08), transparent 62%),
+    var(--bg);
+}
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+.site-nav{
+  background:rgba(6,8,15,.78);
+  backdrop-filter:blur(14px) saturate(130%);
+  border-bottom:1px solid rgba(245,166,35,.20);
+  box-shadow:0 12px 28px rgba(0,0,0,.26);
+}
+.site-nav-links a{position:relative;padding-bottom:7px}
+.site-nav-links a.active::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:1px;
+  height:2px;
+  border-radius:2px;
+  background:linear-gradient(90deg,var(--accent),#ffd68a 55%,var(--accent2));
+}
+.hero,
+.stats-strip,
+.build-card,
+.ai-panel,
+.equipment-list,
+.vendor-card,
+.weight-card,
+.timeline,
+.list-header{
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-soft), var(--shadow-edge);
+}
+.btn-primary,
+.btn-ghost,
+.quote-btn,
+.cta-btn,
+.ask-btn,
+.action-btn{
+  border-radius:10px;
+}
+.build-card.active,
+.timeline-step.active{
+  box-shadow:0 0 0 1px rgba(245,166,35,.30) inset, 0 10px 30px rgba(245,166,35,.12);
+}
 </style>
 </head>
 <body>
