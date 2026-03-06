@@ -428,7 +428,36 @@ function baddmsg(role,text,typing){
 function bsetqr(opts){document.getElementById("bqrs").innerHTML=opts.map(function(o){return "<button class='bqr' onclick='bqrc(\""+o.replace(/"/g,"&quot;")+"\")'>" +o+"</button>";}).join("");}
 function bclearqr(){document.getElementById("bqrs").innerHTML="";}
 function bqrc(t){bclearqr();document.getElementById("bin").value=t;bgo();}
-async function bai(msg){bhist.push({role:"user",content:msg});try{var r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":ANTHROPIC_API_KEY,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:400,system:BSYS,messages:bhist})});var d=await r.json();var t=d.content&&d.content[0]?d.content[0].text:"Sorry, try again. (Error: "+(d.error?d.error.message:"unknown")+")";bhist.push({role:"assistant",content:t});return t;}catch(ex){return "Connection error - please try again.";}}
+async function bai(userMsg) {
+  bhist.push({role:'user', content:userMsg});
+  var msgs = bhist.slice(-12);
+  try {
+    var res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 400,
+        system: BSYS,
+        messages: msgs
+      })
+    });
+    var d = await res.json();
+    if (!res.ok) {
+      return 'Connection error (' + (d.error ? d.error.message : res.status) + '). Call us at 503-773-4659.';
+    }
+    var reply = d.content && d.content[0] ? d.content[0].text : 'No response — call 503-773-4659.';
+    bhist.push({role:'assistant', content:reply});
+    return reply;
+  } catch(e) {
+    return 'Network error. Call us at 503-773-4659.';
+  }
+}
 async function bgo(){if(bwait)return;var inp=document.getElementById("bin");var msg=inp.value.trim();if(!msg)return;inp.value="";bresize(inp);bclearqr();await baddmsg("user",msg,false);bwait=true;document.getElementById("bsendbtn").disabled=true;var resp=await bai(msg);await baddmsg("bot",resp,true);var low=resp.toLowerCase();if(low.includes("list")&&low.includes("find"))bsetqr(["List for rent","List for sale","Find equipment to rent","Acquire with lease purchase"]);else if(low.includes("type")&&(low.includes("crane")||low.includes("lift")||low.includes("truck")))bsetqr(["Tower Crane","Mobile Crane","Mini Crane","Glass Lift","All Terrain","Boom Truck"]);else if(low.includes("operator"))bsetqr(["Yes operator included","Bare rental only"]);bwait=false;document.getElementById("bsendbtn").disabled=false;document.getElementById("bin").focus();}
 function bkey(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();bgo();}}
 function bresize(el){el.style.height="auto";el.style.height=Math.min(el.scrollHeight,75)+"px";}
