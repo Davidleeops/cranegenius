@@ -220,6 +220,10 @@ footer{background:var(--steel);border-top:1px solid var(--border);padding:28px;t
   .disc-text{font-size:10px;}
 }
 
+
+/* GRAIN TEXTURE */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.032;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:128px 128px;}
+
 </style>
 </head>
 <body>
@@ -232,6 +236,13 @@ footer{background:var(--steel);border-top:1px solid var(--border);padding:28px;t
     <a href="/marketplace/">Crane Marketplace</a>
   </div>
 </nav>
+<div id="cg-disclaimer">
+  <div class="disc-left">
+    <span class="disc-icon">&#9888; BETA v0.1</span>
+    <span class="disc-text"><strong>AI-generated lift plans are for preliminary planning purposes only.</strong> Always verify crane specifications, load calculations, and site conditions with a licensed engineer before any lift operation. CraneGenius is under active development &mdash; features and data updated regularly. Not professional engineering advice.</span>
+  </div>
+  <button class="disc-close" onclick="cgDismissDisclaimer()">DISMISS &#10005;</button>
+</div>
 
 <!-- PAGE TABS -->
 <div class="page-tabs">

@@ -222,6 +222,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.97);backdrop-filt
   .disc-text{font-size:10px;}
 }
 
+
+/* GRAIN TEXTURE */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.032;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:128px 128px;}
+
 </style>
 </head>
 <body>
@@ -233,6 +237,13 @@ nav{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.97);backdrop-filt
     <a href="/marketplace/" class="active">Crane Marketplace</a>
   </div>
 </nav>
+<div id="cg-disclaimer">
+  <div class="disc-left">
+    <span class="disc-icon">&#9888; BETA v0.1</span>
+    <span class="disc-text"><strong>AI-generated lift plans are for preliminary planning purposes only.</strong> Always verify crane specifications, load calculations, and site conditions with a licensed engineer before any lift operation. CraneGenius is under active development &mdash; features and data updated regularly. Not professional engineering advice.</span>
+  </div>
+  <button class="disc-close" onclick="cgDismissDisclaimer()">DISMISS &#10005;</button>
+</div>
 <div class="main">
   <div class="hero">
     <div>
@@ -389,7 +400,7 @@ function askBot(id){var x=listings.find(function(l){return l.id===id;});if(x)bad
 function delItem(id){listings=listings.filter(function(x){return x.id!==id;});renderAll();toast("Removed","tinfo");}
 function renderAll(){renderGrid();renderSpec("miniRow","Mini Crane");renderSpec("glassRow","Glass Lift");renderSpec("specialtyRow","Boom Truck");}
 var bwait=false,bhist=[];
-var BSYS="You are CraneGenius AI for a crane and lifting equipment marketplace. Help two types: (1) OWNERS listing equipment: collect company name, model, equipment type (Tower Crane/Mobile Crane/Crawler Crane/All Terrain/Rough Terrain/Boom Truck/Mini Crane/Glass Lift), capacity in tons, boom/reach in feet, year, daily rate in dollars, city and state, contact email, special features. Ask ONE field at a time. When you have all data output ONLY: LISTING_READY:{\"company\":\"x\",\"model\":\"x\",\"type\":\"x\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"City ST\",\"email\":\"x\",\"tags\":[],\"notes\":\"x\"} (2) CONTRACTORS finding equipment: ask crane type needed, required capacity, job location, project dates, budget range, then collect their name and email to send matches. Be brief and friendly. 1-2 sentences max per response. Always start by asking if they want to list or find.";
+var BSYS="You are CraneGenius AI for a crane and lifting equipment marketplace. Help three types of users: (1) OWNERS listing equipment for RENT: collect company name, model, equipment type (Tower Crane/Mobile Crane/Crawler Crane/All Terrain/Rough Terrain/Boom Truck/Mini Crane/Glass Lift), capacity in tons, boom/reach in feet, year, daily rate in dollars, city and state, contact email, special features. Ask ONE field at a time. When you have all data output ONLY: LISTING_READY:{\"company\":\"x\",\"model\":\"x\",\"type\":\"x\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"City ST\",\"email\":\"x\",\"tags\":[\"for-rent\"],\"notes\":\"x\"} (2) OWNERS listing equipment FOR SALE: collect the same fields but ask for asking price instead of daily rate, and whether they are open to a lease purchase option (where a buyer pays monthly over time and owns it at the end — no financing paperwork required). Output: LISTING_READY:{\"company\":\"x\",\"model\":\"x\",\"type\":\"x\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"City ST\",\"email\":\"x\",\"tags\":[\"for-sale\"],\"notes\":\"x\"} (3) CONTRACTORS or BUYERS finding equipment: ask if they need it for a job (rent) or want to acquire it (buy). If buying, mention that many sellers on CraneGenius offer lease purchase options — the buyer makes monthly payments and owns the equipment outright at the end, with no bank or financing required. Ask what type, required capacity, location, and timeline. Then collect name and email to send matches. Be brief, peer-to-peer, no fluff. 1-2 sentences max. Always start by asking: list for rent, list for sale, or find equipment?"company\":\"x\",\"model\":\"x\",\"type\":\"x\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"City ST\",\"email\":\"x\",\"tags\":[],\"notes\":\"x\"} (2) CONTRACTORS finding equipment: ask crane type needed, required capacity, job location, project dates, budget range, then collect their name and email to send matches. Be brief and friendly. 1-2 sentences max per response. Always start by asking if they want to list or find.";
 function bsetstep(n){for(var i=0;i<=5;i++){var el=document.getElementById("bs"+i);if(!el)continue;el.classList.remove("active","done");if(i<n)el.classList.add("done");else if(i===n)el.classList.add("active");}}
 function bguessstep(t){var tl=t.toLowerCase();if(tl.includes("company"))bsetstep(1);else if(tl.includes("model")||tl.includes("make"))bsetstep(1);else if(tl.includes("type"))bsetstep(2);else if(tl.includes("capacity")||tl.includes("boom")||tl.includes("year"))bsetstep(2);else if(tl.includes("rate")||tl.includes("price")||tl.includes("budget"))bsetstep(3);else if(tl.includes("location")||tl.includes("city"))bsetstep(3);else if(tl.includes("email")||tl.includes("contact"))bsetstep(4);}
 function bparse(text){var m=text.match(/LISTING_READY:(\{[\s\S]*?\})/);if(m){try{return JSON.parse(m[1]);}catch(ex){}}return null;}
@@ -418,7 +429,7 @@ function bsetqr(opts){document.getElementById("bqrs").innerHTML=opts.map(functio
 function bclearqr(){document.getElementById("bqrs").innerHTML="";}
 function bqrc(t){bclearqr();document.getElementById("bin").value=t;bgo();}
 async function bai(msg){bhist.push({role:"user",content:msg});try{var r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:400,system:BSYS,messages:bhist})});var d=await r.json();var t=d.content&&d.content[0]?d.content[0].text:"Sorry, try again.";bhist.push({role:"assistant",content:t});return t;}catch(ex){return "Connection error - please try again.";}}
-async function bgo(){if(bwait)return;var inp=document.getElementById("bin");var msg=inp.value.trim();if(!msg)return;inp.value="";bresize(inp);bclearqr();await baddmsg("user",msg,false);bwait=true;document.getElementById("bsendbtn").disabled=true;var resp=await bai(msg);await baddmsg("bot",resp,true);var low=resp.toLowerCase();if(low.includes("list")&&low.includes("find"))bsetqr(["List my crane for rent","Find a crane for my job"]);else if(low.includes("type")&&(low.includes("crane")||low.includes("lift")||low.includes("truck")))bsetqr(["Tower Crane","Mobile Crane","Mini Crane","Glass Lift","All Terrain","Boom Truck"]);else if(low.includes("operator"))bsetqr(["Yes operator included","Bare rental only"]);bwait=false;document.getElementById("bsendbtn").disabled=false;document.getElementById("bin").focus();}
+async function bgo(){if(bwait)return;var inp=document.getElementById("bin");var msg=inp.value.trim();if(!msg)return;inp.value="";bresize(inp);bclearqr();await baddmsg("user",msg,false);bwait=true;document.getElementById("bsendbtn").disabled=true;var resp=await bai(msg);await baddmsg("bot",resp,true);var low=resp.toLowerCase();if(low.includes("list")&&low.includes("find"))bsetqr(["List for rent","List for sale","Find equipment"]);else if(low.includes("type")&&(low.includes("crane")||low.includes("lift")||low.includes("truck")))bsetqr(["Tower Crane","Mobile Crane","Mini Crane","Glass Lift","All Terrain","Boom Truck"]);else if(low.includes("operator"))bsetqr(["Yes operator included","Bare rental only"]);bwait=false;document.getElementById("bsendbtn").disabled=false;document.getElementById("bin").focus();}
 function bkey(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();bgo();}}
 function bresize(el){el.style.height="auto";el.style.height=Math.min(el.scrollHeight,75)+"px";}
 function bpublish(btn){var d=JSON.parse(btn.dataset.listing);var item={id:Date.now(),company:d.company||"Unknown",model:d.model||"Unknown",type:d.type||"Mobile Crane",cap:parseFloat(d.cap)||0,boom:parseFloat(d.boom)||0,year:parseInt(d.year)||2020,rate:parseFloat(d.rate)||0,loc:d.loc||"Unknown",email:d.email||"",tags:d.tags||[],status:"live",notes:d.notes||""};listings.unshift(item);renderAll();toast("LIVE: "+item.model,"tok");setTimeout(function(){baddmsg("bot","Your "+item.model+" is now live! Contractors in "+item.loc+" can find it.\n\nWant to list another piece of equipment?",false);bsetqr(["Yes list another","No I am done"]);bhist=[];bsetstep(0);},400);}
@@ -433,7 +444,7 @@ window.onload=function(){
   renderAll();
   setTimeout(function(){
     baddmsg("bot","Hey! Welcome to the CraneGenius Marketplace.\n\nAre you looking to list your crane for rent, or find equipment for a job?",false);
-    setTimeout(function(){bsetqr(["List my crane for rent","Find a crane for my job"]);},450);
+    setTimeout(function(){bsetqr(["List for rent","List for sale","Find equipment"]);},450);
     document.getElementById("bin").focus();
   },300);
 };
