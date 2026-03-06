@@ -51,3 +51,16 @@ sources:
     url: "https://data.cityofchicago.org/resource/ydr8-5enu.csv"
     notes: "Chicago building permits via Socrata - live 2026 data with GC contacts"
     enabled: true
+
+  - name: nyc_permits
+    enabled: true
+    method: nyc_socrata
+    description: "NYC DOB permit filings via Socrata"
+
+  - id: "nyc_permits"
+    source_type: "permit"
+    jurisdiction: "New York, NY"
+    method: "nyc_socrata"
+    url: "https://data.cityofnewyork.us/resource/ipu4-2q9a.csv"
+    notes: "NYC DOB permits - live data with contractor names and contact persons"
+    enabled: true

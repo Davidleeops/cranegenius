@@ -1,0 +1,43 @@
+{
+  "run_id": "20912943",
+  "goal": "Export sender-ready leads using existing verified contacts data, skip ingestion and contact mining",
+  "markets": [
+    "chicago"
+  ],
+  "stages": [
+    "email_generation",
+    "sheets_export"
+  ],
+  "counts": {
+    "emails_generated": 2432,
+    "exported_hot": 0,
+    "exported_warm": 0,
+    "exported_catchall": 0
+  },
+  "status": "success",
+  "runtime_s": 0.4851,
+  "jobspec": {
+    "goal": "Export sender-ready leads using existing verified contacts data, skip ingestion and contact mining",
+    "pipeline_stages": [
+      "email_generation",
+      "sheets_export"
+    ],
+    "markets": [
+      "chicago"
+    ],
+    "outputs": [
+      "lead_csv",
+      "outreach_emails",
+      "google_sheets",
+      "run_report"
+    ],
+    "crane_score_threshold": 0.7,
+    "max_leads": 200,
+    "icp_filter": {
+      "revenue_range": "$1M-$5M",
+      "exclude_large_operators": true
+    },
+    "outreach_style": "hyper_specific"
+  },
+  "updated_at": "2026-03-05T13:02:51.034156"
+}

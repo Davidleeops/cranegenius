@@ -1,0 +1,177 @@
+"""
+CraneGenius — Google Custom Search Domain Enricher
+Resolves contractor company names to domains using Google Custom Search API.
+Runs as an additional pass in Stage 4 after Claude enrichment.
+Cost: ~$5 per 1000 queries (free tier: 100/day)
+"""
+from __future__ import annotations
+import os, time, csv, re, logging
+from pathlib import Path
+import pandas as pd
+import requests
+from dotenv import load_dotenv
+from pathlib import Path
+load_dotenv(dotenv_path=Path(__file__).parent.parent / ".env", override=True)
+
+log = logging.getLogger("cranegenius.google_enricher")
+
+GOOGLE_API_KEY    = os.environ.get("GOOGLE_API_KEY", "")
+GOOGLE_CX         = os.environ.get("GOOGLE_CSE_ID", "")  # Custom Search Engine ID
+SEED_CSV          = "config/company_domain_seed.csv"
+QUEUE_CSV         = "data/enrichment_queue.csv"
+OUT_CSV           = "data/google_enriched_domains.csv"
+REQUESTS_PER_SEC  = 0.5   # Stay well under quota
+FREE_DAILY_LIMIT  = 100   # Google free tier limit
+
+
+def extract_domain(url: str) -> str:
+    """Pull clean domain from a URL."""
+    url = re.sub(r'^https?://', '', url.lower().strip())
+    url = re.sub(r'^www\.', '', url)
+    domain = url.split('/')[0].split('?')[0]
+    return domain if '.' in domain else ''
+
+
+def search_company_domain(company_name: str, city: str, state: str) -> str | None:
+    """Search Google for a contractor's domain."""
+    if not GOOGLE_API_KEY or not GOOGLE_CX:
+        log.warning("GOOGLE_API_KEY or GOOGLE_CSE_ID not set")
+        return None
+
+    clean = re.sub(r"\d{2,}.*", "", company_name)  # strip address
+    clean = re.sub(r"[,.()/\\#-]", " ", clean)    # strip punctuation
+    clean = re.sub(r"\s+", " ", clean).strip()      # collapse spaces
+    clean = " ".join(clean.split()[:5])              # max 5 words
+    if len(clean) < 4:
+        return None
+    query = f'"{clean}" {city} {state} contractor'
+
+    try:
+        r = requests.get(
+            "https://www.googleapis.com/customsearch/v1",
+            params={
+                "key": GOOGLE_API_KEY,
+                "cx":  GOOGLE_CX,
+                "q":   query,
+                "num": 3,
+            },
+            timeout=10
+        )
+        data = r.json()
+
+        if "items" not in data:
+            return None
+
+        for item in data["items"]:
+            url = item.get("link", "")
+            domain = extract_domain(url)
+            # Skip generic sites
+            skip = ["yelp.com","yellowpages.com","bbb.org","facebook.com",
+                    "linkedin.com","google.com","houzz.com","angi.com",
+                    "thumbtack.com","homeadvisor.com","buildzoom.com"]
+            if domain and not any(s in domain for s in skip):
+                return domain
+
+    except Exception as e:
+        log.error(f"Google search failed for {clean}: {e}")
+
+    return None
+
+
+def load_seed() -> dict:
+    """Load existing seed CSV into a dict."""
+    seed = {}
+    if Path(SEED_CSV).exists():
+        with open(SEED_CSV) as f:
+            for row in csv.DictReader(f):
+                name = row.get("contractor_name_normalized","").strip().lower()
+                domain = row.get("contractor_domain","").strip()
+                if name and domain:
+                    seed[name] = domain
+    return seed
+
+
+def append_to_seed(name: str, domain: str):
+    """Add a new entry to the seed CSV."""
+    path = Path(SEED_CSV)
+    write_header = not path.exists()
+    with open(path, "a", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["contractor_name_normalized","contractor_domain"])
+        if write_header:
+            writer.writeheader()
+        writer.writerow({
+            "contractor_name_normalized": name.strip().lower(),
+            "contractor_domain": domain.strip().lower()
+        })
+
+
+def run_google_enrichment(max_queries: int = FREE_DAILY_LIMIT) -> pd.DataFrame:
+    """
+    Main enrichment loop.
+    Reads enrichment_queue.csv, searches unresolved companies,
+    saves results and updates seed CSV.
+    """
+    if not GOOGLE_API_KEY or not GOOGLE_CX:
+        print("\n  [Google Enricher] Skipping — GOOGLE_API_KEY or GOOGLE_CSE_ID not set")
+        print("  Set up at: https://console.cloud.google.com")
+        print("  Then add to your .env file:")
+        print("    GOOGLE_API_KEY=your_key_here")
+        print("    GOOGLE_CSE_ID=your_cx_here")
+        return pd.DataFrame()
+
+    queue = pd.read_csv(QUEUE_CSV)
+    seed  = load_seed()
+
+    # Only process companies not already in seed
+    unresolved = queue[
+        ~queue["contractor_name_normalized"].str.lower().str.strip().isin(seed.keys())
+    ].drop_duplicates(subset="contractor_name_normalized")
+
+    total     = min(len(unresolved), max_queries)
+    resolved  = 0
+    results   = []
+
+    print(f"\n  [Google Enricher] {len(unresolved)} unresolved companies, running {total} queries")
+    print(f"  Cost estimate: ${total/1000*5:.2f}\n")
+
+    for i, (_, row) in enumerate(unresolved.head(total).iterrows()):
+        name  = str(row.get("contractor_name_normalized", ""))
+        city  = str(row.get("project_city", ""))
+        state = str(row.get("project_state", ""))
+
+        domain = search_company_domain(name, city, state)
+
+        if domain:
+            resolved += 1
+            append_to_seed(name, domain)
+            log.info(f"  Resolved: {name} -> {domain}")
+            print(f"  [{i+1}/{total}] FOUND: {name[:40]} -> {domain}")
+        else:
+            print(f"  [{i+1}/{total}] miss:  {name[:40]}")
+
+        results.append({
+            "contractor_name_normalized": name,
+            "project_city":  city,
+            "project_state": state,
+            "resolved_domain": domain or "",
+            "status": "found" if domain else "not_found"
+        })
+
+        time.sleep(1.0 / REQUESTS_PER_SEC)
+
+    out_df = pd.DataFrame(results)
+    out_df.to_csv(OUT_CSV, index=False)
+
+    hit_rate = resolved / total * 100 if total else 0
+    print(f"\n  Google enrichment complete:")
+    print(f"  Resolved: {resolved}/{total} ({hit_rate:.1f}% hit rate)")
+    print(f"  Seed CSV updated: {SEED_CSV}")
+    print(f"  Full results: {OUT_CSV}")
+
+    return out_df
+
+
+if __name__ == "__main__":
+    import sys
+    limit = int(sys.argv[1]) if len(sys.argv) > 1 else FREE_DAILY_LIMIT
+    run_google_enrichment(max_queries=limit)

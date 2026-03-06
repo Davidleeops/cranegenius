@@ -116,6 +116,7 @@ keywords:
       - "underground"
 
 role_inboxes:
+  - "owner"
   - "estimating"
   - "projects"
   - "project"
