@@ -4,9 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CraneGenius - Equipment Marketplace</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080e1a;--panel:#0d1526;--card:#0f1c30;--border:rgba(201,168,76,0.15);--border2:rgba(201,168,76,0.3);--gold:#c9a84c;--gold2:#f0d078;--green:#10b981;--red:#ef4444;--blue:#3b82f6;--text:#e8edf5;--muted:#5a7a9a}
+:root{
+  --bg:#080c14;--panel:#111827;--steel:#141c2e;
+  --border:#1e2a42;--border2:#263352;
+  --accent:#F5A623;--accent2:#00C4A7;
+  --danger:#E84040;--green:#2ECC71;
+  --white:#FFFFFF;--text:#C8D0E0;--muted:#5A6480;
+  --gold:#F5A623;
+}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;padding-right:400px}
 nav{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 1.5rem;height:54px;display:flex;align-items:center;justify-content:space-between}
@@ -153,19 +160,23 @@ nav{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.97);backdrop-filt
 .ibox{background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.18);border-radius:4px;padding:.55rem;margin-bottom:.65rem;font-size:.71rem;color:#93c5fd;line-height:1.5}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* UNIFIED NAV */
+.site-nav{background:#06080f;border-bottom:1px solid rgba(245,166,35,0.15);padding:0 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:9998;height:52px;}
+.site-nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:17px;color:#F5A623;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;}
+.site-nav-links{display:flex;gap:28px;align-items:center;}
+.site-nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:#5A6480;text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.2s;padding:4px 0;border-bottom:2px solid transparent;}
+.site-nav-links a:hover{color:#C8D0E0;}
+.site-nav-links a.active{color:#F5A623;border-bottom-color:#F5A623;}
 </style>
 </head>
 <body>
-  <div id="cg-beta-banner" style="position:sticky;top:0;z-index:9999;background:#1a1200;border-bottom:1px solid #c9a84c44;padding:8px 20px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-family:'DM Sans',sans-serif;font-size:12px;line-height:1.4;color:#e8d5a3;">
-    <span>⚠️</span>
-    <span><strong style="color:#c9a84c;">Beta Platform</strong> &mdash; CraneGenius is under active development. AI-generated lift plans are for preliminary planning only. Always verify against manufacturer specs and local regulations before any lift operation.</span>
-  </div>
-<nav>
-  <div class="logo">CRANE<span>GENIUS</span></div>
-  <div class="navr">
-    <a href="/" class="nbtn">Home</a>
-    <button class="nbtn" onclick="openModal('notifyM')">Alerts</button>
-    <button class="nbtn" onclick="openModal('sheetsM')">Sheets</button>
+  <nav class="site-nav">
+  <a href="/" class="site-nav-logo">CraneGenius</a>
+  <div class="site-nav-links">
+    <a href="/">Lift Estimator</a>
+    <a href="/data-centers/">Data Centers</a>
+    <a href="/marketplace/" class="active">Crane Marketplace</a>
   </div>
 </nav>
 <div class="main">
@@ -380,9 +391,9 @@ window.onload=function(){
   <footer id="cg-footer" style="background:#03060f;border-top:1px solid #c9a84c33;padding:20px 24px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;font-family:'DM Sans',sans-serif;font-size:13px;color:#6677aa;">
     <span><a href="tel:+15037734659" style="color:#c9a84c;text-decoration:none;font-weight:600;">📞 1 (503) 773-4659</a></span>
     <span style="color:#c9a84c33;">|</span>
-    <span><a href="mailto:info@cranegenius.site" style="color:#c9a84c;text-decoration:none;font-weight:600;">✉️ info@cranegenius.site</a></span>
+    <span><a href="mailto:info@cranegenius.com" style="color:#c9a84c;text-decoration:none;font-weight:600;">✉️ info@cranegenius.com</a></span>
     <span style="color:#c9a84c33;">|</span>
-    <span style="color:#334455;">&copy; 2025 CraneGenius</span>
+    <span style="color:#334455;">&copy; 2026 CraneGenius</span>
   </footer>
 </body>
 </html>

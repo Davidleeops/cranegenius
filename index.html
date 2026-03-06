@@ -656,7 +656,7 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
 <script>
 // ── CONFIG — REPLACE KEYS BEFORE LAUNCH ─────────────────
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgoldjjb';
-const ANTHROPIC_API_KEY  = 'sk-ant-api03-cSQvECIRtMzDh0P5LcgcGMy4OB3_TYy6eW79lpPCFiAKp7xFNYfhSYFYcY_hJxcJZSRHbGMmZtCVCGi9W1mUw-8MKdgAAA';
+const ANTHROPIC_API_KEY = window.__CG_KEY__ || '';
 // ────────────────────────────────────────────────────────
 
 const urlParams = new URLSearchParams(window.location.search);
