@@ -1272,6 +1272,31 @@ loadDashboard();
 .bpub:hover{background:#ffb83f}
 .bedit{background:transparent;color:#C8D0E0;border:1px solid #2E3650;padding:7px 14px;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:13px;cursor:pointer}
 .bedit:hover{border-color:#F5A623;color:#F5A623}
+@media (max-width: 900px){
+  .bot-panel{
+    width:100%;
+    right:-100%;
+    border-left:none;
+    border-top:1px solid #2E3650;
+    height:72vh;
+    top:auto;
+    bottom:0;
+  }
+  .bot-panel.open{right:0}
+  .bot-trigger{
+    right:14px;
+    top:auto;
+    bottom:16px;
+    transform:none;
+    writing-mode:horizontal-tb;
+    border-radius:999px;
+    padding:10px 14px;
+    font-size:11px;
+    letter-spacing:1px;
+    box-shadow:0 8px 24px rgba(0,0,0,.45);
+  }
+  .bot-trigger.open{right:14px}
+}
 </style>
 <button class="bot-trigger" id="botTrig" onclick="toggleBot()">
   <span style="display:flex;flex-direction:column;align-items:center;gap:6px">

@@ -94,3 +94,18 @@ If returning to code: unify design system. See TASK.md.
 ### Next step
 - Launch outreach from the safe file and track bounce/reply rates by cohort.
 
+## 2026-03-07 — Mobile funnel hardening
+
+### Done
+- `index.html`: added mobile bot breakpoint at 900px.
+  - bot panel becomes full-width bottom sheet (`72vh`) on phones.
+  - trigger switches from vertical side-tab to bottom-right pill CTA.
+- `marketplace/index.html`: added mobile breakpoints at 1100px and 700px.
+  - removes desktop `padding-right: 400px` on mobile.
+  - bot panel becomes bottom sheet (`56vh`) with content preserved.
+  - status bar/nav/hero/grid spacing optimized for narrow widths.
+
+### Next step
+- Run real-device QA (Safari iOS + Chrome Android):
+  - open bot, submit message, tap Call CTA, submit Formspree quote.
+

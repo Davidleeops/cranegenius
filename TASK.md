@@ -37,3 +37,9 @@ Consolidate to one.
 - [x] Removed fabricated claim style from new generated messaging
 - [ ] Launch campaign + monitor reply/bounce rates in first 24h
 
+## Mobile Funnel Update (2026-03-07)
+- [x] Homepage bot UI now adapts for phones (bottom pill trigger + full-width bottom sheet).
+- [x] Marketplace now drops 400px desktop sidebar offset on mobile and uses a bottom chat sheet.
+- [x] Marketplace nav/cards/hero tightened for smaller screens.
+- [ ] Manual device QA on iPhone + Android before Monday outreach.
+
