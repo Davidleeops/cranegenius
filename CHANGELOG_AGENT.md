@@ -58,3 +58,18 @@ Commit these files to the repository and verify marketplace image integrity.
 Fix Lift Matrix filter pills in data-centers/lift-matrix/index.html
 MUST grep to verify bug before writing any fix — see TASK.md for exact commands.
 Also check Add to Plan button and Get Quotes/Request Full Analysis stubs in same file.
+
+## 2026-03-07 — Lift Matrix lead capture + full bug audit complete
+
+### Done
+- Replaced openQuote() alert() stub with real Formspree lead capture modal
+  Modal captures: name, email, project, equipment list. Source tagged lift-matrix.
+- Full bug audit: DC CTAs, filter pills, addToPlan were never broken
+- All bugs from original list resolved
+
+### Site status
+Primary funnel complete end-to-end. No blocking bugs remain.
+
+### Next agent
+No code tasks blocking revenue. Outreach is the priority.
+If returning to code: unify design system. See TASK.md.

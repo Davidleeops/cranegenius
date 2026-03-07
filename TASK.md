@@ -1,40 +1,26 @@
 # Current Task
 
-## Status: Ready — inspect and fix Lift Matrix filter pills
+## Status: Core funnel complete — ready for outreach
 
 ## Completed (Mar 7 2026)
-- [x] 4 model-specific crane photos committed to assets/images/cranes/
-- [x] marketplace/index.html: CRANE_IMG_MODEL implemented correctly
-- [x] Context files committed to repo root (AGENT_CONTEXT.md, TASK.md, CHANGELOG_AGENT.md)
-- [x] Bug audit: DC landing CTAs confirmed working (not broken)
-- [x] Bug audit: Corrected directory paths in AGENT_CONTEXT.md
-- [x] AI Planner 401 fixed (commit ed93373) — both fetch calls now route through Cloudflare Worker proxy via callAIProxy()
+- [x] Marketplace: CRANE_IMG_MODEL model-specific photos implemented
+- [x] AI Planner 401: fixed by Codex (commit ed93373) — routed through Cloudflare proxy
+- [x] Lift Matrix openQuote(): replaced alert() stub with real Formspree lead capture modal
+- [x] Bug audit complete: DC CTAs, filter pills, addToPlan all confirmed working
+- [x] Context files committed and accurate
 
-## Next: Inspect Lift Matrix Filter Pills (Bug #2)
+## Site Status
+All known bugs resolved. Primary funnel functional end-to-end:
+Lift Matrix -> Add to Plan -> REQUEST QUOTE -> modal captures lead -> Formspree
 
-### File
-data-centers/lift-matrix/index.html
+## Next Priority: OUTREACH (no code needed to start earning)
+1. Launch PlusVibes campaign to 367 verified DC contacts
+2. Sign first crane company retainer at $2,500/mo (Great Lakes Lifting or Leavitt via Erick)
+3. Verify electrical contractors list via MillionVerifier before sending
 
-### Step 1 — Verify bug exists before touching anything
-grep -n "data-build\|data-phase\|data-category\|filterPill\|filter" data-centers/lift-matrix/index.html | head -20
-
-### Step 2 — Check card HTML for missing data attributes
-grep -n "class=.*card\|data-build\|data-phase\|data-category" data-centers/lift-matrix/index.html | head -20
-
-### Step 3 — If confirmed broken
-Add missing data-build, data-phase, data-category attributes to each card element.
-Fix filter pill onclick handlers to actually filter by those attributes.
-Use Python str.replace() surgical patch only.
-
-### Step 4
-git add data-centers/lift-matrix/index.html
-git commit -m "fix: lift matrix filter pills now filter cards correctly"
-git push origin main
-
-### Step 5 — Also check in same file
-- Add to Plan button: does it update the plan panel?
-- Get Quotes / Request Full Analysis: are these alert() stubs or real handlers?
-
-## After Lift Matrix
-- Unify design system across all pages (Barlow Condensed + navy #0a0e1a as base)
-- Add real crane company listings to marketplace when first retainer client signs
+## Next Code Task (lower priority than outreach)
+Unify design system — 3 different font/color systems exist:
+- Marketplace: Bebas Neue + gold #c9a84c
+- DC Landing/Lift Matrix: Barlow Condensed + navy #0a0e1a
+- AI Planner: Syne + #03060f
+Consolidate to one.
