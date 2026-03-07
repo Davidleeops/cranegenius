@@ -173,3 +173,16 @@ If returning to code: unify design system. See TASK.md.
 - Existing estimator/planner/marketplace flows were preserved unchanged.
 - New architecture is layered non-destructively for backward compatibility.
 
+## 2026-03-07 — Sell Your Company sprint-spec alignment
+
+### Done
+- Updated `sell-your-company/index.html` to match required section structure and conversion CTAs.
+- Added required acquisition form fields including `phone` and strict required validation.
+- Added separate lightweight demand partner form tagged distinctly from acquisition seller submissions.
+- Kept existing Formspree integration pattern (non-breaking) for both forms.
+- Added explicit local structured lead placeholders for future CRM bridge:
+  - `acquisition_targets`
+  - `acquisition_inquiries`
+  - `demand_partner_inquiries`
+- Updated schema scaffold in `config/lift_ecosystem_schema.json` with explicit inquiry entities.
+

@@ -62,3 +62,9 @@ Consolidate to one.
 - [x] Added `FEATURE_BACKLOG.md` to support persistent agent memory workflow.
 - [ ] Phase 2: expand marketplace categories + lift-planner category pathways.
 
+## Sell Page Sprint Alignment (2026-03-07)
+- [x] Hero and content sections updated to exact sprint wording and structure.
+- [x] Primary acquisition form includes required `phone` and full required field set.
+- [x] Secondary demand-partner CTA implemented as separate lightweight form.
+- [x] Internal data distinction implemented: `acquisition_targets`, `acquisition_inquiries`, `demand_partner_inquiries`.
+

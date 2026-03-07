@@ -135,6 +135,32 @@
       "notes",
       "source",
       "created_at"
+    ],
+    "acquisition_inquiries": [
+      "id",
+      "lead_type",
+      "source_page",
+      "created_at",
+      "status_placeholder",
+      "owner_name",
+      "company_name",
+      "email",
+      "phone",
+      "location",
+      "notes"
+    ],
+    "demand_partner_inquiries": [
+      "id",
+      "lead_type",
+      "source_page",
+      "created_at",
+      "status_placeholder",
+      "name",
+      "company",
+      "email",
+      "market",
+      "equipment_categories",
+      "notes"
     ]
   },
   "relationships": [
