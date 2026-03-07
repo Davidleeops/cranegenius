@@ -99,6 +99,7 @@
     "Boom Truck": "industrial_lifting_systems"
   },
   "request_types": [
+    "quote_request",
     "pricing",
     "availability",
     "rental",

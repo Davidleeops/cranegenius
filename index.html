@@ -1119,6 +1119,32 @@ function inferEstimatorLiftCategory() {
   if (q1 === 'transformer' && q2 === 'outdoor') return 'mobile_cranes';
   return 'specialty_lift_contractors';
 }
+// Unified lead payload pattern shared across core tools for future CRM ingestion.
+function buildUnifiedLeadPayload(base, extra) {
+  return Object.assign({
+    lead_type: '',
+    source_page: window.location.pathname || '/',
+    source_tool: 'lift_estimator',
+    created_timestamp: new Date().toISOString(),
+    status_placeholder: 'new',
+    request_type: 'quote_request',
+    selected_lift_category: '',
+    recommended_solution_type: '',
+    contact_name: '',
+    company_name: '',
+    email: '',
+    phone: '',
+    notes: '',
+    project_location: '',
+    project_type: '',
+    equipment_context: '',
+    load_weight: '',
+    lift_height: '',
+    radius: '',
+    indoor_or_outdoor: '',
+    access_constraints: ''
+  }, base || {}, extra || {});
+}
 
 function submitLead() {
   const email = document.getElementById('f_email').value;
@@ -1129,22 +1155,33 @@ function submitLead() {
   const btn = document.querySelector('.form-submit');
   btn.textContent = 'Sending...';
   btn.disabled = true;
-  const requestType = currentCTA === 'quote' ? 'pricing' : 'planning_help';
+  const requestType = currentCTA === 'quote' ? 'quote_request' : 'planning_help';
   const selectedLiftCategory = inferEstimatorLiftCategory();
-  const payload = {
+  const fullName = (document.getElementById('f_name').value + ' ' + document.getElementById('f_last').value).trim();
+  const payload = buildUnifiedLeadPayload({
     lead_type: 'estimator_inquiry',
     source_page: '/',
     source_tool: 'lift_estimator',
     selected_lift_category: selectedLiftCategory,
     recommended_solution_type: lastResults.rec || '',
     request_type: requestType,
-    created_timestamp: new Date().toISOString(),
-    status_placeholder: 'new',
+    contact_name: fullName,
+    company_name: document.getElementById('f_company').value,
+    email,
+    phone: document.getElementById('f_phone').value,
+    notes: answers.techSpecs?.notes || '',
+    project_location: document.getElementById('f_city').value,
+    project_type: answers.q1 || '',
+    equipment_context: lastResults.rec || '',
+    load_weight: answers.techSpecs?.weight || '',
+    lift_height: answers.techSpecs?.height || '',
+    radius: answers.techSpecs?.radius || '',
+    indoor_or_outdoor: answers.q2 || '',
+    access_constraints: answers.q2 || '',
+    // Backward-compatible aliases retained for existing downstream handling.
     name: document.getElementById('f_name').value,
     last: document.getElementById('f_last').value,
     company: document.getElementById('f_company').value,
-    email,
-    phone: document.getElementById('f_phone').value,
     city: document.getElementById('f_city').value,
     cta_type: currentCTA,
     ref_source: refSource,
@@ -1166,7 +1203,7 @@ function submitLead() {
     estimated_savings: lastResults.savings || '',
     recommended_equipment: lastResults.rec || '',
     _subject: 'CraneGenius Lead — ' + (document.getElementById('f_company').value || email) + ' [' + refSource + ']'
-  };
+  });
   fetch(FORMSPREE_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },

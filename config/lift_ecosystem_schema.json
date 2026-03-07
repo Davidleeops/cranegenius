@@ -227,6 +227,7 @@
       "estimator_inquiry"
     ],
     "request_types": [
+      "quote_request",
       "pricing",
       "availability",
       "rental",

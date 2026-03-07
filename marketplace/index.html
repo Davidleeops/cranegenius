@@ -528,6 +528,32 @@ function tg(type){var m={"Mobile Crane":"MC","Tower Crane":"TC","Crawler Crane":
 function ig(type,model){return {g:GR[type]||GR["Specialty"],e:tg(type),img:CRANE_IMG_MODEL[model]||null};}
 function getCategoryKey(x){return x.category_key||LEGACY_TYPE_TO_CATEGORY[x.type]||"specialty_lift_contractors";}
 function getCategoryLabel(x){var k=getCategoryKey(x);return (LIFT_ECOSYSTEM_CATEGORIES[k]&&LIFT_ECOSYSTEM_CATEGORIES[k].label)||"Lift Ecosystem";}
+// Unified lead payload pattern shared across core tools for future CRM ingestion.
+function buildUnifiedLeadPayload(base, extra){
+  return Object.assign({
+    lead_type:"",
+    source_page:window.location.pathname||"/marketplace/",
+    source_tool:"marketplace",
+    created_timestamp:new Date().toISOString(),
+    status_placeholder:"new",
+    request_type:"quote_request",
+    selected_lift_category:"",
+    recommended_solution_type:"",
+    contact_name:"",
+    company_name:"",
+    email:"",
+    phone:"",
+    notes:"",
+    project_location:"",
+    project_type:"",
+    equipment_context:"",
+    load_weight:"",
+    lift_height:"",
+    radius:"",
+    indoor_or_outdoor:"",
+    access_constraints:""
+  },base||{},extra||{});
+}
 function renderSpec(cid,type){
   var items=listings.filter(function(x){return x.type===type;});
   var el=document.getElementById(cid);
@@ -573,25 +599,29 @@ async function submitMarketplaceInquiry(){
   var notes=document.getElementById("reqNotes").value.trim();
   var msgEl=document.getElementById("reqMsg");
   if(!name||!email){msgEl.style.color="#ef4444";msgEl.textContent="Name and email are required.";return;}
-  var payload={
+  var payload=buildUnifiedLeadPayload({
     lead_type:"marketplace_inquiry",
     source_page:"/marketplace/",
     source_tool:"marketplace",
     selected_lift_category:getCategoryKey(item),
     recommended_solution_type:item.type,
     request_type:requestType,
-    created_timestamp:new Date().toISOString(),
-    status_placeholder:"new",
+    contact_name:name,
+    company_name:company,
+    email:email,
+    notes:notes,
+    project_location:item.loc,
+    equipment_context:item.model+" | "+item.type,
+    project_type:"marketplace_request",
     listing_id:item.id,
     listing_company:item.company,
     listing_model:item.model,
     listing_location:item.loc,
+    // Backward-compatible aliases retained for existing downstream handling.
     name:name,
-    email:email,
     company:company,
-    notes:notes,
     _subject:"Marketplace Lift Inquiry — "+requestType
-  };
+  });
   msgEl.style.color="#93c5fd";
   msgEl.textContent="Submitting...";
   try{

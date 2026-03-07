@@ -534,6 +534,32 @@ const LIFTS = [
 const plan = new Map(); // id -> lift object
 let planExpanded = true;
 let conversationHistory = [];
+// Unified lead payload pattern shared across core tools for future CRM ingestion.
+function buildUnifiedLeadPayload(base, extra){
+  return Object.assign({
+    lead_type:"",
+    source_page:window.location.pathname||"/data-centers/ai-planner",
+    source_tool:"ai_lift_planner",
+    created_timestamp:new Date().toISOString(),
+    status_placeholder:"new",
+    request_type:"quote_request",
+    selected_lift_category:"",
+    recommended_solution_type:"",
+    contact_name:"",
+    company_name:"",
+    email:"",
+    phone:"",
+    notes:"",
+    project_location:"",
+    project_type:"data_center",
+    equipment_context:"",
+    load_weight:"",
+    lift_height:"",
+    radius:"",
+    indoor_or_outdoor:"",
+    access_constraints:""
+  },base||{},extra||{});
+}
 
 // ── EXAMPLE PROMPTS ─────────────────────────────────────────────────────────
 const EXAMPLES = {
@@ -925,21 +951,23 @@ async function submitPlannerInquiry() {
   const msg = document.getElementById("cgPlannerMsg");
   if (!name || !email) { msg.style.color = "#ef4444"; msg.textContent = "Name and email are required."; return; }
   const names = Array.from(plan.values()).map(l => l.name);
-  const payload = {
+  const payload = buildUnifiedLeadPayload({
     lead_type: "lift_planner_inquiry",
     source_page: "/data-centers/ai-planner",
     source_tool: "ai_lift_planner",
     selected_lift_category: inferPlannerCategory(),
     recommended_solution_type: names.join(" | "),
     request_type: requestType,
-    created_timestamp: new Date().toISOString(),
-    status_placeholder: "new",
+    contact_name: name,
+    email: email,
+    notes: notes,
+    project_type: "data_center_planning",
+    equipment_context: names.join(" | "),
+    // Backward-compatible aliases retained for existing downstream handling.
     name,
-    email,
-    notes,
     selected_lifts: names,
     _subject: "AI Planner Lift Inquiry — " + requestType
-  };
+  });
   msg.style.color = "#93c5fd";
   msg.textContent = "Submitting...";
   try {
