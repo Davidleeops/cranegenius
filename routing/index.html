@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CraneGenius Routing — Internal</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Internal lead routing suggestions linking opportunities to supplier matches.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e1a;--panel:#10172a;--border:#233050;--text:#e7eef9;--muted:#97a8c2;--accent:#F5A623}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh}
+.site-nav{position:sticky;top:0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:12px 22px;border-bottom:1px solid var(--border);background:rgba(10,14,26,.95)}
+.site-nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:600}
+.site-nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;letter-spacing:.04em;color:var(--text)}
+.site-nav-logo span{color:var(--accent)}
+.site-nav-links{display:flex;gap:16px;flex-wrap:wrap}
+.site-nav-links a.active{color:var(--accent)}
+.wrap{max-width:1320px;margin:0 auto;padding:24px 18px 40px}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:42px;line-height:1.02}
+.hero p{color:#ccdaee;max-width:980px;margin-top:7px;font-size:13px;line-height:1.55}
+.filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
+select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0ff;padding:10px;font-family:'Barlow',sans-serif}
+.count{font-size:12px;color:var(--muted);margin-bottom:10px}
+.table-wrap{border:1px solid var(--border);background:var(--panel);overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:1200px}
+th,td{padding:10px 12px;border-bottom:1px solid #1d2a45;text-align:left;vertical-align:top}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#a9bddb}
+td{font-size:12px;color:#d6e3f6}
+.tag{display:inline-block;padding:2px 7px;border:1px solid #365689;color:#9ec7ff;font-size:10px;margin:2px 4px 2px 0;border-radius:999px}
+.status{display:inline-block;padding:3px 7px;border:1px solid #3d547f;color:#b7d3ff;border-radius:999px;font-size:10px;text-transform:uppercase}
+.score{font-weight:700;color:#ffbf73}
+.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.btn-link{font-size:10px;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;padding:5px 7px;border:1px solid #35517e;color:#a8c8f8}
+.empty{padding:18px;color:#9eb4d4}
+@media(max-width:1000px){.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.site-nav-links{overflow-x:auto;white-space:nowrap}}
+@media(max-width:650px){.filters{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="/" class="site-nav-logo">Crane<span>Genius</span></a>
+  <div class="site-nav-links">
+    <a href="/opportunities/">Opportunities</a>
+    <a href="/routing/" class="active">Routing (Internal)</a>
+    <a href="/acquisitions/">Acquisitions</a>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="hero">
+    <h1>Lead Routing Engine</h1>
+    <p>Internal match layer connecting existing opportunities to likely suppliers. This page prepares routing-ready lead objects for future notification, agent assignment, CRM sync, and audit workflows.</p>
+  </div>
+
+  <div class="filters">
+    <select id="fState"><option value="">All States</option></select>
+    <select id="fLift"><option value="">All Lift Categories</option></select>
+    <select id="fSupplier"><option value="">All Suppliers</option></select>
+    <select id="fStatus"><option value="">All Routing Statuses</option></select>
+  </div>
+
+  <div class="count" id="resultCount">Loading routing suggestions...</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Source Project</th>
+          <th>City/State</th>
+          <th>Lift Categories</th>
+          <th>Matched Supplier</th>
+          <th>Routing Score</th>
+          <th>Routing Reason</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+</div>
+
+<script src="/data/opportunities/opportunity_helpers.js"></script>
+<script src="/opportunities/data_loader.js"></script>
+<script src="/data/suppliers/supplier_loader.js"></script>
+<script src="/data/suppliers/routing_helper.js"></script>
+<script>
+(function(){
+  var rows = [];
+  var sourceSlugFilter = "";
+  var byId = function(id){ return document.getElementById(id); };
+  function esc(s){
+    return String(s || "").replace(/[&<>\"]/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];
+    });
+  }
+  function uniq(values){ return Array.from(new Set((values || []).filter(Boolean))); }
+
+  function sourceName(row){
+    return row.opportunity.project_name || row.routing.source_id || "Untitled Source";
+  }
+  function sourceState(row){
+    return row.opportunity.state || "";
+  }
+  function sourceCity(row){
+    return row.opportunity.city || "";
+  }
+  function sourceCats(row){
+    return row.opportunity.recommended_lift_categories || [];
+  }
+
+  function seedFilters(allRows){
+    var states = uniq(allRows.map(sourceState));
+    var lifts = [];
+    allRows.forEach(function(r){ sourceCats(r).forEach(function(c){ lifts.push(c); }); });
+    var suppliers = uniq(allRows.map(function(r){ return r.supplier.company_name; }));
+    var statuses = uniq(allRows.map(function(r){ return r.routing.routing_status; }));
+
+    [{id:"fState", list:states}, {id:"fLift", list:uniq(lifts)}, {id:"fSupplier", list:suppliers}, {id:"fStatus", list:statuses}]
+      .forEach(function(cfg){
+        var el = byId(cfg.id);
+        cfg.list.sort().forEach(function(v){
+          var o = document.createElement("option");
+          o.value = v;
+          o.textContent = v;
+          el.appendChild(o);
+        });
+      });
+  }
+
+  function filteredRows(){
+    var fState = byId("fState").value;
+    var fLift = byId("fLift").value;
+    var fSupplier = byId("fSupplier").value;
+    var fStatus = byId("fStatus").value;
+    return rows.filter(function(r){
+      if (sourceSlugFilter && r.routing.source_slug_optional !== sourceSlugFilter) return false;
+      if (fState && sourceState(r) !== fState) return false;
+      if (fLift && sourceCats(r).indexOf(fLift) < 0) return false;
+      if (fSupplier && r.supplier.company_name !== fSupplier) return false;
+      if (fStatus && r.routing.routing_status !== fStatus) return false;
+      return true;
+    });
+  }
+
+  function render(){
+    var list = filteredRows();
+    byId("resultCount").textContent = list.length + " routing suggestions shown";
+    var tbody = byId("rows");
+    if (!list.length){
+      tbody.innerHTML = '<tr><td colspan="7" class="empty">No routing suggestions match these filters.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = list.map(function(r){
+      var catsHtml = sourceCats(r).slice(0, 4).map(function(c){ return '<span class="tag">' + esc(c) + '</span>'; }).join("");
+      var sourceTypeTag = '<span class="tag">opportunity</span>';
+      var sourceLink = '<a class="btn-link" href="/opportunities/' + encodeURIComponent(r.routing.source_slug_optional) + '/">Opportunity</a>';
+      var actions = '<div class="actions">' +
+        sourceLink +
+        '<a class="btn-link" href="/marketplace/?lift=' + encodeURIComponent((r.routing.matched_categories || [])[0] || "specialty_lift_contractors") + '">Marketplace</a>' +
+        '<a class="btn-link" href="/data-centers/ai-planner?ref=routing_engine">AI Planner</a>' +
+      '</div>';
+      return '<tr>' +
+        '<td><strong>' + esc(sourceName(r)) + '</strong><br>' + sourceTypeTag + actions + '</td>' +
+        '<td>' + esc([sourceCity(r), sourceState(r)].filter(Boolean).join(", ") || "N/A") + '</td>' +
+        '<td>' + catsHtml + '</td>' +
+        '<td><strong>' + esc(r.supplier.company_name) + '</strong><br><span style="color:#9fb4d3">' + esc(r.supplier.city + ", " + r.supplier.state_or_province) + '</span></td>' +
+        '<td><span class="score">' + esc(r.routing.routing_score) + '</span></td>' +
+        '<td>' + esc(r.routing.routing_reason) + '</td>' +
+        '<td><span class="status">' + esc(r.routing.routing_status) + '</span></td>' +
+      '</tr>';
+    }).join("");
+  }
+
+  Promise.all([
+    window.CGOpportunityDataLoader.loadOpportunityDataset().catch(function(){ return { opportunities: [] }; }),
+    window.CGSupplierDataLoader.loadSupplierDataset()
+  ]).then(function(results){
+    var qp = new URLSearchParams(window.location.search);
+    sourceSlugFilter = qp.get("source_slug") || "";
+    var opportunities = (results[0] && results[0].opportunities) || [];
+    var suppliers = (results[1] && results[1].suppliers) || [];
+    rows = window.CGSupplierRoutingEngine.matchAllOpportunities(opportunities, suppliers, { max_results: 3 })
+      .sort(function(a, b){ return b.routing.routing_score - a.routing.routing_score; });
+    seedFilters(rows);
+    render();
+    ["fState","fLift","fSupplier","fStatus"].forEach(function(id){
+      byId(id).addEventListener("change", render);
+      byId(id).addEventListener("input", render);
+    });
+  }).catch(function(){
+    byId("resultCount").textContent = "Failed to load routing data";
+    byId("rows").innerHTML = '<tr><td colspan="7" class="empty">Could not build routing suggestions.</td></tr>';
+  });
+})();
+</script>
+</body>
+</html>
