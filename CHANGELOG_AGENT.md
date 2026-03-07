@@ -126,3 +126,25 @@ If returning to code: unify design system. See TASK.md.
 ### Next step
 - Real-device QA: iOS Safari + Android Chrome for all data-centers flows.
 
+## 2026-03-07 — Mobile conversion polish (tap targets + CTA clarity)
+
+### Done
+- `index.html`
+  - Mobile nav links, option cards, main buttons, and bot trigger aligned to 44px touch target baseline.
+  - Improved mobile header subcopy readability.
+- `marketplace/index.html`
+  - Mobile nav links/buttons/inputs raised to 44px touch targets.
+  - Tightened hero typography for above-fold clarity.
+- `data-centers/index.html`
+  - Mobile hero CTAs now full-width and centered.
+  - Primary CTA/button classes and nav tabs adjusted to 44px touch targets.
+- `data-centers/ai-planner/index.html`
+  - Mobile CTAs/actions raised to 44px touch targets.
+  - Improved hero readability and subnav touch sizing.
+- `data-centers/lift-matrix/index.html`
+  - Mobile filter/action controls raised to 44px touch targets.
+  - Subnav link touch target sizing improved.
+
+### Next step
+- Device QA with conversion checklist (tap precision, above-fold CTA visibility, quote submit success).
+

@@ -49,3 +49,9 @@ Consolidate to one.
 - [x] `data-centers/lift-matrix/index.html` responsive typo fixed + mobile summary panel layout improved.
 - [ ] Run manual end-to-end QA on real devices before Monday send.
 
+## Mobile Conversion Polish (2026-03-07)
+- [x] Raised key mobile tap targets to ~44px across core CTA surfaces.
+- [x] Improved above-the-fold CTA clarity on Data Centers landing.
+- [x] Increased small-screen readability for hero/subcopy on key funnel pages.
+- [ ] Final real-device QA pass before Monday campaign send.
+
