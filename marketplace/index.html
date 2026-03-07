@@ -52,6 +52,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.97);backdrop-filt
 .spcard{flex-shrink:0;width:200px;background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;transition:all .2s}
 .spcard:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.4)}
 .spimg{height:115px;display:flex;align-items:center;justify-content:center;font-size:3.2rem;position:relative}
+.equip-glyph{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;min-width:64px;height:64px;padding:0 14px;border:1px solid rgba(245,166,35,.28);border-radius:14px;background:rgba(8,12,20,.46);font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;letter-spacing:1px;color:#F5A623;text-shadow:0 2px 14px rgba(0,0,0,.5);}
 .spov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,14,26,.95),transparent 60%)}
 .spsticker{position:absolute;top:.45rem;left:.45rem;padding:.1rem .35rem;border-radius:3px;font-size:.58rem;font-weight:700;font-family:'DM Mono',monospace}
 .stlive{background:rgba(16,185,129,.9);color:#fff}
@@ -427,12 +428,13 @@ var listings=[
   {id:10,company:"Dallas Mini Lift",model:"Jekko JF545",type:"Mini Crane",cap:5.4,boom:72,year:2023,rate:1100,loc:"Dallas, TX",email:"info@dallasmini.com",tags:["compact","electric"],status:"live",notes:"Electric zero emissions indoor"}
 ];
 var activeF="all",searchR=null;
-function ig(type){return {g:GR[type]||GR["Specialty"],e:EM[type]||"&#9889;"};}
+function tg(type){var m={"Mobile Crane":"MC","Tower Crane":"TC","Crawler Crane":"CC","All Terrain":"AT","Mini Crane":"MI","Glass Lift":"GL","Boom Truck":"BT","Specialty":"SP"};return m[type]||"CR";}
+function ig(type){return {g:GR[type]||GR["Specialty"],e:tg(type)};}
 function renderSpec(cid,type){
   var items=listings.filter(function(x){return x.type===type;});
   var el=document.getElementById(cid);
   if(!items.length){el.innerHTML="<div style='color:var(--muted);font-size:.73rem;padding:.4rem 0'>No "+type+" listed yet.</div>";return;}
-  el.innerHTML=items.map(function(x){var im=ig(x.type);return "<div class='spcard' onclick='contactItem("+x.id+")'><div class='spimg' style='background:"+im.g+"'><span style='position:relative;z-index:1'>"+im.e+"</span><div class='spov'></div><span class='spsticker "+(x.status==="live"?"stlive":"stqa")+"'>"+x.status.toUpperCase()+"</span></div><div class='spbody'><div class='spname'>"+ev(x.model)+"</div><div class='spsub'>"+ev(x.company)+"</div><div class='sprate'>$"+(x.rate||0).toLocaleString()+"/day &middot; "+x.cap+"t</div></div></div>";}).join("");
+  el.innerHTML=items.map(function(x){var im=ig(x.type);return "<div class='spcard' onclick='contactItem("+x.id+")'><div class='spimg' style='background:"+im.g+"'><span class='equip-glyph'>"+im.e+"</span><div class='spov'></div><span class='spsticker "+(x.status==="live"?"stlive":"stqa")+"'>"+x.status.toUpperCase()+"</span></div><div class='spbody'><div class='spname'>"+ev(x.model)+"</div><div class='spsub'>"+ev(x.company)+"</div><div class='sprate'>$"+(x.rate||0).toLocaleString()+"/day &middot; "+x.cap+"t</div></div></div>";}).join("");
 }
 function renderGrid(){
   var list=searchR!==null?searchR:listings;
@@ -444,7 +446,7 @@ function renderGrid(){
   if(!list.length){grid.innerHTML="<div style='grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--muted)'>No listings match.</div>";updateCounts();return;}
   grid.innerHTML=list.map(function(x,i){
     var im=ig(x.type);
-    return "<div class='ccard' style='animation-delay:"+i*.04+"s'><div class='cimg' style='background:"+im.g+"'><span style='position:relative;z-index:1'>"+im.e+"</span><div class='cimgov'></div><div class='cbadges'><span class='cb "+(x.status==="live"?"cb-live":"cb-qa")+"'>"+(x.status==="live"?"LIVE":"QA")+"</span><span class='cb cb-type'>"+x.type.split(" ")[0].toUpperCase()+"</span></div><div class='cratebadge'>$"+(x.rate||0).toLocaleString()+"/day</div></div><div class='cbody'><div class='cname'>"+ev(x.company)+" &mdash; "+ev(x.model)+"</div><div class='cloc'>"+ev(x.loc)+"</div><div class='cspecs'><div><div class='csl'>Capacity</div><div class='csv g'>"+x.cap+"t</div></div><div><div class='csl'>Boom</div><div class='csv'>"+x.boom+"ft</div></div><div><div class='csl'>Year</div><div class='csv'>"+x.year+"</div></div></div>"+(x.tags&&x.tags.length?"<div class='ctags'>"+x.tags.map(function(t){return "<span class='ctag'>"+ev(t)+"</span>";}).join("")+"</div>":"")+"<div class='cacts'><button class='cact ca-contact' onclick='event.stopPropagation();contactItem("+x.id+")'>Contact</button><button class='cact ca-ai' onclick='event.stopPropagation();askBot("+x.id+")'>Ask AI</button><button class='cact ca-del' onclick='event.stopPropagation();delItem("+x.id+")'>X</button></div></div></div>";
+    return "<div class='ccard' style='animation-delay:"+i*.04+"s'><div class='cimg' style='background:"+im.g+"'><span class='equip-glyph'>"+im.e+"</span><div class='cimgov'></div><div class='cbadges'><span class='cb "+(x.status==="live"?"cb-live":"cb-qa")+"'>"+(x.status==="live"?"LIVE":"QA")+"</span><span class='cb cb-type'>"+x.type.split(" ")[0].toUpperCase()+"</span></div><div class='cratebadge'>$"+(x.rate||0).toLocaleString()+"/day</div></div><div class='cbody'><div class='cname'>"+ev(x.company)+" &mdash; "+ev(x.model)+"</div><div class='cloc'>"+ev(x.loc)+"</div><div class='cspecs'><div><div class='csl'>Capacity</div><div class='csv g'>"+x.cap+"t</div></div><div><div class='csl'>Boom</div><div class='csv'>"+x.boom+"ft</div></div><div><div class='csl'>Year</div><div class='csv'>"+x.year+"</div></div></div>"+(x.tags&&x.tags.length?"<div class='ctags'>"+x.tags.map(function(t){return "<span class='ctag'>"+ev(t)+"</span>";}).join("")+"</div>":"")+"<div class='cacts'><button class='cact ca-contact' onclick='event.stopPropagation();contactItem("+x.id+")'>Contact</button><button class='cact ca-ai' onclick='event.stopPropagation();askBot("+x.id+")'>Ask AI</button><button class='cact ca-del' onclick='event.stopPropagation();delItem("+x.id+")'>X</button></div></div></div>";
   }).join("");
   updateCounts();
 }
@@ -568,9 +570,9 @@ window.onload=function(){
     Built with <strong style="color:#F5A623;">NCCCO-certified crane operators &amp; operating engineers</strong>, crane account managers, and a <strong style="color:#F5A623;">PMP&reg;-certified project manager</strong>.
   </div>
   <footer id="cg-footer" style="background:#03060f;border-top:1px solid #F5A62333;padding:20px 24px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;font-family:'DM Sans',sans-serif;font-size:13px;color:#6677aa;">
-    <span><a href="tel:+15037734659" style="color:#F5A623;text-decoration:none;font-weight:600;">📞 1 (503) 773-4659</a></span>
+    <span><a href="tel:+15037734659" style="color:#F5A623;text-decoration:none;font-weight:600;">Call 1 (503) 773-4659</a></span>
     <span style="color:#F5A62333;">|</span>
-    <span><a href="mailto:info@cranegenius.com" style="color:#F5A623;text-decoration:none;font-weight:600;">✉️ info@cranegenius.com</a></span>
+    <span><a href="mailto:info@cranegenius.com" style="color:#F5A623;text-decoration:none;font-weight:600;">Email info@cranegenius.com</a></span>
     <span style="color:#F5A62333;">|</span>
     <span style="color:#334455;">&copy; 2026 CraneGenius</span>
   </footer>

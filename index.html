@@ -86,7 +86,7 @@ body::before { content: ''; position: fixed; inset: 0; background-image: linear-
 .option:hover { border-color: var(--accent); }
 .option.selected { border-color: var(--accent); background: rgba(245,166,35,0.07); }
 .option.selected::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); }
-.option-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.option-icon { width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:10px;font-family:'Share Tech Mono',monospace;letter-spacing:.5px;flex-shrink:0;margin-top:2px;border:1px solid rgba(245,166,35,.28);border-radius:8px;background:rgba(245,166,35,.08);color:var(--accent);font-weight:700; }
 .option-title { font-family: 'Barlow Condensed', sans-serif; font-size: 17px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 0.5px; }
 .option-desc { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
 
@@ -197,7 +197,7 @@ input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px;
 .cta-path { padding: 16px; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; text-align: center; }
 .cta-path:hover { border-color: var(--accent); }
 .cta-path.selected { border-color: var(--accent); background: rgba(245,166,35,0.07); }
-.cta-path-icon { font-size: 24px; margin-bottom: 6px; }
+.cta-path-icon { width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:10px;font-family:'Share Tech Mono',monospace;letter-spacing:.5px;margin:0 auto 6px;border:1px solid rgba(245,166,35,.28);border-radius:8px;background:rgba(245,166,35,.08);color:var(--accent);font-weight:700; }
 .cta-path-title { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); text-transform: uppercase; }
 .cta-path-desc { font-size: 11px; color: var(--muted); margin-top: 3px; }
 
@@ -459,23 +459,23 @@ body{
         <div class="step-hint">This determines capacity requirements and which equipment is eligible for your job.</div>
         <div class="options">
           <div class="option" data-val="transformer" onclick="selectOption(this,'q1')">
-            <div class="option-icon">⚡</div>
+            <div class="option-icon">TX</div>
             <div class="option-content"><div class="option-title">Transformer / UPS Unit</div><div class="option-desc">Electrical distribution, battery backup. 500lbs – 8,000lbs. Often placed in finished mechanical rooms.</div></div>
           </div>
           <div class="option" data-val="switchgear" onclick="selectOption(this,'q1')">
-            <div class="option-icon">🔌</div>
+            <div class="option-icon">SW</div>
             <div class="option-content"><div class="option-title">Switchgear / Panel</div><div class="option-desc">Electrical panels, switchboards, breaker assemblies. Tight corridor and finished-floor installs.</div></div>
           </div>
           <div class="option" data-val="cooling" onclick="selectOption(this,'q1')">
-            <div class="option-icon">❄️</div>
+            <div class="option-icon">HV</div>
             <div class="option-content"><div class="option-title">HVAC / Cooling Unit</div><div class="option-desc">Chillers, CRACs, CDUs, rooftop units. Data center, commercial, and industrial installs.</div></div>
           </div>
           <div class="option" data-val="modular" onclick="selectOption(this,'q1')">
-            <div class="option-icon">🏗️</div>
+            <div class="option-icon">MD</div>
             <div class="option-content"><div class="option-title">Modular / Generator / Structural</div><div class="option-desc">Prefab modules, generators, steel assemblies, heavy mechanical equipment.</div></div>
           </div>
           <div class="option" data-val="other" onclick="selectOption(this,'q1')">
-            <div class="option-icon">📦</div>
+            <div class="option-icon">OT</div>
             <div class="option-content"><div class="option-title">Other / Not Listed</div><div class="option-desc">Tell us your load — we'll match the right equipment based on weight and access.</div></div>
           </div>
         </div>
@@ -491,19 +491,19 @@ body{
         <div class="step-hint">This is where most crane decisions go wrong. Access width determines what can physically reach the load — and what permits you actually need.</div>
         <div class="options">
           <div class="option" data-val="indoor_tight" onclick="selectOption(this,'q2')">
-            <div class="option-icon">🚪</div>
+            <div class="option-icon">IN</div>
             <div class="option-content"><div class="option-title">Indoor — Tight Access</div><div class="option-desc">Standard doorways (32"–36"), corridors, finished floors. Conventional crane physically cannot enter.</div></div>
           </div>
           <div class="option" data-val="indoor_open" onclick="selectOption(this,'q2')">
-            <div class="option-icon">🏢</div>
+            <div class="option-icon">OF</div>
             <div class="option-content"><div class="option-title">Indoor — Open Floor</div><div class="option-desc">Large bay, loading dock, or open atrium. Multiple equipment options available.</div></div>
           </div>
           <div class="option" data-val="rooftop" onclick="selectOption(this,'q2')">
-            <div class="option-icon">🏙️</div>
+            <div class="option-icon">RF</div>
             <div class="option-content"><div class="option-title">Rooftop / Elevated</div><div class="option-desc">Rooftop placement. No street crane access. Equipment must travel via elevator or stairwell.</div></div>
           </div>
           <div class="option" data-val="outdoor" onclick="selectOption(this,'q2')">
-            <div class="option-icon">🌐</div>
+            <div class="option-icon">OS</div>
             <div class="option-content"><div class="option-title">Outdoor / Open Site</div><div class="option-desc">Yard, pad, or exterior placement with street access. Most options available but cost varies widely.</div></div>
           </div>
         </div>
@@ -611,15 +611,15 @@ body{
         <div class="step-hint">Urgency changes which options are actually available to you right now — and the real cost of waiting.</div>
         <div class="options">
           <div class="option" data-val="asap" onclick="selectOption(this,'q4')">
-            <div class="option-icon">🔴</div>
+            <div class="option-icon">AS</div>
             <div class="option-content"><div class="option-title">ASAP / Within 2 Weeks</div><div class="option-desc">Conventional crane permits alone take 2–4 weeks. You may be out of conventional options already.</div></div>
           </div>
           <div class="option" data-val="month" onclick="selectOption(this,'q4')">
-            <div class="option-icon">🟡</div>
+            <div class="option-icon">30</div>
             <div class="option-content"><div class="option-title">Within 30 Days</div><div class="option-desc">Enough lead time for most options. Permit timelines can still slip on conventional.</div></div>
           </div>
           <div class="option" data-val="planning" onclick="selectOption(this,'q4')">
-            <div class="option-icon">🟢</div>
+            <div class="option-icon">LG</div>
             <div class="option-content"><div class="option-title">Planning Phase / 60+ Days</div><div class="option-desc">Best position. You have time to spec the right option and build real savings into the bid.</div></div>
           </div>
         </div>
@@ -636,15 +636,15 @@ body{
         <div class="step-hint">This helps us give you the most useful output — whether that's a formal quote, a budget number, or a bid strategy.</div>
         <div class="options">
           <div class="option" data-val="awarded" onclick="selectOption(this,'q5')">
-            <div class="option-icon">🏆</div>
+            <div class="option-icon">AW</div>
             <div class="option-content"><div class="option-title">Job is Awarded — Active</div><div class="option-desc">We're on the job. Need equipment now or very soon.</div><div class="qual-note">Highest priority. Same-day quote available.</div></div>
           </div>
           <div class="option" data-val="bidding" onclick="selectOption(this,'q5')">
-            <div class="option-icon">📋</div>
+            <div class="option-icon">BP</div>
             <div class="option-content"><div class="option-title">Currently Bidding</div><div class="option-desc">Building the estimate. Need accurate numbers to win the job.</div><div class="qual-note">We'll give you bid-ready pricing.</div></div>
           </div>
           <div class="option" data-val="budgeting" onclick="selectOption(this,'q5')">
-            <div class="option-icon">📊</div>
+            <div class="option-icon">BS</div>
             <div class="option-content"><div class="option-title">Budgeting / Planning</div><div class="option-desc">Early stage. Looking at options and rough numbers.</div><div class="qual-note">Good time to spec the right approach.</div></div>
           </div>
         </div>
@@ -733,12 +733,12 @@ body{
       <div class="cta-sub">Choose what's most useful for where your job is right now.</div>
       <div class="cta-paths">
         <div class="cta-path" id="ctaPathQuote" onclick="showLeadForm('quote', this)">
-          <div class="cta-path-icon">⚡</div>
+          <div class="cta-path-icon">TX</div>
           <div class="cta-path-title">Get Formal Quote</div>
           <div class="cta-path-desc">Same-day pricing and unit availability for your job</div>
         </div>
         <div class="cta-path" id="ctaPathReport" onclick="showLeadForm('report', this)">
-          <div class="cta-path-icon">📄</div>
+          <div class="cta-path-icon">RP</div>
           <div class="cta-path-title">Send Full Report</div>
           <div class="cta-path-desc">Get this analysis emailed — share with your team or owner</div>
         </div>
@@ -815,10 +815,10 @@ function selectFreq(el) {
   el.classList.add('selected');
   answers.freq = el.dataset.val;
   const msgs = {
-    '1': '📦 With 1–3 lifts per year, <strong>rental is your best move</strong> — no capital tied up, full flexibility.',
+    '1': 'With 1–3 lifts per year, <strong>rental is your best move</strong> — no capital tied up, full flexibility.',
     '2': '💡 At 4–8 lifts/year, a <strong>lease-to-own arrangement</strong> starts making sense. Monthly payments often beat per-job rental costs.',
     '3': '🔑 At 9–15 lifts/year, <strong>lease-to-own or purchase is strongly indicated</strong>. You\'re likely paying $60K–$120K+ annually in rental that could service a unit.',
-    '4': '🏆 At 16+ lifts/year, <strong>ownership pays for itself within 12–18 months</strong>. We can structure financing from ~$1,800/month through Ascentium Capital.'
+    '4': 'At 16+ lifts/year, <strong>ownership pays for itself within 12–18 months</strong>. We can structure financing from ~$1,800/month through Ascentium Capital.'
   };
   const sig = document.getElementById('freqSignal');
   sig.innerHTML = msgs[el.dataset.val];
@@ -842,7 +842,7 @@ function updateTechHints() {
     const weightTons = (weight / 2000).toFixed(1);
     if (weight <= 13200) lines.push('✓ <strong>' + weight.toLocaleString() + ' lbs (' + weightTons + 'T)</strong> — within spider crane capacity (max 6.6T / 13,200 lbs)');
     else if (weight <= 30000) lines.push('⚠️ <strong>' + weight.toLocaleString() + ' lbs (' + weightTons + 'T)</strong> — exceeds standard spider crane. Carry deck or rough terrain required.');
-    else lines.push('🔴 <strong>' + weight.toLocaleString() + ' lbs (' + weightTons + 'T)</strong> — heavy lift. Specialized equipment required. We\'ll advise on the right spec.');
+    else lines.push('High risk: <strong>' + weight.toLocaleString() + ' lbs (' + weightTons + 'T)</strong> — heavy lift. Specialized equipment required. We\'ll advise on the right spec.');
   }
   if (weight && radius) {
     const radii = Object.keys(spiderLoadChart).map(Number).sort((a,b)=>a-b);
@@ -851,10 +851,10 @@ function updateTechHints() {
     const ratedCap = spiderLoadChart[closestRad];
     if (weight <= ratedCap) lines.push('✓ At <strong>' + radius + 'ft working radius</strong>, spider crane rated capacity is ~' + ratedCap.toLocaleString() + ' lbs — your load is within range.');
     else if (weight <= (carryDeckLoadChart[closestRad] || 15000)) lines.push('⚠️ At <strong>' + radius + 'ft radius</strong>, spider crane capacity (~' + ratedCap.toLocaleString() + ' lbs) is below your load weight. Carry deck crane recommended at this radius.');
-    else lines.push('🔴 At <strong>' + radius + 'ft radius</strong>, this exceeds standard compact equipment. We\'ll review the load chart for the right model.');
+    else lines.push('High risk: At <strong>' + radius + 'ft radius</strong>, this exceeds standard compact equipment. We\'ll review the load chart for the right model.');
   }
   if (headroom) {
-    if (headroom < 8) lines.push('🔴 <strong>' + headroom + 'ft headroom</strong> — extremely tight. Manual rigging or skidding may be required. Flag this when requesting a quote.');
+    if (headroom < 8) lines.push('High risk: <strong>' + headroom + 'ft headroom</strong> — extremely tight. Manual rigging or skidding may be required. Flag this when requesting a quote.');
     else if (headroom < 12) lines.push('⚠️ <strong>' + headroom + 'ft headroom</strong> — tight clearance. Spider crane boom angle will be limited. Confirm final height with our team.');
     else lines.push('✓ <strong>' + headroom + 'ft headroom</strong> — adequate for most compact crane configurations.');
   }
@@ -1049,9 +1049,9 @@ function showResults() {
   }, 600);
 
   const sig = document.getElementById('hotSignal');
-  if (q4==='asap') { sig.textContent = '🔴 URGENT — Conventional crane permit lead time exceeds your project timeline. Mini crane is likely your only viable option.'; sig.className = 'hot-signal urgent'; }
-  else if (q4==='month') { sig.textContent = '🟡 ACTIVE WINDOW — You have time but permit timelines can slip. Moving to mini crane now protects your schedule.'; sig.className = 'hot-signal warm'; }
-  else { sig.textContent = '🟢 PLANNING PHASE — Best position. Spec the right equipment now and build real savings into your bid.'; sig.className = 'hot-signal cool'; }
+  if (q4==='asap') { sig.textContent = 'URGENT — Conventional crane permit lead time exceeds your project timeline. Mini crane is likely your only viable option.'; sig.className = 'hot-signal urgent'; }
+  else if (q4==='month') { sig.textContent = 'ACTIVE WINDOW — You have time but permit timelines can slip. Moving to mini crane now protects your schedule.'; sig.className = 'hot-signal warm'; }
+  else { sig.textContent = 'PLANNING PHASE — Best position. Spec the right equipment now and build real savings into your bid.'; sig.className = 'hot-signal cool'; }
 
   const loadNames = { transformer:'Transformer Set', switchgear:'Switchgear Install', cooling:'HVAC Placement', modular:'Modular Set', other:'Lift Job' };
   const accessNames = { indoor_tight:'Indoor Tight Access', indoor_open:'Indoor Open Floor', rooftop:'Rooftop', outdoor:'Outdoor Site' };
@@ -1275,14 +1275,14 @@ loadDashboard();
 </style>
 <button class="bot-trigger" id="botTrig" onclick="toggleBot()">
   <span style="display:flex;flex-direction:column;align-items:center;gap:6px">
-    <span style="font-size:16px;writing-mode:horizontal-tb">🤖</span>
+    <span style="font-size:16px;writing-mode:horizontal-tb">AI</span>
     <span>LIST YOUR CRANE</span>
   </span>
 </button>
 <div class="bot-panel" id="botPanel">
   <div class="bot-head">
     <div>
-      <div class="bot-title">🤖 AI LISTING ASSISTANT</div>
+      <div class="bot-title">AI LISTING ASSISTANT</div>
       <div class="bot-sub">ANSWER MY QUESTIONS — GO LIVE IN 2 MIN</div>
     </div>
     <button class="bot-x" onclick="toggleBot()">✕</button>
@@ -1459,9 +1459,9 @@ bootstrapBotFromQuery();
 </div>
 <!-- FIX #2 + #3: Year 2026, email .com not .site -->
 <footer id="cg-footer" style="background:#03060f;border-top:1px solid #F5A62333;padding:20px 24px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;font-family:'DM Sans',sans-serif;font-size:13px;color:#6677aa;">
-  <span><a href="tel:+15037734659" style="color:#F5A623;text-decoration:none;font-weight:600;">📞 1 (503) 773-4659</a></span>
+  <span><a href="tel:+15037734659" style="color:#F5A623;text-decoration:none;font-weight:600;">Call 1 (503) 773-4659</a></span>
   <span style="color:#F5A62333;">|</span>
-  <span><a href="mailto:info@cranegenius.com" style="color:#F5A623;text-decoration:none;font-weight:600;">✉️ info@cranegenius.com</a></span>
+  <span><a href="mailto:info@cranegenius.com" style="color:#F5A623;text-decoration:none;font-weight:600;">Email info@cranegenius.com</a></span>
   <span style="color:#F5A62333;">|</span>
   <span style="color:#334455;">&copy; 2026 CraneGenius</span>
 </footer>
