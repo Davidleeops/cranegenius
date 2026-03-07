@@ -1,18 +1,21 @@
 # Current Task
 
-Stabilize the CraneGenius repository memory system and verify the marketplace image implementation.
+Verify live marketplace image integrity and select the next high-value funnel task.
 
 ## Objective
-Make sure the shared context files exist in the repo root so Claude, Codex, and future agents can work from the same source of truth.
+Confirm that the marketplace only shows real photos for listings with verified model-matched crane images, and that all other listings still use gradient/glyph placeholders.
 
 ## Files Likely Involved
-- AGENT_CONTEXT.md
 - TASK.md
 - CHANGELOG_AGENT.md
 - marketplace/index.html
 - assets/images/cranes/
 
 ## Completed Work
+- Created and committed the repository memory files:
+  - AGENT_CONTEXT.md
+  - TASK.md
+  - CHANGELOG_AGENT.md
 - Created and committed a general crane image asset library.
 - Added model-matched marketplace photos for:
   - Liebherr LTM 1100-5.2
@@ -22,13 +25,13 @@ Make sure the shared context files exist in the repo root so Claude, Codex, and 
 - Kept placeholders for listings without verified model-matched photos.
 
 ## Remaining Work
-- Confirm AGENT_CONTEXT.md, TASK.md, and CHANGELOG_AGENT.md exist in repo root.
-- Commit these files if missing.
-- Visually verify the marketplace shows only correct model-specific crane images.
-- Select the next high-value task after stabilization.
+- Visually verify the live marketplace shows only correct model-specific crane images.
+- Confirm that all non-verified listings still use placeholders.
+- Update CHANGELOG_AGENT.md with verification results.
+- Select the next high-value task after verification.
 
 ## Blockers
-- Shared memory files were created in Claude outputs but were not committed into the repo root.
+- None currently.
 
 ## Next Step
-Create or copy AGENT_CONTEXT.md, TASK.md, and CHANGELOG_AGENT.md into the repo root, then commit and push them.
+Open the live marketplace and verify image accuracy listing by listing. Then update CHANGELOG_AGENT.md and define the next task.
