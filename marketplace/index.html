@@ -415,15 +415,11 @@ nav{
 const AI_PROXY_URL = window.__CG_PROXY_URL__ || '';
 const LIVE_FALLBACK_ENDPOINT = 'https://formspree.io/f/mgoldjjb';
 var CFG={fsId:"",fsEmail:"",shUrl:""};
-var CRANE_IMG={
-  "Mini Crane":"/assets/images/cranes/spider-crane-01.jpg",
-  "Glass Lift":"/assets/images/cranes/spider-crane-02.jpg",
-  "Crawler Crane":"/assets/images/cranes/mini-crawler-01.jpg",
-  "Mobile Crane":"/assets/images/cranes/mobile-crane-01.jpg",
-  "All Terrain":"/assets/images/cranes/mobile-crane-02.jpg",
-  "Boom Truck":"/assets/images/cranes/mobile-crane-03.jpg",
-  "Tower Crane":"/assets/images/cranes/mobile-crane-02.jpg",
-  "Specialty":"/assets/images/cranes/indoor-crane-01.jpg"
+var CRANE_IMG_MODEL={
+  "Liebherr LTM 1100-5.2":"/assets/images/cranes/model-liebherr-ltm.jpg",
+  "Grove GMK5250L":"/assets/images/cranes/model-grove-gmk.jpg",
+  "Potain MDT 389":"/assets/images/cranes/model-potain-tower.jpg",
+  "Liebherr LR 1300":"/assets/images/cranes/model-liebherr-lr.jpg"
 };
 var GR={"Mobile Crane":"linear-gradient(135deg,#1a2a1a,#0d1a0d)","Tower Crane":"linear-gradient(135deg,#1a1a2a,#0d0d1a)","Crawler Crane":"linear-gradient(135deg,#2a1a0d,#1a0d08)","All Terrain":"linear-gradient(135deg,#1a2a2a,#0d1a1a)","Mini Crane":"linear-gradient(135deg,#0d1520,#080e18)","Glass Lift":"linear-gradient(135deg,#101a25,#0a1218)","Boom Truck":"linear-gradient(135deg,#2a1a1a,#1a0d0d)","Specialty":"linear-gradient(135deg,#2a2a1a,#1a1a0d)"};
 var EM={"Mobile Crane":"&#127959;","Tower Crane":"&#128346;","Crawler Crane":"&#9881;","All Terrain":"&#128667;","Mini Crane":"&#128269;","Glass Lift":"&#129695;","Boom Truck":"&#128666;","Specialty":"&#9889;"};
@@ -441,12 +437,12 @@ var listings=[
 ];
 var activeF="all",searchR=null;
 function tg(type){var m={"Mobile Crane":"MC","Tower Crane":"TC","Crawler Crane":"CC","All Terrain":"AT","Mini Crane":"MI","Glass Lift":"GL","Boom Truck":"BT","Specialty":"SP"};return m[type]||"CR";}
-function ig(type){return {g:GR[type]||GR["Specialty"],e:tg(type),img:CRANE_IMG[type]||CRANE_IMG["Specialty"]};}
+function ig(type,model){return {g:GR[type]||GR["Specialty"],e:tg(type),img:CRANE_IMG_MODEL[model]||null};}
 function renderSpec(cid,type){
   var items=listings.filter(function(x){return x.type===type;});
   var el=document.getElementById(cid);
   if(!items.length){el.innerHTML="<div style='color:var(--muted);font-size:.73rem;padding:.4rem 0'>No "+type+" listed yet.</div>";return;}
-  el.innerHTML=items.map(function(x){var im=ig(x.type);return "<div class='spcard' onclick='contactItem("+x.id+")'><div class='spimg' style='background:"+im.g+";background-image:url("+im.img+");background-size:cover;background-position:center'><span class='equip-glyph'>"+im.e+"</span><div class='spov'></div><span class='spsticker "+(x.status==="live"?"stlive":"stqa")+"'>"+x.status.toUpperCase()+"</span></div><div class='spbody'><div class='spname'>"+ev(x.model)+"</div><div class='spsub'>"+ev(x.company)+"</div><div class='sprate'>$"+(x.rate||0).toLocaleString()+"/day &middot; "+x.cap+"t</div></div></div>";}).join("");
+  el.innerHTML=items.map(function(x){var im=ig(x.type,x.model);return "<div class='spcard' onclick='contactItem("+x.id+")'><div class='spimg' style='background:"+im.g+(im.img?";background-image:url("+im.img+");background-size:cover;background-position:center":"")+"'><span class='equip-glyph' style='"+(!im.img?"":"opacity:0.25")+"''>"+im.e+"</span><div class='spov'></div><span class='spsticker "+(x.status==="live"?"stlive":"stqa")+"'>"+x.status.toUpperCase()+"</span></div><div class='spbody'><div class='spname'>"+ev(x.model)+"</div><div class='spsub'>"+ev(x.company)+"</div><div class='sprate'>$"+(x.rate||0).toLocaleString()+"/day &middot; "+x.cap+"t</div></div></div>";}).join("");
 }
 function renderGrid(){
   var list=searchR!==null?searchR:listings;
@@ -457,8 +453,8 @@ function renderGrid(){
   var grid=document.getElementById("craneGrid");
   if(!list.length){grid.innerHTML="<div style='grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--muted)'>No listings match.</div>";updateCounts();return;}
   grid.innerHTML=list.map(function(x,i){
-    var im=ig(x.type);
-    return "<div class='ccard' style='animation-delay:"+i*.04+"s'><div class='cimg' style='background:"+im.g+";background-image:url("+im.img+");background-size:cover;background-position:center'><span class='equip-glyph'>"+im.e+"</span><div class='cimgov'></div><div class='cbadges'><span class='cb "+(x.status==="live"?"cb-live":"cb-qa")+"'>"+(x.status==="live"?"LIVE":"QA")+"</span><span class='cb cb-type'>"+x.type.split(" ")[0].toUpperCase()+"</span></div><div class='cratebadge'>$"+(x.rate||0).toLocaleString()+"/day</div></div><div class='cbody'><div class='cname'>"+ev(x.company)+" &mdash; "+ev(x.model)+"</div><div class='cloc'>"+ev(x.loc)+"</div><div class='cspecs'><div><div class='csl'>Capacity</div><div class='csv g'>"+x.cap+"t</div></div><div><div class='csl'>Boom</div><div class='csv'>"+x.boom+"ft</div></div><div><div class='csl'>Year</div><div class='csv'>"+x.year+"</div></div></div>"+(x.tags&&x.tags.length?"<div class='ctags'>"+x.tags.map(function(t){return "<span class='ctag'>"+ev(t)+"</span>";}).join("")+"</div>":"")+"<div class='cacts'><button class='cact ca-contact' onclick='event.stopPropagation();contactItem("+x.id+")'>Contact</button><button class='cact ca-ai' onclick='event.stopPropagation();askBot("+x.id+")'>Ask AI</button><button class='cact ca-del' onclick='event.stopPropagation();delItem("+x.id+")'>X</button></div></div></div>";
+    var im=ig(x.type,x.model);
+    return "<div class='ccard' style='animation-delay:"+i*.04+"s'><div class='cimg' style='background:"+im.g+(im.img?";background-image:url("+im.img+");background-size:cover;background-position:center":"")+"'><span class='equip-glyph' style='"+(!im.img?"":"opacity:0.25")+"''>"+im.e+"</span><div class='cimgov'></div><div class='cbadges'><span class='cb "+(x.status==="live"?"cb-live":"cb-qa")+"'>"+(x.status==="live"?"LIVE":"QA")+"</span><span class='cb cb-type'>"+x.type.split(" ")[0].toUpperCase()+"</span></div><div class='cratebadge'>$"+(x.rate||0).toLocaleString()+"/day</div></div><div class='cbody'><div class='cname'>"+ev(x.company)+" &mdash; "+ev(x.model)+"</div><div class='cloc'>"+ev(x.loc)+"</div><div class='cspecs'><div><div class='csl'>Capacity</div><div class='csv g'>"+x.cap+"t</div></div><div><div class='csl'>Boom</div><div class='csv'>"+x.boom+"ft</div></div><div><div class='csl'>Year</div><div class='csv'>"+x.year+"</div></div></div>"+(x.tags&&x.tags.length?"<div class='ctags'>"+x.tags.map(function(t){return "<span class='ctag'>"+ev(t)+"</span>";}).join("")+"</div>":"")+"<div class='cacts'><button class='cact ca-contact' onclick='event.stopPropagation();contactItem("+x.id+")'>Contact</button><button class='cact ca-ai' onclick='event.stopPropagation();askBot("+x.id+")'>Ask AI</button><button class='cact ca-del' onclick='event.stopPropagation();delItem("+x.id+")'>X</button></div></div></div>";
   }).join("");
   updateCounts();
 }
