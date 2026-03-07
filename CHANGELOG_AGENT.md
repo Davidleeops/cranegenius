@@ -44,3 +44,17 @@ Commit these files to the repository and verify marketplace image integrity.
 - Verify data-centers/ai-planner/index.html for real 401 bug before fixing
 - Verify data-centers/lift-matrix/index.html filter pills before fixing
 - Always read actual file first — bug list may be stale
+
+## 2026-03-07 — AI Planner 401 fixed by Codex
+
+### Done (Codex — commit ed93373)
+- data-centers/ai-planner/index.html: both fetch calls to api.anthropic.com replaced with callAIProxy()
+- Added AI_PROXY_URL = window.__CG_PROXY_URL__ constant
+- Added callAIProxy(messages, maxTokens) helper function
+- Added <script src="/config.js"></script>
+- Verified: grep confirms zero direct api.anthropic.com calls remain
+
+### Next agent — start here
+Fix Lift Matrix filter pills in data-centers/lift-matrix/index.html
+MUST grep to verify bug before writing any fix — see TASK.md for exact commands.
+Also check Add to Plan button and Get Quotes/Request Full Analysis stubs in same file.
