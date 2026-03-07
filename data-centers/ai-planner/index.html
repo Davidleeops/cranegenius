@@ -301,6 +301,12 @@ nav{
   .hero{padding:36px 0 24px;}
   .plan-panel{width:100%;}
   .lifts-grid{grid-template-columns:1fr;}
+  .nav-center{display:none;}
+  .nav-cta{padding:7px 12px;font-size:11px;}
+  .subnav-strip{padding:0 10px!important;top:50px!important;}
+  .subnav-strip a{font-size:11px!important;padding:10px 12px!important;}
+  .prompt-footer{flex-direction:column;align-items:stretch;}
+  .analyze-btn{width:100%;justify-content:center;}
 }
 </style>
 </head>
@@ -322,7 +328,7 @@ nav{
   </div>
   <button class="nav-cta" onclick="openQuoteForm()">GET QUOTES →</button>
 </nav>
-<div style="background:rgba(6,12,26,.97);border-bottom:1px solid #152040;padding:0 36px;position:sticky;top:53px;z-index:99;display:flex;gap:0;overflow-x:auto;">
+<div class="subnav-strip" style="background:rgba(6,12,26,.97);border-bottom:1px solid #152040;padding:0 36px;position:sticky;top:53px;z-index:99;display:flex;gap:0;overflow-x:auto;">
   <a href="/data-centers/" style="font-family:'Syne',sans-serif;font-weight:700;font-size:12px;letter-spacing:.08em;padding:10px 18px;color:#3d5580;border-bottom:2px solid transparent;text-decoration:none;text-transform:uppercase;white-space:nowrap;">Overview</a>
   <a href="/data-centers/ai-planner" style="font-family:'Syne',sans-serif;font-weight:700;font-size:12px;letter-spacing:.08em;padding:10px 18px;color:#3d9eff;border-bottom:2px solid #3d9eff;text-decoration:none;text-transform:uppercase;white-space:nowrap;">✦ AI Lift Planner</a>
   <a href="/data-centers/lift-matrix" style="font-family:'Syne',sans-serif;font-weight:700;font-size:12px;letter-spacing:.08em;padding:10px 18px;color:#3d5580;border-bottom:2px solid transparent;text-decoration:none;text-transform:uppercase;white-space:nowrap;">Full Lift Matrix</a>

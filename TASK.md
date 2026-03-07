@@ -43,3 +43,9 @@ Consolidate to one.
 - [x] Marketplace nav/cards/hero tightened for smaller screens.
 - [ ] Manual device QA on iPhone + Android before Monday outreach.
 
+## Data Centers Mobile Pass (2026-03-07)
+- [x] `data-centers/index.html` nav + tab-strip improved for phones.
+- [x] `data-centers/ai-planner/index.html` mobile nav simplified; sticky subnav spacing fixed.
+- [x] `data-centers/lift-matrix/index.html` responsive typo fixed + mobile summary panel layout improved.
+- [ ] Run manual end-to-end QA on real devices before Monday send.
+

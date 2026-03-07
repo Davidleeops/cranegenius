@@ -109,3 +109,20 @@ If returning to code: unify design system. See TASK.md.
 - Run real-device QA (Safari iOS + Chrome Android):
   - open bot, submit message, tap Call CTA, submit Formspree quote.
 
+## 2026-03-07 — Data Centers mobile conversion pass
+
+### Done
+- `data-centers/index.html`
+  - Added 760px breakpoint for mobile nav and horizontal tab-strip behavior.
+- `data-centers/ai-planner/index.html`
+  - Added `subnav-strip` class for sticky tab row control on mobile.
+  - Hid crowded center stepper on phones; kept primary quote CTA visible.
+  - Made prompt footer stack cleanly on narrow screens.
+- `data-centers/lift-matrix/index.html`
+  - Fixed responsive selector typo (`nav,.filter-bar`), added `subnav-strip` class and mobile spacing.
+  - Made floating summary panel full-width-friendly on phones.
+  - Added tighter small-screen stats/nav behavior.
+
+### Next step
+- Real-device QA: iOS Safari + Android Chrome for all data-centers flows.
+
