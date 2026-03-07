@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CraneGenius — Acquisitions (Internal)</title>
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e1a;--panel:#10172a;--border:#233050;--text:#e7eef9;--muted:#97a8c2;--accent:#F5A623}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh}
+.wrap{max-width:1200px;margin:0 auto;padding:24px 16px 40px}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:42px;line-height:1.02}
+.sub{margin-top:8px;color:#c4d2e6;font-size:14px}
+.tableWrap{margin-top:16px;border:1px solid var(--border);background:var(--panel);overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:920px}
+th,td{padding:11px 12px;text-align:left;border-bottom:1px solid #21314f;font-size:13px}
+th{font-family:'Barlow Condensed',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#9ec2ff;font-size:12px;background:#111c32;position:sticky;top:0}
+tr:hover td{background:#111a30}
+.badge{display:inline-block;padding:3px 8px;border:1px solid #3a5584;border-radius:999px;font-size:11px;color:#a7c9ff;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.state{font-size:13px;color:var(--muted);margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Acquisition Targets (Internal)</h1>
+  <div class="sub">Loaded from <code>/data/acquisition_targets_batch_1.json</code>. Internal review table only.</div>
+  <div class="tableWrap">
+    <table>
+      <thead>
+        <tr>
+          <th>company_name</th>
+          <th>city</th>
+          <th>state_or_province</th>
+          <th>equipment_focus</th>
+          <th>estimated_fleet_size</th>
+          <th>acquisition_priority</th>
+        </tr>
+      </thead>
+      <tbody id="rows"><tr><td colspan="6">Loading...</td></tr></tbody>
+    </table>
+  </div>
+  <div class="state" id="stateMsg"></div>
+</div>
+<script>
+(function(){
+  var PATH = '/data/acquisition_targets_batch_1.json';
+  var rows = document.getElementById('rows');
+  var stateMsg = document.getElementById('stateMsg');
+
+  function esc(s){ return String(s||'').replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function pick(o, keys){ for (var i=0;i<keys.length;i++){ var k=keys[i]; if (o && o[k] !== undefined && o[k] !== null && String(o[k]).trim() !== '') return o[k]; } return ''; }
+
+  function extractArray(data){
+    if (Array.isArray(data)) return data;
+    if (data && Array.isArray(data.targets)) return data.targets;
+    if (data && Array.isArray(data.items)) return data.items;
+    if (data && Array.isArray(data.acquisition_targets)) return data.acquisition_targets;
+    return [];
+  }
+
+  fetch(PATH,{cache:'no-store'})
+    .then(function(r){ if(!r.ok) throw new Error('not_found'); return r.json(); })
+    .then(function(data){
+      var list = extractArray(data);
+      if(!list.length){ rows.innerHTML='<tr><td colspan="6">No acquisition targets found.</td></tr>'; stateMsg.textContent='Dataset loaded but no rows were found.'; return; }
+      rows.innerHTML = list.map(function(item){
+        var company = pick(item,['company_name','name','target_company']);
+        var city = pick(item,['city']);
+        var state = pick(item,['state_or_province','state','province']);
+        var focus = pick(item,['equipment_focus','equipment_categories','focus']);
+        var fleet = pick(item,['estimated_fleet_size','fleet_size','estimated_units']);
+        var priority = pick(item,['acquisition_priority','priority']);
+        return '<tr>'+
+          '<td>'+esc(company)+'</td>'+
+          '<td>'+esc(city)+'</td>'+
+          '<td>'+esc(state)+'</td>'+
+          '<td>'+esc(focus)+'</td>'+
+          '<td>'+esc(fleet)+'</td>'+
+          '<td><span class="badge">'+esc(priority||'unrated')+'</span></td>'+
+        '</tr>';
+      }).join('');
+      stateMsg.textContent = list.length + ' targets loaded from ' + PATH;
+    })
+    .catch(function(){
+      rows.innerHTML = '<tr><td colspan="6">Could not load /data/acquisition_targets_batch_1.json</td></tr>';
+      stateMsg.textContent = 'Assumption: dataset file may not be present in this workspace yet.';
+    });
+})();
+</script>
+</body>
+</html>

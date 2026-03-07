@@ -470,6 +470,7 @@ nav{
 <script src="/config.js"></script>
 <script>
 const AI_PROXY_URL = window.__CG_PROXY_URL__ || "";
+const LIFT_USE_CASE_LIBRARY_PATH = "/data/lift_use_case_library.json";
 
 async function callAIProxy(messages, maxTokens){
   if(!AI_PROXY_URL){
@@ -535,6 +536,7 @@ const LIFTS = [
 const plan = new Map(); // id -> lift object
 let planExpanded = true;
 let conversationHistory = [];
+let liftUseCaseLibrary = [];
 // Unified lead payload pattern shared across core tools for future CRM ingestion.
 function buildUnifiedLeadPayload(base, extra){
   return Object.assign({
@@ -560,6 +562,53 @@ function buildUnifiedLeadPayload(base, extra){
     indoor_or_outdoor:"",
     access_constraints:""
   },base||{},extra||{});
+}
+
+function normalizeUseCaseRecord(item){
+  if (!item || typeof item !== "object") return null;
+  return {
+    lift_category: item.lift_category || item.category || item.lift_type || "",
+    typical_capacity_range: item.typical_capacity_range || item.capacity_range || item.capacity || "",
+    use_cases: Array.isArray(item.use_cases) ? item.use_cases : (item.use_case ? [item.use_case] : []),
+    environment_constraints: item.environment_constraints || item.constraints || item.environment || ""
+  };
+}
+
+function extractUseCaseArray(data){
+  if (Array.isArray(data)) return data;
+  if (data && Array.isArray(data.use_cases)) return data.use_cases;
+  if (data && Array.isArray(data.items)) return data.items;
+  if (data && Array.isArray(data.library)) return data.library;
+  return [];
+}
+
+async function loadLiftUseCaseLibrary(){
+  try{
+    const res = await fetch(LIFT_USE_CASE_LIBRARY_PATH, { cache: "no-store" });
+    if (!res.ok) return;
+    const data = await res.json();
+    liftUseCaseLibrary = extractUseCaseArray(data).map(normalizeUseCaseRecord).filter(Boolean);
+  }catch(e){}
+}
+
+function buildUseCaseContext(userInput){
+  if (!liftUseCaseLibrary.length) return "";
+  const q = String(userInput || "").toLowerCase();
+  const matched = liftUseCaseLibrary.filter(function(rec){
+    const blob = [
+      rec.lift_category,
+      rec.typical_capacity_range,
+      (rec.use_cases || []).join(" "),
+      rec.environment_constraints
+    ].join(" ").toLowerCase();
+    if (!q.trim()) return false;
+    return q.split(/\\s+/).some(function(tok){ return tok.length > 3 && blob.indexOf(tok) >= 0; });
+  }).slice(0, 8);
+  const selected = matched.length ? matched : liftUseCaseLibrary.slice(0, 5);
+  if (!selected.length) return "";
+  return "\\n\\nLIFT USE-CASE LIBRARY CONTEXT:\\n" + selected.map(function(rec, i){
+    return (i + 1) + \") category=\" + rec.lift_category + \"; capacity=\" + rec.typical_capacity_range + \"; use_cases=\" + (rec.use_cases || []).join(\", \") + \"; constraints=\" + rec.environment_constraints;
+  }).join(\"\\n\");
 }
 
 // ── EXAMPLE PROMPTS ─────────────────────────────────────────────────────────
@@ -633,6 +682,7 @@ async function runAnalysis() {
 
 function buildSystemPrompt(userInput) {
   const liftList = LIFTS.map(l => `- ${l.id}: ${l.name} | Phase: ${l.phase} | Tags: ${l.tags.join(",")} | Priority: ${l.priority}`).join("\n");
+  const useCaseContext = buildUseCaseContext(userInput);
 
   return `You are CraneGenius AI, an expert in data center construction and lift-solution planning. Analyze the following project description and produce a structured lift plan.
 
@@ -641,6 +691,7 @@ PROJECT DESCRIPTION:
 
 AVAILABLE LIFT TYPES IN DATABASE:
 ${liftList}
+${useCaseContext}
 
 Your task:
 1. Identify which lift types from the database are needed for this project (use the exact IDs)
@@ -986,6 +1037,8 @@ async function submitPlannerInquiry() {
     msg.textContent = "Submission failed. Email info@cranegenius.com directly.";
   }
 }
+
+loadLiftUseCaseLibrary();
 </script>
 </body>
 </html>

@@ -70,6 +70,62 @@ select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0f
   var all = [];
   var byId = function(id){ return document.getElementById(id); };
   var esc = function(s){ return String(s||'').replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); };
+  var PRIMARY_OPPS_PATH = '/data/opportunities/opportunities.json';
+  var BATCH2_OPPS_PATH = '/data/opportunities_batch_2.json';
+
+  function normalizeOpportunity(o, idx){
+    var n = Object.assign({}, o || {});
+    n.opportunity_id = n.opportunity_id || ('opp-auto-' + (idx + 1));
+    n.project_name = n.project_name || ('Opportunity ' + (idx + 1));
+    n.project_slug = n.project_slug || String(n.project_name).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+    n.city = n.city || '';
+    n.state = n.state || '';
+    n.project_type = n.project_type || 'infrastructure_upgrade';
+    n.project_stage = n.project_stage || 'planning';
+    n.recommended_lift_categories = Array.isArray(n.recommended_lift_categories) ? n.recommended_lift_categories : [];
+    return n;
+  }
+
+  function extractList(data){
+    if (Array.isArray(data)) return data;
+    if (data && Array.isArray(data.opportunities)) return data.opportunities;
+    if (data && Array.isArray(data.items)) return data.items;
+    return [];
+  }
+
+  async function loadCombinedOpportunities(){
+    var out = [];
+    var sourceNotes = [];
+    var responses = await Promise.allSettled([
+      fetch(PRIMARY_OPPS_PATH, {cache:'no-store'}),
+      fetch(BATCH2_OPPS_PATH, {cache:'no-store'})
+    ]);
+    for (var i = 0; i < responses.length; i++) {
+      var resWrap = responses[i];
+      var path = i === 0 ? PRIMARY_OPPS_PATH : BATCH2_OPPS_PATH;
+      if (resWrap.status !== 'fulfilled') continue;
+      var res = resWrap.value;
+      if (!res.ok) continue;
+      try{
+        var data = await res.json();
+        var list = extractList(data);
+        if (list.length){
+          sourceNotes.push(path.replace('/data/','data/'));
+          out = out.concat(list);
+        }
+      }catch(e){}
+    }
+    // De-dupe by opportunity_id then slug.
+    var seen = {};
+    var merged = [];
+    out.map(normalizeOpportunity).forEach(function(x){
+      var k = x.opportunity_id || x.project_slug;
+      if (!k || seen[k]) return;
+      seen[k] = true;
+      merged.push(x);
+    });
+    return { opportunities: merged, sources: sourceNotes };
+  }
 
   function unique(arr){ return Array.from(new Set(arr.filter(Boolean))); }
 
@@ -103,7 +159,7 @@ select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0f
     });
   }
 
-  function render(){
+  function render(sourceNotes){
     var l = byId('fLift').value;
     var t = byId('fType').value;
     var st = byId('fState').value;
@@ -116,7 +172,8 @@ select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0f
       return true;
     });
 
-    byId('resultCount').textContent = filtered.length + ' opportunities shown • source: data/opportunities/opportunities.json';
+    var srcText = (sourceNotes && sourceNotes.length) ? sourceNotes.join(' + ') : 'data/opportunities/opportunities.json';
+    byId('resultCount').textContent = filtered.length + ' opportunities shown • source: ' + srcText;
     var grid = byId('grid');
     if(!filtered.length){
       grid.innerHTML = '<div class="empty">No opportunities match your current filters.</div>';
@@ -142,13 +199,16 @@ select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0f
     }).join('');
   }
 
-  fetch('/data/opportunities/opportunities.json')
-    .then(function(r){ return r.json(); })
+  loadCombinedOpportunities()
     .then(function(result){
       all = (result && result.opportunities ? result.opportunities : []).slice();
       seedFilters(all);
-      render();
-      ['fLift','fType','fState'].forEach(function(id){ byId(id).addEventListener('input', render); byId(id).addEventListener('change', render); });
+      var activeSources = result.sources || [];
+      render(activeSources);
+      ['fLift','fType','fState'].forEach(function(id){
+        byId(id).addEventListener('input', function(){ render(activeSources); });
+        byId(id).addEventListener('change', function(){ render(activeSources); });
+      });
     })
     .catch(function(){
       byId('resultCount').textContent = 'Failed to load opportunities';
