@@ -1,39 +1,30 @@
 # Current Task
 
-## Status: Ready — fix DC landing page CTAs
+## Status: Inspect and fix real bugs — start with AI Planner
 
 ## Completed (Mar 7 2026)
-- [x] 4 CC-licensed model-specific crane photos downloaded and committed
-- [x] marketplace/index.html patched with CRANE_IMG_MODEL (model-keyed, not type-keyed)
-- [x] ig() updated to accept model param, returns null for unmatched models
-- [x] Confirmed live on GitHub
+- [x] 4 model-specific crane photos committed to assets/images/cranes/
+- [x] marketplace/index.html: CRANE_IMG_MODEL implemented correctly
+- [x] Context files committed to repo root
+- [x] Bug audit: DC landing CTAs confirmed working (not broken)
+- [x] Corrected directory paths in AGENT_CONTEXT.md
 
-## Next: Fix DC Landing Page CTAs (Bug #1)
+## Next: Inspect AI Planner (data-centers/ai-planner/index.html)
 
-### File
-data-centers/index.html
+### Step 1 — Read before fixing
+grep -n "fetch\|Authorization\|Bearer\|API_PROXY\|apiKey" data-centers/ai-planner/index.html | head -20
 
-### Problem
-Two CTA buttons are completely inert — no href, no onclick:
-- GET MY LIFT PLAN
-- TALK TO AN EXPERT
+### Step 2 — Confirm the bug
+If fetch call is missing Authorization header -> add it
+If AI_PROXY_URL is empty or undefined -> that is the real issue
 
-### Fix
-- GET MY LIFT PLAN -> onclick window.location.href='/lift-estimator/index.html'
-- TALK TO AN EXPERT -> onclick window.location.href='/marketplace/index.html'
-- No dead ends. Both must enter the funnel.
+### Step 3 — Fix surgically via Python str.replace()
 
-### Steps
-1. grep for button text in data-centers/index.html to find exact HTML
-2. Add onclick handlers via Python str.replace()
-3. Verify git status shows modified
-4. git add data-centers/index.html
-5. git commit -m "fix: wire DC landing CTAs to funnel"
-6. git push origin main
+### Step 4
+git add data-centers/ai-planner/index.html
+git commit -m "fix: AI planner authorization header"
+git push origin main
 
-## After DC CTAs
-- Bug #2: AI Planner 401 — add Authorization header
-- Bug #3: Lift Matrix filter pills — add data-build, data-phase, data-category to cards
-- Bug #4: Lift Matrix Add to Plan
-- Bug #5: Lift Matrix alert() stubs
-- Unify design system
+## After AI Planner
+- Inspect lift-matrix filter pills (data-centers/lift-matrix/index.html)
+- Unify design system across pages

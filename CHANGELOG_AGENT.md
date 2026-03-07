@@ -31,3 +31,16 @@ Commit these files to the repository and verify marketplace image integrity.
 ### Do not revert
 - marketplace/index.html CRANE_IMG_MODEL implementation is correct
 - 4 model photos in assets/images/cranes/ are correct and committed
+
+## 2026-03-07 — Bug audit + AGENT_CONTEXT corrected
+
+### Findings
+- DC landing CTAs (previously Bug #1) are FULLY WIRED — not broken
+  routeToLiveBot() -> /?bot=1&msg= -> bootstrapBotFromQuery() -> openBotWithPrefill()
+- ai-planner and lift-matrix are subdirectories under data-centers/, not root-level
+- Corrected all paths in AGENT_CONTEXT.md
+
+### Next agent
+- Verify data-centers/ai-planner/index.html for real 401 bug before fixing
+- Verify data-centers/lift-matrix/index.html filter pills before fixing
+- Always read actual file first — bug list may be stale

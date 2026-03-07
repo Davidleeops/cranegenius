@@ -12,16 +12,18 @@ CraneGenius (cranegenius.com) is a crane industry intelligence and lead-generati
 Lift Estimator -> Crane Recommendation -> Get Crane Availability -> Lead Capture
 NEVER introduce dead-end flows. Every CTA must go somewhere in the funnel.
 
-## Active Pages
-| Page | Path |
-|---|---|
-| Main site | index.html |
-| Marketplace | marketplace/index.html |
-| Data Centers landing | data-centers/index.html |
-| AI Lift Planner | ai-planner/index.html |
-| Lift Matrix | lift-matrix/index.html |
-| Lift Cost Estimator | lift-estimator/index.html |
-| Command Center (pw protected) | command-center/index.html |
+## Actual Directory Structure
+cranegenius_repo/
+  index.html                        <- main site + chatbot
+  marketplace/index.html            <- crane equipment marketplace
+  data-centers/index.html           <- DC vertical landing page
+  data-centers/ai-planner/index.html  <- AI Lift Planner
+  data-centers/lift-matrix/index.html <- Lift Matrix (35 crane types)
+  command-center/index.html         <- password-protected dashboard
+  assets/images/cranes/             <- crane photo assets
+  cloudflare/                       <- Cloudflare Worker proxy
+  src/                              <- Python intelligence pipeline
+  credentials/                      <- NEVER commit, in .gitignore
 
 ## Image Assets (committed Mar 7 2026)
 Path: assets/images/cranes/
@@ -29,7 +31,7 @@ Path: assets/images/cranes/
 - model-grove-gmk.jpg — Grove GMK all-terrain — CC confirmed
 - model-potain-tower.jpg — Potain tower crane — CC confirmed
 - model-liebherr-lr.jpg — Liebherr crawler crane — CC confirmed
-- spider-crane-01.jpg, spider-crane-02.jpg — CC BY-SA 3.0
+- spider-crane-01/02.jpg — CC BY-SA 3.0
 - mini-crawler-01.jpg — CC BY-SA 2.5
 - mobile-crane-01/02/03.jpg, indoor-crane-01.jpg — Unsplash
 
@@ -55,12 +57,17 @@ NEVER assign a wrong-model photo. Gradient tile is correct for unmatched listing
 - Card uses photo background if img exists, gradient only if null
 - Glyph opacity 0.25 when photo present, 1.0 when gradient tile
 
-## Known Bugs (priority order)
-1. DC landing CTAs inert — GET MY LIFT PLAN and TALK TO AN EXPERT have no onclick/href in data-centers/index.html
-2. AI Planner 401 — missing Authorization: Bearer header in ai-planner/index.html
-3. Lift Matrix filter pills — pills activate visually but dont filter cards (missing data attributes on cards)
-4. Lift Matrix Add to Plan — button doesnt update plan panel
-5. Lift Matrix alert() stubs — Get Quotes and Request Full Analysis show placeholder alert()
+## Bug Status (verified Mar 7 2026)
+VERIFIED WORKING — do not re-fix:
+- data-centers/index.html CTAs: routeToLiveBot() is fully wired, bootstrapBotFromQuery() handles ?bot=1&msg= on homepage, openBotWithPrefill() defined and called. NOT broken.
+
+REAL BUGS (unverified, needs inspection before fixing):
+1. data-centers/ai-planner/index.html — suspected 401 on AI fetch (missing Authorization header)
+2. data-centers/lift-matrix/index.html — filter pills activate visually but may not filter cards
+3. data-centers/lift-matrix/index.html — Add to Plan button may not update plan panel
+4. data-centers/lift-matrix/index.html — Get Quotes / Request Full Analysis may be alert() stubs
+
+RULE: Always grep/sed the actual file to confirm a bug exists before writing any fix.
 
 ## Key People
 - David Lee — Founder. Always use lemuel.lee.jr@gmail.com Chrome profile. NEVER use Ariel's profile.
@@ -76,7 +83,7 @@ NEVER assign a wrong-model photo. Gradient tile is correct for unmatched listing
 - TODO: unify to single design system
 
 ## Tools & Integrations
-- AI: claude-sonnet-4-20250514 via Anthropic API
+- AI: claude-sonnet-4-20250514 via Anthropic API (routed through Cloudflare Worker proxy)
 - Lead capture: Formspree formspree.io/f/mgoldjjb
 - CRM: Google Sheets via Apps Script
 - Email verification: MillionVerifier
@@ -89,3 +96,4 @@ NEVER assign a wrong-model photo. Gradient tile is correct for unmatched listing
 - Sensitive files never in repo: data/, credentials/, *.csv in .gitignore
 - GitHub Pages: subdirectory + index.html pattern only
 - After Python patch: always check git status shows modified before committing
+- ALWAYS grep/read the actual file before writing any fix — bug list may be stale
