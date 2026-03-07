@@ -31,3 +31,9 @@ Consolidate to one.
 - [x] Hardened `.gitignore` for `.env.*` and backup files (`*.bak`).
 - [ ] Rotate any API keys that were ever exposed in terminal/history snapshots.
 
+## Outreach Prep Update (2026-03-07)
+- [x] Built safe outreach file: `data/dc_outreach_emails_safe.csv` (204 rows)
+- [x] Built PlusVibes import file: `data/plusvibes_import_safe.csv` (204 rows)
+- [x] Removed fabricated claim style from new generated messaging
+- [ ] Launch campaign + monitor reply/bounce rates in first 24h
+

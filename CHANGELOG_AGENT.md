@@ -84,3 +84,13 @@ If returning to code: unify design system. See TASK.md.
 ### Remaining action
 - Rotate provider keys if any were previously exposed in shell history or screenshots.
 
+## 2026-03-07 — Outreach prep (safe messaging)
+
+### Done
+- Generated `data/dc_outreach_emails_safe.csv` using non-fabricated claims and neutral value framing.
+- Generated `data/plusvibes_import_safe.csv` for direct campaign import.
+- Preserved 204 verified contacts and deduplicated by email.
+
+### Next step
+- Launch outreach from the safe file and track bounce/reply rates by cohort.
+
