@@ -454,7 +454,30 @@ nav{
   </div>
 </div>
 
+<script src="/config.js"></script>
 <script>
+const AI_PROXY_URL = window.__CG_PROXY_URL__ || "";
+
+async function callAIProxy(messages, maxTokens){
+  if(!AI_PROXY_URL){
+    throw new Error("AI proxy not configured. Call 1 (503) 773-4659 or email info@cranegenius.com for live support.");
+  }
+  const res = await fetch(AI_PROXY_URL, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      model: "claude-sonnet-4-20250514",
+      max_tokens: maxTokens,
+      messages
+    })
+  });
+  const data = await res.json();
+  if(!res.ok){
+    throw new Error(data?.error?.message || `AI request failed (${res.status})`);
+  }
+  return data;
+}
+
 // ── FULL LIFT DATABASE ──────────────────────────────────────────────────────
 const LIFTS = [
   {id:"crawler_heavy",phase:"civil",name:"Crawler Crane — Heavy Civil",cat:"Crawler",capacity:"750–1,500T",models:"Liebherr LR 1750 / LR 11000, Manitowoc 21000, Demag CC 3800",apps:["Pile cap installation on large mat foundations","Pre-cast concrete panel placement","Caisson and drilled shaft operations","Heavy precast beam setting"],duration:"8–14 weeks",setup:"60×80 ft minimum",ground:"8,500–12,000 psf",priority:"critical",permit:true,note:"Book 12–16 weeks in advance. Mobilization/demob cost significant — maximize utilization per visit.",tags:["hyperscale","ai_campus","federal","large"],rate:"$18,000–$32,000/day"},
@@ -548,17 +571,7 @@ async function runAnalysis() {
   conversationHistory = [{role:"user", content: buildSystemPrompt(prompt)}];
 
   try {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 4000,
-        messages: conversationHistory
-      })
-    });
-
-    const data = await response.json();
+    const data = await callAIProxy(conversationHistory, 4000);
     const text = data.content?.find(b => b.type === "text")?.text || "";
     conversationHistory.push({role:"assistant", content: text});
 
@@ -575,7 +588,7 @@ async function runAnalysis() {
     clearInterval(stepInterval);
     showThinking(false);
     document.getElementById("analyzeBtn").disabled = false;
-    alert("Analysis failed. Please check your connection and try again.\n\n" + err.message);
+    alert("Analysis failed. " + err.message);
   }
 }
 
@@ -810,16 +823,7 @@ async function sendFollowup() {
   document.getElementById("followupInput").parentElement.appendChild(spinner);
 
   try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1000,
-        messages: conversationHistory
-      })
-    });
-    const data = await res.json();
+    const data = await callAIProxy(conversationHistory, 1000);
     const reply = data.content?.find(b => b.type === "text")?.text || "";
     conversationHistory.push({role:"assistant", content: reply});
     spinner.remove();
@@ -831,7 +835,7 @@ async function sendFollowup() {
     document.getElementById("followupInput").parentElement.appendChild(replyEl);
   } catch(e) {
     spinner.remove();
-    alert("Follow-up failed: " + e.message);
+    alert("Follow-up failed. " + e.message);
   }
 }
 
