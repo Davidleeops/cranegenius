@@ -4,3 +4,6 @@ credentials/
 __pycache__/
 .env
 config.js
+.env.*
+!.env.example
+*.bak
