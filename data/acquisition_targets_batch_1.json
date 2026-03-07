@@ -1,0 +1,1052 @@
+[
+  {
+    "company_name": "Southwest Spider Crane Services",
+    "city": "Las Vegas",
+    "state_or_province": "NV",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Desert Lift Solutions",
+    "city": "Henderson",
+    "state_or_province": "NV",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Nevada Rigging and Crane",
+    "city": "Reno",
+    "state_or_province": "NV",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "2-3 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "DFW Carry Deck Specialists",
+    "city": "Irving",
+    "state_or_province": "TX",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "6-10 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Texas Mini Crane Rentals",
+    "city": "Houston",
+    "state_or_province": "TX",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "3 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Alamo Industrial Crane",
+    "city": "San Antonio",
+    "state_or_province": "TX",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "5-8 units",
+    "ownership_type": "family",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Hill Country Rigging",
+    "city": "Austin",
+    "state_or_province": "TX",
+    "country": "USA",
+    "equipment_focus": "rigging_accessories",
+    "estimated_fleet_size": "N/A - services",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Capital City Crane",
+    "city": "Austin",
+    "state_or_province": "TX",
+    "country": "USA",
+    "equipment_focus": "boom_truck",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Phoenix Spider Lift Inc",
+    "city": "Tempe",
+    "state_or_province": "AZ",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Sonoran Crane Services",
+    "city": "Peoria",
+    "state_or_province": "AZ",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Maricopa Lift and Rigging",
+    "city": "Chandler",
+    "state_or_province": "AZ",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "5-8 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Chicago Glass Handling Co",
+    "city": "Chicago",
+    "state_or_province": "IL",
+    "country": "USA",
+    "equipment_focus": "glass_handling",
+    "estimated_fleet_size": "specialty equipment",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Midwest Carry Deck Rentals",
+    "city": "Elk Grove Village",
+    "state_or_province": "IL",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "8-12 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Northern Illinois Industrial Rigging",
+    "city": "Joliet",
+    "state_or_province": "IL",
+    "country": "USA",
+    "equipment_focus": "rigging_accessories",
+    "estimated_fleet_size": "N/A - services",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Atlanta Spider Systems",
+    "city": "Kennesaw",
+    "state_or_province": "GA",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "4 units",
+    "ownership_type": "family",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Peach State Crane and Rigging",
+    "city": "Macon",
+    "state_or_province": "GA",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Nashville Mini Crane LLC",
+    "city": "Nashville",
+    "state_or_province": "TN",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "2 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Tennessee Valley Lift",
+    "city": "Murfreesboro",
+    "state_or_province": "TN",
+    "country": "USA",
+    "equipment_focus": "boom_truck",
+    "estimated_fleet_size": "5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Queen City Crane",
+    "city": "Charlotte",
+    "state_or_province": "NC",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "6-8 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Carolina Carry Deck Services",
+    "city": "Concord",
+    "state_or_province": "NC",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "5-7 units",
+    "ownership_type": "family",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Triad Rigging and Lifting",
+    "city": "Greensboro",
+    "state_or_province": "NC",
+    "country": "USA",
+    "equipment_focus": "rigging_accessories",
+    "estimated_fleet_size": "N/A - services",
+    "ownership_type": "private",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Denver Industrial Crane",
+    "city": "Commerce City",
+    "state_or_province": "CO",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Rocky Mountain Spider Lift",
+    "city": "Denver",
+    "state_or_province": "CO",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "2-3 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Beehive State Crane",
+    "city": "Ogden",
+    "state_or_province": "UT",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Utah Carry Deck LLC",
+    "city": "Salt Lake City",
+    "state_or_province": "UT",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Northwest Mini Crane",
+    "city": "Seattle",
+    "state_or_province": "WA",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "5-7 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Puget Sound Rigging",
+    "city": "Tacoma",
+    "state_or_province": "WA",
+    "country": "USA",
+    "equipment_focus": "rigging_accessories",
+    "estimated_fleet_size": "N/A - services",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Cascades Carry Deck",
+    "city": "Renton",
+    "state_or_province": "WA",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Silicon Valley Spider Crane",
+    "city": "San Jose",
+    "state_or_province": "CA",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "8-10 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Bay Area Carry Deck Services",
+    "city": "Fremont",
+    "state_or_province": "CA",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "6-9 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "LA Basin Mini Crane",
+    "city": "Burbank",
+    "state_or_province": "CA",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Southern California Carry Deck",
+    "city": "Carson",
+    "state_or_province": "CA",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "6-9 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Inland Empire Crane Rental",
+    "city": "Ontario",
+    "state_or_province": "CA",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_lift_capacity": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "South Florida Spider Crane",
+    "city": "Doral",
+    "state_or_province": "FL",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Sunshine State Carry Deck",
+    "city": "Orlando",
+    "state_or_province": "FL",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "5-7 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Tampa Bay Rigging Inc",
+    "city": "Tampa",
+    "state_or_province": "FL",
+    "country": "USA",
+    "equipment_focus": "rigging_accessories",
+    "estimated_fleet_size": "N/A - services",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Steel City Crane Rentals",
+    "city": "Pittsburgh",
+    "state_or_province": "PA",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4-7 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Keystone Mini Crane",
+    "city": "Philadelphia",
+    "state_or_province": "PA",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Greater Boston Crane Specialists",
+    "city": "Quincy",
+    "state_or_province": "MA",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "5-8 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "New England Spider Systems",
+    "city": "Cambridge",
+    "state_or_province": "MA",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Buckeye Crane and Lift",
+    "city": "Columbus",
+    "state_or_province": "OH",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "8-12 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Tri-State Carry Deck",
+    "city": "Cincinnati",
+    "state_or_province": "OH",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "5-7 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Ohio Valley Mini Crane",
+    "city": "Dayton",
+    "state_or_province": "OH",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "2-3 units",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Metro Detroit Industrial Lift",
+    "city": "Dearborn",
+    "state_or_province": "MI",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "6-9 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Great Lakes Crane Rental",
+    "city": "Grand Rapids",
+    "state_or_province": "MI",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Twin Cities Mini Crane",
+    "city": "Bloomington",
+    "state_or_province": "MN",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Kansas City Carry Deck",
+    "city": "Overland Park",
+    "state_or_province": "KS",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Gateway City Crane",
+    "city": "Hazelwood",
+    "state_or_province": "MO",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4-7 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "River City Industrial Lift",
+    "city": "Memphis",
+    "state_or_province": "TN",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Heart of Dixie Crane",
+    "city": "Birmingham",
+    "state_or_province": "AL",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4-7 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Rocket City Rigging",
+    "city": "Huntsville",
+    "state_or_province": "AL",
+    "country": "USA",
+    "equipment_focus": "rigging_accessories",
+    "estimated_fleet_size": "N/A - services",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Gulf Coast Mini Crane",
+    "city": "Mobile",
+    "state_or_province": "AL",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Pelican State Carry Deck",
+    "city": "Baton Rouge",
+    "state_or_province": "LA",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "6-9 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Bayou Industrial Lift",
+    "city": "Lake Charles",
+    "state_or_province": "LA",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4-7 units",
+    "ownership_type": "family",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Lone Star Mini Crane",
+    "city": "Corpus Christi",
+    "state_or_province": "TX",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Permian Crane Services",
+    "city": "Midland",
+    "state_or_province": "TX",
+    "country": "USA",
+    "equipment_focus": "boom_truck",
+    "estimated_fleet_size": "5-8 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Oklahoma City Industrial Crane",
+    "city": "Oklahoma City",
+    "state_or_province": "OK",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "5-8 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Tulsa Rigging Specialists",
+    "city": "Tulsa",
+    "state_or_province": "OK",
+    "country": "USA",
+    "equipment_focus": "rigging_accessories",
+    "estimated_fleet_size": "N/A - services",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Mile High Mini Crane",
+    "city": "Arvada",
+    "state_or_province": "CO",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "New Mexico Industrial Lift",
+    "city": "Albuquerque",
+    "state_or_province": "NM",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Saguaro Crane and Rigging",
+    "city": "Tucson",
+    "state_or_province": "AZ",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Portland Spider Crane",
+    "city": "Hillsboro",
+    "state_or_province": "OR",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "6-8 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Willamette Valley Carry Deck",
+    "city": "Salem",
+    "state_or_province": "OR",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "High Desert Crane",
+    "city": "Victorville",
+    "state_or_province": "CA",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "San Diego Mini Crane",
+    "city": "Chula Vista",
+    "state_or_province": "CA",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Triangle Area Crane",
+    "city": "Cary",
+    "state_or_province": "NC",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "5-8 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Southeast Carry Deck Services",
+    "city": "Spartanburg",
+    "state_or_province": "SC",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "5-7 units",
+    "ownership_type": "family",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Holy City Crane",
+    "city": "North Charleston",
+    "state_or_province": "SC",
+    "country": "USA",
+    "equipment_focus": "boom_truck",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "NoVA Spider Crane LLC",
+    "city": "Chantilly",
+    "state_or_province": "VA",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "5-8 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Hampton Roads Industrial Crane",
+    "city": "Norfolk",
+    "state_or_province": "VA",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "6-9 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Baltimore Industrial Lift",
+    "city": "Baltimore",
+    "state_or_province": "MD",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "5-8 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "DC Metro Mini Crane",
+    "city": "Arlington",
+    "state_or_province": "VA",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Delaware Valley Crane",
+    "city": "Wilmington",
+    "state_or_province": "DE",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Hudson Valley Crane",
+    "city": "Newburgh",
+    "state_or_province": "NY",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4-7 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Long Island Mini Crane",
+    "city": "Hauppauge",
+    "state_or_province": "NY",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Upstate NY Crane Service",
+    "city": "Albany",
+    "state_or_province": "NY",
+    "country": "USA",
+    "equipment_focus": "boom_truck",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Nutmeg State Crane",
+    "city": "Hartford",
+    "state_or_province": "CT",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Southern CT Mini Crane",
+    "city": "Bridgeport",
+    "state_or_province": "CT",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Crossroads Carry Deck",
+    "city": "Indianapolis",
+    "state_or_province": "IN",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "6-9 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Hoosier Mini Crane",
+    "city": "Carmel",
+    "state_or_province": "IN",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Badger State Crane",
+    "city": "Milwaukee",
+    "state_or_province": "WI",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "5-8 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Iowa Carry Deck Specialists",
+    "city": "Des Moines",
+    "state_or_province": "IA",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Plains Industrial Lift",
+    "city": "Omaha",
+    "state_or_province": "NE",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Emerald City Mini Crane",
+    "city": "Kirkland",
+    "state_or_province": "WA",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "5-8 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Spokane Valley Crane",
+    "city": "Spokane",
+    "state_or_province": "WA",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Vegas Strip Glass Services",
+    "city": "North Las Vegas",
+    "state_or_province": "NV",
+    "country": "USA",
+    "equipment_focus": "glass_handling",
+    "estimated_fleet_size": "specialty",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Reno Industrial Lift",
+    "city": "Sparks",
+    "state_or_province": "NV",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "family",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Treasure Valley Mini Crane",
+    "city": "Nampa",
+    "state_or_province": "ID",
+    "country": "USA",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "2-3 units",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Big Sky Crane Specialists",
+    "city": "Billings",
+    "state_or_province": "MT",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Prairie City Carry Deck",
+    "city": "Fargo",
+    "state_or_province": "ND",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Ozark Crane and Rigging",
+    "city": "Little Rock",
+    "state_or_province": "AR",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Rio Grande Valley Crane",
+    "city": "McAllen",
+    "state_or_province": "TX",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Frontier Crane Services",
+    "city": "Cheyenne",
+    "state_or_province": "WY",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "2-3 units",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Appalachian Industrial Lift",
+    "city": "Charleston",
+    "state_or_province": "WV",
+    "country": "USA",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Anchor Industrial Crane Services",
+    "city": "Anchorage",
+    "state_or_province": "AK",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "3-6 units",
+    "ownership_type": "private",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Pacific Island Lifting Solutions",
+    "city": "Honolulu",
+    "state_or_province": "HI",
+    "country": "USA",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "4-7 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Coastal BC Spider Crane",
+    "city": "Burnaby",
+    "state_or_province": "BC",
+    "country": "Canada",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Alberta Oilsands Carry Deck",
+    "city": "Fort McMurray",
+    "state_or_province": "AB",
+    "country": "Canada",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "8-12 units",
+    "ownership_type": "regional_chain",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Ontario Industrial Mini Crane",
+    "city": "Mississauga",
+    "state_or_province": "ON",
+    "country": "Canada",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "5-8 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Quebec Grue Mobile",
+    "city": "Laval",
+    "state_or_province": "QC",
+    "country": "Canada",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "5-8 units",
+    "ownership_type": "family",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Prairie Provinces Crane Rental",
+    "city": "Saskatoon",
+    "state_or_province": "SK",
+    "country": "Canada",
+    "equipment_focus": "boom_truck",
+    "estimated_fleet_size": "6-10 units",
+    "ownership_type": "regional_chain",
+    "acquisition_priority": "medium"
+  },
+  {
+    "company_name": "Atlantic Canada Lift Services",
+    "city": "Halifax",
+    "state_or_province": "NS",
+    "country": "Canada",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Calgary Industrial Mini Crane",
+    "city": "Calgary",
+    "state_or_province": "AB",
+    "country": "Canada",
+    "equipment_focus": "spider_crane_mini_crane",
+    "estimated_fleet_size": "4-6 units",
+    "ownership_type": "private",
+    "acquisition_priority": "high"
+  },
+  {
+    "company_name": "Vancouver Island Crane",
+    "city": "Victoria",
+    "state_or_province": "BC",
+    "country": "Canada",
+    "equipment_focus": "all_terrain_crane",
+    "estimated_fleet_size": "3-5 units",
+    "ownership_type": "family",
+    "acquisition_priority": "low"
+  },
+  {
+    "company_name": "Manitoba Heavy Lift",
+    "city": "Winnipeg",
+    "state_or_province": "MB",
+    "country": "Canada",
+    "equipment_focus": "carry_deck_crane",
+    "estimated_fleet_size": "4-7 units",
+    "ownership_type": "private",
+    "acquisition_priority": "medium"
+  }
+]

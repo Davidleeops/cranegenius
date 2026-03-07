@@ -1,0 +1,565 @@
+[
+  {
+    "lift_category": "crawler_crane",
+    "typical_capacity_range": "50 tons to 3500 tons",
+    "ideal_use_cases": [
+      "Semiconductor fab tool installation",
+      "Petrochemical vessel and column erection",
+      "Wind turbine nacelle and blade installation",
+      "Bridge girder placement",
+      "Nuclear power plant heavy lift",
+      "LNG plant module installation",
+      "Stadium structural steel erection",
+      "Shipyard keel laying and block placement"
+    ],
+    "environments": [
+      "outdoor",
+      "industrial_yard",
+      "remote_site"
+    ],
+    "common_industries": [
+      "semiconductor_manufacturing",
+      "petrochemical",
+      "energy_utilities",
+      "civil_infrastructure",
+      "defense",
+      "shipbuilding"
+    ],
+    "notes_for_planner": "Crawler cranes require significant site preparation including crane mat installation, ground bearing capacity engineering, and large laydown area for boom assembly. Lead times for large capacity units (600T+) can be 4-8 weeks. Best suited for lifts requiring full pick-and-carry travel or sustained stationary heavy lifts. Confirm boom configuration (standard, luffing, superlift) based on radius and capacity requirements."
+  },
+  {
+    "lift_category": "tower_crane",
+    "typical_capacity_range": "4 tons to 80 tons",
+    "ideal_use_cases": [
+      "High-rise residential and commercial construction",
+      "Hospital and healthcare tower builds",
+      "Data center structural and equipment installation",
+      "Concrete core slipform construction",
+      "Curtain wall panel placement at height",
+      "Long-duration campus construction",
+      "Multi-tower simultaneous construction"
+    ],
+    "environments": [
+      "urban",
+      "suburban",
+      "outdoor"
+    ],
+    "common_industries": [
+      "commercial_real_estate",
+      "residential_construction",
+      "healthcare",
+      "data_center",
+      "education"
+    ],
+    "notes_for_planner": "Tower cranes are the right choice when project duration exceeds 3 months and continuous overhead lifting is required throughout construction. Luffing jib variants are required in urban areas with adjacent structures within the standard horizontal jib swing radius. Foundation design must account for mast base loads. Climbing collars allow jump-climbing with concrete pours. Most effective when paired with a rigger and signalperson on each floor level."
+  },
+  {
+    "lift_category": "mobile_crane",
+    "typical_capacity_range": "20 tons to 1200 tons",
+    "ideal_use_cases": [
+      "Transformer and switchgear installation at substations",
+      "Steel erection for low-to-mid-rise structures",
+      "HVAC rooftop unit placement",
+      "Industrial equipment installation and replacement",
+      "Prefabricated module placement",
+      "Bridge beam setting",
+      "Emergency crane mobilization"
+    ],
+    "environments": [
+      "outdoor",
+      "industrial",
+      "urban",
+      "rural"
+    ],
+    "common_industries": [
+      "construction",
+      "utilities",
+      "oil_gas",
+      "manufacturing",
+      "government_infrastructure"
+    ],
+    "notes_for_planner": "Mobile cranes offer the best combination of capacity and mobility for projects requiring rapid setup and repositioning. Road permits are required for travel on public highways for units over 80,000 lbs GVW. Outrigger extension areas must be confirmed prior to deployment. Hydraulic telescoping boom allows capacity tradeoff for radius \u2014 always confirm chart at the required working radius, not maximum capacity."
+  },
+  {
+    "lift_category": "spider_crane",
+    "typical_capacity_range": "0.5 tons to 20 tons",
+    "ideal_use_cases": [
+      "Indoor equipment setting in factories and cleanrooms",
+      "Glass curtain wall installation on high-rise facades",
+      "Rooftop equipment replacement via roof hatch access",
+      "Casino and hospitality interior chandelier and signage",
+      "Elevator and escalator equipment installation",
+      "Utility room equipment replacement in occupied buildings",
+      "Stone and marble slab placement in luxury interiors",
+      "Mechanical room access in hospitals"
+    ],
+    "environments": [
+      "indoor",
+      "rooftop",
+      "confined_space",
+      "finished_interior"
+    ],
+    "common_industries": [
+      "semiconductor_manufacturing",
+      "commercial_real_estate",
+      "healthcare",
+      "hospitality",
+      "glazing_facade"
+    ],
+    "notes_for_planner": "Spider cranes (UNIC, Maeda, Jekko) are the only solution when access is restricted to elevator shafts, personnel doors, or roof hatches. Maximum width in transport configuration is typically 28-36 inches. Weight in transport configuration ranges from 1,500 to 8,000 lbs depending on model \u2014 verify floor loading capacity before deployment. All-electric models are required for cleanroom and food-grade environments. Battery runtime limits consecutive shift length."
+  },
+  {
+    "lift_category": "rough_terrain_crane",
+    "typical_capacity_range": "10 tons to 150 tons",
+    "ideal_use_cases": [
+      "Construction site material and steel placement on soft or uneven ground",
+      "Rural utility and pipeline work",
+      "Agricultural and remote infrastructure projects",
+      "Military base construction",
+      "Precast concrete element placement",
+      "Oil field equipment installation"
+    ],
+    "environments": [
+      "outdoor",
+      "unpaved",
+      "muddy",
+      "remote",
+      "rough_terrain"
+    ],
+    "common_industries": [
+      "construction",
+      "oil_gas",
+      "military",
+      "agriculture",
+      "utilities"
+    ],
+    "notes_for_planner": "Rough terrain cranes are purpose-built for sites where all-terrain or hydraulic truck cranes cannot safely operate due to ground conditions. Four-wheel drive and oscillating axles provide traction and stability without outrigger pads in some conditions. Not licensed for travel on public roads at speed \u2014 requires flatbed transport between distant sites. Consider rough terrain crane when site access road is unimproved or when crane must work within a muddy active construction site."
+  },
+  {
+    "lift_category": "all_terrain_crane",
+    "typical_capacity_range": "50 tons to 1200 tons",
+    "ideal_use_cases": [
+      "Utility substation transformer and switchgear setting",
+      "Industrial boiler and chiller installation",
+      "Rooftop HVAC unit replacement on commercial buildings",
+      "Precast bridge girder setting",
+      "Wind turbine component erection at accessible sites",
+      "Plant and refinery maintenance turnarounds",
+      "Tilt-up construction panel bracing",
+      "Modular skid placement"
+    ],
+    "environments": [
+      "outdoor",
+      "industrial",
+      "urban_street",
+      "highway_adjacent"
+    ],
+    "common_industries": [
+      "utilities",
+      "construction",
+      "oil_gas",
+      "manufacturing",
+      "transportation_infrastructure"
+    ],
+    "notes_for_planner": "All-terrain cranes are the most versatile option in the crane fleet \u2014 multi-axle all-wheel-drive allows self-propelled highway travel and offroad positioning. Most commonly used for single-day or short-duration lifts where mobilization speed and repositioning flexibility matter. Confirm outrigger pad bearing area requirements \u2014 many urban jobs require specialized outrigger pads or cribbing due to underground utilities or underground parking. Required permits vary by jurisdiction for boom travel on roads."
+  },
+  {
+    "lift_category": "telehandler",
+    "typical_capacity_range": "5,000 lbs to 55,000 lbs",
+    "ideal_use_cases": [
+      "On-site material distribution on active construction sites",
+      "Lumber and drywall placement on multi-story buildings",
+      "Masonry and block material placement",
+      "MEP prefab rack placement at elevated locations",
+      "Agricultural building erection",
+      "Rental yard material handling",
+      "Modular home component placement"
+    ],
+    "environments": [
+      "outdoor",
+      "construction_site",
+      "indoor_warehouse",
+      "agricultural"
+    ],
+    "common_industries": [
+      "residential_construction",
+      "commercial_construction",
+      "agriculture",
+      "warehousing",
+      "modular_construction"
+    ],
+    "notes_for_planner": "Telehandlers (also called reach forklifts or telescoping boom forklifts) are not classified as cranes but frequently appear in the same procurement as crane equipment. Their key advantage is simultaneous fork function and telescoping reach, eliminating a separate forklift on smaller sites. Models with jib attachments can function as light-duty cranes. Check stabilizer extension requirements and tire load rating for upper-floor ramp access."
+  },
+  {
+    "lift_category": "aerial_lift",
+    "typical_capacity_range": "500 lbs to 2,000 lbs (work platform capacity)",
+    "ideal_use_cases": [
+      "MEP rough-in work at height in warehouses and industrial facilities",
+      "Facade and window cleaning access",
+      "Lighting installation in arenas and convention centers",
+      "Overhead crane installation in industrial buildings",
+      "Bridge inspection",
+      "Wind turbine nacelle access for maintenance",
+      "Telecom antenna installation on towers"
+    ],
+    "environments": [
+      "indoor",
+      "outdoor",
+      "industrial",
+      "heights"
+    ],
+    "common_industries": [
+      "construction",
+      "facilities_maintenance",
+      "entertainment",
+      "manufacturing",
+      "telecom"
+    ],
+    "notes_for_planner": "Aerial lifts (boom lifts, scissor lifts, articulating lifts) are work positioning equipment, not load-lifting cranes. They are often specified alongside crane work for worker access at elevation. Articulating boom lifts are preferred when working around obstructions. Scissor lifts require near-level surfaces. Outdoor-rated units are required for wind exposure above 28 mph. Electric models are mandatory for sensitive indoor environments."
+  },
+  {
+    "lift_category": "carry_deck_crane",
+    "typical_capacity_range": "10 tons to 40 tons",
+    "ideal_use_cases": [
+      "Industrial plant maintenance lifts in confined plant corridors",
+      "Tilt-up concrete panel erection on warehouse sites",
+      "Shipyard maintenance and ship repair lifts",
+      "Pick-and-carry in oil refineries and petrochemical plants",
+      "Port terminal cargo handling",
+      "Paper mill and steel mill maintenance",
+      "Pump, valve, and heat exchanger replacement in plants"
+    ],
+    "environments": [
+      "industrial_plant",
+      "shipyard",
+      "outdoor_industrial",
+      "confined_plant"
+    ],
+    "common_industries": [
+      "oil_gas_refining",
+      "petrochemical",
+      "manufacturing",
+      "shipbuilding",
+      "paper_steel"
+    ],
+    "notes_for_planner": "Carry deck cranes are designed for confined plant environments where no other crane configuration can maneuver. Their 360-degree rotation and low profile allow operation under pipe racks, conveyors, and structural steel. Load capacity drops significantly with outriggers retracted \u2014 always verify pick-and-carry chart at the required travel path. Available in diesel and electric (explosion-proof) variants. Explosion-proof models are required in Class I Division 2 refinery and chemical plant hazardous areas."
+  },
+  {
+    "lift_category": "boom_truck",
+    "typical_capacity_range": "5 tons to 40 tons",
+    "ideal_use_cases": [
+      "Steel erection for low-rise commercial buildings",
+      "Telecom tower antenna and equipment installation",
+      "Sign and billboard installation",
+      "Utility pole and power line work",
+      "Light commercial HVAC installation",
+      "Pre-engineered metal building erection",
+      "Lumber yard and material supply delivery and placement"
+    ],
+    "environments": [
+      "outdoor",
+      "roadside",
+      "rural",
+      "light_commercial"
+    ],
+    "common_industries": [
+      "commercial_construction",
+      "telecom",
+      "utilities",
+      "sign_industry",
+      "metal_building"
+    ],
+    "notes_for_planner": "Boom trucks provide the fastest mobilization in the crane fleet \u2014 they drive to the job site and set up in minutes. Best for lifts under 5 tons at moderate radii where a full mobile crane would be cost-prohibitive. Articulating knuckle boom models offer reach around obstacles that telescopic booms cannot achieve. Check local bridge and road weight limit restrictions on planned travel routes. Not suitable for lifts requiring certified rigging plans or engineered lift plans."
+  },
+  {
+    "lift_category": "luffing_jib_tower_crane",
+    "typical_capacity_range": "8 tons to 64 tons",
+    "ideal_use_cases": [
+      "High-rise construction in dense urban cores where jib overswing into adjacent airspace is prohibited",
+      "Airport proximity construction with FAA height restrictions",
+      "Multi-tower sites where crane jibs must avoid collision",
+      "Condominium and hotel towers in tight city blocks"
+    ],
+    "environments": [
+      "urban_core",
+      "tight_site",
+      "airport_proximity"
+    ],
+    "common_industries": [
+      "residential_highrise",
+      "commercial_real_estate",
+      "hospitality"
+    ],
+    "notes_for_planner": "Luffing jib variants trade capacity at radius for the ability to raise the jib vertically, dramatically reducing the footprint of horizontal swing. Required when city permitting restricts crane swing over adjacent properties or public right-of-way. Erection cost and complexity is higher than fixed-jib tower cranes. Anti-collision systems are typically required when two or more luffing jibs share airspace on the same project."
+  },
+  {
+    "lift_category": "self_erecting_tower_crane",
+    "typical_capacity_range": "1 ton to 8 tons",
+    "ideal_use_cases": [
+      "Low-rise residential construction (2-6 stories)",
+      "School and institutional construction",
+      "Renovation projects requiring crane access without full mast",
+      "Rapid-deployment jobsites with short durations",
+      "Precast residential community construction"
+    ],
+    "environments": [
+      "suburban",
+      "light_commercial",
+      "residential"
+    ],
+    "common_industries": [
+      "residential_construction",
+      "education",
+      "light_commercial"
+    ],
+    "notes_for_planner": "Self-erecting tower cranes fold down for transport and erect in 1-2 hours without a mobile crane assist, dramatically reducing setup cost. Capacity and hook height are limited compared to conventional tower cranes. Well-suited to high-volume residential developers building repetitive low-rise product. Not appropriate for concrete high-rise or heavy steel structures."
+  },
+  {
+    "lift_category": "gantry_crane",
+    "typical_capacity_range": "5 tons to unlimited (custom-engineered)",
+    "ideal_use_cases": [
+      "Shipyard hull block and module placement",
+      "Nuclear power plant component handling",
+      "Steel mill and foundry coil and ingot handling",
+      "Wind turbine nacelle and blade storage and transfer",
+      "Rail maintenance yard wheel and axle replacement",
+      "Paper mill roll handling"
+    ],
+    "environments": [
+      "fixed_facility",
+      "shipyard",
+      "steel_mill",
+      "indoor_industrial"
+    ],
+    "common_industries": [
+      "shipbuilding",
+      "nuclear",
+      "steel_manufacturing",
+      "wind_energy",
+      "rail"
+    ],
+    "notes_for_planner": "Gantry cranes are permanent or semi-permanent fixed installations, not mobile crane equipment. They appear in the CraneGenius context primarily during new facility construction (when an owner needs a temporary gantry to set in a permanent one) or during plant expansions where temporary gantry rental supports construction activities. Engineered rail and runway systems require structural analysis prior to loading."
+  },
+  {
+    "lift_category": "hydraulic_gantry_system",
+    "typical_capacity_range": "100 tons to 40,000 tons (multi-point system)",
+    "ideal_use_cases": [
+      "Bridge superstructure sliding and launching",
+      "Offshore platform topsides load-out",
+      "Power plant turbine and generator installation",
+      "Stadium roof and truss installation",
+      "Industrial press and heavy machinery relocation",
+      "Modular refinery unit skid placement"
+    ],
+    "environments": [
+      "outdoor_industrial",
+      "port",
+      "power_plant",
+      "stadium"
+    ],
+    "common_industries": [
+      "civil_infrastructure",
+      "oil_gas",
+      "power_generation",
+      "heavy_manufacturing",
+      "sports_entertainment"
+    ],
+    "notes_for_planner": "Hydraulic strand jack and hydraulic gantry systems are the preferred solution when the load exceeds what a conventional crane can lift within the available radius, or when the lift geometry requires synchronized multi-point lifting. These systems are specialty rigging solutions provided by a limited number of heavy lift specialists nationally. Typical lead time for planning and mobilization is 4-12 weeks. Requires full engineered lift plan."
+  },
+  {
+    "lift_category": "pick_and_carry_crane",
+    "typical_capacity_range": "15 tons to 300 tons",
+    "ideal_use_cases": [
+      "Moving heavy loads across a site without re-rigging",
+      "Precast concrete element delivery and placement at remote ends of large sites",
+      "Paper mill and steel mill equipment repositioning",
+      "Large industrial facility module placement",
+      "Mine site haul truck and shovel component handling"
+    ],
+    "environments": [
+      "outdoor_large_site",
+      "industrial_complex",
+      "mining"
+    ],
+    "common_industries": [
+      "construction",
+      "mining",
+      "paper_steel",
+      "large_manufacturing"
+    ],
+    "notes_for_planner": "Pick and carry cranes must have their travel path engineered \u2014 ground bearing pressure under rubber tires with a suspended load can exceed 200 psi. Dedicated crane mats or reinforced haul roads are required for most applications. Travel speed is limited when load is suspended. Consider all-terrain crane for infrequent repositioning; only specify pick-and-carry when frequent multi-point travel with load is required."
+  },
+  {
+    "lift_category": "marine_crane",
+    "typical_capacity_range": "5 tons to 5000 tons",
+    "ideal_use_cases": [
+      "Offshore platform installation and maintenance",
+      "Underwater pipeline and cable lay support",
+      "Harbor structure and pier construction",
+      "Salvage operations",
+      "Ship-to-shore container handling",
+      "Jacket and topsides float-over operations",
+      "Wind farm monopile installation offshore"
+    ],
+    "environments": [
+      "offshore",
+      "marine",
+      "coastal",
+      "harbor"
+    ],
+    "common_industries": [
+      "offshore_oil_gas",
+      "offshore_wind",
+      "maritime_infrastructure",
+      "dredging",
+      "port_development"
+    ],
+    "notes_for_planner": "Marine cranes aboard derrick barges and heavy-lift vessels are a specialty segment outside the scope of most land-based crane companies. However, onshore marine terminal construction regularly requires land-based cranes working at the water's edge, often with special outrigger engineering due to proximity to waterway or wharf edge. Coordinate with marine contractor for barge crane complement when onshore crane radius is insufficient for over-water picks."
+  },
+  {
+    "lift_category": "vacuum_lift_system",
+    "typical_capacity_range": "500 lbs to 10 tons",
+    "ideal_use_cases": [
+      "Large format glass panel installation on curtain wall systems",
+      "Stone slab and tile placement in luxury interiors",
+      "Precast concrete facade panel repositioning",
+      "Solar panel installation on rooftops",
+      "Sheet metal and aluminum plate handling in fabrication",
+      "Windshield and automotive glass placement in assembly"
+    ],
+    "environments": [
+      "outdoor_facade",
+      "indoor_finished",
+      "construction_site"
+    ],
+    "common_industries": [
+      "glazing_facade",
+      "luxury_interiors",
+      "solar",
+      "automotive",
+      "metal_fabrication"
+    ],
+    "notes_for_planner": "Vacuum lift systems are below-the-hook attachments, not standalone cranes. They require a host crane (typically a spider crane or all-terrain crane) for elevation and positioning. Battery backup safety requirement is mandatory for all vacuum lifters used in overhead lifts to prevent dropped load in case of power failure. Cup design must match the surface \u2014 textured, porous, or coated glass surfaces may require specialized cups. Wind speed limits apply to outdoor facade work."
+  },
+  {
+    "lift_category": "strand_jack",
+    "typical_capacity_range": "100 tons to 10,000 tons per jack",
+    "ideal_use_cases": [
+      "Stadium roof and large truss lifting",
+      "Nuclear reactor head and component replacement",
+      "Bridge deck launching and sliding",
+      "Offshore topside installation",
+      "Industrial press installation",
+      "Transformer and large electrical equipment jacking and skidding"
+    ],
+    "environments": [
+      "industrial",
+      "stadium",
+      "power_plant",
+      "bridge"
+    ],
+    "common_industries": [
+      "sports_construction",
+      "nuclear",
+      "civil_infrastructure",
+      "offshore",
+      "power_generation"
+    ],
+    "notes_for_planner": "Strand jacks use high-strength steel strands threaded through a hydraulic jack to lift or lower loads with extreme precision. Multiple jacks are synchronized electronically to maintain load balance within millimeters. This is a highly engineered, specialty lift requiring a dedicated lift engineering team. Used when load exceeds crane capacity, geometry prevents crane access, or precision placement tolerance is extremely tight. Very long lead time for planning."
+  },
+  {
+    "lift_category": "aerial_work_platform_boom",
+    "typical_capacity_range": "500 lbs to 1,500 lbs platform capacity",
+    "ideal_use_cases": [
+      "MEP installation and inspection at height in warehouses",
+      "Arena and convention center overhead rigging",
+      "Bridge inspection and maintenance access",
+      "Window cleaning and building maintenance",
+      "Telecom antenna installation in right-of-way",
+      "Signage installation on commercial storefronts",
+      "Painting and coating of elevated structures"
+    ],
+    "environments": [
+      "indoor_industrial",
+      "outdoor_urban",
+      "warehouse",
+      "highway"
+    ],
+    "common_industries": [
+      "facilities_management",
+      "construction",
+      "telecom",
+      "transportation",
+      "entertainment"
+    ],
+    "notes_for_planner": "Articulating boom lifts (also called knuckle booms) provide the most versatile access around obstacles at height. Straight telescoping boom lifts provide maximum horizontal outreach. Scissor lifts are preferred for vertical-only work on flat surfaces. Outdoor lifts are wind-rated to ANSI/SAIA A92 standards \u2014 ensure proper model selection for outdoor exposure. Operator certification (OSHA 29 CFR 1926.453) required for all operators."
+  },
+  {
+    "lift_category": "rigging_system",
+    "typical_capacity_range": "varies by component \u2014 1 ton to 1000+ tons",
+    "ideal_use_cases": [
+      "Tandem and tailing lifts for long or tall loads",
+      "Below-the-hook custom lifting frames for semiconductor tools",
+      "Spreader beam assembly for wide structural sections",
+      "Equalizer beam systems for multi-point lifts",
+      "Skidding and rolling systems for horizontal load movement",
+      "Chain hoist and come-along systems for positioning",
+      "Personnel fall arrest integration during elevated rigging"
+    ],
+    "environments": [
+      "all_environments"
+    ],
+    "common_industries": [
+      "all_industries_requiring_lifting"
+    ],
+    "notes_for_planner": "Rigging systems are the engineered interface between the crane hook and the load. All below-the-hook lifting devices must comply with ASME B30.20 and require proof load testing and annual certification. Custom lifting frames for semiconductor or precision equipment require manufacturer-approved rigging plans. Rigging accessories including shackles, wire rope slings, chain slings, and synthetic round slings must be inspected before each use and replaced per ASME/OSHA criteria. Always specify the rigging accessories in the lift plan \u2014 omitting rigging from the cost estimate is a common source of bid errors."
+  },
+  {
+    "lift_category": "skidding_and_jacking_system",
+    "typical_capacity_range": "50 tons to unlimited (modular)",
+    "ideal_use_cases": [
+      "Horizontal movement of transformers in confined substations",
+      "Semiconductor tool relocation within cleanroom without ceiling clearance for crane",
+      "Industrial press and machine tool relocation on factory floors",
+      "Modular building and data hall placement",
+      "Bridge girder launching and sliding"
+    ],
+    "environments": [
+      "indoor_industrial",
+      "cleanroom",
+      "substation",
+      "bridge_site"
+    ],
+    "common_industries": [
+      "semiconductor_manufacturing",
+      "utilities",
+      "manufacturing",
+      "civil_infrastructure"
+    ],
+    "notes_for_planner": "Skidding systems (Hilman rollers, air casters, hydraulic skidding) move loads horizontally without vertical lift and are the solution when overhead clearance is insufficient for crane access. Air casters float loads on a thin film of compressed air and require smooth, sealed concrete floors. Hilman rollers work on uneven surfaces but require push force. Hydraulic skidding systems are computer-controlled for precision positioning. These systems are often procured alongside crane services for complex tool install projects in semiconductor fabs."
+  },
+  {
+    "lift_category": "heavy_transport",
+    "typical_capacity_range": "50 tons to 10,000 tons (SPMT systems)",
+    "ideal_use_cases": [
+      "Self-propelled modular transporter (SPMT) module moves at refineries",
+      "Power transformer road transport from rail yard to substation",
+      "Wind turbine tower section and blade transport to site",
+      "Industrial press and heavy machinery cross-country transport",
+      "Bridge beam and girder transport from fabrication yard to site"
+    ],
+    "environments": [
+      "road",
+      "industrial_site",
+      "port"
+    ],
+    "common_industries": [
+      "oil_gas",
+      "utilities",
+      "wind_energy",
+      "civil_infrastructure",
+      "heavy_manufacturing"
+    ],
+    "notes_for_planner": "Heavy transport (oversized load permitting, pilot car requirements, route surveys) is a prerequisite for many of the lift scenarios in this library. Crane companies frequently coordinate with heavy transport specialists as part of a single lift package. Key planning items: state and county oversize/overweight permits, bridge load ratings on transport route, utility line clearances, and nighttime travel windows required by many states for loads over 16 feet wide."
+  }
+]

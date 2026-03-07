@@ -1,0 +1,4484 @@
+[
+  {
+    "project_name": "Ashburn Data Center Campus A",
+    "city": "Ashburn",
+    "state": "VA",
+    "project_type": "data_center",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Loudoun County Hyperscale Facility",
+    "city": "Leesburg",
+    "state": "VA",
+    "project_type": "data_center",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "QTS Northern Virginia Expansion",
+    "city": "Manassas",
+    "state": "VA",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Equinix DC Campus Phase 4",
+    "city": "Ashburn",
+    "state": "VA",
+    "project_type": "data_center",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "60 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "CyrusOne NoVA Expansion",
+    "city": "Sterling",
+    "state": "VA",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Microsoft Azure East 2 Facility",
+    "city": "Boydton",
+    "state": "VA",
+    "project_type": "data_center",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Iron Mountain Data Vault Culpeper",
+    "city": "Culpeper",
+    "state": "VA",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "pre_construction"
+  },
+  {
+    "project_name": "Dallas Data Center Mega Campus",
+    "city": "Irving",
+    "state": "TX",
+    "project_type": "data_center",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Aligned Energy Dallas Facility",
+    "city": "Plano",
+    "state": "TX",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Stream Data Centers North Dallas",
+    "city": "Carrollton",
+    "state": "TX",
+    "project_type": "data_center",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "160 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Vantage Dallas Campus Phase 2",
+    "city": "Grand Prairie",
+    "state": "TX",
+    "project_type": "data_center",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "60 tons",
+    "opportunity_stage": "pre_construction"
+  },
+  {
+    "project_name": "Google Arizona Data Center Phase 3",
+    "city": "Chandler",
+    "state": "AZ",
+    "project_type": "data_center",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "EdgeCore Phoenix Mesa Campus",
+    "city": "Mesa",
+    "state": "AZ",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Microsoft Phoenix Goodyear Facility",
+    "city": "Goodyear",
+    "state": "AZ",
+    "project_type": "data_center",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Switch Las Vegas Citadel Campus 7",
+    "city": "Las Vegas",
+    "state": "NV",
+    "project_type": "data_center",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Tract Salt Lake City Data Center",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Google Reno Data Center Expansion",
+    "city": "Sparks",
+    "state": "NV",
+    "project_type": "data_center",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Meta Prineville Campus Phase 5",
+    "city": "Prineville",
+    "state": "OR",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Sabey Data Center Auburn WA",
+    "city": "Auburn",
+    "state": "WA",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Vantage San Jose Phase 3",
+    "city": "San Jose",
+    "state": "CA",
+    "project_type": "data_center",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Digital Realty Santa Clara Expansion",
+    "city": "Santa Clara",
+    "state": "CA",
+    "project_type": "data_center",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "160 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "CoreSite Los Angeles Campus",
+    "city": "El Segundo",
+    "state": "CA",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "EdgeCore Doral Hyperscale",
+    "city": "Doral",
+    "state": "FL",
+    "project_type": "data_center",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "QTS Atlanta Metro Campus Phase 3",
+    "city": "Atlanta",
+    "state": "GA",
+    "project_type": "data_center",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Compass One Chicago Data Center",
+    "city": "Chicago",
+    "state": "IL",
+    "project_type": "data_center",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "60 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Iron Mountain Naperville Campus",
+    "city": "Naperville",
+    "state": "IL",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Equinix Nashville Campus Phase 1",
+    "city": "Nashville",
+    "state": "TN",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "pre_construction"
+  },
+  {
+    "project_name": "CyrusOne Charlotte Steele Creek",
+    "city": "Charlotte",
+    "state": "NC",
+    "project_type": "data_center",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "60 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Amazon Denver Data Center Campus",
+    "city": "Denver",
+    "state": "CO",
+    "project_type": "data_center",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "160 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Google Council Bluffs Expansion C",
+    "city": "Council Bluffs",
+    "state": "IA",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "CyrusOne Secaucus NJ Campus",
+    "city": "Secaucus",
+    "state": "NJ",
+    "project_type": "data_center",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "ViaWest West Palm Beach Data Center",
+    "city": "West Palm Beach",
+    "state": "FL",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Microsoft Canada Ontario Campus",
+    "city": "Toronto",
+    "state": "ON",
+    "project_type": "data_center",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Equinix Montreal Campus Expansion",
+    "city": "Montreal",
+    "state": "QC",
+    "project_type": "data_center",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Rogers Communications Calgary Data Center",
+    "city": "Calgary",
+    "state": "AB",
+    "project_type": "data_center",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "160 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "UCHealth Cherry Creek Medical Tower",
+    "city": "Denver",
+    "state": "CO",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Baylor Scott White Frisco Medical Tower",
+    "city": "Frisco",
+    "state": "TX",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Texas Medical Center Tower C",
+    "city": "Houston",
+    "state": "TX",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Banner University Medical Expansion",
+    "city": "Tucson",
+    "state": "AZ",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Mayo Clinic Phoenix Campus Expansion",
+    "city": "Phoenix",
+    "state": "AZ",
+    "project_type": "hospital",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Dignity Health Las Vegas Hospital Tower",
+    "city": "Las Vegas",
+    "state": "NV",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "pre_construction"
+  },
+  {
+    "project_name": "Northwestern Medicine Surgical Pavilion",
+    "city": "Chicago",
+    "state": "IL",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Advocate Aurora South Campus",
+    "city": "Downers Grove",
+    "state": "IL",
+    "project_type": "hospital",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "UF Health Gainesville Medical Tower",
+    "city": "Gainesville",
+    "state": "FL",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Broward Health Fort Lauderdale Tower",
+    "city": "Fort Lauderdale",
+    "state": "FL",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Duke University Hospital Expansion",
+    "city": "Durham",
+    "state": "NC",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Northside Hospital Cumming Campus",
+    "city": "Cumming",
+    "state": "GA",
+    "project_type": "hospital",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Vanderbilt Medical Center Tower 2",
+    "city": "Nashville",
+    "state": "TN",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "pre_construction"
+  },
+  {
+    "project_name": "Boston Childrens Hospital Expansion",
+    "city": "Boston",
+    "state": "MA",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Cleveland Clinic Florida Weston Tower",
+    "city": "Weston",
+    "state": "FL",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Ronald Reagan UCLA Medical Expansion",
+    "city": "Los Angeles",
+    "state": "CA",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "UCSF Mission Bay Hospital Phase 3",
+    "city": "San Francisco",
+    "state": "CA",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Virginia Mason Seattle Expansion",
+    "city": "Seattle",
+    "state": "WA",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "pre_construction"
+  },
+  {
+    "project_name": "Providence Health Portland Campus",
+    "city": "Portland",
+    "state": "OR",
+    "project_type": "hospital",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "St Lukes Health Meridian Tower",
+    "city": "Meridian",
+    "state": "ID",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "University of Utah Health Pavilion",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Toronto General Hospital Redevelopment",
+    "city": "Toronto",
+    "state": "ON",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Montreal General Hospital Expansion",
+    "city": "Montreal",
+    "state": "QC",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "TSMC Fab 21 Phase 2 Tool Install",
+    "city": "Chandler",
+    "state": "AZ",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Samsung Fab Taylor Texas Phase 2",
+    "city": "Taylor",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Intel Ohio One Fab Equipment Install",
+    "city": "New Albany",
+    "state": "OH",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "600 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Wolfspeed Durham SiC Fab Expansion",
+    "city": "Durham",
+    "state": "NC",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "LG Energy Solution Bypass Line MI",
+    "city": "Holland",
+    "state": "MI",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Panasonic EV Battery Plant Kansas",
+    "city": "De Soto",
+    "state": "KS",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "BMW EV Assembly Expansion Spartanburg",
+    "city": "Spartanburg",
+    "state": "SC",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Toyota Battery Plant Liberty NC",
+    "city": "Liberty",
+    "state": "NC",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Honda EV Plant Ohio Retool",
+    "city": "Marysville",
+    "state": "OH",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Volkswagen Chattanooga EV Line Retool",
+    "city": "Chattanooga",
+    "state": "TN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Rivian Normal Illinois Plant Expansion",
+    "city": "Normal",
+    "state": "IL",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Eli Lilly GLP1 Greenfield Indiana",
+    "city": "Greenfield",
+    "state": "IN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Pfizer Kalamazoo Bio Expansion",
+    "city": "Kalamazoo",
+    "state": "MI",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Moderna mRNA Norwood Facility",
+    "city": "Norwood",
+    "state": "MA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Redwood Materials Henderson NV",
+    "city": "Henderson",
+    "state": "NV",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Nucor Steel Sedalia Greenfield Mill",
+    "city": "Sedalia",
+    "state": "MO",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "US Steel Big River Steel Expansion",
+    "city": "Osceola",
+    "state": "AR",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Air Products Cryogenic Allentown",
+    "city": "Allentown",
+    "state": "PA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Linde Gas Specialty Wallingford",
+    "city": "Wallingford",
+    "state": "CT",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Bridgestone Americas La Vergne Plant",
+    "city": "La Vergne",
+    "state": "TN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "GE Appliances Louisville Expansion",
+    "city": "Louisville",
+    "state": "KY",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Stellantis EV Warren Plant Retool",
+    "city": "Warren",
+    "state": "MI",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Ford Blue Oval City Stanton TN",
+    "city": "Stanton",
+    "state": "TN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Magna International Windsor Expansion",
+    "city": "Windsor",
+    "state": "ON",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Algoma Steel Modernization Sault",
+    "city": "Sault Ste. Marie",
+    "state": "ON",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Amazon Dallas Fulfillment Wilmer",
+    "city": "Wilmer",
+    "state": "TX",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "30 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Prologis DFW Mesquite Logistics Park",
+    "city": "Mesquite",
+    "state": "TX",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Hillwood AllianceTexas Building 6",
+    "city": "Fort Worth",
+    "state": "TX",
+    "project_type": "logistics_distribution",
+    "lift_category": "boom_truck",
+    "estimated_lift_capacity": "20 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Panattoni Reno Megapark Phase 3",
+    "city": "Sparks",
+    "state": "NV",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "30 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Duke Realty Columbus Logistics Hub",
+    "city": "Columbus",
+    "state": "OH",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Amazon Indianapolis Robotics Center",
+    "city": "Whitestown",
+    "state": "IN",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "30 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Prologis Inland Empire Beaumont",
+    "city": "Beaumont",
+    "state": "CA",
+    "project_type": "logistics_distribution",
+    "lift_category": "boom_truck",
+    "estimated_lift_capacity": "20 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "IDI Logistics Savannah Park",
+    "city": "Savannah",
+    "state": "GA",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Seefried Atlanta Airport Logistics",
+    "city": "Hapeville",
+    "state": "GA",
+    "project_type": "logistics_distribution",
+    "lift_category": "boom_truck",
+    "estimated_lift_capacity": "20 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "VanTrust Phoenix Goodyear Logistics",
+    "city": "Goodyear",
+    "state": "AZ",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "30 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Trammell Crow South Dallas Megapark",
+    "city": "Wilmer",
+    "state": "TX",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Prologis Stockton Distribution",
+    "city": "Stockton",
+    "state": "CA",
+    "project_type": "logistics_distribution",
+    "lift_category": "boom_truck",
+    "estimated_lift_capacity": "20 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Amazon Jacksonville FL Fulfillment",
+    "city": "Jacksonville",
+    "state": "FL",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "FedEx Memphis Hub Expansion",
+    "city": "Memphis",
+    "state": "TN",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "30 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "UPS Worldport Louisville Expansion",
+    "city": "Louisville",
+    "state": "KY",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Target Chicago Joliet Regional Hub",
+    "city": "Joliet",
+    "state": "IL",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "30 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Amazon Lacey WA Robotics Fulfillment",
+    "city": "Lacey",
+    "state": "WA",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Amazon Charlotte Robotics Hub",
+    "city": "Charlotte",
+    "state": "NC",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "30 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Lineage Cold Storage Elk Grove Village",
+    "city": "Elk Grove Village",
+    "state": "IL",
+    "project_type": "logistics_distribution",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Americold Nashville Cold Storage",
+    "city": "Nashville",
+    "state": "TN",
+    "project_type": "logistics_distribution",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "GXO Denver Commerce City DC",
+    "city": "Commerce City",
+    "state": "CO",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Maple Grove Logistics Centre Brampton",
+    "city": "Brampton",
+    "state": "ON",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Amazon Scarborough Ontario Fulfillment",
+    "city": "Scarborough",
+    "state": "ON",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "30 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "One Chicago Supertall Tower",
+    "city": "Chicago",
+    "state": "IL",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Bank of America Tower 2 Charlotte",
+    "city": "Charlotte",
+    "state": "NC",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Granite Properties Plano Office Tower",
+    "city": "Plano",
+    "state": "TX",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Nashville East Bank Tower A",
+    "city": "Nashville",
+    "state": "TN",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Kemper Bellevue Square Tower 3",
+    "city": "Bellevue",
+    "state": "WA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Endeavor Domain North Austin Office",
+    "city": "Austin",
+    "state": "TX",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Miami Brickell City Centre Tower",
+    "city": "Miami",
+    "state": "FL",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Atlanta Midtown Google Office Tower",
+    "city": "Atlanta",
+    "state": "GA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Denver Union Station Office Tower 2",
+    "city": "Denver",
+    "state": "CO",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Philadelphia Navy Yard Life Sciences",
+    "city": "Philadelphia",
+    "state": "PA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Seattle South Lake Union Lab Tower",
+    "city": "Seattle",
+    "state": "WA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Phoenix CityScape Tower 2",
+    "city": "Phoenix",
+    "state": "AZ",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Vantage San Jose North First Tower",
+    "city": "San Jose",
+    "state": "CA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "PCL Los Angeles Arts District Tower",
+    "city": "Los Angeles",
+    "state": "CA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "WS Development Boston Seaport Lab Tower",
+    "city": "Boston",
+    "state": "MA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Lincoln Harris Charlotte Uptown Residential",
+    "city": "Charlotte",
+    "state": "NC",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Glenwood South Raleigh Tower",
+    "city": "Raleigh",
+    "state": "NC",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "111 Main Salt Lake City Expansion",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "50 Bloor Toronto Residential Tower",
+    "city": "Toronto",
+    "state": "ON",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Burrard Centre Vancouver Tower",
+    "city": "Vancouver",
+    "state": "BC",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Eau Claire Calgary Office Tower",
+    "city": "Calgary",
+    "state": "AB",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Dominion Virginia Offshore Wind Hub",
+    "city": "Virginia Beach",
+    "state": "VA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Oncor Fort Worth 345kV Substation",
+    "city": "Fort Worth",
+    "state": "TX",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Xcel Energy Aurora Substation Upgrade",
+    "city": "Aurora",
+    "state": "CO",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "APS Mesa Battery Energy Storage",
+    "city": "Mesa",
+    "state": "AZ",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "NextEra Tucson Solar Plus Storage",
+    "city": "Tucson",
+    "state": "AZ",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Invenergy Katy Texas BESS Project",
+    "city": "Katy",
+    "state": "TX",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Western Farmers Wind Hub OKC",
+    "city": "Oklahoma City",
+    "state": "OK",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Duke Energy Carolinas Concord Substation",
+    "city": "Concord",
+    "state": "NC",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Evergy Kansas City Substation Upgrade",
+    "city": "Kansas City",
+    "state": "MO",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "PGE Northern California BESS Fresno",
+    "city": "Fresno",
+    "state": "CA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "SCE Southern California Grid Storage",
+    "city": "Oxnard",
+    "state": "CA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "BPA Columbia River Transmission OR",
+    "city": "Portland",
+    "state": "OR",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "NV Energy Henderson BESS Expansion",
+    "city": "Henderson",
+    "state": "NV",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "FPL Miami Grid Hardening Program",
+    "city": "Miami",
+    "state": "FL",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Georgia Power Savannah Substation",
+    "city": "Savannah",
+    "state": "GA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "ComEd Chicago Grid Hardening",
+    "city": "Chicago",
+    "state": "IL",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Venture Global Plaquemines LNG",
+    "city": "Plaquemines Parish",
+    "state": "LA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "800 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Suncor Commerce City Refinery Turnaround",
+    "city": "Commerce City",
+    "state": "CO",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "LyondellBasell Pasadena TX Expansion",
+    "city": "Pasadena",
+    "state": "TX",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Hydro Quebec Beauharnois Upgrade",
+    "city": "Beauharnois",
+    "state": "QC",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "OPG Darlington Nuclear Refurbishment",
+    "city": "Darlington",
+    "state": "ON",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Enbridge Line 5 Michigan Tunnel",
+    "city": "Mackinaw City",
+    "state": "MI",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "TC Energy Fort Saskatchewan AB Pipeline",
+    "city": "Fort Saskatchewan",
+    "state": "AB",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "I-65 Louisville Ohio River Bridge Rehab",
+    "city": "Louisville",
+    "state": "KY",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "I-95 Philadelphia Viaduct Repair",
+    "city": "Philadelphia",
+    "state": "PA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Port of Long Beach Wharf Rebuild",
+    "city": "Long Beach",
+    "state": "CA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Port Miami Cruise Terminal Expansion",
+    "city": "Miami",
+    "state": "FL",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Port Tacoma Wharf Reconstruction",
+    "city": "Tacoma",
+    "state": "WA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Port Tampa Bay Terminal Upgrade",
+    "city": "Tampa",
+    "state": "FL",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "LA Metro Commerce City Maintenance Yard",
+    "city": "Commerce",
+    "state": "CA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Brightline Orlando Station Tower",
+    "city": "Orlando",
+    "state": "FL",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "OHare Terminal Modernization Chicago",
+    "city": "Chicago",
+    "state": "IL",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "MSP Airport Concourse G Minneapolis",
+    "city": "Minneapolis",
+    "state": "MN",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Denver International Concourse Expansion",
+    "city": "Denver",
+    "state": "CO",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Phoenix Sky Harbor Terminal 4 Exp",
+    "city": "Phoenix",
+    "state": "AZ",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "BART Oakland Station Seismic Retrofit",
+    "city": "Oakland",
+    "state": "CA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Norfolk Navy Yard Hammerhead Replacement",
+    "city": "Norfolk",
+    "state": "VA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "BNSF Roanoke Intermodal Yard Crane",
+    "city": "Roanoke",
+    "state": "VA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Savannah Harbor Expansion Program",
+    "city": "Savannah",
+    "state": "GA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "New Orleans Mississippi Bridge Rehab",
+    "city": "New Orleans",
+    "state": "LA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Port of San Diego Chula Vista Wharf",
+    "city": "Chula Vista",
+    "state": "CA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Pearson Airport Toronto T1 Expansion",
+    "city": "Mississauga",
+    "state": "ON",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Port of Vancouver Deltaport Expansion",
+    "city": "Delta",
+    "state": "BC",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Eglinton Crosstown LRT Toronto",
+    "city": "Toronto",
+    "state": "ON",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Calgary Green Line LRT Phase 1",
+    "city": "Calgary",
+    "state": "AB",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Microchip Technology Chandler Fab Exp",
+    "city": "Chandler",
+    "state": "AZ",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Onsemi Phoenix Fab Modernization",
+    "city": "Scottsdale",
+    "state": "AZ",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "GlobalFoundries Albany Fab Expansion",
+    "city": "Malta",
+    "state": "NY",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Texas Instruments Sherman Fab Phase 2",
+    "city": "Sherman",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Applied Materials Santa Clara R&D",
+    "city": "Santa Clara",
+    "state": "CA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Lam Research Fremont Campus Expansion",
+    "city": "Fremont",
+    "state": "CA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Wacker Chemical Charleston TN Plant",
+    "city": "Charleston",
+    "state": "TN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Dow Chemical Freeport TX Expansion",
+    "city": "Freeport",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "BASF Geismar Louisiana Hub",
+    "city": "Geismar",
+    "state": "LA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Huntsman Chemical Port Neches TX",
+    "city": "Port Neches",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Westlake Chemical Lake Charles LA",
+    "city": "Lake Charles",
+    "state": "LA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Sasol Lake Charles Chemical Complex",
+    "city": "Lake Charles",
+    "state": "LA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Methanex Geismar Methanol Plant",
+    "city": "Geismar",
+    "state": "LA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Celanese League City TX Expansion",
+    "city": "League City",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "SpaceX Boca Chica Starbase Facility",
+    "city": "Boca Chica",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "600 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Boeing Everett Factory Expansion",
+    "city": "Everett",
+    "state": "WA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Caterpillar Decatur Illinois Expansion",
+    "city": "Decatur",
+    "state": "IL",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Deere Waterloo Iowa Plant Retool",
+    "city": "Waterloo",
+    "state": "IA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "AbbVie North Chicago Pharma Expansion",
+    "city": "North Chicago",
+    "state": "IL",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Vertex Pharmaceuticals Boston Campus",
+    "city": "Boston",
+    "state": "MA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Regeneron Tarrytown Bio Plant Expansion",
+    "city": "Tarrytown",
+    "state": "NY",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Genentech South SF Biotech Expansion",
+    "city": "South San Francisco",
+    "state": "CA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Merck Rahway NJ Bio Manufacturing",
+    "city": "Rahway",
+    "state": "NJ",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Novo Nordisk Durham NC Expansion",
+    "city": "Durham",
+    "state": "NC",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "BAE Systems York PA Armor Plant",
+    "city": "York",
+    "state": "PA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Oshkosh Defense Oshkosh WI Plant",
+    "city": "Oshkosh",
+    "state": "WI",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Raytheon Tucson Defense Facility",
+    "city": "Tucson",
+    "state": "AZ",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Northrop Grumman Herndon HQ Campus",
+    "city": "Herndon",
+    "state": "VA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "L3Harris Ogden Utah Aerospace",
+    "city": "Ogden",
+    "state": "UT",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Parker Hannifin Cleveland Expansion",
+    "city": "Cleveland",
+    "state": "OH",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "ExxonMobil Baytown TX Expansion",
+    "city": "Baytown",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Marathon Petroleum Galveston Bay Refinery",
+    "city": "Texas City",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Motiva Port Arthur Refinery Expansion",
+    "city": "Port Arthur",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "600 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Irving Oil Saint John NB Refinery",
+    "city": "Saint John",
+    "state": "NB",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Valero Memphis Refinery Expansion",
+    "city": "Memphis",
+    "state": "TN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Rio Tinto Kennecott Utah Copper Mill",
+    "city": "Bingham Canyon",
+    "state": "UT",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Freeport McMoRan Morenci Expansion",
+    "city": "Morenci",
+    "state": "AZ",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Teck Resources Trail BC Smelter",
+    "city": "Trail",
+    "state": "BC",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Nutrien Vanscoy Potash Expansion",
+    "city": "Vanscoy",
+    "state": "SK",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Stelco Hamilton Steel Modernization",
+    "city": "Hamilton",
+    "state": "ON",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Rio Tinto Saguenay Aluminum Smelter",
+    "city": "Jonquiere",
+    "state": "QC",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Alcoa Baie Comeau Smelter Modernization",
+    "city": "Baie-Comeau",
+    "state": "QC",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Canfor Prince George Sawmill Expansion",
+    "city": "Prince George",
+    "state": "BC",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "West Fraser Williams Lake Sawmill",
+    "city": "Williams Lake",
+    "state": "BC",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "International Paper Memphis Mill",
+    "city": "Memphis",
+    "state": "TN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Georgia Pacific Savannah Tissue Mill",
+    "city": "Savannah",
+    "state": "GA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "CF Industries Port Neal Iowa",
+    "city": "Port Neal",
+    "state": "IA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Barrick Gold Carlin Nevada Gold Mill",
+    "city": "Carlin",
+    "state": "NV",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Newmont Goldcorp Elko Gold Leach",
+    "city": "Elko",
+    "state": "NV",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Summit Healthcare Scottsdale Expansion",
+    "city": "Scottsdale",
+    "state": "AZ",
+    "project_type": "hospital",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "MultiCare Tacoma Medical Expansion",
+    "city": "Tacoma",
+    "state": "WA",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Fairview Health Minneapolis Ortho Tower",
+    "city": "Minneapolis",
+    "state": "MN",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Intermountain Healthcare Provo Tower",
+    "city": "Provo",
+    "state": "UT",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Centura Health Colorado Springs Campus",
+    "city": "Colorado Springs",
+    "state": "CO",
+    "project_type": "hospital",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Sanford Health Sioux Falls Tower",
+    "city": "Sioux Falls",
+    "state": "SD",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Henry Ford Health Detroit Tower",
+    "city": "Detroit",
+    "state": "MI",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "OSF Healthcare Peoria Illinois Tower",
+    "city": "Peoria",
+    "state": "IL",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Carilion Clinic Roanoke Expansion",
+    "city": "Roanoke",
+    "state": "VA",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Prisma Health Columbia SC Tower",
+    "city": "Columbia",
+    "state": "SC",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "WellStar Atlanta Medical Center",
+    "city": "Atlanta",
+    "state": "GA",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Tampa General Hospital Expansion Tower",
+    "city": "Tampa",
+    "state": "FL",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "AdventHealth Orlando North Tower",
+    "city": "Orlando",
+    "state": "FL",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Ochsner Health New Orleans Pavilion",
+    "city": "New Orleans",
+    "state": "LA",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Trinity Health Livonia Michigan Tower",
+    "city": "Livonia",
+    "state": "MI",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Regions Hospital St Paul Expansion",
+    "city": "St. Paul",
+    "state": "MN",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Alberta Health Calgary Foothills Expansion",
+    "city": "Calgary",
+    "state": "AB",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "BC Childrens Hospital Vancouver",
+    "city": "Vancouver",
+    "state": "BC",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Ottawa Civic Hospital Redevelopment",
+    "city": "Ottawa",
+    "state": "ON",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "CHUM Montreal Hospital Expansion",
+    "city": "Montreal",
+    "state": "QC",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Empire Wind Offshore Hub Brooklyn",
+    "city": "Brooklyn",
+    "state": "NY",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Vineyard Wind New Bedford Hub",
+    "city": "New Bedford",
+    "state": "MA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "600 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Revolution Wind New London CT Hub",
+    "city": "New London",
+    "state": "CT",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Constellation Nuclear Clinton IL",
+    "city": "Clinton",
+    "state": "IL",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "TVA Watts Bar Nuclear Extension TN",
+    "city": "Spring City",
+    "state": "TN",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Vogtle Unit 4 Commissioning Georgia",
+    "city": "Waynesboro",
+    "state": "GA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "600 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "PPL Electric Pennsylvania Transmission",
+    "city": "Allentown",
+    "state": "PA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Eversource New England Springfield",
+    "city": "Springfield",
+    "state": "MA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "PSEG New Jersey Newark Substation",
+    "city": "Newark",
+    "state": "NJ",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "ConEd NYC Brooklyn Grid Upgrade",
+    "city": "Brooklyn",
+    "state": "NY",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Idaho Power Twin Falls Substation",
+    "city": "Twin Falls",
+    "state": "ID",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Puget Sound Energy Kennewick WA",
+    "city": "Kennewick",
+    "state": "WA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Duke Energy Indiana Plainfield Sub",
+    "city": "Plainfield",
+    "state": "IN",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "AEP Texas McAllen Transmission",
+    "city": "McAllen",
+    "state": "TX",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Ameren Missouri Joplin Wind Farm",
+    "city": "Joplin",
+    "state": "MO",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Avangrid Maine Wind Farm",
+    "city": "Farmington",
+    "state": "ME",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Entergy Arkansas Little Rock BESS",
+    "city": "Little Rock",
+    "state": "AR",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Silicon Valley Power Santa Clara Grid",
+    "city": "Santa Clara",
+    "state": "CA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Manitoba Hydro Bipole III Winnipeg",
+    "city": "Winnipeg",
+    "state": "MB",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "BC Hydro Site C Dam Generators",
+    "city": "Fort St. John",
+    "state": "BC",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "600 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "TransAlta Wind Pincher Creek AB",
+    "city": "Pincher Creek",
+    "state": "AB",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "OPG Bruce Nuclear Tiverton ON Refurb",
+    "city": "Tiverton",
+    "state": "ON",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "600 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Pembina Pipeline Fort Saskatchewan AB",
+    "city": "Fort Saskatchewan",
+    "state": "AB",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Syncrude Fort McMurray Upgrader",
+    "city": "Fort McMurray",
+    "state": "AB",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "LNG Canada Kitimat Phase 2",
+    "city": "Kitimat",
+    "state": "BC",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "800 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "US 101 Santa Barbara Bridge Rehab",
+    "city": "Santa Barbara",
+    "state": "CA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Minneapolis I-94 Corridor Bridges",
+    "city": "Minneapolis",
+    "state": "MN",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Dallas High Five Interchange Rehab",
+    "city": "Dallas",
+    "state": "TX",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Atlanta GA 400 Extension Bridge",
+    "city": "Atlanta",
+    "state": "GA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Phoenix I-10 Stack Interchange Rehab",
+    "city": "Phoenix",
+    "state": "AZ",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Seattle SR99 Waterfront Viaduct Demo",
+    "city": "Seattle",
+    "state": "WA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "George Washington Bridge NJ Rehab",
+    "city": "Fort Lee",
+    "state": "NJ",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Chicago IL 294 Tollway Expansion",
+    "city": "Hillside",
+    "state": "IL",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Houston Hardy Toll Road Extension",
+    "city": "Houston",
+    "state": "TX",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Nashville I-440 Expansion Project",
+    "city": "Nashville",
+    "state": "TN",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Charlotte I-485 New Interchange",
+    "city": "Charlotte",
+    "state": "NC",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Miami I-595 Express Lanes Rehab",
+    "city": "Fort Lauderdale",
+    "state": "FL",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Tampa Selmon Expressway Widening",
+    "city": "Tampa",
+    "state": "FL",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Philadelphia Market-Frankford Rail Rehab",
+    "city": "Philadelphia",
+    "state": "PA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Honolulu HART Rail Phase 2",
+    "city": "Honolulu",
+    "state": "HI",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Trans Canada Manitoba Hwy Twinning",
+    "city": "Brandon",
+    "state": "MB",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Highway 407 East Pickering Extension",
+    "city": "Pickering",
+    "state": "ON",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Samuel De Champlain Bridge Montreal",
+    "city": "Montreal",
+    "state": "QC",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Vancouver Broadway Subway Extension",
+    "city": "Vancouver",
+    "state": "BC",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Edmonton Valley Line LRT West",
+    "city": "Edmonton",
+    "state": "AB",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Huntington Ingalls Newport News Shipyard",
+    "city": "Newport News",
+    "state": "VA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "General Dynamics Bath Iron Works",
+    "city": "Bath",
+    "state": "ME",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "NASSCO San Diego Shipyard Upgrade",
+    "city": "San Diego",
+    "state": "CA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Ingalls Shipbuilding Pascagoula MS",
+    "city": "Pascagoula",
+    "state": "MS",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Port of Baltimore Seagirt Terminal",
+    "city": "Baltimore",
+    "state": "MD",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Port of Houston Ship Channel Widening",
+    "city": "Houston",
+    "state": "TX",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Port New Orleans Terminal Upgrade",
+    "city": "New Orleans",
+    "state": "LA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Port of Charleston Wharf 2 Expansion",
+    "city": "Charleston",
+    "state": "SC",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Port of Savannah Garden City Terminal",
+    "city": "Savannah",
+    "state": "GA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Port of Seattle Terminal 46 Rehab",
+    "city": "Seattle",
+    "state": "WA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Port of Oakland Berth Rehabilitation",
+    "city": "Oakland",
+    "state": "CA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Amazon Thornton CO Robotics Hub",
+    "city": "Thornton",
+    "state": "CO",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "30 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Walmart Bentonville AR DC Expansion",
+    "city": "Bentonville",
+    "state": "AR",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Dollar General Chesapeake VA DC",
+    "city": "Chesapeake",
+    "state": "VA",
+    "project_type": "logistics_distribution",
+    "lift_category": "boom_truck",
+    "estimated_lift_capacity": "20 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "XPO Phoenix Avondale Logistics",
+    "city": "Avondale",
+    "state": "AZ",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "30 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Target Brooklyn Park MN Regional Hub",
+    "city": "Brooklyn Park",
+    "state": "MN",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Home Depot Stonecrest GA Regional DC",
+    "city": "Stonecrest",
+    "state": "GA",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "30 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Kroger Blue Ash OH Fulfillment",
+    "city": "Blue Ash",
+    "state": "OH",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "TJ Maxx Baltimore Distribution Center",
+    "city": "Baltimore",
+    "state": "MD",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "DHL Cincinnati Wilmington Hub",
+    "city": "Wilmington",
+    "state": "OH",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "30 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "DB Schenker Chicago Elk Grove Freight",
+    "city": "Elk Grove Village",
+    "state": "IL",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Kuehne Nagel Miami Air Cargo Hub",
+    "city": "Miami",
+    "state": "FL",
+    "project_type": "logistics_distribution",
+    "lift_category": "boom_truck",
+    "estimated_lift_capacity": "20 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Prologis Surrey BC Distribution",
+    "city": "Surrey",
+    "state": "BC",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Loblaw Distribution Brampton ON",
+    "city": "Brampton",
+    "state": "ON",
+    "project_type": "logistics_distribution",
+    "lift_category": "boom_truck",
+    "estimated_lift_capacity": "20 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Orlando Brightline Hotel Tower",
+    "city": "Orlando",
+    "state": "FL",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Las Vegas Caesars Resort Tower",
+    "city": "Las Vegas",
+    "state": "NV",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "San Diego Mission Valley TOD Tower",
+    "city": "San Diego",
+    "state": "CA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Portland Pearl District Residential",
+    "city": "Portland",
+    "state": "OR",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Richmond VA Scotts Addition Tower",
+    "city": "Richmond",
+    "state": "VA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Norfolk VA Harbor View Residential",
+    "city": "Norfolk",
+    "state": "VA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Columbus OH Short North Office Tower",
+    "city": "Columbus",
+    "state": "OH",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Detroit Gilbert Monroe Block Tower",
+    "city": "Detroit",
+    "state": "MI",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Pittsburgh Strip District Residential",
+    "city": "Pittsburgh",
+    "state": "PA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Minneapolis Nicollet Mall Tower",
+    "city": "Minneapolis",
+    "state": "MN",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "St Louis Cortex Innovation Tower",
+    "city": "St. Louis",
+    "state": "MO",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Ottawa ByWard Market Residential",
+    "city": "Ottawa",
+    "state": "ON",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Edmonton Ice District Phase 3",
+    "city": "Edmonton",
+    "state": "AB",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Halifax Cogswell Interchange Residential",
+    "city": "Halifax",
+    "state": "NS",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "60 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Fannie Mae Plano TX Campus Tower",
+    "city": "Plano",
+    "state": "TX",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Apple Austin Campus Building 6 TX",
+    "city": "Austin",
+    "state": "TX",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Dell Round Rock HQ Office Tower",
+    "city": "Round Rock",
+    "state": "TX",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Microsoft Redmond Campus Phase 3 WA",
+    "city": "Redmond",
+    "state": "WA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Amazon HQ2 Pentagon City Phase 2",
+    "city": "Arlington",
+    "state": "VA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Google DC Office Tower",
+    "city": "Washington",
+    "state": "DC",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Apple Sunnyvale Infinite Loop Annex",
+    "city": "Sunnyvale",
+    "state": "CA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "San Francisco Salesforce Tower Expansion",
+    "city": "San Francisco",
+    "state": "CA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Sacramento Bio Research Office Tower",
+    "city": "Sacramento",
+    "state": "CA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Kansas City Power Light District Tower",
+    "city": "Kansas City",
+    "state": "MO",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Omaha Union Pacific HQ Expansion",
+    "city": "Omaha",
+    "state": "NE",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Honolulu Ward Village Phase 5 Tower",
+    "city": "Honolulu",
+    "state": "HI",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Winnipeg True North Square Tower",
+    "city": "Winnipeg",
+    "state": "MB",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Quebec City St Roch District Tower",
+    "city": "Quebec City",
+    "state": "QC",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Halifax Nova Centre Phase 2",
+    "city": "Halifax",
+    "state": "NS",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Amazon Dallas Garland Retail Hub 2",
+    "city": "Garland",
+    "state": "TX",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Chewy Concord NC Fulfillment Center",
+    "city": "Concord",
+    "state": "NC",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "PepsiCo Columbus Ohio Distribution",
+    "city": "Columbus",
+    "state": "OH",
+    "project_type": "logistics_distribution",
+    "lift_category": "carry_deck_crane",
+    "estimated_lift_capacity": "25 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "McLane Houston Grocery DC TX",
+    "city": "Houston",
+    "state": "TX",
+    "project_type": "logistics_distribution",
+    "lift_category": "boom_truck",
+    "estimated_lift_capacity": "20 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Costco Issaquah WA Distribution",
+    "city": "Issaquah",
+    "state": "WA",
+    "project_type": "logistics_distribution",
+    "lift_category": "boom_truck",
+    "estimated_lift_capacity": "20 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Best Buy Shakopee MN DC Upgrade",
+    "city": "Shakopee",
+    "state": "MN",
+    "project_type": "logistics_distribution",
+    "lift_category": "boom_truck",
+    "estimated_lift_capacity": "20 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Tesla Gigafactory Nevada Phase 4",
+    "city": "Sparks",
+    "state": "NV",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Tesla Gigafactory Austin Phase 3 TX",
+    "city": "Austin",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Tesla Fremont CA Factory Expansion",
+    "city": "Fremont",
+    "state": "CA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Schneider Electric Houston Service Ctr",
+    "city": "Houston",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Honeywell Kennesaw GA Plant Expansion",
+    "city": "Kennesaw",
+    "state": "GA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "General Dynamics Garland TX Ordnance",
+    "city": "Garland",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Cummins Columbus IN Engine Expansion",
+    "city": "Columbus",
+    "state": "IN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Paccar Denton TX Truck Manufacturing",
+    "city": "Denton",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Medtronic Fridley MN Device Plant",
+    "city": "Fridley",
+    "state": "MN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Boston Scientific Maple Grove MN",
+    "city": "Maple Grove",
+    "state": "MN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Zimmer Biomet Warsaw Indiana Plant",
+    "city": "Warsaw",
+    "state": "IN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Stryker Portage Michigan Expansion",
+    "city": "Portage",
+    "state": "MI",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Johnson Controls Milwaukee Expansion",
+    "city": "Milwaukee",
+    "state": "WI",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Emerson Electric St Louis Plant",
+    "city": "St. Louis",
+    "state": "MO",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "KLA Corporation Milpitas Expansion",
+    "city": "Milpitas",
+    "state": "CA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "3M Austin MN Specialty Plant",
+    "city": "Austin",
+    "state": "MN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "PPG Industries Cleveland Paint Plant",
+    "city": "Cleveland",
+    "state": "OH",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Olin Winchester East Alton IL Ammo",
+    "city": "East Alton",
+    "state": "IL",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "CF Industries Port Neal Iowa Amm Plant",
+    "city": "Port Neal",
+    "state": "IA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "GrafTech Clarksburg WV Electrode Plant",
+    "city": "Clarksburg",
+    "state": "WV",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Resolute Forest Thunder Bay ON Pulp Mill",
+    "city": "Thunder Bay",
+    "state": "ON",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Tembec Hearst Ontario Sawmill",
+    "city": "Hearst",
+    "state": "ON",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Cameco Cigar Lake Saskatchewan Mine",
+    "city": "La Ronge",
+    "state": "SK",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Barrick Gold Goldstrike Mill NV Phase 3",
+    "city": "Elko",
+    "state": "NV",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Coeur Mining Battle Mountain NV",
+    "city": "Battle Mountain",
+    "state": "NV",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Turquoise Hill Oyu Tolgoi Processing",
+    "city": "Elko",
+    "state": "NV",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Ascension Via Christi Wichita KS",
+    "city": "Wichita",
+    "state": "KS",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Avera Health Fargo ND Expansion",
+    "city": "Fargo",
+    "state": "ND",
+    "project_type": "hospital",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Aultman Hospital Canton Ohio Tower",
+    "city": "Canton",
+    "state": "OH",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "LSU Health Shreveport LA Tower",
+    "city": "Shreveport",
+    "state": "LA",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Saskatchewan Health Saskatoon Tower",
+    "city": "Saskatoon",
+    "state": "SK",
+    "project_type": "hospital",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "NuScale SMR Idaho Falls ID Lab",
+    "city": "Idaho Falls",
+    "state": "ID",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "pre_construction"
+  },
+  {
+    "project_name": "SaskPower Regina Transmission SK",
+    "city": "Regina",
+    "state": "SK",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "ATCO Gas Edmonton Compressor Station",
+    "city": "Edmonton",
+    "state": "AB",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Cenovus Cold Lake SAGD AB",
+    "city": "Cold Lake",
+    "state": "AB",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Nova Gas Red Deer AB Pipeline Loop",
+    "city": "Red Deer",
+    "state": "AB",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Boise Capitol Boulevard Mixed Use",
+    "city": "Boise",
+    "state": "ID",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "60 tons",
+    "opportunity_stage": "pre_construction"
+  },
+  {
+    "project_name": "Albuquerque Uptown Mixed Use Tower",
+    "city": "Albuquerque",
+    "state": "NM",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "60 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "El Paso Downtown Residential Tower",
+    "city": "El Paso",
+    "state": "TX",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "60 tons",
+    "opportunity_stage": "pre_construction"
+  },
+  {
+    "project_name": "Madison WI East Washington Tower",
+    "city": "Madison",
+    "state": "WI",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Green Bay Titletown District Tower",
+    "city": "Green Bay",
+    "state": "WI",
+    "project_type": "commercial_tower",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "60 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Peoria Caterpillar Innovation Hub",
+    "city": "Peoria",
+    "state": "IL",
+    "project_type": "commercial_tower",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Spokane University District Tower",
+    "city": "Spokane",
+    "state": "WA",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "60 tons",
+    "opportunity_stage": "pre_construction"
+  },
+  {
+    "project_name": "Tucson Downtown Mixed Use Tower",
+    "city": "Tucson",
+    "state": "AZ",
+    "project_type": "commercial_tower",
+    "lift_category": "tower_crane",
+    "estimated_lift_capacity": "60 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Regina CP Rail HQ Expansion",
+    "city": "Regina",
+    "state": "SK",
+    "project_type": "commercial_tower",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "60 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Anchorage Commercial Office Renovation",
+    "city": "Anchorage",
+    "state": "AK",
+    "project_type": "commercial_tower",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Formosa Petrochemical Point Comfort TX",
+    "city": "Point Comfort",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Olin Blue Water Michigan Chemical",
+    "city": "McGregor",
+    "state": "MI",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Chemours Fayetteville NC PFAS Plant",
+    "city": "Fayetteville",
+    "state": "NC",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Eastman Chemical Kingsport TN Expansion",
+    "city": "Kingsport",
+    "state": "TN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Cabot Corporation Pampa TX Carbon Black",
+    "city": "Pampa",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Olin Winchester Marion IL Brass Mill",
+    "city": "Marion",
+    "state": "IL",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Saint Gobain Malvern PA Glass Fab",
+    "city": "Malvern",
+    "state": "PA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Owens Corning Toledo OH Insulation",
+    "city": "Toledo",
+    "state": "OH",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Corning Life Sciences Oneonta NY",
+    "city": "Oneonta",
+    "state": "NY",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "IDEX Corporation Baton Rouge Pump Plant",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Graco Minneapolis MN Fluid Equipment",
+    "city": "Minneapolis",
+    "state": "MN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Watts Water Hingham MA Expansion",
+    "city": "Hingham",
+    "state": "MA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Enpro Industries Houston Sealing Plant",
+    "city": "Houston",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Chart Industries Howden TX Expansion",
+    "city": "La Porte",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Thermon Group San Marcos TX Plant",
+    "city": "San Marcos",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "US Silica Ottawa IL Sand Plant",
+    "city": "Ottawa",
+    "state": "IL",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Vulcan Materials Birmingham Quarry",
+    "city": "Birmingham",
+    "state": "AL",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Martin Marietta Raleigh Aggregates",
+    "city": "Raleigh",
+    "state": "NC",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Summit Materials Denver Cement",
+    "city": "Denver",
+    "state": "CO",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Eagle Materials Dallas Wallboard Plant",
+    "city": "Gypsum",
+    "state": "CO",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "US Concrete Austin TX Batch Plant",
+    "city": "Georgetown",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "boom_truck",
+    "estimated_lift_capacity": "20 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Trex Company Winchester VA Deck Plant",
+    "city": "Winchester",
+    "state": "VA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Louisiana Pacific Nashville TN OSB Mill",
+    "city": "Nashville",
+    "state": "TN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Boise Cascade Medford OR Plywood Mill",
+    "city": "Medford",
+    "state": "OR",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Weyerhaeuser Plymouth NC Lumber Expansion",
+    "city": "Plymouth",
+    "state": "NC",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "UFP Technologies Salem MA Packaging",
+    "city": "Salem",
+    "state": "MA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Graphic Packaging Waco TX Carton Plant",
+    "city": "Waco",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Sealed Air Elmwood Park NJ Packaging",
+    "city": "Elmwood Park",
+    "state": "NJ",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Berry Global Evansville IN Plastics",
+    "city": "Evansville",
+    "state": "IN",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Silgan Holdings Woodland CA Can Plant",
+    "city": "Woodland",
+    "state": "CA",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Ball Corporation Fort Worth TX Can Facility",
+    "city": "Fort Worth",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Crown Holdings Tampa FL Can Expansion",
+    "city": "Tampa",
+    "state": "FL",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Pactiv Evergreen Lake Forest IL Food Pkg",
+    "city": "Lake Forest",
+    "state": "IL",
+    "project_type": "manufacturing_facility",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "80 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "CRH Americas Atlanta Cement Plant",
+    "city": "Harleyville",
+    "state": "SC",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Heidelberg Materials Hannibal MO Cement",
+    "city": "Hannibal",
+    "state": "MO",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Titan America Medley FL Cement",
+    "city": "Medley",
+    "state": "FL",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Ash Grove Midlothian TX Cement",
+    "city": "Midlothian",
+    "state": "TX",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Buzzi Unicem Pryor OK Cement Expansion",
+    "city": "Pryor",
+    "state": "OK",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Holcim Ste Genevieve MO Cement",
+    "city": "Ste. Genevieve",
+    "state": "MO",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Lehigh Hanson Union Bridge MD Plant",
+    "city": "Union Bridge",
+    "state": "MD",
+    "project_type": "manufacturing_facility",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "NextDecade Rio Grande LNG Brownsville",
+    "city": "Brownsville",
+    "state": "TX",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "800 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "New Fortress Energy Fast LNG Gulf",
+    "city": "Port Sulphur",
+    "state": "LA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "600 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Energy Transfer Lake Charles LNG",
+    "city": "Lake Charles",
+    "state": "LA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "700 tons",
+    "opportunity_stage": "pre_construction"
+  },
+  {
+    "project_name": "Sempra Mexico Energia Costa Azul LNG",
+    "city": "San Diego",
+    "state": "CA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "500 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Southern Power Decatur AL Solar BESS",
+    "city": "Decatur",
+    "state": "AL",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Dominion Energy South Carolina Substation",
+    "city": "Cayce",
+    "state": "SC",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Mississippi Power Hattiesburg Substation",
+    "city": "Hattiesburg",
+    "state": "MS",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Entergy Mississippi Jackson Substation",
+    "city": "Jackson",
+    "state": "MS",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Cleco Louisiana BESS Shreveport",
+    "city": "Shreveport",
+    "state": "LA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "El Paso Electric New Mexico Substation",
+    "city": "Las Cruces",
+    "state": "NM",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Black Hills Energy Colorado Springs Sub",
+    "city": "Colorado Springs",
+    "state": "CO",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Alliant Energy Iowa Wind Phase 3",
+    "city": "Fort Dodge",
+    "state": "IA",
+    "project_type": "energy_infrastructure",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "400 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Empire State Electric New York BESS",
+    "city": "Brentwood",
+    "state": "NY",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Atlantic City Electric New Jersey Sub",
+    "city": "Egg Harbor Township",
+    "state": "NJ",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Ohio Edison Akron Grid Upgrade",
+    "city": "Akron",
+    "state": "OH",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Indiana Michigan Power Ft Wayne Sub",
+    "city": "Fort Wayne",
+    "state": "IN",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Cincinnati Gas Electric Substation",
+    "city": "Cincinnati",
+    "state": "OH",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Louisville Gas Electric BESS Project",
+    "city": "Louisville",
+    "state": "KY",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "West Virginia Power Wheeling Substation",
+    "city": "Wheeling",
+    "state": "WV",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Montana Dakota Utilities Bismarck Sub",
+    "city": "Bismarck",
+    "state": "ND",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Northwestern Energy Billings Substation",
+    "city": "Billings",
+    "state": "MT",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Tucson Electric Power Southern AZ BESS",
+    "city": "Tucson",
+    "state": "AZ",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "UNS Energy Nogales AZ Substation",
+    "city": "Nogales",
+    "state": "AZ",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Salt River Project Tempe AZ Substation",
+    "city": "Tempe",
+    "state": "AZ",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "New Mexico Gas Albuquerque Compressor",
+    "city": "Albuquerque",
+    "state": "NM",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Southwestern Public Service Amarillo Sub",
+    "city": "Amarillo",
+    "state": "TX",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Memphis Light Gas Water Substation",
+    "city": "Memphis",
+    "state": "TN",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Nashville Electric Service BESS",
+    "city": "Antioch",
+    "state": "TN",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Knoxville Utilities Board Substation",
+    "city": "Knoxville",
+    "state": "TN",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Chattanooga EPB Grid Upgrade",
+    "city": "Chattanooga",
+    "state": "TN",
+    "project_type": "energy_infrastructure",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Pacific Coast Highway CA Bridge Rehab",
+    "city": "Malibu",
+    "state": "CA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "San Jose Mineta Airport Terminal B",
+    "city": "San Jose",
+    "state": "CA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Portland International Airport Expansion",
+    "city": "Portland",
+    "state": "OR",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Salt Lake International Airport Phase 3",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Kansas City International New Terminal",
+    "city": "Kansas City",
+    "state": "MO",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Indianapolis Airport Terminal Expansion",
+    "city": "Indianapolis",
+    "state": "IN",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Columbus OH John Glenn Airport",
+    "city": "Columbus",
+    "state": "OH",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Memphis International Cargo Hub",
+    "city": "Memphis",
+    "state": "TN",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Tucson International Airport Expansion",
+    "city": "Tucson",
+    "state": "AZ",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Raleigh Durham Airport Terminal 2",
+    "city": "Morrisville",
+    "state": "NC",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Fort Lauderdale Airport Terminal 1",
+    "city": "Fort Lauderdale",
+    "state": "FL",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Jacksonville FL Airport Cargo Expansion",
+    "city": "Jacksonville",
+    "state": "FL",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Nashville BNA Airport Concourse D",
+    "city": "Nashville",
+    "state": "TN",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Birmingham BHM Airport Modernization",
+    "city": "Birmingham",
+    "state": "AL",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "New Orleans MSY Airport Phase 2",
+    "city": "Kenner",
+    "state": "LA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "San Antonio SAT Airport Expansion",
+    "city": "San Antonio",
+    "state": "TX",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Buffalo Niagara Airport Modernization",
+    "city": "Cheektowaga",
+    "state": "NY",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Hartford Bradley Airport CT Terminal",
+    "city": "Windsor Locks",
+    "state": "CT",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Richmond VA Airport RIC Expansion",
+    "city": "Richmond",
+    "state": "VA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "120 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Winnipeg Richardson Airport YWG",
+    "city": "Winnipeg",
+    "state": "MB",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "150 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Edmonton YEG International Expansion",
+    "city": "Leduc",
+    "state": "AB",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Ottawa YOW International Airport Reno",
+    "city": "Ottawa",
+    "state": "ON",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "Saskatoon YXE Airport Modernization",
+    "city": "Saskatoon",
+    "state": "SK",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "Halifax YHZ Airport Expansion NS",
+    "city": "Enfield",
+    "state": "NS",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "all_terrain_crane",
+    "estimated_lift_capacity": "100 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "I-405 Bellevue Washington Widening",
+    "city": "Bellevue",
+    "state": "WA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "I-70 St Louis Missouri Expansion",
+    "city": "St. Louis",
+    "state": "MO",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "I-35 Kansas City Missouri Corridor",
+    "city": "Kansas City",
+    "state": "MO",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "I-25 Albuquerque NM Bridge Rehab",
+    "city": "Albuquerque",
+    "state": "NM",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "I-15 Salt Lake City Corridor Rehab",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "I-17 Phoenix AZ HOV Lanes",
+    "city": "Phoenix",
+    "state": "AZ",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "I-40 Oklahoma City Interchange Rehab",
+    "city": "Oklahoma City",
+    "state": "OK",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "250 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "I-30 Dallas Fort Worth Corridor",
+    "city": "Grand Prairie",
+    "state": "TX",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "I-10 New Orleans Pontchartrain Rehab",
+    "city": "Metairie",
+    "state": "LA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "350 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "I-20 Birmingham Alabama Expansion",
+    "city": "Bessemer",
+    "state": "AL",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  },
+  {
+    "project_name": "I-285 Atlanta Top End Expansion",
+    "city": "Sandy Springs",
+    "state": "GA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "300 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "I-77 Charlotte South Carolina Widening",
+    "city": "Fort Mill",
+    "state": "SC",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "active_construction"
+  },
+  {
+    "project_name": "US Route 1 Northern Virginia Widening",
+    "city": "Woodbridge",
+    "state": "VA",
+    "project_type": "infrastructure_upgrade",
+    "lift_category": "crawler_crane",
+    "estimated_lift_capacity": "200 tons",
+    "opportunity_stage": "permitted"
+  }
+]
