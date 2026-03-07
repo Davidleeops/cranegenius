@@ -31,15 +31,26 @@
     byId('cats').innerHTML = (op.recommended_lift_categories||[]).map(function(c){ return '<span class="tag">'+esc(c)+'</span>'; }).join('');
   }
 
+  function applyCrossLinks(op){
+    var cats = op.recommended_lift_categories || [];
+    var firstCategory = encodeURIComponent(cats[0] || 'specialty_lift_contractors');
+    document.querySelectorAll('a[href=\"/marketplace/\"]').forEach(function(a){
+      a.href = '/marketplace/?lift=' + firstCategory;
+    });
+    document.querySelectorAll('a[href=\"/data-centers/ai-planner\"]').forEach(function(a){
+      a.href = '/data-centers/ai-planner?ref=opportunity_engine';
+    });
+  }
+
   function fetchOpportunity(){
-    fetch('/data/opportunities/opportunities.json')
-      .then(function(r){ return r.json(); })
-      .then(function(data){
+    window.CGOpportunityDataLoader.loadOpportunityDataset()
+      .then(function(result){
         var slug = window.CG_OPPORTUNITY_SLUG || '';
-        var list = data && data.opportunities ? data.opportunities : [];
+        var list = result && result.opportunities ? result.opportunities : [];
         var op = list.find(function(x){ return x.project_slug === slug; });
         if(!op){ byId('name').textContent='Opportunity Not Found'; byId('loc').textContent='This project slug is not available.'; return; }
         renderOpportunity(op);
+        applyCrossLinks(op);
       })
       .catch(function(){
         byId('name').textContent='Opportunity Load Error';

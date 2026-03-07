@@ -3,8 +3,14 @@
 This folder contains the first-pass Opportunity Intelligence data layer.
 
 ## Current files
-- `opportunities.json`: structured opportunity records used by `/opportunities/` and `/opportunities/{slug}/`
+- `opportunities.json`: primary repo opportunity dataset used by `/opportunities/` and `/opportunities/{slug}/`
+- `seed_opportunities.json`: fallback seed dataset if imported paths are unavailable
 - `opportunity_helpers.js`: category inference + unified opportunity lead payload builder
+
+Dataset loader order is defined in `/opportunities/data_loader.js`:
+1. imported dataset paths under `data/assets` / `data/opportunities/*import*`
+2. `data/opportunities/opportunities.json`
+3. `data/opportunities/seed_opportunities.json` fallback
 
 ## Future ingestion hooks (not implemented in this sprint)
 Future scraper/agent pipelines can append or refresh `opportunities.json` from:
