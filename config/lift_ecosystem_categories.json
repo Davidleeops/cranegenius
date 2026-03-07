@@ -1,0 +1,115 @@
+{
+  "version": "v0.1",
+  "current_categories": [
+    {
+      "key": "mobile_cranes",
+      "label": "Mobile Cranes",
+      "group": "cranes"
+    },
+    {
+      "key": "tower_cranes",
+      "label": "Tower Cranes",
+      "group": "cranes"
+    },
+    {
+      "key": "spider_cranes",
+      "label": "Spider Cranes",
+      "group": "cranes"
+    },
+    {
+      "key": "mini_cranes",
+      "label": "Mini Cranes",
+      "group": "cranes"
+    },
+    {
+      "key": "crawler_cranes",
+      "label": "Crawler Cranes",
+      "group": "cranes"
+    },
+    {
+      "key": "carry_deck_cranes",
+      "label": "Carry Deck Cranes",
+      "group": "cranes"
+    },
+    {
+      "key": "compact_lifting_equipment",
+      "label": "Compact Lifting Equipment",
+      "group": "specialty"
+    },
+    {
+      "key": "glass_handling_systems",
+      "label": "Glass Handling Systems",
+      "group": "specialty"
+    },
+    {
+      "key": "vacuum_lifts",
+      "label": "Vacuum Lifts",
+      "group": "specialty"
+    },
+    {
+      "key": "rigging_and_lifting_accessories",
+      "label": "Rigging & Lifting Accessories",
+      "group": "support"
+    },
+    {
+      "key": "specialized_lifting_attachments",
+      "label": "Specialized Lifting Attachments",
+      "group": "support"
+    },
+    {
+      "key": "industrial_lifting_systems",
+      "label": "Industrial Lifting Systems",
+      "group": "industrial"
+    },
+    {
+      "key": "heavy_equipment_installation_lifts",
+      "label": "Heavy Equipment Installation Lifts",
+      "group": "industrial"
+    },
+    {
+      "key": "specialty_lift_contractors",
+      "label": "Specialty Lift Contractors",
+      "group": "services"
+    }
+  ],
+  "future_placeholders": [
+    {
+      "key": "aerial_lift_systems",
+      "label": "Aerial Lift Systems",
+      "group": "future"
+    },
+    {
+      "key": "helicopter_lift_operations",
+      "label": "Helicopter Lift Operations",
+      "group": "future"
+    },
+    {
+      "key": "heavy_transport_and_lift_logistics",
+      "label": "Heavy Transport & Lift Logistics",
+      "group": "future"
+    }
+  ],
+  "legacy_type_mapping": {
+    "Mobile Crane": "mobile_cranes",
+    "Tower Crane": "tower_cranes",
+    "Crawler Crane": "crawler_cranes",
+    "Mini Crane": "mini_cranes",
+    "All Terrain": "mobile_cranes",
+    "Glass Lift": "glass_handling_systems",
+    "Boom Truck": "industrial_lifting_systems"
+  },
+  "request_types": [
+    "pricing",
+    "availability",
+    "rental",
+    "purchase",
+    "financing",
+    "operator_support",
+    "planning_help"
+  ],
+  "lead_types": [
+    "marketplace_inquiry",
+    "lift_planner_inquiry",
+    "estimator_inquiry"
+  ]
+}

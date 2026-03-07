@@ -345,7 +345,7 @@ nav{
   <div class="hero">
     <div>
       <div class="htitle">CRANE &amp; LIFT <span>MARKETPLACE</span></div>
-      <div class="hsub">Connect with verified operators across Chicago, Dallas, Phoenix and beyond</div>
+      <div class="hsub">Connect with verified crane and lift providers across Chicago, Dallas, Phoenix and beyond</div>
     </div>
     <div class="hstats">
       <div><div class="hsn" id="cntLive">0</div><div class="hsl">Live</div></div>
@@ -364,6 +364,7 @@ nav{
       <option value="">All Types</option>
       <option>Tower Crane</option><option>Mobile Crane</option><option>Crawler Crane</option>
       <option>All Terrain</option><option>Mini Crane</option><option>Glass Lift</option><option>Boom Truck</option>
+      <option>Carry Deck Crane</option><option>Vacuum Lift</option><option>Rigging Accessory</option><option>Industrial Lift System</option><option>Specialty Lift Contractor</option>
     </select>
     <button class="sbtn" onclick="doSearch()">Search</button>
   </div>
@@ -402,13 +403,18 @@ nav{
     <button class="chip" onclick="filt('Mini',this)">Mini</button>
     <button class="chip" onclick="filt('Glass',this)">Glass Lift</button>
     <button class="chip" onclick="filt('Boom',this)">Boom Truck</button>
+    <button class="chip" onclick="filt('cat:compact_lifting_equipment',this)">Compact Lift</button>
+    <button class="chip" onclick="filt('cat:glass_handling_systems',this)">Glass Handling</button>
+    <button class="chip" onclick="filt('cat:rigging_and_lifting_accessories',this)">Rigging</button>
+    <button class="chip" onclick="filt('cat:industrial_lifting_systems',this)">Industrial</button>
+    <button class="chip" onclick="filt('cat:specialty_lift_contractors',this)">Lift Contractors</button>
   </div>
   <div class="grid" id="craneGrid"></div>
 </div>
 <div class="bot-panel">
   <div class="bhead">
     <div class="btitle">CRANE GENIUS AI</div>
-    <div class="bsub">LIST YOUR EQUIPMENT OR FIND A CRANE FOR YOUR JOB</div>
+    <div class="bsub">LIST EQUIPMENT OR FIND A LIFT SOLUTION FOR YOUR JOB</div>
   </div>
   <div class="bsteps">
     <div class="bs active" id="bs0"><div class="bsdot">1</div><div class="bslbl">Start</div></div>
@@ -441,6 +447,21 @@ nav{
     </div>
   </div>
 </div>
+<div class="overlay" id="reqM">
+  <div class="modal">
+    <div class="mhd"><span class="mtitle">LIFT INQUIRY REQUEST</span><button class="mcls" onclick="closeModal('reqM')">X</button></div>
+    <div class="mbody">
+      <div class="ibox" style="background:rgba(59,130,246,.07);border-color:rgba(59,130,246,.18);color:#93c5fd">Request pricing, availability, rental, purchase, financing, operator support, or planning help.</div>
+      <div class="fg"><label>Request Type</label><select class="fc" id="reqType"><option value="pricing">Pricing</option><option value="availability">Availability</option><option value="rental">Rental</option><option value="purchase">Purchase</option><option value="financing">Financing</option><option value="operator_support">Operator Support</option><option value="planning_help">Lift Planning Help</option></select></div>
+      <div class="fg"><label>Your Name</label><input type="text" class="fc" id="reqName" placeholder="Full name"></div>
+      <div class="fg"><label>Work Email</label><input type="email" class="fc" id="reqEmail" placeholder="you@company.com"></div>
+      <div class="fg"><label>Company</label><input type="text" class="fc" id="reqCompany" placeholder="Company"></div>
+      <div class="fg"><label>Project Notes</label><textarea class="fc" id="reqNotes" rows="3" placeholder="Project location, target date, constraints, labor needs..."></textarea></div>
+      <div id="reqMsg" style="font-size:.72rem;color:var(--muted);margin-bottom:.45rem;"></div>
+      <button style="width:100%;background:var(--gold);color:#000;border:none;padding:.5rem;border-radius:4px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif" onclick="submitMarketplaceInquiry()">Submit Lift Request</button>
+    </div>
+  </div>
+</div>
 <div class="overlay" id="sheetsM">
   <div class="modal">
     <div class="mhd"><span class="mtitle">GOOGLE SHEETS</span><button class="mcls" onclick="closeModal('sheetsM')">X</button></div>
@@ -456,6 +477,32 @@ nav{
 const AI_PROXY_URL = window.__CG_PROXY_URL__ || '';
 const LIVE_FALLBACK_ENDPOINT = 'https://formspree.io/f/mgoldjjb';
 var CFG={fsId:"",fsEmail:"",shUrl:""};
+var CURRENT_INQUIRY_ITEM=null;
+var LIFT_ECOSYSTEM_CATEGORIES={
+  mobile_cranes:{label:"Mobile Cranes",group:"cranes"},
+  tower_cranes:{label:"Tower Cranes",group:"cranes"},
+  spider_cranes:{label:"Spider Cranes",group:"cranes"},
+  mini_cranes:{label:"Mini Cranes",group:"cranes"},
+  crawler_cranes:{label:"Crawler Cranes",group:"cranes"},
+  carry_deck_cranes:{label:"Carry Deck Cranes",group:"cranes"},
+  compact_lifting_equipment:{label:"Compact Lifting",group:"specialty"},
+  glass_handling_systems:{label:"Glass Handling",group:"specialty"},
+  vacuum_lifts:{label:"Vacuum Lifts",group:"specialty"},
+  rigging_and_lifting_accessories:{label:"Rigging Accessories",group:"support"},
+  specialized_lifting_attachments:{label:"Lifting Attachments",group:"support"},
+  industrial_lifting_systems:{label:"Industrial Lift Systems",group:"industrial"},
+  heavy_equipment_installation_lifts:{label:"Heavy Equipment Install",group:"industrial"},
+  specialty_lift_contractors:{label:"Specialty Lift Contractors",group:"services"}
+};
+var LEGACY_TYPE_TO_CATEGORY={
+  "Mobile Crane":"mobile_cranes",
+  "Tower Crane":"tower_cranes",
+  "Crawler Crane":"crawler_cranes",
+  "Mini Crane":"mini_cranes",
+  "All Terrain":"mobile_cranes",
+  "Glass Lift":"glass_handling_systems",
+  "Boom Truck":"industrial_lifting_systems"
+};
 var CRANE_IMG_MODEL={
   "Liebherr LTM 1100-5.2":"/assets/images/cranes/model-liebherr-ltm.jpg",
   "Grove GMK5250L":"/assets/images/cranes/model-grove-gmk.jpg",
@@ -479,6 +526,8 @@ var listings=[
 var activeF="all",searchR=null;
 function tg(type){var m={"Mobile Crane":"MC","Tower Crane":"TC","Crawler Crane":"CC","All Terrain":"AT","Mini Crane":"MI","Glass Lift":"GL","Boom Truck":"BT","Specialty":"SP"};return m[type]||"CR";}
 function ig(type,model){return {g:GR[type]||GR["Specialty"],e:tg(type),img:CRANE_IMG_MODEL[model]||null};}
+function getCategoryKey(x){return x.category_key||LEGACY_TYPE_TO_CATEGORY[x.type]||"specialty_lift_contractors";}
+function getCategoryLabel(x){var k=getCategoryKey(x);return (LIFT_ECOSYSTEM_CATEGORIES[k]&&LIFT_ECOSYSTEM_CATEGORIES[k].label)||"Lift Ecosystem";}
 function renderSpec(cid,type){
   var items=listings.filter(function(x){return x.type===type;});
   var el=document.getElementById(cid);
@@ -489,25 +538,78 @@ function renderGrid(){
   var list=searchR!==null?searchR:listings;
   if(activeF!=="all"){
     if(activeF==="live")list=list.filter(function(x){return x.status==="live";});
+    else if(activeF.indexOf("cat:")===0){var catKey=activeF.split(":")[1];list=list.filter(function(x){return getCategoryKey(x)===catKey;});}
     else list=list.filter(function(x){return x.type.includes(activeF)||(x.tags||[]).some(function(t){return t.toLowerCase().includes(activeF.toLowerCase());});});
   }
   var grid=document.getElementById("craneGrid");
   if(!list.length){grid.innerHTML="<div style='grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--muted)'>No listings match.</div>";updateCounts();return;}
   grid.innerHTML=list.map(function(x,i){
     var im=ig(x.type,x.model);
-    return "<div class='ccard' style='animation-delay:"+i*.04+"s'><div class='cimg' style='background:"+im.g+(im.img?";background-image:url("+im.img+");background-size:cover;background-position:center":"")+"'><span class='equip-glyph' style='"+(!im.img?"":"opacity:0.25")+"''>"+im.e+"</span><div class='cimgov'></div><div class='cbadges'><span class='cb "+(x.status==="live"?"cb-live":"cb-qa")+"'>"+(x.status==="live"?"LIVE":"QA")+"</span><span class='cb cb-type'>"+x.type.split(" ")[0].toUpperCase()+"</span></div><div class='cratebadge'>$"+(x.rate||0).toLocaleString()+"/day</div></div><div class='cbody'><div class='cname'>"+ev(x.company)+" &mdash; "+ev(x.model)+"</div><div class='cloc'>"+ev(x.loc)+"</div><div class='cspecs'><div><div class='csl'>Capacity</div><div class='csv g'>"+x.cap+"t</div></div><div><div class='csl'>Boom</div><div class='csv'>"+x.boom+"ft</div></div><div><div class='csl'>Year</div><div class='csv'>"+x.year+"</div></div></div>"+(x.tags&&x.tags.length?"<div class='ctags'>"+x.tags.map(function(t){return "<span class='ctag'>"+ev(t)+"</span>";}).join("")+"</div>":"")+"<div class='cacts'><button class='cact ca-contact' onclick='event.stopPropagation();contactItem("+x.id+")'>Contact</button><button class='cact ca-ai' onclick='event.stopPropagation();askBot("+x.id+")'>Ask AI</button><button class='cact ca-del' onclick='event.stopPropagation();delItem("+x.id+")'>X</button></div></div></div>";
+    var catLabel=getCategoryLabel(x);
+    return "<div class='ccard' style='animation-delay:"+i*.04+"s'><div class='cimg' style='background:"+im.g+(im.img?";background-image:url("+im.img+");background-size:cover;background-position:center":"")+"'><span class='equip-glyph' style='"+(!im.img?"":"opacity:0.25")+"''>"+im.e+"</span><div class='cimgov'></div><div class='cbadges'><span class='cb "+(x.status==="live"?"cb-live":"cb-qa")+"'>"+(x.status==="live"?"LIVE":"QA")+"</span><span class='cb cb-type'>"+x.type.split(" ")[0].toUpperCase()+"</span></div><div class='cratebadge'>$"+(x.rate||0).toLocaleString()+"/day</div></div><div class='cbody'><div class='cname'>"+ev(x.company)+" &mdash; "+ev(x.model)+"</div><div class='cloc'>"+ev(x.loc)+"</div><div class='cspecs'><div><div class='csl'>Capacity</div><div class='csv g'>"+x.cap+"t</div></div><div><div class='csl'>Boom</div><div class='csv'>"+x.boom+"ft</div></div><div><div class='csl'>Year</div><div class='csv'>"+x.year+"</div></div></div><div class='ctags'><span class='ctag'>"+ev(catLabel)+"</span>"+(x.tags&&x.tags.length?x.tags.map(function(t){return "<span class='ctag'>"+ev(t)+"</span>";}).join(""):"")+"</div><div class='cacts'><button class='cact ca-contact' onclick='event.stopPropagation();contactItem("+x.id+")'>Contact</button><button class='cact ca-ai' onclick='event.stopPropagation();askBot("+x.id+")'>Ask AI</button><button class='cact ca-ai' onclick='event.stopPropagation();openRequestModal("+x.id+",\"availability\")'>Request</button><button class='cact ca-del' onclick='event.stopPropagation();delItem("+x.id+")'>X</button></div></div></div>";
   }).join("");
   updateCounts();
 }
 function updateCounts(){document.getElementById("cntLive").textContent=listings.filter(function(x){return x.status==="live";}).length;document.getElementById("cntAll").textContent=listings.length;}
 function filt(f,el){activeF=f;searchR=null;document.querySelectorAll(".chip").forEach(function(c){c.classList.remove("on");});el.classList.add("on");renderGrid();}
 function doSearch(){var q=document.getElementById("sq").value.toLowerCase();var city=document.getElementById("scity").value;var type=document.getElementById("stype").value;searchR=listings.filter(function(x){return(!q||x.company.toLowerCase().includes(q)||x.model.toLowerCase().includes(q)||x.type.toLowerCase().includes(q))&&(!city||x.loc.includes(city.split(",")[0]))&&(!type||x.type===type);});renderGrid();}
-function contactItem(id){var x=listings.find(function(l){return l.id===id;});if(!x)return;baddmsg("user","I need to connect live about "+x.model+" in "+x.loc+". Is this available for rent, sale, or lease purchase?",false);}
+function contactItem(id){var x=listings.find(function(l){return l.id===id;});if(!x)return;CURRENT_INQUIRY_ITEM=x;baddmsg("user","I need to connect live about "+x.model+" in "+x.loc+". Is this available for rent, sale, or lease purchase?",false);}
+function openRequestModal(id,defaultType){
+  var x=listings.find(function(l){return l.id===id;});
+  if(!x)return;
+  CURRENT_INQUIRY_ITEM=x;
+  document.getElementById("reqType").value=defaultType||"availability";
+  document.getElementById("reqMsg").style.color="var(--muted)";
+  document.getElementById("reqMsg").textContent="Selected: "+x.company+" — "+x.model+" ("+getCategoryLabel(x)+")";
+  openModal("reqM");
+}
+async function submitMarketplaceInquiry(){
+  var item=CURRENT_INQUIRY_ITEM;
+  if(!item){document.getElementById("reqMsg").textContent="Select a listing first.";return;}
+  var requestType=document.getElementById("reqType").value;
+  var name=document.getElementById("reqName").value.trim();
+  var email=document.getElementById("reqEmail").value.trim();
+  var company=document.getElementById("reqCompany").value.trim();
+  var notes=document.getElementById("reqNotes").value.trim();
+  var msgEl=document.getElementById("reqMsg");
+  if(!name||!email){msgEl.style.color="#ef4444";msgEl.textContent="Name and email are required.";return;}
+  var payload={
+    lead_type:"marketplace_inquiry",
+    source_page:"/marketplace/",
+    source_tool:"marketplace",
+    selected_lift_category:getCategoryKey(item),
+    recommended_solution_type:item.type,
+    request_type:requestType,
+    created_timestamp:new Date().toISOString(),
+    status_placeholder:"new",
+    listing_id:item.id,
+    listing_company:item.company,
+    listing_model:item.model,
+    listing_location:item.loc,
+    name:name,
+    email:email,
+    company:company,
+    notes:notes,
+    _subject:"Marketplace Lift Inquiry — "+requestType
+  };
+  msgEl.style.color="#93c5fd";
+  msgEl.textContent="Submitting...";
+  try{
+    var res=await fetch(LIVE_FALLBACK_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)});
+    if(!res.ok)throw new Error("Request failed");
+    msgEl.style.color="#10b981";
+    msgEl.textContent="Request sent. CraneGenius will follow up shortly.";
+    setTimeout(function(){closeModal("reqM");},900);
+  }catch(e){
+    msgEl.style.color="#ef4444";
+    msgEl.textContent="Could not submit. Email info@cranegenius.com or call 503-773-4659.";
+  }
+}
 function askBot(id){var x=listings.find(function(l){return l.id===id;});if(x)baddmsg("user","Tell me about the "+x.model+" in "+x.loc,false);}
 function delItem(id){listings=listings.filter(function(x){return x.id!==id;});renderAll();toast("Removed","tinfo");}
 function renderAll(){renderGrid();renderSpec("miniRow","Mini Crane");renderSpec("glassRow","Glass Lift");renderSpec("specialtyRow","Boom Truck");}
 var bwait=false,bhist=[],liveFallbackSent=false;
-var BSYS="You are CraneGenius Marketplace AI. You support 3 flows with practical, direct responses. FLOW 1: LIST FOR RENT. Collect company, model, type, capacity tons, boom feet, year, daily rate, city/state, email, notes. Ask one field at a time. FLOW 2: LIST FOR SALE. Collect same fields but use asking price instead of daily rate, and ask whether lease purchase is available. FLOW 3: FIND EQUIPMENT. Determine rent vs buy intent, then collect equipment type, minimum capacity, city/state, required date/timeline, budget range, and contact email. If buy intent, explain lease purchase option in one sentence. Keep replies 1-2 short sentences, no fluff. If a listing is complete, output exactly LISTING_READY:{\"company\":\"x\",\"model\":\"x\",\"type\":\"x\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"City ST\",\"email\":\"x\",\"tags\":[\"for-rent\"],\"notes\":\"x\"} (or tags for-sale). Start by asking which flow they want.";
+var BSYS="You are CraneGenius Marketplace AI. You support 3 flows with practical, direct responses across crane and lift ecosystem categories. FLOW 1: LIST FOR RENT. Collect company, model, type, capacity tons, boom feet, year, daily rate, city/state, email, notes. FLOW 2: LIST FOR SALE. Collect same fields but use asking price instead of daily rate, and ask whether lease purchase is available. FLOW 3: FIND EQUIPMENT. Determine rent vs buy intent, then collect equipment type, minimum capacity, city/state, required date/timeline, budget range, and contact email. If buy intent, explain lease purchase option in one sentence. Mention compact lifts, glass handling systems, vacuum lifts, rigging accessories, or industrial lift support when those match user constraints. Keep replies 1-2 short sentences, no fluff. If a listing is complete, output exactly LISTING_READY:{\"company\":\"x\",\"model\":\"x\",\"type\":\"x\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"City ST\",\"email\":\"x\",\"tags\":[\"for-rent\"],\"notes\":\"x\"} (or tags for-sale). Start by asking which flow they want.";
 function bsetstep(n){for(var i=0;i<=5;i++){var el=document.getElementById("bs"+i);if(!el)continue;el.classList.remove("active","done");if(i<n)el.classList.add("done");else if(i===n)el.classList.add("active");}}
 function bguessstep(t){var tl=t.toLowerCase();if(tl.includes("company"))bsetstep(1);else if(tl.includes("model")||tl.includes("make"))bsetstep(1);else if(tl.includes("type"))bsetstep(2);else if(tl.includes("capacity")||tl.includes("boom")||tl.includes("year"))bsetstep(2);else if(tl.includes("rate")||tl.includes("price")||tl.includes("budget"))bsetstep(3);else if(tl.includes("location")||tl.includes("city"))bsetstep(3);else if(tl.includes("email")||tl.includes("contact"))bsetstep(4);}
 function bparse(text){var m=text.match(/LISTING_READY:(\{[\s\S]*?\})/);if(m){try{return JSON.parse(m[1]);}catch(ex){}}return null;}
@@ -537,6 +639,11 @@ function bclearqr(){document.getElementById("bqrs").innerHTML="";}
 function bqrc(t){
   if(t==="Email live specialist"){openLiveChannel("email");return;}
   if(t==="Call live specialist"){openLiveChannel("call");return;}
+  if(t.indexOf("Request ")===0&&CURRENT_INQUIRY_ITEM){
+    var reqMap={"Request pricing":"pricing","Request availability":"availability","Request rental":"rental","Request purchase":"purchase","Request financing":"financing","Request operator support":"operator_support","Request planning help":"planning_help"};
+    openRequestModal(CURRENT_INQUIRY_ITEM.id,reqMap[t]||"availability");
+    return;
+  }
   bclearqr();document.getElementById("bin").value=t;bgo();
 }
 function isAiFailureText(text){return /AI proxy is not configured|Connection error|Network error/i.test(String(text||""));}
@@ -594,7 +701,7 @@ async function bai(userMsg) {
     return 'Network error. Call us at 503-773-4659.';
   }
 }
-async function bgo(){if(bwait)return;var inp=document.getElementById("bin");var msg=inp.value.trim();if(!msg)return;inp.value="";bresize(inp);bclearqr();await baddmsg("user",msg,false);bwait=true;document.getElementById("bsendbtn").disabled=true;var resp=await bai(msg);await baddmsg("bot",resp,true);if(isAiFailureText(resp)){notifyLiveFallback(msg,resp);bsetqr(["Call live specialist","Email live specialist"]);}else{var low=resp.toLowerCase();if(low.includes("list")&&low.includes("find"))bsetqr(["List for rent","List for sale","Find equipment to rent","Acquire with lease purchase"]);else if(low.includes("type")&&(low.includes("crane")||low.includes("lift")||low.includes("truck")))bsetqr(["Tower Crane","Mobile Crane","Mini Crane","Glass Lift","All Terrain","Boom Truck"]);else if(low.includes("operator"))bsetqr(["Yes operator included","Bare rental only"]);}bwait=false;document.getElementById("bsendbtn").disabled=false;document.getElementById("bin").focus();}
+async function bgo(){if(bwait)return;var inp=document.getElementById("bin");var msg=inp.value.trim();if(!msg)return;inp.value="";bresize(inp);bclearqr();await baddmsg("user",msg,false);bwait=true;document.getElementById("bsendbtn").disabled=true;var resp=await bai(msg);await baddmsg("bot",resp,true);if(isAiFailureText(resp)){notifyLiveFallback(msg,resp);bsetqr(["Call live specialist","Email live specialist"]);}else{var low=resp.toLowerCase();if(low.includes("list")&&low.includes("find"))bsetqr(["List for rent","List for sale","Find equipment to rent","Acquire with lease purchase"]);else if(low.includes("type")&&(low.includes("crane")||low.includes("lift")||low.includes("truck")))bsetqr(["Tower Crane","Mobile Crane","Mini Crane","Glass Lift","All Terrain","Boom Truck"]);else if(low.includes("operator"))bsetqr(["Yes operator included","Bare rental only"]);else if(low.includes("pricing")||low.includes("availability")||low.includes("finance"))bsetqr(["Request pricing","Request availability","Request rental","Request purchase","Request financing","Request operator support","Request planning help"]);}bwait=false;document.getElementById("bsendbtn").disabled=false;document.getElementById("bin").focus();}
 function bkey(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();bgo();}}
 function bresize(el){el.style.height="auto";el.style.height=Math.min(el.scrollHeight,75)+"px";}
 function bpublish(btn){var d=JSON.parse(btn.dataset.listing);var item={id:Date.now(),company:d.company||"Unknown",model:d.model||"Unknown",type:d.type||"Mobile Crane",cap:parseFloat(d.cap)||0,boom:parseFloat(d.boom)||0,year:parseInt(d.year)||2020,rate:parseFloat(d.rate)||0,loc:d.loc||"Unknown",email:d.email||"",tags:d.tags||[],status:"live",notes:d.notes||""};listings.unshift(item);renderAll();toast("LIVE: "+item.model,"tok");setTimeout(function(){baddmsg("bot","Your "+item.model+" is now live! Contractors in "+item.loc+" can find it.\n\nWant to list another piece of equipment?",false);bsetqr(["Yes list another","No I am done"]);bhist=[];bsetstep(0);},400);}

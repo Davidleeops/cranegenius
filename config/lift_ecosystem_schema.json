@@ -161,6 +161,49 @@
       "market",
       "equipment_categories",
       "notes"
+    ],
+    "lift_categories": [
+      "key",
+      "label",
+      "group",
+      "is_future_placeholder",
+      "legacy_type_mapping",
+      "created_at"
+    ],
+    "planner_solution_mappings": [
+      "id",
+      "planner_input_signature",
+      "recommended_solution_type",
+      "selected_lift_category",
+      "safety_notes",
+      "created_at"
+    ],
+    "marketplace_category_mappings": [
+      "id",
+      "listing_id",
+      "legacy_listing_type",
+      "selected_lift_category",
+      "created_at"
+    ],
+    "financing_requests": [
+      "id",
+      "lead_type",
+      "source_page",
+      "source_tool",
+      "selected_lift_category",
+      "request_type",
+      "created_timestamp",
+      "status_placeholder"
+    ],
+    "rental_requests": [
+      "id",
+      "lead_type",
+      "source_page",
+      "source_tool",
+      "selected_lift_category",
+      "request_type",
+      "created_timestamp",
+      "status_placeholder"
     ]
   },
   "relationships": [
@@ -171,6 +214,26 @@
     "agent_deals -> commissions",
     "acquisition_targets -> referral_sources",
     "opportunities -> recommended_lift_categories",
-    "marketplace_requests -> equipment_classes"
-  ]
+    "marketplace_requests -> equipment_classes",
+    "opportunity -> lift_category mapping",
+    "marketplace_listing -> lift_category mapping",
+    "planner_input_signature -> recommended_solution_type mapping",
+    "inquiry -> financing_or_rental_request routing"
+  ],
+  "enums": {
+    "lead_types": [
+      "marketplace_inquiry",
+      "lift_planner_inquiry",
+      "estimator_inquiry"
+    ],
+    "request_types": [
+      "pricing",
+      "availability",
+      "rental",
+      "purchase",
+      "financing",
+      "operator_support",
+      "planning_help"
+    ]
+  }
 }

@@ -6,12 +6,12 @@
 <title>CraneGenius — Lift Decision Engine</title>
 <meta name="description" content="Free 60-second tool: See if you're overpaying on crane rentals. Spider crane vs mobile crane cost comparison, equipment recommendation, and timeline savings for MEP, data center, and electrical contractors.">
 <meta property="og:title" content="CraneGenius — Lift Cost Estimator">
-<meta property="og:description" content="Find out in 60 seconds if you're overpaying on crane rentals. Real numbers. Free tool for contractors.">
+<meta property="og:description" content="Find out in 60 seconds if you're overpaying on crane and specialty lift rentals. Real numbers. Free tool for contractors.">
 <meta property="og:url" content="https://cranegenius.com">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CraneGenius — Lift Cost Estimator">
-<meta name="twitter:description" content="60 seconds. Real numbers. Find out if you're overpaying on crane rentals.">
+<meta name="twitter:description" content="60 seconds. Real numbers. Find out if you're overpaying on crane or specialty lift rentals.">
 <!-- FIX #4: Added DM Sans to font load -->
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&family=DM+Sans:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
@@ -410,7 +410,7 @@ body{
     </div>
     <h1>Lift Decision <span>Engine</span></h1>
     <p class="header-sub">
-      The equipment your supplier never quotes — but contractors have been using for years to cut costs and recover schedule.
+      The equipment your supplier never quotes — cranes, compact lifts, glass handling, and rigging pathways contractors use to cut costs and recover schedule.
       <strong>60 seconds. Real numbers. Your exact situation.</strong>
     </p>
   </div>
@@ -1111,6 +1111,15 @@ function showLeadForm(type, el) {
   form.scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 
+function inferEstimatorLiftCategory() {
+  const q1 = answers.q1 || '';
+  const q2 = answers.q2 || '';
+  if (q1 === 'switchgear' || q1 === 'cooling' || q1 === 'modular') return 'industrial_lifting_systems';
+  if (q2 === 'indoor_tight' || q2 === 'rooftop') return 'compact_lifting_equipment';
+  if (q1 === 'transformer' && q2 === 'outdoor') return 'mobile_cranes';
+  return 'specialty_lift_contractors';
+}
+
 function submitLead() {
   const email = document.getElementById('f_email').value;
   if (!email || !email.includes('@')) {
@@ -1120,7 +1129,17 @@ function submitLead() {
   const btn = document.querySelector('.form-submit');
   btn.textContent = 'Sending...';
   btn.disabled = true;
+  const requestType = currentCTA === 'quote' ? 'pricing' : 'planning_help';
+  const selectedLiftCategory = inferEstimatorLiftCategory();
   const payload = {
+    lead_type: 'estimator_inquiry',
+    source_page: '/',
+    source_tool: 'lift_estimator',
+    selected_lift_category: selectedLiftCategory,
+    recommended_solution_type: lastResults.rec || '',
+    request_type: requestType,
+    created_timestamp: new Date().toISOString(),
+    status_placeholder: 'new',
     name: document.getElementById('f_name').value,
     last: document.getElementById('f_last').value,
     company: document.getElementById('f_company').value,
@@ -1336,7 +1355,7 @@ loadDashboard();
 // FIX #7 + #8: Bot API call with proper auth headers + publish wired to Formspree
 var bopen=false,bwait=false,bhist=[];
 var liveFallbackSent=false;
-var BSYS="You are CraneGenius AI for crane rentals, heavy lift planning, and equipment listings. Prioritize buyer quote flow when user mentions quote, pricing, availability, project, data center, lift, timeline, or tonnage. In quote flow, gather only: equipment needed, required capacity, city/state, target date/timeline, and contact email; then provide a concise next-step summary. Listing flow is only when user explicitly wants to list equipment. Listing fields: company, model, type, capacity, boom, year, rate, location, email, notes. Ask one field at a time, 1-2 short sentences, no fluff. If listing is complete, output exactly LISTING_READY:{\"company\":\"...\",\"model\":\"...\",\"type\":\"...\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"...\",\"email\":\"...\",\"notes\":\"...\"}. Do not force listing questions for quote users.";
+var BSYS="You are CraneGenius AI for crane and lift rentals, heavy lift planning, compact lifting, glass handling, and equipment listings. Prioritize buyer quote flow when user mentions quote, pricing, availability, project, data center, lift, timeline, or tonnage. In quote flow, gather only: equipment needed, required capacity, city/state, target date/timeline, and contact email; then provide a concise next-step summary. Listing flow is only when user explicitly wants to list equipment. Listing fields: company, model, type, capacity, boom, year, rate, location, email, notes. Ask one field at a time, 1-2 short sentences, no fluff. If listing is complete, output exactly LISTING_READY:{\"company\":\"...\",\"model\":\"...\",\"type\":\"...\",\"cap\":0,\"boom\":0,\"year\":0,\"rate\":0,\"loc\":\"...\",\"email\":\"...\",\"notes\":\"...\"}. Do not force listing questions for quote users.";
 
 function toggleBot(silent){bopen=!bopen;document.getElementById("botPanel").classList.toggle("open",bopen);document.getElementById("botTrig").classList.toggle("open",bopen);if(bopen&&bhist.length===0&&!silent){setTimeout(function(){baddmsg("bot","Hey - I can help with a crane quote, lift planning, or listing equipment. What do you need?",false);},300);}if(bopen)document.getElementById("bin").focus();}
 

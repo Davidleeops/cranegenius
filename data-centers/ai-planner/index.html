@@ -345,12 +345,12 @@ nav{
   <div class="hero">
     <div class="hero-eyebrow">AI Lift Planner — Data Centers</div>
     <h1 class="hero-h">Describe Your Build.<br>Get Your <em>Lift Plan.</em></h1>
-    <p class="hero-sub">Tell our AI about your data center project in plain English — size, location, build type, special constraints. It will identify every crane and lift requirement across your full construction schedule.</p>
+    <p class="hero-sub">Tell our AI about your data center project in plain English — size, location, load weights, radius, access limits, indoor/outdoor conditions, and labor constraints. It will map crane plus broader lift-solution requirements across your build schedule.</p>
 
     <div class="prompt-label">YOUR PROJECT</div>
     <div class="prompt-container">
       <textarea class="prompt-box" id="promptInput" rows="4"
-        placeholder="e.g. We're building a 400,000 sq ft hyperscale data center in Phoenix, AZ. Two 4-story buildings on a tight urban site. 80 MW initial load, expandable to 200 MW. Sandy soil conditions, high water table. We're targeting a 22-month schedule with the first building online in month 14. Adjacent live facility we cannot disturb..."></textarea>
+        placeholder="e.g. We're building a 400,000 sq ft hyperscale data center in Phoenix, AZ. Two 4-story buildings on a tight urban site. Key lifts include 180-ton transformers and indoor equipment that must pass 36-inch doorways. Radius is 45 ft, floor loading is sensitive in mechanical rooms, and we need glass handling for facade replacement. 22-month schedule with constrained labor availability..."></textarea>
     </div>
     <div class="prompt-footer">
       <div class="prompt-hints">
@@ -607,7 +607,7 @@ async function runAnalysis() {
 function buildSystemPrompt(userInput) {
   const liftList = LIFTS.map(l => `- ${l.id}: ${l.name} | Phase: ${l.phase} | Tags: ${l.tags.join(",")} | Priority: ${l.priority}`).join("\n");
 
-  return `You are CraneGenius AI, an expert in data center construction and crane/lift planning. Analyze the following project description and produce a structured lift plan.
+  return `You are CraneGenius AI, an expert in data center construction and lift-solution planning. Analyze the following project description and produce a structured lift plan.
 
 PROJECT DESCRIPTION:
 "${userInput}"
@@ -618,8 +618,9 @@ ${liftList}
 Your task:
 1. Identify which lift types from the database are needed for this project (use the exact IDs)
 2. For each selected lift, provide a project-specific "why" (1-2 sentences explaining why it's needed based on THIS project's specifics)
-3. Write a concise project analysis summary (2-3 sentences)
-4. Extract key project facts
+3. Expand recommendations beyond crane-only logic when appropriate: compact lifting, glass handling, vacuum lifts, rigging, or indoor/industrial systems
+4. Write a concise project analysis summary (2-3 sentences)
+5. Extract key project facts including any available input clues: load_weight, lift_height, radius, indoor_or_outdoor, access_constraints, floor_loading_sensitivity, site_width_limitations, glass_handling_needs, installation_environment, labor_constraints, project_type, lift_object_type
 
 Respond ONLY with valid JSON in this exact format:
 {
@@ -637,10 +638,14 @@ Respond ONLY with valid JSON in this exact format:
       "why": "Project-specific reason why this lift is needed based on the description",
       "quantity": "e.g. 2 units" 
     }
-  ]
+  ],
+  "recommendedSolutionType": "crane | compact_lift | glass_handling | rigging_support | industrial_lift_pathway",
+  "safetyPlanningNotes": ["key safety/planning consideration"],
+  "nextAction": "best next operational action",
+  "requestCta": "request quote | request lift planning help"
 }
 
-Only include lifts that are genuinely needed based on the project description. Be selective and accurate. Order lifts logically by phase (civil first, then structural, electrical, cooling, fitout, site-wide).`;
+Only include lifts that are genuinely needed based on the project description. Be selective and accurate. Order lifts logically by phase (civil first, then structural, electrical, cooling, fitout, site-wide). Keep output as planning guidance and never present as stamped engineering design.`;
 }
 
 function parseAndRender(text, originalPrompt) {
@@ -877,7 +882,80 @@ function resetApp() {
 function openQuoteForm() {
   if (plan.size === 0) { alert("Add equipment to your lift plan first, then request quotes."); return; }
   const names = Array.from(plan.values()).map(l => "• " + l.name).join("\n");
-  alert(`Quote Request — ${plan.size} lift types:\n\n${names}\n\n(In production: this opens a vendor matching flow, connects to your CraneGenius network, and sends RFQs to matched crane companies in your project geography.)`);
+  const existing = document.getElementById("cgPlannerQuoteModal");
+  if (existing) existing.remove();
+  const modal = document.createElement("div");
+  modal.id = "cgPlannerQuoteModal";
+  modal.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;";
+  modal.innerHTML = `
+    <div style="background:#0d1117;border:1px solid rgba(61,158,255,.25);max-width:520px;width:100%;padding:30px;font-family:'DM Sans',sans-serif;">
+      <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:6px;">Request Lift Support</div>
+      <div style="font-size:12px;color:var(--muted2);margin-bottom:14px;">${plan.size} lift types selected from AI planner.</div>
+      <div style="font-size:11px;color:#93c5fd;margin-bottom:12px;line-height:1.6;max-height:88px;overflow:auto;">${names.replace(/\n/g,"<br>")}</div>
+      <input id="cgPlannerName" placeholder="Your name" style="width:100%;margin-bottom:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;padding:10px 12px;box-sizing:border-box;" />
+      <input id="cgPlannerEmail" placeholder="Work email" style="width:100%;margin-bottom:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;padding:10px 12px;box-sizing:border-box;" />
+      <select id="cgPlannerRequestType" style="width:100%;margin-bottom:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;padding:10px 12px;box-sizing:border-box;">
+        <option value="pricing">Request pricing</option><option value="availability">Request availability</option><option value="rental">Request rental</option><option value="purchase">Request purchase</option><option value="financing">Request financing</option><option value="operator_support">Request operator support</option><option value="planning_help">Request lift planning help</option>
+      </select>
+      <textarea id="cgPlannerNotes" rows="3" placeholder="Project notes / constraints" style="width:100%;margin-bottom:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;padding:10px 12px;box-sizing:border-box;"></textarea>
+      <div style="display:flex;gap:8px;">
+        <button onclick="submitPlannerInquiry()" style="flex:1;background:var(--a1);color:var(--bg);border:none;padding:11px 12px;font-weight:700;cursor:pointer;">Submit Request</button>
+        <button onclick="document.getElementById('cgPlannerQuoteModal').remove()" style="background:transparent;color:var(--muted2);border:1px solid var(--border2);padding:11px 12px;cursor:pointer;">Close</button>
+      </div>
+      <div id="cgPlannerMsg" style="font-size:11px;color:var(--muted2);margin-top:10px;min-height:15px;"></div>
+    </div>`;
+  document.body.appendChild(modal);
+  modal.addEventListener("click", function(e){ if (e.target === modal) modal.remove(); });
+}
+
+function inferPlannerCategory() {
+  const values = Array.from(plan.values());
+  if (values.some(l => /glass|vacuum/i.test(l.name + " " + l.cat))) return "glass_handling_systems";
+  if (values.some(l => /rigging|gantry|skid/i.test(l.name + " " + l.cat))) return "rigging_and_lifting_accessories";
+  if (values.some(l => /mini|compact/i.test(l.name + " " + l.cat))) return "compact_lifting_equipment";
+  if (values.some(l => /crawler|tower|terrain|boom truck/i.test(l.name + " " + l.cat))) return "mobile_cranes";
+  return "specialty_lift_contractors";
+}
+
+async function submitPlannerInquiry() {
+  const name = document.getElementById("cgPlannerName").value.trim();
+  const email = document.getElementById("cgPlannerEmail").value.trim();
+  const requestType = document.getElementById("cgPlannerRequestType").value;
+  const notes = document.getElementById("cgPlannerNotes").value.trim();
+  const msg = document.getElementById("cgPlannerMsg");
+  if (!name || !email) { msg.style.color = "#ef4444"; msg.textContent = "Name and email are required."; return; }
+  const names = Array.from(plan.values()).map(l => l.name);
+  const payload = {
+    lead_type: "lift_planner_inquiry",
+    source_page: "/data-centers/ai-planner",
+    source_tool: "ai_lift_planner",
+    selected_lift_category: inferPlannerCategory(),
+    recommended_solution_type: names.join(" | "),
+    request_type: requestType,
+    created_timestamp: new Date().toISOString(),
+    status_placeholder: "new",
+    name,
+    email,
+    notes,
+    selected_lifts: names,
+    _subject: "AI Planner Lift Inquiry — " + requestType
+  };
+  msg.style.color = "#93c5fd";
+  msg.textContent = "Submitting...";
+  try {
+    const res = await fetch("https://formspree.io/f/mgoldjjb", {
+      method: "POST",
+      headers: { "Accept": "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error("Submission failed");
+    msg.style.color = "#10b981";
+    msg.textContent = "Request submitted. CraneGenius will follow up shortly.";
+    setTimeout(function(){ var m = document.getElementById("cgPlannerQuoteModal"); if (m) m.remove(); }, 1000);
+  } catch(e) {
+    msg.style.color = "#ef4444";
+    msg.textContent = "Submission failed. Email info@cranegenius.com directly.";
+  }
 }
 </script>
 </body>
