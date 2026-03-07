@@ -289,6 +289,25 @@ body::after{
 .timeline-step.active{
   box-shadow:0 0 0 1px rgba(245,166,35,.30) inset, 0 10px 30px rgba(245,166,35,.12);
 }
+
+/* Hero photo background */
+.dc-hero, .hero, section.hero, .hero-section {
+  background-image: url('/assets/images/cranes/mobile-crane-02.jpg') !important;
+  background-size: cover;
+  background-position: center 30%;
+  position: relative;
+}
+.dc-hero::before, .hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10,14,26,0.88), rgba(10,14,26,0.72));
+  z-index: 0;
+}
+.dc-hero > *, .hero > * {
+  position: relative;
+  z-index: 1;
+}
 </style>
 </head>
 <body>
