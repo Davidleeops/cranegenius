@@ -19,7 +19,7 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-
 .wrap{max-width:1200px;margin:0 auto;padding:28px 18px 48px}
 .hero h1{font-family:'Barlow Condensed',sans-serif;font-size:46px;line-height:1.02}
 .hero p{color:#ccdaee;max-width:780px;margin-top:8px;font-size:14px;line-height:1.5}
-.filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
+.filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
 select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0ff;padding:10px;font-family:'Barlow',sans-serif}
 .count{font-size:12px;color:var(--muted);margin-bottom:10px}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
@@ -56,31 +56,42 @@ select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0f
   </div>
 
   <div class="filters">
-    <input id="fLoc" placeholder="Filter by city/state">
-    <select id="fType"><option value="">All Project Types</option></select>
-    <select id="fStage"><option value="">All Stages</option><option value="planning">planning</option><option value="permit_filed">permit_filed</option><option value="approved">approved</option><option value="construction_starting">construction_starting</option><option value="active_construction">active_construction</option></select>
     <select id="fLift"><option value="">All Lift Categories</option></select>
+    <select id="fType"><option value="">All Project Types</option></select>
+    <select id="fState"><option value="">All States</option></select>
   </div>
 
   <div class="count" id="resultCount">Loading opportunities...</div>
   <div class="grid" id="grid"></div>
 </div>
 <script src="/data/opportunities/opportunity_helpers.js"></script>
-<script src="/opportunities/data_loader.js"></script>
 <script>
 (function(){
   var all = [];
-  var sourceLabel = '';
   var byId = function(id){ return document.getElementById(id); };
   var esc = function(s){ return String(s||'').replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); };
 
   function unique(arr){ return Array.from(new Set(arr.filter(Boolean))); }
 
+  function inferEstimatedLiftCapacity(op){
+    if (op.estimated_lift_capacity) return op.estimated_lift_capacity;
+    var cats = window.CGOpportunityHelpers.inferLiftCategories(op.project_type, op.recommended_lift_categories);
+    if (cats.indexOf('crawler_cranes') >= 0) return '250-1000T';
+    if (cats.indexOf('tower_cranes') >= 0) return '8-32T';
+    if (cats.indexOf('mobile_cranes') >= 0) return '40-400T';
+    if (cats.indexOf('glass_handling_systems') >= 0 || cats.indexOf('vacuum_lifts') >= 0) return '0.3-10T';
+    return 'TBD';
+  }
+
   function seedFilters(list){
     var typeSel = byId('fType');
     var liftSel = byId('fLift');
+    var stateSel = byId('fState');
     unique(list.map(function(x){ return x.project_type; })).forEach(function(t){
       var o=document.createElement('option'); o.value=t; o.textContent=t; typeSel.appendChild(o);
+    });
+    unique(list.map(function(x){ return x.state; })).forEach(function(s){
+      var o=document.createElement('option'); o.value=s; o.textContent=s; stateSel.appendChild(o);
     });
     var lifts = [];
     list.forEach(function(x){
@@ -93,22 +104,19 @@ select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0f
   }
 
   function render(){
-    var q = byId('fLoc').value.trim().toLowerCase();
-    var t = byId('fType').value;
-    var s = byId('fStage').value;
     var l = byId('fLift').value;
+    var t = byId('fType').value;
+    var st = byId('fState').value;
 
     var filtered = all.filter(function(x){
-      var loc = ((x.city||'') + ' ' + (x.state||'')).toLowerCase();
-      if(q && loc.indexOf(q) === -1) return false;
-      if(t && x.project_type !== t) return false;
-      if(s && x.project_stage !== s) return false;
       var cats = window.CGOpportunityHelpers.inferLiftCategories(x.project_type, x.recommended_lift_categories);
       if(l && cats.indexOf(l) === -1) return false;
+      if(t && x.project_type !== t) return false;
+      if(st && x.state !== st) return false;
       return true;
     });
 
-    byId('resultCount').textContent = filtered.length + ' opportunities shown' + (sourceLabel ? (' • source: ' + sourceLabel) : '');
+    byId('resultCount').textContent = filtered.length + ' opportunities shown • source: data/opportunities/opportunities.json';
     var grid = byId('grid');
     if(!filtered.length){
       grid.innerHTML = '<div class="empty">No opportunities match your current filters.</div>';
@@ -116,29 +124,31 @@ select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0f
     }
     grid.innerHTML = filtered.map(function(x){
       var cats = window.CGOpportunityHelpers.inferLiftCategories(x.project_type, x.recommended_lift_categories);
+      var primaryLiftCategory = cats[0] || 'specialty_lift_contractors';
+      var estCapacity = inferEstimatedLiftCapacity(x);
       var tags = cats.slice(0,4).map(function(c){ return '<span class="tag">'+esc(c)+'</span>'; }).join('');
-      var firstCategory = encodeURIComponent(cats[0] || 'specialty_lift_contractors');
       return '<div class="card">'+
         '<h3>'+esc(x.project_name)+'</h3>'+
-        '<div class="meta"><span>'+esc(x.city)+', '+esc(x.state)+'</span><span>'+esc(x.project_type)+'</span><span>'+esc(x.project_stage)+'</span></div>'+
+        '<div class="meta"><span>'+esc(x.city)+', '+esc(x.state)+'</span><span>'+esc(x.project_type)+'</span><span>'+esc(primaryLiftCategory)+'</span></div>'+
+        '<div class="meta"><span>Estimated Lift Capacity: '+esc(estCapacity)+'</span></div>'+
         '<div class="summary">'+esc(x.lift_requirements_summary)+'</div>'+
         '<div class="tags">'+tags+'</div>'+
         '<div class="card-actions">'+
           '<a class="primary" href="/opportunities/'+encodeURIComponent(x.project_slug)+'/">View Opportunity</a>'+
-          '<a href="/marketplace/?lift='+firstCategory+'">Marketplace</a>'+
+          '<a href="/marketplace/?lift='+encodeURIComponent(primaryLiftCategory)+'">Marketplace</a>'+
           '<a href="/data-centers/ai-planner">AI Lift Planner</a>'+
         '</div>'+
       '</div>';
     }).join('');
   }
 
-  window.CGOpportunityDataLoader.loadOpportunityDataset()
+  fetch('/data/opportunities/opportunities.json')
+    .then(function(r){ return r.json(); })
     .then(function(result){
       all = (result && result.opportunities ? result.opportunities : []).slice();
-      sourceLabel = result && result.source_path ? result.source_path.replace('/data/','data/') : '';
       seedFilters(all);
       render();
-      ['fLoc','fType','fStage','fLift'].forEach(function(id){ byId(id).addEventListener('input', render); byId(id).addEventListener('change', render); });
+      ['fLift','fType','fState'].forEach(function(id){ byId(id).addEventListener('input', render); byId(id).addEventListener('change', render); });
     })
     .catch(function(){
       byId('resultCount').textContent = 'Failed to load opportunities';
