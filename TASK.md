@@ -24,3 +24,10 @@ Unify design system — 3 different font/color systems exist:
 - DC Landing/Lift Matrix: Barlow Condensed + navy #0a0e1a
 - AI Planner: Syne + #03060f
 Consolidate to one.
+
+## Security Update (2026-03-07)
+- [x] Ran repo secret scan on tracked source files.
+- [x] Added `scripts/scan_secrets.sh` for repeatable local scanning.
+- [x] Hardened `.gitignore` for `.env.*` and backup files (`*.bak`).
+- [ ] Rotate any API keys that were ever exposed in terminal/history snapshots.
+

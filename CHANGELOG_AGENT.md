@@ -73,3 +73,14 @@ Primary funnel complete end-to-end. No blocking bugs remain.
 ### Next agent
 No code tasks blocking revenue. Outreach is the priority.
 If returning to code: unify design system. See TASK.md.
+
+## 2026-03-07 — Security hardening pass
+
+### Done
+- Added `scripts/scan_secrets.sh` to detect common leaked key patterns before commit.
+- Updated `.gitignore` with `.env.*`, `!.env.example`, and `*.bak`.
+- Verified no active API keys are present in tracked web/source files.
+
+### Remaining action
+- Rotate provider keys if any were previously exposed in shell history or screenshots.
+
