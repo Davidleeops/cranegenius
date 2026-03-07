@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CraneGenius / Sell Your Company</title>
+<meta name="description" content="Confidential succession and liquidity conversations for crane, specialty lift, and adjacent lifting ecosystem companies.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080c14;--panel:#111827;--steel:#141c2e;--border:#1e2a42;--border2:#263352;--accent:#F5A623;--accent2:#00C4A7;--text:#C8D0E0;--muted:#5A6480;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(245,166,35,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(245,166,35,.018) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+.site-nav{background:#06080f;border-bottom:1px solid rgba(245,166,35,.15);padding:0 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:9998;height:52px}
+.site-nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:17px;color:#F5A623;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none}
+.site-nav-links{display:flex;gap:24px;align-items:center}
+.site-nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:#5A6480;text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s;padding:4px 0;border-bottom:2px solid transparent}
+.site-nav-links a:hover{color:#C8D0E0}
+.site-nav-links a.active{color:#F5A623;border-bottom-color:#F5A623}
+#cg-disclaimer{background:rgba(6,8,15,.97);border-bottom:1px solid rgba(245,166,35,.25);padding:10px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;position:relative;z-index:9999}
+#cg-disclaimer.hidden{display:none}
+.disc-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.disc-icon{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:#F5A623;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.3);padding:3px 8px;white-space:nowrap;flex-shrink:0}
+.disc-text{font-family:'Barlow',sans-serif;font-size:11px;color:#5A6480;line-height:1.5}
+.disc-text strong{color:#8A94A8;font-weight:600}
+.disc-close{font-family:'Share Tech Mono',monospace;font-size:11px;color:#5A6480;background:none;border:1px solid rgba(90,100,128,.3);padding:4px 12px;cursor:pointer;letter-spacing:1px;flex-shrink:0;transition:all .2s}
+.disc-close:hover{color:#C8D0E0;border-color:rgba(200,208,224,.4)}
+.main{max-width:1180px;margin:0 auto;padding:32px 20px 70px;position:relative;z-index:1}
+.hero{background:linear-gradient(135deg,rgba(245,166,35,.08),rgba(0,196,167,.04));border:1px solid var(--border2);border-radius:12px;padding:26px}
+.eyebrow{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--accent2);text-transform:uppercase;margin-bottom:12px}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(34px,6vw,64px);line-height:.95;color:var(--white);text-transform:uppercase}
+.hero h1 span{color:var(--accent)}
+.hero p{margin-top:14px;font-size:15px;color:var(--text);line-height:1.7;max-width:780px}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 18px;border-radius:8px;cursor:pointer;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase}
+.btn-primary{background:var(--accent);color:#080c14;border:1px solid var(--accent)}
+.btn-secondary{background:transparent;color:var(--accent2);border:1px solid var(--accent2)}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin-top:18px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:800;text-transform:uppercase;color:var(--white);margin-bottom:10px}
+.ul{display:grid;gap:8px}
+.ul li{font-size:14px;color:var(--text);line-height:1.6;list-style:none;padding-left:14px;position:relative}
+.ul li::before{content:'›';position:absolute;left:0;color:var(--accent)}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.kv .k{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
+.kv .v{font-size:13px;color:var(--text)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field.full{grid-column:1/-1}
+label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+input,select,textarea{min-height:44px;background:var(--steel);border:1px solid var(--border2);border-radius:8px;padding:10px 12px;color:var(--white);font-family:'Barlow',sans-serif;font-size:14px;outline:none}
+textarea{min-height:96px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+.help{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}
+.notice{margin-top:10px;font-size:12px;color:#8A94A8;line-height:1.5;background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.2);padding:10px 12px;border-radius:8px}
+.submit-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.msg{margin-top:10px;font-size:13px;min-height:18px}
+.footer{margin-top:20px;font-size:12px;color:var(--muted);text-align:center}
+.footer a{color:var(--muted);text-decoration:none}
+.footer a:hover{color:var(--accent)}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.site-nav{padding:8px 14px;height:auto}.site-nav-logo{font-size:15px;letter-spacing:1.8px}.site-nav-links{width:100%;gap:14px;overflow-x:auto;white-space:nowrap;padding-bottom:2px}.site-nav-links a{font-size:11px;min-height:44px;display:inline-flex;align-items:center}#cg-disclaimer{padding:10px 14px}.disc-text{font-size:10px}}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="/" class="site-nav-logo">CraneGenius</a>
+  <div class="site-nav-links">
+    <a href="/">Lift Estimator</a>
+    <a href="/data-centers/">Data Centers</a>
+    <a href="/marketplace/">Crane Marketplace</a>
+    <a href="/sell-your-company/" class="active">Sell Your Company</a>
+  </div>
+</nav>
+<div id="cg-disclaimer">
+  <div class="disc-left">
+    <span class="disc-icon">&#9888; BETA v0.1</span>
+    <span class="disc-text"><strong>CraneGenius acquisition discussions are confidential and exploratory.</strong> This page does not constitute an offer to buy securities or a commitment to transact. Terms are subject to diligence and agreement.</span>
+  </div>
+  <button class="disc-close" onclick="cgDismissDisclaimer()">DISMISS &#10005;</button>
+</div>
+<div class="main">
+  <section class="hero">
+    <div class="eyebrow">CraneGenius / Sell Your Company</div>
+    <h1>Succession And Liquidity For The <span>Lift Ecosystem</span></h1>
+    <p>We partner with profitable crane, specialty lift, and adjacent lifting companies whose owners are evaluating retirement, partial liquidity, succession, or a strategic growth partner. Confidential conversations. Practical deal structures. Operator-first approach.</p>
+    <div class="hero-cta">
+      <a href="#sell-form" class="btn btn-primary">Request A Confidential Discussion</a>
+      <button type="button" class="btn btn-secondary" onclick="setIntent('demand_network')">Join Demand Partner Network</button>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <div class="section-title">Why Owners Reach Out</div>
+      <ul class="ul">
+        <li>Retirement planning without shutting down a high-performing business.</li>
+        <li>Partial liquidity while keeping management in place.</li>
+        <li>Succession challenges with no internal buyer ready.</li>
+        <li>Need for growth capital, demand generation, and operating leverage.</li>
+      </ul>
+      <div class="section-title" style="margin-top:16px;">What We Look For</div>
+      <ul class="ul">
+        <li>Crane rentals, specialty lift operators, compact lift distributors, rigging or adjacent lift services.</li>
+        <li>Profitable operations and established customer relationships.</li>
+        <li>Asset-backed business models preferred.</li>
+        <li>Owner aligned with confidentiality and transition planning.</li>
+      </ul>
+      <div class="notice">Not ready to sell yet? Join the CraneGenius Demand Partner Network and receive project demand, planning opportunities, and brokerage routing while you evaluate timing.</div>
+    </section>
+
+    <section class="card" id="sell-form">
+      <div class="section-title">Confidential Intake</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.6;">Primary CTA: <strong style="color:var(--text)">Request a Confidential Discussion</strong></p>
+      <form id="acqForm">
+        <input type="hidden" id="intent" value="confidential_discussion">
+        <div class="form-grid">
+          <div class="field"><label for="owner_name">Owner Name</label><input id="owner_name" required></div>
+          <div class="field"><label for="company_name">Company Name</label><input id="company_name" required></div>
+          <div class="field"><label for="location">Location</label><input id="location" placeholder="City, State" required></div>
+          <div class="field"><label for="categories">Primary Equipment Categories</label><input id="categories" placeholder="Mobile cranes, spider cranes, glass handling..."></div>
+          <div class="field"><label for="years">Years In Business</label><input id="years" type="number" min="0"></div>
+          <div class="field"><label for="revenue">Estimated Annual Revenue</label><input id="revenue" placeholder="$"></div>
+          <div class="field"><label for="ebitda">Approx EBITDA (Optional)</label><input id="ebitda" placeholder="$"></div>
+          <div class="field"><label for="employees">Number Of Employees (Optional)</label><input id="employees" type="number" min="0"></div>
+          <div class="field"><label for="timeline">Owner Timeline For Exit</label>
+            <select id="timeline">
+              <option value="">Select timeline</option>
+              <option>Immediately (0-3 months)</option>
+              <option>Near-term (3-12 months)</option>
+              <option>Mid-term (12-24 months)</option>
+              <option>Long-term (24+ months)</option>
+              <option>Exploring options only</option>
+            </select>
+          </div>
+          <div class="field"><label for="contact_method">Preferred Contact Method</label>
+            <select id="contact_method">
+              <option>Email</option>
+              <option>Phone</option>
+              <option>Either</option>
+            </select>
+          </div>
+          <div class="field full"><label for="email">Email</label><input id="email" type="email" required></div>
+          <div class="field full"><label for="notes">Notes</label><textarea id="notes" placeholder="Anything we should know before first call?"></textarea></div>
+        </div>
+        <div class="submit-row">
+          <button class="btn btn-primary" type="submit">Request A Confidential Discussion</button>
+          <button class="btn btn-secondary" type="button" onclick="setIntent('demand_network')">Join Demand Partner Network</button>
+        </div>
+        <div class="help">Secondary CTA: Not ready to sell yet? Join the demand partner network and keep optionality while participating in active project demand.</div>
+        <div id="formMsg" class="msg"></div>
+      </form>
+    </section>
+  </div>
+
+  <section class="card" style="margin-top:16px;">
+    <div class="section-title">Typical Process</div>
+    <div class="kv">
+      <div><div class="k">Step 1</div><div class="v">Confidential intro and fit assessment</div></div>
+      <div><div class="k">Step 2</div><div class="v">Preliminary valuation and structure review</div></div>
+      <div><div class="k">Step 3</div><div class="v">Diligence and transition planning</div></div>
+      <div><div class="k">Step 4</div><div class="v">Close and integration roadmap</div></div>
+    </div>
+  </section>
+
+  <div class="footer">Built for lift operators, brokers, and ecosystem owners. <a href="mailto:info@cranegenius.com">info@cranegenius.com</a> · <a href="tel:+15037734659">1 (503) 773-4659</a></div>
+</div>
+<script>
+const ACQ_ENDPOINT = 'https://formspree.io/f/mgoldjjb';
+
+function cgDismissDisclaimer(){
+  var d=document.getElementById('cg-disclaimer');
+  if(!d) return;
+  d.classList.add('hidden');
+  try{ localStorage.setItem('cg_disc_dismissed','1'); }catch(e){}
+}
+(function(){
+  try{ if(localStorage.getItem('cg_disc_dismissed')==='1'){ var d=document.getElementById('cg-disclaimer'); if(d) d.classList.add('hidden'); } }catch(e){}
+})();
+
+function setIntent(intent){
+  var el=document.getElementById('intent');
+  if(el) el.value=intent;
+  var msg=document.getElementById('formMsg');
+  if(msg){
+    msg.style.color='#8A94A8';
+    msg.textContent = intent==='demand_network' ? 'Intent set to Demand Partner Network. Submit the form to enroll.' : 'Intent set to Confidential Discussion.';
+  }
+  var form=document.getElementById('sell-form');
+  if(form) form.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function logAcqLead(payload){
+  try{
+    const key='cg_acq_leads';
+    const rows=JSON.parse(localStorage.getItem(key)||'[]');
+    rows.push(payload);
+    localStorage.setItem(key, JSON.stringify(rows.slice(-200)));
+  }catch(e){}
+}
+
+document.getElementById('acqForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var msg=document.getElementById('formMsg');
+  var payload={
+    source:'sell_your_company',
+    intent:document.getElementById('intent').value || 'confidential_discussion',
+    owner_name:document.getElementById('owner_name').value.trim(),
+    company_name:document.getElementById('company_name').value.trim(),
+    location:document.getElementById('location').value.trim(),
+    primary_equipment_categories:document.getElementById('categories').value.trim(),
+    years_in_business:document.getElementById('years').value.trim(),
+    estimated_annual_revenue:document.getElementById('revenue').value.trim(),
+    approximate_ebitda:document.getElementById('ebitda').value.trim(),
+    employee_count:document.getElementById('employees').value.trim(),
+    owner_timeline_for_exit:document.getElementById('timeline').value,
+    preferred_contact_method:document.getElementById('contact_method').value,
+    email:document.getElementById('email').value.trim(),
+    notes:document.getElementById('notes').value.trim(),
+    page_url:window.location.href,
+    submitted_at:new Date().toISOString(),
+    _subject:'CraneGenius Acquisition Lead — Sell Your Company'
+  };
+
+  if(!payload.owner_name || !payload.company_name || !payload.location || !payload.email){
+    msg.style.color='#E84040';
+    msg.textContent='Please complete Owner Name, Company Name, Location, and Email.';
+    return;
+  }
+
+  msg.style.color='#5A6480';
+  msg.textContent='Submitting securely...';
+  logAcqLead(payload);
+
+  try{
+    const res = await fetch(ACQ_ENDPOINT, {
+      method:'POST',
+      headers:{'Accept':'application/json','Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    if(res.ok){
+      msg.style.color='#2ECC71';
+      msg.textContent='Submitted. We will follow up confidentially.';
+      e.target.reset();
+      document.getElementById('intent').value='confidential_discussion';
+    }else{
+      msg.style.color='#E84040';
+      msg.textContent='Submission failed. Please email info@cranegenius.com directly.';
+    }
+  }catch(err){
+    msg.style.color='#E84040';
+    msg.textContent='Network error. Please email info@cranegenius.com directly.';
+  }
+});
+</script>
+</body>
+</html>

@@ -55,3 +55,10 @@ Consolidate to one.
 - [x] Increased small-screen readability for hero/subcopy on key funnel pages.
 - [ ] Final real-device QA pass before Monday campaign send.
 
+## Ecosystem Expansion Phase 1 (2026-03-07)
+- [x] Added `/sell-your-company/` page with confidential acquisition intake form.
+- [x] Wired non-breaking navigation links to Sell Your Company from core public pages.
+- [x] Added modular entity schema scaffold: `config/lift_ecosystem_schema.json`.
+- [x] Added `FEATURE_BACKLOG.md` to support persistent agent memory workflow.
+- [ ] Phase 2: expand marketplace categories + lift-planner category pathways.
+

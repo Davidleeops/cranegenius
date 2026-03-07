@@ -148,3 +148,28 @@ If returning to code: unify design system. See TASK.md.
 ### Next step
 - Device QA with conversion checklist (tap precision, above-fold CTA visibility, quote submit success).
 
+## 2026-03-07 — Ecosystem architecture expansion (Phase 1)
+
+### Done
+- Created new page: `sell-your-company/index.html`
+  - Positioning for succession/liquidity in crane + specialty lift ecosystem.
+  - Primary CTA: Request a Confidential Discussion.
+  - Secondary CTA: Join Demand Partner Network.
+  - Intake fields include owner/company/location/equipment categories/revenue/EBITDA/timeline/contact method/notes.
+  - Form routing via existing Formspree endpoint with acquisition-specific source + subject metadata.
+  - Local browser event log (`cg_acq_leads`) for backward-compatible CRM handoff.
+- Added Sell Your Company nav link to:
+  - `index.html`
+  - `marketplace/index.html`
+  - `data-centers/index.html`
+  - `data-centers/ai-planner/index.html` subnav strip
+  - `data-centers/lift-matrix/index.html` subnav strip
+- Added modular schema scaffold file:
+  - `config/lift_ecosystem_schema.json`
+- Added missing memory backlog file:
+  - `FEATURE_BACKLOG.md`
+
+### Notes
+- Existing estimator/planner/marketplace flows were preserved unchanged.
+- New architecture is layered non-destructively for backward compatibility.
+
