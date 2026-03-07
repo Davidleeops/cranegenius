@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CraneGenius — Opportunities</title>
+<meta name="description" content="Opportunity Intelligence: projects likely to require crane and lift ecosystem coverage.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e1a;--panel:#10172a;--border:#233050;--text:#e7eef9;--muted:#97a8c2;--accent:#F5A623;--accent2:#00C4A7}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh}
+.site-nav{position:sticky;top:0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:12px 22px;border-bottom:1px solid var(--border);background:rgba(10,14,26,.95)}
+.site-nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:600}
+.site-nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;letter-spacing:.04em;color:var(--text)}
+.site-nav-logo span{color:var(--accent)}
+.site-nav-links{display:flex;gap:16px;flex-wrap:wrap}
+.site-nav-links a.active{color:var(--accent)}
+.wrap{max-width:1200px;margin:0 auto;padding:28px 18px 48px}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:46px;line-height:1.02}
+.hero p{color:#ccdaee;max-width:780px;margin-top:8px;font-size:14px;line-height:1.5}
+.filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
+select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0ff;padding:10px;font-family:'Barlow',sans-serif}
+.count{font-size:12px;color:var(--muted);margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.card{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--border);padding:14px;transition:.15s transform,.15s border-color}
+.card:hover{transform:translateY(-2px);border-color:#36568b}
+.card h3{font-family:'Barlow Condensed',sans-serif;font-size:24px;line-height:1.05;margin-bottom:8px}
+.meta{font-size:12px;color:#9db0cd;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.summary{font-size:13px;color:#d6e3f6;line-height:1.45}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tag{font-size:10px;padding:3px 7px;border:1px solid #365689;color:#93c5ff;border-radius:4px}
+.empty{padding:20px;border:1px dashed #35517e;color:#9eb4d4}
+@media(max-width:1020px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.filters{grid-template-columns:1fr}.site-nav-links{overflow-x:auto;white-space:nowrap}}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="/" class="site-nav-logo">Crane<span>Genius</span></a>
+  <div class="site-nav-links">
+    <a href="/">Lift Estimator</a>
+    <a href="/data-centers/">Data Centers</a>
+    <a href="/marketplace/">Crane Marketplace</a>
+    <a href="/opportunities/" class="active">Opportunities</a>
+    <a href="/sell-your-company/">Sell Your Company</a>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="hero">
+    <h1>Opportunity Intelligence Engine</h1>
+    <p>Structured project opportunities likely to need crane or lift-ecosystem coverage. This is the foundation layer for future signal ingestion from permits, planning agendas, utility filings, and public bid sources.</p>
+  </div>
+
+  <div class="filters">
+    <input id="fLoc" placeholder="Filter by city/state">
+    <select id="fType"><option value="">All Project Types</option></select>
+    <select id="fStage"><option value="">All Stages</option><option value="planning">planning</option><option value="permit_filed">permit_filed</option><option value="approved">approved</option><option value="construction_starting">construction_starting</option><option value="active_construction">active_construction</option></select>
+    <select id="fLift"><option value="">All Lift Categories</option></select>
+  </div>
+
+  <div class="count" id="resultCount">Loading opportunities...</div>
+  <div class="grid" id="grid"></div>
+</div>
+<script src="/data/opportunities/opportunity_helpers.js"></script>
+<script>
+(function(){
+  var all = [];
+  var byId = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s||'').replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); };
+
+  function unique(arr){ return Array.from(new Set(arr.filter(Boolean))); }
+
+  function seedFilters(list){
+    var typeSel = byId('fType');
+    var liftSel = byId('fLift');
+    unique(list.map(function(x){ return x.project_type; })).forEach(function(t){
+      var o=document.createElement('option'); o.value=t; o.textContent=t; typeSel.appendChild(o);
+    });
+    var lifts = [];
+    list.forEach(function(x){
+      var cats = window.CGOpportunityHelpers.inferLiftCategories(x.project_type, x.recommended_lift_categories);
+      cats.forEach(function(c){ lifts.push(c); });
+    });
+    unique(lifts).forEach(function(t){
+      var o=document.createElement('option'); o.value=t; o.textContent=t; liftSel.appendChild(o);
+    });
+  }
+
+  function render(){
+    var q = byId('fLoc').value.trim().toLowerCase();
+    var t = byId('fType').value;
+    var s = byId('fStage').value;
+    var l = byId('fLift').value;
+
+    var filtered = all.filter(function(x){
+      var loc = ((x.city||'') + ' ' + (x.state||'')).toLowerCase();
+      if(q && loc.indexOf(q) === -1) return false;
+      if(t && x.project_type !== t) return false;
+      if(s && x.project_stage !== s) return false;
+      var cats = window.CGOpportunityHelpers.inferLiftCategories(x.project_type, x.recommended_lift_categories);
+      if(l && cats.indexOf(l) === -1) return false;
+      return true;
+    });
+
+    byId('resultCount').textContent = filtered.length + ' opportunities shown';
+    var grid = byId('grid');
+    if(!filtered.length){
+      grid.innerHTML = '<div class="empty">No opportunities match your current filters.</div>';
+      return;
+    }
+    grid.innerHTML = filtered.map(function(x){
+      var cats = window.CGOpportunityHelpers.inferLiftCategories(x.project_type, x.recommended_lift_categories);
+      var tags = cats.slice(0,4).map(function(c){ return '<span class="tag">'+esc(c)+'</span>'; }).join('');
+      return '<a class="card" href="/opportunities/'+encodeURIComponent(x.project_slug)+'/">'+
+        '<h3>'+esc(x.project_name)+'</h3>'+
+        '<div class="meta"><span>'+esc(x.city)+', '+esc(x.state)+'</span><span>'+esc(x.project_type)+'</span><span>'+esc(x.project_stage)+'</span></div>'+
+        '<div class="summary">'+esc(x.lift_requirements_summary)+'</div>'+
+        '<div class="tags">'+tags+'</div>'+
+      '</a>';
+    }).join('');
+  }
+
+  fetch('/data/opportunities/opportunities.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      all = (data && data.opportunities ? data.opportunities : []).slice();
+      seedFilters(all);
+      render();
+      ['fLoc','fType','fStage','fLift'].forEach(function(id){ byId(id).addEventListener('input', render); byId(id).addEventListener('change', render); });
+    })
+    .catch(function(){
+      byId('resultCount').textContent = 'Failed to load opportunities';
+      byId('grid').innerHTML = '<div class="empty">Could not load opportunity data.</div>';
+    });
+})();
+</script>
+</body>
+</html>

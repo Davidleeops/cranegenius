@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CraneGenius Opportunity</title>
+<meta name="description" content="CraneGenius Opportunity Intelligence project page for lift coverage and planning support.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e1a;--panel:#10172a;--border:#233050;--text:#e7eef9;--muted:#97a8c2;--accent:#F5A623;--accent2:#00C4A7}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh}
+.site-nav{position:sticky;top:0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:12px 22px;border-bottom:1px solid var(--border);background:rgba(10,14,26,.95)}
+.site-nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:600}
+.site-nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;letter-spacing:.04em;color:var(--text)}
+.site-nav-logo span{color:var(--accent)}
+.site-nav-links{display:flex;gap:16px;flex-wrap:wrap}
+.site-nav-links a.active{color:var(--accent)}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 18px 42px}
+.hd{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:16px}
+.hd h1{font-family:'Barlow Condensed',sans-serif;font-size:42px;line-height:1.05}
+.badge{display:inline-block;padding:5px 10px;border:1px solid #3a4d78;border-radius:999px;font-size:11px;color:#9ec2ff;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
+.card{background:var(--panel);border:1px solid var(--border);padding:16px}
+.card h2{font-family:'Barlow Condensed',sans-serif;font-size:23px;margin-bottom:8px}
+.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.v{font-size:14px;font-weight:600}
+.p{font-size:14px;line-height:1.5;color:#d5e0f0}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tag{font-size:11px;padding:4px 8px;border:1px solid #35558a;color:#8ec3ff;border-radius:4px}
+.ctas{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.btn{border:none;background:var(--accent);color:#0a0e1a;padding:10px 12px;font-weight:800;font-family:'Barlow Condensed',sans-serif;letter-spacing:.04em;cursor:pointer;text-transform:uppercase;font-size:13px}
+.btn.alt{background:transparent;color:var(--text);border:1px solid #3a4d78}
+.btn.full{grid-column:1/-1}
+a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.modalWrap{position:fixed;inset:0;background:rgba(0,0,0,.74);display:none;align-items:center;justify-content:center;z-index:120;padding:16px}
+.modal{background:#121a30;border:1px solid #29406b;max-width:520px;width:100%;padding:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+input,textarea,select{width:100%;background:#0d1324;border:1px solid #2a3b60;color:#eaf2ff;padding:10px;font-family:'Barlow',sans-serif}
+label{font-size:12px;color:#8ea0be;display:block;margin:8px 0 4px}
+.msg{font-size:12px;color:#8ea0be;margin-top:8px;min-height:16px}
+@media(max-width:880px){.grid{grid-template-columns:1fr}.list{grid-template-columns:1fr}.ctas{grid-template-columns:1fr}.row{grid-template-columns:1fr}.site-nav-links{overflow-x:auto;white-space:nowrap}}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="/" class="site-nav-logo">Crane<span>Genius</span></a>
+  <div class="site-nav-links">
+    <a href="/">Lift Estimator</a>
+    <a href="/data-centers/">Data Centers</a>
+    <a href="/marketplace/">Crane Marketplace</a>
+    <a href="/opportunities/" class="active">Opportunities</a>
+    <a href="/sell-your-company/">Sell Your Company</a>
+  </div>
+</nav>
+<div class="wrap" id="oppRoot">
+  <div class="hd">
+    <div>
+      <span class="badge" id="stageBadge">PROJECT STAGE</span>
+      <h1 id="name">Opportunity</h1>
+      <div class="p" id="loc">Loading...</div>
+    </div>
+  </div>
+  <div class="grid">
+    <section class="card">
+      <h2>Project Overview</h2>
+      <div class="list" id="overview"></div>
+      <div class="p" style="margin-top:12px" id="summary"></div>
+      <div class="tags" id="cats"></div>
+    </section>
+    <section class="card">
+      <h2>Need Lift Coverage For This Project?</h2>
+      <div class="p">Request crane, specialty lift, or planning support. Routed through the same structured lead model used platform-wide.</div>
+      <div class="ctas">
+        <button class="btn" onclick="openOppModal('quote_request')">Request Lift Coverage</button>
+        <button class="btn" onclick="openOppModal('availability')">Request Crane Coverage</button>
+        <button class="btn" onclick="openOppModal('operator_support')">Request Specialty Lift Coverage</button>
+        <button class="btn alt" onclick="openOppModal('planning_help')">Request Planning Help</button>
+        <a class="btn alt" href="/marketplace/">View Marketplace</a>
+        <a class="btn alt" href="/data-centers/ai-planner">Use AI Lift Planner</a>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="modalWrap" id="oppModalWrap">
+  <div class="modal">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><strong style="font-family:'Barlow Condensed',sans-serif;letter-spacing:.04em">OPPORTUNITY INQUIRY</strong><button class="btn alt" onclick="closeOppModal()" style="padding:6px 9px">Close</button></div>
+    <div class="row">
+      <div><label>Your Name</label><input id="oppName" type="text" /></div>
+      <div><label>Company</label><input id="oppCompany" type="text" /></div>
+    </div>
+    <div class="row">
+      <div><label>Email</label><input id="oppEmail" type="email" /></div>
+      <div><label>Phone (optional)</label><input id="oppPhone" type="tel" /></div>
+    </div>
+    <label>Request Type</label>
+    <select id="oppRequestType"><option value="quote_request">Quote Request</option><option value="pricing">Pricing</option><option value="availability">Availability</option><option value="rental">Rental</option><option value="purchase">Purchase</option><option value="financing">Financing</option><option value="operator_support">Operator Support</option><option value="planning_help">Planning Help</option></select>
+    <label>Notes</label>
+    <textarea id="oppNotes" rows="3"></textarea>
+    <button class="btn full" style="margin-top:10px" onclick="submitOppInquiry()">Submit Inquiry</button>
+    <div class="msg" id="oppMsg"></div>
+  </div>
+</div>
+<script src="/data/opportunities/opportunity_helpers.js"></script>
+<script>window.CG_OPPORTUNITY_SLUG="central-valley-food-automation-upgrade";</script>
+<script src="/opportunities/detail.js"></script>
+</body>
+</html>

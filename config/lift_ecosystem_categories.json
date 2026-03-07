@@ -111,6 +111,7 @@
   "lead_types": [
     "marketplace_inquiry",
     "lift_planner_inquiry",
-    "estimator_inquiry"
+    "estimator_inquiry",
+    "opportunity_inquiry"
   ]
 }

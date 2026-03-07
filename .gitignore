@@ -1,4 +1,6 @@
-data/
+data/*
+!data/opportunities/
+!data/opportunities/**
 credentials/
 *.csv
 __pycache__/

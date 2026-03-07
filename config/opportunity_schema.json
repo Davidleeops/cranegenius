@@ -1,0 +1,62 @@
+{
+  "version": "v0.1",
+  "entity": "opportunity",
+  "fields": [
+    "opportunity_id",
+    "project_name",
+    "project_slug",
+    "project_address",
+    "city",
+    "state",
+    "country",
+    "latitude_optional",
+    "longitude_optional",
+    "project_type",
+    "industry_segment",
+    "developer_optional",
+    "general_contractor_optional",
+    "architect_optional",
+    "project_stage",
+    "estimated_start_date_optional",
+    "estimated_completion_date_optional",
+    "lift_requirements_summary",
+    "recommended_lift_categories",
+    "inferred_use_cases_optional",
+    "data_source",
+    "source_url_optional",
+    "confidence_score_optional",
+    "created_timestamp",
+    "updated_timestamp",
+    "status"
+  ],
+  "enums": {
+    "project_stage": [
+      "planning",
+      "permit_filed",
+      "approved",
+      "construction_starting",
+      "active_construction"
+    ],
+    "status": [
+      "new",
+      "active",
+      "closed"
+    ],
+    "recommended_lift_categories": [
+      "mobile_cranes",
+      "tower_cranes",
+      "spider_cranes",
+      "mini_cranes",
+      "crawler_cranes",
+      "carry_deck_cranes",
+      "compact_lifting_equipment",
+      "glass_handling_systems",
+      "vacuum_lifts",
+      "rigging_and_lifting_accessories",
+      "specialized_lifting_attachments",
+      "industrial_lifting_systems",
+      "heavy_equipment_installation_lifts",
+      "specialty_lift_contractors"
+    ]
+  }
+}

@@ -2,24 +2,32 @@
   "version": "v0.1",
   "entities": {
     "opportunities": [
-      "id",
+      "opportunity_id",
       "project_name",
+      "project_slug",
       "project_address",
       "city",
       "state",
-      "owner_or_developer",
-      "general_contractor",
+      "country",
+      "latitude_optional",
+      "longitude_optional",
       "project_type",
-      "estimated_start_date",
-      "estimated_lift_requirements",
-      "recommended_lift_category",
-      "recommended_equipment_class",
-      "source",
-      "notes",
-      "bid_deadline",
-      "inferred_use_cases",
-      "segment_tags",
-      "created_at"
+      "industry_segment",
+      "developer_optional",
+      "general_contractor_optional",
+      "architect_optional",
+      "project_stage",
+      "estimated_start_date_optional",
+      "estimated_completion_date_optional",
+      "lift_requirements_summary",
+      "recommended_lift_categories",
+      "inferred_use_cases_optional",
+      "data_source",
+      "source_url_optional",
+      "confidence_score_optional",
+      "created_timestamp",
+      "updated_timestamp",
+      "status"
     ],
     "jobs": [
       "id",
@@ -136,6 +144,24 @@
       "source",
       "created_at"
     ],
+    "opportunity_inquiries": [
+      "id",
+      "lead_type",
+      "source_page",
+      "source_tool",
+      "opportunity_id",
+      "project_name",
+      "request_type",
+      "selected_lift_category",
+      "recommended_solution_type",
+      "created_timestamp",
+      "status_placeholder",
+      "contact_name",
+      "company_name",
+      "email",
+      "phone",
+      "notes"
+    ],
     "acquisition_inquiries": [
       "id",
       "lead_type",
@@ -216,6 +242,7 @@
     "opportunities -> recommended_lift_categories",
     "marketplace_requests -> equipment_classes",
     "opportunity -> lift_category mapping",
+    "opportunity -> opportunity_inquiries",
     "marketplace_listing -> lift_category mapping",
     "planner_input_signature -> recommended_solution_type mapping",
     "inquiry -> financing_or_rental_request routing"
@@ -224,7 +251,8 @@
     "lead_types": [
       "marketplace_inquiry",
       "lift_planner_inquiry",
-      "estimator_inquiry"
+      "estimator_inquiry",
+      "opportunity_inquiry"
     ],
     "request_types": [
       "quote_request",
@@ -235,6 +263,18 @@
       "financing",
       "operator_support",
       "planning_help"
+    ],
+    "opportunity_stage_values": [
+      "planning",
+      "permit_filed",
+      "approved",
+      "construction_starting",
+      "active_construction"
+    ],
+    "opportunity_status_values": [
+      "new",
+      "active",
+      "closed"
     ]
   }
 }
