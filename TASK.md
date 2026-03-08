@@ -87,3 +87,13 @@ Consolidate to one.
 - Updated TASK.md and CHANGELOG_AGENT.md
 
 Next: ChatGPT assigns next task. No src/ changes made.
+
+---
+
+## Completed by Claude — 2026-03-08
+
+Resolved schema mismatch in scripts/append_pipeline_metrics.py.
+Aligned its output columns to match system_metrics_history.csv and append_metrics_history.py.
+Column mapping: companies_processed->companies, domains_found->valid_domains,
+unresolved derived from (companies - valid_domains), people_found removed (not in schema).
+Both scripts now write compatible rows to the same CSV.

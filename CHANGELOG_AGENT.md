@@ -214,3 +214,28 @@ If returning to code: unify design system. See TASK.md.
 
 ### Next
 ChatGPT assigns next task.
+
+---
+
+## 2026-03-08 | Agent: Claude | Session: Schema mismatch fix
+
+### Decision
+Aligned append_pipeline_metrics.py to the existing system_metrics_history.csv schema.
+Both scripts now write identical column names. No new CSV created.
+
+### Column mapping applied
+- companies_processed -> companies
+- domains_found -> valid_domains
+- unresolved derived as (companies - valid_domains)
+- people_found removed (not in committed schema)
+- dataset arg added (default: "auto")
+
+### Files changed
+- scripts/append_pipeline_metrics.py (rewritten to match schema)
+- TASK.md (appended)
+- CHANGELOG_AGENT.md (this entry)
+
+### Files not touched
+- src/ — untouched
+- system_metrics_history.csv — untouched
+- append_metrics_history.py — untouched
