@@ -68,3 +68,22 @@ Consolidate to one.
 - [x] Secondary demand-partner CTA implemented as separate lightweight form.
 - [x] Internal data distinction implemented: `acquisition_targets`, `acquisition_inquiries`, `demand_partner_inquiries`.
 
+
+
+---
+
+## Completed by Claude — 2026-03-08
+
+- Created docs_learning/lessons_learned.md
+- Created docs_learning/experiments.md
+- Created docs_learning/signal_intelligence_log.md
+- Created docs_learning/system_architecture.md
+- Created docs_learning/content_log.md
+- Created runs/system_metrics_history.csv
+- Created scripts/append_metrics_history.py
+- Created scripts/append_lesson.py
+- Created scripts/append_experiment.py
+- Created scripts/append_signal_log.py
+- Updated TASK.md and CHANGELOG_AGENT.md
+
+Next: ChatGPT assigns next task. No src/ changes made.
