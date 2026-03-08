@@ -239,3 +239,21 @@ Both scripts now write identical column names. No new CSV created.
 - src/ — untouched
 - system_metrics_history.csv — untouched
 - append_metrics_history.py — untouched
+
+---
+
+## 2026-03-08 | Agent: Claude | Session: review_latest_pipeline_outputs.py
+
+### Created
+- scripts/review_latest_pipeline_outputs.py
+
+### What it does
+Reads runs/contact_generation_stats.json, runs/verification_summary.json,
+and 7 data/monday_*.csv files. Prints terminal summary. Writes
+runs/latest_pipeline_review.md. All file handling is defensive — missing
+files are noted, not fatal. No src/ imports. --max-sample controls sample size.
+
+### Not touched
+- src/ — untouched
+- Any existing CSVs — untouched
+- Any existing scripts — untouched

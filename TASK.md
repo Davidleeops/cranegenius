@@ -97,3 +97,17 @@ Aligned its output columns to match system_metrics_history.csv and append_metric
 Column mapping: companies_processed->companies, domains_found->valid_domains,
 unresolved derived from (companies - valid_domains), people_found removed (not in schema).
 Both scripts now write compatible rows to the same CSV.
+
+---
+
+## Completed by Claude — 2026-03-08
+
+Created scripts/review_latest_pipeline_outputs.py
+- Reads contact_generation_stats.json, verification_summary.json, and 7 data/ CSVs
+- Prints terminal summary
+- Writes runs/latest_pipeline_review.md
+- Handles missing files gracefully (notes them, does not fail)
+- argparse --max-sample flag (default 5)
+- No src/ imports
+
+Next: ChatGPT assigns next task.
