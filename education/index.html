@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crane Education & Training Center | CraneGenius – NCCCO, OSHA, Regulations & Resources</title>
+<meta name="description" content="Complete crane education resource center. NCCCO certification guides, OSHA regulations (1926 Subpart CC), accredited training schools, test prep, ASME B30 standards, and continuing education for crane operators, riggers, and lift supervisors.">
+<meta name="keywords" content="NCCCO certification, crane operator training, OSHA 1926 Subpart CC, ASME B30, crane safety regulations, rigger certification, lift supervisor training, CCO exam prep, crane school">
+<link rel="canonical" href="https://cranegenius.com/education/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "CraneGenius Education Center",
+  "description": "Comprehensive crane industry education resource: NCCCO certification, OSHA regulations, accredited training schools, and test prep for crane operators and riggers.",
+  "url": "https://cranegenius.com/education/",
+  "educationalCredentialAwarded": ["NCCCO CCO", "CICB Rigger Certification", "OSHA 10/30"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-dim:rgba(201,168,76,.15);--gold-border:rgba(201,168,76,.25);--bg:#080e1a;--bg2:#0d1628;--bg3:#111e35;--bg4:#162540;--text:#e8ecf0;--text-dim:#8a9ab5;--text-muted:#4a5a72;--green:#2dd4a0;--blue:#60a5fa;--red:#ff6b6b;--radius:8px;--F:'Bebas Neue',sans-serif;--B:'DM Sans',sans-serif;--M:'DM Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--B);font-size:15px;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--F);font-size:22px;letter-spacing:2px;color:var(--gold);text-decoration:none}
+.nav-logo span{color:var(--text-dim);font-size:13px;font-family:var(--B);letter-spacing:0;margin-left:10px;font-weight:300}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:13px;color:var(--text-dim);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{background:var(--gold)!important;color:#000!important;font-weight:600;padding:8px 20px;border-radius:4px}
+.nav-cta:hover{background:var(--gold-light)!important}
+
+/* HERO */
+.hero{position:relative;padding:72px 32px 56px;text-align:center;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(201,168,76,.07) 0%,transparent 65%);pointer-events:none}
+.hero-eyebrow{font-family:var(--M);font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:18px;opacity:0;animation:fadeUp .5s .1s forwards}
+.hero h1{font-family:var(--F);font-size:clamp(52px,8vw,96px);letter-spacing:4px;line-height:.93;color:var(--text);margin-bottom:22px;opacity:0;animation:fadeUp .5s .2s forwards}
+.hero h1 em{font-style:normal;color:var(--gold);display:block}
+.hero-sub{font-size:17px;color:var(--text-dim);max-width:640px;margin:0 auto 44px;font-weight:300;line-height:1.7;opacity:0;animation:fadeUp .5s .3s forwards}
+
+/* QUICK-NAV TILES */
+.quicknav{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:0;opacity:0;animation:fadeUp .5s .4s forwards;padding:0 32px 60px}
+.qn-tile{background:var(--bg2);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:18px 22px;text-align:center;text-decoration:none;color:var(--text);transition:all .2s;min-width:130px}
+.qn-tile:hover{border-color:var(--gold-border);background:var(--bg3);transform:translateY(-2px)}
+.qn-icon{font-size:26px;margin-bottom:8px}
+.qn-label{font-size:12px;font-family:var(--M);letter-spacing:1px;color:var(--text-dim);text-transform:uppercase}
+
+/* TOPIC NAV */
+.topic-nav{position:sticky;top:60px;z-index:90;background:rgba(8,14,26,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.04);overflow-x:auto;scrollbar-width:none}
+.topic-nav::-webkit-scrollbar{display:none}
+.topic-nav-inner{display:flex;gap:4px;padding:11px 32px;min-width:max-content}
+.tp{font-size:12px;font-weight:500;color:var(--text-dim);background:transparent;border:1px solid transparent;border-radius:20px;padding:6px 16px;cursor:pointer;transition:all .15s;white-space:nowrap;text-decoration:none}
+.tp:hover{color:var(--gold);border-color:var(--gold-border);background:var(--gold-dim)}
+.tp.active{color:#000;background:var(--gold);border-color:var(--gold)}
+
+/* MAIN */
+.main{max-width:1160px;margin:0 auto;padding:52px 32px 100px}
+.edu-section{margin-bottom:72px;scroll-margin-top:120px}
+.sec-header{margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.06)}
+.sec-eyebrow{font-family:var(--M);font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.sec-title{font-family:var(--F);font-size:42px;letter-spacing:2px;color:var(--text);line-height:1}
+.sec-sub{font-size:14px;color:var(--text-dim);margin-top:10px;max-width:680px;line-height:1.7}
+
+/* CERT PATHWAY */
+.pathway{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:32px;margin-bottom:24px;position:relative;overflow:hidden}
+.pathway::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--gold)}
+.pathway-title{font-family:var(--F);font-size:26px;letter-spacing:1px;color:var(--text);margin-bottom:6px}
+.pathway-sub{font-size:13px;color:var(--gold);font-family:var(--M);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.pathway-body{font-size:14px;color:var(--text-dim);line-height:1.75;margin-bottom:18px}
+.pathway-steps{display:flex;gap:0;margin-bottom:18px;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:8px}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--gold);color:#000;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--M)}
+.step-label{font-size:13px;color:var(--text-dim)}
+.step-arrow{color:var(--text-muted);margin:0 8px;font-size:16px}
+.pathway-tags{display:flex;gap:8px;flex-wrap:wrap}
+.ptag{font-size:11px;font-family:var(--M);padding:3px 10px;border-radius:3px;letter-spacing:.5px}
+.ptag.gold{color:var(--gold);background:var(--gold-dim);border:1px solid var(--gold-border)}
+.ptag.green{color:var(--green);background:rgba(45,212,160,.06);border:1px solid rgba(45,212,160,.2)}
+.ptag.blue{color:var(--blue);background:rgba(96,165,250,.06);border:1px solid rgba(96,165,250,.2)}
+
+/* SCHOOL GRID */
+.school-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.school-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:22px;transition:all .2s;position:relative}
+.school-card:hover{border-color:var(--gold-border);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.35)}
+.school-card.featured{border-color:var(--gold-border);background:linear-gradient(135deg,rgba(201,168,76,.05),var(--bg2))}
+.school-badge{position:absolute;top:14px;right:14px;font-size:9px;font-family:var(--M);letter-spacing:1.5px;padding:2px 8px;border-radius:2px;text-transform:uppercase}
+.school-badge.accredited{background:var(--green);color:#000}
+.school-badge.union{background:var(--blue);color:#000}
+.school-badge.online{background:var(--gold);color:#000}
+.school-icon{font-size:28px;margin-bottom:10px}
+.school-name{font-weight:600;font-size:15px;color:var(--text);margin-bottom:3px}
+.school-type{font-size:11px;color:var(--gold);font-family:var(--M);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.school-loc{font-size:12px;color:var(--text-muted);margin-bottom:10px}
+.school-desc{font-size:13px;color:var(--text-dim);line-height:1.55;margin-bottom:12px}
+.school-certs{display:flex;gap:6px;flex-wrap:wrap}
+.scert{font-size:10px;font-family:var(--M);color:var(--text-muted);background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:3px;padding:2px 7px}
+
+/* REGULATION BLOCKS */
+.reg-block{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);margin-bottom:12px;overflow:hidden}
+.reg-header{display:flex;align-items:center;gap:16px;padding:20px 24px;cursor:pointer;transition:background .15s}
+.reg-header:hover{background:rgba(255,255,255,.02)}
+.reg-num{font-family:var(--F);font-size:28px;color:var(--gold);letter-spacing:1px;min-width:160px}
+.reg-info{flex:1}
+.reg-title{font-weight:600;font-size:15px;color:var(--text);margin-bottom:3px}
+.reg-scope{font-size:12px;color:var(--text-muted)}
+.reg-arrow{color:var(--gold);font-size:18px;transition:transform .2s}
+.reg-block.open .reg-arrow{transform:rotate(180deg)}
+.reg-body{display:none;padding:0 24px 22px;border-top:1px solid rgba(255,255,255,.04)}
+.reg-block.open .reg-body{display:block}
+.reg-body p{font-size:13px;color:var(--text-dim);line-height:1.75;margin-bottom:12px}
+.reg-body ul{list-style:none;padding:0}
+.reg-body ul li{font-size:13px;color:var(--text-dim);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.03);display:flex;gap:8px}
+.reg-body ul li::before{content:'→';color:var(--gold);flex-shrink:0}
+.reg-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--gold);font-family:var(--M);letter-spacing:.5px;text-decoration:none;margin-top:12px;border:1px solid var(--gold-border);border-radius:4px;padding:6px 14px;transition:all .2s}
+.reg-link:hover{background:var(--gold-dim)}
+
+/* RESOURCE CARDS */
+.resource-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.res-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:20px;display:flex;gap:14px;align-items:flex-start;transition:all .2s;text-decoration:none;color:inherit}
+.res-card:hover{border-color:var(--gold-border);transform:translateY(-2px)}
+.res-icon{width:42px;height:42px;border-radius:8px;background:var(--bg3);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.res-name{font-weight:600;font-size:14px;color:var(--text);margin-bottom:3px}
+.res-type{font-size:10px;color:var(--gold);font-family:var(--M);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
+.res-desc{font-size:12px;color:var(--text-dim);line-height:1.5}
+
+/* EXAM PREP TABLE */
+.exam-table{width:100%;border-collapse:collapse;font-size:13px}
+.exam-table th{text-align:left;padding:10px 16px;font-family:var(--M);font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;border-bottom:1px solid var(--gold-border);background:var(--bg3)}
+.exam-table td{padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text-dim);vertical-align:top}
+.exam-table tr:hover td{background:rgba(255,255,255,.02)}
+.exam-table td:first-child{color:var(--text);font-weight:500}
+.pass-rate{display:inline-block;background:rgba(45,212,160,.1);color:var(--green);border:1px solid rgba(45,212,160,.2);border-radius:3px;font-family:var(--M);font-size:10px;padding:2px 8px}
+
+/* FAQ */
+.faq-item{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);margin-bottom:8px;overflow:hidden}
+.faq-q{padding:17px 22px;font-weight:500;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--text);transition:color .2s;user-select:none}
+.faq-q:hover{color:var(--gold)}
+.faq-q::after{content:'+';font-size:20px;color:var(--gold);font-weight:300;flex-shrink:0;margin-left:12px}
+.faq-item.open .faq-q::after{content:'−'}
+.faq-a{display:none;padding:0 22px 18px;font-size:13px;color:var(--text-dim);line-height:1.75;border-top:1px solid rgba(255,255,255,.04);padding-top:14px}
+.faq-item.open .faq-a{display:block}
+
+/* UPLOAD RESOURCE SECTION */
+.upload-card{background:linear-gradient(135deg,rgba(201,168,76,.07) 0%,var(--bg2) 70%);border:1px solid var(--gold-border);border-radius:12px;padding:40px;text-align:center;position:relative;overflow:hidden}
+.upload-card::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:200px;background:radial-gradient(ellipse,rgba(201,168,76,.1) 0%,transparent 70%)}
+.upload-card h2{font-family:var(--F);font-size:38px;letter-spacing:2px;margin-bottom:10px}
+.upload-card p{font-size:15px;color:var(--text-dim);max-width:520px;margin:0 auto 28px;font-weight:300;line-height:1.7}
+.upload-types{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.utype{font-size:12px;font-family:var(--M);color:var(--text-muted);background:var(--bg3);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:6px 14px;letter-spacing:.5px}
+.upload-btn{background:var(--gold);color:#000;font-weight:700;font-size:14px;padding:14px 36px;border-radius:4px;border:none;cursor:pointer;font-family:var(--B);transition:background .2s;text-decoration:none;display:inline-block}
+.upload-btn:hover{background:var(--gold-light)}
+
+/* CTA */
+.cta-banner{background:linear-gradient(135deg,var(--bg3),var(--bg4));border:1px solid var(--gold-border);border-radius:12px;padding:48px;text-align:center;margin-top:64px}
+.cta-banner h2{font-family:var(--F);font-size:46px;letter-spacing:3px;margin-bottom:10px}
+.cta-banner p{color:var(--text-dim);font-size:15px;margin-bottom:28px;font-weight:300}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:#000;font-weight:700;font-size:14px;padding:13px 30px;border-radius:4px;text-decoration:none;transition:background .2s}
+.btn-gold:hover{background:var(--gold-light)}
+.btn-out{background:transparent;color:var(--text-dim);font-size:14px;padding:13px 30px;border-radius:4px;text-decoration:none;border:1px solid rgba(255,255,255,.1);transition:all .2s}
+.btn-out:hover{border-color:var(--gold-border);color:var(--gold)}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--gold-border);border-radius:12px;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;padding:32px;position:relative}
+.modal h2{font-family:var(--F);font-size:30px;letter-spacing:2px;margin-bottom:6px}
+.modal-sub{font-size:13px;color:var(--text-dim);margin-bottom:22px;line-height:1.6}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text-muted);font-size:22px;cursor:pointer}
+.modal-close:hover{color:var(--text)}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:11px;font-family:var(--M);letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:7px}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--bg3);border:1px solid rgba(255,255,255,.08);border-radius:6px;color:var(--text);font-family:var(--B);font-size:14px;padding:10px 13px;outline:none;transition:border-color .2s}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold-border)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--text-muted)}
+.form-textarea{resize:vertical;min-height:80px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.submit-btn{width:100%;background:var(--gold);color:#000;font-weight:700;font-size:14px;padding:13px;border-radius:4px;border:none;cursor:pointer;font-family:var(--B);transition:background .2s;margin-top:6px}
+.submit-btn:hover{background:var(--gold-light)}
+.success-msg{display:none;background:rgba(45,212,160,.08);border:1px solid rgba(45,212,160,.3);border-radius:8px;padding:18px;text-align:center;color:var(--green);font-size:14px;margin-top:14px;line-height:1.7}
+
+/* FOOTER */
+.footer{border-top:1px solid rgba(255,255,255,.05);padding:40px 32px;text-align:center}
+.footer-logo{font-family:var(--F);font-size:20px;letter-spacing:3px;color:var(--gold);margin-bottom:6px}
+.footer-links{display:flex;gap:22px;justify-content:center;margin:14px 0;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:12px;color:var(--text-muted)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.nav{padding:0 16px}.hero{padding:48px 16px 36px}.quicknav{padding:0 16px 40px}.main{padding:32px 16px 60px}.topic-nav-inner{padding:10px 16px}.school-grid{grid-template-columns:1fr}.resource-grid{grid-template-columns:1fr}.pathway-steps{gap:8px}.form-row{grid-template-columns:1fr}.exam-table{font-size:12px}.reg-num{min-width:120px;font-size:22px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://cranegenius.com" class="nav-logo">CRANEGENIUS <span>/ Education</span></a>
+  <div class="nav-links">
+    <a href="https://cranegenius.com/jobs/">Jobs</a>
+    <a href="https://cranegenius.com/directory/">Directory</a>
+    <a href="https://cranegenius.com/manpower/">Manpower</a>
+    <a href="https://cranegenius.com/#estimator" class="nav-cta">Get Crane Quote →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">🎓 Crane Industry Knowledge Center</div>
+  <h1>CRANE<br><em>EDUCATION</em><br>CENTER</h1>
+  <p class="hero-sub">Everything you need to get certified, stay compliant, and advance your career. NCCCO exam prep, accredited training schools, OSHA regulations, ASME B30 standards, and a growing library of downloadable resources.</p>
+</section>
+
+<!-- QUICK NAV TILES -->
+<div class="quicknav">
+  <a href="#certification" class="qn-tile"><div class="qn-icon">🏆</div><div class="qn-label">Certifications</div></a>
+  <a href="#schools" class="qn-tile"><div class="qn-icon">🏫</div><div class="qn-label">Training Schools</div></a>
+  <a href="#regulations" class="qn-tile"><div class="qn-icon">📋</div><div class="qn-label">Regulations</div></a>
+  <a href="#standards" class="qn-tile"><div class="qn-icon">📐</div><div class="qn-label">ASME Standards</div></a>
+  <a href="#examprep" class="qn-tile"><div class="qn-icon">📝</div><div class="qn-label">Exam Prep</div></a>
+  <a href="#resources" class="qn-tile"><div class="qn-icon">📚</div><div class="qn-label">Resources</div></a>
+  <a href="#faq" class="qn-tile"><div class="qn-icon">❓</div><div class="qn-label">FAQ</div></a>
+  <a href="#contribute" class="qn-tile"><div class="qn-icon">⬆️</div><div class="qn-label">Upload Resource</div></a>
+</div>
+
+<!-- TOPIC NAV -->
+<nav class="topic-nav">
+  <div class="topic-nav-inner">
+    <a href="#certification" class="tp active">🏆 Certification Pathways</a>
+    <a href="#schools" class="tp">🏫 Accredited Schools</a>
+    <a href="#regulations" class="tp">📋 OSHA Regulations</a>
+    <a href="#standards" class="tp">📐 ASME B30 Standards</a>
+    <a href="#examprep" class="tp">📝 Exam Prep</a>
+    <a href="#testing" class="tp">🗺 NCCCO Test Centers</a>
+    <a href="#resources" class="tp">📚 Resource Library</a>
+    <a href="#faq" class="tp">❓ FAQ</a>
+    <a href="#contribute" class="tp">⬆️ Contribute</a>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ══════════════════════════════════════
+     1. CERTIFICATION PATHWAYS
+══════════════════════════════════════ -->
+<section class="edu-section" id="certification">
+  <div class="sec-header">
+    <div class="sec-eyebrow">01 / Licensing & Credentials</div>
+    <div class="sec-title">CERTIFICATION PATHWAYS</div>
+    <div class="sec-sub">OSHA 29 CFR 1926.1427 requires all crane operators on construction sites to hold certification from an accredited testing organization. Here are the primary pathways.</div>
+  </div>
+
+  <div class="pathway">
+    <div class="pathway-title">NCCCO Mobile Crane Operator — Telescoping Boom (CCO)</div>
+    <div class="pathway-sub">Most Common / OSHA-Accepted / 5-Year Renewal</div>
+    <div class="pathway-body">The most widely held crane certification in the US. Covers hydraulic truck cranes, all-terrain cranes, and rough terrain cranes with telescoping booms. Required on virtually all commercial construction sites. Issued by the National Commission for the Certification of Crane Operators (NCCCO).</div>
+    <div class="pathway-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-label">Hands-on experience (no minimum, but recommended 1+ yr)</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">2</div><div class="step-label">Written Exam (Core + Specialty)</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">3</div><div class="step-label">Practical Exam at NCCCO-accredited site</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">4</div><div class="step-label">Certification issued — valid 5 years</div></div>
+    </div>
+    <div class="pathway-tags">
+      <span class="ptag gold">Written: $225–375</span>
+      <span class="ptag gold">Practical: $350–475</span>
+      <span class="ptag green">OSHA 1926.1427 Compliant</span>
+      <span class="ptag blue">Renewal: Every 5 Years</span>
+    </div>
+  </div>
+
+  <div class="pathway">
+    <div class="pathway-title">NCCCO Tower Crane Operator (CCO-TC)</div>
+    <div class="pathway-sub">High-Rise Construction / Luffing & Flat-Top Specialty</div>
+    <div class="pathway-body">Separate certification from mobile crane CCO. Covers hammerhead, luffing jib, and self-erecting tower cranes. Required for all tower crane operators on OSHA-regulated construction sites. Practical exam includes cab entry, pre-operation inspection, and load handling precision tests.</div>
+    <div class="pathway-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-label">CCO Core Written Exam</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">2</div><div class="step-label">Tower Crane Specialty Written</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">3</div><div class="step-label">Tower Crane Practical Exam</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">4</div><div class="step-label">CCO-TC Certification</div></div>
+    </div>
+    <div class="pathway-tags">
+      <span class="ptag gold">High-Rise Requirement</span>
+      <span class="ptag green">OSHA Compliant</span>
+      <span class="ptag blue">5-Year Renewal</span>
+    </div>
+  </div>
+
+  <div class="pathway">
+    <div class="pathway-title">NCCCO Rigger Certification (Levels I & II)</div>
+    <div class="pathway-sub">OSHA Required for Rigging Crew Members</div>
+    <div class="pathway-body">OSHA 1926.1404 and 1926.1425 require qualified riggers for crane assembly/disassembly and attaching/detaching loads. NCCCO Rigger Level I covers basic rigging; Level II covers more complex engineered rigging scenarios, multiple crane lifts, and custom rigging configurations.</div>
+    <div class="pathway-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-label">Rigger Level I Written</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">2</div><div class="step-label">Practical Evaluation</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">3</div><div class="step-label">Level I Cert → then Level II Written</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">4</div><div class="step-label">Level II Practical + Cert</div></div>
+    </div>
+    <div class="pathway-tags">
+      <span class="ptag gold">Level I: Entry Rigger</span>
+      <span class="ptag gold">Level II: Senior Rigger</span>
+      <span class="ptag green">OSHA 1926.1404</span>
+    </div>
+  </div>
+
+  <div class="pathway">
+    <div class="pathway-title">NCCCO Lift Director Certification</div>
+    <div class="pathway-sub">Critical Lifts / Multi-Crane Lifts / OSHA 1926.1431</div>
+    <div class="pathway-body">The lift director is responsible for the overall safety and execution of crane lifts. Required by OSHA 1926.1431 for critical lifts (over 75% capacity, personnel lifts, or lifts over energized lines). One of the highest-value credentials in the industry, typically commanding $75–100+/hr.</div>
+    <div class="pathway-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-label">5+ yrs crane/rigging experience recommended</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">2</div><div class="step-label">Lift Director Written Exam</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">3</div><div class="step-label">Practical Assessment</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">4</div><div class="step-label">Lift Director Certification</div></div>
+    </div>
+    <div class="pathway-tags">
+      <span class="ptag gold">OSHA 1926.1431</span>
+      <span class="ptag gold">$75–100+/hr</span>
+      <span class="ptag green">Highest Credential</span>
+      <span class="ptag blue">5-Year Renewal</span>
+    </div>
+  </div>
+
+  <div class="pathway">
+    <div class="pathway-title">CICB — Crane Institute Certifications</div>
+    <div class="pathway-sub">OSHA-Accepted NCCCO Alternative / All Crane Types</div>
+    <div class="pathway-body">The Crane Institute Certifications Board (CICB) is ANSI-accredited and OSHA-accepted as an alternative to NCCCO. Covers crane operators, riggers, signalpersons, and lift directors. Some employers prefer CICB; check your employer's requirements before choosing a certification body.</div>
+    <div class="pathway-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-label">Choose certification type</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">2</div><div class="step-label">CICB Written Exam</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">3</div><div class="step-label">Practical Skills Test</div></div>
+      <span class="step-arrow">›</span>
+      <div class="step"><div class="step-num">4</div><div class="step-label">CICB Certification Issued</div></div>
+    </div>
+    <div class="pathway-tags">
+      <span class="ptag gold">ANSI Accredited</span>
+      <span class="ptag green">OSHA Accepted</span>
+      <span class="ptag blue">NCCCO Alternative</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     2. TRAINING SCHOOLS
+══════════════════════════════════════ -->
+<section class="edu-section" id="schools">
+  <div class="sec-header">
+    <div class="sec-eyebrow">02 / Accredited Programs</div>
+    <div class="sec-title">TRAINING SCHOOLS</div>
+    <div class="sec-sub">Accredited training programs, union apprenticeships, and simulator-based schools across the US. Verify NCCCO or CICB accreditation before enrolling.</div>
+  </div>
+  <div class="school-grid">
+
+    <div class="school-card featured">
+      <span class="school-badge accredited">NCCCO Accredited</span>
+      <div class="school-icon">🏫</div>
+      <div class="school-name">NCCCO Foundation — Test Centers</div>
+      <div class="school-type">National Certification Body</div>
+      <div class="school-loc">📍 Nationwide — 200+ Test Sites</div>
+      <div class="school-desc">NCCCO maintains a national network of accredited practical examination sites. Written exams available at Pearson VUE testing centers in every state. Use the NCCCO site locator to find the nearest practical test site.</div>
+      <div class="school-certs"><span class="scert">CCO Mobile</span><span class="scert">Tower Crane</span><span class="scert">Rigger I/II</span><span class="scert">Lift Director</span></div>
+    </div>
+
+    <div class="school-card featured">
+      <span class="school-badge union">Union Program</span>
+      <div class="school-icon">👷</div>
+      <div class="school-name">IUOE Local 150 — Apprenticeship & Training</div>
+      <div class="school-type">Union Apprenticeship Program</div>
+      <div class="school-loc">📍 Wilmington, IL (serves IL, IA, MN, NE, ND, SD)</div>
+      <div class="school-desc">4-year apprenticeship program producing IUOE journeyman crane operators. Classroom, simulator, and hands-on training. Full NCCCO CCO prep included. One of the most respected operator programs in the country.</div>
+      <div class="school-certs"><span class="scert">Journeyman Cert</span><span class="scert">NCCCO Prep</span><span class="scert">4-Year Program</span></div>
+    </div>
+
+    <div class="school-card">
+      <span class="school-badge accredited">NCCCO Accredited</span>
+      <div class="school-icon">🏫</div>
+      <div class="school-name">Barnhart Academy</div>
+      <div class="school-type">Heavy Lift & Rigging Training</div>
+      <div class="school-loc">📍 Multiple Locations Nationwide</div>
+      <div class="school-desc">Barnhart Crane & Rigging's dedicated training division. Rigger Level I/II, signalperson, lift director, and crane operator training. Industry-recognized for industrial and petrochemical crane work.</div>
+      <div class="school-certs"><span class="scert">Rigger I/II</span><span class="scert">Signalperson</span><span class="scert">Lift Director</span></div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-icon">🏫</div>
+      <div class="school-name">Craft Training Center of the Rockies</div>
+      <div class="school-type">Construction Skills Training</div>
+      <div class="school-loc">📍 Denver / Front Range, CO</div>
+      <div class="school-desc">Colorado's premier construction trades training center. Offers crane operator prep, rigging, ironworker, and OSHA safety courses. NCCCO exam prep included in operator programs.</div>
+      <div class="school-certs"><span class="scert">NCCCO Prep</span><span class="scert">OSHA 10/30</span><span class="scert">Rigging</span></div>
+    </div>
+
+    <div class="school-card">
+      <span class="school-badge union">Union Program</span>
+      <div class="school-icon">👷</div>
+      <div class="school-name">IUOE Local 3 — Training & Apprenticeship</div>
+      <div class="school-type">Union Apprenticeship Program</div>
+      <div class="school-loc">📍 California, Nevada, Utah, Hawaii</div>
+      <div class="school-desc">IUOE Local 3 operates one of the largest operating engineer training programs on the West Coast. Crane operator, excavator, and heavy equipment training with full NCCCO certification prep.</div>
+      <div class="school-certs"><span class="scert">Journeyman</span><span class="scert">NCCCO CCO</span><span class="scert">4-Year</span></div>
+    </div>
+
+    <div class="school-card">
+      <span class="school-badge online">Online + Hands-On</span>
+      <div class="school-icon">💻</div>
+      <div class="school-name">ABC Training Centers — Crane Modules</div>
+      <div class="school-type">Non-Union Craft Skills Training</div>
+      <div class="school-loc">📍 Chapters in 50 States</div>
+      <div class="school-desc">Associated Builders and Contractors chapter training centers offer crane and rigging curriculum, NCCCO exam prep, OSHA 10/30, and continuing education. Non-union, open shop programs.</div>
+      <div class="school-certs"><span class="scert">NCCCO Prep</span><span class="scert">OSHA 10/30</span><span class="scert">Non-Union</span></div>
+    </div>
+
+    <div class="school-card">
+      <span class="school-badge online">Simulator</span>
+      <div class="school-icon">🖥</div>
+      <div class="school-name">CM Labs Vortex Simulator Training</div>
+      <div class="school-type">Simulator-Based Crane Training</div>
+      <div class="school-loc">📍 Training Centers Nationwide / Deployable</div>
+      <div class="school-desc">High-fidelity CM Labs Vortex simulators replicate mobile, tower, and crawler crane cab environments. Used by IUOE locals, ABC chapters, and corporate training programs for CCO prep and operator assessment without equipment risk.</div>
+      <div class="school-certs"><span class="scert">CCO Prep</span><span class="scert">Operator Assessment</span><span class="scert">Zero Equipment Risk</span></div>
+    </div>
+
+    <div class="school-card">
+      <span class="school-badge union">Union Program</span>
+      <div class="school-icon">👷</div>
+      <div class="school-name">IUOE Local 15 — NYC Operating Engineers</div>
+      <div class="school-type">Union Apprenticeship — Tower Crane Focus</div>
+      <div class="school-loc">📍 New York, NY</div>
+      <div class="school-desc">New York City's operating engineer union local. Runs a rigorous 4-year apprenticeship with heavy emphasis on tower crane operation for NYC's high-rise construction market. One of the highest-wage locals in the country.</div>
+      <div class="school-certs"><span class="scert">Tower Crane</span><span class="scert">NCCCO Tower</span><span class="scert">NYC Card</span></div>
+    </div>
+
+    <div class="school-card">
+      <div class="school-icon">🏫</div>
+      <div class="school-name">Crane Industry Training Institute (CITI)</div>
+      <div class="school-type">Crane Operator & Rigger Training</div>
+      <div class="school-loc">📍 Southeast US / Online Modules</div>
+      <div class="school-desc">Dedicated crane training institute offering classroom, online, and hands-on crane operator and rigger courses. NCCCO written exam prep, on-site training, and employer-sponsored programs available.</div>
+      <div class="school-certs"><span class="scert">NCCCO Prep</span><span class="scert">Rigger Cert</span><span class="scert">Online + Hands-On</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     3. OSHA REGULATIONS
+══════════════════════════════════════ -->
+<section class="edu-section" id="regulations">
+  <div class="sec-header">
+    <div class="sec-eyebrow">03 / Federal Compliance</div>
+    <div class="sec-title">OSHA REGULATIONS</div>
+    <div class="sec-sub">Key federal regulations governing crane operation, operator qualification, and job site safety. Understanding which standard applies to your work type is essential.</div>
+  </div>
+
+  <div class="reg-block open">
+    <div class="reg-header" onclick="toggleReg(this)">
+      <div class="reg-num">1926 Subpart CC</div>
+      <div class="reg-info">
+        <div class="reg-title">Cranes and Derricks in Construction</div>
+        <div class="reg-scope">29 CFR 1926.1400–1926.1442 · Primary construction crane standard</div>
+      </div>
+      <div class="reg-arrow">▾</div>
+    </div>
+    <div class="reg-body">
+      <p>The primary OSHA regulation governing cranes and derricks on construction sites. Enacted in 2010 and updated through 2018, this standard replaced the old 1926.550. Key provisions include mandatory operator certification, assembly/disassembly director requirements, power line safety procedures, and critical lift planning requirements.</p>
+      <ul>
+        <li><strong>1926.1402</strong> — Ground conditions: Operator must be informed of ground bearing capacity; employer responsible for adequate ground support</li>
+        <li><strong>1926.1403</strong> — Assembly/Disassembly: Must be directed by a qualified A/D director; procedures must follow manufacturer instructions</li>
+        <li><strong>1926.1407–1408</strong> — Power line safety: Required distances (10 ft for lines up to 50kV), spotter requirements, de-energization procedures</li>
+        <li><strong>1926.1412</strong> — Inspections: Shift inspections, monthly inspections, and annual inspections required with documented records</li>
+        <li><strong>1926.1416</strong> — Equipment operating procedures: Pre-shift inspection, operator manual availability, safety devices operational</li>
+        <li><strong>1926.1425</strong> — Qualified riggers: All rigging must be performed by qualified riggers for A/D and load attachment/detachment</li>
+        <li><strong>1926.1427</strong> — Operator certification: All operators must be certified by NCCCO, CICB, or employer-audited program (or meet state licensing)</li>
+        <li><strong>1926.1431</strong> — Hoisting personnel: Strict requirements for personnel lifts including PE-stamped lift plan, tested equipment, qualified operator and rigger</li>
+      </ul>
+      <a class="reg-link" href="https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926SubpartCC" target="_blank" rel="noopener">📄 Read Full Regulation on OSHA.gov →</a>
+    </div>
+  </div>
+
+  <div class="reg-block">
+    <div class="reg-header" onclick="toggleReg(this)">
+      <div class="reg-num">1910.179</div>
+      <div class="reg-info">
+        <div class="reg-title">Overhead and Gantry Cranes</div>
+        <div class="reg-scope">29 CFR 1910.179 · General industry overhead cranes</div>
+      </div>
+      <div class="reg-arrow">▾</div>
+    </div>
+    <div class="reg-body">
+      <p>Governs overhead cranes (bridge cranes, gantry cranes) in general industry settings such as manufacturing facilities, warehouses, and fabrication shops. This is the general industry standard — different from 1926 Subpart CC which covers construction.</p>
+      <ul>
+        <li>Rated load markings plainly marked on each side of the crane</li>
+        <li>All pendant controls must be clearly marked to indicate function and direction of motion</li>
+        <li>Inspection requirements: daily, monthly, and periodic inspections with written records</li>
+        <li>Hoist limit switches required on all hoists; must be tested before each use</li>
+        <li>Operators must be designated and trained; no specific certification required (unlike construction)</li>
+        <li>Maintenance: preventive maintenance program required; records maintained for crane life</li>
+      </ul>
+      <a class="reg-link" href="https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.179" target="_blank" rel="noopener">📄 Read Full Regulation on OSHA.gov →</a>
+    </div>
+  </div>
+
+  <div class="reg-block">
+    <div class="reg-header" onclick="toggleReg(this)">
+      <div class="reg-num">1926.1427</div>
+      <div class="reg-info">
+        <div class="reg-title">Operator Certification / Qualification</div>
+        <div class="reg-scope">The crane operator licensing rule — NCCCO / CICB / State License</div>
+      </div>
+      <div class="reg-arrow">▾</div>
+    </div>
+    <div class="reg-body">
+      <p>This is the specific section of Subpart CC that requires all crane operators on construction sites to be certified. Operators must hold certification from an accredited certification organization (NCCCO or CICB), hold a state or local license where required, or meet the employer-audited program standard. Certification must be crane-type specific.</p>
+      <ul>
+        <li>Certification must be specific to the crane type and capacity being operated</li>
+        <li>NCCCO and CICB are the two OSHA-recognized national certification bodies</li>
+        <li>California, New York City, Chicago, and other jurisdictions have additional state/local licensing requirements that must be met in addition to NCCCO</li>
+        <li>Employers using the "employer audited" path must document and audit operator qualifications against established criteria</li>
+        <li>Certification renewal: NCCCO requires renewal every 5 years via recertification exam</li>
+        <li>Temporary operator permits: available in limited circumstances while pursuing certification</li>
+      </ul>
+      <a class="reg-link" href="https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.1427" target="_blank" rel="noopener">📄 Read 1926.1427 on OSHA.gov →</a>
+    </div>
+  </div>
+
+  <div class="reg-block">
+    <div class="reg-header" onclick="toggleReg(this)">
+      <div class="reg-num">State Licensing</div>
+      <div class="reg-info">
+        <div class="reg-title">State & Municipal Crane Operator Licensing</div>
+        <div class="reg-scope">California, New York City, Chicago, and other jurisdictions</div>
+      </div>
+      <div class="reg-arrow">▾</div>
+    </div>
+    <div class="reg-body">
+      <p>Several states and municipalities require crane operator licenses in addition to NCCCO certification. These are not substitutes for NCCCO — you typically need both. Key jurisdictions with their own licensing requirements:</p>
+      <ul>
+        <li><strong>California (CAL/OSHA)</strong> — No state crane license, but CAL/OSHA enforces strict site-specific requirements; tower cranes require additional engineering review</li>
+        <li><strong>New York City (NYC DOB)</strong> — Rigorous NYC Crane Operator License (Class A for mobile, Class B for tower) required in addition to NCCCO. Multi-year practical experience required</li>
+        <li><strong>Chicago (City of Chicago)</strong> — City of Chicago Crane Operator License required for all work within city limits, in addition to IUOE membership or NCCCO</li>
+        <li><strong>Hawaii</strong> — State crane operator certification required; must pass state exam administered through DLIR</li>
+        <li><strong>Connecticut</strong> — State certification required for crane operators; administered through CT DOL</li>
+        <li><strong>Nevada</strong> — State licensing requirements for crane operators; check with Nevada OSHA</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     4. ASME B30 STANDARDS
+══════════════════════════════════════ -->
+<section class="edu-section" id="standards">
+  <div class="sec-header">
+    <div class="sec-eyebrow">04 / Equipment Standards</div>
+    <div class="sec-title">ASME B30 STANDARDS</div>
+    <div class="sec-sub">The ASME B30 series covers the design, construction, installation, operation, inspection, testing, and maintenance of cranes, hoists, and related lifting equipment. OSHA regulations frequently reference and adopt B30 standards.</div>
+  </div>
+
+  <div class="resource-grid">
+    <div class="res-card">
+      <div class="res-icon">📐</div>
+      <div>
+        <div class="res-type">ASME Standard</div>
+        <div class="res-name">B30.5 — Mobile and Locomotive Cranes</div>
+        <div class="res-desc">The primary standard for mobile cranes including truck-mounted, rough terrain, and all-terrain cranes. Covers design, construction, marking, inspection, testing, maintenance, and operation.</div>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">📐</div>
+      <div>
+        <div class="res-type">ASME Standard</div>
+        <div class="res-name">B30.3 — Construction Tower Cranes</div>
+        <div class="res-desc">Governs tower cranes used in construction. Covers erection, dismantling, climbing, inspection, and operation of hammerhead, luffing jib, and self-erecting tower cranes.</div>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">📐</div>
+      <div>
+        <div class="res-type">ASME Standard</div>
+        <div class="res-name">B30.2 — Overhead and Gantry Cranes</div>
+        <div class="res-desc">Covers bridge cranes, gantry cranes, and monorail hoists used in general industry. Companion standard to OSHA 1910.179.</div>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">📐</div>
+      <div>
+        <div class="res-type">ASME Standard</div>
+        <div class="res-name">B30.9 — Slings</div>
+        <div class="res-desc">Covers wire rope, chain, metal mesh, natural fiber rope, synthetic fiber rope, and synthetic web slings. Defines rated loads, inspection criteria, and removal-from-service standards.</div>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">📐</div>
+      <div>
+        <div class="res-type">ASME Standard</div>
+        <div class="res-name">B30.10 — Hooks</div>
+        <div class="res-desc">Covers hooks used in crane and hoist applications. Includes design requirements, load ratings, inspection intervals, and removal-from-service criteria for swivel hooks, shank hooks, and sorting hooks.</div>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">📐</div>
+      <div>
+        <div class="res-type">ASME Standard</div>
+        <div class="res-name">B30.26 — Rigging Hardware</div>
+        <div class="res-desc">Covers shackles, links, rings, swivels, turnbuckles, eye bolts, and hoist rings. Sets minimum design factors (5:1) and inspection requirements for all rigging hardware used with cranes.</div>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">📐</div>
+      <div>
+        <div class="res-type">ASME Standard</div>
+        <div class="res-name">B30.20 — Below-the-Hook Lifting Devices</div>
+        <div class="res-desc">Governs lifting beams, vacuum lifting devices, coil hooks, plate clamps, and other below-the-hook attachments used with cranes. Critical for safe attachment of non-standard loads.</div>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">📐</div>
+      <div>
+        <div class="res-type">ASME Standard</div>
+        <div class="res-name">B30.22 — Articulating Boom Cranes</div>
+        <div class="res-desc">Covers loader cranes (knuckle boom cranes) and articulating boom cranes mounted on vehicles. Applies to HIAB-type cranes used for material delivery and installation on construction sites.</div>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">📐</div>
+      <div>
+        <div class="res-type">ASME Standard</div>
+        <div class="res-name">B30.23 — Personnel Lifting Systems</div>
+        <div class="res-desc">Governs the use of cranes to hoist personnel. Sets the performance and safety requirements for personnel platforms, basket hoisting, and fall protection. Must be read alongside OSHA 1926.1431.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     5. EXAM PREP
+══════════════════════════════════════ -->
+<section class="edu-section" id="examprep">
+  <div class="sec-header">
+    <div class="sec-eyebrow">05 / Test Preparation</div>
+    <div class="sec-title">NCCCO EXAM PREP</div>
+    <div class="sec-sub">Know what's on the test before you sit for it. NCCCO written exams cover load charts, rigging, safety regulations, equipment inspection, and math. Here's the breakdown.</div>
+  </div>
+
+  <div style="background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);overflow:hidden;margin-bottom:24px">
+    <table class="exam-table">
+      <thead>
+        <tr>
+          <th>Exam</th>
+          <th>Format</th>
+          <th>Topics Covered</th>
+          <th>Fee</th>
+          <th>Pass Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CCO Core Written</td>
+          <td>100 questions · 2.5 hrs</td>
+          <td>Safety, inspections, load charts, rigging basics, site conditions</td>
+          <td>$225</td>
+          <td><span class="pass-rate">~55–65%</span></td>
+        </tr>
+        <tr>
+          <td>CCO Telescoping Boom Specialty</td>
+          <td>60 questions · 1.5 hrs</td>
+          <td>Hydraulic crane mechanics, boom configurations, outrigger setup, load chart math</td>
+          <td>$150</td>
+          <td><span class="pass-rate">~60%</span></td>
+        </tr>
+        <tr>
+          <td>CCO Tower Crane Specialty</td>
+          <td>60 questions · 1.5 hrs</td>
+          <td>Tower crane assembly, electrical systems, radius/capacity, wind loading</td>
+          <td>$150</td>
+          <td><span class="pass-rate">~50%</span></td>
+        </tr>
+        <tr>
+          <td>CCO Lattice Boom Crawler</td>
+          <td>60 questions · 1.5 hrs</td>
+          <td>Crawler setup, boom angles, outrigger equivalents, counterweight</td>
+          <td>$150</td>
+          <td><span class="pass-rate">~58%</span></td>
+        </tr>
+        <tr>
+          <td>Rigger Level I</td>
+          <td>80 questions · 2 hrs</td>
+          <td>Sling types/ratings, hardware, hitch configurations, load weight estimation</td>
+          <td>$200</td>
+          <td><span class="pass-rate">~62%</span></td>
+        </tr>
+        <tr>
+          <td>Lift Director</td>
+          <td>100 questions · 2.5 hrs</td>
+          <td>Critical lift planning, site surveys, multi-crane lifts, OSHA regulations, communication</td>
+          <td>$250</td>
+          <td><span class="pass-rate">~48%</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div class="pathway" style="margin-bottom:0">
+      <div class="pathway-title" style="font-size:20px">Load Chart Math</div>
+      <div class="pathway-sub" style="margin-bottom:10px">Most-Failed Topic Area</div>
+      <div class="pathway-body" style="font-size:13px">Load chart questions appear on every CCO exam. You must be able to read manufacturer load charts at various radii, boom angles, and configurations. Practice with real Grove, Liebherr, and Link-Belt load charts before the exam. Key formulas: Net capacity = Gross capacity − deductions (block, headache ball, rigging). Always read the chart for the specific configuration (e.g., fully extended outriggers, specific boom length and angle).</div>
+      <div class="pathway-tags">
+        <span class="ptag gold">20–25% of Exam</span>
+        <span class="ptag blue">Practice with Real Charts</span>
+      </div>
+    </div>
+    <div class="pathway" style="margin-bottom:0">
+      <div class="pathway-title" style="font-size:20px">Rigging Math</div>
+      <div class="pathway-sub" style="margin-bottom:10px">Sling Angles & Load Ratings</div>
+      <div class="pathway-body" style="font-size:13px">Rigging questions test your ability to calculate sling tensions based on sling angle, determine the correct sling for a given load, and apply the appropriate hitch configuration. Key rule: sling tension increases dramatically as the angle decreases — at 30° from horizontal, sling tension is 2x the load per leg. NCCCO provides a formula reference card during the exam.</div>
+      <div class="pathway-tags">
+        <span class="ptag gold">15–20% of Exam</span>
+        <span class="ptag blue">Formula Card Provided</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     6. NCCCO TEST CENTERS
+══════════════════════════════════════ -->
+<section class="edu-section" id="testing">
+  <div class="sec-header">
+    <div class="sec-eyebrow">06 / Find Your Test Site</div>
+    <div class="sec-title">NCCCO TEST CENTERS</div>
+    <div class="sec-sub">NCCCO written exams are administered at Pearson VUE testing centers nationwide. Practical exams are held at NCCCO-accredited practical examination sites — these are often union training centers, crane company yards, or dedicated testing facilities.</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-bottom:24px">
+    <div class="res-card" style="flex-direction:column;align-items:flex-start">
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px">
+        <div class="res-icon">📝</div>
+        <div><div class="res-type">Written Exams</div><div class="res-name">Pearson VUE Testing Centers</div></div>
+      </div>
+      <div class="res-desc" style="font-size:13px">NCCCO written exams administered at 500+ Pearson VUE centers in every state. Schedule at pearsonvue.com/nccco. Bring valid government-issued ID and your NCCCO candidate number.</div>
+    </div>
+    <div class="res-card" style="flex-direction:column;align-items:flex-start">
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px">
+        <div class="res-icon">🏗</div>
+        <div><div class="res-type">Practical Exams</div><div class="res-name">NCCCO Accredited Sites</div></div>
+      </div>
+      <div class="res-desc" style="font-size:13px">Practical exams held at NCCCO-accredited sites with qualified examiners and appropriate equipment. Use the NCCCO Practical Exam Site Locator at nccco.org to find sites near you. Availability varies by crane type.</div>
+    </div>
+    <div class="res-card" style="flex-direction:column;align-items:flex-start">
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px">
+        <div class="res-icon">📅</div>
+        <div><div class="res-type">Scheduling</div><div class="res-name">How to Register</div></div>
+      </div>
+      <div class="res-desc" style="font-size:13px">Register at nccco.org. Create an account, apply for the exam type(s) you want, pay fees, and schedule your written at any Pearson VUE center. Written and practical exams can be taken in any order — both must be passed within 12 months.</div>
+    </div>
+  </div>
+
+  <div style="background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:24px">
+    <div class="sec-eyebrow" style="margin-bottom:12px">Key Testing Deadlines & Rules</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;color:var(--text-dim)">
+      <div>✓ &nbsp;Written and practical exams must both be passed within <strong style="color:var(--text)">12 months</strong> of each other</div>
+      <div>✓ &nbsp;Written exams can be retaken after a <strong style="color:var(--text)">30-day waiting period</strong></div>
+      <div>✓ &nbsp;Bring <strong style="color:var(--text)">2 forms of valid ID</strong> to the testing center (one photo ID)</div>
+      <div>✓ &nbsp;No notes, phones, or reference materials allowed during written exam</div>
+      <div>✓ &nbsp;NCCCO provides a <strong style="color:var(--text)">formula reference card</strong> during the practical exam</div>
+      <div>✓ &nbsp;Results for written exams available immediately on screen</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     7. RESOURCE LIBRARY
+══════════════════════════════════════ -->
+<section class="edu-section" id="resources">
+  <div class="sec-header">
+    <div class="sec-eyebrow">07 / Downloads & References</div>
+    <div class="sec-title">RESOURCE LIBRARY</div>
+    <div class="sec-sub">Downloadable guides, checklists, reference cards, and links to official regulatory documents. More resources added regularly — contribute yours below.</div>
+  </div>
+  <div class="resource-grid">
+
+    <a class="res-card" href="https://www.osha.gov/sites/default/files/publications/OSHA3136.pdf" target="_blank" rel="noopener">
+      <div class="res-icon">📄</div>
+      <div><div class="res-type">OSHA Publication</div><div class="res-name">OSHA 3136 — Cranes & Derricks in Construction</div><div class="res-desc">OSHA's plain-language guide to the 1926 Subpart CC crane standard. Essential reading for operators and site supervisors.</div></div>
+    </a>
+
+    <a class="res-card" href="https://www.nccco.org/nccco/certification-programs/crane-operators/mobile-crane-operators" target="_blank" rel="noopener">
+      <div class="res-icon">🏆</div>
+      <div><div class="res-type">NCCCO Official</div><div class="res-name">NCCCO Candidate Handbook — Mobile Crane</div><div class="res-desc">Official NCCCO exam content outline, testing procedures, and eligibility requirements for CCO Mobile Crane certification.</div></div>
+    </a>
+
+    <a class="res-card" href="https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926SubpartCC" target="_blank" rel="noopener">
+      <div class="res-icon">⚖️</div>
+      <div><div class="res-type">Federal Regulation</div><div class="res-name">Full Text: 29 CFR 1926 Subpart CC</div><div class="res-desc">The complete text of OSHA's crane and derricks in construction standard, including all 1926.1400–1926.1442 sections.</div></div>
+    </a>
+
+    <a class="res-card" href="https://www.asme.org/codes-standards/find-codes-standards/b30-5-mobile-and-locomotive-cranes" target="_blank" rel="noopener">
+      <div class="res-icon">📐</div>
+      <div><div class="res-type">ASME Standard</div><div class="res-name">ASME B30.5 — Mobile Cranes (Purchase)</div><div class="res-desc">Link to the ASME store to purchase the current edition of B30.5 Mobile and Locomotive Cranes. Required reference for compliance and inspection programs.</div></div>
+    </a>
+
+    <a class="res-card" href="https://www.nccco.org/nccco/certification-programs/riggers" target="_blank" rel="noopener">
+      <div class="res-icon">⛓</div>
+      <div><div class="res-type">NCCCO Official</div><div class="res-name">NCCCO Rigger Certification — Exam Info</div><div class="res-desc">Official NCCCO page for Rigger Level I and Level II certification programs. Includes content outline and scheduling information.</div></div>
+    </a>
+
+    <a class="res-card" href="https://www.dica.com/wp-content/uploads/2018/10/DICA-Ground-Bearing-Pressure-Guide.pdf" target="_blank" rel="noopener">
+      <div class="res-icon">🟫</div>
+      <div><div class="res-type">Industry Guide</div><div class="res-name">DICA Ground Bearing Pressure Guide</div><div class="res-desc">DICA's guide to understanding ground bearing pressure calculations for outrigger pad selection. Free PDF — essential for safe mobile crane setup.</div></div>
+    </a>
+
+    <a class="res-card" href="https://www.saia.com" target="_blank" rel="noopener">
+      <div class="res-icon">🏛</div>
+      <div><div class="res-type">Trade Association</div><div class="res-name">SAIA — Scaffold & Access Industry Assoc.</div><div class="res-desc">Safety resources for aerial lift and scaffold equipment that frequently interfaces with crane operations on construction sites.</div></div>
+    </a>
+
+    <a class="res-card" href="https://www.thecrosbygroup.com/resources/" target="_blank" rel="noopener">
+      <div class="res-icon">⛓</div>
+      <div><div class="res-type">Manufacturer Resources</div><div class="res-name">Crosby Group Rigging Resource Library</div><div class="res-desc">Free rigging guides, load charts, inspection checklists, and technical documents from the world's leading rigging hardware manufacturer.</div></div>
+    </a>
+
+    <div class="res-card" style="cursor:pointer;border-style:dashed" onclick="openUploadModal()">
+      <div class="res-icon" style="border-style:dashed">⬆️</div>
+      <div><div class="res-type">Contribute</div><div class="res-name">Upload Your Resource</div><div class="res-desc">Have a study guide, inspection checklist, load chart, or regulation summary? Share it with the CraneGenius community.</div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     8. FAQ
+══════════════════════════════════════ -->
+<section class="edu-section" id="faq">
+  <div class="sec-header">
+    <div class="sec-eyebrow">08 / Common Questions</div>
+    <div class="sec-title">EDUCATION FAQ</div>
+  </div>
+
+  <div class="faq-item open" onclick="toggleFaq(this)">
+    <div class="faq-q">Is NCCCO certification required by law?</div>
+    <div class="faq-a">Yes, on construction sites. OSHA 29 CFR 1926.1427 requires all crane operators on construction sites to be certified by an accredited third-party organization — NCCCO or CICB are the two nationally recognized bodies. Several states and cities (NYC, Chicago, Hawaii) also require additional state or municipal licensing on top of NCCCO. In general industry (manufacturing, warehouses), OSHA 1910.179 requires operators to be "designated and trained" but does not mandate third-party certification — though NCCCO certification is still the industry best practice.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">What's the difference between NCCCO and CICB certification?</div>
+    <div class="faq-a">Both NCCCO and CICB are ANSI-accredited and OSHA-accepted for construction site crane operator certification. NCCCO (National Commission for the Certification of Crane Operators) is more widely recognized nationally — it's the default certification requested by most GCs and crane companies. CICB (Crane Institute Certifications) is a legitimate alternative accepted by OSHA and some employers. If you're unsure which to get, NCCCO is the safer choice for nationwide job market recognition. Check with your employer or union before choosing.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">How long does it take to get NCCCO certified from scratch?</div>
+    <div class="faq-a">With hands-on crane experience, a motivated operator can prepare for and pass the NCCCO CCO written exam in 2–4 months of self-study. The practical exam requires booking a slot at an accredited test site which may have wait times of 1–8 weeks depending on your location. Total time from starting study to holding your CCO card is typically 3–6 months for experienced operators. New operators with no prior crane experience who go through a union apprenticeship or formal training program typically take 6–18 months.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">What does the NCCCO practical exam involve?</div>
+    <div class="faq-a">The CCO Mobile Crane practical exam consists of a pre-operation inspection (identifying items that would take the crane out of service), a crane setup evaluation (outriggers, level, rigging), and a load handling precision test (moving a load through a course without touching markers). The exam uses a real crane at an accredited site — typically a 40-100 ton all-terrain or truck crane. Examinees are scored on safety, precision, and procedure. Bring the NCCCO candidate handbook with scoring criteria to your prep sessions so you know exactly what examiners are looking for.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">What is a "qualified rigger" and do I need to be certified?</div>
+    <div class="faq-a">OSHA 1926.1401 defines a "qualified rigger" as someone with a recognized degree, certificate, or professional standing in rigging, OR who has extensive knowledge, training, and experience sufficient to solve rigging problems. OSHA does not currently mandate specific third-party certification for riggers — but NCCCO Rigger Level I and Level II certifications are widely accepted as meeting the "qualified rigger" standard. Most reputable crane companies and general contractors require NCCCO or CICB rigger certification for their rigging crews. It is the industry best practice and strongly recommended.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">What is ASME B30 and does it have the force of law?</div>
+    <div class="faq-a">ASME B30 is a voluntary consensus standard — it is not a federal law by itself. However, OSHA regulations frequently reference and incorporate B30 standards "by reference," which gives them the force of OSHA law in those specific applications. For example, OSHA 1926.1412 references ASME B30.5 inspection criteria. Additionally, ASME B30 compliance is the industry-accepted standard of care — in a legal dispute or accident investigation, deviations from B30 will be used as evidence of negligence even where not directly required by OSHA.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">How do I renew my NCCCO certification?</div>
+    <div class="faq-a">NCCCO certifications must be renewed every 5 years. Renewal involves passing a written recertification exam (no practical exam required for renewal). You can renew anytime within 12 months before your expiration date. NCCCO will send email reminders. The recertification exam content is the same as the original written exam. Continuing Education Units (CEUs) earned through NCCCO-approved programs can also be submitted in lieu of the recertification exam — check the NCCCO website for current CEU requirements and approved providers.</div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════
+     9. CONTRIBUTE / UPLOAD
+══════════════════════════════════════ -->
+<section class="edu-section" id="contribute">
+  <div class="upload-card" id="uploadSection">
+    <h2>SHARE YOUR KNOWLEDGE</h2>
+    <p>Help grow the CraneGenius resource library. Upload study guides, inspection checklists, load chart templates, exam prep notes, regulation summaries, or any resource that would help crane operators and riggers.</p>
+    <div class="upload-types">
+      <span class="utype">📄 Study Guides</span>
+      <span class="utype">✅ Inspection Checklists</span>
+      <span class="utype">📊 Load Chart Templates</span>
+      <span class="utype">📝 Exam Prep Notes</span>
+      <span class="utype">⚖️ Regulation Summaries</span>
+      <span class="utype">🎥 Training Videos</span>
+    </div>
+    <a href="#" class="upload-btn" onclick="openUploadModal();return false">Upload a Resource →</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2>READY TO WORK?</h2>
+  <p>Browse open crane jobs, add your operator profile, or get a free lift estimate for your next project.</p>
+  <div class="cta-row">
+    <a href="https://cranegenius.com/jobs/" class="btn-gold">Browse Crane Jobs →</a>
+    <a href="https://cranegenius.com/manpower/" class="btn-gold">Add Operator Profile →</a>
+    <a href="https://cranegenius.com/#estimator" class="btn-out">Get Lift Estimate</a>
+  </div>
+</div>
+
+</main>
+
+<!-- UPLOAD MODAL -->
+<div class="modal-overlay" id="uploadModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeUploadModal()">✕</button>
+    <h2>UPLOAD RESOURCE</h2>
+    <div class="modal-sub">Share a study guide, checklist, regulation summary, or other educational resource with the crane industry community. All submissions are reviewed before publishing.</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Your Name *</label>
+        <input class="form-input" id="u_name" placeholder="Full name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Email *</label>
+        <input class="form-input" id="u_email" placeholder="your@email.com">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Resource Title *</label>
+      <input class="form-input" id="u_title" placeholder="e.g. NCCCO Load Chart Study Guide 2024">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Resource Type</label>
+      <select class="form-select" id="u_type">
+        <option>Study Guide / Exam Prep</option>
+        <option>Inspection Checklist</option>
+        <option>Load Chart / Reference</option>
+        <option>Regulation Summary</option>
+        <option>Training Video / Link</option>
+        <option>Industry Article</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <textarea class="form-textarea" id="u_desc" placeholder="Briefly describe what this resource covers and who it's most useful for..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Link or File Description</label>
+      <input class="form-input" id="u_link" placeholder="Paste a URL or describe the file you'd like to share">
+      <div style="font-size:12px;color:var(--text-muted);margin-top:6px">For file uploads: email your file directly to resources@cranegenius.com with the subject line matching your resource title above.</div>
+    </div>
+    <button class="submit-btn" onclick="submitUpload()">SUBMIT RESOURCE →</button>
+    <div class="success-msg" id="uploadSuccess">✅ Resource submitted! We'll review it and add it to the library within 48 hours. Thank you for contributing to the crane industry knowledge base.</div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">CRANEGENIUS</div>
+  <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px">The crane industry's intelligence layer</div>
+  <div class="footer-links">
+    <a href="https://cranegenius.com">Home</a>
+    <a href="https://cranegenius.com/#estimator">Lift Estimator</a>
+    <a href="https://cranegenius.com/jobs/">Jobs</a>
+    <a href="https://cranegenius.com/manpower/">Manpower</a>
+    <a href="https://cranegenius.com/directory/">Directory</a>
+    <a href="https://cranegenius.com/education/" style="color:var(--gold)">Education</a>
+    <a href="mailto:hello@cranegenius.com">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 CraneGenius / Dark 30 Ventures · Content for informational purposes — always verify current regulations at OSHA.gov and NCCCO.org</div>
+</footer>
+
+<script>
+function toggleReg(header) {
+  header.parentElement.classList.toggle('open');
+}
+function toggleFaq(el) {
+  el.classList.toggle('open');
+}
+
+// Topic nav scroll spy
+const sections = document.querySelectorAll('.edu-section');
+const pills = document.querySelectorAll('.tp');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      pills.forEach(p => p.classList.toggle('active', p.getAttribute('href') === '#' + id));
+    }
+  });
+}, {threshold: 0.25, rootMargin: '-110px 0px -55% 0px'});
+sections.forEach(s => observer.observe(s));
+
+// Upload modal
+function openUploadModal() {
+  document.getElementById('uploadModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeUploadModal() {
+  document.getElementById('uploadModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('uploadModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('uploadModal')) closeUploadModal();
+});
+
+function submitUpload() {
+  const n = document.getElementById('u_name').value.trim();
+  const e = document.getElementById('u_email').value.trim();
+  const t = document.getElementById('u_title').value.trim();
+  if (!n || !e || !t) { alert('Please fill in Name, Email, and Title.'); return; }
+  fetch('https://formspree.io/f/mgoldjjb', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      form_type: 'edu_resource_upload',
+      name: n, email: e,
+      title: t,
+      type: document.getElementById('u_type').value,
+      description: document.getElementById('u_desc').value,
+      link: document.getElementById('u_link').value
+    })
+  }).catch(()=>{});
+  document.getElementById('uploadSuccess').style.display = 'block';
+}
+</script>
+</body>
+</html>
