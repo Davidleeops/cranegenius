@@ -1,113 +1,52 @@
-# Current Task
+# TASK.md — CraneGenius Active Task
 
-## Status: Core funnel complete — ready for outreach
+## Status: Contact Intelligence System v2 — OPERATIONAL
 
-## Completed (Mar 7 2026)
-- [x] Marketplace: CRANE_IMG_MODEL model-specific photos implemented
-- [x] AI Planner 401: fixed by Codex (commit ed93373) — routed through Cloudflare proxy
-- [x] Lift Matrix openQuote(): replaced alert() stub with real Formspree lead capture modal
-- [x] Bug audit complete: DC CTAs, filter pills, addToPlan all confirmed working
-- [x] Context files committed and accurate
+### Completed This Session
+- [x] Root cause found: `verified_contacts.csv` has only 5 columns (verifier output only)
+- [x] `fix_ci.py` written to repo root — reads `candidates.csv` + `verified_contacts.csv`, joins on email
+- [x] DB loaded: 129 companies, 2,600 contacts (Dallas + Chicago combined)
+- [x] Exports confirmed working: `top_100_targets.xlsx` (100 rows), `verified_contacts.xlsx` (10 rows)
+- [x] Dallas junk data identified and filtered out (2,432 residential/small contractor contacts removed)
+- [x] CI system left with 21 clean Chicago GC companies, 168 contacts, 10 verified
+- [x] Sector assignment working (66 companies got sector_id via keyword matching)
 
-## Site Status
-All known bugs resolved. Primary funnel functional end-to-end:
-Lift Matrix -> Add to Plan -> REQUEST QUOTE -> modal captures lead -> Formspree
+### Known Data Quality Issues
+- All candidates use `role_inbox` generation method — emails are pattern-guessed, not sourced from real contacts
+- Company names in candidates.csv have address strings embedded (pipeline upstream issue)
+- Dallas permit data produces residential/small contractors — wrong target profile
+- Only 10 verified contacts in DB (all Chicago)
 
-## Next Priority: OUTREACH (no code needed to start earning)
-1. Launch PlusVibes campaign to 367 verified DC contacts
-2. Sign first crane company retainer at $2,500/mo (Great Lakes Lifting or Leavitt via Erick)
-3. Verify electrical contractors list via MillionVerifier before sending
+### Next Task: Improve Pipeline Output Quality
+The CI system works. The bottleneck is pipeline data quality. Priority order:
 
-## Next Code Task (lower priority than outreach)
-Unify design system — 3 different font/color systems exist:
-- Marketplace: Bebas Neue + gold #c9a84c
-- DC Landing/Lift Matrix: Barlow Condensed + navy #0a0e1a
-- AI Planner: Syne + #03060f
-Consolidate to one.
+1. **Re-run pipeline for Chicago only** to get fresh clean candidates
+   - Run: `python3 -m src.pipeline` from repo root
+   - Chicago Socrata API returns permittee first/last name — use these for `role_named` email generation
+   - Target: Replace `role_inbox` with actual named contacts from permit permittee fields
 
-## Security Update (2026-03-07)
-- [x] Ran repo secret scan on tracked source files.
-- [x] Added `scripts/scan_secrets.sh` for repeatable local scanning.
-- [x] Hardened `.gitignore` for `.env.*` and backup files (`*.bak`).
-- [ ] Rotate any API keys that were ever exposed in terminal/history snapshots.
+2. **Update `normalize_records.py`** to use the logic from `fix_ci.py`
+   - Current `normalize_records.py` still looks for wrong column names
+   - Replace with: read `candidates.csv` + `verified_contacts.csv`, join on email
+   - File: `contact_intelligence/scripts/normalize_records.py`
 
-## Outreach Prep Update (2026-03-07)
-- [x] Built safe outreach file: `data/dc_outreach_emails_safe.csv` (204 rows)
-- [x] Built PlusVibes import file: `data/plusvibes_import_safe.csv` (204 rows)
-- [x] Removed fabricated claim style from new generated messaging
-- [ ] Launch campaign + monitor reply/bounce rates in first 24h
+3. **NYC pipeline run** — NYC DOB API has best permittee name data
+   - Produces `role_named` contacts naturally
+   - Add NYC to pipeline targets
 
-## Mobile Funnel Update (2026-03-07)
-- [x] Homepage bot UI now adapts for phones (bottom pill trigger + full-width bottom sheet).
-- [x] Marketplace now drops 400px desktop sidebar offset on mobile and uses a bottom chat sheet.
-- [x] Marketplace nav/cards/hero tightened for smaller screens.
-- [ ] Manual device QA on iPhone + Android before Monday outreach.
+4. **Import wrapper** — auto-run CI import after each pipeline run
+   - Script: `contact_intelligence/scripts/auto_import.py`
+   - Should call: import_csv → fix_ci logic → export_views in sequence
 
-## Data Centers Mobile Pass (2026-03-07)
-- [x] `data-centers/index.html` nav + tab-strip improved for phones.
-- [x] `data-centers/ai-planner/index.html` mobile nav simplified; sticky subnav spacing fixed.
-- [x] `data-centers/lift-matrix/index.html` responsive typo fixed + mobile summary panel layout improved.
-- [ ] Run manual end-to-end QA on real devices before Monday send.
+### Key File Locations
+- DB: `~/data_runtime/cranegenius_ci.db`
+- Working import script: `~/Downloads/cranegenius_repo/fix_ci.py` (use this, not normalize_records.py)
+- Exports: `~/data_runtime/exports/`
+- Pipeline output: `data/candidates.csv` (2600 rows, mostly Dallas junk — needs re-run)
 
-## Mobile Conversion Polish (2026-03-07)
-- [x] Raised key mobile tap targets to ~44px across core CTA surfaces.
-- [x] Improved above-the-fold CTA clarity on Data Centers landing.
-- [x] Increased small-screen readability for hero/subcopy on key funnel pages.
-- [ ] Final real-device QA pass before Monday campaign send.
-
-## Ecosystem Expansion Phase 1 (2026-03-07)
-- [x] Added `/sell-your-company/` page with confidential acquisition intake form.
-- [x] Wired non-breaking navigation links to Sell Your Company from core public pages.
-- [x] Added modular entity schema scaffold: `config/lift_ecosystem_schema.json`.
-- [x] Added `FEATURE_BACKLOG.md` to support persistent agent memory workflow.
-- [ ] Phase 2: expand marketplace categories + lift-planner category pathways.
-
-## Sell Page Sprint Alignment (2026-03-07)
-- [x] Hero and content sections updated to exact sprint wording and structure.
-- [x] Primary acquisition form includes required `phone` and full required field set.
-- [x] Secondary demand-partner CTA implemented as separate lightweight form.
-- [x] Internal data distinction implemented: `acquisition_targets`, `acquisition_inquiries`, `demand_partner_inquiries`.
-
-
-
----
-
-## Completed by Claude — 2026-03-08
-
-- Created docs_learning/lessons_learned.md
-- Created docs_learning/experiments.md
-- Created docs_learning/signal_intelligence_log.md
-- Created docs_learning/system_architecture.md
-- Created docs_learning/content_log.md
-- Created runs/system_metrics_history.csv
-- Created scripts/append_metrics_history.py
-- Created scripts/append_lesson.py
-- Created scripts/append_experiment.py
-- Created scripts/append_signal_log.py
-- Updated TASK.md and CHANGELOG_AGENT.md
-
-Next: ChatGPT assigns next task. No src/ changes made.
-
----
-
-## Completed by Claude — 2026-03-08
-
-Resolved schema mismatch in scripts/append_pipeline_metrics.py.
-Aligned its output columns to match system_metrics_history.csv and append_metrics_history.py.
-Column mapping: companies_processed->companies, domains_found->valid_domains,
-unresolved derived from (companies - valid_domains), people_found removed (not in schema).
-Both scripts now write compatible rows to the same CSV.
-
----
-
-## Completed by Claude — 2026-03-08
-
-Created scripts/review_latest_pipeline_outputs.py
-- Reads contact_generation_stats.json, verification_summary.json, and 7 data/ CSVs
-- Prints terminal summary
-- Writes runs/latest_pipeline_review.md
-- Handles missing files gracefully (notes them, does not fail)
-- argparse --max-sample flag (default 5)
-- No src/ imports
-
-Next: ChatGPT assigns next task.
+### Import Command (working)
+```bash
+cd ~/Downloads/cranegenius_repo
+python3 fix_ci.py
+python3 contact_intelligence/scripts/export_views.py
+```
