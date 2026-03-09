@@ -1,1 +1,731 @@
-404: Not Found
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crane Industry Directory | CraneGenius – Companies, Manufacturers, Training & More</title>
+<meta name="description" content="The most comprehensive crane industry directory. Find crane rental companies, manufacturers (Liebherr, Grove, Tadano, Link-Belt), operator training schools, NCCCO test centers, rigging suppliers, staffing agencies, and more.">
+<meta name="keywords" content="crane rental companies, crane manufacturers, crane operator training, NCCCO certification, rigging companies, tower crane, mobile crane, spider crane, crane directory">
+<link rel="canonical" href="https://cranegenius.com/directory/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Crane Industry Directory",
+  "description": "Comprehensive directory of crane rental companies, manufacturers, training schools, staffing agencies, parts suppliers, and industry associations in the United States.",
+  "url": "https://cranegenius.com/directory/",
+  "publisher": { "@type": "Organization", "name": "CraneGenius", "url": "https://cranegenius.com" }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-dim:rgba(201,168,76,.15);--gold-border:rgba(201,168,76,.25);--bg:#080e1a;--bg2:#0d1628;--bg3:#111e35;--bg4:#162540;--text:#e8ecf0;--text-dim:#8a9ab5;--text-muted:#4a5a72;--green:#2dd4a0;--radius:8px;--font-display:'Bebas Neue',sans-serif;--font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.6;overflow-x:hidden}
+.nav{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-display);font-size:22px;letter-spacing:2px;color:var(--gold);text-decoration:none}
+.nav-logo span{color:var(--text-dim);font-size:13px;font-family:var(--font-body);letter-spacing:0;margin-left:10px;font-weight:300}
+.nav-cta{background:var(--gold);color:#000;font-weight:600;font-size:13px;padding:8px 20px;border-radius:4px;text-decoration:none;letter-spacing:.5px;transition:background .2s}
+.nav-cta:hover{background:var(--gold-light)}
+.hero{position:relative;padding:80px 32px 60px;text-align:center;overflow:hidden;z-index:1}
+.hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(201,168,76,.08) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fadeUp .6s .1s forwards}
+.hero h1{font-family:var(--font-display);font-size:clamp(52px,8vw,96px);letter-spacing:4px;line-height:.95;color:var(--text);margin-bottom:24px;opacity:0;animation:fadeUp .6s .2s forwards}
+.hero h1 em{font-style:normal;color:var(--gold);display:block}
+.hero-sub{font-size:17px;color:var(--text-dim);max-width:620px;margin:0 auto 40px;line-height:1.7;font-weight:300;opacity:0;animation:fadeUp .6s .3s forwards}
+.hero-stats{display:flex;justify-content:center;gap:48px;opacity:0;animation:fadeUp .6s .4s forwards}
+.hero-stat-val{font-family:var(--font-display);font-size:42px;color:var(--gold);letter-spacing:2px;line-height:1}
+.hero-stat-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:2px;margin-top:4px}
+.search-wrap{position:relative;z-index:1;max-width:680px;margin:0 auto 60px;padding:0 32px;opacity:0;animation:fadeUp .6s .5s forwards}
+.search-inner{position:relative;background:var(--bg2);border:1px solid var(--gold-border);border-radius:8px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.search-inner:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.1)}
+.search-input{width:100%;background:transparent;border:none;color:var(--text);font-family:var(--font-body);font-size:16px;padding:16px 120px 16px 48px;outline:none}
+.search-input::placeholder{color:var(--text-muted)}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:18px;pointer-events:none}
+.search-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:var(--gold);color:#000;border:none;border-radius:4px;font-family:var(--font-body);font-weight:600;font-size:13px;padding:8px 20px;cursor:pointer;transition:background .2s}
+.search-btn:hover{background:var(--gold-light)}
+.cat-nav{position:sticky;top:60px;z-index:90;background:rgba(8,14,26,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.04);padding:0 32px;overflow-x:auto;scrollbar-width:none}
+.cat-nav::-webkit-scrollbar{display:none}
+.cat-nav-inner{display:flex;gap:4px;padding:12px 0;min-width:max-content}
+.cat-pill{font-size:12px;font-weight:500;letter-spacing:.5px;color:var(--text-dim);background:transparent;border:1px solid transparent;border-radius:20px;padding:6px 16px;cursor:pointer;transition:all .15s;white-space:nowrap;text-decoration:none}
+.cat-pill:hover{color:var(--gold);border-color:var(--gold-border);background:var(--gold-dim)}
+.cat-pill.active{color:#000;background:var(--gold);border-color:var(--gold)}
+.main{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:48px 32px 80px}
+.data-banner{background:rgba(45,212,160,.05);border:1px solid rgba(45,212,160,.15);border-radius:6px;padding:12px 20px;display:flex;align-items:center;gap:12px;margin-bottom:24px;font-size:13px;color:var(--text-dim)}
+.data-dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse 2s infinite}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.06)}
+.section-eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.section-title{font-family:var(--font-display);font-size:36px;letter-spacing:2px;color:var(--text);line-height:1}
+.section-count{font-family:var(--font-mono);font-size:12px;color:var(--text-muted);background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:4px 12px}
+.dir-section{margin-bottom:64px;scroll-margin-top:120px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:20px;display:flex;gap:16px;align-items:flex-start;transition:all .2s;position:relative;overflow:hidden;cursor:pointer}
+.card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-dim) 0%,transparent 60%);opacity:0;transition:opacity .2s;pointer-events:none}
+.card:hover{border-color:var(--gold-border);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.card:hover::before{opacity:1}
+.card-icon{width:44px;height:44px;border-radius:8px;background:var(--bg3);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.card-body{flex:1;min-width:0}
+.card-name{font-weight:600;font-size:14px;color:var(--text);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-type{font-size:11px;color:var(--gold);font-family:var(--font-mono);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.card-desc{font-size:12px;color:var(--text-dim);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-meta{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.tag{font-size:10px;font-family:var(--font-mono);color:var(--text-muted);background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:3px;padding:2px 7px;letter-spacing:.5px}
+.tag.gold{color:var(--gold);border-color:var(--gold-border);background:var(--gold-dim)}
+.tag.green{color:var(--green);border-color:rgba(45,212,160,.2);background:rgba(45,212,160,.05)}
+.tag.blue{color:#60a5fa;border-color:rgba(96,165,250,.2);background:rgba(96,165,250,.05)}
+.card.featured{border-color:var(--gold-border);background:linear-gradient(135deg,rgba(201,168,76,.06) 0%,var(--bg2) 60%)}
+.featured-badge{position:absolute;top:12px;right:12px;font-size:9px;font-family:var(--font-mono);letter-spacing:1.5px;color:#000;background:var(--gold);border-radius:2px;padding:2px 8px;text-transform:uppercase}
+.card.hidden{display:none}
+.info-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:28px 32px;margin-bottom:16px}
+.info-card h3{font-family:var(--font-display);font-size:22px;letter-spacing:1px;color:var(--text);margin-bottom:8px}
+.info-card p{font-size:14px;color:var(--text-dim);line-height:1.7}
+.faq-item{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);margin-bottom:8px;overflow:hidden}
+.faq-q{padding:18px 24px;font-weight:500;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--text);transition:color .2s;user-select:none}
+.faq-q:hover{color:var(--gold)}
+.faq-q::after{content:'+';font-size:20px;color:var(--gold);font-weight:300}
+.faq-item.open .faq-q::after{content:'−'}
+.faq-a{display:none;padding:14px 24px 18px;font-size:13px;color:var(--text-dim);line-height:1.7;border-top:1px solid rgba(255,255,255,.04)}
+.faq-item.open .faq-a{display:block}
+.cta-banner{background:linear-gradient(135deg,var(--bg3) 0%,var(--bg4) 100%);border:1px solid var(--gold-border);border-radius:12px;padding:48px;text-align:center;margin-top:64px;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:400px;height:200px;background:radial-gradient(ellipse,rgba(201,168,76,.12) 0%,transparent 70%);pointer-events:none}
+.cta-banner h2{font-family:var(--font-display);font-size:48px;letter-spacing:3px;color:var(--text);margin-bottom:12px}
+.cta-banner p{color:var(--text-dim);font-size:16px;margin-bottom:32px;font-weight:300}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:#000;font-weight:700;font-size:14px;letter-spacing:.5px;padding:14px 32px;border-radius:4px;border:none;cursor:pointer;text-decoration:none;transition:background .2s,transform .1s}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn-secondary{background:transparent;color:var(--text-dim);font-weight:500;font-size:14px;padding:14px 32px;border-radius:4px;border:1px solid rgba(255,255,255,.1);cursor:pointer;text-decoration:none;transition:all .2s}
+.btn-secondary:hover{border-color:var(--gold-border);color:var(--gold)}
+.footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.05);padding:40px 32px;text-align:center}
+.footer-logo{font-family:var(--font-display);font-size:20px;letter-spacing:3px;color:var(--gold);margin-bottom:8px}
+.footer-links{display:flex;gap:24px;justify-content:center;margin:16px 0;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:12px;color:var(--text-muted);margin-top:8px}
+#ai-panel{position:fixed;bottom:24px;right:24px;z-index:999}
+#ai-toggle{width:56px;height:56px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 20px rgba(201,168,76,.4);transition:transform .2s,box-shadow .2s}
+#ai-toggle:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(201,168,76,.5)}
+#ai-chat{display:none;position:absolute;bottom:68px;right:0;width:360px;background:var(--bg2);border:1px solid var(--gold-border);border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#ai-chat.open{display:flex;flex-direction:column}
+.chat-header{background:var(--bg3);border-bottom:1px solid var(--gold-border);padding:14px 16px;display:flex;align-items:center;gap:10px}
+.chat-header-text{flex:1}
+.chat-header-text strong{font-size:13px;font-weight:600;display:block}
+.chat-header-text span{font-size:11px;color:var(--green)}
+.chat-close{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:18px;line-height:1;padding:4px;transition:color .2s}
+.chat-close:hover{color:var(--text)}
+.chat-messages{height:280px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin;scrollbar-color:var(--bg4) transparent}
+.msg{max-width:85%;font-size:13px;line-height:1.5;padding:10px 14px;border-radius:10px}
+.msg.bot{background:var(--bg3);border:1px solid rgba(255,255,255,.06);color:var(--text);align-self:flex-start}
+.msg.user{background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--text);align-self:flex-end}
+.msg.typing{color:var(--text-muted);font-style:italic}
+.chat-footer{border-top:1px solid rgba(255,255,255,.06);padding:12px;display:flex;gap:8px}
+.chat-input{flex:1;background:var(--bg3);border:1px solid rgba(255,255,255,.08);border-radius:6px;color:var(--text);font-family:var(--font-body);font-size:13px;padding:8px 12px;outline:none;transition:border-color .2s}
+.chat-input:focus{border-color:var(--gold-border)}
+.chat-input::placeholder{color:var(--text-muted)}
+.chat-send{background:var(--gold);border:none;border-radius:6px;color:#000;font-size:16px;width:36px;cursor:pointer;transition:background .2s;flex-shrink:0}
+.chat-send:hover{background:var(--gold-light)}
+.chat-quick{padding:0 12px 12px;display:flex;gap:6px;flex-wrap:wrap}
+.quick-btn{font-size:11px;background:var(--bg3);border:1px solid rgba(255,255,255,.08);color:var(--text-dim);border-radius:12px;padding:4px 10px;cursor:pointer;transition:all .15s;font-family:var(--font-body)}
+.quick-btn:hover{border-color:var(--gold-border);color:var(--gold)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+@media(max-width:768px){.nav{padding:0 16px}.hero{padding:48px 16px 40px}.search-wrap{padding:0 16px}.main{padding:32px 16px 60px}.cat-nav{padding:0 16px}.card-grid{grid-template-columns:1fr}.hero-stats{gap:24px}.cta-banner{padding:32px 24px}.hero h1{font-size:48px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://cranegenius.com" class="nav-logo">CRANEGENIUS <span>/ Directory</span></a>
+  <a href="#get-crane" class="nav-cta">Get Crane Quote →</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">🏗 Crane Industry Resource Hub</div>
+  <h1>THE CRANE<br><em>INDUSTRY</em><br>DIRECTORY</h1>
+  <p class="hero-sub">The most comprehensive directory of crane companies, equipment manufacturers, operator training schools, staffing agencies, parts suppliers, and industry associations in the United States.</p>
+  <div class="hero-stats">
+    <div><div class="hero-stat-val">500+</div><div class="hero-stat-label">Listed Companies</div></div>
+    <div><div class="hero-stat-val">12</div><div class="hero-stat-label">Categories</div></div>
+    <div><div class="hero-stat-val">50</div><div class="hero-stat-label">States Covered</div></div>
+  </div>
+</section>
+
+<div class="search-wrap">
+  <div class="search-inner">
+    <span class="search-icon">🔍</span>
+    <input type="text" class="search-input" id="searchInput" placeholder="Search companies, manufacturers, training schools..." oninput="filterCards(this.value)">
+    <button class="search-btn">Search</button>
+  </div>
+</div>
+
+<div class="cat-nav">
+  <div class="cat-nav-inner">
+    <a href="#rental" class="cat-pill active">🏗 Crane Rental</a>
+    <a href="#manufacturers" class="cat-pill">🔧 Manufacturers</a>
+    <a href="#specialty" class="cat-pill">🕷 Specialty Lift</a>
+    <a href="#training" class="cat-pill">🎓 Training & Cert</a>
+    <a href="#staffing" class="cat-pill">👷 Staffing</a>
+    <a href="#rigging" class="cat-pill">⛓ Rigging & Hardware</a>
+    <a href="#parts" class="cat-pill">🔩 Parts & Service</a>
+    <a href="#engineering" class="cat-pill">📐 Lift Engineering</a>
+    <a href="#finance" class="cat-pill">💰 Finance & Insurance</a>
+    <a href="#software" class="cat-pill">💻 Software & Tech</a>
+    <a href="#associations" class="cat-pill">🏛 Associations</a>
+    <a href="#faq" class="cat-pill">❓ FAQ</a>
+  </div>
+</div>
+
+<main class="main">
+
+<div class="data-banner">
+  <div class="data-dot"></div>
+  <span>Directory continuously updated from verified public sources. Want your company listed? <a href="#get-crane" style="color:var(--gold);text-decoration:none;">Contact us →</a></span>
+</div>
+
+<!-- RENTAL -->
+<section class="dir-section" id="rental">
+  <div class="section-header">
+    <div><div class="section-eyebrow">01 / Rental & Fleet</div><div class="section-title">CRANE RENTAL COMPANIES</div></div>
+    <div class="section-count">48 listings</div>
+  </div>
+  <div class="card-grid">
+    <div class="card featured" data-name="Maxim Crane Works" data-tags="national rental all-terrain crawler tower">
+      <span class="featured-badge">Featured</span><div class="card-icon">🏗</div>
+      <div class="card-body"><div class="card-name">Maxim Crane Works</div><div class="card-type">National Crane Rental</div>
+      <div class="card-desc">One of the largest crane rental fleets in North America. 40+ branch locations, mobile, crawler, and tower cranes nationwide.</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag gold">All-Terrain</span><span class="tag">Crawler</span><span class="tag">Tower</span></div></div>
+    </div>
+    <div class="card featured" data-name="Barnhart Crane and Rigging" data-tags="heavy lift specialty rigging national industrial">
+      <span class="featured-badge">Featured</span><div class="card-icon">⚓</div>
+      <div class="card-body"><div class="card-name">Barnhart Crane & Rigging</div><div class="card-type">Heavy Lift & Rigging Specialist</div>
+      <div class="card-desc">Employee-owned heavy lift and rigging company. Complex industrial moves, power generation, and petrochemical projects across the US.</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag gold">Heavy Lift</span><span class="tag">Rigging</span><span class="tag">Industrial</span></div></div>
+    </div>
+    <div class="card" data-name="TNT Crane and Rigging" data-tags="industrial crane rental south gulf coast refinery">
+      <div class="card-icon">🏗</div>
+      <div class="card-body"><div class="card-name">TNT Crane & Rigging</div><div class="card-type">Industrial Crane Rental</div>
+      <div class="card-desc">Heavy lift and industrial crane services across the Gulf Coast and Southeast US. Strong presence in refinery and petrochemical sectors.</div>
+      <div class="card-meta"><span class="tag">Southeast</span><span class="tag">Industrial</span><span class="tag">Gulf Coast</span></div></div>
+    </div>
+    <div class="card" data-name="Leavitt Cranes" data-tags="crane rental chicago midwest commercial">
+      <div class="card-icon">🏗</div>
+      <div class="card-body"><div class="card-name">Leavitt Cranes</div><div class="card-type">Regional Crane Rental — Chicago</div>
+      <div class="card-desc">Chicago-based crane rental and rigging services. Commercial construction, industrial, and infrastructure projects across the Midwest.</div>
+      <div class="card-meta"><span class="tag">Chicago</span><span class="tag">Midwest</span><span class="tag green">CraneGenius Partner</span></div></div>
+    </div>
+    <div class="card" data-name="Stampede Crane and Rigging" data-tags="crane rental texas southwest all-terrain">
+      <div class="card-icon">🏗</div>
+      <div class="card-body"><div class="card-name">Stampede Crane & Rigging</div><div class="card-type">Regional Crane Rental</div>
+      <div class="card-desc">Full-service crane and rigging serving Texas and the Southwest. Broad fleet of hydraulic truck and all-terrain cranes.</div>
+      <div class="card-meta"><span class="tag">Texas</span><span class="tag">Southwest</span><span class="tag">All-Terrain</span></div></div>
+    </div>
+    <div class="card" data-name="Buckner HeavyLift Cranes" data-tags="heavy lift crawler crane wind energy power national">
+      <div class="card-icon">🏗</div>
+      <div class="card-body"><div class="card-name">Buckner HeavyLift Cranes</div><div class="card-type">Heavy Lift Crawler Crane Rental</div>
+      <div class="card-desc">Large-capacity crawler crane rental for wind energy, power, and petrochemical projects. Fleet includes Liebherr and Manitowoc heavy crawlers.</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag gold">Crawler</span><span class="tag">Wind Energy</span></div></div>
+    </div>
+    <div class="card" data-name="Deep South Crane and Rigging" data-tags="crane rental louisiana mississippi gulf coast heavy lift">
+      <div class="card-icon">🏗</div>
+      <div class="card-body"><div class="card-name">Deep South Crane & Rigging</div><div class="card-type">Regional Crane Rental</div>
+      <div class="card-desc">Heavy lift crane services across Louisiana, Mississippi, and the lower Gulf Coast industrial corridor.</div>
+      <div class="card-meta"><span class="tag">Louisiana</span><span class="tag">Heavy Lift</span></div></div>
+    </div>
+    <div class="card" data-name="All Crane Rental" data-tags="crane rental florida southeast hydraulic rough terrain">
+      <div class="card-icon">🏗</div>
+      <div class="card-body"><div class="card-name">All Crane Rental</div><div class="card-type">Regional Crane Rental — Florida</div>
+      <div class="card-desc">Florida-based crane rental with diversified fleet including hydraulic, lattice boom, and rough terrain cranes.</div>
+      <div class="card-meta"><span class="tag">Florida</span><span class="tag">Southeast</span><span class="tag">Rough Terrain</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MANUFACTURERS -->
+<section class="dir-section" id="manufacturers">
+  <div class="section-header">
+    <div><div class="section-eyebrow">02 / Equipment OEMs</div><div class="section-title">CRANE MANUFACTURERS</div></div>
+    <div class="section-count">32 listings</div>
+  </div>
+  <div class="card-grid">
+    <div class="card featured" data-name="Liebherr" data-tags="manufacturer mobile crawler tower all-terrain LTM germany">
+      <span class="featured-badge">Featured</span><div class="card-icon">⚙️</div>
+      <div class="card-body"><div class="card-name">Liebherr</div><div class="card-type">Global Crane Manufacturer</div>
+      <div class="card-desc">German manufacturer of mobile, all-terrain, crawler, tower, and offshore cranes. The LTM series all-terrain cranes are industry-standard worldwide.</div>
+      <div class="card-meta"><span class="tag">Germany</span><span class="tag gold">LTM Series</span><span class="tag">All-Terrain</span><span class="tag">Crawler</span><span class="tag">Tower</span></div></div>
+    </div>
+    <div class="card featured" data-name="Grove Manitowoc Cranes" data-tags="manufacturer mobile all-terrain crawler GMK series USA">
+      <span class="featured-badge">Featured</span><div class="card-icon">⚙️</div>
+      <div class="card-body"><div class="card-name">Grove / Manitowoc Cranes</div><div class="card-type">Mobile & Crawler Crane Manufacturer</div>
+      <div class="card-desc">Manitowoc owns Grove (mobile) and Manitowoc (crawlers). The GMK series all-terrain cranes are among the most common in North American rental fleets.</div>
+      <div class="card-meta"><span class="tag">USA</span><span class="tag gold">GMK Series</span><span class="tag">All-Terrain</span><span class="tag">Crawler</span></div></div>
+    </div>
+    <div class="card" data-name="Tadano" data-tags="manufacturer mobile all-terrain ATF series japan demag">
+      <div class="card-icon">⚙️</div>
+      <div class="card-body"><div class="card-name">Tadano</div><div class="card-type">Mobile Crane Manufacturer</div>
+      <div class="card-desc">Japanese manufacturer, acquired Demag Cranes. Known for ATF series all-terrain and AC series truck cranes. Strong North American construction presence.</div>
+      <div class="card-meta"><span class="tag">Japan</span><span class="tag">All-Terrain</span><span class="tag gold">ATF Series</span></div></div>
+    </div>
+    <div class="card" data-name="Link-Belt Cranes" data-tags="manufacturer mobile crawler rough terrain truck crane USA sumitomo">
+      <div class="card-icon">⚙️</div>
+      <div class="card-body"><div class="card-name">Link-Belt Cranes</div><div class="card-type">Mobile & Crawler Crane Manufacturer</div>
+      <div class="card-desc">American manufacturer of hydraulic truck cranes, rough terrain, and lattice-boom crawlers. Part of Sumitomo Heavy Industries.</div>
+      <div class="card-meta"><span class="tag">USA</span><span class="tag">Rough Terrain</span><span class="tag">Crawler</span><span class="tag">Truck Crane</span></div></div>
+    </div>
+    <div class="card" data-name="Terex Cranes" data-tags="manufacturer rough terrain pick carry tower global">
+      <div class="card-icon">⚙️</div>
+      <div class="card-body"><div class="card-name">Terex Cranes</div><div class="card-type">Crane Manufacturer</div>
+      <div class="card-desc">Manufactures rough terrain, pick-and-carry, and tower cranes. AC series all-terrain line serves commercial and industrial construction globally.</div>
+      <div class="card-meta"><span class="tag">Global</span><span class="tag">Rough Terrain</span><span class="tag">Pick-and-Carry</span></div></div>
+    </div>
+    <div class="card" data-name="Potain Manitowoc Tower Cranes" data-tags="manufacturer tower crane self-erecting luffing jib flat top france">
+      <div class="card-icon">🗼</div>
+      <div class="card-body"><div class="card-name">Potain (Manitowoc)</div><div class="card-type">Tower Crane Manufacturer</div>
+      <div class="card-desc">Global leader in tower crane manufacturing. Flat top, luffing jib, and self-erecting tower cranes used on major high-rise construction projects worldwide.</div>
+      <div class="card-meta"><span class="tag">France</span><span class="tag gold">Tower Crane</span><span class="tag">Self-Erecting</span><span class="tag">Luffing Jib</span></div></div>
+    </div>
+    <div class="card" data-name="Comansa Tower Cranes" data-tags="manufacturer tower crane flat top luffing spain">
+      <div class="card-icon">🗼</div>
+      <div class="card-body"><div class="card-name">Comansa Tower Cranes</div><div class="card-type">Tower Crane Manufacturer</div>
+      <div class="card-desc">Spanish manufacturer of flat-top and luffing tower cranes. Models include the 21LC and 11LC series. Part of the Linden Comansa group.</div>
+      <div class="card-meta"><span class="tag">Spain</span><span class="tag">Tower Crane</span><span class="tag">Flat-Top</span></div></div>
+    </div>
+    <div class="card" data-name="Broderson Manufacturing" data-tags="manufacturer carry deck industrial crane USA indoor plant">
+      <div class="card-icon">⚙️</div>
+      <div class="card-body"><div class="card-name">Broderson Manufacturing</div><div class="card-type">Carry Deck & Industrial Crane Mfg</div>
+      <div class="card-desc">US manufacturer of carry deck cranes, industrial cranes, and specialty lift equipment. Go-to for tight plant and indoor applications.</div>
+      <div class="card-meta"><span class="tag">USA</span><span class="tag gold">Carry Deck</span><span class="tag">Industrial</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALTY -->
+<section class="dir-section" id="specialty">
+  <div class="section-header">
+    <div><div class="section-eyebrow">03 / Specialty Equipment</div><div class="section-title">SPECIALTY & MINI CRANES</div></div>
+    <div class="section-count">18 listings</div>
+  </div>
+  <div class="card-grid">
+    <div class="card featured" data-name="Maeda Seisakusho" data-tags="manufacturer spider mini crane compact indoor japan MC LC series">
+      <span class="featured-badge">Featured</span><div class="card-icon">🕷</div>
+      <div class="card-body"><div class="card-name">Maeda Seisakusho</div><div class="card-type">Spider / Mini Crane Manufacturer</div>
+      <div class="card-desc">Japanese manufacturer of compact crawler cranes (spider cranes). MC and LC series used for interior, atrium, and confined-access lifts where conventional cranes cannot reach.</div>
+      <div class="card-meta"><span class="tag">Japan</span><span class="tag gold">Spider Crane</span><span class="tag">Compact</span><span class="tag">Indoor</span></div></div>
+    </div>
+    <div class="card" data-name="UNIC Furukawa UNIC" data-tags="manufacturer spider mini crane compact URW series japan rooftop HVAC">
+      <div class="card-icon">🕷</div>
+      <div class="card-body"><div class="card-name">UNIC (Furukawa UNIC)</div><div class="card-type">Mini Spider Crane Manufacturer</div>
+      <div class="card-desc">Japanese manufacturer of UNIC mini cranes. The URW series is a staple for rooftop HVAC installs, interior atria, and narrow-access urban lifts.</div>
+      <div class="card-meta"><span class="tag">Japan</span><span class="tag">Spider Crane</span><span class="tag gold">URW Series</span></div></div>
+    </div>
+    <div class="card" data-name="Jekko" data-tags="manufacturer spider mini crane electric hybrid SPX series italy">
+      <div class="card-icon">🕷</div>
+      <div class="card-body"><div class="card-name">Jekko</div><div class="card-type">Spider Crane Manufacturer</div>
+      <div class="card-desc">Italian manufacturer of electric and hybrid mini cranes. SPX series radio-controlled spider cranes are ideal for zero-emission and indoor projects.</div>
+      <div class="card-meta"><span class="tag">Italy</span><span class="tag green">Electric</span><span class="tag gold">SPX Series</span></div></div>
+    </div>
+    <div class="card" data-name="Palazzani Ragno" data-tags="manufacturer spider crane italy ragno rooftop tree surgery">
+      <div class="card-icon">🕷</div>
+      <div class="card-body"><div class="card-name">Palazzani (Ragno)</div><div class="card-type">Spider Crane Manufacturer</div>
+      <div class="card-desc">Italian manufacturer of the Ragno series spider cranes. Widely used for tree surgery, rooftop installations, and compact urban access scenarios.</div>
+      <div class="card-meta"><span class="tag">Italy</span><span class="tag">Spider Crane</span><span class="tag">Ragno Series</span></div></div>
+    </div>
+    <div class="card" data-name="Franna Cranes Manitowoc" data-tags="manufacturer pick carry franna australia plant maintenance">
+      <div class="card-icon">⚙️</div>
+      <div class="card-body"><div class="card-name">Franna Cranes (Manitowoc)</div><div class="card-type">Pick-and-Carry Crane Manufacturer</div>
+      <div class="card-desc">Australian-origin pick-and-carry cranes, now part of Manitowoc. Unique slewing pick-and-carry design popular for plant maintenance work.</div>
+      <div class="card-meta"><span class="tag">Australia</span><span class="tag">Pick-and-Carry</span><span class="tag">Plant Maintenance</span></div></div>
+    </div>
+    <div class="card" data-name="Ficont Industry mini crane" data-tags="manufacturer mini spider crane china compact cost">
+      <div class="card-icon">🕷</div>
+      <div class="card-body"><div class="card-name">Ficont Industry</div><div class="card-type">Mini Crane Manufacturer</div>
+      <div class="card-desc">Chinese manufacturer of mini cranes for tight-access applications. Growing US presence as a cost-effective spider crane alternative.</div>
+      <div class="card-meta"><span class="tag">China</span><span class="tag">Mini Crane</span><span class="tag blue">Emerging</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section class="dir-section" id="training">
+  <div class="section-header">
+    <div><div class="section-eyebrow">04 / Education & Licensing</div><div class="section-title">TRAINING & CERTIFICATION</div></div>
+    <div class="section-count">24 listings</div>
+  </div>
+  <div class="card-grid">
+    <div class="card featured" data-name="NCCCO Foundation" data-tags="certification nccco crane operator license osha CCO national">
+      <span class="featured-badge">Featured</span><div class="card-icon">🎓</div>
+      <div class="card-body"><div class="card-name">NCCCO Foundation</div><div class="card-type">National Certification Body</div>
+      <div class="card-desc">National Commission for the Certification of Crane Operators. NCCCO is the gold standard for crane operator licensing, required by OSHA 1926.1427 for construction sites.</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag gold">NCCCO Cert</span><span class="tag">OSHA Required</span><span class="tag">CCO License</span></div></div>
+    </div>
+    <div class="card" data-name="Crane Institute Certifications CICB" data-tags="certification cicb crane operator rigger signalperson ANSI">
+      <div class="card-icon">🎓</div>
+      <div class="card-body"><div class="card-name">Crane Institute Certifications (CICB)</div><div class="card-type">Crane Operator Certification Body</div>
+      <div class="card-desc">ANSI-accredited certification body for crane operators, riggers, signalpersons, and lift directors. An OSHA-accepted alternative to NCCCO.</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag gold">CICB Cert</span><span class="tag">Rigger Cert</span></div></div>
+    </div>
+    <div class="card" data-name="IUOE Local 150 Apprenticeship" data-tags="union training crane operator apprenticeship illinois IUOE journeyman">
+      <div class="card-icon">👷</div>
+      <div class="card-body"><div class="card-name">IUOE Local 150 Apprenticeship</div><div class="card-type">Union Crane Operator Apprenticeship</div>
+      <div class="card-desc">International Union of Operating Engineers Local 150 apprenticeship — Illinois, Iowa, Minnesota, Nebraska, and Dakotas. Four-year program to journeyman operator.</div>
+      <div class="card-meta"><span class="tag">Illinois</span><span class="tag gold">Union IUOE</span><span class="tag">4-Year Program</span></div></div>
+    </div>
+    <div class="card" data-name="Barnhart Academy training" data-tags="crane training rigging heavy lift school operator">
+      <div class="card-icon">🎓</div>
+      <div class="card-body"><div class="card-name">Barnhart Academy</div><div class="card-type">Heavy Lift Training School</div>
+      <div class="card-desc">Barnhart Crane & Rigging's training arm. Rigger, signalperson, and lift supervisor training at facilities across the US.</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag">Rigging</span><span class="tag">Lift Supervisor</span></div></div>
+    </div>
+    <div class="card" data-name="CM Labs Vortex Simulator crane training" data-tags="crane simulator training vortex cm labs CCO prep VR">
+      <div class="card-icon">🖥</div>
+      <div class="card-body"><div class="card-name">CM Labs Vortex Simulators</div><div class="card-type">Crane Training Simulator OEM</div>
+      <div class="card-desc">High-fidelity crane operator simulators used by training centers, unions, and crane companies for CCO exam prep and operator assessment.</div>
+      <div class="card-meta"><span class="tag">Simulator OEM</span><span class="tag">CCO Prep</span><span class="tag blue">VR/Sim</span></div></div>
+    </div>
+    <div class="card" data-name="ABC Training Centers crane programs" data-tags="crane training nccco prep abc school non-union">
+      <div class="card-icon">🎓</div>
+      <div class="card-body"><div class="card-name">ABC Training Centers</div><div class="card-type">Craft Skills Training – Crane Modules</div>
+      <div class="card-desc">Associated Builders and Contractors chapter training centers offer crane and rigging curriculum, NCCCO exam prep, and OSHA safety programs nationwide.</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag">NCCCO Prep</span><span class="tag">Non-Union</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAFFING -->
+<section class="dir-section" id="staffing">
+  <div class="section-header">
+    <div><div class="section-eyebrow">05 / Labor & Workforce</div><div class="section-title">CRANE OPERATOR STAFFING</div></div>
+    <div class="section-count">16 listings</div>
+  </div>
+  <div class="card-grid">
+    <div class="card featured" data-name="Tradesmen International" data-tags="construction staffing crane operator rigging CCO contract temp hire">
+      <span class="featured-badge">Featured</span><div class="card-icon">👷</div>
+      <div class="card-body"><div class="card-name">Tradesmen International</div><div class="card-type">Construction Skilled Trades Staffing</div>
+      <div class="card-desc">One of the largest skilled trades staffing firms in North America. Places CCO-certified crane operators, riggers, and signalpersons for contract and temp-to-hire roles.</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag gold">CCO Operators</span><span class="tag">Contract</span><span class="tag">Temp-to-Hire</span></div></div>
+    </div>
+    <div class="card" data-name="IUOE Union Halls operator dispatch" data-tags="union crane operator hall local journeyman dispatch IUOE">
+      <div class="card-icon">🔵</div>
+      <div class="card-body"><div class="card-name">IUOE Local Union Halls</div><div class="card-type">Union Crane Operator Dispatch</div>
+      <div class="card-desc">IUOE locals maintain out-of-work lists for journeyman crane operators. Key locals: 3 (CA), 12 (CA/AZ), 150 (IL), 49 (MN), 825 (NJ).</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag gold">Union Labor</span><span class="tag">Journeyman</span></div></div>
+    </div>
+    <div class="card" data-name="LaborMax Staffing construction" data-tags="construction labor staffing crane midwest southeast">
+      <div class="card-icon">👷</div>
+      <div class="card-body"><div class="card-name">LaborMax Staffing</div><div class="card-type">Construction & Industrial Staffing</div>
+      <div class="card-desc">General construction and industrial staffing including crane operators and riggers. Locations across the Midwest and Southeast US.</div>
+      <div class="card-meta"><span class="tag">Midwest</span><span class="tag">Construction Labor</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RIGGING -->
+<section class="dir-section" id="rigging">
+  <div class="section-header">
+    <div><div class="section-eyebrow">06 / Rigging Equipment</div><div class="section-title">RIGGING & LIFTING HARDWARE</div></div>
+    <div class="section-count">22 listings</div>
+  </div>
+  <div class="card-grid">
+    <div class="card featured" data-name="The Crosby Group" data-tags="rigging hardware shackles hooks slings wire rope global industry standard">
+      <span class="featured-badge">Featured</span><div class="card-icon">⛓</div>
+      <div class="card-body"><div class="card-name">The Crosby Group</div><div class="card-type">Rigging Hardware Manufacturer</div>
+      <div class="card-desc">Global leader in lifting and rigging hardware. Manufactures shackles, hooks, swivels, wire rope clips, and load binders used across every crane sector worldwide.</div>
+      <div class="card-meta"><span class="tag">Global</span><span class="tag gold">Shackles</span><span class="tag">Hooks</span><span class="tag">Industry Standard</span></div></div>
+    </div>
+    <div class="card" data-name="DICA Industries outrigger pads" data-tags="outrigger pads crane mats dica FiberMax ground protection">
+      <div class="card-icon">🟫</div>
+      <div class="card-body"><div class="card-name">DICA Industries</div><div class="card-type">Outrigger Pad Manufacturer</div>
+      <div class="card-desc">Manufacturer of engineered outrigger pads and ground protection systems. DICA FiberMax pads are the industry standard for protecting ground bearing surfaces under mobile cranes.</div>
+      <div class="card-meta"><span class="tag">USA</span><span class="tag gold">FiberMax Pads</span><span class="tag">Ground Protection</span></div></div>
+    </div>
+    <div class="card" data-name="Slingmax Rigging Solutions Twin-Path slings" data-tags="rigging slings synthetic wire rope Twin-Path lifting critical lifts">
+      <div class="card-icon">⛓</div>
+      <div class="card-body"><div class="card-name">Slingmax Rigging Solutions</div><div class="card-type">Synthetic & Wire Rope Sling Mfg</div>
+      <div class="card-desc">Manufactures Twin-Path® high-performance synthetic rigging slings and custom wire rope assemblies for critical lifts and engineered rigging applications.</div>
+      <div class="card-meta"><span class="tag">USA</span><span class="tag gold">Twin-Path</span><span class="tag">Synthetic Slings</span></div></div>
+    </div>
+    <div class="card" data-name="Columbus McKinnon hoists rigging" data-tags="hoist chain block rigging hardware CM Yale Coffing industrial">
+      <div class="card-icon">⛓</div>
+      <div class="card-body"><div class="card-name">Columbus McKinnon</div><div class="card-type">Rigging & Hoist Manufacturer</div>
+      <div class="card-desc">US manufacturer of hoists, chains, hooks, and rigging accessories. Brands include CM, Yale, Coffing, and Duff-Norton. Widely specified in industrial rigging.</div>
+      <div class="card-meta"><span class="tag">USA</span><span class="tag">Hoist</span><span class="tag">Chain</span><span class="tag">CM Brand</span></div></div>
+    </div>
+    <div class="card" data-name="Sterling crane mats outrigger pads timber" data-tags="crane mats outrigger pads timber composite ground protection">
+      <div class="card-icon">🟫</div>
+      <div class="card-body"><div class="card-name">Sterling Crane Mats</div><div class="card-type">Crane Mat & Outrigger Pad Supplier</div>
+      <div class="card-desc">Timber and composite crane mats, outrigger pads, and road mats used to distribute load on soft or unimproved ground at job sites.</div>
+      <div class="card-meta"><span class="tag">USA</span><span class="tag">Crane Mats</span><span class="tag">Timber Mats</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTS -->
+<section class="dir-section" id="parts">
+  <div class="section-header">
+    <div><div class="section-eyebrow">07 / Maintenance & Repair</div><div class="section-title">CRANE PARTS & SERVICE</div></div>
+    <div class="section-count">20 listings</div>
+  </div>
+  <div class="card-grid">
+    <div class="card featured" data-name="CraneWorks Alabama" data-tags="crane parts service inspection OEM southeast field service">
+      <span class="featured-badge">Featured</span><div class="card-icon">🔩</div>
+      <div class="card-body"><div class="card-name">CraneWorks</div><div class="card-type">Crane Sales, Parts & Service</div>
+      <div class="card-desc">Full-service crane company headquartered in Alabama with branches across the South. OEM parts, field service, and crane inspections for major brands.</div>
+      <div class="card-meta"><span class="tag">Southeast</span><span class="tag gold">OEM Parts</span><span class="tag">Field Service</span><span class="tag">Inspections</span></div></div>
+    </div>
+    <div class="card" data-name="Allied Crane inspection service" data-tags="crane inspection parts service california ASME B30 compliance">
+      <div class="card-icon">🔩</div>
+      <div class="card-body"><div class="card-name">Allied Crane</div><div class="card-type">Crane Inspection & Service</div>
+      <div class="card-desc">California-based crane inspection, maintenance, and parts supplier. Specializes in ASME B30 compliance inspections for mobile, tower, and overhead cranes.</div>
+      <div class="card-meta"><span class="tag">California</span><span class="tag">B30 Inspection</span><span class="tag">ASME Compliant</span></div></div>
+    </div>
+    <div class="card" data-name="LMI Load Moment Indicator specialists" data-tags="load moment indicator LMI anti-two-block RCL safety calibration repair">
+      <div class="card-icon">📊</div>
+      <div class="card-body"><div class="card-name">LMI Calibration Specialists</div><div class="card-type">Safety System Service & Calibration</div>
+      <div class="card-desc">Specialist firms providing load moment indicator (LMI), anti-two-block, and RCL safety system calibration, repair, and installation for mobile cranes.</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag gold">LMI Systems</span><span class="tag">Safety Devices</span></div></div>
+    </div>
+    <div class="card" data-name="Crane Network Parts Marketplace" data-tags="crane parts aftermarket online marketplace used North America">
+      <div class="card-icon">🔩</div>
+      <div class="card-body"><div class="card-name">Crane Network Parts Marketplace</div><div class="card-type">Online Crane Parts Marketplace</div>
+      <div class="card-desc">Online marketplace connecting crane owners with aftermarket parts suppliers, used equipment dealers, and crane service companies across North America.</div>
+      <div class="card-meta"><span class="tag">Online</span><span class="tag">Aftermarket</span><span class="tag">Used Parts</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGINEERING -->
+<section class="dir-section" id="engineering">
+  <div class="section-header">
+    <div><div class="section-eyebrow">08 / Engineering & Planning</div><div class="section-title">LIFT PLANNING ENGINEERS</div></div>
+    <div class="section-count">14 listings</div>
+  </div>
+  <div class="card-grid">
+    <div class="card featured" data-name="3D Lift Plan software" data-tags="lift planning software PE engineering 3D visualization load chart crane selection">
+      <span class="featured-badge">Featured</span><div class="card-icon">📐</div>
+      <div class="card-body"><div class="card-name">3D Lift Plan</div><div class="card-type">Lift Planning Software</div>
+      <div class="card-desc">Industry-standard 3D crane selection and lift planning software. Validates crane fit, clearances, and load charts before mobilization. Used by engineers and operators worldwide.</div>
+      <div class="card-meta"><span class="tag">Software</span><span class="tag gold">Lift Planning</span><span class="tag">3D Visualization</span><span class="tag">Load Chart</span></div></div>
+    </div>
+    <div class="card" data-name="PE Stamped Lift Plans licensed engineers" data-tags="PE stamped lift plan engineering OSHA 1926.1431 critical lift 75 percent">
+      <div class="card-icon">📐</div>
+      <div class="card-body"><div class="card-name">PE-Stamped Lift Plan Services</div><div class="card-type">Licensed Lift Planning Engineers</div>
+      <div class="card-desc">Professional engineers (PE) who prepare and stamp critical lift plans as required by OSHA 1926.1431 for lifts over 75% of crane rated capacity or in complex conditions.</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag gold">PE Stamped</span><span class="tag">OSHA 1926.1431</span></div></div>
+    </div>
+    <div class="card" data-name="Crane Logic fleet management software" data-tags="crane fleet management dispatch software SaaS quotes maintenance operator certifications">
+      <div class="card-icon">💻</div>
+      <div class="card-body"><div class="card-name">Crane Logic</div><div class="card-type">Crane Fleet Management Software</div>
+      <div class="card-desc">Fleet management and dispatch software for crane rental companies. Manages quotes, dispatch, maintenance schedules, and operator certifications in one platform.</div>
+      <div class="card-meta"><span class="tag">SaaS</span><span class="tag">Fleet Management</span><span class="tag blue">Tech</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCE -->
+<section class="dir-section" id="finance">
+  <div class="section-header">
+    <div><div class="section-eyebrow">09 / Capital & Coverage</div><div class="section-title">FINANCE & INSURANCE</div></div>
+    <div class="section-count">12 listings</div>
+  </div>
+  <div class="card-grid">
+    <div class="card featured" data-name="Ascentium Capital equipment financing" data-tags="equipment finance crane leasing loan Regions Bank fast approval">
+      <span class="featured-badge">Featured</span><div class="card-icon">💰</div>
+      <div class="card-body"><div class="card-name">Ascentium Capital</div><div class="card-type">Equipment Financing — Crane Specialist</div>
+      <div class="card-desc">Regions Bank subsidiary specializing in equipment financing and leasing. Strong in construction and crane equipment with fast approvals and competitive rates for mobile cranes.</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag gold">Crane Finance</span><span class="tag">Lease</span><span class="tag">Loan</span><span class="tag green">CraneGenius Partner</span></div></div>
+    </div>
+    <div class="card" data-name="NationsBuilders Insurance Services crane" data-tags="crane insurance construction riggers liability equipment floater">
+      <div class="card-icon">🛡</div>
+      <div class="card-body"><div class="card-name">NationsBuilders Insurance Services</div><div class="card-type">Construction Equipment Insurance</div>
+      <div class="card-desc">Specialized insurance for the crane and rigging industry. Crane operator liability, rigger's liability, equipment floater, and general contractor policies.</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag gold">Crane Liability</span><span class="tag">Rigger's Liability</span></div></div>
+    </div>
+    <div class="card" data-name="Falvey Cargo Underwriting crane insurance" data-tags="specialty crane insurance project cargo erection all risk transit">
+      <div class="card-icon">🛡</div>
+      <div class="card-body"><div class="card-name">Falvey Cargo Underwriting</div><div class="card-type">Specialty Crane & Cargo Insurance</div>
+      <div class="card-desc">Specialty insurer covering project cargo, cranes-in-transit, and erection-all-risk policies for major lifting projects and crane transport.</div>
+      <div class="card-meta"><span class="tag">National</span><span class="tag">Project Cargo</span><span class="tag">Erection Risk</span></div></div>
+    </div>
+    <div class="card" data-name="SBA 7a equipment loans crane" data-tags="SBA loan equipment finance small business crane owner operator 504">
+      <div class="card-icon">🏦</div>
+      <div class="card-body"><div class="card-name">SBA 7(a) Equipment Loans</div><div class="card-type">Small Business Crane Equipment Financing</div>
+      <div class="card-desc">SBA 7(a) and 504 loan programs commonly used by owner-operators to finance crane acquisitions. Terms up to 10 years with favorable interest rates.</div>
+      <div class="card-meta"><span class="tag">Federal Program</span><span class="tag blue">10-Yr Terms</span><span class="tag">Owner-Operator</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOFTWARE -->
+<section class="dir-section" id="software">
+  <div class="section-header">
+    <div><div class="section-eyebrow">10 / Digital Tools</div><div class="section-title">SOFTWARE & TECHNOLOGY</div></div>
+    <div class="section-count">10 listings</div>
+  </div>
+  <div class="card-grid">
+    <div class="card featured" data-name="CraneGenius AI Platform" data-tags="crane AI lift estimator availability software permit intelligence SaaS">
+      <span class="featured-badge">Our Platform</span><div class="card-icon">🤖</div>
+      <div class="card-body"><div class="card-name">CraneGenius AI Platform</div><div class="card-type">AI Crane Intelligence & Lead Gen</div>
+      <div class="card-desc">AI-powered crane selection, lift cost estimation, and crane availability platform. Uses municipal permit data to identify projects needing cranes before they hit the market.</div>
+      <div class="card-meta"><span class="tag">SaaS</span><span class="tag gold">AI-Powered</span><span class="tag">Permit Intelligence</span><span class="tag green">Our Platform</span></div></div>
+    </div>
+    <div class="card" data-name="Load chart apps iOS Android mobile" data-tags="load chart software crane app mobile Grove Liebherr Manitowoc Link-Belt">
+      <div class="card-icon">📱</div>
+      <div class="card-body"><div class="card-name">Mobile Load Chart Apps</div><div class="card-type">Digital Load Chart Tools</div>
+      <div class="card-desc">Mobile apps providing digital access to manufacturer load charts for Grove, Liebherr, Manitowoc, and Link-Belt cranes. Replaces paper charts in the cab.</div>
+      <div class="card-meta"><span class="tag">Mobile App</span><span class="tag">Load Charts</span><span class="tag blue">iOS/Android</span></div></div>
+    </div>
+    <div class="card" data-name="CM Labs Vortex crane simulator OEM" data-tags="crane simulator OEM training CCO prep assessment skills">
+      <div class="card-icon">🖥</div>
+      <div class="card-body"><div class="card-name">CM Labs Vortex Simulators</div><div class="card-type">Crane Training Simulator OEM</div>
+      <div class="card-desc">High-fidelity crane operator simulators used by training centers, unions, and crane companies for CCO exam prep, operator assessment, and skills development.</div>
+      <div class="card-meta"><span class="tag">Simulator OEM</span><span class="tag">CCO Prep</span><span class="tag blue">VR/Sim</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSOCIATIONS -->
+<section class="dir-section" id="associations">
+  <div class="section-header">
+    <div><div class="section-eyebrow">11 / Industry Bodies</div><div class="section-title">ASSOCIATIONS & STANDARDS</div></div>
+    <div class="section-count">14 listings</div>
+  </div>
+  <div class="info-card">
+    <h3>Key Crane Industry Standards Bodies</h3>
+    <p>The US crane industry is governed by OSHA 29 CFR 1926 Subpart CC (construction cranes) and 1910.179 (overhead cranes), with equipment standards set by ASME B30 and ANSI A10.9. Understanding which body governs your application is essential for compliance.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card" data-name="ASME B30 Standards crane safety" data-tags="ASME standards crane safety B30 B30.5 mobile B30.3 tower">
+      <div class="card-icon">🏛</div>
+      <div class="card-body"><div class="card-name">ASME (B30 Standards)</div><div class="card-type">Standards Development Organization</div>
+      <div class="card-desc">Publishes ASME B30, the comprehensive safety standard for cranes, derricks, hoists, hooks, jacks, and slings. B30.5 covers mobile cranes; B30.3 covers tower cranes.</div>
+      <div class="card-meta"><span class="tag">Standards Body</span><span class="tag gold">B30.5 Mobile</span><span class="tag">B30.3 Tower</span></div></div>
+    </div>
+    <div class="card" data-name="SCRA Specialized Carriers Rigging Association" data-tags="SCRA trade association crane rigging transport annual workshop">
+      <div class="card-icon">🏛</div>
+      <div class="card-body"><div class="card-name">SC&RA</div><div class="card-type">Industry Trade Association</div>
+      <div class="card-desc">Specialized Carriers & Rigging Association — trade association for the crane, rigging, and specialized transportation industry. Hosts the annual Crane & Rigging Workshop.</div>
+      <div class="card-meta"><span class="tag">Trade Association</span><span class="tag">Annual Workshop</span></div></div>
+    </div>
+    <div class="card" data-name="AWRF Associated Wire Rope Fabricators" data-tags="rigging wire rope standards AWRF chain webbing synthetic sling">
+      <div class="card-icon">🏛</div>
+      <div class="card-body"><div class="card-name">AWRF</div><div class="card-type">Wire Rope & Rigging Hardware Standards</div>
+      <div class="card-desc">Associated Wire Rope Fabricators — sets standards for wire rope, chain, webbing, and synthetic sling fabrication and testing used in crane rigging applications.</div>
+      <div class="card-meta"><span class="tag">Standards Body</span><span class="tag">Wire Rope</span><span class="tag">Slings</span></div></div>
+    </div>
+    <div class="card" data-name="OSHA 1926 Subpart CC cranes derricks construction" data-tags="OSHA crane regulations construction compliance 1926.1427 operator qualification power lines">
+      <div class="card-icon">⚠️</div>
+      <div class="card-body"><div class="card-name">OSHA 1926 Subpart CC</div><div class="card-type">Federal Crane Safety Regulations</div>
+      <div class="card-desc">OSHA's primary regulation governing cranes and derricks in construction. Covers operator qualification (1926.1427), assembly/disassembly, power lines, and critical lift requirements.</div>
+      <div class="card-meta"><span class="tag">Federal Regulation</span><span class="tag gold">OSHA Required</span><span class="tag">1926.1427</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="dir-section" id="faq">
+  <div class="section-header">
+    <div><div class="section-eyebrow">12 / Knowledge Base</div><div class="section-title">CRANE INDUSTRY FAQ</div></div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">What are the largest crane rental companies in the United States?</div>
+    <div class="faq-a">The largest crane rental companies in the US by fleet size and geographic coverage include Maxim Crane Works (40+ locations, largest mobile crane fleet in North America), Barnhart Crane &amp; Rigging (employee-owned, heavy lift and rigging specialist), TNT Crane &amp; Rigging (Gulf Coast and industrial focus), Stampede Crane &amp; Rigging (Southwest US), and Buckner HeavyLift Cranes (wind energy and power generation). United Rentals, while the largest equipment rental company overall, does not operate cranes as a core product line — making CraneGenius the specialized intelligence layer filling that gap.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">Who are the major crane manufacturers in the world?</div>
+    <div class="faq-a">The dominant global crane manufacturers are Liebherr (Germany — all-terrain LTM series, crawlers, tower cranes), Manitowoc/Grove (USA — mobile cranes and Potain tower cranes), Tadano (Japan — acquired Demag, ATF series all-terrain), Link-Belt (USA, Sumitomo Heavy Industries), and Terex Cranes (global). For tower cranes: Potain, Comansa, and Liebherr lead. In the spider/mini crane category, Maeda, UNIC, and Jekko dominate. Broderson is the US leader in carry deck cranes.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">How do you get certified as a crane operator in the US?</div>
+    <div class="faq-a">Crane operator certification in the US is governed by OSHA 1926.1427 for construction sites. Operators must be certified by an accredited testing organization — either NCCCO (National Commission for the Certification of Crane Operators) or CICB (Crane Institute Certifications). The process involves written exams and a practical skills test specific to crane type. Union operators typically achieve certification through IUOE apprenticeship programs over 4 years. Certification must be renewed every 5 years.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">What is the difference between a mobile crane, crawler crane, and tower crane?</div>
+    <div class="faq-a">A mobile crane (truck crane or all-terrain crane) is mounted on a wheeled carrier, drives between sites, and deploys outriggers for lifting — the most common type for commercial construction. A crawler crane is mounted on tracked undercarriage providing excellent stability for heavy lifts, but requires transport between sites. A tower crane is assembled in a stationary position and is used for high-rise construction due to its height and horizontal reach. Spider cranes (mini cranes) are compact crawler-mounted units for tight-access applications like building interiors and rooftops.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">How much does it cost to rent a crane?</div>
+    <div class="faq-a">Crane rental rates vary significantly by crane type, capacity, and region. A 40-ton all-terrain mobile crane typically rents for $1,500–$3,500/day bare rental (without operator). A 100-ton all-terrain runs $3,500–$7,000/day. Large crawler cranes (300+ ton) can exceed $15,000–$25,000/day. Full-service rates (with operator, fuel, and insurance) are typically 1.5–2x bare rates. Monthly rates offer 15–25% discounts vs. daily rates. Use the CraneGenius free lift estimator for a specific estimate based on your actual lift parameters and location.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">What does NCCCO certification cost and how long does it take?</div>
+    <div class="faq-a">NCCCO exam fees range from approximately $225–$375 per written exam and $350–$475 for the practical exam. Total costs including study materials and training typically run $1,000–$3,000 for a new operator pursuing Mobile Crane – Telescoping Boom certification. Preparation time varies: experienced operators may study 2–3 months; new operators benefit from structured training programs running 6–12 months. Certification is valid for 5 years before renewal testing is required.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">What is a spider crane and when is it used?</div>
+    <div class="faq-a">A spider crane (mini crane or compact crawler crane) is a small, remote-controlled crane mounted on extendable stabilizer legs. Brands include Maeda, UNIC, Jekko, and Palazzani. Used for interior building lifts (atria, museums, stadiums), rooftop HVAC equipment installation, tree surgery, and any application where a conventional mobile crane cannot access due to doorway clearance, weight restrictions on floors or structures, or confined space. Typical capacities range from 0.5 to 6 tonnes.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">What are DICA outrigger pads and why are they required?</div>
+    <div class="faq-a">DICA outrigger pads (and similar products from Sterling and others) are engineered load-spreading pads placed under mobile crane outrigger floats. They distribute the outrigger load across a larger area of ground, preventing the crane from sinking or tipping on soft, unimproved, or weight-restricted surfaces (parking structures, paved areas). DICA FiberMax pads are high-density polyethylene and a lighter, more durable alternative to timber mats. They are required on virtually every mobile crane setup as a standard safety measure under ASME B30.5.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">What financing options exist for buying a crane?</div>
+    <div class="faq-a">Options include: (1) Equipment loans from specialty lenders like Ascentium Capital, TIAA Bank, and manufacturer-backed lenders with terms up to 84 months; (2) SBA 7(a) or 504 loans for small business crane purchases with favorable terms and lower down payments; (3) Equipment leasing (operating or finance lease); (4) Manufacturer-backed financing through dealer networks; and (5) Lease-to-own structures for owner-operators. Down payments typically range from 10–20%. New all-terrain cranes range from $500,000 to $5M+ depending on capacity and brand.</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner" id="get-crane">
+  <h2>NEED A CRANE?</h2>
+  <p>Get AI-matched crane availability and pricing in minutes — powered by permit data and real fleet intelligence.</p>
+  <div class="cta-buttons">
+    <a href="https://cranegenius.com/#estimator" class="btn-primary">Get Free Lift Estimate →</a>
+    <a href="mailto:hello@cranegenius.com" class="btn-secondary">List Your Company</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-logo">CRANEGENIUS</div>
+  <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">The crane industry's intelligence layer</div>
+  <div class="footer-links">
+    <a href="https://cranegenius.com">Home</a>
+    <a href="https://cranegenius.com/#estimator">Lift Estimator</a>
+    <a href="https://cranegenius.com/data-centers/">Data Centers</a>
+    <a href="https://cranegenius.com/directory/">Directory</a>
+    <a href="mailto:hello@cranegenius.com">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 CraneGenius / Dark 30 Ventures. Directory data sourced from public records, manufacturer websites, and verified industry sources.</div>
+</footer>
+
+<div id="ai-panel">
+  <div id="ai-chat">
+    <div class="chat-header">
+      <span style="font-size:18px">🤖</span>
+      <div class="chat-header-text"><strong>CraneGenius AI</strong><span>● Online — Ask anything about cranes</span></div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg bot">Hey! I'm the CraneGenius AI. I can help you find the right crane, get a lift estimate, or answer any crane industry question. What do you need?</div>
+    </div>
+    <div class="chat-quick" id="quickBtns">
+      <button class="quick-btn" onclick="sendQuick('I need a crane rental quote')">Get a quote</button>
+      <button class="quick-btn" onclick="sendQuick('What crane do I need for my lift?')">Pick a crane</button>
+      <button class="quick-btn" onclick="sendQuick('Tell me about NCCCO certification')">NCCCO cert</button>
+    </div>
+    <div class="chat-footer">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Ask about cranes, costs, specs..." onkeydown="if(event.key==='Enter')sendChat()">
+      <button class="chat-send" onclick="sendChat()">➤</button>
+    </div>
+  </div>
+  <button id="ai-toggle" onclick="toggleChat()" title="Ask CraneGenius AI">🏗</button>
+</div>
+
+<script>
+function filterCards(q){q=q.toLowerCase().trim();document.querySelectorAll('.card').forEach(c=>{const n=(c.dataset.name||'').toLowerCase(),t=(c.dataset.tags||'').toLowerCase(),x=c.innerText.toLowerCase();c.classList.toggle('hidden',q.length>0&&!n.includes(q)&&!t.includes(q)&&!x.includes(q))})}
+document.querySelectorAll('.cat-pill').forEach(p=>{p.addEventListener('click',function(){document.querySelectorAll('.cat-pill').forEach(x=>x.classList.remove('active'));this.classList.add('active')})});
+function toggleFaq(el){el.classList.toggle('open')}
+let chatOpen=false;
+function toggleChat(){chatOpen=!chatOpen;document.getElementById('ai-chat').classList.toggle('open',chatOpen);if(chatOpen)document.getElementById('chatInput').focus()}
+const SYS=`You are the CraneGenius AI assistant, an expert in the crane and heavy lift industry. Help users find the right crane, get lift estimates, understand NCCCO certification, navigate the crane directory, and connect with crane rental companies. Always be specific and knowledgeable. When a user needs pricing or crane rental, guide them to the free CraneGenius lift estimator at cranegenius.com/#estimator. Key facts: Mobile/all-terrain cranes 40-500+ ton, need outriggers. Crawler cranes: stability for heavy lifts 200+ tons. Tower cranes: high-rise, self-climbing. Spider/mini cranes: 0.5-6 tons, compact indoor access. NCCCO required by OSHA 1926.1427, 5-year renewal. Typical rental: 40-ton ~$2,000-3,500/day; 100-ton ~$4,000-7,000/day. Top manufacturers: Liebherr, Grove/Manitowoc, Tadano, Link-Belt, Terex.`;
+async function sendChat(){const input=document.getElementById('chatInput'),msg=input.value.trim();if(!msg)return;input.value='';appendMsg(msg,'user');document.getElementById('quickBtns').style.display='none';appendMsg('...','bot typing');const hist=[];document.querySelectorAll('#chatMessages .msg:not(.typing)').forEach(m=>{hist.push({role:m.classList.contains('user')?'user':'assistant',content:m.innerText})});try{const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:[...hist.slice(-8),{role:'user',content:msg}]})});const d=await r.json();removeTyping();appendMsg(d.content?.[0]?.text||'Sorry, try again.','bot')}catch(e){removeTyping();appendMsg('Connection error. Try again or visit cranegenius.com/#estimator','bot')}}
+function sendQuick(t){document.getElementById('chatInput').value=t;sendChat()}
+function appendMsg(t,type){const d=document.createElement('div');d.className='msg '+type;d.innerText=t;const m=document.getElementById('chatMessages');m.appendChild(d);m.scrollTop=m.scrollHeight}
+function removeTyping(){const t=document.querySelector('.msg.typing');if(t)t.remove()}
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;document.querySelectorAll('.cat-pill').forEach(p=>{p.classList.toggle('active',p.getAttribute('href')==='#'+id)})}})},{threshold:.3,rootMargin:'-120px 0px -60% 0px'});
+document.querySelectorAll('.dir-section').forEach(s=>obs.observe(s));
+document.querySelectorAll('.card').forEach(card=>{card.addEventListener('click',function(){const n=this.dataset.name;if(n){if(!chatOpen)toggleChat();document.getElementById('chatInput').value='Tell me more about '+n;sendChat()}})});
+</script>
+</body>
+</html>

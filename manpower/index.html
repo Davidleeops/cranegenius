@@ -1,1 +1,522 @@
-404: Not Found
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crane Operator Manpower Board | CraneGenius – Find Certified Operators & Riggers</title>
+<meta name="description" content="Find certified crane operators, riggers, lift supervisors, and tower crane operators available for hire. Browse operator profiles or add your own profile to get matched with jobs.">
+<link rel="canonical" href="https://cranegenius.com/manpower/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-dim:rgba(201,168,76,.15);--gold-border:rgba(201,168,76,.25);--bg:#080e1a;--bg2:#0d1628;--bg3:#111e35;--bg4:#162540;--text:#e8ecf0;--text-dim:#8a9ab5;--text-muted:#4a5a72;--green:#2dd4a0;--blue:#60a5fa;--radius:8px;--F:'Bebas Neue',sans-serif;--B:'DM Sans',sans-serif;--M:'DM Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:var(--B);font-size:15px;line-height:1.6;overflow-x:hidden}
+.nav{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--F);font-size:22px;letter-spacing:2px;color:var(--gold);text-decoration:none}
+.nav-logo span{color:var(--text-dim);font-size:13px;font-family:var(--B);letter-spacing:0;margin-left:10px;font-weight:300}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:13px;color:var(--text-dim);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:#000;font-weight:600;font-size:13px;padding:8px 20px;border-radius:4px;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:var(--gold-light)}
+/* HERO */
+.hero{position:relative;padding:70px 32px 50px;text-align:center;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(201,168,76,.08) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-family:var(--M);font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp .5s .1s forwards}
+.hero h1{font-family:var(--F);font-size:clamp(48px,7vw,88px);letter-spacing:4px;line-height:.95;color:var(--text);margin-bottom:20px;opacity:0;animation:fadeUp .5s .2s forwards}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero-sub{font-size:16px;color:var(--text-dim);max-width:580px;margin:0 auto 36px;font-weight:300;opacity:0;animation:fadeUp .5s .3s forwards}
+.hero-cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .5s .4s forwards}
+.btn-gold-lg{background:var(--gold);color:#000;font-weight:700;font-size:14px;padding:14px 32px;border-radius:4px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .1s;font-family:var(--B)}
+.btn-gold-lg:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn-outline-lg{background:transparent;color:var(--text-dim);font-size:14px;padding:14px 32px;border-radius:4px;text-decoration:none;border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:all .2s;font-family:var(--B)}
+.btn-outline-lg:hover{border-color:var(--gold-border);color:var(--gold)}
+/* STATS BAR */
+.stats-bar{background:var(--bg2);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);padding:20px 32px;display:flex;justify-content:center;gap:48px;margin-bottom:0}
+.stat-v{font-family:var(--F);font-size:32px;color:var(--gold);letter-spacing:2px;line-height:1;text-align:center}
+.stat-l{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:2px;margin-top:3px;text-align:center}
+/* MAIN */
+.main{max-width:1200px;margin:0 auto;padding:40px 32px 80px;display:grid;grid-template-columns:280px 1fr;gap:32px;align-items:start}
+.sidebar{position:sticky;top:80px}
+.filter-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:24px;margin-bottom:16px}
+.filter-title{font-family:var(--F);font-size:18px;letter-spacing:1px;color:var(--text);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.06)}
+.filter-label{font-size:11px;font-family:var(--M);letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;display:block}
+.filter-select,.filter-input{width:100%;background:var(--bg3);border:1px solid rgba(255,255,255,.08);border-radius:6px;color:var(--text);font-family:var(--B);font-size:13px;padding:9px 12px;outline:none;transition:border-color .2s;margin-bottom:14px;-webkit-appearance:none}
+.filter-select:focus,.filter-input:focus{border-color:var(--gold-border)}
+.filter-input::placeholder{color:var(--text-muted)}
+.chip-group{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chip{font-size:11px;font-family:var(--M);color:var(--text-dim);background:var(--bg3);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:4px 12px;cursor:pointer;transition:all .15s;user-select:none}
+.chip:hover,.chip.active{color:#000;background:var(--gold);border-color:var(--gold)}
+.add-profile-cta{background:linear-gradient(135deg,rgba(201,168,76,.1) 0%,var(--bg2) 100%);border:1px solid var(--gold-border);border-radius:var(--radius);padding:24px;text-align:center}
+.add-profile-cta h3{font-family:var(--F);font-size:22px;letter-spacing:1px;color:var(--text);margin-bottom:8px}
+.add-profile-cta p{font-size:13px;color:var(--text-dim);margin-bottom:16px;line-height:1.6}
+.btn-gold-sm{display:block;background:var(--gold);color:#000;font-weight:700;font-size:13px;padding:11px 20px;border-radius:4px;text-decoration:none;text-align:center;border:none;cursor:pointer;transition:background .2s;width:100%;font-family:var(--B)}
+.btn-gold-sm:hover{background:var(--gold-light)}
+.btn-outline-sm{display:block;background:transparent;color:var(--text-dim);font-size:13px;padding:10px 20px;border-radius:4px;text-decoration:none;text-align:center;border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:all .2s;width:100%;margin-top:8px;font-family:var(--B)}
+.btn-outline-sm:hover{border-color:var(--gold-border);color:var(--gold)}
+/* PROFILES */
+.profiles-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.profiles-count{font-family:var(--M);font-size:13px;color:var(--text-muted)}
+.sort-select{background:var(--bg2);border:1px solid rgba(255,255,255,.08);border-radius:6px;color:var(--text-dim);font-family:var(--B);font-size:12px;padding:6px 12px;outline:none;cursor:pointer}
+/* PROFILE CARD */
+.profile-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:24px;margin-bottom:12px;transition:all .2s;cursor:pointer;position:relative}
+.profile-card:hover{border-color:var(--gold-border);transform:translateY(-1px);box-shadow:0 6px 24px rgba(0,0,0,.3)}
+.profile-card.verified{border-color:var(--gold-border);background:linear-gradient(135deg,rgba(201,168,76,.05) 0%,var(--bg2) 60%)}
+.avail-badge{position:absolute;top:16px;right:16px;font-size:10px;font-family:var(--M);letter-spacing:1px;padding:4px 10px;border-radius:12px}
+.avail-badge.now{background:rgba(45,212,160,.15);color:var(--green);border:1px solid rgba(45,212,160,.3)}
+.avail-badge.soon{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid var(--gold-border)}
+.avail-badge.employed{background:rgba(255,255,255,.05);color:var(--text-muted);border:1px solid rgba(255,255,255,.08)}
+.profile-top{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}
+.profile-avatar{width:56px;height:56px;border-radius:50%;background:var(--bg3);border:2px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;font-family:var(--F);color:var(--gold);font-size:20px;letter-spacing:1px}
+.profile-name{font-weight:600;font-size:17px;color:var(--text);margin-bottom:3px}
+.profile-title{font-size:12px;color:var(--gold);font-family:var(--M);letter-spacing:.5px;margin-bottom:6px}
+.profile-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--text-dim)}
+.profile-certs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.cert-badge{font-size:10px;font-family:var(--M);color:var(--gold);background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:3px;padding:3px 8px;letter-spacing:.5px}
+.cert-badge.blue{color:var(--blue);background:rgba(96,165,250,.05);border-color:rgba(96,165,250,.2)}
+.cert-badge.green{color:var(--green);background:rgba(45,212,160,.05);border-color:rgba(45,212,160,.2)}
+.profile-bio{font-size:13px;color:var(--text-dim);line-height:1.6;margin-bottom:12px}
+.profile-equipment{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.equip-tag{font-size:11px;color:var(--text-muted);background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:3px;padding:2px 8px}
+.profile-footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(255,255,255,.04)}
+.profile-exp{font-family:var(--F);font-size:24px;color:var(--text);letter-spacing:1px}
+.profile-exp-label{font-size:11px;color:var(--text-muted)}
+.contact-btn{background:var(--gold);color:#000;font-weight:700;font-size:12px;padding:8px 20px;border-radius:4px;border:none;cursor:pointer;transition:background .2s;white-space:nowrap}
+.contact-btn:hover{background:var(--gold-light)}
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--gold-border);border-radius:12px;width:100%;max-width:600px;max-height:92vh;overflow-y:auto;padding:32px;position:relative;scrollbar-width:thin;scrollbar-color:var(--bg4) transparent}
+.modal h2{font-family:var(--F);font-size:34px;letter-spacing:2px;color:var(--text);margin-bottom:6px}
+.modal-sub{font-size:13px;color:var(--text-dim);margin-bottom:24px;line-height:1.6}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text-muted);font-size:22px;cursor:pointer;transition:color .2s}
+.modal-close:hover{color:var(--text)}
+.form-group{margin-bottom:18px}
+.form-label{display:block;font-size:11px;font-family:var(--M);letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--bg3);border:1px solid rgba(255,255,255,.08);border-radius:6px;color:var(--text);font-family:var(--B);font-size:14px;padding:11px 14px;outline:none;transition:border-color .2s}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold-border)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--text-muted)}
+.form-textarea{resize:vertical;min-height:90px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-note{font-size:12px;color:var(--text-muted);margin-top:6px}
+.checkbox-group{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:4px}
+.checkbox-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-dim);cursor:pointer}
+.checkbox-item input{accent-color:var(--gold);width:15px;height:15px}
+.submit-btn{width:100%;background:var(--gold);color:#000;font-weight:700;font-size:14px;padding:14px;border-radius:4px;border:none;cursor:pointer;font-family:var(--B);transition:background .2s;margin-top:8px}
+.submit-btn:hover{background:var(--gold-light)}
+.success-msg{display:none;background:rgba(45,212,160,.08);border:1px solid rgba(45,212,160,.3);border-radius:8px;padding:20px;text-align:center;color:var(--green);font-size:14px;margin-top:16px;line-height:1.7}
+/* CONTACT MODAL */
+#contactModal .modal{max-width:480px}
+.contact-detail{background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:16px;margin-bottom:12px;font-size:13px;color:var(--text-dim);line-height:1.7}
+.contact-detail strong{color:var(--text);display:block;margin-bottom:4px;font-size:14px}
+.privacy-note{font-size:12px;color:var(--text-muted);line-height:1.6;padding:12px;background:rgba(255,255,255,.02);border-radius:6px;margin-top:12px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.main{grid-template-columns:1fr}.sidebar{position:static}.stats-bar{gap:24px}}
+@media(max-width:600px){.nav{padding:0 16px}.hero{padding:48px 16px 36px}.main{padding:24px 16px 60px}.form-row{grid-template-columns:1fr}.checkbox-group{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://cranegenius.com" class="nav-logo">CRANEGENIUS <span>/ Manpower</span></a>
+  <div class="nav-links">
+    <a href="https://cranegenius.com/jobs/">Jobs Board</a>
+    <a href="https://cranegenius.com/directory/">Directory</a>
+    <a href="#" class="nav-cta" onclick="openModal('profile');return false">Add My Profile →</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">👷 Operator & Rigger Talent Pool</div>
+  <h1>CRANE <em>MANPOWER</em><br>BOARD</h1>
+  <p class="hero-sub">Browse certified crane operators, riggers, and lift supervisors available for hire — or add your profile to get matched with open positions.</p>
+  <div class="hero-cta-row">
+    <a href="#" class="btn-gold-lg" onclick="openModal('profile');return false">Add My Profile — Free</a>
+    <a href="https://cranegenius.com/jobs/" class="btn-outline-lg">Browse Open Jobs →</a>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div><div class="stat-v" id="profileCount">0</div><div class="stat-l">Active Profiles</div></div>
+  <div><div class="stat-v">22</div><div class="stat-l">States Represented</div></div>
+  <div><div class="stat-v">100%</div><div class="stat-l">NCCCO / CICB Verified</div></div>
+  <div><div class="stat-v">Free</div><div class="stat-l">To List Your Profile</div></div>
+</div>
+
+<div class="main">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="filter-card">
+      <div class="filter-title">FIND OPERATORS</div>
+      <label class="filter-label">Search</label>
+      <input type="text" class="filter-input" id="kwInput" placeholder="Name, cert, city, equipment..." oninput="applyFilters()">
+      <label class="filter-label">Role</label>
+      <div class="chip-group" id="roleChips">
+        <span class="chip active" data-role="">All</span>
+        <span class="chip" data-role="Operator">Operator</span>
+        <span class="chip" data-role="Rigger">Rigger</span>
+        <span class="chip" data-role="Supervisor">Supervisor</span>
+        <span class="chip" data-role="Tower">Tower</span>
+        <span class="chip" data-role="Apprentice">Apprentice</span>
+      </div>
+      <label class="filter-label">Availability</label>
+      <select class="filter-select" id="availFilter" onchange="applyFilters()">
+        <option value="">All</option>
+        <option value="now">Available Now</option>
+        <option value="soon">Available Soon</option>
+      </select>
+      <label class="filter-label">Location</label>
+      <select class="filter-select" id="locFilter" onchange="applyFilters()">
+        <option value="">All Locations</option>
+        <option>Chicago, IL</option>
+        <option>Houston, TX</option>
+        <option>New York, NY</option>
+        <option>Los Angeles, CA</option>
+        <option>Dallas, TX</option>
+        <option>Phoenix, AZ</option>
+        <option>Atlanta, GA</option>
+        <option>Seattle, WA</option>
+        <option>Denver, CO</option>
+        <option>Miami, FL</option>
+      </select>
+      <label class="filter-label">Min Experience (yrs)</label>
+      <input type="number" class="filter-input" id="expFilter" placeholder="e.g. 5" oninput="applyFilters()">
+    </div>
+
+    <div class="add-profile-cta">
+      <h3>OPERATORS</h3>
+      <p>Add your profile for free. Companies and recruiters searching for certified crane operators will find and contact you directly.</p>
+      <a href="#" class="btn-gold-sm" onclick="openModal('profile');return false">Add My Profile — Free</a>
+      <a href="https://cranegenius.com/jobs/" class="btn-outline-sm">View Open Jobs →</a>
+    </div>
+  </aside>
+
+  <!-- PROFILES -->
+  <div>
+    <div class="profiles-header">
+      <div class="profiles-count" id="visibleCount">Loading profiles...</div>
+      <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+        <option value="newest">Newest First</option>
+        <option value="exp">Most Experienced</option>
+        <option value="available">Available Now First</option>
+      </select>
+    </div>
+    <div id="profileList"></div>
+  </div>
+</div>
+
+<!-- ADD PROFILE MODAL -->
+<div class="modal-overlay" id="profileModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('profile')">✕</button>
+    <h2>ADD YOUR PROFILE</h2>
+    <div class="modal-sub">Free to list. Companies and recruiters search this board to find certified operators. Your contact info is only shared when you approve a connection.</div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">First Name *</label>
+        <input class="form-input" id="pr_first" placeholder="First name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Last Name *</label>
+        <input class="form-input" id="pr_last" placeholder="Last name">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Email *</label>
+        <input class="form-input" id="pr_email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone</label>
+        <input class="form-input" id="pr_phone" placeholder="(555) 000-0000">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Current Location *</label>
+        <input class="form-input" id="pr_loc" placeholder="City, State">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Primary Role *</label>
+        <select class="form-select" id="pr_role">
+          <option>Mobile Crane Operator</option>
+          <option>Tower Crane Operator</option>
+          <option>Crawler Crane Operator</option>
+          <option>Rough Terrain Operator</option>
+          <option>Spider / Mini Crane Operator</option>
+          <option>Rigger</option>
+          <option>Lift Supervisor / Director</option>
+          <option>Signalperson</option>
+          <option>Apprentice Operator</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Years Experience</label>
+        <input class="form-input" id="pr_exp" placeholder="e.g. 12">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Availability</label>
+        <select class="form-select" id="pr_avail">
+          <option value="now">Available Now</option>
+          <option value="soon">Available in 2–4 Weeks</option>
+          <option value="employed">Currently Employed / Open to Offers</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Certifications Held</label>
+      <div class="checkbox-group" id="certCheckboxes">
+        <label class="checkbox-item"><input type="checkbox" value="NCCCO CCO – Telescoping Boom"> NCCCO CCO – Tel. Boom</label>
+        <label class="checkbox-item"><input type="checkbox" value="NCCCO CCO – Lattice Boom"> NCCCO CCO – Lattice Boom</label>
+        <label class="checkbox-item"><input type="checkbox" value="NCCCO Tower Crane"> NCCCO Tower Crane</label>
+        <label class="checkbox-item"><input type="checkbox" value="NCCCO Rough Terrain"> NCCCO Rough Terrain</label>
+        <label class="checkbox-item"><input type="checkbox" value="CICB Rigger Cert"> CICB Rigger Cert</label>
+        <label class="checkbox-item"><input type="checkbox" value="NCCCO Lift Director"> NCCCO Lift Director</label>
+        <label class="checkbox-item"><input type="checkbox" value="OSHA 10"> OSHA 10</label>
+        <label class="checkbox-item"><input type="checkbox" value="OSHA 30"> OSHA 30</label>
+        <label class="checkbox-item"><input type="checkbox" value="CDL Class A"> CDL Class A</label>
+        <label class="checkbox-item"><input type="checkbox" value="TWIC Card"> TWIC Card</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Equipment Operated</label>
+      <input class="form-input" id="pr_equip" placeholder="e.g. Liebherr LTM 1100, Grove GMK 5200, Potain MDT 389">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Union Affiliation</label>
+      <select class="form-select" id="pr_union">
+        <option value="">Non-Union / Open Shop</option>
+        <option>IUOE Local 3 (CA)</option>
+        <option>IUOE Local 12 (CA/AZ)</option>
+        <option>IUOE Local 150 (IL/Midwest)</option>
+        <option>IUOE Local 49 (MN)</option>
+        <option>IUOE Local 825 (NJ)</option>
+        <option>IUOE Local 15 (NY)</option>
+        <option>IUOE Local 478 (CT)</option>
+        <option>Other IUOE Local</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Willing to Travel?</label>
+      <select class="form-select" id="pr_travel">
+        <option>Local Only (within 50 miles)</option>
+        <option>Regional (within 200 miles)</option>
+        <option>Nationwide — with per diem/housing</option>
+        <option>Nationwide — any arrangement</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">About Me / Professional Summary</label>
+      <textarea class="form-textarea" id="pr_bio" placeholder="Briefly describe your experience, notable projects, specializations (e.g. high-rise, wind energy, petrochemical), and what you're looking for in your next position..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Desired Pay Rate ($/hr)</label>
+      <input class="form-input" id="pr_pay" placeholder="e.g. 55–65/hr">
+      <div class="form-note">Only shown to verified employers who contact you.</div>
+    </div>
+
+    <button class="submit-btn" onclick="submitProfile()">ADD MY PROFILE →</button>
+    <div class="success-msg" id="profileSuccess">
+      ✅ Profile submitted! You'll appear on the Manpower Board within a few minutes.<br><br>
+      Want to see what jobs are available now? <a href="https://cranegenius.com/jobs/" style="color:var(--gold)">Browse the Jobs Board →</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('contact')">✕</button>
+    <h2>CONTACT OPERATOR</h2>
+    <div class="modal-sub" id="contactName">Contacting: [Name]</div>
+    <div class="contact-detail">
+      <strong>How this works</strong>
+      This operator has opted in to be contacted by verified employers and recruiters. Send them a message through the form below and we'll forward it directly to their email.
+    </div>
+    <div class="form-group">
+      <label class="form-label">Your Name *</label>
+      <input class="form-input" id="c_name" placeholder="Your full name">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Company *</label>
+        <input class="form-input" id="c_company" placeholder="Your company">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Email *</label>
+        <input class="form-input" id="c_email" placeholder="your@company.com">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Job / Opportunity Details</label>
+      <textarea class="form-textarea" id="c_msg" placeholder="Describe the position, location, start date, pay range, and any requirements..."></textarea>
+    </div>
+    <button class="submit-btn" onclick="submitContact()">SEND MESSAGE →</button>
+    <div class="success-msg" id="contactSuccess">✅ Message sent! The operator will receive your contact details and respond directly. Most operators respond within 24–48 hours.</div>
+    <div class="privacy-note">🔒 Privacy: Operator contact details are never displayed publicly. Messages are forwarded via CraneGenius. Spam or solicitation will result in account suspension.</div>
+  </div>
+</div>
+
+<script>
+const PROFILES = [
+  {id:1,first:'Marcus',last:'T.',initials:'MT',role:'Mobile Crane Operator',location:'Chicago, IL',exp:14,avail:'now',certs:['NCCCO CCO','OSHA 30','CDL-A'],equipment:['Grove GMK 5220','Liebherr LTM 1100','Link-Belt HTC 8690'],union:'IUOE Local 150',travel:'Regional',pay:'$58–65/hr',bio:'14-year veteran operator based in Chicago. Extensive experience on commercial high-rise, bridge, and infrastructure projects throughout the Midwest. Certified on telescoping and lattice boom cranes.',verified:true,daysAgo:1},
+  {id:2,first:'DeShawn',last:'W.',initials:'DW',role:'Tower Crane Operator',location:'New York, NY',exp:9,avail:'soon',certs:['NCCCO Tower Crane','NCCCO CCO','OSHA 30'],equipment:['Potain MDT 389','Potain MCT 805','Comansa 21LC400'],union:'IUOE Local 15',travel:'Local Only',pay:'$72–80/hr',bio:'Specialized tower crane operator with 9 years on Manhattan high-rise projects. Expert in Potain flat-top and luffing configurations. Available in 3 weeks.',verified:true,daysAgo:2},
+  {id:3,first:'Ray',last:'M.',initials:'RM',role:'Heavy Lift Rigger',location:'Houston, TX',exp:11,avail:'now',certs:['CICB Rigger Cert','OSHA 30','TWIC Card'],equipment:['Industrial Rigging','Wire Rope','Synthetic Slings','Hydraulic Gantries'],union:'',travel:'Nationwide — with per diem/housing',pay:'$48–55/hr',bio:'Senior rigger with 11 years in petrochemical, refinery, and industrial heavy lift. Specialize in critical lift planning, engineered rigging, and turnaround work. TWIC card holder.',verified:true,daysAgo:1},
+  {id:4,first:'Sandra',last:'K.',initials:'SK',role:'Lift Supervisor / Director',location:'Houston, TX',exp:18,avail:'employed',certs:['NCCCO Lift Director','NCCCO CCO','OSHA 30'],equipment:['Critical Lift Planning','Liebherr LG 1750','Grove GMK 7550'],union:'',travel:'Nationwide — any arrangement',pay:'$85–95/hr',bio:'18 years in the crane industry with the last 6 as a full-time lift director. Handled 1,000+ critical lifts at refineries and power plants across the Gulf Coast and Mid-Continent.',verified:true,daysAgo:3},
+  {id:5,first:'Tommy',last:'R.',initials:'TR',role:'Crawler Crane Operator',location:'Dallas, TX',exp:7,avail:'now',certs:['NCCCO CCO – Lattice Boom','OSHA 10','CDL-A'],equipment:['Manitowoc 18000','Liebherr LR 1300','Manitowoc 2250'],union:'',travel:'Regional',pay:'$62–70/hr',bio:'Wind energy and heavy civil crawler crane operator. 7 years operating lattice boom crawlers on wind farm construction and major infrastructure projects in TX, OK, and KS.',verified:false,daysAgo:4},
+  {id:6,first:'Carlos',last:'V.',initials:'CV',role:'Spider / Mini Crane Operator',location:'Los Angeles, CA',exp:5,avail:'now',certs:['NCCCO CCO','CA Crane Cert'],equipment:['Maeda MC 405','UNIC URW-295','Jekko SPX 532','Maeda MC 285'],union:'IUOE Local 12',travel:'Local Only',pay:'$52–58/hr',bio:'Specialized in mini crane and spider crane operations for interior and rooftop lifts in commercial buildings. Experienced with Maeda, UNIC, and Jekko equipment in tight-access scenarios.',verified:true,daysAgo:2},
+  {id:7,first:'James',last:'B.',initials:'JB',role:'Apprentice Operator',location:'Chicago, IL',exp:2,avail:'now',certs:['OSHA 10',"Driver's License"],equipment:['Currently training: Grove GMK 3060','Manitowoc 3900'],union:'IUOE Local 150',travel:'Local Only',pay:'$28–35/hr',bio:'Second-year IUOE Local 150 apprentice with 2 years on commercial construction sites. Currently training on mobile and rough terrain cranes. Dedicated, safety-focused, and eager to grow.',verified:false,daysAgo:5},
+  {id:8,first:'Mike',last:'P.',initials:'MP',role:'Rough Terrain Operator',location:'Phoenix, AZ',exp:6,avail:'soon',certs:['NCCCO RT Crane','NCCCO CCO','OSHA 30'],equipment:['Grove RT880E','Link-Belt RTC-8090','Terex RT 780'],union:'',travel:'Regional',pay:'$46–54/hr',bio:'Rough terrain and hydraulic truck crane operator based in Phoenix. Commercial construction, tilt-wall, and precast work throughout AZ and NV. Available in 2 weeks.',verified:false,daysAgo:6},
+  {id:9,first:'Antoine',last:'D.',initials:'AD',role:'Mobile Crane Operator',location:'Atlanta, GA',exp:10,avail:'now',certs:['NCCCO CCO','OSHA 30','TWIC Card','CDL-A'],equipment:['Grove GMK 5200','Liebherr LTM 1200','Link-Belt HTC 8690'],union:'',travel:'Nationwide — with per diem/housing',pay:'$55–62/hr',bio:'10-year mobile crane operator specializing in data center, industrial, and infrastructure work in the Southeast. Available immediately for regional or national contract work.',verified:true,daysAgo:1},
+];
+
+let activeRole = '';
+let currentProfile = null;
+
+function getInitialBg(initials) {
+  const colors = ['#1a4a7a','#4a1a6a','#1a6a4a','#6a3a1a','#1a3a6a'];
+  return colors[(initials.charCodeAt(0) + initials.charCodeAt(1)) % colors.length];
+}
+
+function renderProfiles(list) {
+  const el = document.getElementById('profileList');
+  document.getElementById('profileCount').innerText = PROFILES.length;
+  if (!list.length) {
+    el.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text-muted)"><div style="font-size:48px;margin-bottom:16px">👷</div><div>No profiles match your filters.</div><div style="font-size:13px;margin-top:8px">Try broadening your search.</div></div>';
+    document.getElementById('visibleCount').innerText = '0 profiles';
+    return;
+  }
+  document.getElementById('visibleCount').innerText = list.length + ' operator' + (list.length !== 1 ? 's' : '');
+  el.innerHTML = list.map(p => `
+    <div class="profile-card ${p.verified?'verified':''}" onclick="openContact(${p.id})">
+      <span class="avail-badge ${p.avail}">${p.avail==='now'?'● Available Now':p.avail==='soon'?'◐ Available Soon':'○ Open to Offers'}</span>
+      <div class="profile-top">
+        <div class="profile-avatar" style="background:${getInitialBg(p.initials)}">${p.initials}</div>
+        <div style="flex:1;min-width:0">
+          <div class="profile-name">${p.first} ${p.last} ${p.verified?'<span style="font-size:11px;color:var(--green);font-family:var(--M)">✓ Verified</span>':''}</div>
+          <div class="profile-title">${p.role}</div>
+          <div class="profile-meta">
+            <span>📍 ${p.location}</span>
+            <span>✈ ${p.travel.split(' ')[0]}</span>
+            ${p.union ? `<span>🔵 ${p.union}</span>` : '<span>🔓 Non-Union</span>'}
+          </div>
+        </div>
+      </div>
+      <div class="profile-certs">
+        ${p.certs.map(c=>`<span class="cert-badge">${c}</span>`).join('')}
+      </div>
+      <div class="profile-bio">${p.bio.substring(0,140)}...</div>
+      <div class="profile-equipment">
+        ${p.equipment.map(e=>`<span class="equip-tag">${e}</span>`).join('')}
+      </div>
+      <div class="profile-footer">
+        <div><div class="profile-exp">${p.exp} yrs</div><div class="profile-exp-label">experience</div></div>
+        <button class="contact-btn" onclick="event.stopPropagation();openContact(${p.id})">Contact Operator →</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function applyFilters() {
+  const kw = document.getElementById('kwInput').value.toLowerCase();
+  const avail = document.getElementById('availFilter').value;
+  const loc = document.getElementById('locFilter').value;
+  const minExp = parseFloat(document.getElementById('expFilter').value) || 0;
+  const sort = document.getElementById('sortSelect').value;
+  let list = PROFILES.filter(p => {
+    const searchStr = (p.first+' '+p.last+' '+p.role+' '+p.certs.join(' ')+' '+p.equipment.join(' ')+' '+p.location+' '+p.bio).toLowerCase();
+    if (kw && !searchStr.includes(kw)) return false;
+    if (avail && p.avail !== avail) return false;
+    if (loc && p.location !== loc) return false;
+    if (p.exp < minExp) return false;
+    if (activeRole) {
+      const roleMap = {Operator:'Operator',Rigger:'Rigger',Supervisor:'Supervisor',Tower:'Tower',Apprentice:'Apprentice'};
+      if (!p.role.includes(roleMap[activeRole]||activeRole)) return false;
+    }
+    return true;
+  });
+  if (sort === 'exp') list.sort((a,b) => b.exp - a.exp);
+  else if (sort === 'available') list.sort((a,b) => (a.avail==='now'?0:a.avail==='soon'?1:2) - (b.avail==='now'?0:b.avail==='soon'?1:2));
+  else list.sort((a,b) => a.daysAgo - b.daysAgo);
+  renderProfiles(list);
+}
+
+document.getElementById('roleChips').addEventListener('click', e => {
+  if (!e.target.classList.contains('chip')) return;
+  activeRole = e.target.dataset.role;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  e.target.classList.add('active');
+  applyFilters();
+});
+
+function openModal(type) { document.getElementById(type+'Modal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(type) { document.getElementById(type+'Modal').classList.remove('open'); document.body.style.overflow=''; }
+document.querySelectorAll('.modal-overlay').forEach(o => o.addEventListener('click', e => { if (e.target === o) { o.classList.remove('open'); document.body.style.overflow=''; }}));
+
+function openContact(id) {
+  currentProfile = PROFILES.find(p => p.id === id);
+  document.getElementById('contactName').innerText = 'Contacting: ' + currentProfile.first + ' ' + currentProfile.last + ' — ' + currentProfile.role;
+  openModal('contact');
+}
+
+function submitProfile() {
+  const f = document.getElementById('pr_first').value.trim();
+  const e = document.getElementById('pr_email').value.trim();
+  if (!f || !e) { alert('Please fill in required fields (Name, Email).'); return; }
+  const checkedCerts = [...document.querySelectorAll('#certCheckboxes input:checked')].map(i => i.value);
+  fetch('https://formspree.io/f/mgoldjjb', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      form_type: 'manpower_profile',
+      name: f + ' ' + document.getElementById('pr_last').value,
+      email: e, phone: document.getElementById('pr_phone').value,
+      location: document.getElementById('pr_loc').value,
+      role: document.getElementById('pr_role').value,
+      exp: document.getElementById('pr_exp').value,
+      availability: document.getElementById('pr_avail').value,
+      certs: checkedCerts.join(', '),
+      equipment: document.getElementById('pr_equip').value,
+      union: document.getElementById('pr_union').value,
+      travel: document.getElementById('pr_travel').value,
+      bio: document.getElementById('pr_bio').value,
+      pay: document.getElementById('pr_pay').value
+    })
+  }).catch(()=>{});
+  document.getElementById('profileSuccess').style.display = 'block';
+}
+
+function submitContact() {
+  const n = document.getElementById('c_name').value.trim();
+  const e = document.getElementById('c_email').value.trim();
+  if (!n || !e) { alert('Please fill in required fields.'); return; }
+  fetch('https://formspree.io/f/mgoldjjb', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      form_type: 'operator_contact',
+      operator_name: currentProfile?.first + ' ' + currentProfile?.last,
+      operator_role: currentProfile?.role,
+      sender_name: n, sender_company: document.getElementById('c_company').value,
+      sender_email: e, message: document.getElementById('c_msg').value
+    })
+  }).catch(()=>{});
+  document.getElementById('contactSuccess').style.display = 'block';
+}
+
+renderProfiles(PROFILES);
+</script>
+</body>
+</html>
