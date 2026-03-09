@@ -4,42 +4,324 @@
     "data/outbound/outbound_broader_projects.csv"
   ],
   "project_counts": {
-    "projects_loaded_project_candidates.json": 42,
-    "projects_loaded_top_project_candidates.json": 20,
-    "projects_loaded_recommended_expansion_candidates.json": 19,
-    "projects_unique": 42
-  },
-  "contact_counts": {
-    "contact_rows_seen": 19168,
-    "contacts_usable": 8287,
-    "excluded_duplicate_email": 10585,
-    "excluded_blank_email": 296,
-    "contact_files_scanned": 50
-  },
-  "build_counts": {
-    "rows_output_total": 7,
-    "excluded_duplicate_email_across_outputs": 102,
+    "projects_loaded:data/static_exports/project_candidates.json": 42,
+    "projects_loaded:data/static_exports/top_project_candidates.json": 20,
+    "projects_loaded:data/static_exports/recommended_expansion_candidates.json": 19,
+    "projects_unique_after_dedupe": 42,
     "projects_without_contact_match": 5
   },
-  "total_usable_outbound_rows": 7,
+  "contact_counts": {
+    "internal_csv_files_scanned": 50,
+    "source:internal:companies_priority_200.csv:skipped_not_contact_like": 1,
+    "source:internal:companies_priority_200_with_domains.csv:skipped_not_contact_like": 1,
+    "source:internal:cranegenius_leads_20260304.csv:skipped_not_contact_like": 1,
+    "source:internal:blm_mining_solar_leads.csv:skipped_not_contact_like": 1,
+    "source:internal:utility_interconnection_leads.csv:skipped_not_contact_like": 1,
+    "source:internal:edgar_crane_leads.csv:skipped_not_contact_like": 1,
+    "source:internal:job_posting_leads.csv:skipped_not_contact_like": 1,
+    "source:internal:enrichment_queue.csv:skipped_not_contact_like": 1,
+    "source:internal:monday_plusvibes_individuals.csv:skipped_not_contact_like": 1,
+    "source:internal:monday_plusvibes_roles.csv:skipped_not_contact_like": 1,
+    "source:internal:dc_outreach_emails.csv:rows_seen": 204,
+    "source:internal:dc_outreach_emails.csv:excluded_blank_email": 204,
+    "source:internal:parsing_errors.csv:skipped_not_contact_like": 1,
+    "source:internal:dc_outreach_emails_safe.csv:rows_seen": 204,
+    "source:internal:dc_outreach_emails_safe.csv:excluded_blank_email": 204,
+    "source:internal:verified_contacts.csv:rows_seen": 248,
+    "source:internal:verified_contacts.csv:usable": 248,
+    "source:internal:monday_people_found.csv:rows_seen": 5,
+    "source:internal:monday_people_found.csv:excluded_blank_email": 5,
+    "source:internal:nyc_call_list.csv:rows_seen": 1502,
+    "source:internal:nyc_call_list.csv:excluded_blank_email": 1502,
+    "source:internal:sender_ready_warm.csv:rows_seen": 10,
+    "source:internal:sender_ready_warm.csv:usable": 6,
+    "source:internal:sender_ready_warm.csv:excluded_duplicate_within_source": 4,
+    "source:internal:monday_low_confidence_domains.csv:rows_seen": 2,
+    "source:internal:monday_low_confidence_domains.csv:excluded_blank_email": 2,
+    "source:internal:monday_individual_email_candidates.csv:rows_seen": 6,
+    "source:internal:monday_individual_email_candidates.csv:usable": 6,
+    "source:internal:monday_company_domains.csv:skipped_not_contact_like": 1,
+    "source:internal:nyc_call_list_clean.csv:skipped_not_contact_like": 1,
+    "source:internal:monday_plusvibes_combined.csv:skipped_not_contact_like": 1,
+    "source:internal:plusvibes_import.csv:skipped_not_contact_like": 1,
+    "source:internal:outreach_emails.csv:skipped_not_contact_like": 1,
+    "source:internal:sender_ready_hot.csv:rows_seen": 92,
+    "source:internal:sender_ready_hot.csv:usable": 8,
+    "source:internal:sender_ready_hot.csv:excluded_duplicate_within_source": 84,
+    "source:internal:candidates.csv:skipped_not_contact_like": 1,
+    "source:internal:company_domain_seed.csv:skipped_not_contact_like": 1,
+    "source:internal:domain_email_patterns.csv:skipped_not_contact_like": 1,
+    "source:internal:scored_records.csv:skipped_not_contact_like": 1,
+    "source:internal:dc_contacts.csv:rows_seen": 204,
+    "source:internal:dc_contacts.csv:usable": 204,
+    "source:internal:jobs_manual_import.csv:skipped_not_contact_like": 1,
+    "source:internal:enriched_companies.csv:skipped_not_contact_like": 1,
+    "source:internal:raw_records.csv:skipped_not_contact_like": 1,
+    "source:internal:plusvibes_import_safe.csv:rows_seen": 204,
+    "source:internal:plusvibes_import_safe.csv:usable": 204,
+    "source:internal:discovered_contacts.csv:rows_seen": 57,
+    "source:internal:discovered_contacts.csv:usable": 19,
+    "source:internal:discovered_contacts.csv:excluded_duplicate_within_source": 38,
+    "source:internal:google_enriched_domains.csv:skipped_not_contact_like": 1,
+    "source:internal:catchall_review.csv:rows_seen": 136,
+    "source:internal:catchall_review.csv:usable": 48,
+    "source:internal:catchall_review.csv:excluded_duplicate_within_source": 88,
+    "source:internal:monday_all_email_candidates.csv:rows_seen": 6,
+    "source:internal:monday_all_email_candidates.csv:usable": 6,
+    "source:internal:normalized_records.csv:skipped_not_contact_like": 1,
+    "source:internal:contact_conflicts.csv:rows_seen": 2126,
+    "source:internal:contact_conflicts.csv:excluded_blank_email": 289,
+    "source:internal:contact_conflicts.csv:usable": 1837,
+    "source:internal:normalized_contacts.csv:rows_seen": 7808,
+    "source:internal:normalized_contacts.csv:usable": 7808,
+    "source:internal:company_domain_seed_enriched.csv:skipped_not_contact_like": 1,
+    "source:internal:5d4729e4-27d9-42ae-9b7a-148d2641873d.csv:rows_seen": 7808,
+    "source:internal:5d4729e4-27d9-42ae-9b7a-148d2641873d.csv:usable": 7808,
+    "source:internal:sample_seed.csv:skipped_not_contact_like": 1,
+    "source:internal:sample_contacts.csv:rows_seen": 8,
+    "source:internal:sample_contacts.csv:usable": 8,
+    "source:extra:5d4729e4-27d9-42ae-9b7a-148d2641873d.csv:rows_seen": 7808,
+    "source:extra:5d4729e4-27d9-42ae-9b7a-148d2641873d.csv:usable": 7808,
+    "source:extra:146dd574-d947-4f25-af5e-102974eddc1d.csv:read_error": 1,
+    "contacts_total_usable_after_global_dedupe": 8287
+  },
+  "matching_counts": {
+    "match_tier_metro": 35,
+    "match_tier_state": 1,
+    "match_tier_soft_company": 1
+  },
+  "build_counts": {
+    "projects_loaded:data/static_exports/project_candidates.json": 42,
+    "projects_loaded:data/static_exports/top_project_candidates.json": 20,
+    "projects_loaded:data/static_exports/recommended_expansion_candidates.json": 19,
+    "projects_unique_after_dedupe": 42,
+    "internal_csv_files_scanned": 50,
+    "source:internal:companies_priority_200.csv:skipped_not_contact_like": 1,
+    "source:internal:companies_priority_200_with_domains.csv:skipped_not_contact_like": 1,
+    "source:internal:cranegenius_leads_20260304.csv:skipped_not_contact_like": 1,
+    "source:internal:blm_mining_solar_leads.csv:skipped_not_contact_like": 1,
+    "source:internal:utility_interconnection_leads.csv:skipped_not_contact_like": 1,
+    "source:internal:edgar_crane_leads.csv:skipped_not_contact_like": 1,
+    "source:internal:job_posting_leads.csv:skipped_not_contact_like": 1,
+    "source:internal:enrichment_queue.csv:skipped_not_contact_like": 1,
+    "source:internal:monday_plusvibes_individuals.csv:skipped_not_contact_like": 1,
+    "source:internal:monday_plusvibes_roles.csv:skipped_not_contact_like": 1,
+    "source:internal:dc_outreach_emails.csv:rows_seen": 204,
+    "source:internal:dc_outreach_emails.csv:excluded_blank_email": 204,
+    "source:internal:parsing_errors.csv:skipped_not_contact_like": 1,
+    "source:internal:dc_outreach_emails_safe.csv:rows_seen": 204,
+    "source:internal:dc_outreach_emails_safe.csv:excluded_blank_email": 204,
+    "source:internal:verified_contacts.csv:rows_seen": 248,
+    "source:internal:verified_contacts.csv:usable": 248,
+    "source:internal:monday_people_found.csv:rows_seen": 5,
+    "source:internal:monday_people_found.csv:excluded_blank_email": 5,
+    "source:internal:nyc_call_list.csv:rows_seen": 1502,
+    "source:internal:nyc_call_list.csv:excluded_blank_email": 1502,
+    "source:internal:sender_ready_warm.csv:rows_seen": 10,
+    "source:internal:sender_ready_warm.csv:usable": 6,
+    "source:internal:sender_ready_warm.csv:excluded_duplicate_within_source": 4,
+    "source:internal:monday_low_confidence_domains.csv:rows_seen": 2,
+    "source:internal:monday_low_confidence_domains.csv:excluded_blank_email": 2,
+    "source:internal:monday_individual_email_candidates.csv:rows_seen": 6,
+    "source:internal:monday_individual_email_candidates.csv:usable": 6,
+    "source:internal:monday_company_domains.csv:skipped_not_contact_like": 1,
+    "source:internal:nyc_call_list_clean.csv:skipped_not_contact_like": 1,
+    "source:internal:monday_plusvibes_combined.csv:skipped_not_contact_like": 1,
+    "source:internal:plusvibes_import.csv:skipped_not_contact_like": 1,
+    "source:internal:outreach_emails.csv:skipped_not_contact_like": 1,
+    "source:internal:sender_ready_hot.csv:rows_seen": 92,
+    "source:internal:sender_ready_hot.csv:usable": 8,
+    "source:internal:sender_ready_hot.csv:excluded_duplicate_within_source": 84,
+    "source:internal:candidates.csv:skipped_not_contact_like": 1,
+    "source:internal:company_domain_seed.csv:skipped_not_contact_like": 1,
+    "source:internal:domain_email_patterns.csv:skipped_not_contact_like": 1,
+    "source:internal:scored_records.csv:skipped_not_contact_like": 1,
+    "source:internal:dc_contacts.csv:rows_seen": 204,
+    "source:internal:dc_contacts.csv:usable": 204,
+    "source:internal:jobs_manual_import.csv:skipped_not_contact_like": 1,
+    "source:internal:enriched_companies.csv:skipped_not_contact_like": 1,
+    "source:internal:raw_records.csv:skipped_not_contact_like": 1,
+    "source:internal:plusvibes_import_safe.csv:rows_seen": 204,
+    "source:internal:plusvibes_import_safe.csv:usable": 204,
+    "source:internal:discovered_contacts.csv:rows_seen": 57,
+    "source:internal:discovered_contacts.csv:usable": 19,
+    "source:internal:discovered_contacts.csv:excluded_duplicate_within_source": 38,
+    "source:internal:google_enriched_domains.csv:skipped_not_contact_like": 1,
+    "source:internal:catchall_review.csv:rows_seen": 136,
+    "source:internal:catchall_review.csv:usable": 48,
+    "source:internal:catchall_review.csv:excluded_duplicate_within_source": 88,
+    "source:internal:monday_all_email_candidates.csv:rows_seen": 6,
+    "source:internal:monday_all_email_candidates.csv:usable": 6,
+    "source:internal:normalized_records.csv:skipped_not_contact_like": 1,
+    "source:internal:contact_conflicts.csv:rows_seen": 2126,
+    "source:internal:contact_conflicts.csv:excluded_blank_email": 289,
+    "source:internal:contact_conflicts.csv:usable": 1837,
+    "source:internal:normalized_contacts.csv:rows_seen": 7808,
+    "source:internal:normalized_contacts.csv:usable": 7808,
+    "source:internal:company_domain_seed_enriched.csv:skipped_not_contact_like": 1,
+    "source:internal:5d4729e4-27d9-42ae-9b7a-148d2641873d.csv:rows_seen": 7808,
+    "source:internal:5d4729e4-27d9-42ae-9b7a-148d2641873d.csv:usable": 7808,
+    "source:internal:sample_seed.csv:skipped_not_contact_like": 1,
+    "source:internal:sample_contacts.csv:rows_seen": 8,
+    "source:internal:sample_contacts.csv:usable": 8,
+    "source:extra:5d4729e4-27d9-42ae-9b7a-148d2641873d.csv:rows_seen": 7808,
+    "source:extra:5d4729e4-27d9-42ae-9b7a-148d2641873d.csv:usable": 7808,
+    "source:extra:146dd574-d947-4f25-af5e-102974eddc1d.csv:read_error": 1,
+    "excluded_duplicate_email_global": 17731,
+    "contacts_total_usable_after_global_dedupe": 8287,
+    "match_tier_metro": 35,
+    "rows_output_total": 6,
+    "excluded_duplicate_email_final": 103,
+    "projects_without_contact_match": 5,
+    "match_tier_state": 1,
+    "match_tier_soft_company": 1
+  },
+  "total_usable_outbound_rows": 6,
   "mini_rows": 0,
-  "broad_rows": 7,
+  "broad_rows": 6,
   "top_exclusion_reasons": [
     [
-      "excluded_duplicate_email",
-      10585
+      "excluded_duplicate_email_global",
+      17731
     ],
     [
-      "excluded_blank_email",
-      296
+      "source:internal:nyc_call_list.csv:excluded_blank_email",
+      1502
     ],
     [
-      "excluded_duplicate_email_across_outputs",
-      102
+      "source:internal:contact_conflicts.csv:excluded_blank_email",
+      289
+    ],
+    [
+      "source:internal:dc_outreach_emails.csv:excluded_blank_email",
+      204
+    ],
+    [
+      "source:internal:dc_outreach_emails_safe.csv:excluded_blank_email",
+      204
+    ],
+    [
+      "excluded_duplicate_email_final",
+      103
+    ],
+    [
+      "source:internal:catchall_review.csv:excluded_duplicate_within_source",
+      88
+    ],
+    [
+      "source:internal:sender_ready_hot.csv:excluded_duplicate_within_source",
+      84
+    ],
+    [
+      "source:internal:discovered_contacts.csv:excluded_duplicate_within_source",
+      38
+    ],
+    [
+      "source:internal:monday_people_found.csv:excluded_blank_email",
+      5
     ],
     [
       "projects_without_contact_match",
       5
+    ],
+    [
+      "source:internal:sender_ready_warm.csv:excluded_duplicate_within_source",
+      4
+    ],
+    [
+      "source:internal:monday_low_confidence_domains.csv:excluded_blank_email",
+      2
     ]
+  ],
+  "source_breakdown": {
+    "internal:dc_outreach_emails.csv": {
+      "rows_seen": 204,
+      "excluded_blank_email": 204
+    },
+    "internal:dc_outreach_emails_safe.csv": {
+      "rows_seen": 204,
+      "excluded_blank_email": 204
+    },
+    "internal:verified_contacts.csv": {
+      "rows_seen": 248,
+      "usable": 248
+    },
+    "internal:monday_people_found.csv": {
+      "rows_seen": 5,
+      "excluded_blank_email": 5
+    },
+    "internal:nyc_call_list.csv": {
+      "rows_seen": 1502,
+      "excluded_blank_email": 1502
+    },
+    "internal:sender_ready_warm.csv": {
+      "rows_seen": 10,
+      "usable": 6,
+      "excluded_duplicate_within_source": 4
+    },
+    "internal:monday_low_confidence_domains.csv": {
+      "rows_seen": 2,
+      "excluded_blank_email": 2
+    },
+    "internal:monday_individual_email_candidates.csv": {
+      "rows_seen": 6,
+      "usable": 6
+    },
+    "internal:sender_ready_hot.csv": {
+      "rows_seen": 92,
+      "usable": 8,
+      "excluded_duplicate_within_source": 84
+    },
+    "internal:dc_contacts.csv": {
+      "rows_seen": 204,
+      "usable": 204
+    },
+    "internal:plusvibes_import_safe.csv": {
+      "rows_seen": 204,
+      "usable": 204
+    },
+    "internal:discovered_contacts.csv": {
+      "rows_seen": 57,
+      "usable": 19,
+      "excluded_duplicate_within_source": 38
+    },
+    "internal:catchall_review.csv": {
+      "rows_seen": 136,
+      "usable": 48,
+      "excluded_duplicate_within_source": 88
+    },
+    "internal:monday_all_email_candidates.csv": {
+      "rows_seen": 6,
+      "usable": 6
+    },
+    "internal:contact_conflicts.csv": {
+      "rows_seen": 2126,
+      "excluded_blank_email": 289,
+      "usable": 1837
+    },
+    "internal:normalized_contacts.csv": {
+      "rows_seen": 7808,
+      "usable": 7808
+    },
+    "internal:5d4729e4-27d9-42ae-9b7a-148d2641873d.csv": {
+      "rows_seen": 7808,
+      "usable": 7808
+    },
+    "internal:sample_contacts.csv": {
+      "rows_seen": 8,
+      "usable": 8
+    },
+    "extra:5d4729e4-27d9-42ae-9b7a-148d2641873d.csv": {
+      "rows_seen": 7808,
+      "usable": 7808
+    },
+    "extra:146dd574-d947-4f25-af5e-102974eddc1d.csv": {
+      "read_error": 1,
+      "error_message": "[Errno 2] No such file or directory: '/Users/lemueldavidleejr/Downloads/146dd574-d947-4f25-af5e-102974eddc1d.csv'"
+    }
+  },
+  "extra_csv_inputs": [
+    "/Users/lemueldavidleejr/Downloads/5d4729e4-27d9-42ae-9b7a-148d2641873d.csv",
+    "/Users/lemueldavidleejr/Downloads/146dd574-d947-4f25-af5e-102974eddc1d.csv"
   ]
 }
