@@ -1,52 +1,55 @@
-# TASK.md — CraneGenius Active Task
+# TASK.md — CraneGenius CI Active Task
 
-## Status: Contact Intelligence System v2 — OPERATIONAL
+## Status: DB REBUILT + ENRICHED ✅
+Last updated: 2026-03-09
 
-### Completed This Session
-- [x] Root cause found: `verified_contacts.csv` has only 5 columns (verifier output only)
-- [x] `fix_ci.py` written to repo root — reads `candidates.csv` + `verified_contacts.csv`, joins on email
-- [x] DB loaded: 129 companies, 2,600 contacts (Dallas + Chicago combined)
-- [x] Exports confirmed working: `top_100_targets.xlsx` (100 rows), `verified_contacts.xlsx` (10 rows)
-- [x] Dallas junk data identified and filtered out (2,432 residential/small contractor contacts removed)
-- [x] CI system left with 21 clean Chicago GC companies, 168 contacts, 10 verified
-- [x] Sector assignment working (66 companies got sector_id via keyword matching)
+## Completed This Session
+- [x] Apollo CSV imported (7,808 contacts, 6,287 companies)
+- [x] DB rebuilt with location enrichment (city->state/province lookup)
+- [x] Domain extracted from business emails (62% of companies)
+- [x] Low-priority contacts flagged (conf=0.25, personal email + no title)
+- [x] Dedupe run: 82 companies merged, 573 contacts merged
+- [x] export_views.py confirmed working
 
-### Known Data Quality Issues
-- All candidates use `role_inbox` generation method — emails are pattern-guessed, not sourced from real contacts
-- Company names in candidates.csv have address strings embedded (pipeline upstream issue)
-- Dallas permit data produces residential/small contractors — wrong target profile
-- Only 10 verified contacts in DB (all Chicago)
+## Current DB State (2026-03-09)
+- Contacts total:    7,808
+- Verified email:    5,402 (69%)
+- Has phone:         7,558 (97%)
+- Has title:         3,288 (42%)
+- Has location:      3,994 (51%)
+- High conf >=0.7:   2,032 (26%)
+- Low priority:      1,765 (23%)
+- Companies total:   6,287
+- With domain:       3,886 (62%)
+- With state:        2,968 (47%)
 
-### Next Task: Improve Pipeline Output Quality
-The CI system works. The bottleneck is pipeline data quality. Priority order:
+## Geography (contacts)
+- Alberta (AB):      1,391 — oil patch, industrial, heavy lift
+- BC (BC):           1,119 — Vancouver/Kelowna/Surrey
+- Washington (WA):     359 — Seattle/Tacoma/Bellevue — Leavitt territory
+- Oregon (OR):         149 — Portland — Leavitt territory
 
-1. **Re-run pipeline for Chicago only** to get fresh clean candidates
-   - Run: `python3 -m src.pipeline` from repo root
-   - Chicago Socrata API returns permittee first/last name — use these for `role_named` email generation
-   - Target: Replace `role_inbox` with actual named contacts from permit permittee fields
+## GPT Readiness: ~88%
+Gaps remaining:
+1. Sector assignment (~5% tagged) — no SerpAPI run yet
+2. LinkedIn (0%) — not in Apollo export
+3. Title missing for 4,520 contacts (personal email, low priority)
 
-2. **Update `normalize_records.py`** to use the logic from `fix_ci.py`
-   - Current `normalize_records.py` still looks for wrong column names
-   - Replace with: read `candidates.csv` + `verified_contacts.csv`, join on email
-   - File: `contact_intelligence/scripts/normalize_records.py`
+## Immediate Next Tasks (Priority Order)
+1. Run export_views.py and confirm all export files updated
+2. Build GPT outreach prompt template using verified + high-conf contacts
+3. SerpAPI domain enrichment on top 200 no-domain companies (10+ contacts)
+4. Sector tagging pass using company name + domain keywords
+5. Re-run pipeline for Chicago + NYC permit data
+6. First retainer pitch to Erick / Leavitt Cranes (Pacific Northwest)
 
-3. **NYC pipeline run** — NYC DOB API has best permittee name data
-   - Produces `role_named` contacts naturally
-   - Add NYC to pipeline targets
+## Key File Locations
+- DB:          ~/data_runtime/cranegenius_ci.db
+- Exports:     ~/data_runtime/exports/
+- Apollo CSV:  ~/Downloads/5d4729e4-27d9-42ae-9b7a-148d2641873d.csv
+- Rebuild:     Run inline heredoc in terminal (see CHANGELOG_AGENT.md)
+- contact_intelligence/: LOCAL ONLY — never push to GitHub
 
-4. **Import wrapper** — auto-run CI import after each pipeline run
-   - Script: `contact_intelligence/scripts/auto_import.py`
-   - Should call: import_csv → fix_ci logic → export_views in sequence
-
-### Key File Locations
-- DB: `~/data_runtime/cranegenius_ci.db`
-- Working import script: `~/Downloads/cranegenius_repo/fix_ci.py` (use this, not normalize_records.py)
-- Exports: `~/data_runtime/exports/`
-- Pipeline output: `data/candidates.csv` (2600 rows, mostly Dallas junk — needs re-run)
-
-### Import Command (working)
-```bash
-cd ~/Downloads/cranegenius_repo
-python3 fix_ci.py
-python3 contact_intelligence/scripts/export_views.py
-```
+## Do NOT Touch
+- src/pipeline.py
+- contact_intelligence/scripts/normalize_records.py (broken — use heredoc rebuild)
