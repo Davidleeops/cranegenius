@@ -1,0 +1,45 @@
+{
+  "files_created": [
+    "data/outbound/outbound_likely_spider_mini.csv",
+    "data/outbound/outbound_broader_projects.csv"
+  ],
+  "project_counts": {
+    "projects_loaded_project_candidates.json": 42,
+    "projects_loaded_top_project_candidates.json": 20,
+    "projects_loaded_recommended_expansion_candidates.json": 19,
+    "projects_unique": 42
+  },
+  "contact_counts": {
+    "contact_rows_seen": 19168,
+    "contacts_usable": 8287,
+    "excluded_duplicate_email": 10585,
+    "excluded_blank_email": 296,
+    "contact_files_scanned": 50
+  },
+  "build_counts": {
+    "rows_output_total": 7,
+    "excluded_duplicate_email_across_outputs": 102,
+    "projects_without_contact_match": 5
+  },
+  "total_usable_outbound_rows": 7,
+  "mini_rows": 0,
+  "broad_rows": 7,
+  "top_exclusion_reasons": [
+    [
+      "excluded_duplicate_email",
+      10585
+    ],
+    [
+      "excluded_blank_email",
+      296
+    ],
+    [
+      "excluded_duplicate_email_across_outputs",
+      102
+    ],
+    [
+      "projects_without_contact_match",
+      5
+    ]
+  ]
+}
