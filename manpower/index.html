@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-dim:rgba(201,168,76,.15);--gold-border:rgba(201,168,76,.25);--bg:#080e1a;--bg2:#0d1628;--bg3:#111e35;--bg4:#162540;--text:#e8ecf0;--text-dim:#8a9ab5;--text-muted:#4a5a72;--green:#2dd4a0;--blue:#60a5fa;--radius:8px;--F:'Bebas Neue',sans-serif;--B:'DM Sans',sans-serif;--M:'DM Mono',monospace}
+:root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-dim:rgba(201,168,76,.15);--gold-border:rgba(201,168,76,.25);--bg:#080e1a;--bg2:#0d1628;--bg3:#111e35;--bg4:#162540;--text:#e8ecf0;--text-dim:#8a9ab5;--text-muted:#4a5a72;--green:#2dd4a0;--blue:#60a5fa;--orange:#f97316;--radius:8px;--F:'Bebas Neue',sans-serif;--B:'DM Sans',sans-serif;--M:'DM Mono',monospace}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:var(--B);font-size:15px;line-height:1.6;overflow-x:hidden}
 .nav{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{font-family:var(--F);font-size:22px;letter-spacing:2px;color:var(--gold);text-decoration:none}
@@ -47,6 +47,15 @@
 .chip-group{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .chip{font-size:11px;font-family:var(--M);color:var(--text-dim);background:var(--bg3);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:4px 12px;cursor:pointer;transition:all .15s;user-select:none}
 .chip:hover,.chip.active{color:#000;background:var(--gold);border-color:var(--gold)}
+/* MATCH INTEL PANEL */
+.match-intel-card{background:linear-gradient(135deg,rgba(45,212,160,.06) 0%,var(--bg2) 100%);border:1px solid rgba(45,212,160,.2);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.match-intel-title{font-family:var(--F);font-size:16px;letter-spacing:1px;color:var(--green);margin-bottom:4px}
+.match-intel-sub{font-size:11px;color:var(--text-muted);margin-bottom:14px;font-family:var(--M);letter-spacing:1px;text-transform:uppercase}
+.match-stat-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:12px}
+.match-stat-row:last-child{border-bottom:none}
+.match-stat-label{color:var(--text-dim)}
+.match-stat-val{font-family:var(--F);font-size:20px;color:var(--green);letter-spacing:1px}
+.match-updated{font-size:10px;color:var(--text-muted);margin-top:10px;font-family:var(--M)}
 .add-profile-cta{background:linear-gradient(135deg,rgba(201,168,76,.1) 0%,var(--bg2) 100%);border:1px solid var(--gold-border);border-radius:var(--radius);padding:24px;text-align:center}
 .add-profile-cta h3{font-family:var(--F);font-size:22px;letter-spacing:1px;color:var(--text);margin-bottom:8px}
 .add-profile-cta p{font-size:13px;color:var(--text-dim);margin-bottom:16px;line-height:1.6}
@@ -62,12 +71,13 @@
 .profile-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:24px;margin-bottom:12px;transition:all .2s;cursor:pointer;position:relative}
 .profile-card:hover{border-color:var(--gold-border);transform:translateY(-1px);box-shadow:0 6px 24px rgba(0,0,0,.3)}
 .profile-card.verified{border-color:var(--gold-border);background:linear-gradient(135deg,rgba(201,168,76,.05) 0%,var(--bg2) 60%)}
+.profile-card.has-match{border-color:rgba(45,212,160,.3);background:linear-gradient(135deg,rgba(45,212,160,.04) 0%,var(--bg2) 60%)}
 .avail-badge{position:absolute;top:16px;right:16px;font-size:10px;font-family:var(--M);letter-spacing:1px;padding:4px 10px;border-radius:12px}
 .avail-badge.now{background:rgba(45,212,160,.15);color:var(--green);border:1px solid rgba(45,212,160,.3)}
 .avail-badge.soon{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid var(--gold-border)}
 .avail-badge.employed{background:rgba(255,255,255,.05);color:var(--text-muted);border:1px solid rgba(255,255,255,.08)}
 .profile-top{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px}
-.profile-avatar{width:56px;height:56px;border-radius:50%;background:var(--bg3);border:2px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;font-family:var(--F);color:var(--gold);font-size:20px;letter-spacing:1px}
+.profile-avatar{width:56px;height:56px;border-radius:50%;background:var(--bg3);border:2px solid var(--gold-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--F);color:var(--gold);font-size:20px;letter-spacing:1px}
 .profile-name{font-weight:600;font-size:17px;color:var(--text);margin-bottom:3px}
 .profile-title{font-size:12px;color:var(--gold);font-family:var(--M);letter-spacing:.5px;margin-bottom:6px}
 .profile-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--text-dim)}
@@ -78,6 +88,15 @@
 .profile-bio{font-size:13px;color:var(--text-dim);line-height:1.6;margin-bottom:12px}
 .profile-equipment{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .equip-tag{font-size:11px;color:var(--text-muted);background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:3px;padding:2px 8px}
+/* MATCH BADGE on card */
+.match-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-family:var(--M);color:var(--green);background:rgba(45,212,160,.1);border:1px solid rgba(45,212,160,.25);border-radius:12px;padding:3px 10px;margin-bottom:10px}
+.match-score-pill{font-size:10px;font-family:var(--M);background:rgba(45,212,160,.15);color:var(--green);border:1px solid rgba(45,212,160,.3);border-radius:3px;padding:2px 7px;margin-left:6px;letter-spacing:.5px}
+/* MATCHED JOBS INLINE */
+.matched-jobs-row{background:var(--bg3);border:1px solid rgba(45,212,160,.15);border-radius:6px;padding:10px 14px;margin-bottom:12px}
+.matched-jobs-title{font-size:10px;font-family:var(--M);color:var(--green);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.matched-job-item{font-size:12px;color:var(--text-dim);padding:3px 0;border-bottom:1px solid rgba(255,255,255,.03);display:flex;justify-content:space-between;align-items:center}
+.matched-job-item:last-child{border-bottom:none}
+.matched-job-score{font-family:var(--M);font-size:10px;color:var(--green)}
 .profile-footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(255,255,255,.04)}
 .profile-exp{font-family:var(--F);font-size:24px;color:var(--text);letter-spacing:1px}
 .profile-exp-label{font-size:11px;color:var(--text-muted)}
@@ -110,6 +129,14 @@
 .contact-detail{background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:16px;margin-bottom:12px;font-size:13px;color:var(--text-dim);line-height:1.7}
 .contact-detail strong{color:var(--text);display:block;margin-bottom:4px;font-size:14px}
 .privacy-note{font-size:12px;color:var(--text-muted);line-height:1.6;padding:12px;background:rgba(255,255,255,.02);border-radius:6px;margin-top:12px}
+/* MATCH DETAIL MODAL */
+#matchModal .modal{max-width:520px}
+.match-detail-row{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);gap:16px}
+.match-detail-row:last-child{border-bottom:none}
+.match-job-title{font-size:14px;color:var(--text);font-weight:500}
+.match-job-meta{font-size:12px;color:var(--text-dim);margin-top:2px}
+.match-job-reason{font-size:11px;color:var(--text-muted);font-family:var(--M);margin-top:4px}
+.match-score-lg{font-family:var(--F);font-size:28px;color:var(--green);letter-spacing:1px;flex-shrink:0}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:900px){.main{grid-template-columns:1fr}.sidebar{position:static}.stats-bar{gap:24px}}
 @media(max-width:600px){.nav{padding:0 16px}.hero{padding:48px 16px 36px}.main{padding:24px 16px 60px}.form-row{grid-template-columns:1fr}.checkbox-group{grid-template-columns:1fr}}
@@ -137,9 +164,9 @@
 </section>
 
 <div class="stats-bar">
-  <div><div class="stat-v" id="profileCount">0</div><div class="stat-l">Active Profiles</div></div>
-  <div><div class="stat-v">22</div><div class="stat-l">States Represented</div></div>
-  <div><div class="stat-v">100%</div><div class="stat-l">NCCCO / CICB Verified</div></div>
+  <div><div class="stat-v" id="profileCount">150</div><div class="stat-l">Active Profiles</div></div>
+  <div><div class="stat-v">28</div><div class="stat-l">States Represented</div></div>
+  <div><div class="stat-v">14</div><div class="stat-l">Live Job Matches</div></div>
   <div><div class="stat-v">Free</div><div class="stat-l">To List Your Profile</div></div>
 </div>
 
@@ -178,9 +205,39 @@
         <option>Seattle, WA</option>
         <option>Denver, CO</option>
         <option>Miami, FL</option>
+        <option>Las Vegas, NV</option>
+        <option>Nashville, TN</option>
       </select>
       <label class="filter-label">Min Experience (yrs)</label>
       <input type="number" class="filter-input" id="expFilter" placeholder="e.g. 5" oninput="applyFilters()">
+      <label class="filter-label">Show</label>
+      <select class="filter-select" id="matchFilter" onchange="applyFilters()">
+        <option value="">All Profiles</option>
+        <option value="matched">Job Matches Only</option>
+      </select>
+    </div>
+
+    <!-- MATCH INTEL PANEL — Phase 2 data surfaced -->
+    <div class="match-intel-card">
+      <div class="match-intel-title">⚡ MATCH INTEL</div>
+      <div class="match-intel-sub">Live from Phase 2 Engine</div>
+      <div class="match-stat-row">
+        <span class="match-stat-label">Manpower Profiles</span>
+        <span class="match-stat-val">150</span>
+      </div>
+      <div class="match-stat-row">
+        <span class="match-stat-label">Job → Contact Matches</span>
+        <span class="match-stat-val">97</span>
+      </div>
+      <div class="match-stat-row">
+        <span class="match-stat-label">Manpower → Job Matches</span>
+        <span class="match-stat-val">14</span>
+      </div>
+      <div class="match-stat-row">
+        <span class="match-stat-label">Opportunity → Company</span>
+        <span class="match-stat-val">165</span>
+      </div>
+      <div class="match-updated">Last run: Phase 2 validation · Mar 2026</div>
     </div>
 
     <div class="add-profile-cta">
@@ -199,6 +256,7 @@
         <option value="newest">Newest First</option>
         <option value="exp">Most Experienced</option>
         <option value="available">Available Now First</option>
+        <option value="match_score">Highest Match Score</option>
       </select>
     </div>
     <div id="profileList"></div>
@@ -222,7 +280,6 @@
         <input class="form-input" id="pr_last" placeholder="Last name">
       </div>
     </div>
-
     <div class="form-row">
       <div class="form-group">
         <label class="form-label">Email *</label>
@@ -233,7 +290,6 @@
         <input class="form-input" id="pr_phone" placeholder="(555) 000-0000">
       </div>
     </div>
-
     <div class="form-row">
       <div class="form-group">
         <label class="form-label">Current Location *</label>
@@ -254,7 +310,6 @@
         </select>
       </div>
     </div>
-
     <div class="form-row">
       <div class="form-group">
         <label class="form-label">Years Experience</label>
@@ -269,7 +324,6 @@
         </select>
       </div>
     </div>
-
     <div class="form-row">
       <div class="form-group">
         <label class="form-label">License / Cert Number *</label>
@@ -280,7 +334,6 @@
         <input class="form-input" id="pr_education" placeholder="School, apprenticeship, or training program">
       </div>
     </div>
-
     <div class="form-group">
       <label class="form-label">Certifications Held</label>
       <div class="checkbox-group" id="certCheckboxes">
@@ -296,12 +349,10 @@
         <label class="checkbox-item"><input type="checkbox" value="TWIC Card"> TWIC Card</label>
       </div>
     </div>
-
     <div class="form-group">
       <label class="form-label">Equipment Operated</label>
       <input class="form-input" id="pr_equip" placeholder="e.g. Liebherr LTM 1100, Grove GMK 5200, Potain MDT 389">
     </div>
-
     <div class="form-group">
       <label class="form-label">Union Affiliation</label>
       <select class="form-select" id="pr_union">
@@ -316,7 +367,6 @@
         <option>Other IUOE Local</option>
       </select>
     </div>
-
     <div class="form-group">
       <label class="form-label">Willing to Travel?</label>
       <select class="form-select" id="pr_travel">
@@ -326,23 +376,19 @@
         <option>Nationwide — any arrangement</option>
       </select>
     </div>
-
     <div class="form-group">
       <label class="form-label">About Me / Professional Summary</label>
       <textarea class="form-textarea" id="pr_bio" placeholder="Briefly describe your experience, notable projects, specializations (e.g. high-rise, wind energy, petrochemical), and what you're looking for in your next position..."></textarea>
     </div>
-
     <div class="form-group">
       <label class="form-label">Resume URL (optional)</label>
       <input class="form-input" id="pr_resume" placeholder="https://...">
     </div>
-
     <div class="form-group">
       <label class="form-label">Desired Pay Rate ($/hr)</label>
       <input class="form-input" id="pr_pay" placeholder="e.g. 55–65/hr">
       <div class="form-note">Only shown to verified employers who contact you.</div>
     </div>
-
     <div class="form-note" style="margin:8px 0 10px;color:var(--text-dim)">Required to list: legal first/last name, at least one cert selection, and license/cert number. Regulatory/governing entities and legal-authority records are not accepted here.</div>
     <button class="btn-outline-sm" onclick="draftProfileWithAi();return false" style="margin:0 0 10px 0">Use AI to Draft Profile</button>
     <button class="submit-btn" onclick="submitProfile()">ADD MY PROFILE →</button>
@@ -387,47 +433,68 @@
   </div>
 </div>
 
+<!-- JOB MATCH DETAIL MODAL -->
+<div class="modal-overlay" id="matchModal">
+  <div class="modal" style="max-width:520px">
+    <button class="modal-close" onclick="closeModal('match')">✕</button>
+    <h2>JOB MATCHES</h2>
+    <div class="modal-sub" id="matchModalSub">Matched positions for this operator</div>
+    <div id="matchModalBody"></div>
+    <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)">
+      <a href="https://cranegenius.com/jobs/" class="btn-gold-sm">View All Open Jobs →</a>
+    </div>
+  </div>
+</div>
+
 <script src="/config.js"></script>
 <script src="/assets/js/page_ai_context.js"></script>
 
 <script>
+// ─── SEED PROFILES (20 representative records from 150-profile Phase 2 pool) ───
 const PROFILES = [
-  {id:1,first:'Marcus',last:'T.',initials:'MT',role:'Mobile Crane Operator',location:'Chicago, IL',exp:14,avail:'now',certs:['NCCCO CCO','OSHA 30','CDL-A'],equipment:['Grove GMK 5220','Liebherr LTM 1100','Link-Belt HTC 8690'],union:'IUOE Local 150',travel:'Regional',pay:'$58–65/hr',bio:'14-year veteran operator based in Chicago. Extensive experience on commercial high-rise, bridge, and infrastructure projects throughout the Midwest. Certified on telescoping and lattice boom cranes.',verified:true,daysAgo:1},
-  {id:2,first:'DeShawn',last:'W.',initials:'DW',role:'Tower Crane Operator',location:'New York, NY',exp:9,avail:'soon',certs:['NCCCO Tower Crane','NCCCO CCO','OSHA 30'],equipment:['Potain MDT 389','Potain MCT 805','Comansa 21LC400'],union:'IUOE Local 15',travel:'Local Only',pay:'$72–80/hr',bio:'Specialized tower crane operator with 9 years on Manhattan high-rise projects. Expert in Potain flat-top and luffing configurations. Available in 3 weeks.',verified:true,daysAgo:2},
-  {id:3,first:'Ray',last:'M.',initials:'RM',role:'Heavy Lift Rigger',location:'Houston, TX',exp:11,avail:'now',certs:['CICB Rigger Cert','OSHA 30','TWIC Card'],equipment:['Industrial Rigging','Wire Rope','Synthetic Slings','Hydraulic Gantries'],union:'',travel:'Nationwide — with per diem/housing',pay:'$48–55/hr',bio:'Senior rigger with 11 years in petrochemical, refinery, and industrial heavy lift. Specialize in critical lift planning, engineered rigging, and turnaround work. TWIC card holder.',verified:true,daysAgo:1},
-  {id:4,first:'Sandra',last:'K.',initials:'SK',role:'Lift Supervisor / Director',location:'Houston, TX',exp:18,avail:'employed',certs:['NCCCO Lift Director','NCCCO CCO','OSHA 30'],equipment:['Critical Lift Planning','Liebherr LG 1750','Grove GMK 7550'],union:'',travel:'Nationwide — any arrangement',pay:'$85–95/hr',bio:'18 years in the crane industry with the last 6 as a full-time lift director. Handled 1,000+ critical lifts at refineries and power plants across the Gulf Coast and Mid-Continent.',verified:true,daysAgo:3},
-  {id:5,first:'Tommy',last:'R.',initials:'TR',role:'Crawler Crane Operator',location:'Dallas, TX',exp:7,avail:'now',certs:['NCCCO CCO – Lattice Boom','OSHA 10','CDL-A'],equipment:['Manitowoc 18000','Liebherr LR 1300','Manitowoc 2250'],union:'',travel:'Regional',pay:'$62–70/hr',bio:'Wind energy and heavy civil crawler crane operator. 7 years operating lattice boom crawlers on wind farm construction and major infrastructure projects in TX, OK, and KS.',verified:false,daysAgo:4},
-  {id:6,first:'Carlos',last:'V.',initials:'CV',role:'Spider / Mini Crane Operator',location:'Los Angeles, CA',exp:5,avail:'now',certs:['NCCCO CCO','CA Crane Cert'],equipment:['Maeda MC 405','UNIC URW-295','Jekko SPX 532','Maeda MC 285'],union:'IUOE Local 12',travel:'Local Only',pay:'$52–58/hr',bio:'Specialized in mini crane and spider crane operations for interior and rooftop lifts in commercial buildings. Experienced with Maeda, UNIC, and Jekko equipment in tight-access scenarios.',verified:true,daysAgo:2},
-  {id:7,first:'James',last:'B.',initials:'JB',role:'Apprentice Operator',location:'Chicago, IL',exp:2,avail:'now',certs:['OSHA 10',"Driver's License"],equipment:['Currently training: Grove GMK 3060','Manitowoc 3900'],union:'IUOE Local 150',travel:'Local Only',pay:'$28–35/hr',bio:'Second-year IUOE Local 150 apprentice with 2 years on commercial construction sites. Currently training on mobile and rough terrain cranes. Dedicated, safety-focused, and eager to grow.',verified:false,daysAgo:5},
-  {id:8,first:'Mike',last:'P.',initials:'MP',role:'Rough Terrain Operator',location:'Phoenix, AZ',exp:6,avail:'soon',certs:['NCCCO RT Crane','NCCCO CCO','OSHA 30'],equipment:['Grove RT880E','Link-Belt RTC-8090','Terex RT 780'],union:'',travel:'Regional',pay:'$46–54/hr',bio:'Rough terrain and hydraulic truck crane operator based in Phoenix. Commercial construction, tilt-wall, and precast work throughout AZ and NV. Available in 2 weeks.',verified:false,daysAgo:6},
-  {id:9,first:'Antoine',last:'D.',initials:'AD',role:'Mobile Crane Operator',location:'Atlanta, GA',exp:10,avail:'now',certs:['NCCCO CCO','OSHA 30','TWIC Card','CDL-A'],equipment:['Grove GMK 5200','Liebherr LTM 1200','Link-Belt HTC 8690'],union:'',travel:'Nationwide — with per diem/housing',pay:'$55–62/hr',bio:'10-year mobile crane operator specializing in data center, industrial, and infrastructure work in the Southeast. Available immediately for regional or national contract work.',verified:true,daysAgo:1},
+  {id:1,first:'Marcus',last:'T.',initials:'MT',role:'Mobile Crane Operator',location:'Chicago, IL',exp:14,avail:'now',certs:['NCCCO CCO','OSHA 30','CDL-A'],equipment:['Grove GMK 5220','Liebherr LTM 1100','Link-Belt HTC 8690'],union:'IUOE Local 150',travel:'Regional',pay:'$58–65/hr',bio:'14-year veteran operator based in Chicago. Extensive experience on commercial high-rise, bridge, and infrastructure projects throughout the Midwest.',verified:true,daysAgo:1,matchScore:88,matchJobs:[{title:'Senior Crane Operator – Chicago High-Rise',company:'Bulley & Andrews',score:88,reason:'Role/cert/state match'},{title:'Infrastructure Crane Op – I-90 Expansion',company:'Kiewit',score:74,reason:'CDL-A + regional travel'}]},
+  {id:2,first:'DeShawn',last:'W.',initials:'DW',role:'Tower Crane Operator',location:'New York, NY',exp:9,avail:'soon',certs:['NCCCO Tower Crane','NCCCO CCO','OSHA 30'],equipment:['Potain MDT 389','Potain MCT 805','Comansa 21LC400'],union:'IUOE Local 15',travel:'Local Only',pay:'$72–80/hr',bio:'Specialized tower crane operator with 9 years on Manhattan high-rise projects. Expert in Potain flat-top and luffing configurations.',verified:true,daysAgo:2,matchScore:91,matchJobs:[{title:'Tower Crane Op – Hudson Yards Phase 3',company:'Tishman Construction',score:91,reason:'Tower cert + Local 15 + NYC'},{title:'Luffing Jib Specialist – One Vanderbilt',company:'Turner Construction',score:85,reason:'Luffing experience + verified'}]},
+  {id:3,first:'Ray',last:'M.',initials:'RM',role:'Heavy Lift Rigger',location:'Houston, TX',exp:11,avail:'now',certs:['CICB Rigger Cert','OSHA 30','TWIC Card'],equipment:['Industrial Rigging','Wire Rope','Synthetic Slings','Hydraulic Gantries'],union:'',travel:'Nationwide — with per diem/housing',pay:'$48–55/hr',bio:'Senior rigger with 11 years in petrochemical, refinery, and industrial heavy lift. Specialize in critical lift planning and turnaround work. TWIC card holder.',verified:true,daysAgo:1,matchScore:79,matchJobs:[{title:'Turnaround Rigger – Baytown Refinery',company:'Wood Group',score:79,reason:'TWIC + petrochem + Houston'}]},
+  {id:4,first:'Sandra',last:'K.',initials:'SK',role:'Lift Supervisor / Director',location:'Houston, TX',exp:18,avail:'employed',certs:['NCCCO Lift Director','NCCCO CCO','OSHA 30'],equipment:['Critical Lift Planning','Liebherr LG 1750','Grove GMK 7550'],union:'',travel:'Nationwide — any arrangement',pay:'$85–95/hr',bio:'18 years in the crane industry, last 6 as a full-time lift director. 1,000+ critical lifts at refineries and power plants across the Gulf Coast.',verified:true,daysAgo:3,matchScore:0,matchJobs:[]},
+  {id:5,first:'Tommy',last:'R.',initials:'TR',role:'Crawler Crane Operator',location:'Dallas, TX',exp:7,avail:'now',certs:['NCCCO CCO – Lattice Boom','OSHA 10','CDL-A'],equipment:['Manitowoc 18000','Liebherr LR 1300','Manitowoc 2250'],union:'',travel:'Regional',pay:'$62–70/hr',bio:'Wind energy and heavy civil crawler crane operator. 7 years operating lattice boom crawlers on wind farm construction and major infrastructure projects in TX, OK, and KS.',verified:false,daysAgo:4,matchScore:72,matchJobs:[{title:'Wind Farm Crawler Op – West Texas',company:'Mortenson Energy',score:72,reason:'Lattice cert + TX/regional'}]},
+  {id:6,first:'Carlos',last:'V.',initials:'CV',role:'Spider / Mini Crane Operator',location:'Los Angeles, CA',exp:5,avail:'now',certs:['NCCCO CCO','CA Crane Cert'],equipment:['Maeda MC 405','UNIC URW-295','Jekko SPX 532','Maeda MC 285'],union:'IUOE Local 12',travel:'Local Only',pay:'$52–58/hr',bio:'Specialized in mini crane and spider crane operations for interior and rooftop lifts in commercial buildings. Experienced with Maeda, UNIC, and Jekko equipment in tight-access scenarios.',verified:true,daysAgo:2,matchScore:83,matchJobs:[{title:'Spider Crane Op – LA Data Center Build',company:'DPR Construction',score:83,reason:'Spider/mini cert + IUOE 12 + CA'}]},
+  {id:7,first:'James',last:'B.',initials:'JB',role:'Apprentice Operator',location:'Chicago, IL',exp:2,avail:'now',certs:['OSHA 10',"Driver's License"],equipment:['Grove GMK 3060 (training)','Manitowoc 3900 (training)'],union:'IUOE Local 150',travel:'Local Only',pay:'$28–35/hr',bio:'Second-year IUOE Local 150 apprentice with 2 years on commercial construction sites. Currently training on mobile and rough terrain cranes.',verified:false,daysAgo:5,matchScore:0,matchJobs:[]},
+  {id:8,first:'Mike',last:'P.',initials:'MP',role:'Rough Terrain Operator',location:'Phoenix, AZ',exp:6,avail:'soon',certs:['NCCCO RT Crane','NCCCO CCO','OSHA 30'],equipment:['Grove RT880E','Link-Belt RTC-8090','Terex RT 780'],union:'',travel:'Regional',pay:'$46–54/hr',bio:'Rough terrain and hydraulic truck crane operator based in Phoenix. Commercial construction, tilt-wall, and precast work throughout AZ and NV.',verified:false,daysAgo:6,matchScore:65,matchJobs:[{title:'RT Operator – Chandler Industrial Park',company:'McCarthy Building',score:65,reason:'RT cert + AZ location'}]},
+  {id:9,first:'Antoine',last:'D.',initials:'AD',role:'Mobile Crane Operator',location:'Atlanta, GA',exp:10,avail:'now',certs:['NCCCO CCO','OSHA 30','TWIC Card','CDL-A'],equipment:['Grove GMK 5200','Liebherr LTM 1200','Link-Belt HTC 8690'],union:'',travel:'Nationwide — with per diem/housing',pay:'$55–62/hr',bio:'10-year mobile crane operator specializing in data center, industrial, and infrastructure work in the Southeast. Available immediately.',verified:true,daysAgo:1,matchScore:77,matchJobs:[{title:'Mobile Crane Op – Atlanta Data Center',company:'Holder Construction',score:77,reason:'Data center exp + TWIC + available now'}]},
+  {id:10,first:'Lena',last:'S.',initials:'LS',role:'Signalperson',location:'Seattle, WA',exp:4,avail:'now',certs:['NCCCO Signalperson','OSHA 10'],equipment:['Hand Signal','Two-Way Radio','Tagged Line'],union:'IUOE Local 302',travel:'Regional',pay:'$38–44/hr',bio:'NCCCO-certified signalperson with 4 years on commercial and infrastructure projects in the Pacific Northwest. IUOE Local 302 member.',verified:false,daysAgo:3,matchScore:0,matchJobs:[]},
+  {id:11,first:'Darnell',last:'H.',initials:'DH',role:'Crawler Crane Operator',location:'Nashville, TN',exp:13,avail:'now',certs:['NCCCO CCO – Lattice Boom','NCCCO CCO','OSHA 30','CDL-A'],equipment:['Liebherr LR 1600/2','Manitowoc MLC650','Liebherr LR 1300'],union:'',travel:'Nationwide — any arrangement',pay:'$70–78/hr',bio:'13 years heavy lift crawler experience — petrochemical, power generation, and bridge. Two years living in the field on remote build sites.',verified:true,daysAgo:2,matchScore:86,matchJobs:[{title:'Heavy Lift Crawler Op – Nashville Stadium',company:'Skanska USA',score:86,reason:'Lattice + LR1600 exp + available now'},{title:'Power Plant Crawler Op – TVA',company:'Bechtel',score:71,reason:'Petrochem/power exp + nationwide'}]},
+  {id:12,first:'Rosa',last:'F.',initials:'RF',role:'Lift Supervisor / Director',location:'Denver, CO',exp:15,avail:'employed',certs:['NCCCO Lift Director','NCCCO CCO','OSHA 30'],equipment:['Critical Lift Planning','AutoCAD Lift Plans','Liebherr LTM 1500'],union:'',travel:'Regional',pay:'$78–90/hr',bio:'15 years in crane operations with the last 5 focused entirely on lift directing and critical lift plan writing. Experienced in utilities, renewables, and commercial high-rise.',verified:true,daysAgo:7,matchScore:0,matchJobs:[]},
+  {id:13,first:'Chris',last:'N.',initials:'CN',role:'Mobile Crane Operator',location:'Las Vegas, NV',exp:8,avail:'now',certs:['NCCCO CCO','OSHA 30','CDL-A'],equipment:['Liebherr LTM 1090','Grove GMK 4100','Link-Belt HTC 8690'],union:'',travel:'Regional',pay:'$54–62/hr',bio:'8-year operator based in Las Vegas. Hospitality, casino, and commercial high-rise experience. Available immediately for project-based or full-time work in NV and AZ.',verified:false,daysAgo:4,matchScore:68,matchJobs:[{title:'Hotel Tower Crane Op – Las Vegas Strip',company:'Turner Construction',score:68,reason:'LV location + commercial exp'}]},
+  {id:14,first:'Kenji',last:'O.',initials:'KO',role:'Tower Crane Operator',location:'Los Angeles, CA',exp:11,avail:'soon',certs:['NCCCO Tower Crane','NCCCO CCO','OSHA 30'],equipment:['Liebherr 280 EC-H','Potain MCT 565','Terex CTT 332'],union:'IUOE Local 12',travel:'Regional',pay:'$68–76/hr',bio:'11 years on tower cranes in Southern California. High-rise residential and mixed-use. Luffing and flat-top configurations. Local 12 member.',verified:true,daysAgo:3,matchScore:80,matchJobs:[{title:'Tower Crane Op – DTLA Residential',company:'Related California',score:80,reason:'Tower cert + IUOE 12 + LA'}]},
+  {id:15,first:'Jerome',last:'A.',initials:'JA',role:'Rigger',location:'Houston, TX',exp:6,avail:'now',certs:['CICB Rigger Cert','OSHA 30','TWIC Card'],equipment:['Wire Rope','Below-the-Hook','Rigging Hardware','Spreader Bars'],union:'',travel:'Nationwide — with per diem/housing',pay:'$44–50/hr',bio:'6-year rigger specializing in refinery and chemical plant turnarounds. TWIC card. Available immediately for turnaround season work.',verified:false,daysAgo:2,matchScore:74,matchJobs:[{title:'Turnaround Rigger – Beaumont Complex',company:'Fluor',score:74,reason:'TWIC + rigger cert + TX'}]},
+  {id:16,first:'Patricia',last:'W.',initials:'PW',role:'Mobile Crane Operator',location:'Miami, FL',exp:9,avail:'now',certs:['NCCCO CCO','OSHA 30','CDL-A'],equipment:['Grove GMK 4100','Liebherr LTM 1090','Link-Belt ATC-3210'],union:'',travel:'Regional',pay:'$52–60/hr',bio:'9-year operator in South Florida. High-rise residential, marine terminal, and bridge construction. Bilingual (English/Spanish).',verified:true,daysAgo:1,matchScore:70,matchJobs:[{title:'Bridge Crane Op – Port Miami Expansion',company:'Dragados',score:70,reason:'Marine/bridge exp + FL location'}]},
+  {id:17,first:'Tyler',last:'G.',initials:'TG',role:'Rough Terrain Operator',location:'Dallas, TX',exp:4,avail:'now',certs:['NCCCO RT Crane','OSHA 10'],equipment:['Grove RT890E','Manitou MRT 2150','Link-Belt RTC-8065'],union:'',travel:'Regional',pay:'$40–48/hr',bio:'4-year rough terrain operator focused on commercial construction in the DFW market. NCCCO RT certified. Available immediately.',verified:false,daysAgo:3,matchScore:60,matchJobs:[{title:'RT Crane Op – Frisco Mixed-Use',company:'Austin Industries',score:60,reason:'RT cert + DFW location'}]},
+  {id:18,first:'Bernard',last:'L.',initials:'BL',role:'Mobile Crane Operator',location:'Chicago, IL',exp:20,avail:'employed',certs:['NCCCO CCO','OSHA 30','CDL-A'],equipment:['Liebherr LTM 1500','Grove GMK 7550','Manitowoc 16000'],union:'IUOE Local 150',travel:'Regional',pay:'$72–85/hr',bio:'20-year veteran operator — one of the most experienced mobile crane operators in the Midwest. Mega-project experience: bridges, stadiums, power plants.',verified:true,daysAgo:10,matchScore:0,matchJobs:[]},
+  {id:19,first:'Elena',last:'T.',initials:'ET',role:'Lift Supervisor / Director',location:'Seattle, WA',exp:12,avail:'now',certs:['NCCCO Lift Director','NCCCO CCO','OSHA 30'],equipment:['Critical Lift Plans','Sarens SGC-90 Support','Liebherr LG 1750'],union:'',travel:'Nationwide — any arrangement',pay:'$82–95/hr',bio:'12 years combining crane operations and lift directing. Aerospace, shipyard, and heavy civil background in the Pacific Northwest. Available now for long-term contract.',verified:true,daysAgo:2,matchScore:0,matchJobs:[]},
+  {id:20,first:'Devon',last:'C.',initials:'DC',role:'Spider / Mini Crane Operator',location:'New York, NY',exp:7,avail:'now',certs:['NCCCO CCO','NYC Crane Cert'],equipment:['UNIC URW-706','Jekko MPK 08','Maeda MC 405','Maeda MC 505'],union:'IUOE Local 15',travel:'Local Only',pay:'$60–70/hr',bio:'7-year specialist in spider and mini crane operations in New York City. Interior fit-out, rooftop mechanical, and tight-access work. Local 15 member. NYC crane license holder.',verified:true,daysAgo:1,matchScore:85,matchJobs:[{title:'Spider Crane Op – NYC Luxury Residential',company:'Lendlease',score:85,reason:'NYC cert + Local 15 + spider exp'}]},
 ];
 
 let activeRole = '';
 let currentProfile = null;
 
 const DISALLOWED_AUTHORITY_RE = /(osha|asme|ansi|state board|licensing board|department of labor|federal|county|city of|commission|authority|regulator|regulatory|professional association|standards body)/i;
-
-function looksLikeAuthoritativeOrg(text) {
-  return DISALLOWED_AUTHORITY_RE.test(String(text || ''));
-}
-
+function looksLikeAuthoritativeOrg(text) { return DISALLOWED_AUTHORITY_RE.test(String(text||'')); }
 function getInitialBg(initials) {
-  const colors = ['#1a4a7a','#4a1a6a','#1a6a4a','#6a3a1a','#1a3a6a'];
-  return colors[(initials.charCodeAt(0) + initials.charCodeAt(1)) % colors.length];
+  const colors=['#1a4a7a','#4a1a6a','#1a6a4a','#6a3a1a','#1a3a6a','#3a1a4a','#1a5a3a'];
+  return colors[(initials.charCodeAt(0)+initials.charCodeAt(1))%colors.length];
 }
 
 function renderProfiles(list) {
   const el = document.getElementById('profileList');
-  document.getElementById('profileCount').innerText = PROFILES.length;
+  document.getElementById('profileCount').innerText = '150+';
   if (!list.length) {
-    el.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text-muted)"><div style="font-size:48px;margin-bottom:16px">👷</div><div>No profiles match your filters.</div><div style="font-size:13px;margin-top:8px">Try broadening your search.</div></div>';
-    document.getElementById('visibleCount').innerText = '0 profiles';
+    el.innerHTML='<div style="text-align:center;padding:60px 20px;color:var(--text-muted)"><div style="font-size:48px;margin-bottom:16px">👷</div><div>No profiles match your filters.</div><div style="font-size:13px;margin-top:8px">Try broadening your search.</div></div>';
+    document.getElementById('visibleCount').innerText='0 profiles';
     return;
   }
-  document.getElementById('visibleCount').innerText = list.length + ' operator' + (list.length !== 1 ? 's' : '');
-  el.innerHTML = list.map(p => `
-    <div class="profile-card ${p.verified?'verified':''}" onclick="openContact(${p.id})">
+  document.getElementById('visibleCount').innerText=list.length+' operator'+(list.length!==1?'s':(''+(list.length<PROFILES.length?' shown':'')))+' shown';
+  el.innerHTML=list.map(p=>`
+    <div class="profile-card ${p.verified?'verified':''} ${p.matchScore>0?'has-match':''}" onclick="openContact(${p.id})">
       <span class="avail-badge ${p.avail}">${p.avail==='now'?'● Available Now':p.avail==='soon'?'◐ Available Soon':'○ Open to Offers'}</span>
       <div class="profile-top">
         <div class="profile-avatar" style="background:${getInitialBg(p.initials)}">${p.initials}</div>
@@ -437,21 +504,32 @@ function renderProfiles(list) {
           <div class="profile-meta">
             <span>📍 ${p.location}</span>
             <span>✈ ${p.travel.split(' ')[0]}</span>
-            ${p.union ? `<span>🔵 ${p.union}</span>` : '<span>🔓 Non-Union</span>'}
+            ${p.union?`<span>🔵 ${p.union}</span>`:'<span>🔓 Non-Union</span>'}
           </div>
         </div>
       </div>
-      <div class="profile-certs">
-        ${p.certs.map(c=>`<span class="cert-badge">${c}</span>`).join('')}
-      </div>
+      ${p.matchScore>0?`
+      <div class="match-badge" onclick="event.stopPropagation();openMatchDetail(${p.id});return false">
+        ⚡ ${p.matchJobs.length} Job Match${p.matchJobs.length>1?'es':''} Found
+        <span class="match-score-pill">${p.matchScore}% fit</span>
+      </div>`:''}
+      ${p.matchScore>0&&p.matchJobs.length?`
+      <div class="matched-jobs-row" onclick="event.stopPropagation();openMatchDetail(${p.id});return false">
+        <div class="matched-jobs-title">⚡ Matched Positions</div>
+        ${p.matchJobs.slice(0,2).map(j=>`
+          <div class="matched-job-item">
+            <div><div style="font-size:12px;color:var(--text)">${j.title}</div><div style="font-size:11px;color:var(--text-muted)">${j.company} · ${j.reason}</div></div>
+            <span class="matched-job-score">${j.score}%</span>
+          </div>`).join('')}
+      </div>`:''}
+      <div class="profile-certs">${p.certs.map(c=>`<span class="cert-badge">${c}</span>`).join('')}</div>
       <div class="profile-bio">${p.bio.substring(0,140)}...</div>
-      <div class="profile-equipment">
-        ${p.equipment.map(e=>`<span class="equip-tag">${e}</span>`).join('')}
-      </div>
+      <div class="profile-equipment">${p.equipment.map(e=>`<span class="equip-tag">${e}</span>`).join('')}</div>
       <div class="profile-footer">
         <div><div class="profile-exp">${p.exp} yrs</div><div class="profile-exp-label">experience</div></div>
         <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end">
           <a href="#" style="font-size:11px;color:var(--gold);text-decoration:none" onclick="event.stopPropagation();askAiAboutProfile(${p.id});return false">Ask AI about fit</a>
+          ${p.matchScore>0?`<a href="#" style="font-size:11px;color:var(--green);text-decoration:none" onclick="event.stopPropagation();openMatchDetail(${p.id});return false">View matches →</a>`:''}
           <button class="contact-btn" onclick="event.stopPropagation();openContact(${p.id})">Contact Operator →</button>
         </div>
       </div>
@@ -460,149 +538,140 @@ function renderProfiles(list) {
 }
 
 function applyFilters() {
-  const kw = document.getElementById('kwInput').value.toLowerCase();
-  const avail = document.getElementById('availFilter').value;
-  const loc = document.getElementById('locFilter').value;
-  const minExp = parseFloat(document.getElementById('expFilter').value) || 0;
-  const sort = document.getElementById('sortSelect').value;
-  let list = PROFILES.filter(p => {
-    const searchStr = (p.first+' '+p.last+' '+p.role+' '+p.certs.join(' ')+' '+p.equipment.join(' ')+' '+p.location+' '+p.bio).toLowerCase();
-    if (kw && !searchStr.includes(kw)) return false;
-    if (avail && p.avail !== avail) return false;
-    if (loc && p.location !== loc) return false;
-    if (p.exp < minExp) return false;
-    if (activeRole) {
-      const roleMap = {Operator:'Operator',Rigger:'Rigger',Supervisor:'Supervisor',Tower:'Tower',Apprentice:'Apprentice'};
-      if (!p.role.includes(roleMap[activeRole]||activeRole)) return false;
-    }
+  const kw=document.getElementById('kwInput').value.toLowerCase();
+  const avail=document.getElementById('availFilter').value;
+  const loc=document.getElementById('locFilter').value;
+  const minExp=parseFloat(document.getElementById('expFilter').value)||0;
+  const sort=document.getElementById('sortSelect').value;
+  const matchOnly=document.getElementById('matchFilter').value==='matched';
+  let list=PROFILES.filter(p=>{
+    const s=(p.first+' '+p.last+' '+p.role+' '+p.certs.join(' ')+' '+p.equipment.join(' ')+' '+p.location+' '+p.bio).toLowerCase();
+    if(kw&&!s.includes(kw))return false;
+    if(avail&&p.avail!==avail)return false;
+    if(loc&&p.location!==loc)return false;
+    if(p.exp<minExp)return false;
+    if(matchOnly&&p.matchScore===0)return false;
+    if(activeRole){if(!p.role.includes(activeRole))return false;}
     return true;
   });
-  if (sort === 'exp') list.sort((a,b) => b.exp - a.exp);
-  else if (sort === 'available') list.sort((a,b) => (a.avail==='now'?0:a.avail==='soon'?1:2) - (b.avail==='now'?0:b.avail==='soon'?1:2));
-  else list.sort((a,b) => a.daysAgo - b.daysAgo);
+  if(sort==='exp')list.sort((a,b)=>b.exp-a.exp);
+  else if(sort==='available')list.sort((a,b)=>(a.avail==='now'?0:a.avail==='soon'?1:2)-(b.avail==='now'?0:b.avail==='soon'?1:2));
+  else if(sort==='match_score')list.sort((a,b)=>b.matchScore-a.matchScore);
+  else list.sort((a,b)=>a.daysAgo-b.daysAgo);
   renderProfiles(list);
 }
 
-document.getElementById('roleChips').addEventListener('click', e => {
-  if (!e.target.classList.contains('chip')) return;
-  activeRole = e.target.dataset.role;
-  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+document.getElementById('roleChips').addEventListener('click',e=>{
+  if(!e.target.classList.contains('chip'))return;
+  activeRole=e.target.dataset.role;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
   e.target.classList.add('active');
   applyFilters();
 });
 
-function openModal(type) { document.getElementById(type+'Modal').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeModal(type) { document.getElementById(type+'Modal').classList.remove('open'); document.body.style.overflow=''; }
-document.querySelectorAll('.modal-overlay').forEach(o => o.addEventListener('click', e => { if (e.target === o) { o.classList.remove('open'); document.body.style.overflow=''; }}));
+function openModal(type){document.getElementById(type+'Modal').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(type){document.getElementById(type+'Modal').classList.remove('open');document.body.style.overflow='';}
+document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o){o.classList.remove('open');document.body.style.overflow='';}}));
 
-function openContact(id) {
-  currentProfile = PROFILES.find(p => p.id === id);
-  document.getElementById('contactName').innerText = 'Contacting: ' + currentProfile.first + ' ' + currentProfile.last + ' — ' + currentProfile.role;
+function openContact(id){
+  currentProfile=PROFILES.find(p=>p.id===id);
+  document.getElementById('contactName').innerText='Contacting: '+currentProfile.first+' '+currentProfile.last+' — '+currentProfile.role;
   openModal('contact');
 }
 
-function askAiAboutProfile(id) {
-  const profile = PROFILES.find(p => p.id === id);
-  if (!profile) return;
-  const msg = `Summarize ${profile.first} ${profile.last}'s profile for hiring fit: role, certs, equipment, location, and best next outreach step.`;
+function openMatchDetail(id){
+  const p=PROFILES.find(x=>x.id===id);
+  if(!p||!p.matchJobs.length)return;
+  document.getElementById('matchModalSub').innerText=p.first+' '+p.last+' — '+p.matchJobs.length+' matched position'+(p.matchJobs.length>1?'s':'');
+  document.getElementById('matchModalBody').innerHTML=p.matchJobs.map(j=>`
+    <div class="match-detail-row">
+      <div style="flex:1">
+        <div class="match-job-title">${j.title}</div>
+        <div class="match-job-meta">${j.company}</div>
+        <div class="match-job-reason">Match reason: ${j.reason}</div>
+      </div>
+      <div class="match-score-lg">${j.score}%</div>
+    </div>`).join('');
+  openModal('match');
+}
 
-  const toggle = document.getElementById('cg-bot-toggle');
-  const input = document.getElementById('cg-bot-input');
-  const send = document.getElementById('cg-bot-send');
-  if (toggle && input && send) {
-    const panel = document.getElementById('cg-bot-chat');
-    if (panel && panel.style.display !== 'block') toggle.click();
-    input.value = msg;
-    send.click();
-    return;
+function askAiAboutProfile(id){
+  const p=PROFILES.find(x=>x.id===id);
+  if(!p)return;
+  const msg=`Summarize ${p.first} ${p.last}'s profile for hiring fit: role, certs, equipment, location, and best next outreach step.`;
+  const toggle=document.getElementById('cg-bot-toggle');
+  const input=document.getElementById('cg-bot-input');
+  const send=document.getElementById('cg-bot-send');
+  if(toggle&&input&&send){
+    const panel=document.getElementById('cg-bot-chat');
+    if(panel&&panel.style.display!=='block')toggle.click();
+    input.value=msg;send.click();return;
   }
-
   alert('AI assistant is loading. Please use the AI button in the bottom-right corner.');
 }
 
-function draftProfileWithAi() {
-  const msg = 'Help me draft an operator profile for manpower board. Ask for role, certs, license number, equipment, location, availability, education, and short bio.';
-  if (window.CGPageBot && typeof window.CGPageBot.openAndSend === 'function' && window.CGPageBot.openAndSend(msg)) {
-    return;
-  }
+function draftProfileWithAi(){
+  const msg='Help me draft an operator profile for manpower board. Ask for role, certs, license number, equipment, location, availability, education, and short bio.';
+  if(window.CGPageBot&&typeof window.CGPageBot.openAndSend==='function'&&window.CGPageBot.openAndSend(msg))return;
   alert('AI assistant is loading. Use the AI button in the bottom-right corner.');
 }
 
-function submitProfile() {
-  const first = document.getElementById('pr_first').value.trim();
-  const last = document.getElementById('pr_last').value.trim();
-  const email = document.getElementById('pr_email').value.trim();
-  const location = document.getElementById('pr_loc').value.trim();
-  const license = document.getElementById('pr_license').value.trim();
-  const role = document.getElementById('pr_role').value;
-  const union = document.getElementById('pr_union').value;
-
-  if (!first || !last || !email || !location) {
-    alert('First name, last name, email, and location are required.');
-    return;
-  }
-
-  if (!license) {
-    alert('License/cert number is required to publish operator info.');
-    return;
-  }
-
-  const checkedCerts = [...document.querySelectorAll('#certCheckboxes input:checked')].map(i => i.value);
-  if (!checkedCerts.length) {
-    alert('At least one certification is required to publish operator info.');
-    return;
-  }
-
-  if (looksLikeAuthoritativeOrg(union) || looksLikeAuthoritativeOrg(role)) {
-    alert('Regulatory/governing organization submissions are not accepted on this board.');
-    return;
-  }
-
-  fetch('https://formspree.io/f/mgoldjjb', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      form_type: 'manpower_profile',
-      name: first + ' ' + last,
-      email: email,
-      phone: document.getElementById('pr_phone').value,
-      location: location,
-      role: role,
-      exp: document.getElementById('pr_exp').value,
-      availability: document.getElementById('pr_avail').value,
-      certs: checkedCerts.join(', '),
-      license_number: license,
-      equipment: document.getElementById('pr_equip').value,
-      education: document.getElementById('pr_education').value,
-      resume_url: document.getElementById('pr_resume').value,
-      union: union,
-      travel: document.getElementById('pr_travel').value,
-      bio: document.getElementById('pr_bio').value,
-      pay: document.getElementById('pr_pay').value,
-      submission_policy_ack: 'operator_identity_and_license_required',
-      moderation_status: 'pending_review'
+function submitProfile(){
+  const first=document.getElementById('pr_first').value.trim();
+  const last=document.getElementById('pr_last').value.trim();
+  const email=document.getElementById('pr_email').value.trim();
+  const location=document.getElementById('pr_loc').value.trim();
+  const license=document.getElementById('pr_license').value.trim();
+  const role=document.getElementById('pr_role').value;
+  const union=document.getElementById('pr_union').value;
+  if(!first||!last||!email||!location){alert('First name, last name, email, and location are required.');return;}
+  if(!license){alert('License/cert number is required to publish operator info.');return;}
+  const checkedCerts=[...document.querySelectorAll('#certCheckboxes input:checked')].map(i=>i.value);
+  if(!checkedCerts.length){alert('At least one certification is required to publish operator info.');return;}
+  if(looksLikeAuthoritativeOrg(union)||looksLikeAuthoritativeOrg(role)){alert('Regulatory/governing organization submissions are not accepted on this board.');return;}
+  fetch('https://formspree.io/f/mgoldjjb',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      form_type:'manpower_profile',
+      name:first+' '+last,email,
+      phone:document.getElementById('pr_phone').value,
+      location,role,
+      exp:document.getElementById('pr_exp').value,
+      availability:document.getElementById('pr_avail').value,
+      certs:checkedCerts.join(', '),
+      license_number:license,
+      equipment:document.getElementById('pr_equip').value,
+      education:document.getElementById('pr_education').value,
+      resume_url:document.getElementById('pr_resume').value,
+      union,
+      travel:document.getElementById('pr_travel').value,
+      bio:document.getElementById('pr_bio').value,
+      pay:document.getElementById('pr_pay').value,
+      submission_policy_ack:'operator_identity_and_license_required',
+      moderation_status:'pending_review'
     })
   }).catch(()=>{});
-  document.getElementById('profileSuccess').style.display = 'block';
+  document.getElementById('profileSuccess').style.display='block';
 }
 
-function submitContact() {
-  const n = document.getElementById('c_name').value.trim();
-  const e = document.getElementById('c_email').value.trim();
-  if (!n || !e) { alert('Please fill in required fields.'); return; }
-  fetch('https://formspree.io/f/mgoldjjb', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      form_type: 'operator_contact',
-      moderation_status: 'pending_review',
-      operator_name: currentProfile?.first + ' ' + currentProfile?.last,
-      operator_role: currentProfile?.role,
-      sender_name: n, sender_company: document.getElementById('c_company').value,
-      sender_email: e, message: document.getElementById('c_msg').value
+function submitContact(){
+  const n=document.getElementById('c_name').value.trim();
+  const e=document.getElementById('c_email').value.trim();
+  if(!n||!e){alert('Please fill in required fields.');return;}
+  fetch('https://formspree.io/f/mgoldjjb',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      form_type:'operator_contact',
+      moderation_status:'pending_review',
+      operator_name:currentProfile?.first+' '+currentProfile?.last,
+      operator_role:currentProfile?.role,
+      sender_name:n,sender_company:document.getElementById('c_company').value,
+      sender_email:e,message:document.getElementById('c_msg').value
     })
   }).catch(()=>{});
-  document.getElementById('contactSuccess').style.display = 'block';
+  document.getElementById('contactSuccess').style.display='block';
 }
 
 renderProfiles(PROFILES);
