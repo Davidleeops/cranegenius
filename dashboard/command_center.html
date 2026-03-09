@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CraneGenius — Command Center</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+  :root {
+    --gold:    #c9a84c;
+    --gold-dim: #8a6f2e;
+    --bg:      #080e1a;
+    --bg2:     #0d1526;
+    --bg3:     #111d33;
+    --border:  #1e2e4a;
+    --text:    #d4dff5;
+    --muted:   #5a7099;
+    --green:   #2ecc8a;
+    --red:     #e05252;
+    --amber:   #e0a030;
+    --blue:    #4a9eff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .page-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+    animation: fadeDown 0.5s ease both;
+  }
+  .header-left h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .header-left .subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .header-right {
+    text-align: right;
+  }
+  .timestamp {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+  .run-badge {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 3px 10px;
+    background: rgba(46,204,138,0.12);
+    border: 1px solid rgba(46,204,138,0.3);
+    border-radius: 3px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    letter-spacing: 1px;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 22px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.5s ease both;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .card.gold::before   { background: linear-gradient(90deg, var(--gold), transparent); }
+  .card.green::before  { background: linear-gradient(90deg, var(--green), transparent); }
+  .card.amber::before  { background: linear-gradient(90deg, var(--amber), transparent); }
+  .card.red::before    { background: linear-gradient(90deg, var(--red), transparent); }
+  .card.blue::before   { background: linear-gradient(90deg, var(--blue), transparent); }
+
+  .card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  /* Column spans */
+  .col-4  { grid-column: span 4; }
+  .col-6  { grid-column: span 6; }
+  .col-8  { grid-column: span 8; }
+  .col-12 { grid-column: span 12; }
+
+  @media (max-width: 900px) {
+    .col-4, .col-6, .col-8 { grid-column: span 12; }
+  }
+
+  /* ── METRIC GRID ── */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .metric {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .metric-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 1px;
+    line-height: 1;
+    color: var(--gold);
+  }
+  .metric-value.green { color: var(--green); }
+  .metric-value.amber { color: var(--amber); }
+  .metric-value.red   { color: var(--red); }
+  .metric-value.muted { color: var(--muted); }
+  .metric-label {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── STATUS TABLE ── */
+  .status-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .status-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .status-table tr:last-child { border-bottom: none; }
+  .status-table td {
+    padding: 9px 4px;
+    font-size: 13px;
+  }
+  .status-table td:first-child {
+    color: var(--muted);
+    width: 180px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+  .status-table td:last-child {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+  }
+
+  /* ── PILL STATUS ── */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .pill::before { content: '●'; font-size: 8px; }
+  .pill.ok      { background: rgba(46,204,138,0.12); border: 1px solid rgba(46,204,138,0.25); color: var(--green); }
+  .pill.warn    { background: rgba(224,160,48,0.12); border: 1px solid rgba(224,160,48,0.25); color: var(--amber); }
+  .pill.err     { background: rgba(224,82,82,0.12);  border: 1px solid rgba(224,82,82,0.25);  color: var(--red); }
+  .pill.info    { background: rgba(74,158,255,0.12); border: 1px solid rgba(74,158,255,0.25); color: var(--blue); }
+
+  /* ── PIPELINE STAGES ── */
+  .stages {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .stage {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 13px;
+  }
+  .stage-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--gold-dim);
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .stage-name { flex: 1; font-weight: 500; }
+  .stage-detail { color: var(--muted); font-size: 11px; font-family: 'DM Mono', monospace; }
+
+  /* ── BLOCKERS ── */
+  .blocker-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .blocker {
+    padding: 12px 14px;
+    background: var(--bg3);
+    border-left: 3px solid var(--red);
+    border-radius: 0 4px 4px 0;
+    font-size: 13px;
+  }
+  .blocker.warn { border-left-color: var(--amber); }
+  .blocker-title {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .blocker-desc { color: var(--muted); font-size: 12px; }
+
+  /* ── READY ITEMS ── */
+  .ready-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ready-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--bg3);
+    border: 1px solid rgba(46,204,138,0.15);
+    border-radius: 4px;
+    font-size: 13px;
+  }
+  .ready-icon {
+    color: var(--green);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .ready-text strong { display: block; font-weight: 600; margin-bottom: 1px; }
+  .ready-text span   { color: var(--muted); font-size: 11px; }
+
+  /* ── VERIFIER BREAKDOWN ── */
+  .verifier-bar {
+    height: 6px;
+    background: var(--bg3);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 8px 0;
+    display: flex;
+  }
+  .bar-seg { height: 100%; transition: width 0.8s ease; }
+  .bar-seg.valid   { background: var(--green); }
+  .bar-seg.catchall { background: var(--amber); }
+  .bar-seg.invalid { background: var(--red); }
+
+  .verifier-legend {
+    display: flex;
+    gap: 16px;
+    margin-top: 4px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+  }
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .legend-dot.valid   { background: var(--green); }
+  .legend-dot.catchall { background: var(--amber); }
+  .legend-dot.invalid { background: var(--red); }
+
+  .big-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+  .big-num-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 16px 0;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  /* ── SNAPSHOT TABLE ── */
+  .snapshot-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+  }
+  .snapshot-table th {
+    text-align: left;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0 8px 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .snapshot-table td {
+    padding: 8px 8px 8px 0;
+    border-bottom: 1px solid rgba(30,46,74,0.5);
+    vertical-align: top;
+  }
+  .snapshot-table tr:last-child td { border-bottom: none; }
+  .snapshot-table td.key { color: var(--muted); width: 220px; }
+  .snapshot-table td.val { color: var(--text); font-weight: 500; }
+  .snapshot-table td.val.good { color: var(--green); }
+  .snapshot-table td.val.warn { color: var(--amber); }
+  .snapshot-table td.val.bad  { color: var(--red); }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .card:nth-child(1) { animation-delay: 0.05s; }
+  .card:nth-child(2) { animation-delay: 0.10s; }
+  .card:nth-child(3) { animation-delay: 0.15s; }
+  .card:nth-child(4) { animation-delay: 0.20s; }
+  .card:nth-child(5) { animation-delay: 0.25s; }
+  .card:nth-child(6) { animation-delay: 0.30s; }
+  .card:nth-child(7) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <h1>CraneGenius</h1>
+      <div class="subtitle">Command Center &nbsp;·&nbsp; Contact Engine Status</div>
+    </div>
+    <div class="header-right">
+      <div class="timestamp">LAST RUN: 2026-03-09 · 10:55 UTC</div>
+      <div class="run-badge">● PIPELINE OPERATIONAL</div>
+    </div>
+  </div>
+
+  <!-- ROW 1: Big numbers -->
+  <div class="grid" style="margin-bottom:16px;">
+
+    <!-- Current Metrics -->
+    <div class="card gold col-8">
+      <div class="card-label">Current Run Metrics</div>
+      <div class="metric-grid">
+        <div class="metric">
+          <div class="metric-value">10</div>
+          <div class="metric-label">Companies Processed</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value amber">3</div>
+          <div class="metric-label">Domains Found</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">5</div>
+          <div class="metric-label">People Found</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">6</div>
+          <div class="metric-label">Candidates Generated</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">6</div>
+          <div class="metric-label">Sent to Verifier</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value muted">0 / 0 / 6</div>
+          <div class="metric-label">Valid / Catchall / Invalid</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Verifier Breakdown -->
+    <div class="card blue col-4">
+      <div class="card-label">Verification Result</div>
+      <div class="big-num">6</div>
+      <div class="big-num-label">EMAILS VERIFIED THIS RUN</div>
+      <div class="verifier-bar">
+        <div class="bar-seg valid"    style="width:0%"></div>
+        <div class="bar-seg catchall" style="width:0%"></div>
+        <div class="bar-seg invalid"  style="width:100%"></div>
+      </div>
+      <div class="verifier-legend">
+        <div class="legend-item"><div class="legend-dot valid"></div>Valid: 0</div>
+        <div class="legend-item"><div class="legend-dot catchall"></div>Catchall: 0</div>
+        <div class="legend-item"><div class="legend-dot invalid"></div>Invalid: 6</div>
+      </div>
+      <hr class="divider">
+      <table class="status-table">
+        <tr>
+          <td>Verification</td>
+          <td><span class="pill ok">Attempted</span></td>
+        </tr>
+        <tr>
+          <td>Skipped</td>
+          <td><span class="pill ok">No</span></td>
+        </tr>
+        <tr>
+          <td>API</td>
+          <td><span class="pill ok">MillionVerifier</span></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- ROW 2: Pipeline Status + Blockers -->
+  <div class="grid" style="margin-bottom:16px;">
+
+    <!-- Pipeline Stages -->
+    <div class="card gold col-6">
+      <div class="card-label">System Pipeline Status</div>
+      <div class="stages">
+        <div class="stage">
+          <div class="stage-num">1</div>
+          <div class="stage-name">Permit Ingestion</div>
+          <div class="stage-detail">Chicago · Dallas · NYC</div>
+          <span class="pill ok">OK</span>
+        </div>
+        <div class="stage">
+          <div class="stage-num">2</div>
+          <div class="stage-name">Company Normalization</div>
+          <div class="stage-detail">parse_normalize.py</div>
+          <span class="pill ok">OK</span>
+        </div>
+        <div class="stage">
+          <div class="stage-num">3</div>
+          <div class="stage-name">Domain Discovery</div>
+          <div class="stage-detail">3/10 resolved this run</div>
+          <span class="pill warn">Partial</span>
+        </div>
+        <div class="stage">
+          <div class="stage-num">4</div>
+          <div class="stage-name">People Discovery</div>
+          <div class="stage-detail">5 people · 3 companies</div>
+          <span class="pill warn">Improving</span>
+        </div>
+        <div class="stage">
+          <div class="stage-num">5</div>
+          <div class="stage-name">Email Candidate Builder</div>
+          <div class="stage-detail">6 candidates generated</div>
+          <span class="pill ok">OK</span>
+        </div>
+        <div class="stage">
+          <div class="stage-num">6</div>
+          <div class="stage-name">MillionVerifier</div>
+          <div class="stage-detail">6 sent · 6 returned</div>
+          <span class="pill ok">OK</span>
+        </div>
+        <div class="stage">
+          <div class="stage-num">7</div>
+          <div class="stage-name">PlusVibe Export</div>
+          <div class="stage-detail">204 DC contacts live</div>
+          <span class="pill ok">Active</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Engineering Focus + Blockers -->
+    <div class="card red col-6">
+      <div class="card-label">Current Bottleneck</div>
+      <div class="blocker-list">
+        <div class="blocker">
+          <div class="blocker-title">Domain Discovery Yield: 30%</div>
+          <div class="blocker-desc">Only 3 of 10 companies resolved to a valid domain this run. 7 failed due to no search fallback hits (SerpAPI returning none for raw contractor names with addresses embedded in the string).</div>
+        </div>
+        <div class="blocker warn">
+          <div class="blocker-title">People Extraction Quality</div>
+          <div class="blocker-desc">quickroofing.com scraped "Article Living", "Magazine Adrian", "Comments The" — web page content bleeding into name extraction. All 6 candidates came back invalid from verifier.</div>
+        </div>
+        <div class="blocker warn">
+          <div class="blocker-title">Valid Email Count: 0 (small slice)</div>
+          <div class="blocker-desc">0/6 valid on this 10-company test run. Not statistically meaningful — full 200-company run needed to assess verifier yield at scale.</div>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="card-label" style="margin-bottom:10px;">Active Engineering Focus</div>
+      <div class="stages">
+        <div class="stage">
+          <div class="stage-num" style="color:var(--amber)">→</div>
+          <div class="stage-name" style="font-size:12px;">Fix raw company name cleaning before SerpAPI query</div>
+          <span class="pill warn">In Progress</span>
+        </div>
+        <div class="stage">
+          <div class="stage-num" style="color:var(--amber)">→</div>
+          <div class="stage-name" style="font-size:12px;">Tighten people scraper — filter nav/boilerplate text</div>
+          <span class="pill warn">Needed</span>
+        </div>
+        <div class="stage">
+          <div class="stage-num" style="color:var(--muted)">→</div>
+          <div class="stage-name" style="font-size:12px;">Expand to SF + Austin Socrata (500/day capacity goal)</div>
+          <span class="pill info">Backlog</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 3: Revenue Readiness + Tomorrow -->
+  <div class="grid" style="margin-bottom:16px;">
+
+    <!-- Revenue Readiness -->
+    <div class="card amber col-6">
+      <div class="card-label">Revenue Readiness</div>
+      <table class="snapshot-table">
+        <tr>
+          <td class="key">PlusVibe DC Campaign</td>
+          <td class="val good">LIVE — 204 contacts</td>
+        </tr>
+        <tr>
+          <td class="key">Data Center Outreach</td>
+          <td class="val good">Active / Monitoring</td>
+        </tr>
+        <tr>
+          <td class="key">First Retainer Target</td>
+          <td class="val warn">Leavitt / Erick — pending</td>
+        </tr>
+        <tr>
+          <td class="key">Retainer Rate</td>
+          <td class="val">$1,500–$2,500 / mo</td>
+        </tr>
+        <tr>
+          <td class="key">Commission (rental)</td>
+          <td class="val">$500–$2,500 per deal</td>
+        </tr>
+        <tr>
+          <td class="key">Acquisition Target</td>
+          <td class="val warn">Month 4 first close</td>
+        </tr>
+        <tr>
+          <td class="key">CraneGenius Site</td>
+          <td class="val good">Live — cranegenius.com</td>
+        </tr>
+        <tr>
+          <td class="key">Bot Funnel Wiring</td>
+          <td class="val warn">Marketplace — verify CDN</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Ready for Tomorrow -->
+    <div class="card green col-6">
+      <div class="card-label">Ready for Tomorrow</div>
+      <div class="ready-list">
+        <div class="ready-item">
+          <div class="ready-icon">✓</div>
+          <div class="ready-text">
+            <strong>Run full 200-company batch</strong>
+            <span>python3 -m src.monday_people_pipeline --max-companies 200 — get real yield numbers</span>
+          </div>
+        </div>
+        <div class="ready-item">
+          <div class="ready-icon">✓</div>
+          <div class="ready-text">
+            <strong>Erick / Leavitt intro call</strong>
+            <span>Pitch remote commissioned sales arrangement — $500/mo retainer + close commission</span>
+          </div>
+        </div>
+        <div class="ready-item">
+          <div class="ready-icon">✓</div>
+          <div class="ready-text">
+            <strong>Monitor PlusVibe DC campaign replies</strong>
+            <span>204 contacts live — check inbox for bounces and replies within 24h of send</span>
+          </div>
+        </div>
+        <div class="ready-item">
+          <div class="ready-icon">✓</div>
+          <div class="ready-text">
+            <strong>Fix review script schema mismatch</strong>
+            <span>Run heredoc fix in terminal — verification counts still showing — in output</span>
+          </div>
+        </div>
+        <div class="ready-item">
+          <div class="ready-icon">✓</div>
+          <div class="ready-text">
+            <strong>Dallas Accela scraper inspection</strong>
+            <span>Browser-inspect DallasNow structure before finalizing scraper — expand pipeline cities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 4: Latest Run Snapshot -->
+  <div class="card gold col-12" style="animation-delay:0.40s;">
+    <div class="card-label">Latest Run Snapshot — 2026-03-09 10:55 UTC</div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+      <div>
+        <div class="section-title">Contact Generation Stats</div>
+        <table class="snapshot-table">
+          <thead><tr><th>Field</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td class="key">input_file</td><td class="val">companies_priority_200.csv</td></tr>
+            <tr><td class="key">max_companies</td><td class="val">10 (test slice)</td></tr>
+            <tr><td class="key">companies_processed</td><td class="val">10</td></tr>
+            <tr><td class="key">companies_with_domains</td><td class="val warn">3</td></tr>
+            <tr><td class="key">people_found_count</td><td class="val">5</td></tr>
+            <tr><td class="key">companies_with_people</td><td class="val warn">3</td></tr>
+            <tr><td class="key">individual_candidates</td><td class="val">6</td></tr>
+            <tr><td class="key">role_candidates</td><td class="val">0</td></tr>
+            <tr><td class="key">total_candidates</td><td class="val">6</td></tr>
+            <tr><td class="key">avg_candidates_per_co</td><td class="val">0.6</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="section-title">Verification Summary (verification_summary.json)</div>
+        <table class="snapshot-table">
+          <thead><tr><th>Field</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td class="key">verification_attempted</td><td class="val good">true</td></tr>
+            <tr><td class="key">verification_skipped</td><td class="val good">false</td></tr>
+            <tr><td class="key">skip_reason</td><td class="val">(none)</td></tr>
+            <tr><td class="key">total_candidates_generated</td><td class="val">6</td></tr>
+            <tr><td class="key">total_sent_to_verifier</td><td class="val">6</td></tr>
+            <tr><td class="key">total_verified_rows_returned</td><td class="val good">6</td></tr>
+            <tr><td class="key">valid_count</td><td class="val bad">0</td></tr>
+            <tr><td class="key">catchall_count</td><td class="val bad">0</td></tr>
+            <tr><td class="key">invalid_count</td><td class="val bad">6</td></tr>
+            <tr><td class="key">note</td><td class="val warn">Small test slice — not indicative of full run yield</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>CRANEGENIUS · DARK 30 VENTURES · DAVID LEE, PMP®</span>
+    <span>dashboard/command_center.html · Static · No backend</span>
+  </div>
+
+</div>
+</body>
+</html>
