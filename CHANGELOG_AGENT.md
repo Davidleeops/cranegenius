@@ -257,3 +257,44 @@ files are noted, not fatal. No src/ imports. --max-sample controls sample size.
 - src/ — untouched
 - Any existing CSVs — untouched
 - Any existing scripts — untouched
+
+
+---
+Timestamp: 2026-03-09
+Agent: Claude (Sonnet)
+Files Modified:
+- fix_ci.py (created in repo root)
+- filter_to_chicago.py (created in repo root)
+- enrich_ci.py (created in repo root)
+- TASK.md (updated)
+- CHANGELOG_AGENT.md (this entry)
+- DB: ~/data_runtime/cranegenius_ci.db (loaded and cleaned)
+
+Summary:
+Diagnosed and fixed Contact Intelligence System v2 normalize_records.py failure.
+Root cause: verified_contacts.csv has only 5 columns (email + verifier output only).
+Company/domain data lives in candidates.csv. Original normalize_records.py looked
+for columns that don't exist in verified_contacts.csv.
+
+Fix: fix_ci.py reads candidates.csv (2600 rows) + verified_contacts.csv (248 rows),
+joins on email_candidate/email, loads companies + contacts into SQLite DB.
+
+Data quality finding: Dallas permit data (2432/2600 contacts) produces residential
+contractors with address-embedded company names and role_inbox generation only.
+Filtered to Chicago only: 21 companies, 168 contacts, 10 verified emails.
+Exports confirmed working: top_100_targets.xlsx (100 rows), verified_contacts.xlsx (10 rows).
+Sector assignment: 66 companies got sector_id via keyword matching on name/domain.
+
+Key learnings:
+- candidates.csv = full pipeline output (domain, company, address, email_candidate)
+- verified_contacts.csv = verifier-only output (email + status columns only)
+- Always join these two files on email when loading CI DB
+- Dallas permit data = residential/small contractors (wrong target profile)
+- Chicago/NYC = commercial GC targets (correct profile)
+- role_inbox = pattern-guessed email, not real named contact
+- normalize_records.py is broken — use fix_ci.py instead until rewritten
+
+Next agent action:
+1. Re-run pipeline targeting Chicago + NYC jurisdictions
+2. Rewrite normalize_records.py using fix_ci.py logic (read both CSVs, join on email)
+3. Build auto_import.py wrapper to chain: fix_ci logic -> export_views after each pipeline run
