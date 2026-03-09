@@ -270,6 +270,17 @@
       </div>
     </div>
 
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">License / Cert Number *</label>
+        <input class="form-input" id="pr_license" placeholder="NCCCO/CICB license or cert number">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Education / Training</label>
+        <input class="form-input" id="pr_education" placeholder="School, apprenticeship, or training program">
+      </div>
+    </div>
+
     <div class="form-group">
       <label class="form-label">Certifications Held</label>
       <div class="checkbox-group" id="certCheckboxes">
@@ -322,11 +333,18 @@
     </div>
 
     <div class="form-group">
+      <label class="form-label">Resume URL (optional)</label>
+      <input class="form-input" id="pr_resume" placeholder="https://...">
+    </div>
+
+    <div class="form-group">
       <label class="form-label">Desired Pay Rate ($/hr)</label>
       <input class="form-input" id="pr_pay" placeholder="e.g. 55–65/hr">
       <div class="form-note">Only shown to verified employers who contact you.</div>
     </div>
 
+    <div class="form-note" style="margin:8px 0 10px;color:var(--text-dim)">Required to list: legal first/last name, at least one cert selection, and license/cert number. Regulatory/governing entities and legal-authority records are not accepted here.</div>
+    <button class="btn-outline-sm" onclick="draftProfileWithAi();return false" style="margin:0 0 10px 0">Use AI to Draft Profile</button>
     <button class="submit-btn" onclick="submitProfile()">ADD MY PROFILE →</button>
     <div class="success-msg" id="profileSuccess">
       ✅ Profile submitted! You'll appear on the Manpower Board within a few minutes.<br><br>
@@ -369,6 +387,9 @@
   </div>
 </div>
 
+<script src="/config.js"></script>
+<script src="/assets/js/page_ai_context.js"></script>
+
 <script>
 const PROFILES = [
   {id:1,first:'Marcus',last:'T.',initials:'MT',role:'Mobile Crane Operator',location:'Chicago, IL',exp:14,avail:'now',certs:['NCCCO CCO','OSHA 30','CDL-A'],equipment:['Grove GMK 5220','Liebherr LTM 1100','Link-Belt HTC 8690'],union:'IUOE Local 150',travel:'Regional',pay:'$58–65/hr',bio:'14-year veteran operator based in Chicago. Extensive experience on commercial high-rise, bridge, and infrastructure projects throughout the Midwest. Certified on telescoping and lattice boom cranes.',verified:true,daysAgo:1},
@@ -384,6 +405,12 @@ const PROFILES = [
 
 let activeRole = '';
 let currentProfile = null;
+
+const DISALLOWED_AUTHORITY_RE = /(osha|asme|ansi|state board|licensing board|department of labor|federal|county|city of|commission|authority|regulator|regulatory|professional association|standards body)/i;
+
+function looksLikeAuthoritativeOrg(text) {
+  return DISALLOWED_AUTHORITY_RE.test(String(text || ''));
+}
 
 function getInitialBg(initials) {
   const colors = ['#1a4a7a','#4a1a6a','#1a6a4a','#6a3a1a','#1a3a6a'];
@@ -423,7 +450,10 @@ function renderProfiles(list) {
       </div>
       <div class="profile-footer">
         <div><div class="profile-exp">${p.exp} yrs</div><div class="profile-exp-label">experience</div></div>
-        <button class="contact-btn" onclick="event.stopPropagation();openContact(${p.id})">Contact Operator →</button>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+          <a href="#" style="font-size:11px;color:var(--gold);text-decoration:none" onclick="event.stopPropagation();askAiAboutProfile(${p.id});return false">Ask AI about fit</a>
+          <button class="contact-btn" onclick="event.stopPropagation();openContact(${p.id})">Contact Operator →</button>
+        </div>
       </div>
     </div>
   `).join('');
@@ -471,28 +501,86 @@ function openContact(id) {
   openModal('contact');
 }
 
+function askAiAboutProfile(id) {
+  const profile = PROFILES.find(p => p.id === id);
+  if (!profile) return;
+  const msg = `Summarize ${profile.first} ${profile.last}'s profile for hiring fit: role, certs, equipment, location, and best next outreach step.`;
+
+  const toggle = document.getElementById('cg-bot-toggle');
+  const input = document.getElementById('cg-bot-input');
+  const send = document.getElementById('cg-bot-send');
+  if (toggle && input && send) {
+    const panel = document.getElementById('cg-bot-chat');
+    if (panel && panel.style.display !== 'block') toggle.click();
+    input.value = msg;
+    send.click();
+    return;
+  }
+
+  alert('AI assistant is loading. Please use the AI button in the bottom-right corner.');
+}
+
+function draftProfileWithAi() {
+  const msg = 'Help me draft an operator profile for manpower board. Ask for role, certs, license number, equipment, location, availability, education, and short bio.';
+  if (window.CGPageBot && typeof window.CGPageBot.openAndSend === 'function' && window.CGPageBot.openAndSend(msg)) {
+    return;
+  }
+  alert('AI assistant is loading. Use the AI button in the bottom-right corner.');
+}
+
 function submitProfile() {
-  const f = document.getElementById('pr_first').value.trim();
-  const e = document.getElementById('pr_email').value.trim();
-  if (!f || !e) { alert('Please fill in required fields (Name, Email).'); return; }
+  const first = document.getElementById('pr_first').value.trim();
+  const last = document.getElementById('pr_last').value.trim();
+  const email = document.getElementById('pr_email').value.trim();
+  const location = document.getElementById('pr_loc').value.trim();
+  const license = document.getElementById('pr_license').value.trim();
+  const role = document.getElementById('pr_role').value;
+  const union = document.getElementById('pr_union').value;
+
+  if (!first || !last || !email || !location) {
+    alert('First name, last name, email, and location are required.');
+    return;
+  }
+
+  if (!license) {
+    alert('License/cert number is required to publish operator info.');
+    return;
+  }
+
   const checkedCerts = [...document.querySelectorAll('#certCheckboxes input:checked')].map(i => i.value);
+  if (!checkedCerts.length) {
+    alert('At least one certification is required to publish operator info.');
+    return;
+  }
+
+  if (looksLikeAuthoritativeOrg(union) || looksLikeAuthoritativeOrg(role)) {
+    alert('Regulatory/governing organization submissions are not accepted on this board.');
+    return;
+  }
+
   fetch('https://formspree.io/f/mgoldjjb', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       form_type: 'manpower_profile',
-      name: f + ' ' + document.getElementById('pr_last').value,
-      email: e, phone: document.getElementById('pr_phone').value,
-      location: document.getElementById('pr_loc').value,
-      role: document.getElementById('pr_role').value,
+      name: first + ' ' + last,
+      email: email,
+      phone: document.getElementById('pr_phone').value,
+      location: location,
+      role: role,
       exp: document.getElementById('pr_exp').value,
       availability: document.getElementById('pr_avail').value,
       certs: checkedCerts.join(', '),
+      license_number: license,
       equipment: document.getElementById('pr_equip').value,
-      union: document.getElementById('pr_union').value,
+      education: document.getElementById('pr_education').value,
+      resume_url: document.getElementById('pr_resume').value,
+      union: union,
       travel: document.getElementById('pr_travel').value,
       bio: document.getElementById('pr_bio').value,
-      pay: document.getElementById('pr_pay').value
+      pay: document.getElementById('pr_pay').value,
+      submission_policy_ack: 'operator_identity_and_license_required',
+      moderation_status: 'pending_review'
     })
   }).catch(()=>{});
   document.getElementById('profileSuccess').style.display = 'block';
@@ -507,6 +595,7 @@ function submitContact() {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       form_type: 'operator_contact',
+      moderation_status: 'pending_review',
       operator_name: currentProfile?.first + ' ' + currentProfile?.last,
       operator_role: currentProfile?.role,
       sender_name: n, sender_company: document.getElementById('c_company').value,
