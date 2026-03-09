@@ -68,3 +68,32 @@ Remaining gaps: sector assignment (~5%), LinkedIn (0%), title missing (58%)
 4. Sector tagging pass
 5. First retainer pitch to Erick / Leavitt Cranes (WA/OR territory)
 
+
+---
+## 2026-03-09 — Claude (Session: Manpower + Jobs fetch rebuild)
+
+### Completed
+- Manpower page: fetch-based from static_exports, commit fec9716
+- Jobs page: fetch-based from /data/static_exports/jobs_feed_items.json + job_contact_matches.json
+- Stats bar, live banner, error state, apply/post modals, AI bot hooks — all wired
+- TASK.md and CHANGELOG updated via inline Python (no download scripts)
+
+### Deploy method
+- Mac terminal inline Python heredoc — zero file downloads
+
+### Next agent
+- /opportunities/ page — same fetch pattern
+- Do NOT touch Codex-lane files (src/, contact_intelligence/)
+
+---
+## 2026-03-09 — Claude (Session: Manpower + Jobs fetch rebuild)
+
+### Completed
+- Manpower page: fetch-based from static_exports, commit fec9716
+- Jobs page: fetch-based from /data/static_exports/jobs_feed_items.json + job_contact_matches.json
+- Stats bar, live banner, error state, apply/post modals, AI bot hooks wired
+- TASK.md and CHANGELOG updated via inline Python
+
+### Next agent
+- /opportunities/ page same fetch pattern
+- Do NOT touch Codex-lane files (src/, contact_intelligence/)

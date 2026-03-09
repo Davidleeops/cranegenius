@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crane Jobs Board | CraneGenius – Crane Operator, Rigger & Lift Supervisor Jobs</title>
-<meta name="description" content="Find crane operator jobs, rigger jobs, lift supervisor positions, and tower crane jobs across the US. Browse openings from top crane rental companies and construction firms.">
+<title>Crane Jobs Board | CraneGenius</title>
+<meta name="description" content="Browse open crane operator, rigger, and lift supervisor positions sourced from active permit data.">
 <link rel="canonical" href="https://cranegenius.com/jobs/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Crane Jobs Board","description":"Job listings for crane operators, riggers, signalpersons, and lift supervisors across the United States.","url":"https://cranegenius.com/jobs/"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-dim:rgba(201,168,76,.15);--gold-border:rgba(201,168,76,.25);--bg:#080e1a;--bg2:#0d1628;--bg3:#111e35;--bg4:#162540;--text:#e8ecf0;--text-dim:#8a9ab5;--text-muted:#4a5a72;--green:#2dd4a0;--red:#ff4f4f;--blue:#60a5fa;--radius:8px;--F:'Bebas Neue',sans-serif;--B:'DM Sans',sans-serif;--M:'DM Mono',monospace}
+:root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-dim:rgba(201,168,76,.15);--gold-border:rgba(201,168,76,.25);--bg:#080e1a;--bg2:#0d1628;--bg3:#111e35;--bg4:#162540;--text:#e8ecf0;--text-dim:#8a9ab5;--text-muted:#4a5a72;--green:#2dd4a0;--radius:8px;--F:'Bebas Neue',sans-serif;--B:'DM Sans',sans-serif;--M:'DM Mono',monospace}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:var(--B);font-size:15px;line-height:1.6;overflow-x:hidden}
 .nav{position:sticky;top:0;z-index:100;background:rgba(8,14,26,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--gold-border);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{font-family:var(--F);font-size:22px;letter-spacing:2px;color:var(--gold);text-decoration:none}
@@ -18,436 +17,298 @@
 .nav-links{display:flex;gap:20px;align-items:center}
 .nav-links a{font-size:13px;color:var(--text-dim);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--gold);color:#000;font-weight:600;font-size:13px;padding:8px 20px;border-radius:4px;text-decoration:none;transition:background .2s}
-.nav-cta:hover{background:var(--gold-light)}
+.nav-cta{background:var(--gold);color:#000;font-weight:600;font-size:13px;padding:8px 20px;border-radius:4px;text-decoration:none}
+.data-banner{padding:10px 32px;text-align:center;font-size:12px;font-family:var(--M);letter-spacing:1px;display:none}
+.data-banner.live{background:rgba(45,212,160,.08);border-bottom:1px solid rgba(45,212,160,.2);color:var(--green);display:block}
+.data-banner.error{background:rgba(255,80,80,.08);border-bottom:1px solid rgba(255,80,80,.2);color:#f87171;display:block}
 .hero{position:relative;padding:70px 32px 50px;text-align:center;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(201,168,76,.08) 0%,transparent 70%);pointer-events:none}
 .hero-eyebrow{font-family:var(--M);font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp .5s .1s forwards}
 .hero h1{font-family:var(--F);font-size:clamp(48px,7vw,88px);letter-spacing:4px;line-height:.95;color:var(--text);margin-bottom:20px;opacity:0;animation:fadeUp .5s .2s forwards}
 .hero h1 em{font-style:normal;color:var(--gold)}
 .hero-sub{font-size:16px;color:var(--text-dim);max-width:580px;margin:0 auto 36px;font-weight:300;opacity:0;animation:fadeUp .5s .3s forwards}
-.hero-stats{display:flex;justify-content:center;gap:40px;opacity:0;animation:fadeUp .5s .4s forwards}
-.stat-val{font-family:var(--F);font-size:36px;color:var(--gold);letter-spacing:2px;line-height:1}
-.stat-lbl{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:2px;margin-top:4px}
+.hero-cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .5s .4s forwards}
+.btn-gold-lg{background:var(--gold);color:#000;font-weight:700;font-size:14px;padding:14px 32px;border-radius:4px;text-decoration:none;border:none;cursor:pointer;transition:background .2s;font-family:var(--B)}
+.btn-gold-lg:hover{background:var(--gold-light)}
+.btn-outline-lg{background:transparent;color:var(--text-dim);font-size:14px;padding:14px 32px;border-radius:4px;text-decoration:none;border:1px solid rgba(255,255,255,.1);cursor:pointer;font-family:var(--B)}
+.btn-outline-lg:hover{border-color:var(--gold-border);color:var(--gold)}
+.stats-bar{background:var(--bg2);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);padding:20px 32px;display:flex;justify-content:center;gap:48px}
+.stat-v{font-family:var(--F);font-size:32px;color:var(--gold);letter-spacing:2px;line-height:1;text-align:center}
+.stat-l{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:2px;margin-top:3px;text-align:center}
 .main{max-width:1200px;margin:0 auto;padding:40px 32px 80px;display:grid;grid-template-columns:280px 1fr;gap:32px;align-items:start}
 .sidebar{position:sticky;top:80px}
 .filter-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:24px;margin-bottom:16px}
 .filter-title{font-family:var(--F);font-size:18px;letter-spacing:1px;color:var(--text);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.06)}
 .filter-label{font-size:11px;font-family:var(--M);letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;display:block}
 .filter-select,.filter-input{width:100%;background:var(--bg3);border:1px solid rgba(255,255,255,.08);border-radius:6px;color:var(--text);font-family:var(--B);font-size:13px;padding:9px 12px;outline:none;transition:border-color .2s;margin-bottom:14px;-webkit-appearance:none}
-.filter-select:focus,.filter-input:focus{border-color:var(--gold-border)}
 .filter-input::placeholder{color:var(--text-muted)}
 .chip-group{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .chip{font-size:11px;font-family:var(--M);color:var(--text-dim);background:var(--bg3);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:4px 12px;cursor:pointer;transition:all .15s;user-select:none}
 .chip:hover,.chip.active{color:#000;background:var(--gold);border-color:var(--gold)}
-.post-job-card{background:linear-gradient(135deg,rgba(201,168,76,.08) 0%,var(--bg2) 100%);border:1px solid var(--gold-border);border-radius:var(--radius);padding:24px;text-align:center}
-.post-job-card h3{font-family:var(--F);font-size:22px;letter-spacing:1px;color:var(--text);margin-bottom:8px}
-.post-job-card p{font-size:13px;color:var(--text-dim);margin-bottom:16px;line-height:1.6}
-.btn-gold{display:block;background:var(--gold);color:#000;font-weight:700;font-size:13px;padding:11px 20px;border-radius:4px;text-decoration:none;text-align:center;border:none;cursor:pointer;transition:background .2s;width:100%}
-.btn-gold:hover{background:var(--gold-light)}
-.btn-outline{display:block;background:transparent;color:var(--text-dim);font-size:13px;padding:10px 20px;border-radius:4px;text-decoration:none;text-align:center;border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:all .2s;width:100%;margin-top:8px;font-family:var(--B)}
-.btn-outline:hover{border-color:var(--gold-border);color:var(--gold)}
+.post-job-cta{background:linear-gradient(135deg,rgba(201,168,76,.1) 0%,var(--bg2) 100%);border:1px solid var(--gold-border);border-radius:var(--radius);padding:24px;text-align:center}
+.post-job-cta h3{font-family:var(--F);font-size:22px;letter-spacing:1px;color:var(--text);margin-bottom:8px}
+.post-job-cta p{font-size:13px;color:var(--text-dim);margin-bottom:16px;line-height:1.6}
+.btn-gold-sm{display:block;background:var(--gold);color:#000;font-weight:700;font-size:13px;padding:11px 20px;border-radius:4px;text-decoration:none;text-align:center;border:none;cursor:pointer;width:100%;font-family:var(--B)}
+.btn-gold-sm:hover{background:var(--gold-light)}
+.btn-outline-sm{display:block;background:transparent;color:var(--text-dim);font-size:13px;padding:10px 20px;border-radius:4px;text-decoration:none;text-align:center;border:1px solid rgba(255,255,255,.1);cursor:pointer;width:100%;margin-top:8px;font-family:var(--B)}
+.btn-outline-sm:hover{border-color:var(--gold-border);color:var(--gold)}
 .jobs-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
 .jobs-count{font-family:var(--M);font-size:13px;color:var(--text-muted)}
 .sort-select{background:var(--bg2);border:1px solid rgba(255,255,255,.08);border-radius:6px;color:var(--text-dim);font-family:var(--B);font-size:12px;padding:6px 12px;outline:none;cursor:pointer}
+.loading-state{text-align:center;padding:80px 20px;color:var(--text-muted)}
+.spinner{width:36px;height:36px;border:3px solid rgba(201,168,76,.15);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 20px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty-state{text-align:center;padding:80px 20px}
+.empty-icon{font-size:52px;margin-bottom:16px}
+.empty-title{font-family:var(--F);font-size:28px;letter-spacing:2px;color:var(--text);margin-bottom:10px}
+.empty-sub{font-size:14px;color:var(--text-dim);max-width:400px;margin:0 auto 24px;line-height:1.7}
+.error-state{text-align:center;padding:60px 20px;background:var(--bg2);border:1px solid rgba(255,80,80,.15);border-radius:var(--radius)}
+.error-title{font-family:var(--F);font-size:24px;letter-spacing:1px;color:#f87171;margin-bottom:8px}
+.error-sub{font-size:13px;color:var(--text-muted);line-height:1.7}
 .job-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:24px;margin-bottom:12px;transition:all .2s;cursor:pointer;position:relative}
 .job-card:hover{border-color:var(--gold-border);transform:translateY(-1px);box-shadow:0 6px 24px rgba(0,0,0,.3)}
 .job-card.featured{border-color:var(--gold-border);background:linear-gradient(135deg,rgba(201,168,76,.05) 0%,var(--bg2) 60%)}
-.job-badge{position:absolute;top:16px;right:16px;font-size:9px;font-family:var(--M);letter-spacing:1.5px;padding:3px 8px;border-radius:2px;text-transform:uppercase}
-.job-badge.hot{background:var(--red);color:#fff}
-.job-badge.new{background:var(--green);color:#000}
-.job-badge.featured{background:var(--gold);color:#000}
-.job-top{display:flex;gap:16px;align-items:flex-start;margin-bottom:12px}
-.job-icon{width:48px;height:48px;border-radius:8px;background:var(--bg3);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-.job-title{font-weight:600;font-size:16px;color:var(--text);margin-bottom:4px}
-.job-company{font-size:13px;color:var(--gold);font-family:var(--M);letter-spacing:.5px}
-.job-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--text-dim)}
-.job-meta span{display:flex;align-items:center;gap:4px}
-.job-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
-.jtag{font-size:10px;font-family:var(--M);color:var(--text-muted);background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:3px;padding:2px 8px;letter-spacing:.5px}
-.jtag.gold{color:var(--gold);border-color:var(--gold-border);background:var(--gold-dim)}
-.jtag.green{color:var(--green);border-color:rgba(45,212,160,.2);background:rgba(45,212,160,.05)}
-.jtag.red{color:var(--red);border-color:rgba(255,79,79,.2);background:rgba(255,79,79,.05)}
-.job-footer{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.04)}
-.job-pay{font-family:var(--F);font-size:22px;color:var(--gold);letter-spacing:1px}
+.job-card.has-contacts{border-color:rgba(45,212,160,.3);background:linear-gradient(135deg,rgba(45,212,160,.04) 0%,var(--bg2) 60%)}
+.job-type-badge{position:absolute;top:16px;right:16px;font-size:10px;font-family:var(--M);letter-spacing:1px;padding:4px 10px;border-radius:12px}
+.job-type-badge.fulltime{background:rgba(45,212,160,.15);color:var(--green);border:1px solid rgba(45,212,160,.3)}
+.job-type-badge.contract{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid var(--gold-border)}
+.job-type-badge.temporary{background:rgba(255,255,255,.05);color:var(--text-muted);border:1px solid rgba(255,255,255,.08)}
+.job-title{font-weight:700;font-size:19px;color:var(--text);margin-bottom:4px}
+.job-company{font-size:13px;color:var(--gold);font-family:var(--M);letter-spacing:.5px;margin-bottom:8px}
+.job-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--text-dim);margin-bottom:12px}
+.job-desc{font-size:13px;color:var(--text-dim);line-height:1.7;margin-bottom:14px}
+.job-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.job-tag{font-size:11px;color:var(--text-muted);background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:3px;padding:2px 8px}
+.contact-match-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-family:var(--M);color:var(--green);background:rgba(45,212,160,.1);border:1px solid rgba(45,212,160,.25);border-radius:12px;padding:3px 10px;margin-bottom:10px}
+.contact-match-count{font-size:10px;font-family:var(--M);background:rgba(45,212,160,.15);color:var(--green);border:1px solid rgba(45,212,160,.3);border-radius:3px;padding:2px 7px;margin-left:4px}
+.job-footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(255,255,255,.04)}
+.job-pay{font-family:var(--F);font-size:26px;color:var(--text);letter-spacing:1px}
 .job-pay-label{font-size:11px;color:var(--text-muted)}
-.apply-btn{background:var(--gold);color:#000;font-weight:700;font-size:12px;padding:8px 20px;border-radius:4px;border:none;cursor:pointer;text-decoration:none;transition:background .2s;white-space:nowrap}
+.apply-btn{background:var(--gold);color:#000;font-weight:700;font-size:12px;padding:8px 20px;border-radius:4px;border:none;cursor:pointer;white-space:nowrap}
 .apply-btn:hover{background:var(--gold-light)}
-/* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.open{display:flex}
-.modal{background:var(--bg2);border:1px solid var(--gold-border);border-radius:12px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:32px;position:relative}
-.modal h2{font-family:var(--F);font-size:32px;letter-spacing:2px;color:var(--text);margin-bottom:6px}
-.modal-sub{font-size:13px;color:var(--text-dim);margin-bottom:24px}
-.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text-muted);font-size:22px;cursor:pointer;transition:color .2s}
+.modal{background:var(--bg2);border:1px solid var(--gold-border);border-radius:12px;width:100%;max-width:600px;max-height:92vh;overflow-y:auto;padding:32px;position:relative;scrollbar-width:thin;scrollbar-color:var(--bg4) transparent}
+.modal h2{font-family:var(--F);font-size:34px;letter-spacing:2px;color:var(--text);margin-bottom:6px}
+.modal-sub{font-size:13px;color:var(--text-dim);margin-bottom:24px;line-height:1.6}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text-muted);font-size:22px;cursor:pointer}
 .modal-close:hover{color:var(--text)}
 .form-group{margin-bottom:18px}
 .form-label{display:block;font-size:11px;font-family:var(--M);letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
 .form-input,.form-select,.form-textarea{width:100%;background:var(--bg3);border:1px solid rgba(255,255,255,.08);border-radius:6px;color:var(--text);font-family:var(--B);font-size:14px;padding:11px 14px;outline:none;transition:border-color .2s}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold-border)}
 .form-input::placeholder,.form-textarea::placeholder{color:var(--text-muted)}
-.form-textarea{resize:vertical;min-height:100px}
+.form-textarea{resize:vertical;min-height:90px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .form-note{font-size:12px;color:var(--text-muted);margin-top:6px}
-.submit-btn{width:100%;background:var(--gold);color:#000;font-weight:700;font-size:14px;padding:14px;border-radius:4px;border:none;cursor:pointer;font-family:var(--B);transition:background .2s;margin-top:8px}
+.submit-btn{width:100%;background:var(--gold);color:#000;font-weight:700;font-size:14px;padding:14px;border-radius:4px;border:none;cursor:pointer;font-family:var(--B);margin-top:8px}
 .submit-btn:hover{background:var(--gold-light)}
-.success-msg{display:none;background:rgba(45,212,160,.08);border:1px solid rgba(45,212,160,.3);border-radius:8px;padding:20px;text-align:center;color:var(--green);font-size:14px;margin-top:16px}
-/* EMPTY STATE */
-.empty{text-align:center;padding:60px 20px;color:var(--text-muted)}
-.empty-icon{font-size:48px;margin-bottom:16px}
+.success-msg{display:none;background:rgba(45,212,160,.08);border:1px solid rgba(45,212,160,.3);border-radius:8px;padding:20px;text-align:center;color:var(--green);font-size:14px;margin-top:16px;line-height:1.7}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:900px){.main{grid-template-columns:1fr}.sidebar{position:static}}
+@media(max-width:900px){.main{grid-template-columns:1fr}.sidebar{position:static}.stats-bar{gap:24px}}
 @media(max-width:600px){.nav{padding:0 16px}.hero{padding:48px 16px 36px}.main{padding:24px 16px 60px}.form-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
 <nav class="nav">
-  <a href="https://cranegenius.com" class="nav-logo">CRANEGENIUS <span>/ Jobs</span></a>
+  <a href="https://cranegenius.com" class="nav-logo">CRANEGENIUS <span>/ Jobs Board</span></a>
   <div class="nav-links">
-    <a href="https://cranegenius.com/manpower/">Manpower Profiles</a>
+    <a href="https://cranegenius.com/manpower/">Manpower Board</a>
     <a href="https://cranegenius.com/directory/">Directory</a>
-    <a href="#" class="nav-cta" onclick="openModal('post');return false">Post a Job →</a>
+    <a href="#" class="nav-cta" onclick="openModal('post');return false">Post a Job &rarr;</a>
   </div>
 </nav>
-
+<div class="data-banner" id="dataBanner"></div>
 <section class="hero">
-  <div class="hero-eyebrow">🏗 Crane Industry Careers</div>
+  <div class="hero-eyebrow">Open Crane Positions</div>
   <h1>CRANE <em>JOBS</em><br>BOARD</h1>
-  <p class="hero-sub">Crane operator, rigger, lift supervisor, and tower crane jobs from top companies across the United States.</p>
-  <div class="hero-stats">
-    <div><div class="stat-val" id="jobCount">0</div><div class="stat-lbl">Open Positions</div></div>
-    <div><div class="stat-val">50</div><div class="stat-lbl">States</div></div>
-    <div><div class="stat-val">$38–95</div><div class="stat-lbl">Hourly Range</div></div>
+  <p class="hero-sub">Browse open positions for crane operators, riggers, and lift supervisors &mdash; sourced from active permit data and verified contractors.</p>
+  <div class="hero-cta-row">
+    <a href="#" class="btn-gold-lg" onclick="openModal('post');return false">Post a Job &mdash; Free</a>
+    <a href="https://cranegenius.com/manpower/" class="btn-outline-lg">Browse Operators &rarr;</a>
   </div>
 </section>
-
+<div class="stats-bar">
+  <div><div class="stat-v" id="statJobs">--</div><div class="stat-l">Open Positions</div></div>
+  <div><div class="stat-v" id="statContacts">--</div><div class="stat-l">Operator Matches</div></div>
+  <div><div class="stat-v">Free</div><div class="stat-l">To Post a Job</div></div>
+  <div><div class="stat-v">Live</div><div class="stat-l">Permit-Sourced Data</div></div>
+</div>
 <div class="main">
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="filter-card">
-      <div class="filter-title">FILTER JOBS</div>
-      <label class="filter-label">Keyword</label>
-      <input type="text" class="filter-input" id="kwInput" placeholder="Title, company, city..." oninput="applyFilters()">
+      <div class="filter-title">FIND JOBS</div>
+      <label class="filter-label">Search</label>
+      <input type="text" class="filter-input" id="kwInput" placeholder="Title, company, location..." oninput="applyFilters()">
       <label class="filter-label">Job Type</label>
-      <select class="filter-select" id="typeFilter" onchange="applyFilters()">
-        <option value="">All Types</option>
-        <option>Full-Time</option>
-        <option>Contract</option>
-        <option>Temp-to-Hire</option>
-        <option>Part-Time</option>
-      </select>
-      <label class="filter-label">Role</label>
-      <div class="chip-group" id="roleChips">
-        <span class="chip active" data-role="">All</span>
-        <span class="chip" data-role="Operator">Operator</span>
-        <span class="chip" data-role="Rigger">Rigger</span>
-        <span class="chip" data-role="Supervisor">Supervisor</span>
-        <span class="chip" data-role="Tower">Tower</span>
-        <span class="chip" data-role="Apprentice">Apprentice</span>
+      <div class="chip-group" id="typeChips">
+        <span class="chip active" data-type="">All</span>
+        <span class="chip" data-type="Full-Time">Full-Time</span>
+        <span class="chip" data-type="Contract">Contract</span>
+        <span class="chip" data-type="Temporary">Temporary</span>
       </div>
       <label class="filter-label">Location</label>
-      <select class="filter-select" id="locFilter" onchange="applyFilters()">
-        <option value="">All Locations</option>
-        <option>Chicago, IL</option>
-        <option>Houston, TX</option>
-        <option>New York, NY</option>
-        <option>Los Angeles, CA</option>
-        <option>Dallas, TX</option>
-        <option>Phoenix, AZ</option>
-        <option>Atlanta, GA</option>
-        <option>Seattle, WA</option>
-        <option>Denver, CO</option>
-        <option>Miami, FL</option>
+      <input type="text" class="filter-input" id="locInput" placeholder="City or state..." oninput="applyFilters()">
+      <label class="filter-label">Show</label>
+      <select class="filter-select" id="matchFilter" onchange="applyFilters()">
+        <option value="">All Jobs</option>
+        <option value="matched">With Operator Matches</option>
       </select>
-      <label class="filter-label">Min Pay ($/hr)</label>
-      <input type="number" class="filter-input" id="payFilter" placeholder="e.g. 40" oninput="applyFilters()">
     </div>
-
-    <div class="post-job-card">
+    <div class="post-job-cta">
       <h3>HIRING?</h3>
-      <p>Post your crane operator or rigging job opening. Reach 10,000+ certified operators nationwide.</p>
-      <a href="#" class="btn-gold" onclick="openModal('post');return false">Post a Job — Free</a>
-      <a href="https://cranegenius.com/manpower/" class="btn-outline">Browse Operator Profiles →</a>
+      <p>Post your open position for free. Certified operators actively browsing this board will see and apply directly.</p>
+      <a href="#" class="btn-gold-sm" onclick="openModal('post');return false">Post a Job &mdash; Free</a>
+      <a href="https://cranegenius.com/manpower/" class="btn-outline-sm">Browse Operators &rarr;</a>
     </div>
   </aside>
-
-  <!-- JOB LISTINGS -->
   <div>
     <div class="jobs-header">
-      <div class="jobs-count" id="visibleCount">Loading jobs...</div>
+      <div class="jobs-count" id="visibleCount"></div>
       <select class="sort-select" id="sortSelect" onchange="applyFilters()">
         <option value="newest">Newest First</option>
         <option value="pay">Highest Pay</option>
-        <option value="featured">Featured First</option>
+        <option value="matches">Most Operator Matches</option>
       </select>
     </div>
-    <div id="jobList"></div>
+    <div id="jobList"><div class="loading-state"><div class="spinner"></div><div>Loading open positions...</div></div></div>
   </div>
 </div>
-
-<!-- POST JOB MODAL -->
 <div class="modal-overlay" id="postModal">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal('post')">✕</button>
+    <button class="modal-close" onclick="closeModal('post')">&times;</button>
     <h2>POST A JOB</h2>
-    <div class="modal-sub">Free to post. Reach certified crane operators across the US.</div>
+    <div class="modal-sub">Free to post. Certified crane operators and riggers actively browse this board.</div>
+    <div class="form-group"><label class="form-label">Job Title *</label><input class="form-input" id="j_title" placeholder="e.g. Mobile Crane Operator - 200T"></div>
     <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">Job Title *</label>
-        <input class="form-input" id="p_title" placeholder="e.g. Mobile Crane Operator">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Company Name *</label>
-        <input class="form-input" id="p_company" placeholder="Your company name">
-      </div>
+      <div class="form-group"><label class="form-label">Company *</label><input class="form-input" id="j_company" placeholder="Your company name"></div>
+      <div class="form-group"><label class="form-label">Contact Email *</label><input class="form-input" id="j_email" placeholder="hiring@yourcompany.com"></div>
     </div>
     <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">Location *</label>
-        <input class="form-input" id="p_location" placeholder="City, State">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Job Type</label>
-        <select class="form-select" id="p_type">
-          <option>Full-Time</option><option>Contract</option><option>Temp-to-Hire</option><option>Part-Time</option>
-        </select>
+      <div class="form-group"><label class="form-label">Location *</label><input class="form-input" id="j_loc" placeholder="City, State"></div>
+      <div class="form-group"><label class="form-label">Job Type</label>
+        <select class="form-select" id="j_type"><option>Full-Time</option><option>Contract</option><option>Temporary</option><option>Project-Based</option></select>
       </div>
     </div>
     <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">Pay Rate ($/hr)</label>
-        <input class="form-input" id="p_pay" placeholder="e.g. 45–60">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Experience Required</label>
-        <select class="form-select" id="p_exp">
-          <option>Any</option><option>1+ years</option><option>3+ years</option><option>5+ years</option><option>10+ years</option>
-        </select>
-      </div>
+      <div class="form-group"><label class="form-label">Pay Rate ($/hr)</label><input class="form-input" id="j_pay" placeholder="e.g. 55-70/hr or DOE"></div>
+      <div class="form-group"><label class="form-label">Start Date</label><input class="form-input" id="j_start" placeholder="e.g. ASAP or Jan 15"></div>
     </div>
-    <div class="form-group">
-      <label class="form-label">Certifications Required</label>
-      <input class="form-input" id="p_certs" placeholder="e.g. NCCCO CCO, OSHA 10, Rigger Cert">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Job Description *</label>
-      <textarea class="form-textarea" id="p_desc" placeholder="Describe the role, equipment used, project type, benefits..."></textarea>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Contact Email *</label>
-      <input class="form-input" id="p_email" placeholder="hiring@yourcompany.com">
-      <div class="form-note">We'll send applicants directly to this email. Not shown publicly.</div>
-    </div>
-    <button class="submit-btn" onclick="submitJob()">POST JOB LISTING →</button>
-    <div class="success-msg" id="postSuccess">✅ Job posted! It will appear in the listings within a few minutes. We'll email you a confirmation.</div>
+    <div class="form-group"><label class="form-label">Job Description *</label><textarea class="form-textarea" id="j_desc" placeholder="Describe the position, equipment, project, requirements, and certifications needed..."></textarea></div>
+    <div class="form-note" style="margin:8px 0 10px;color:var(--text-dim)">Regulatory/governing entities not accepted.</div>
+    <button class="submit-btn" onclick="submitJob()">POST JOB &rarr;</button>
+    <div class="success-msg" id="postSuccess">Job posted! Your listing will appear shortly.<br><br><a href="https://cranegenius.com/manpower/" style="color:var(--gold)">Browse matching operators &rarr;</a></div>
   </div>
 </div>
-
-<!-- APPLY MODAL -->
 <div class="modal-overlay" id="applyModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('apply')">✕</button>
-    <h2>APPLY NOW</h2>
-    <div class="modal-sub" id="applyJobTitle">Applying for: [Job Title]</div>
+  <div class="modal" style="max-width:480px">
+    <button class="modal-close" onclick="closeModal('apply')">&times;</button>
+    <h2>APPLY FOR JOB</h2>
+    <div class="modal-sub" id="applyJobTitle">Position: --</div>
+    <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" id="a_name" placeholder="Your full name"></div>
     <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">First Name *</label>
-        <input class="form-input" id="a_first" placeholder="First name">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Last Name *</label>
-        <input class="form-input" id="a_last" placeholder="Last name">
-      </div>
+      <div class="form-group"><label class="form-label">Email *</label><input class="form-input" id="a_email" placeholder="your@email.com"></div>
+      <div class="form-group"><label class="form-label">Phone</label><input class="form-input" id="a_phone" placeholder="(555) 000-0000"></div>
     </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">Email *</label>
-        <input class="form-input" id="a_email" placeholder="your@email.com">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Phone</label>
-        <input class="form-input" id="a_phone" placeholder="(555) 000-0000">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">Current Location</label>
-        <input class="form-input" id="a_loc" placeholder="City, State">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Years Experience</label>
-        <input class="form-input" id="a_exp" placeholder="e.g. 7">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Certifications Held</label>
-      <input class="form-input" id="a_certs" placeholder="NCCCO CCO, OSHA 30, Rigger...">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Brief Message</label>
-      <textarea class="form-textarea" id="a_msg" placeholder="Tell the employer about yourself, availability, equipment experience..."></textarea>
-    </div>
-    <button class="submit-btn" onclick="submitApply()">SEND APPLICATION →</button>
-    <div class="success-msg" id="applySuccess">✅ Application sent! The employer will contact you directly. Want to be found by more companies? <a href="https://cranegenius.com/manpower/" style="color:var(--gold)">Add your profile to the Manpower Board →</a></div>
+    <div class="form-group"><label class="form-label">Primary Role / Cert</label><input class="form-input" id="a_role" placeholder="e.g. NCCCO CCO, Rigger, Lift Director"></div>
+    <div class="form-group"><label class="form-label">Years Experience</label><input class="form-input" id="a_exp" placeholder="e.g. 12"></div>
+    <div class="form-group"><label class="form-label">Cover Note</label><textarea class="form-textarea" id="a_note" placeholder="Brief intro, relevant experience, availability..."></textarea></div>
+    <button class="submit-btn" onclick="submitApply()">SEND APPLICATION &rarr;</button>
+    <div class="success-msg" id="applySuccess">Application sent! The employer will contact you directly.</div>
   </div>
 </div>
-
+<script src="/config.js"></script>
+<script src="/assets/js/page_ai_context.js"></script>
 <script>
-// ── JOB DATA ──
-const JOBS = [
-  {id:1,title:'Mobile Crane Operator – All-Terrain',company:'Leavitt Cranes',location:'Chicago, IL',type:'Full-Time',role:'Operator',pay:58,payLabel:'$55–62/hr',icon:'🏗',desc:'Operate Grove GMK and Liebherr LTM all-terrain cranes on commercial high-rise and infrastructure projects. Must hold valid NCCCO CCO Mobile Crane – Telescoping Boom cert.',certs:['NCCCO CCO','OSHA 10'],exp:'5+ years',badge:'hot',featured:true,daysAgo:1,email:'jobs@leavittcranes.com'},
-  {id:2,title:'Tower Crane Operator – High-Rise',company:'Maxim Crane Works',location:'New York, NY',type:'Full-Time',role:'Tower',pay:72,payLabel:'$68–78/hr',icon:'🗼',desc:'Operate Potain tower cranes on major high-rise construction projects in Manhattan. NCCCO Tower Crane cert required. Top pay + benefits.',certs:['NCCCO Tower Crane','OSHA 30'],exp:'5+ years',badge:'featured',featured:true,daysAgo:2,email:'hiring@maximcrane.com'},
-  {id:3,title:'Rigger / Signalperson',company:'Barnhart Crane & Rigging',location:'Houston, TX',type:'Full-Time',role:'Rigger',pay:42,payLabel:'$40–46/hr',icon:'⛓',desc:'Experienced rigger and signalperson for industrial heavy lift projects. Petrochemical and refinery experience a plus. CICB Rigger cert required.',certs:['CICB Rigger Cert','OSHA 30'],exp:'3+ years',badge:'new',featured:false,daysAgo:1,email:'hr@barnhartcrane.com'},
-  {id:4,title:'Crawler Crane Operator – Wind Energy',company:'Buckner HeavyLift Cranes',location:'Dallas, TX',type:'Contract',role:'Operator',pay:65,payLabel:'$62–70/hr',icon:'🌀',desc:'Operate Liebherr and Manitowoc heavy crawler cranes on wind farm construction. Travel required. Per diem and housing provided. NCCCO Lattice Boom Crawler cert required.',certs:['NCCCO LBC','CDL'],exp:'7+ years',badge:'hot',featured:true,daysAgo:3,email:'ops@bucknerheavylift.com'},
-  {id:5,title:'Lift Supervisor / Lift Director',company:'TNT Crane & Rigging',location:'Baton Rouge, LA',type:'Full-Time',role:'Supervisor',pay:78,payLabel:'$75–85/hr',icon:'📋',desc:'Responsible for planning, directing, and supervising all critical lifts on a major refinery turnaround. Must have NCCCO Lift Director cert and 10+ years field experience.',certs:['NCCCO Lift Director','OSHA 30'],exp:'10+ years',badge:'featured',featured:true,daysAgo:4,email:'careers@tntcrane.com'},
-  {id:6,title:'Rough Terrain Crane Operator',company:'Stampede Crane & Rigging',location:'Phoenix, AZ',type:'Full-Time',role:'Operator',pay:48,payLabel:'$45–52/hr',icon:'🏗',desc:'Operate Link-Belt and Grove rough terrain cranes on commercial construction sites in the Phoenix metro. NCCCO RT cert required.',certs:['NCCCO RT Crane'],exp:'3+ years',badge:'new',featured:false,daysAgo:2,email:'hr@stampedecrane.com'},
-  {id:7,title:'Mini Crane / Spider Crane Operator',company:'Allied Crane',location:'Los Angeles, CA',type:'Contract',role:'Operator',pay:52,payLabel:'$50–56/hr',icon:'🕷',desc:'Operate Maeda and UNIC spider cranes for interior and rooftop lifts in commercial buildings. Specific experience with mini cranes required. California card preferred.',certs:['CA Crane Cert','NCCCO'],exp:'2+ years',badge:'',featured:false,daysAgo:5,email:'jobs@alliedcrane.com'},
-  {id:8,title:'Crane Operator Apprentice (IUOE)',company:'IUOE Local 150',location:'Chicago, IL',type:'Full-Time',role:'Apprentice',pay:28,payLabel:'$26–38/hr',icon:'👷',desc:'Enter the IUOE Local 150 4-year apprenticeship program. Learn to operate cranes, excavators, and heavy equipment. No prior experience required — just a valid driver\'s license and strong work ethic.',certs:["Driver's License"],exp:'Any',badge:'new',featured:false,daysAgo:1,email:'apprenticeship@iuoe150.org'},
-  {id:9,title:'Senior Rigger – Data Center Construction',company:'Barnhart Crane & Rigging',location:'Atlanta, GA',type:'Full-Time',role:'Rigger',pay:50,payLabel:'$48–55/hr',icon:'⛓',desc:'Senior rigger for data center equipment installation and infrastructure projects. Experience rigging UPS systems, generators, and precision equipment preferred.',certs:['CICB Rigger Cert','OSHA 30'],exp:'5+ years',badge:'',featured:false,daysAgo:6,email:'hr@barnhartcrane.com'},
-  {id:10,title:'Hydraulic Truck Crane Operator',company:'Deep South Crane & Rigging',location:'New Orleans, LA',type:'Full-Time',role:'Operator',pay:50,payLabel:'$48–55/hr',icon:'🏗',desc:'Operate hydraulic truck cranes (Grove and Link-Belt 80-200 ton) on industrial and infrastructure projects across Louisiana. NCCCO Telescoping Boom required.',certs:['NCCCO CCO','TWIC Card'],exp:'3+ years',badge:'',featured:false,daysAgo:7,email:'ops@deepsouthcrane.com'},
-  {id:11,title:'Tower Crane Erector / Dismantler',company:'Maxim Crane Works',location:'Seattle, WA',type:'Contract',role:'Tower',pay:68,payLabel:'$65–75/hr',icon:'🗼',desc:'Experienced tower crane erector for the Pacific Northwest. Climb, erect, and dismantle Potain and Comansa flat-top tower cranes on high-rise projects. Travel within WA/OR.',certs:['NCCCO Tower','OSHA 10'],exp:'5+ years',badge:'',featured:false,daysAgo:3,email:'hiring@maximcrane.com'},
-  {id:12,title:'Carry Deck Crane Operator – Plant Maintenance',company:'CraneWorks',location:'Birmingham, AL',type:'Full-Time',role:'Operator',pay:40,payLabel:'$38–44/hr',icon:'🏭',desc:'Operate Broderson carry deck cranes for plant maintenance and industrial facility turnarounds in Alabama and the Southeast. NCCCO certification preferred.',certs:['NCCCO Preferred'],exp:'2+ years',badge:'',featured:false,daysAgo:8,email:'careers@craneworks.com'},
-];
-
-let activeRole = '';
-let currentJob = null;
-
-function renderJobs(list) {
-  const el = document.getElementById('jobList');
-  document.getElementById('jobCount').innerText = JOBS.length;
-  if (!list.length) {
-    el.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div><div>No jobs match your filters.</div><div style="font-size:13px;margin-top:8px">Try broadening your search or <a href="#" onclick="resetFilters();return false" style="color:var(--gold)">reset filters</a>.</div></div>';
-    document.getElementById('visibleCount').innerText = '0 positions';
-    return;
+var ALL_JOBS=[];var CONTACT_MAP={};var activeType='';var currentJob=null;
+async function loadData(){
+  var banner=document.getElementById('dataBanner');
+  try{
+    var jobsRes=await fetch('/data/static_exports/jobs_feed_items.json');
+    var contactsRes=await fetch('/data/static_exports/job_contact_matches.json');
+    if(!jobsRes.ok)throw new Error('jobs '+jobsRes.status);
+    var jobsData=await jobsRes.json();
+    var contactsData=contactsRes.ok?await contactsRes.json():{matches:[],count:0};
+    var jobs=Array.isArray(jobsData.jobs)?jobsData.jobs:(Array.isArray(jobsData.items)?jobsData.items:[]);
+    var contacts=Array.isArray(contactsData.matches)?contactsData.matches:[];
+    CONTACT_MAP={};
+    contacts.forEach(function(m){var id=m.job_id||m.feed_item_id;if(!id)return;if(!CONTACT_MAP[id])CONTACT_MAP[id]=[];CONTACT_MAP[id].push(m);});
+    ALL_JOBS=jobs.map(function(j){var cm=CONTACT_MAP[j.id]||[];return Object.assign({},j,{contactMatches:cm,matchCount:cm.length||(j.matchCount||0)});});
+    document.getElementById('statJobs').textContent=jobsData.count||jobs.length;
+    document.getElementById('statContacts').textContent=contactsData.count||contacts.length;
+    var ts=jobsData.generated_at?new Date(jobsData.generated_at).toLocaleDateString():'unknown';
+    banner.className='data-banner live';
+    banner.textContent='LIVE DATA - '+jobs.length+' positions loaded - '+contacts.length+' operator matches - export '+ts;
+    applyFilters();
+  }catch(err){
+    console.error('jobs load error:',err);
+    banner.className='data-banner error';
+    banner.textContent='Could not load job data - /data/static_exports/jobs_feed_items.json not found or invalid.';
+    document.getElementById('statJobs').textContent='--';document.getElementById('statContacts').textContent='--';
+    document.getElementById('visibleCount').textContent='';
+    document.getElementById('jobList').innerHTML='<div class="error-state"><div class="error-title">DATA NOT LOADED</div><div class="error-sub">Job data could not be fetched.<br>Run the export script to regenerate, then redeploy.</div></div>';
   }
-  document.getElementById('visibleCount').innerText = list.length + ' position' + (list.length !== 1 ? 's' : '');
-  el.innerHTML = list.map(j => `
-    <div class="job-card ${j.featured?'featured':''}" onclick="openApply(${j.id})">
-      ${j.badge ? `<span class="job-badge ${j.badge}">${j.badge==='hot'?'🔥 Hot':j.badge==='new'?'New':j.badge}</span>` : ''}
-      <div class="job-top">
-        <div class="job-icon">${j.icon}</div>
-        <div style="flex:1;min-width:0">
-          <div class="job-title">${j.title}</div>
-          <div class="job-company">${j.company}</div>
-          <div class="job-meta" style="margin-top:6px">
-            <span>📍 ${j.location}</span>
-            <span>⏱ ${j.type}</span>
-            <span>🕐 ${j.daysAgo === 1 ? 'Today' : j.daysAgo + 'd ago'}</span>
-          </div>
-        </div>
-      </div>
-      <div style="font-size:13px;color:var(--text-dim);line-height:1.5">${j.desc.substring(0,120)}...</div>
-      <div class="job-tags">
-        ${j.certs.map(c=>`<span class="jtag gold">${c}</span>`).join('')}
-        <span class="jtag">${j.exp}</span>
-        <span class="jtag ${j.type==='Contract'?'red':''}">${j.type}</span>
-      </div>
-      <div class="job-footer">
-        <div><div class="job-pay">${j.payLabel}</div><div class="job-pay-label">per hour</div></div>
-        <a class="apply-btn" href="#" onclick="event.stopPropagation();openApply(${j.id});return false">Apply Now →</a>
-      </div>
-    </div>
-  `).join('');
 }
-
-function applyFilters() {
-  const kw = document.getElementById('kwInput').value.toLowerCase();
-  const type = document.getElementById('typeFilter').value;
-  const loc = document.getElementById('locFilter').value;
-  const minPay = parseFloat(document.getElementById('payFilter').value) || 0;
-  const sort = document.getElementById('sortSelect').value;
-  let list = JOBS.filter(j => {
-    if (kw && !j.title.toLowerCase().includes(kw) && !j.company.toLowerCase().includes(kw) && !j.location.toLowerCase().includes(kw) && !j.desc.toLowerCase().includes(kw)) return false;
-    if (type && j.type !== type) return false;
-    if (loc && j.location !== loc) return false;
-    if (j.pay < minPay) return false;
-    if (activeRole && !j.role.includes(activeRole)) return false;
+function typeBadgeClass(t){t=String(t||'').toLowerCase();if(t.includes('full'))return'fulltime';if(t.includes('contract'))return'contract';return'temporary';}
+function renderJobs(list){
+  var el=document.getElementById('jobList');
+  document.getElementById('visibleCount').textContent=list.length+' position'+(list.length!==1?'s':'')+' shown';
+  if(!list.length){el.innerHTML='<div class="empty-state"><div class="empty-icon">&#x1F3D7;</div><div class="empty-title">NO JOBS FOUND</div><div class="empty-sub">No positions match your filters. Try broadening your search or post an opening.</div><a href="#" class="btn-gold-sm" style="max-width:240px;margin:0 auto" onclick="openModal('post');return false">Post a Job - Free</a></div>';return;}
+  el.innerHTML=list.map(function(j){
+    var hasC=j.matchCount>0;
+    var desc=String(j.description||j.desc||'').substring(0,180);
+    var tags=Array.isArray(j.tags)?j.tags:(Array.isArray(j.certs_required)?j.certs_required:[]);
+    var tc=typeBadgeClass(j.job_type||j.type);var tl=String(j.job_type||j.type||'Contract');
+    var pay=j.pay_rate||j.pay||j.rate||'';var loc=j.location||j.city||'';var daysAgo=j.daysAgo||j.days_ago||0;
+    return '<div class="job-card'+(j.featured?' featured':'')+(hasC?' has-contacts':'')+'" onclick="openApply(''+j.id+'')">'+
+      '<span class="job-type-badge '+tc+'">'+tl+'</span>'+
+      '<div class="job-title">'+String(j.title||j.job_title||'Crane Operator')+'</div>'+
+      '<div class="job-company">'+String(j.company||j.company_name||'Contractor')+'</div>'+
+      '<div class="job-meta">'+(loc?'<span>&#x1F4CD; '+loc+'</span>':'')+(daysAgo?'<span>'+daysAgo+'d ago</span>':'<span>New</span>')+'</div>'+
+      (hasC?'<div class="contact-match-badge">Operator Matches<span class="contact-match-count">'+j.matchCount+' candidates</span></div>':'')+
+      (desc?'<div class="job-desc">'+desc+'</div>':'')+
+      (tags.length?'<div class="job-tags">'+tags.slice(0,5).map(function(t){return'<span class="job-tag">'+t+'</span>';}).join('')+'</div>':'')+
+      '<div class="job-footer">'+
+      (pay?'<div><div class="job-pay">'+pay+'</div><div class="job-pay-label">pay rate</div></div>':'<div></div>')+
+      '<div style="display:flex;gap:8px;align-items:center">'+
+      '<a href="#" style="font-size:11px;color:var(--gold);text-decoration:none" onclick="event.stopPropagation();askAiAboutJob(''+j.id+'');return false">Ask AI</a>'+
+      '<button class="apply-btn" onclick="event.stopPropagation();openApply(''+j.id+'')">Apply Now &rarr;</button>'+
+      '</div></div></div>';
+  }).join('');
+}
+function applyFilters(){
+  var kw=document.getElementById('kwInput').value.toLowerCase();
+  var loc=document.getElementById('locInput').value.toLowerCase();
+  var mo=document.getElementById('matchFilter').value==='matched';
+  var so=document.getElementById('sortSelect').value;
+  var list=ALL_JOBS.filter(function(j){
+    var s=[j.title,j.job_title,j.company,j.company_name,j.location,j.city,j.description,Array.isArray(j.tags)?j.tags.join(' '):''].join(' ').toLowerCase();
+    if(kw&&s.indexOf(kw)<0)return false;
+    if(loc&&s.indexOf(loc)<0)return false;
+    if(mo&&j.matchCount===0)return false;
+    if(activeType&&String(j.job_type||j.type||'').indexOf(activeType)<0)return false;
     return true;
   });
-  if (sort === 'pay') list.sort((a,b) => b.pay - a.pay);
-  else if (sort === 'featured') list.sort((a,b) => (b.featured?1:0) - (a.featured?1:0));
-  else list.sort((a,b) => a.daysAgo - b.daysAgo);
+  if(so==='pay')list.sort(function(a,b){return parseFloat(String(b.pay_rate||b.pay||0))-parseFloat(String(a.pay_rate||a.pay||0));});
+  else if(so==='matches')list.sort(function(a,b){return(b.matchCount||0)-(a.matchCount||0);});
+  else list.sort(function(a,b){return(a.daysAgo||a.days_ago||0)-(b.daysAgo||b.days_ago||0);});
   renderJobs(list);
 }
-
-function resetFilters() {
-  document.getElementById('kwInput').value = '';
-  document.getElementById('typeFilter').value = '';
-  document.getElementById('locFilter').value = '';
-  document.getElementById('payFilter').value = '';
-  activeRole = '';
-  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.role === ''));
-  applyFilters();
-}
-
-// Role chips
-document.getElementById('roleChips').addEventListener('click', e => {
-  if (!e.target.classList.contains('chip')) return;
-  activeRole = e.target.dataset.role;
-  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-  e.target.classList.add('active');
-  applyFilters();
+document.getElementById('typeChips').addEventListener('click',function(e){
+  if(!e.target.classList.contains('chip'))return;
+  activeType=e.target.dataset.type;
+  document.querySelectorAll('#typeChips .chip').forEach(function(c){c.classList.remove('active');});
+  e.target.classList.add('active');applyFilters();
 });
-
-function openModal(type) { document.getElementById(type+'Modal').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeModal(type) { document.getElementById(type+'Modal').classList.remove('open'); document.body.style.overflow=''; }
-
-function openApply(id) {
-  currentJob = JOBS.find(j => j.id === id);
-  document.getElementById('applyJobTitle').innerText = 'Applying for: ' + currentJob.title + ' at ' + currentJob.company;
-  openModal('apply');
-}
-
-function submitJob() {
-  const t = document.getElementById('p_title').value.trim();
-  const c = document.getElementById('p_company').value.trim();
-  const e = document.getElementById('p_email').value.trim();
-  if (!t || !c || !e) { alert('Please fill in required fields (Title, Company, Email).'); return; }
-  // In production: POST to Formspree or backend
-  fetch('https://formspree.io/f/mgoldjjb', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      form_type: 'job_posting',
-      title: t, company: c,
-      location: document.getElementById('p_location').value,
-      type: document.getElementById('p_type').value,
-      pay: document.getElementById('p_pay').value,
-      certs: document.getElementById('p_certs').value,
-      desc: document.getElementById('p_desc').value,
-      email: e
-    })
-  }).catch(()=>{});
-  document.getElementById('postSuccess').style.display = 'block';
-}
-
-function submitApply() {
-  const f = document.getElementById('a_first').value.trim();
-  const e = document.getElementById('a_email').value.trim();
-  if (!f || !e) { alert('Please fill in required fields.'); return; }
-  fetch('https://formspree.io/f/mgoldjjb', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      form_type: 'job_application',
-      job_title: currentJob?.title,
-      job_company: currentJob?.company,
-      applicant_name: f + ' ' + document.getElementById('a_last').value,
-      email: e, phone: document.getElementById('a_phone').value,
-      location: document.getElementById('a_loc').value,
-      experience: document.getElementById('a_exp').value,
-      certs: document.getElementById('a_certs').value,
-      message: document.getElementById('a_msg').value
-    })
-  }).catch(()=>{});
-  document.getElementById('applySuccess').style.display = 'block';
-}
-
-// Close modal on overlay click
-document.querySelectorAll('.modal-overlay').forEach(o => o.addEventListener('click', e => { if (e.target === o) { o.classList.remove('open'); document.body.style.overflow=''; }}));
-
-renderJobs(JOBS);
+function openModal(t){document.getElementById(t+'Modal').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(t){document.getElementById(t+'Modal').classList.remove('open');document.body.style.overflow='';}
+document.querySelectorAll('.modal-overlay').forEach(function(o){o.addEventListener('click',function(e){if(e.target===o){o.classList.remove('open');document.body.style.overflow='';}});});
+function openApply(id){currentJob=ALL_JOBS.find(function(j){return String(j.id)===String(id);});if(!currentJob)return;document.getElementById('applyJobTitle').textContent='Position: '+(currentJob.title||currentJob.job_title||'Crane Operator')+' at '+(currentJob.company||currentJob.company_name||'Contractor');openModal('apply');}
+function askAiAboutJob(id){var j=ALL_JOBS.find(function(x){return String(x.id)===String(id);});if(!j)return;var msg='Summarize this job posting: '+(j.title||j.job_title)+' at '+(j.company||j.company_name)+', '+(j.location||'')+'. What operator would be the best match?';var input=document.getElementById('cg-bot-input');var send=document.getElementById('cg-bot-send');if(input&&send){var toggle=document.getElementById('cg-bot-toggle');var panel=document.getElementById('cg-bot-chat');if(panel&&panel.style.display!=='block'&&toggle)toggle.click();input.value=msg;send.click();return;}alert('Use the AI button in the bottom-right corner.');}
+var DISALLOWED_RE=/(osha|asme|ansi|state board|licensing board|department of labor|federal|county|city of|commission|authority|regulator|regulatory)/i;
+function submitJob(){var title=document.getElementById('j_title').value.trim();var company=document.getElementById('j_company').value.trim();var email=document.getElementById('j_email').value.trim();var loc=document.getElementById('j_loc').value.trim();var desc=document.getElementById('j_desc').value.trim();if(!title||!company||!email||!loc||!desc){alert('All required fields must be filled.');return;}if(DISALLOWED_RE.test(company)){alert('Regulatory/governing organization postings are not accepted.');return;}fetch('https://formspree.io/f/mgoldjjb',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({form_type:'job_posting',title:title,company:company,email:email,location:loc,job_type:document.getElementById('j_type').value,pay_rate:document.getElementById('j_pay').value,start_date:document.getElementById('j_start').value,description:desc,moderation_status:'pending_review'})}).catch(function(){});document.getElementById('postSuccess').style.display='block';}
+function submitApply(){var name=document.getElementById('a_name').value.trim();var email=document.getElementById('a_email').value.trim();if(!name||!email){alert('Name and email are required.');return;}fetch('https://formspree.io/f/mgoldjjb',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({form_type:'job_application',moderation_status:'pending_review',job_title:currentJob?currentJob.title||currentJob.job_title:'',company:currentJob?currentJob.company||currentJob.company_name:'',applicant_name:name,applicant_email:email,applicant_phone:document.getElementById('a_phone').value,role_cert:document.getElementById('a_role').value,experience:document.getElementById('a_exp').value,note:document.getElementById('a_note').value})}).catch(function(){});document.getElementById('applySuccess').style.display='block';}
+loadData();
 </script>
 </body>
 </html>
