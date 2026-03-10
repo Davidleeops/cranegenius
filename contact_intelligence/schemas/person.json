@@ -1,0 +1,1 @@
+{"type":"object","required":["company_id","full_name"],"properties":{"person_id":{"type":"string"},"company_id":{"type":"string"},"full_name":{"type":"string"},"title":{"type":"string"},"title_relevance_score":{"type":"number"},"buyer_fit_score":{"type":"number"},"source_count":{"type":"integer"},"source_provenance":{"type":"array","items":{"type":"string"}}}}

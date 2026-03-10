@@ -1,0 +1,1 @@
+{"type":"object","required":["company_name_normalized"],"properties":{"company_id":{"type":"string"},"company_name_raw":{"type":"string"},"company_name_normalized":{"type":"string"},"canonical_domain":{"type":"string"},"domain_confidence":{"type":"number"},"source_count":{"type":"integer"},"source_provenance":{"type":"array","items":{"type":"string"}}}}

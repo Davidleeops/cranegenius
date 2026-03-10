@@ -1,0 +1,1 @@
+{"type":"object","properties":{"source_file":{"type":"string"},"source_row_number":{"type":"integer"},"source_count":{"type":"integer"},"notes":{"type":"string"}}}

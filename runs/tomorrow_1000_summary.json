@@ -1,0 +1,12 @@
+{
+  "total": 1000,
+  "spider": 14,
+  "broad": 986,
+  "counts": {
+    "rows_seen:data/outbound/enriched_legacy_spider_direct.csv": 14,
+    "rows_seen:data/outbound/enriched_outbound_likely_spider_mini.csv": 0,
+    "rows_seen:data/outbound/enriched_legacy_broad_equipment.csv": 2000,
+    "rows_seen:data/outbound/enriched_outbound_broader_projects.csv": 6,
+    "excluded_duplicate_email": 14
+  }
+}

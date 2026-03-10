@@ -1,0 +1,1 @@
+{"type":"object","required":["person_id","primary_email"],"properties":{"person_id":{"type":"string"},"company_id":{"type":"string"},"primary_email":{"type":"string"},"domain":{"type":"string"},"email_confidence":{"type":"number"},"verification_status":{"type":"string"},"fallback_flag":{"type":"integer"}}}

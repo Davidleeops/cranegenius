@@ -1,0 +1,15 @@
+{
+  "files_created": [
+    "data/outbound/enriched_legacy_broad_equipment.csv",
+    "data/outbound/enriched_legacy_spider_direct.csv",
+    "data/outbound/enriched_outbound_broader_projects.csv",
+    "data/outbound/enriched_outbound_likely_spider_mini.csv"
+  ],
+  "counts": {
+    "rows_seen:data/outbound/legacy_broad_equipment.csv": 2000,
+    "rows_enriched": 2020,
+    "rows_seen:data/outbound/legacy_spider_direct.csv": 14,
+    "rows_seen:data/outbound/outbound_broader_projects.csv": 6,
+    "rows_seen:data/outbound/outbound_likely_spider_mini.csv": 0
+  }
+}
