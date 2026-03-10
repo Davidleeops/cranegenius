@@ -1,0 +1,110 @@
+{
+  "outbound_generation_summary": {
+    "total_usable_outbound_rows": 6,
+    "mini_rows": 0,
+    "broad_rows": 6,
+    "top_exclusion_reasons": [
+      [
+        "excluded_duplicate_email_global",
+        17731
+      ],
+      [
+        "source:internal:nyc_call_list.csv:excluded_blank_email",
+        1502
+      ],
+      [
+        "source:internal:contact_conflicts.csv:excluded_blank_email",
+        289
+      ],
+      [
+        "source:internal:dc_outreach_emails.csv:excluded_blank_email",
+        204
+      ],
+      [
+        "source:internal:dc_outreach_emails_safe.csv:excluded_blank_email",
+        204
+      ],
+      [
+        "excluded_duplicate_email_final",
+        103
+      ],
+      [
+        "source:internal:catchall_review.csv:excluded_duplicate_within_source",
+        88
+      ],
+      [
+        "source:internal:sender_ready_hot.csv:excluded_duplicate_within_source",
+        84
+      ],
+      [
+        "source:internal:discovered_contacts.csv:excluded_duplicate_within_source",
+        38
+      ],
+      [
+        "source:internal:monday_people_found.csv:excluded_blank_email",
+        5
+      ]
+    ]
+  },
+  "legacy_outbound_summary": {
+    "final_usable_rows": null,
+    "spider_rows": null,
+    "segment_counts": {},
+    "exclusion_counts": {}
+  },
+  "project_export_counts": {},
+  "bottlenecks_ranked": [
+    [
+      "excluded_duplicate_email_global",
+      17731
+    ],
+    [
+      "source:internal:nyc_call_list.csv:excluded_blank_email",
+      1502
+    ],
+    [
+      "source:internal:contact_conflicts.csv:excluded_blank_email",
+      289
+    ],
+    [
+      "source:internal:dc_outreach_emails.csv:excluded_blank_email",
+      204
+    ],
+    [
+      "source:internal:dc_outreach_emails_safe.csv:excluded_blank_email",
+      204
+    ],
+    [
+      "excluded_duplicate_email_final",
+      103
+    ],
+    [
+      "source:internal:catchall_review.csv:excluded_duplicate_within_source",
+      88
+    ],
+    [
+      "source:internal:sender_ready_hot.csv:excluded_duplicate_within_source",
+      84
+    ],
+    [
+      "source:internal:discovered_contacts.csv:excluded_duplicate_within_source",
+      38
+    ],
+    [
+      "source:internal:monday_people_found.csv:excluded_blank_email",
+      5
+    ],
+    [
+      "projects_without_contact_match",
+      5
+    ],
+    [
+      "source:internal:sender_ready_warm.csv:excluded_duplicate_within_source",
+      4
+    ],
+    [
+      "source:internal:monday_low_confidence_domains.csv:excluded_blank_email",
+      2
+    ]
+  ]
+}

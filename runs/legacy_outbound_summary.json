@@ -1,0 +1,23 @@
+{
+  "files_created": [
+    "data/outbound/legacy_spider_direct.csv",
+    "data/outbound/legacy_broad_equipment.csv"
+  ],
+  "final_usable_rows": 2000,
+  "spider_rows": 14,
+  "segment_counts": {
+    "legacy_broad_equipment": 1986,
+    "legacy_spider_direct": 14
+  },
+  "exclusion_counts": {},
+  "source_file_counts": {
+    "/Users/lemueldavidleejr/Downloads/5d4729e4-27d9-42ae-9b7a-148d2641873d.csv": {
+      "rows_seen": 2000,
+      "rows_usable": 2000
+    }
+  },
+  "all_counts": {
+    "rows_seen": 2000,
+    "rows_usable": 2000
+  }
+}

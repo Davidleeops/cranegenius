@@ -1,0 +1,77 @@
+# Phase 0 Inventory
+
+## Relevant Files
+- `contact_intelligence/scripts/backup_db.py`
+- `contact_intelligence/scripts/build_outbound_candidates.py`
+- `contact_intelligence/scripts/build_project_intelligence.py`
+- `contact_intelligence/scripts/dedupe_people_companies.py`
+- `contact_intelligence/scripts/export_project_intelligence.py`
+- `contact_intelligence/scripts/export_static_json.py`
+- `contact_intelligence/scripts/export_views.py`
+- `contact_intelligence/scripts/import_csv.py`
+- `contact_intelligence/scripts/import_seed_data.py`
+- `contact_intelligence/scripts/init_db.py`
+- `contact_intelligence/scripts/log_feedback.py`
+- `contact_intelligence/scripts/normalize_and_match_feeds.py`
+- `contact_intelligence/scripts/normalize_records.py`
+- `contact_intelligence/scripts/run_gold_truth_checks.py`
+- `contact_intelligence/scripts/score_domain_evidence.py`
+- `contact_intelligence/scripts/search_cli.py`
+- `contact_intelligence/scripts/update_contact_patterns.py`
+- `data/outbound/outbound_broader_projects.csv`
+- `data/outbound/outbound_likely_spider_mini.csv`
+- `data/static_exports/manpower_export_meta.json`
+- `data/static_exports/manpower_job_matches.json`
+- `data/static_exports/manpower_profiles.json`
+- `data/static_exports/mini_opportunity_candidates.json`
+- `data/static_exports/project_candidates.json`
+- `data/static_exports/recommended_expansion_candidates.json`
+- `data/static_exports/top_project_candidates.json`
+- `runs/outbound_generation_summary.json`
+- `runs/verification_summary.json`
+- `src/__init__.py`
+- `src/candidate_builder.py`
+- `src/company_resolver.py`
+- `src/company_selector.py`
+- `src/contact_page_finder.py`
+- `src/crm_contact_importer.py`
+- `src/domain_dedupe.py`
+- `src/domain_discovery.py`
+- `src/domain_enricher_claude.py`
+- `src/exporter.py`
+- `src/google_domain_enricher.py`
+- `src/ingest.py`
+- `src/monday_campaign_fast_path.py`
+- `src/monday_company_list_fast_path.py`
+- `src/monday_individual_contact_generation.py`
+- `src/monday_people_pipeline.py`
+- `src/monitor.py`
+- `src/parse_normalize.py`
+- `src/people_discovery.py`
+- `src/people_email_generator.py`
+- `src/pipeline.py`
+- `src/score_filter.py`
+- `src/sheets_exporter.py`
+- `src/site_contact_miner.py`
+- `src/stage9_email_writer.py`
+- `src/utils.py`
+- `src/verify_millionverifier.py`
+
+## Baseline Snapshot
+- outbound usable rows: `6`
+- legacy usable rows: `None`
+
+## Top Bottlenecks
+- `excluded_duplicate_email_global`: 17731
+- `source:internal:nyc_call_list.csv:excluded_blank_email`: 1502
+- `source:internal:contact_conflicts.csv:excluded_blank_email`: 289
+- `source:internal:dc_outreach_emails.csv:excluded_blank_email`: 204
+- `source:internal:dc_outreach_emails_safe.csv:excluded_blank_email`: 204
+- `excluded_duplicate_email_final`: 103
+- `source:internal:catchall_review.csv:excluded_duplicate_within_source`: 88
+- `source:internal:sender_ready_hot.csv:excluded_duplicate_within_source`: 84
+- `source:internal:discovered_contacts.csv:excluded_duplicate_within_source`: 38
+- `source:internal:monday_people_found.csv:excluded_blank_email`: 5
+- `projects_without_contact_match`: 5
+- `source:internal:sender_ready_warm.csv:excluded_duplicate_within_source`: 4
+- `source:internal:monday_low_confidence_domains.csv:excluded_blank_email`: 2
