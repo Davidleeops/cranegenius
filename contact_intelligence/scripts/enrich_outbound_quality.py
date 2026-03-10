@@ -5,9 +5,7 @@ from pathlib import Path
 from collections import Counter
 
 EMAIL_RE = re.compile(r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")
-FREE_DOMAINS = {
-    "gmail.com","yahoo.com","hotmail.com","outlook.com","icloud.com","aol.com","proton.me","protonmail.com","msn.com","live.com"
-}
+FREE_DOMAINS = {"gmail.com","yahoo.com","hotmail.com","outlook.com","icloud.com","aol.com","proton.me","protonmail.com","msn.com","live.com"}
 
 INPUTS = [
     "data/outbound/legacy_broad_equipment.csv",
@@ -17,7 +15,6 @@ INPUTS = [
 ]
 
 def norm(v): return str(v or "").strip()
-
 def to_float(v, d=0.0):
     try: return float(v)
     except Exception: return d
@@ -26,10 +23,16 @@ def domain_from_email(e):
     e = norm(e).lower()
     return e.split("@",1)[1] if "@" in e else ""
 
-def parse_verification(row):
+def parse_verification(row, mv_cache):
+    email = norm(row.get("email")).lower()
+    if email and email in mv_cache:
+        r = norm(mv_cache[email].get("result")).lower()
+        if r in {"valid","invalid","catchall","unknown","risky"}:
+            return r
     for k in ("verification_status","email_verification_result","mv_result","millionverifier_result"):
-        if norm(row.get(k)).lower() in {"valid","invalid","catchall","unknown","risky"}:
-            return norm(row.get(k)).lower()
+        r = norm(row.get(k)).lower()
+        if r in {"valid","invalid","catchall","unknown","risky"}:
+            return r
     return "unknown"
 
 def domain_conf(domain):
@@ -66,42 +69,10 @@ def source_count(v):
     s = norm(v)
     return 1 + s.count(" + ") if s else 1
 
-def enrich_rows(rows, src_file, counts):
-    out = []
-    for r in rows:
-        email = norm(r.get("email")).lower()
-        if not email: counts["excluded_blank_email"] += 1; continue
-        if not EMAIL_RE.match(email): counts["excluded_malformed_email"] += 1; continue
-        domain = norm(r.get("domain")).lower() or domain_from_email(email)
-        company = norm(r.get("company_name"))
-        if not company and not domain: counts["excluded_missing_company_and_domain"] += 1; continue
-
-        verification = parse_verification(r)
-        dconf = domain_conf(domain)
-        tref = title_rel(" ".join([norm(r.get("contact_name")), norm(r.get("reason_for_targeting"))]))
-        bfit = buyer_fit(r)
-        econf = email_conf(email, domain, verification)
-        fallback = 1 if (verification != "valid" and econf < 0.80) else 0
-
-        rr = dict(r)
-        rr["domain"] = domain
-        rr["domain_confidence"] = dconf
-        rr["title_relevance_score"] = tref
-        rr["buyer_fit_score"] = bfit
-        rr["email_confidence"] = econf
-        rr["verification_status"] = verification
-        rr["fallback_flag"] = fallback
-        rr["provenance_source_count"] = source_count(r.get("source_file"))
-        rr["quality_source_file"] = src_file
-        out.append(rr)
-        counts["rows_enriched"] += 1
-    return out
-
 def read_csv(path):
     if not path.exists(): return []
     with path.open("r", encoding="utf-8-sig", newline="") as f:
-        r = csv.DictReader(f)
-        return list(r)
+        return list(csv.DictReader(f))
 
 def write_csv(path, rows):
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -113,11 +84,15 @@ def write_csv(path, rows):
         "reason_for_targeting","source_file","source_row_number",
         "domain_confidence","title_relevance_score","buyer_fit_score","email_confidence",
         "verification_status","fallback_flag","provenance_source_count","quality_source_file"
-    ]
-    cols = cols + sorted([k for k in keys if k not in cols])
+    ] + sorted([k for k in keys if k not in {
+        "company_name","contact_name","email","domain","city","state","province","country",
+        "project_name","signal_type","opportunity_type","targeting_segment","inferred_segment",
+        "reason_for_targeting","source_file","source_row_number",
+        "domain_confidence","title_relevance_score","buyer_fit_score","email_confidence",
+        "verification_status","fallback_flag","provenance_source_count","quality_source_file"
+    }])
     with path.open("w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=cols)
-        w.writeheader(); w.writerows(rows)
+        w = csv.DictWriter(f, fieldnames=cols); w.writeheader(); w.writerows(rows)
 
 def main():
     ap = argparse.ArgumentParser()
@@ -125,22 +100,53 @@ def main():
     args = ap.parse_args()
     repo = Path(args.repo).resolve()
 
+    mv_cache = {}
+    mv_path = repo / "runs" / "mv_verification_cache.json"
+    if mv_path.exists():
+        try:
+            mv_cache = json.loads(mv_path.read_text(encoding="utf-8"))
+        except Exception:
+            mv_cache = {}
+
     counts = Counter()
     out_paths = []
     for rel in INPUTS:
-        p = repo / rel
-        rows = read_csv(p)
+        rows = read_csv(repo / rel)
         counts[f"rows_seen:{rel}"] = len(rows)
-        enriched = enrich_rows(rows, rel, counts)
-        out_rel = rel.replace("data/outbound/", "data/outbound/enriched_")
-        out_p = repo / out_rel
-        write_csv(out_p, enriched)
-        out_paths.append(str(out_p.relative_to(repo)))
+        enriched = []
+        for r in rows:
+            email = norm(r.get("email")).lower()
+            if not email: counts["excluded_blank_email"] += 1; continue
+            if not EMAIL_RE.match(email): counts["excluded_malformed_email"] += 1; continue
+            domain = norm(r.get("domain")).lower() or domain_from_email(email)
+            company = norm(r.get("company_name"))
+            if not company and not domain: counts["excluded_missing_company_and_domain"] += 1; continue
 
-    runs = repo / "runs"
-    runs.mkdir(exist_ok=True)
-    summary = {"files_created": out_paths, "counts": dict(counts)}
-    (runs / "phase2_quality_metrics.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+            verification = parse_verification(r, mv_cache)
+            dconf = domain_conf(domain)
+            tref = title_rel(" ".join([norm(r.get("contact_name")), norm(r.get("reason_for_targeting"))]))
+            bfit = buyer_fit(r)
+            econf = email_conf(email, domain, verification)
+            fallback = 1 if (verification != "valid" and econf < 0.80) else 0
+
+            rr = dict(r)
+            rr["domain"] = domain
+            rr["domain_confidence"] = dconf
+            rr["title_relevance_score"] = tref
+            rr["buyer_fit_score"] = bfit
+            rr["email_confidence"] = econf
+            rr["verification_status"] = verification
+            rr["fallback_flag"] = fallback
+            rr["provenance_source_count"] = source_count(r.get("source_file"))
+            rr["quality_source_file"] = rel
+            enriched.append(rr)
+            counts["rows_enriched"] += 1
+
+        out_rel = rel.replace("data/outbound/", "data/outbound/enriched_")
+        write_csv(repo / out_rel, enriched)
+        out_paths.append(out_rel)
+
+    (repo / "runs" / "phase2_quality_metrics.json").write_text(json.dumps({"files_created": out_paths, "counts": dict(counts)}, indent=2), encoding="utf-8")
     print("Wrote runs/phase2_quality_metrics.json")
     for p in out_paths: print("Created:", p)
 
