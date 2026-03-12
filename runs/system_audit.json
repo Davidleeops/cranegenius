@@ -1,0 +1,3371 @@
+{
+  "generated_at": "2026-03-12T22:02:54.302215+00:00",
+  "repo_root": "/Users/lemueldavidleejr/Downloads/cranegenius_repo",
+  "audit_scope": {
+    "included": [
+      "*.py",
+      "*.js",
+      "*.jsx",
+      "*.sh",
+      "*.bak.* executable snapshots"
+    ],
+    "excluded": [
+      "HTML pages, static assets, images, JSON/YAML/TOML configuration files, generated data files"
+    ]
+  },
+  "test_command": "python3 -m unittest discover -s tests -v",
+  "test_result": "passed (61 tests)",
+  "status_counts": {
+    "Working": 82,
+    "Unused": 24,
+    "Partial": 20,
+    "Broken": 2
+  },
+  "pipeline_counts": {
+    "frontend_runtime": 8,
+    "contact_intelligence_v2": 12,
+    "project_intelligence": 6,
+    "market_intel": 7,
+    "learning_memory": 6,
+    "intent_pipeline": 23,
+    "llm_cli": 6,
+    "monday_people_pipeline": 10,
+    "test_suite": 6
+  },
+  "components": [
+    {
+      "path": "assets/js/page_ai_context.js",
+      "type": "js",
+      "entry_point": "javascript module/script",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [
+        "frontend_runtime"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "TASK.md",
+        "acquisitions/index.html",
+        "directory/index.html",
+        "jobs/index.html",
+        "manpower/index.html",
+        "scripts/audit_page_ai_context.py",
+        "sell-your-company/index.html"
+      ]
+    },
+    {
+      "path": "cloudflare/worker.js",
+      "type": "js",
+      "entry_point": "javascript module/script",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [
+        "frontend_runtime"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "config.example.js",
+      "type": "js",
+      "entry_point": "javascript module/script",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [
+        "frontend_runtime"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Unused",
+      "status_reason": "Standalone helper or migration artifact with no active pipeline references.",
+      "syntax_error": null,
+      "repo_references": [
+        "cloudflare/README.md"
+      ]
+    },
+    {
+      "path": "config.js",
+      "type": "js",
+      "entry_point": "javascript module/script",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [
+        "frontend_runtime"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "TASK.md",
+        "acquisitions/index.html",
+        "cloudflare/README.md",
+        "config.example.js",
+        "data-centers/ai-planner/index.html",
+        "directory/index.html",
+        "index.html",
+        "jobs/index.html",
+        "manpower/index.html",
+        "marketplace/index.html",
+        "sell-your-company/index.html"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/add_permit_personalization.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [
+        "data/static_exports/opportunity_feed_items.json",
+        "data/opportunities/permits_imported.json"
+      ],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "csv",
+        "datetime",
+        "json",
+        "pathlib",
+        "re"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "contact_intelligence/scripts/backup_db.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "datetime",
+        "os",
+        "pathlib",
+        "sqlite3",
+        "sys"
+      ],
+      "pipeline_connections": [
+        "contact_intelligence_v2"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "contact_intelligence/TASK.md",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/build_legacy_outbound.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "collections",
+        "csv",
+        "json",
+        "pathlib",
+        "re",
+        "urllib.parse"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "contact_intelligence/scripts/build_outbound_candidates.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [
+        "data/static_exports/project_candidates.json",
+        "data/static_exports/top_project_candidates.json",
+        "data/static_exports/recommended_expansion_candidates.json",
+        "data/outbound/outbound_likely_spider_mini.csv",
+        "data/outbound/outbound_broader_projects.csv"
+      ],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "collections",
+        "csv",
+        "json",
+        "pathlib",
+        "re",
+        "urllib.parse"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/build_project_intelligence.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "datetime",
+        "hashlib",
+        "json",
+        "os",
+        "pathlib",
+        "re",
+        "sqlite3",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "project_intelligence"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "AGENT_WORK_BOUNDARIES.md",
+        "contact_intelligence/docs/project_intelligence_layer.md",
+        "runs/phase0_inventory.md",
+        "scripts/add_mini_crane_logic.py"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/dedupe_people_companies.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "csv",
+        "datetime",
+        "os",
+        "pathlib",
+        "rapidfuzz",
+        "sqlite3",
+        "sys"
+      ],
+      "pipeline_connections": [
+        "contact_intelligence_v2"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "AGENT_WORK_BOUNDARIES.md",
+        "contact_intelligence/TASK.md",
+        "contact_intelligence/docs/README.md",
+        "contact_intelligence/docs/integration_notes.md",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/enrich_outbound_quality.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [
+        "data/outbound/",
+        "data/outbound/enriched_"
+      ],
+      "outputs": [
+        "data/outbound/legacy_broad_equipment.csv",
+        "data/outbound/legacy_spider_direct.csv",
+        "data/outbound/outbound_broader_projects.csv",
+        "data/outbound/outbound_likely_spider_mini.csv"
+      ],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "collections",
+        "csv",
+        "json",
+        "pathlib",
+        "re"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "contact_intelligence/scripts/export_project_intelligence.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "csv",
+        "json",
+        "openpyxl",
+        "openpyxl.styles",
+        "os",
+        "pathlib",
+        "sqlite3"
+      ],
+      "pipeline_connections": [
+        "project_intelligence"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "AGENT_WORK_BOUNDARIES.md",
+        "contact_intelligence/docs/project_intelligence_layer.md",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/export_static_json.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "datetime",
+        "json",
+        "os",
+        "pathlib",
+        "sqlite3",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "project_intelligence"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "AGENT_WORK_BOUNDARIES.md",
+        "contact_intelligence/docs/static_json_exports.md",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/export_tomorrows_1000.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [
+        "data/outbound/enriched_legacy_spider_direct.csv",
+        "data/outbound/enriched_outbound_likely_spider_mini.csv",
+        "data/outbound/enriched_legacy_broad_equipment.csv",
+        "data/outbound/enriched_outbound_broader_projects.csv"
+      ],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "collections",
+        "csv",
+        "json",
+        "pathlib",
+        "re"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "contact_intelligence/scripts/export_views.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "csv",
+        "openpyxl",
+        "openpyxl.styles",
+        "os",
+        "pathlib",
+        "sqlite3",
+        "sys"
+      ],
+      "pipeline_connections": [
+        "contact_intelligence_v2"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "AGENT_WORK_BOUNDARIES.md",
+        "contact_intelligence/TASK.md",
+        "contact_intelligence/docs/README.md",
+        "enrich_ci.py",
+        "enrich_free.py",
+        "filter_to_chicago.py",
+        "fix2.py",
+        "fix_ci.py",
+        "import_apollo.py",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/finalize_outbound_copy.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "csv",
+        "pathlib",
+        "random",
+        "re"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "contact_intelligence/scripts/import_csv.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "csv",
+        "json",
+        "os",
+        "pathlib",
+        "sqlite3",
+        "sys"
+      ],
+      "pipeline_connections": [
+        "contact_intelligence_v2"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "contact_intelligence/TASK.md",
+        "contact_intelligence/docs/README.md",
+        "contact_intelligence/docs/integration_notes.md",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/import_seed_data.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "csv",
+        "json",
+        "os",
+        "pathlib",
+        "re",
+        "sqlite3",
+        "sys"
+      ],
+      "pipeline_connections": [
+        "contact_intelligence_v2"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "contact_intelligence/TASK.md",
+        "contact_intelligence/docs/integration_notes.md",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/init_db.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "os",
+        "pathlib",
+        "sqlite3",
+        "sys"
+      ],
+      "pipeline_connections": [
+        "contact_intelligence_v2"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "contact_intelligence/TASK.md",
+        "contact_intelligence/docs/README.md",
+        "install_contact_intelligence.py",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/log_feedback.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "csv",
+        "datetime",
+        "os",
+        "pathlib",
+        "sqlite3",
+        "sys"
+      ],
+      "pipeline_connections": [
+        "contact_intelligence_v2"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "contact_intelligence/docs/README.md",
+        "contact_intelligence/docs/integration_notes.md",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/normalize_and_match_feeds.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "json",
+        "os",
+        "pathlib",
+        "re",
+        "sqlite3",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "project_intelligence"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "AGENT_WORK_BOUNDARIES.md",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/normalize_records.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "json",
+        "os",
+        "pathlib",
+        "re",
+        "sqlite3",
+        "sys"
+      ],
+      "pipeline_connections": [
+        "contact_intelligence_v2"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "contact_intelligence/TASK.md",
+        "contact_intelligence/docs/README.md",
+        "contact_intelligence/docs/integration_notes.md",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/reply_from_inbox.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [
+        "runs/reply_drafts_from_inbox.csv"
+      ],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "csv",
+        "openpyxl",
+        "pathlib",
+        "re"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "contact_intelligence/scripts/run_gold_truth_checks.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "csv",
+        "datetime",
+        "os",
+        "pathlib",
+        "sqlite3",
+        "sys"
+      ],
+      "pipeline_connections": [
+        "contact_intelligence_v2"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/score_domain_evidence.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "os",
+        "pathlib",
+        "sqlite3",
+        "sys"
+      ],
+      "pipeline_connections": [
+        "contact_intelligence_v2"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "contact_intelligence/TASK.md",
+        "contact_intelligence/docs/README.md",
+        "contact_intelligence/docs/integration_notes.md",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/search_cli.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "csv",
+        "os",
+        "pathlib",
+        "sqlite3",
+        "sys"
+      ],
+      "pipeline_connections": [
+        "contact_intelligence_v2"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "contact_intelligence/TASK.md",
+        "contact_intelligence/docs/README.md",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/update_contact_patterns.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "collections",
+        "os",
+        "pathlib",
+        "re",
+        "sqlite3",
+        "sys"
+      ],
+      "pipeline_connections": [
+        "contact_intelligence_v2"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "contact_intelligence/docs/README.md",
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "contact_intelligence/scripts/verify_emails_millionverifier.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [
+        "data/outbound/legacy_broad_equipment.csv",
+        "data/outbound/legacy_spider_direct.csv",
+        "data/outbound/outbound_broader_projects.csv",
+        "data/outbound/outbound_likely_spider_mini.csv"
+      ],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "csv",
+        "json",
+        "os",
+        "pathlib",
+        "re",
+        "time",
+        "urllib.parse",
+        "urllib.request"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "data/opportunities/opportunity_helpers.js",
+      "type": "js",
+      "entry_point": "javascript module/script",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [
+        "frontend_runtime"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "opportunities/austin-advanced-packaging-expansion/index.html",
+        "opportunities/central-valley-food-automation-upgrade/index.html",
+        "opportunities/desert-valley-medical-tower/index.html",
+        "opportunities/front-range-edge-compute-campus/index.html",
+        "opportunities/great-lakes-battery-module-plant/index.html",
+        "opportunities/harbor-biolab-expansion/index.html",
+        "opportunities/hudson-yards-ai-data-campus-phase-i/index.html",
+        "opportunities/index.html",
+        "opportunities/international-drive-convention-wing/index.html",
+        "opportunities/loop-civic-center-curtain-wall-retrofit/index.html",
+        "opportunities/meadowlands-logistics-hub-buildout/index.html",
+        "opportunities/peachtree-financial-center-tower/index.html",
+        "opportunities/port-electrification-substation-upgrade/index.html",
+        "routing/index.html"
+      ]
+    },
+    {
+      "path": "data/suppliers/routing_helper.js",
+      "type": "js",
+      "entry_point": "javascript module/script",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [
+        "frontend_runtime"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "routing/index.html"
+      ]
+    },
+    {
+      "path": "enrich_ci.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [
+        "data/candidates.csv"
+      ],
+      "dependencies": [
+        "collections",
+        "csv",
+        "pathlib",
+        "re",
+        "sqlite3"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Standalone helper or migration artifact with no active pipeline references.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "enrich_free.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "collections",
+        "csv",
+        "pathlib",
+        "re",
+        "sqlite3"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Standalone helper or migration artifact with no active pipeline references.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "filter_to_chicago.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "pathlib",
+        "sqlite3"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Standalone helper or migration artifact with no active pipeline references.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "fix2.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [
+        "data/candidates.csv"
+      ],
+      "dependencies": [
+        "collections",
+        "csv",
+        "pathlib",
+        "re",
+        "sqlite3"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Standalone helper or migration artifact with no active pipeline references.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "fix_ci.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [
+        "data"
+      ],
+      "outputs": [
+        "data/verified_contacts.csv",
+        "data/candidates.csv",
+        "data/enriched_companies.csv"
+      ],
+      "dependencies": [
+        "csv",
+        "os",
+        "pathlib",
+        "re",
+        "sqlite3"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Standalone helper or migration artifact with no active pipeline references.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "import_apollo.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "collections",
+        "csv",
+        "pathlib",
+        "re",
+        "sqlite3"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Standalone helper or migration artifact with no active pipeline references.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/agent_handoff_status.md"
+      ]
+    },
+    {
+      "path": "inject.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "re"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Standalone helper or migration artifact with no active pipeline references.",
+      "syntax_error": null,
+      "repo_references": [
+        "src/cli/__main__.py",
+        "src/llm/__init__.py"
+      ]
+    },
+    {
+      "path": "install_contact_intelligence.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [
+        "config/field_mappings.example.json"
+      ],
+      "dependencies": [
+        "base64",
+        "os",
+        "pathlib"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Standalone helper or migration artifact with no active pipeline references.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "intel/01_edgar_scraper.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "csv",
+        "datetime",
+        "json",
+        "requests",
+        "time"
+      ],
+      "pipeline_connections": [
+        "market_intel"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "intel/files/01_edgar_scraper.py"
+      ]
+    },
+    {
+      "path": "intel/02_epa_turnaround_scraper.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "bs4",
+        "csv",
+        "datetime",
+        "re",
+        "requests",
+        "time"
+      ],
+      "pipeline_connections": [
+        "market_intel"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "intel/files/02_epa_turnaround_scraper.py"
+      ]
+    },
+    {
+      "path": "intel/03_utility_interconnection_scraper.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "bs4",
+        "csv",
+        "datetime",
+        "re",
+        "requests",
+        "time"
+      ],
+      "pipeline_connections": [
+        "market_intel"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "intel/files/03_utility_interconnection_scraper.py"
+      ]
+    },
+    {
+      "path": "intel/04_job_posting_scraper.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "bs4",
+        "csv",
+        "datetime",
+        "re",
+        "requests",
+        "time",
+        "urllib.parse"
+      ],
+      "pipeline_connections": [
+        "market_intel"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "intel/files/04_job_posting_scraper.py"
+      ]
+    },
+    {
+      "path": "intel/05_blm_mining_solar_scraper.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "bs4",
+        "csv",
+        "datetime",
+        "json",
+        "requests",
+        "time"
+      ],
+      "pipeline_connections": [
+        "market_intel"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "intel/files/05_blm_mining_solar_scraper.py"
+      ]
+    },
+    {
+      "path": "intel/files/01_edgar_scraper.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "csv",
+        "datetime",
+        "json",
+        "requests",
+        "time"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Snapshot or duplicate copy; not part of the active execution surface.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "intel/files/02_epa_turnaround_scraper.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "bs4",
+        "csv",
+        "datetime",
+        "re",
+        "requests",
+        "time"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Snapshot or duplicate copy; not part of the active execution surface.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "intel/files/03_utility_interconnection_scraper.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "bs4",
+        "csv",
+        "datetime",
+        "re",
+        "requests",
+        "time"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Snapshot or duplicate copy; not part of the active execution surface.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "intel/files/04_job_posting_scraper.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "bs4",
+        "csv",
+        "datetime",
+        "re",
+        "requests",
+        "time",
+        "urllib.parse"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Snapshot or duplicate copy; not part of the active execution surface.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "intel/files/05_blm_mining_solar_scraper.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "bs4",
+        "csv",
+        "datetime",
+        "json",
+        "requests",
+        "time"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Snapshot or duplicate copy; not part of the active execution surface.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "intel/files/outreach_today.jsx",
+      "type": "jsx",
+      "entry_point": "javascript module/script",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "react"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Snapshot or duplicate copy; not part of the active execution surface.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "intel/files/run_all.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "csv",
+        "datetime",
+        "json",
+        "os",
+        "pathlib",
+        "subprocess",
+        "sys"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Snapshot or duplicate copy; not part of the active execution surface.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "intel/outreach_today.jsx",
+      "type": "jsx",
+      "entry_point": "javascript module/script",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "react"
+      ],
+      "pipeline_connections": [
+        "market_intel"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "intel/files/outreach_today.jsx"
+      ]
+    },
+    {
+      "path": "intel/run_all.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "csv",
+        "datetime",
+        "json",
+        "os",
+        "pathlib",
+        "subprocess",
+        "sys"
+      ],
+      "pipeline_connections": [
+        "market_intel"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "intel/files/run_all.py"
+      ]
+    },
+    {
+      "path": "opportunities/data_loader.js",
+      "type": "js",
+      "entry_point": "javascript module/script",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [
+        "frontend_runtime"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "data/opportunities/README.md",
+        "opportunities/austin-advanced-packaging-expansion/index.html",
+        "opportunities/central-valley-food-automation-upgrade/index.html",
+        "opportunities/desert-valley-medical-tower/index.html",
+        "opportunities/front-range-edge-compute-campus/index.html",
+        "opportunities/great-lakes-battery-module-plant/index.html",
+        "opportunities/harbor-biolab-expansion/index.html",
+        "opportunities/hudson-yards-ai-data-campus-phase-i/index.html",
+        "opportunities/international-drive-convention-wing/index.html",
+        "opportunities/loop-civic-center-curtain-wall-retrofit/index.html",
+        "opportunities/meadowlands-logistics-hub-buildout/index.html",
+        "opportunities/peachtree-financial-center-tower/index.html",
+        "opportunities/port-electrification-substation-upgrade/index.html",
+        "routing/index.html"
+      ]
+    },
+    {
+      "path": "opportunities/detail.js",
+      "type": "js",
+      "entry_point": "javascript module/script",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [
+        "frontend_runtime"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "opportunities/austin-advanced-packaging-expansion/index.html",
+        "opportunities/central-valley-food-automation-upgrade/index.html",
+        "opportunities/desert-valley-medical-tower/index.html",
+        "opportunities/front-range-edge-compute-campus/index.html",
+        "opportunities/great-lakes-battery-module-plant/index.html",
+        "opportunities/harbor-biolab-expansion/index.html",
+        "opportunities/hudson-yards-ai-data-campus-phase-i/index.html",
+        "opportunities/international-drive-convention-wing/index.html",
+        "opportunities/loop-civic-center-curtain-wall-retrofit/index.html",
+        "opportunities/meadowlands-logistics-hub-buildout/index.html",
+        "opportunities/peachtree-financial-center-tower/index.html",
+        "opportunities/port-electrification-substation-upgrade/index.html",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md"
+      ]
+    },
+    {
+      "path": "scripts/add_mini_crane_logic.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [
+        "contact_intelligence/scripts/build_project_intelligence.py"
+      ],
+      "outputs": [],
+      "dependencies": [
+        "pathlib",
+        "shutil",
+        "sys"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Standalone helper or migration artifact with no active pipeline references.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "scripts/append_experiment.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "datetime",
+        "os"
+      ],
+      "pipeline_connections": [
+        "learning_memory"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Referenced elsewhere in the repo and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "docs_learning/experiments.md",
+        "docs_learning/system_architecture.md"
+      ]
+    },
+    {
+      "path": "scripts/append_lesson.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "datetime",
+        "os"
+      ],
+      "pipeline_connections": [
+        "learning_memory"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Referenced elsewhere in the repo and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "docs_learning/lessons_learned.md",
+        "docs_learning/system_architecture.md"
+      ]
+    },
+    {
+      "path": "scripts/append_metrics_history.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "csv",
+        "datetime",
+        "os"
+      ],
+      "pipeline_connections": [
+        "learning_memory"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Referenced elsewhere in the repo and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "docs_learning/system_architecture.md",
+        "scripts/append_pipeline_metrics.py"
+      ]
+    },
+    {
+      "path": "scripts/append_pipeline_metrics.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "csv",
+        "datetime",
+        "json",
+        "os"
+      ],
+      "pipeline_connections": [
+        "learning_memory"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Partial",
+      "status_reason": "Valid source file, but no active pipeline wiring or invocation path was found in the repo.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "scripts/append_signal_log.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "argparse",
+        "datetime",
+        "os"
+      ],
+      "pipeline_connections": [
+        "learning_memory"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Referenced elsewhere in the repo and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "docs_learning/signal_intelligence_log.md",
+        "docs_learning/system_architecture.md"
+      ]
+    },
+    {
+      "path": "scripts/apply_merge_now_from_backup.sh",
+      "type": "sh",
+      "entry_point": "shell script",
+      "inputs": [
+        "config/send_selection.yaml"
+      ],
+      "outputs": [
+        "config/routing_schema.json",
+        "config/signal_schema.json",
+        "config/supplier_schema.json"
+      ],
+      "dependencies": [],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Standalone helper or migration artifact with no active pipeline references.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt"
+      ]
+    },
+    {
+      "path": "scripts/audit_backup_repo.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [
+        "runs/repo_backup_audit.md"
+      ],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "datetime",
+        "hashlib",
+        "pathlib",
+        "typing"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md"
+      ]
+    },
+    {
+      "path": "scripts/audit_page_ai_context.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "json",
+        "pathlib",
+        "typing"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "scripts/domain_discovery_benchmark.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "pandas",
+        "pathlib",
+        "src.domain_discovery",
+        "sys"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "runs/today_contact_system_status.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    },
+    {
+      "path": "scripts/review_latest_pipeline_outputs.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [
+        "data/monday_company_domains.csv",
+        "data/monday_people_found.csv",
+        "data/monday_all_email_candidates.csv",
+        "data/monday_verified_valid.csv",
+        "data/monday_verified_catchall.csv",
+        "data/monday_verified_invalid.csv",
+        "data/monday_verification_deferred.csv"
+      ],
+      "dependencies": [],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Broken",
+      "status_reason": "Cannot be parsed: unterminated triple-quoted string literal (detected at line 465) (line 307).",
+      "syntax_error": "unterminated triple-quoted string literal (detected at line 465) (line 307)",
+      "repo_references": [
+        "runs/latest_pipeline_review.md"
+      ]
+    },
+    {
+      "path": "scripts/run_and_prepare_learning.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "datetime",
+        "json",
+        "pathlib",
+        "shutil",
+        "subprocess",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "learning_memory"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Referenced elsewhere in the repo and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    },
+    {
+      "path": "scripts/scan_secrets.sh",
+      "type": "sh",
+      "entry_point": "shell script",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "scripts/scrape_jobs_public.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [
+        "data/jobs_imported.json",
+        "data/jobs_manual_import.csv"
+      ],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "csv",
+        "datetime",
+        "json",
+        "os",
+        "pathlib",
+        "re",
+        "typing",
+        "urllib.parse",
+        "urllib.request",
+        "xml.etree.ElementTree"
+      ],
+      "pipeline_connections": [
+        "project_intelligence"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "scripts/scrape_permits_public.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [
+        "config/permit_sources.json",
+        "data/opportunities/permits_imported.json"
+      ],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "datetime",
+        "json",
+        "pathlib",
+        "re",
+        "typing",
+        "urllib.request"
+      ],
+      "pipeline_connections": [
+        "project_intelligence"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "scripts/smoke_test_apify.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "os"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "scripts/smoke_test_apollo.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "os"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "scripts/smoke_test_firecrawl.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "os"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "scripts/smoke_test_millionverifier.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "os"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "scripts/smoke_test_vercel.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "os"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "src/__init__.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Working",
+      "status_reason": "Referenced elsewhere in the repo and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "src/candidate_builder.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "logging",
+        "pandas",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh",
+        "src/cli/__main__.py"
+      ]
+    },
+    {
+      "path": "src/candidate_builder.py.bak.20260308_104658",
+      "type": "backup",
+      "entry_point": "backup snapshot",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Snapshot or duplicate copy; not part of the active execution surface.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt"
+      ]
+    },
+    {
+      "path": "src/cli/__init__.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [
+        "llm_cli"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "src/cli/__main__.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [
+        "config/sources.yaml",
+        "config/keywords.yaml",
+        "config/scoring.yaml",
+        "config/crawler.yaml"
+      ],
+      "outputs": [
+        "data/raw_records.csv",
+        "data/normalized_records.csv",
+        "data/scored_records.csv",
+        "data/enrichment_queue.csv",
+        "data/enriched_companies.csv",
+        "data/discovered_contacts.csv",
+        "data/domain_email_patterns.csv",
+        "data/candidates.csv",
+        "data/verified_contacts.csv",
+        "data/sender_ready_hot.csv",
+        "data/sender_ready_warm.csv",
+        "data/catchall_review.csv"
+      ],
+      "dependencies": [
+        "__future__",
+        "argparse",
+        "datetime",
+        "dotenv",
+        "json",
+        "logging",
+        "pandas",
+        "pathlib",
+        "src.candidate_builder",
+        "src.company_resolver",
+        "src.domain_enricher_claude",
+        "src.exporter",
+        "src.ingest",
+        "src.llm.context_loader",
+        "src.llm.router",
+        "src.llm.schemas",
+        "src.parse_normalize",
+        "src.score_filter",
+        "src.sheets_exporter",
+        "src.site_contact_miner",
+        "src.utils",
+        "src.verify_millionverifier",
+        "sys",
+        "traceback",
+        "uuid"
+      ],
+      "pipeline_connections": [
+        "llm_cli"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "src/company_resolver.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [
+        "data/company_domain_seed.csv"
+      ],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "bs4",
+        "logging",
+        "pandas",
+        "re",
+        "requests",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/phase0_inventory.md",
+        "src/cli/__main__.py"
+      ]
+    },
+    {
+      "path": "src/company_selector.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "datetime",
+        "logging",
+        "pandas",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    },
+    {
+      "path": "src/contact_page_finder.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "bs4",
+        "logging",
+        "pandas",
+        "re",
+        "requests",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "monday_people_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "tests/test_people_discovery.py"
+      ]
+    },
+    {
+      "path": "src/crm_contact_importer.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [
+        "data",
+        "runs"
+      ],
+      "outputs": [],
+      "dependencies": [
+        ".domain_discovery",
+        ".utils",
+        "__future__",
+        "argparse",
+        "logging",
+        "pandas",
+        "pathlib",
+        "re",
+        "typing",
+        "urllib.parse"
+      ],
+      "pipeline_connections": [
+        "monday_people_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/agent_handoff_status.md",
+        "runs/phase0_inventory.md",
+        "tests/test_crm_contact_importer.py"
+      ]
+    },
+    {
+      "path": "src/domain_dedupe.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "datetime",
+        "logging",
+        "pandas",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "monday_people_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    },
+    {
+      "path": "src/domain_discovery.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [
+        "data"
+      ],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "bs4",
+        "difflib",
+        "dns.resolver",
+        "logging",
+        "pandas",
+        "pathlib",
+        "re",
+        "requests",
+        "subprocess",
+        "typing",
+        "urllib.parse"
+      ],
+      "pipeline_connections": [
+        "monday_people_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "runs/today_contact_system_status.md",
+        "scripts/apply_merge_now_from_backup.sh",
+        "scripts/domain_discovery_benchmark.py",
+        "tests/test_domain_discovery.py"
+      ]
+    },
+    {
+      "path": "src/domain_enricher_claude.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "json",
+        "logging",
+        "os",
+        "pandas",
+        "re",
+        "requests",
+        "time",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/phase0_inventory.md",
+        "src/cli/__main__.py"
+      ]
+    },
+    {
+      "path": "src/exporter.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "logging",
+        "pandas",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/phase0_inventory.md",
+        "src/cli/__main__.py"
+      ]
+    },
+    {
+      "path": "src/google_domain_enricher.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [
+        "data/enriched_companies.csv",
+        "data/google_enriched_domains.csv"
+      ],
+      "dependencies": [
+        "argparse",
+        "csv",
+        "dotenv",
+        "logging",
+        "os",
+        "pathlib",
+        "re",
+        "requests",
+        "serpapi",
+        "time",
+        "urllib.parse"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "src/ingest.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        ".scrapers",
+        ".scrapers.bid_board_scraper",
+        ".scrapers.contractor_directory_scraper",
+        ".scrapers.industrial_project_scraper",
+        ".scrapers.permit_multi_city_scraper",
+        ".utils",
+        "__future__",
+        "bs4",
+        "io",
+        "logging",
+        "pandas",
+        "requests",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh",
+        "src/cli/__main__.py"
+      ]
+    },
+    {
+      "path": "src/ingest.py.bak.20260308_104658",
+      "type": "backup",
+      "entry_point": "backup snapshot",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Snapshot or duplicate copy; not part of the active execution surface.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt"
+      ]
+    },
+    {
+      "path": "src/llm/__init__.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        ".context_loader",
+        ".router",
+        ".schemas"
+      ],
+      "pipeline_connections": [
+        "llm_cli"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "src/llm/context_loader.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "datetime",
+        "json",
+        "os",
+        "pathlib",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "llm_cli"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "src/cli/__main__.py"
+      ]
+    },
+    {
+      "path": "src/llm/router.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "dataclasses",
+        "json",
+        "jsonschema",
+        "os",
+        "requests",
+        "time",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "llm_cli"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "src/cli/__main__.py"
+      ]
+    },
+    {
+      "path": "src/llm/schemas.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "typing"
+      ],
+      "pipeline_connections": [
+        "llm_cli"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "src/cli/__main__.py"
+      ]
+    },
+    {
+      "path": "src/monday_campaign_fast_path.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [
+        "data"
+      ],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        ".verify_millionverifier",
+        "__future__",
+        "datetime",
+        "json",
+        "logging",
+        "os",
+        "pandas",
+        "pathlib",
+        "re",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "monday_people_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    },
+    {
+      "path": "src/monday_company_list_fast_path.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [
+        "data"
+      ],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "datetime",
+        "json",
+        "logging",
+        "pandas",
+        "pathlib",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "monday_people_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    },
+    {
+      "path": "src/monday_individual_contact_generation.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [
+        "data"
+      ],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "hashlib",
+        "json",
+        "logging",
+        "pandas",
+        "pathlib",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "monday_people_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    },
+    {
+      "path": "src/monday_people_pipeline.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [
+        "data",
+        "runs"
+      ],
+      "outputs": [],
+      "dependencies": [
+        ".contact_page_finder",
+        ".domain_discovery",
+        ".people_discovery",
+        ".people_email_generator",
+        ".utils",
+        ".verify_millionverifier",
+        "__future__",
+        "argparse",
+        "json",
+        "logging",
+        "os",
+        "pandas",
+        "pathlib",
+        "re",
+        "sys",
+        "typing",
+        "urllib.parse"
+      ],
+      "pipeline_connections": [
+        "monday_people_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "AGENT_WORK_BOUNDARIES.md",
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "runs/today_contact_system_status.md",
+        "scripts/apply_merge_now_from_backup.sh",
+        "tests/test_monday_people_pipeline.py"
+      ]
+    },
+    {
+      "path": "src/monitor.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [
+        "data/pipeline_state.json"
+      ],
+      "dependencies": [
+        "__future__",
+        "json",
+        "logging",
+        "os",
+        "pandas",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "src/parse_normalize.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "dateutil",
+        "logging",
+        "pandas",
+        "re",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh",
+        "src/cli/__main__.py",
+        "tests/test_parse_normalize.py"
+      ]
+    },
+    {
+      "path": "src/parse_normalize.py.bak.20260308_104658",
+      "type": "backup",
+      "entry_point": "backup snapshot",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Snapshot or duplicate copy; not part of the active execution surface.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt"
+      ]
+    },
+    {
+      "path": "src/people_discovery.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "bs4",
+        "collections",
+        "logging",
+        "pandas",
+        "re",
+        "requests",
+        "typing",
+        "urllib.parse"
+      ],
+      "pipeline_connections": [
+        "monday_people_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh",
+        "tests/test_people_discovery.py"
+      ]
+    },
+    {
+      "path": "src/people_email_generator.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "logging",
+        "pandas",
+        "re",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "monday_people_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "runs/today_contact_system_status.md",
+        "scripts/apply_merge_now_from_backup.sh",
+        "tests/test_people_email_generator.py"
+      ]
+    },
+    {
+      "path": "src/pipeline.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [
+        "config/sources.yaml",
+        "config/keywords.yaml",
+        "config/scoring.yaml",
+        "config/crawler.yaml",
+        "config/send_selection.yaml"
+      ],
+      "outputs": [
+        "data/raw_records.csv",
+        "data/normalized_records.csv",
+        "data/parsing_errors.csv",
+        "data/scored_records.csv",
+        "data/enrichment_queue.csv",
+        "data/enriched_companies.csv",
+        "data/enriched_companies_selected.csv",
+        "data/enriched_companies_excluded.csv",
+        "data/discovered_contacts.csv",
+        "data/domain_email_patterns.csv",
+        "data/candidates.csv",
+        "data/verified_contacts.csv"
+      ],
+      "dependencies": [],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Broken",
+      "status_reason": "Cannot be parsed: unexpected indent (line 179).",
+      "syntax_error": "unexpected indent (line 179)",
+      "repo_references": [
+        ".github/workflows/run_pipeline.yml",
+        "contact_intelligence/AGENT_CONTEXT.md",
+        "contact_intelligence/CHANGELOG_AGENT.md",
+        "contact_intelligence/docs/integration_notes.md",
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh",
+        "src/cli/__main__.py"
+      ]
+    },
+    {
+      "path": "src/pipeline.py.bak.20260308_104658",
+      "type": "backup",
+      "entry_point": "backup snapshot",
+      "inputs": [
+        "config/sources.yaml",
+        "config/keywords.yaml",
+        "config/scoring.yaml",
+        "config/crawler.yaml"
+      ],
+      "outputs": [
+        "data/raw_records.csv",
+        "data/normalized_records.csv",
+        "data/parsing_errors.csv",
+        "data/scored_records.csv",
+        "data/enrichment_queue.csv",
+        "data/enriched_companies.csv",
+        "data/discovered_contacts.csv",
+        "data/domain_email_patterns.csv",
+        "data/candidates.csv",
+        "data/verified_contacts.csv",
+        "data/qa_report.json",
+        "data/sender_ready_hot.csv"
+      ],
+      "dependencies": [],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Snapshot or duplicate copy; not part of the active execution surface.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt"
+      ]
+    },
+    {
+      "path": "src/score_filter.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "datetime",
+        "logging",
+        "pandas",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/phase0_inventory.md",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh",
+        "src/cli/__main__.py"
+      ]
+    },
+    {
+      "path": "src/score_filter.py.bak.20260308_104658",
+      "type": "backup",
+      "entry_point": "backup snapshot",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Snapshot or duplicate copy; not part of the active execution surface.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt"
+      ]
+    },
+    {
+      "path": "src/scrapers/__init__.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        ".bid_board_scraper",
+        ".chicago",
+        ".contractor_directory_scraper",
+        ".dallas",
+        ".industrial_project_scraper",
+        ".nyc",
+        ".permit_multi_city_scraper",
+        ".phoenix",
+        "__future__"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "README.md",
+        "runs/git_status_snapshot.txt",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    },
+    {
+      "path": "src/scrapers/__init__.py.bak.20260308_104658",
+      "type": "backup",
+      "entry_point": "backup snapshot",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Unused",
+      "status_reason": "Snapshot or duplicate copy; not part of the active execution surface.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt"
+      ]
+    },
+    {
+      "path": "src/scrapers/bid_board_scraper.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "..utils",
+        "__future__",
+        "bs4",
+        "logging",
+        "requests",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    },
+    {
+      "path": "src/scrapers/chicago.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "..utils",
+        "__future__",
+        "datetime",
+        "io",
+        "logging",
+        "pandas",
+        "requests",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "src/scrapers/contractor_directory_scraper.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "..utils",
+        "__future__",
+        "bs4",
+        "logging",
+        "requests",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    },
+    {
+      "path": "src/scrapers/dallas.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "datetime",
+        "io",
+        "logging",
+        "pandas",
+        "requests",
+        "src.utils",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "src/scrapers/industrial_project_scraper.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "..utils",
+        "__future__",
+        "bs4",
+        "logging",
+        "requests",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    },
+    {
+      "path": "src/scrapers/nyc.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "..utils",
+        "__future__",
+        "datetime",
+        "io",
+        "logging",
+        "pandas",
+        "requests",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "src/scrapers/permit_multi_city_scraper.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "..utils",
+        "__future__",
+        "bs4",
+        "logging",
+        "requests",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/git_status_snapshot.txt",
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    },
+    {
+      "path": "src/scrapers/phoenix.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "..utils",
+        "__future__",
+        "datetime",
+        "io",
+        "logging",
+        "pandas",
+        "requests",
+        "tenacity",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "README.md"
+      ]
+    },
+    {
+      "path": "src/sheets_exporter.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "datetime",
+        "google.oauth2.service_account",
+        "gspread",
+        "logging",
+        "os",
+        "pandas",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/phase0_inventory.md",
+        "src/cli/__main__.py"
+      ]
+    },
+    {
+      "path": "src/site_contact_miner.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "bs4",
+        "collections",
+        "logging",
+        "pandas",
+        "re",
+        "requests",
+        "typing",
+        "urllib.parse"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/phase0_inventory.md",
+        "src/cli/__main__.py"
+      ]
+    },
+    {
+      "path": "src/stage9_email_writer.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [
+        "data/outreach_emails.csv",
+        "data/sender_ready_hot.csv",
+        "data/sender_ready_warm.csv",
+        "data/catchall_review.csv"
+      ],
+      "dependencies": [
+        "__future__",
+        "datetime",
+        "dotenv",
+        "json",
+        "os",
+        "pandas",
+        "re",
+        "requests"
+      ],
+      "pipeline_connections": [],
+      "connected_to_pipeline": false,
+      "status": "Partial",
+      "status_reason": "Runnable standalone utility, but not wired into a primary pipeline.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/phase0_inventory.md"
+      ]
+    },
+    {
+      "path": "src/utils.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "datetime",
+        "hashlib",
+        "json",
+        "logging",
+        "os",
+        "pandas",
+        "re",
+        "time",
+        "tldextract",
+        "typing",
+        "yaml"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/phase0_inventory.md",
+        "src/cli/__main__.py",
+        "src/scrapers/dallas.py"
+      ]
+    },
+    {
+      "path": "src/verify_millionverifier.py",
+      "type": "py",
+      "entry_point": null,
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        ".utils",
+        "__future__",
+        "logging",
+        "os",
+        "pandas",
+        "requests",
+        "tenacity",
+        "typing"
+      ],
+      "pipeline_connections": [
+        "intent_pipeline"
+      ],
+      "connected_to_pipeline": true,
+      "status": "Working",
+      "status_reason": "Connected to a named pipeline or runtime surface and has no parse errors.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/phase0_inventory.md",
+        "src/cli/__main__.py"
+      ]
+    },
+    {
+      "path": "tests/test_crm_contact_importer.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "src.crm_contact_importer",
+        "unittest"
+      ],
+      "pipeline_connections": [
+        "test_suite"
+      ],
+      "connected_to_pipeline": false,
+      "status": "Working",
+      "status_reason": "Included in the test suite; `python3 -m unittest discover -s tests -v` passed.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "tests/test_domain_discovery.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "src.domain_discovery",
+        "unittest",
+        "unittest.mock"
+      ],
+      "pipeline_connections": [
+        "test_suite"
+      ],
+      "connected_to_pipeline": false,
+      "status": "Working",
+      "status_reason": "Included in the test suite; `python3 -m unittest discover -s tests -v` passed.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    },
+    {
+      "path": "tests/test_monday_people_pipeline.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "pandas",
+        "src.monday_people_pipeline",
+        "unittest",
+        "unittest.mock"
+      ],
+      "pipeline_connections": [
+        "test_suite"
+      ],
+      "connected_to_pipeline": false,
+      "status": "Working",
+      "status_reason": "Included in the test suite; `python3 -m unittest discover -s tests -v` passed.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "tests/test_parse_normalize.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "src.parse_normalize",
+        "unittest"
+      ],
+      "pipeline_connections": [
+        "test_suite"
+      ],
+      "connected_to_pipeline": false,
+      "status": "Working",
+      "status_reason": "Included in the test suite; `python3 -m unittest discover -s tests -v` passed.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "tests/test_people_discovery.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "src.contact_page_finder",
+        "src.people_discovery",
+        "unittest"
+      ],
+      "pipeline_connections": [
+        "test_suite"
+      ],
+      "connected_to_pipeline": false,
+      "status": "Working",
+      "status_reason": "Included in the test suite; `python3 -m unittest discover -s tests -v` passed.",
+      "syntax_error": null,
+      "repo_references": []
+    },
+    {
+      "path": "tests/test_people_email_generator.py",
+      "type": "py",
+      "entry_point": "__main__ block",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [
+        "__future__",
+        "pandas",
+        "src.people_email_generator",
+        "unittest"
+      ],
+      "pipeline_connections": [
+        "test_suite"
+      ],
+      "connected_to_pipeline": false,
+      "status": "Working",
+      "status_reason": "Included in the test suite; `python3 -m unittest discover -s tests -v` passed.",
+      "syntax_error": null,
+      "repo_references": [
+        "runs/repo_backup_audit.md",
+        "runs/repo_backup_merge_plan.md",
+        "scripts/apply_merge_now_from_backup.sh"
+      ]
+    }
+  ],
+  "known_broken_components": [
+    "scripts/review_latest_pipeline_outputs.py",
+    "src/pipeline.py"
+  ],
+  "known_unused_components": [
+    "config.example.js",
+    "enrich_ci.py",
+    "enrich_free.py",
+    "filter_to_chicago.py",
+    "fix2.py",
+    "fix_ci.py",
+    "import_apollo.py",
+    "inject.py",
+    "install_contact_intelligence.py",
+    "intel/files/01_edgar_scraper.py",
+    "intel/files/02_epa_turnaround_scraper.py",
+    "intel/files/03_utility_interconnection_scraper.py",
+    "intel/files/04_job_posting_scraper.py",
+    "intel/files/05_blm_mining_solar_scraper.py",
+    "intel/files/outreach_today.jsx",
+    "intel/files/run_all.py",
+    "scripts/add_mini_crane_logic.py",
+    "scripts/apply_merge_now_from_backup.sh",
+    "src/candidate_builder.py.bak.20260308_104658",
+    "src/ingest.py.bak.20260308_104658",
+    "src/parse_normalize.py.bak.20260308_104658",
+    "src/pipeline.py.bak.20260308_104658",
+    "src/score_filter.py.bak.20260308_104658",
+    "src/scrapers/__init__.py.bak.20260308_104658"
+  ]
+}

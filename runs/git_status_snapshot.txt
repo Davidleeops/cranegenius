@@ -1,0 +1,41 @@
+ M src/candidate_builder.py
+ M src/ingest.py
+ M src/parse_normalize.py
+ M src/pipeline.py
+ M src/score_filter.py
+ M src/scrapers/__init__.py
+?? config/routing_schema.json
+?? config/send_selection.yaml
+?? config/signal_schema.json
+?? config/supplier_schema.json
+?? runs/contact_generation_stats.json
+?? runs/git_status_snapshot.txt
+?? runs/repo_backup_audit.md
+?? runs/repo_backup_merge_plan.md
+?? runs/today_contact_system_status.md
+?? runs/verification_summary.json
+?? scripts/apply_merge_now_from_backup.sh
+?? scripts/audit_backup_repo.py
+?? scripts/domain_discovery_benchmark.py
+?? scripts/run_and_prepare_learning.py
+?? src/candidate_builder.py.bak.20260308_104658
+?? src/company_selector.py
+?? src/contact_page_finder.py
+?? src/domain_dedupe.py
+?? src/domain_discovery.py
+?? src/ingest.py.bak.20260308_104658
+?? src/monday_campaign_fast_path.py
+?? src/monday_company_list_fast_path.py
+?? src/monday_individual_contact_generation.py
+?? src/monday_people_pipeline.py
+?? src/parse_normalize.py.bak.20260308_104658
+?? src/people_discovery.py
+?? src/people_email_generator.py
+?? src/pipeline.py.bak.20260308_104658
+?? src/score_filter.py.bak.20260308_104658
+?? src/scrapers/__init__.py.bak.20260308_104658
+?? src/scrapers/bid_board_scraper.py
+?? src/scrapers/contractor_directory_scraper.py
+?? src/scrapers/industrial_project_scraper.py
+?? src/scrapers/permit_multi_city_scraper.py
+?? tests/

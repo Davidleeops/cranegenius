@@ -1,0 +1,12 @@
+2026-03-12 19:16:40,785 INFO Starting stage init_db
+2026-03-12 19:16:40,850 INFO Finished stage init_db with status=success
+2026-03-12 19:16:40,850 INFO Starting stage scrape_permits
+2026-03-12 19:16:47,258 INFO Finished stage scrape_permits with status=success
+2026-03-12 19:16:47,258 INFO Starting stage scrape_jobs
+2026-03-12 19:17:37,296 INFO Finished stage scrape_jobs with status=success
+2026-03-12 19:17:37,297 INFO Starting stage normalize_match
+2026-03-12 19:17:37,365 INFO Finished stage normalize_match with status=success
+2026-03-12 19:17:37,365 INFO Starting stage build_project_intelligence
+2026-03-12 19:17:37,428 INFO Finished stage build_project_intelligence with status=success
+2026-03-12 19:17:37,428 INFO Starting stage export_project_intelligence
+2026-03-12 19:17:37,683 INFO Finished stage export_project_intelligence with status=success

@@ -1,0 +1,440 @@
+diff --git a/src/candidate_builder.py b/src/candidate_builder.py
+index 4ef1bed..1888338 100644
+--- a/src/candidate_builder.py
++++ b/src/candidate_builder.py
+@@ -5,11 +5,13 @@ import pandas as pd
+ from .utils import load_yaml, normalize_text
+ 
+ log = logging.getLogger("cranegenius.candidates")
+-MAX_CANDIDATES_PER_DOMAIN = 8
++MAX_CANDIDATES_PER_DOMAIN = 2
++ROLE_INBOX_PRIORITY = ["estimating", "bids", "projects", "operations", "info"]
+ 
+ def build_candidates(enriched_df, keywords_yaml, contacts_df=None, patterns_df=None):
+     cfg = load_yaml(keywords_yaml)
+-    role_inboxes = [normalize_text(x).lower() for x in cfg.get("role_inboxes", []) if x]
++    configured = [normalize_text(x).lower().replace("@", "") for x in cfg.get("role_inboxes", []) if x]
++    role_inboxes = ROLE_INBOX_PRIORITY + [x for x in configured if x and x not in ROLE_INBOX_PRIORITY]
+ 
+     known_persons: Dict[str, List[str]] = {}
+     if contacts_df is not None and not contacts_df.empty:
+diff --git a/src/ingest.py b/src/ingest.py
+index a958e3a..bb7ac28 100644
+--- a/src/ingest.py
++++ b/src/ingest.py
+@@ -9,6 +9,10 @@ import requests
+ from bs4 import BeautifulSoup
+ 
+ from .scrapers import SCRAPER_REGISTRY
++from .scrapers.bid_board_scraper import BidBoardScraper
++from .scrapers.contractor_directory_scraper import ContractorDirectoryScraper
++from .scrapers.industrial_project_scraper import IndustrialProjectScraper
++from .scrapers.permit_multi_city_scraper import PermitMultiCityScraper
+ from .utils import load_yaml, normalize_text, utc_now_iso
+ 
+ log = logging.getLogger("cranegenius.ingest")
+@@ -27,6 +31,20 @@ RAW_COLUMNS = [
+     "project_state",
+     "contractor_name_raw",
+     "description_raw",
++    "project_cost_optional",
++    "signal_keywords",
++    "company_name",
++    "project_description_optional",
++    "city",
++    "state",
++    "capture_timestamp",
++]
++
++MULTI_SOURCE_SCRAPERS = [
++    PermitMultiCityScraper,
++    ContractorDirectoryScraper,
++    BidBoardScraper,
++    IndustrialProjectScraper,
+ ]
+ 
+ 
+@@ -64,11 +82,63 @@ def ingest_sources(sources_yaml_path: str) -> pd.DataFrame:
+         except Exception as exc:
+             log.warning("Source %s failed (skipping): %s", source_id, exc)
+ 
++    # Additive multi-source discovery layer for outbound scale.
++    rows.extend(_ingest_multi_source_signals())
++
+     df = pd.DataFrame(rows, columns=RAW_COLUMNS)
+     log.info("Ingest complete: %d total raw rows", len(df))
+     return df
+ 
+ 
++def _ingest_multi_source_signals() -> List[Dict[str, Any]]:
++    rows: List[Dict[str, Any]] = []
++    for scraper_cls in MULTI_SOURCE_SCRAPERS:
++        scraper = scraper_cls({})
++        try:
++            signal_rows = scraper.run()
++            for signal in signal_rows:
++                rows.append(_signal_to_raw(scraper.source_id, signal))
++        except Exception as exc:
++            log.warning("Multi-source scraper %s failed: %s", scraper_cls.__name__, exc)
++    log.info("Multi-source discovery added %d rows", len(rows))
++    return rows
++
++
++def _signal_to_raw(source_id: str, signal: Dict[str, Any]) -> Dict[str, Any]:
++    city = normalize_text(signal.get("city"))
++    state = normalize_text(signal.get("state"))
++    capture_ts = normalize_text(signal.get("capture_timestamp")) or utc_now_iso()
++    description = normalize_text(signal.get("project_description_optional"))
++    company = normalize_text(signal.get("company_name"))
++    signal_keywords = signal.get("signal_keywords", "")
++    if isinstance(signal_keywords, list):
++        signal_keywords = ",".join([normalize_text(x) for x in signal_keywords if normalize_text(x)])
++    signal_keywords = normalize_text(signal_keywords)
++
++    return {
++        "source_id": source_id,
++        "source_type": normalize_text(signal.get("source_type")) or "signal",
++        "jurisdiction": ", ".join([x for x in [city, state] if x]),
++        "source_url": normalize_text(signal.get("source_url")),
++        "source_capture_utc": capture_ts,
++        "permit_or_record_id": "",
++        "record_status": "detected",
++        "record_date": capture_ts[:10],
++        "project_address": "",
++        "project_city": city,
++        "project_state": state,
++        "contractor_name_raw": company,
++        "description_raw": description,
++        "project_cost_optional": signal.get("project_cost_optional", ""),
++        "signal_keywords": signal_keywords,
++        "company_name": company,
++        "project_description_optional": description,
++        "city": city,
++        "state": state,
++        "capture_timestamp": capture_ts,
++    }
++
++
+ def _ingest_generic_csv(source: Dict[str, Any]) -> List[Dict[str, Any]]:
+     """Generic CSV ingest — tries common field name patterns."""
+     url = source["url"]
+diff --git a/src/parse_normalize.py b/src/parse_normalize.py
+index 130a1a7..b89c3f8 100644
+--- a/src/parse_normalize.py
++++ b/src/parse_normalize.py
+@@ -1,6 +1,7 @@
+ from __future__ import annotations
+ 
+ import logging
++import re
+ from typing import Any, Dict, List, Tuple
+ 
+ import pandas as pd
+@@ -9,6 +10,8 @@ from dateutil import parser as dateparser
+ from .utils import normalize_text, sha1
+ 
+ log = logging.getLogger("cranegenius.parse")
++COST_M_RE = re.compile(r"(\d+(?:\.\d+)?)\s*m(?:illion)?\b", re.IGNORECASE)
++COST_PLAIN_RE = re.compile(r"\$?\s*([0-9]{1,3}(?:,[0-9]{3})+|[0-9]{7,})")
+ 
+ NORMALIZED_COLUMNS = [
+     "source_type",
+@@ -23,19 +26,44 @@ NORMALIZED_COLUMNS = [
+     "project_city",
+     "project_state",
+     "description_raw",
++    "project_cost_optional",
++    "signal_keywords",
+     "contractor_name_raw",
+     "contractor_name_normalized",
+     "dedupe_key",
+ ]
+ 
+ 
++def _parse_cost(value: Any, desc: str) -> float:
++    raw = normalize_text(value)
++    if raw:
++        try:
++            return float(str(raw).replace("$", "").replace(",", "").strip())
++        except Exception:
++            pass
++    text = normalize_text(desc)
++    m = COST_M_RE.search(text)
++    if m:
++        try:
++            return float(m.group(1)) * 1_000_000
++        except Exception:
++            return 0.0
++    m2 = COST_PLAIN_RE.search(text)
++    if m2:
++        try:
++            return float(m2.group(1).replace(",", ""))
++        except Exception:
++            return 0.0
++    return 0.0
++
++
+ def normalize_records(raw_df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:
+     rows: List[Dict[str, Any]] = []
+     errors: List[Dict[str, Any]] = []
+ 
+     for _, r in raw_df.iterrows():
+-        desc = normalize_text(r.get("description_raw"))
+-        contractor_raw = normalize_text(r.get("contractor_name_raw"))
++        desc = normalize_text(r.get("description_raw") or r.get("project_description_optional"))
++        contractor_raw = normalize_text(r.get("contractor_name_raw") or r.get("company_name"))
+         contractor_norm = contractor_raw.lower().strip()
+ 
+         # Strip common legal suffixes for better seed matching
+@@ -55,9 +83,11 @@ def normalize_records(raw_df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]
+                     "source_url": r.get("source_url", ""),
+                 })
+ 
+-        state = normalize_text(r.get("project_state"))
+-        city = normalize_text(r.get("project_city"))
++        state = normalize_text(r.get("project_state") or r.get("state"))
++        city = normalize_text(r.get("project_city") or r.get("city"))
+         addr = normalize_text(r.get("project_address"))
++        signal_keywords = normalize_text(r.get("signal_keywords"))
++        project_cost = _parse_cost(r.get("project_cost_optional"), desc)
+ 
+         dedupe = sha1("|".join([
+             normalize_text(r.get("source_type")),
+@@ -81,6 +111,8 @@ def normalize_records(raw_df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]
+             "project_city": city,
+             "project_state": state,
+             "description_raw": desc,
++            "project_cost_optional": int(project_cost),
++            "signal_keywords": signal_keywords,
+             "contractor_name_raw": contractor_raw,
+             "contractor_name_normalized": contractor_norm,
+             "dedupe_key": dedupe,
+diff --git a/src/pipeline.py b/src/pipeline.py
+index 58292f2..0d6f1a4 100644
+--- a/src/pipeline.py
++++ b/src/pipeline.py
+@@ -18,12 +18,14 @@ from __future__ import annotations
+ import json
+ import logging
+ import sys
++import os
+ 
+ from .ingest import ingest_sources
+ from .parse_normalize import normalize_records
+ from .score_filter import score_and_filter
+ from .company_resolver import resolve_domains
+ from .domain_enricher_claude import enrich_domains_with_claude
++from .company_selector import select_companies_for_send
+ from .site_contact_miner import mine_contacts
+ from .candidate_builder import build_candidates
+ from .verify_millionverifier import verify_with_millionverifier
+@@ -38,7 +40,26 @@ SOURCES_YAML = "config/sources.yaml"
+ KEYWORDS_YAML = "config/keywords.yaml"
+ SCORING_YAML = "config/scoring.yaml"
+ CRAWLER_YAML = "config/crawler.yaml"
+-
++SEND_SELECTION_YAML = "config/send_selection.yaml"
++
++
++
++def _write_contact_stats(companies_processed, domains_found, emails_generated, emails_filtered, emails_ready_for_verification):
++    """Write contact generation stats to runs/contact_generation_stats.json."""
++    import datetime
++    stats = {
++        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
++        "companies_processed": companies_processed,
++        "domains_found": domains_found,
++        "emails_generated": emails_generated,
++        "emails_filtered": emails_filtered,
++        "emails_ready_for_verification": emails_ready_for_verification,
++    }
++    os.makedirs("runs", exist_ok=True)
++    with open(os.path.join("runs", "contact_generation_stats.json"), "w") as _f:
++        json.dump(stats, _f, indent=2)
++    log.info("Stats → runs/contact_generation_stats.json | companies=%d domains=%d generated=%d filtered=%d ready=%d",
++             companies_processed, domains_found, emails_generated, emails_filtered, emails_ready_for_verification)
+ 
+ def main() -> None:
+     setup_logging()
+@@ -48,6 +69,7 @@ def main() -> None:
+ 
+     scoring_cfg = load_yaml(SCORING_YAML)
+     scoring = scoring_cfg.get("scoring", {})
++    send_selection_cfg = load_yaml(SEND_SELECTION_YAML).get("send_selection", {})
+     state = load_state()
+ 
+     # ── STAGE 1: INGEST ───────────────────────────────────────────
+@@ -79,6 +101,8 @@ def main() -> None:
+ 
+     threshold_warm = int(scoring.get("threshold_warm", 5))
+     threshold_hot = int(scoring.get("threshold_hot", 7))
++    min_project_cost = int(send_selection_cfg.get("min_project_cost", scoring.get("min_project_cost", 2_000_000)))
++    exclusion_terms = send_selection_cfg.get("exclude_description_terms", [])
+ 
+     enrichment_queue = scored_df[scored_df["lift_probability_score"] >= threshold_warm].copy()
+     save_csv(enrichment_queue, "data/enrichment_queue.csv")
+@@ -98,16 +122,28 @@ def main() -> None:
+     enriched_df = enrich_domains_with_claude(enriched_df)
+     save_csv(enriched_df, "data/enriched_companies.csv")
+ 
++    # ── STAGE 4c: COMPANY-LEVEL SEND SELECTION ────────────────────
++    log.info("[Stage 4c] Company-level dedupe + send selection...")
++    selected_companies_df, excluded_companies_df, selector_metrics = select_companies_for_send(
++        enriched_df,
++        threshold_hot=threshold_hot,
++        min_cost=min_project_cost,
++        exclusion_terms=exclusion_terms,
++    )
++    save_csv(selected_companies_df, "data/enriched_companies_selected.csv")
++    if not excluded_companies_df.empty:
++        save_csv(excluded_companies_df, "data/enriched_companies_excluded.csv")
++
+     # ── STAGE 5: MINE CONTACTS ────────────────────────────────────
+     log.info("\n[Stage 5] Mining contacts from company sites...")
+-    contacts_df, patterns_df = mine_contacts(enriched_df, CRAWLER_YAML)
++    contacts_df, patterns_df = mine_contacts(selected_companies_df, CRAWLER_YAML)
+     save_csv(contacts_df, "data/discovered_contacts.csv")
+     save_csv(patterns_df, "data/domain_email_patterns.csv")
+ 
+     # ── STAGE 6: BUILD CANDIDATES ─────────────────────────────────
+     log.info("\n[Stage 6] Building email candidates...")
+     candidates_df = build_candidates(
+-        enriched_df,
++        selected_companies_df,
+         KEYWORDS_YAML,
+         contacts_df=contacts_df,
+         patterns_df=patterns_df,
+@@ -120,8 +156,8 @@ def main() -> None:
+ 
+     # ── STAGE 7: VERIFY ───────────────────────────────────────────
+     # Only verify real domains — skip name-generated fakes to save credits
+-    if "contractor_domain" in enriched_df.columns and "domain_resolution_source" in enriched_df.columns:
+-        real_domains = enriched_df[enriched_df["domain_resolution_source"].isin(["seed_partial","seed","enrichment_confident"])]["contractor_domain"].dropna().unique()
++    if "contractor_domain" in selected_companies_df.columns and "domain_resolution_source" in selected_companies_df.columns:
++        real_domains = selected_companies_df[selected_companies_df["domain_resolution_source"].isin(["seed_partial","seed","enrichment_confident"])]["contractor_domain"].dropna().unique()
+         verify_candidates = candidates_df[candidates_df["contractor_domain"].isin(real_domains)].copy()
+         log.info("[Stage 7] Filtering candidates: %d → %d (skipping generated domains)", len(candidates_df), len(verify_candidates))
+     else:
+@@ -131,11 +167,20 @@ def main() -> None:
+     save_csv(verified_df, "data/verified_contacts.csv")
+ 
+     # ── STAGE 8: MERGE + EXPORT ───────────────────────────────────
+-    log.info("\n[Stage 8] Exporting sender-ready lists...")
+-    if candidates_df.empty or "contractor_domain" not in enriched_df.columns:
++    # ── CONTACT GENERATION STATS ─────────────────────────────────────────
++    _write_contact_stats(
++        companies_processed=len(enrichment_queue) if not enrichment_queue.empty else 0,
++        domains_found=int(enriched_df["contractor_domain"].notna().sum()) if "contractor_domain" in enriched_df.columns else 0,
++        emails_generated=len(candidates_df) if not candidates_df.empty else 0,
++        emails_filtered=len(candidates_df) - len(verify_candidates) if not candidates_df.empty else 0,
++        emails_ready_for_verification=len(verify_candidates),
++    )
++
++        log.info("\n[Stage 8] Exporting sender-ready lists...")
++    if candidates_df.empty or "contractor_domain" not in selected_companies_df.columns:
+         log.warning("No candidates to export — pipeline complete with 0 sender-ready leads")
+         sys.exit(0)
+-    scored_candidates = enriched_df.merge(
++    scored_candidates = selected_companies_df.merge(
+         candidates_df, on="contractor_domain", how="left"
+     )
+ 
+@@ -146,6 +191,24 @@ def main() -> None:
+         threshold_warm=threshold_warm,
+     )
+ 
++    valid_emails_per_company = (
++        (qa.get("total_verified_valid", 0) / selector_metrics.get("send_ready_companies", 1))
++        if selector_metrics.get("send_ready_companies", 0) else 0
++    )
++
++    qa.update({
++        "total_companies": int(selected_companies_df.get("contractor_name_normalized", []).nunique() if "contractor_name_normalized" in selected_companies_df.columns else len(selected_companies_df)),
++        "unique_domains": int(selected_companies_df.get("contractor_domain", []).nunique() if "contractor_domain" in selected_companies_df.columns else 0),
++        "contacts_generated": int(len(candidates_df)),
++        "valid_email_rate": qa.get("valid_email_rate", 0),
++        "total_unique_companies": selector_metrics.get("total_unique_companies", 0),
++        "total_unique_domains": selector_metrics.get("total_unique_domains", 0),
++        "avg_rows_per_company_before_dedupe": selector_metrics.get("avg_rows_per_company_before_dedupe", 0),
++        "send_ready_companies": selector_metrics.get("send_ready_companies", 0),
++        "valid_emails_per_company": round(valid_emails_per_company, 3),
++        "excluded_residential_count": selector_metrics.get("excluded_residential_count", 0),
++    })
++
+     export_to_sheets(warm_df, hot_df, catchall_df)
+ 
+     # ── STAGE 9: GATE CHECK + QA ──────────────────────────────────
+diff --git a/src/score_filter.py b/src/score_filter.py
+index 3e41a6e..826798b 100644
+--- a/src/score_filter.py
++++ b/src/score_filter.py
+@@ -32,6 +32,7 @@ def score_and_filter(df: pd.DataFrame, keywords_yaml: str, scoring_yaml: str) ->
+ 
+     for _, r in df.iterrows():
+         desc = normalize_text(r.get("description_raw")).lower()
++        signal_keywords = normalize_text(r.get("signal_keywords")).lower()
+         status = normalize_text(r.get("record_status")).lower()
+         date_iso = normalize_text(r.get("record_date_iso"))
+ 
+@@ -51,7 +52,7 @@ def score_and_filter(df: pd.DataFrame, keywords_yaml: str, scoring_yaml: str) ->
+             if rule.get("field") == "description_raw":
+                 if "match_group" in rule:
+                     phrases = _get_group({"keywords": kw}, "keywords." + rule["match_group"])
+-                    if any(p and p in desc for p in phrases):
++                    if any(p and (p in desc or p in signal_keywords) for p in phrases):
+                         score += pts
+                         hits.append(rule["name"])
+ 
+@@ -59,7 +60,7 @@ def score_and_filter(df: pd.DataFrame, keywords_yaml: str, scoring_yaml: str) ->
+                     phrases_all: List[str] = []
+                     for gp in rule["match_any_groups"]:
+                         phrases_all.extend(_get_group({"keywords": kw}, "keywords." + gp))
+-                    if any(p and p in desc for p in phrases_all):
++                    if any(p and (p in desc or p in signal_keywords) for p in phrases_all):
+                         score += pts
+                         hits.append(rule["name"])
+ 
+@@ -72,6 +73,7 @@ def score_and_filter(df: pd.DataFrame, keywords_yaml: str, scoring_yaml: str) ->
+                 recency_ok = False
+ 
+         out = dict(r)
++        out["keyword_score"] = len(hits)
+         out["lift_probability_score"] = score + (2 if recency_ok else 0)
+         out["score_hits"] = ",".join(hits)
+         out["recency_ok"] = recency_ok
+diff --git a/src/scrapers/__init__.py b/src/scrapers/__init__.py
+index eb43c99..6bc1e71 100644
+--- a/src/scrapers/__init__.py
++++ b/src/scrapers/__init__.py
+@@ -3,12 +3,30 @@ from .phoenix import PhoenixScraper
+ from .dallas import DallasScraper
+ from .chicago import ChicagoScraper
+ from .nyc import NYCScraper
++from .permit_multi_city_scraper import PermitMultiCityScraper
++from .contractor_directory_scraper import ContractorDirectoryScraper
++from .bid_board_scraper import BidBoardScraper
++from .industrial_project_scraper import IndustrialProjectScraper
+ 
+ SCRAPER_REGISTRY = {
+     "phoenix_csv": PhoenixScraper,
+     "dallas_socrata": DallasScraper,
+     "chicago_socrata": ChicagoScraper,
+     "nyc_socrata": NYCScraper,
++    "permit_multi_city": PermitMultiCityScraper,
++    "contractor_directory": ContractorDirectoryScraper,
++    "bid_board": BidBoardScraper,
++    "industrial_project": IndustrialProjectScraper,
+ }
+ 
+-__all__ = ["SCRAPER_REGISTRY", "PhoenixScraper", "DallasScraper", "ChicagoScraper", "NYCScraper"]
++__all__ = [
++    "SCRAPER_REGISTRY",
++    "PhoenixScraper",
++    "DallasScraper",
++    "ChicagoScraper",
++    "NYCScraper",
++    "PermitMultiCityScraper",
++    "ContractorDirectoryScraper",
++    "BidBoardScraper",
++    "IndustrialProjectScraper",
++]

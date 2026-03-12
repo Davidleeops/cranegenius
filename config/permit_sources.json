@@ -1,0 +1,20 @@
+{
+  "sources": [
+    {
+      "name": "nyc_construction_permits",
+      "type": "socrata",
+      "url": "https://data.cityofnewyork.us/resource/ipu4-2q9a.json",
+      "query": "$limit=500",
+      "city": "New York",
+      "state": "NY"
+    },
+    {
+      "name": "chicago_building_permits",
+      "type": "socrata",
+      "url": "https://data.cityofchicago.org/resource/ydr8-5enu.json",
+      "query": "$limit=500",
+      "city": "Chicago",
+      "state": "IL"
+    }
+  ]
+}

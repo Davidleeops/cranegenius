@@ -1,0 +1,14 @@
+{
+  "verification_attempted": false,
+  "verification_skipped": true,
+  "skip_reason": "missing_api_key",
+  "total_candidates_generated": 6,
+  "total_sent_to_verifier": 6,
+  "total_verified_rows_returned": 0,
+  "valid_count": 0,
+  "catchall_count": 0,
+  "invalid_count": 0,
+  "valid_output": "data/monday_verified_valid.csv",
+  "catchall_output": "data/monday_verified_catchall.csv",
+  "invalid_output": "data/monday_verified_invalid.csv"
+}

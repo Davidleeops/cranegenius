@@ -9,6 +9,10 @@ import requests
 from bs4 import BeautifulSoup
 
 from .scrapers import SCRAPER_REGISTRY
+from .scrapers.bid_board_scraper import BidBoardScraper
+from .scrapers.contractor_directory_scraper import ContractorDirectoryScraper
+from .scrapers.industrial_project_scraper import IndustrialProjectScraper
+from .scrapers.permit_multi_city_scraper import PermitMultiCityScraper
 from .utils import load_yaml, normalize_text, utc_now_iso
 
 log = logging.getLogger("cranegenius.ingest")
@@ -27,6 +31,20 @@ RAW_COLUMNS = [
     "project_state",
     "contractor_name_raw",
     "description_raw",
+    "project_cost_optional",
+    "signal_keywords",
+    "company_name",
+    "project_description_optional",
+    "city",
+    "state",
+    "capture_timestamp",
+]
+
+MULTI_SOURCE_SCRAPERS = [
+    PermitMultiCityScraper,
+    ContractorDirectoryScraper,
+    BidBoardScraper,
+    IndustrialProjectScraper,
 ]
 
 
@@ -64,9 +82,61 @@ def ingest_sources(sources_yaml_path: str) -> pd.DataFrame:
         except Exception as exc:
             log.warning("Source %s failed (skipping): %s", source_id, exc)
 
+    # Additive multi-source discovery layer for outbound scale.
+    rows.extend(_ingest_multi_source_signals())
+
     df = pd.DataFrame(rows, columns=RAW_COLUMNS)
     log.info("Ingest complete: %d total raw rows", len(df))
     return df
+
+
+def _ingest_multi_source_signals() -> List[Dict[str, Any]]:
+    rows: List[Dict[str, Any]] = []
+    for scraper_cls in MULTI_SOURCE_SCRAPERS:
+        scraper = scraper_cls({})
+        try:
+            signal_rows = scraper.run()
+            for signal in signal_rows:
+                rows.append(_signal_to_raw(scraper.source_id, signal))
+        except Exception as exc:
+            log.warning("Multi-source scraper %s failed: %s", scraper_cls.__name__, exc)
+    log.info("Multi-source discovery added %d rows", len(rows))
+    return rows
+
+
+def _signal_to_raw(source_id: str, signal: Dict[str, Any]) -> Dict[str, Any]:
+    city = normalize_text(signal.get("city"))
+    state = normalize_text(signal.get("state"))
+    capture_ts = normalize_text(signal.get("capture_timestamp")) or utc_now_iso()
+    description = normalize_text(signal.get("project_description_optional"))
+    company = normalize_text(signal.get("company_name"))
+    signal_keywords = signal.get("signal_keywords", "")
+    if isinstance(signal_keywords, list):
+        signal_keywords = ",".join([normalize_text(x) for x in signal_keywords if normalize_text(x)])
+    signal_keywords = normalize_text(signal_keywords)
+
+    return {
+        "source_id": source_id,
+        "source_type": normalize_text(signal.get("source_type")) or "signal",
+        "jurisdiction": ", ".join([x for x in [city, state] if x]),
+        "source_url": normalize_text(signal.get("source_url")),
+        "source_capture_utc": capture_ts,
+        "permit_or_record_id": "",
+        "record_status": "detected",
+        "record_date": capture_ts[:10],
+        "project_address": "",
+        "project_city": city,
+        "project_state": state,
+        "contractor_name_raw": company,
+        "description_raw": description,
+        "project_cost_optional": signal.get("project_cost_optional", ""),
+        "signal_keywords": signal_keywords,
+        "company_name": company,
+        "project_description_optional": description,
+        "city": city,
+        "state": state,
+        "capture_timestamp": capture_ts,
+    }
 
 
 def _ingest_generic_csv(source: Dict[str, Any]) -> List[Dict[str, Any]]:

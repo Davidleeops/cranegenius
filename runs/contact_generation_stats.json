@@ -1,7 +1,11 @@
 {
-  "companies_processed": 200,
-  "domains_found": 67,
-  "emails_generated": 1003,
+  "companies_processed": 10,
+  "domains_found": 3,
+  "people_rows_total": 4,
+  "people_rows_eligible": 3,
+  "people_rows_deferred_low_person_source": 1,
+  "people_rows_deferred_low_domain": 1,
+  "emails_generated": 6,
   "emails_filtered": 0,
-  "emails_ready_for_verification": 1003
+  "emails_ready_for_verification": 6
 }

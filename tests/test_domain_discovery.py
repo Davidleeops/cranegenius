@@ -4,7 +4,9 @@ import unittest
 from unittest.mock import patch
 
 from src.domain_discovery import (
+    _build_ci_seed_domain_map,
     _build_search_queries,
+    _derive_domain_confidence,
     _detect_parked_domain,
     _extract_candidate_domains_from_search_html,
     _search_candidate_score,
@@ -63,6 +65,10 @@ class TestCompanyNameCleaning(unittest.TestCase):
         dirty = "keiser electric po box 151612, ft worth, tx 76108 (817) 319-2796"
         self.assertEqual(clean_company_name(dirty), "keiser electric")
 
+    def test_cleans_backslash_and_slash_contact_tails(self) -> None:
+        dirty = "barnett signs \\4250 action dr, mesquite, tx 75150 /9726818800"
+        self.assertEqual(clean_company_name(dirty), "barnett signs")
+
 
 class TestMxOnlyFallback(unittest.TestCase):
     @patch("src.domain_discovery._has_mx_records", return_value=(True, None))
@@ -101,6 +107,161 @@ class TestMxOnlyFallback(unittest.TestCase):
         self.assertEqual(result["domain_validation_reason"], "http_404")
 
 
+class TestAmbiguousMxOnlyGuardrail(unittest.TestCase):
+    @patch("src.domain_discovery._has_mx_records", return_value=(True, None))
+    @patch("src.domain_discovery.requests.head")
+    def test_rejects_aa_domain_for_ambiguous_company(self, mock_head, _mx) -> None:
+        class Resp:
+            status_code = 403
+            url = "https://aa.com"
+            headers = {}
+
+        mock_head.return_value = Resp()
+        result = validate_domain("aa.com", company_context="a a construction")
+        self.assertFalse(result["domain_valid"])
+        self.assertEqual(result["domain_validation_reason"], "ambiguous_generic_domain")
+
+    @patch("src.domain_discovery._has_mx_records", return_value=(True, None))
+    @patch("src.domain_discovery.requests.head")
+    def test_rejects_priority_domain_for_ambiguous_company(self, mock_head, _mx) -> None:
+        class Resp:
+            status_code = 403
+            url = "https://priority.com"
+            headers = {}
+
+        mock_head.return_value = Resp()
+        result = validate_domain("priority.com", company_context="priority contracting")
+        self.assertFalse(result["domain_valid"])
+        self.assertEqual(result["domain_validation_reason"], "ambiguous_generic_domain")
+
+    @patch("src.domain_discovery._has_mx_records", return_value=(True, None))
+    @patch("src.domain_discovery.requests.head")
+    def test_rejects_expert_and_tempo_ambiguous_roots(self, mock_head, _mx) -> None:
+        class RespExpert:
+            status_code = 403
+            url = "https://expert.com"
+            headers = {}
+
+        class RespTempo:
+            status_code = 403
+            url = "https://tempo.com"
+            headers = {}
+
+        mock_head.return_value = RespExpert()
+        r1 = validate_domain("expert.com", company_context="expert services")
+        self.assertFalse(r1["domain_valid"])
+        self.assertEqual(r1["domain_validation_reason"], "ambiguous_generic_domain")
+
+        mock_head.return_value = RespTempo()
+        r2 = validate_domain("tempo.com", company_context="tempo")
+        self.assertFalse(r2["domain_valid"])
+        self.assertEqual(r2["domain_validation_reason"], "ambiguous_generic_domain")
+
+
+
+    @patch("src.domain_discovery._has_mx_records", return_value=(True, None))
+    @patch("src.domain_discovery._check_parking_and_keywords", return_value={"parking": False, "construction_keyword_match": False})
+    @patch("src.domain_discovery.requests.head")
+    def test_rejects_ambiguous_on_status_200_without_keyword_match(self, mock_head, _content, _mx) -> None:
+        class Resp:
+            status_code = 200
+            url = "https://priority.com"
+            headers = {}
+
+        mock_head.return_value = Resp()
+        result = validate_domain("priority.com", company_context="priority contracting")
+        self.assertFalse(result["domain_valid"])
+        self.assertEqual(result["domain_validation_reason"], "ambiguous_generic_domain")
+
+class TestCiSeedIntelligence(unittest.TestCase):
+    def test_build_ci_seed_domain_map_uses_numeric_confidence_and_skips_free_domains(self) -> None:
+        df = __import__("pandas").DataFrame(
+            [
+                {
+                    "normalized_company_name": "Turner Company",
+                    "preferred_domain": "turnerconstruction.com",
+                    "domain_confidence": 0.85,
+                    "source_support_count": 5,
+                },
+                {
+                    "normalized_company_name": "Turner Company",
+                    "preferred_domain": "gmail.com",
+                    "domain_confidence": 0.99,
+                    "source_support_count": 20,
+                },
+            ]
+        )
+
+        found = _build_ci_seed_domain_map(df)
+        self.assertEqual(found.get("turnercompany"), "turnerconstruction.com")
+
+    def test_build_ci_seed_domain_map_skips_conflicting_company_domains(self) -> None:
+        df = __import__("pandas").DataFrame(
+            [
+                {
+                    "normalized_company_name": "acme builders",
+                    "preferred_domain": "acmebuild.com",
+                    "domain_confidence": "high",
+                    "source_support_count": 4,
+                },
+                {
+                    "normalized_company_name": "acme builders",
+                    "preferred_domain": "acme-group.com",
+                    "domain_confidence": "high",
+                    "source_support_count": 4,
+                },
+            ]
+        )
+
+        found = _build_ci_seed_domain_map(df)
+        self.assertNotIn("acmebuilders", found)
+
+    @patch("src.domain_discovery._load_name_domain_map", return_value={})
+    @patch("src.domain_discovery.discover_domain")
+    @patch("src.domain_discovery.validate_domain")
+    @patch("src.domain_discovery._load_ci_seed_domain_map", return_value={"turnercompany": "turnerconstruction.com"})
+    def test_ci_seed_exact_match_precedes_discovery(self, _ci_map, mock_validate, mock_discover, _existing_map) -> None:
+        mock_validate.return_value = {
+            "domain": "turnerconstruction.com",
+            "domain_valid": True,
+            "mx_valid": True,
+            "domain_validation_reason": "valid",
+            "valid": True,
+            "construction_keyword_match": True,
+        }
+
+        df = __import__("pandas").DataFrame(
+            [{"contractor_name_normalized": "Turner Company", "contractor_domain": "", "project_city": "", "project_state": "TX"}]
+        )
+        out = discover_company_domains(df)
+
+        self.assertEqual(out.iloc[0]["contractor_domain"], "turnerconstruction.com")
+        self.assertEqual(out.iloc[0]["domain_discovery_source"], "ci_seed_exact_validated")
+        mock_discover.assert_not_called()
+
+    @patch("src.domain_discovery._load_name_domain_map", return_value={})
+    @patch("src.domain_discovery._load_ci_seed_domain_map", return_value={})
+    @patch("src.domain_discovery.discover_domain")
+    def test_weak_or_conflicting_ci_seed_does_not_override_discovery(self, mock_discover, _ci_map, _existing_map) -> None:
+        mock_discover.return_value = {
+            "domain": "acmebuild.com",
+            "domain_valid": True,
+            "mx_valid": True,
+            "domain_validation_reason": "valid",
+            "valid": True,
+            "construction_keyword_match": True,
+        }
+
+        df = __import__("pandas").DataFrame(
+            [{"contractor_name_normalized": "Acme Builders", "contractor_domain": "", "project_city": "", "project_state": "TX"}]
+        )
+        out = discover_company_domains(df)
+
+        self.assertEqual(out.iloc[0]["contractor_domain"], "acmebuild.com")
+        self.assertEqual(out.iloc[0]["domain_discovery_source"], "variant_discovery")
+
+
+
 class TestFuzzyExistingMapLookup(unittest.TestCase):
     def test_fuzzy_near_match_returns_domain(self) -> None:
         existing_map = {
@@ -109,6 +270,28 @@ class TestFuzzyExistingMapLookup(unittest.TestCase):
         }
         found = _fuzzy_existing_map_domain("turner compa", existing_map)
         self.assertEqual(found, "turnerconstruction.com")
+
+
+class TestDomainConfidence(unittest.TestCase):
+    def test_domain_confidence_low_for_weak_variant_like_aagroup(self) -> None:
+        conf = _derive_domain_confidence(
+            is_domain_valid=True,
+            source="variant_discovery",
+            cleaned_company_name="a a construction",
+            domain="aagroup.com",
+            result={"domain_validation_reason": "valid", "construction_keyword_match": False},
+        )
+        self.assertEqual(conf, "low")
+
+    def test_domain_confidence_high_for_existing_input(self) -> None:
+        conf = _derive_domain_confidence(
+            is_domain_valid=True,
+            source="existing_input_validated",
+            cleaned_company_name="quick roofing",
+            domain="quickroofing.com",
+            result={"domain_validation_reason": "valid", "construction_keyword_match": True},
+        )
+        self.assertEqual(conf, "high")
 
 
 class TestSearchFallbackHelpers(unittest.TestCase):

@@ -1,0 +1,118 @@
+# Repo Backup Audit
+
+- Generated: 2026-03-08T10:32:30.897246
+- Live repo: `/Users/lemueldavidleejr/Downloads/cranegenius_repo`
+- Backup repo: `/Users/lemueldavidleejr/Desktop/cranegenius/cranegenius_repo_backup_unreviewed`
+
+## Summary
+- Only in backup: **89**
+- Only in live: **2**
+- Differing files: **11**
+
+## Files Only In Backup
+- `claims/index.html`
+- `companies_for_outreach.csv`
+- `companies_priority_200.csv`
+- `companies_priority_200_with_domains.csv`
+- `config/routing_schema.json`
+- `config/send_selection.yaml`
+- `config/signal_schema.json`
+- `config/supplier_schema.json`
+- `dashboard/index.html`
+- `data/agents/agent_loader.js`
+- `data/agents/agents_seed.json`
+- `data/agents/ai_triage_helper.js`
+- `data/agents/approval_queue_helper.js`
+- `data/agents/claim_helper.js`
+- `data/agents/send_queue_helper.js`
+- `data/dashboard/dashboard_helper.js`
+- `data/deals/deal_helper.js`
+- `data/monday_all_candidates.csv`
+- `data/monday_all_email_candidates.csv`
+- `data/monday_campaign_companies.csv`
+- `data/monday_campaign_email_candidates.csv`
+- `data/monday_campaign_plusvibes.csv`
+- `data/monday_campaign_qa.json`
+- `data/monday_campaign_verified.csv`
+- `data/monday_companies_ranked.csv`
+- `data/monday_company_domains.csv`
+- `data/monday_company_qa.json`
+- `data/monday_individual_candidates_qa.json`
+- `data/monday_individual_email_candidates.csv`
+- `data/monday_people_found.csv`
+- `data/monday_people_pipeline_qa.json`
+- `data/monday_plusvibes_combined.csv`
+- `data/monday_plusvibes_individuals.csv`
+- `data/monday_plusvibes_roles.csv`
+- `data/monday_role_email_candidates.csv`
+- `data/monday_top_250_companies.csv`
+- `data/monday_top_500_companies.csv`
+- `data/monday_verified_catchall.csv`
+- `data/monday_verified_invalid.csv`
+- `data/monday_verified_valid.csv`
+- `data/outreach/outreach_helper.js`
+- `data/routing/README.md`
+- `data/routing/routing_helpers.js`
+- `data/signals/README.md`
+- `data/signals/signal_helpers.js`
+- `data/signals/signal_loader.js`
+- `data/signals/signals_seed.json`
+- `data/suppliers/supplier_loader.js`
+- `deals/index.html`
+- `docs_learning/build_log.md`
+- `docs_learning/claude_browser_handoff.md`
+- `docs_learning/learning_summary.md`
+- `docs_learning/podcast_script.md`
+- `docs_learning/upload_bundle/build_log.md`
+- `docs_learning/upload_bundle/learning_summary.md`
+- `docs_learning/upload_bundle/monday_all_email_candidates.csv`
+- `docs_learning/upload_bundle/monday_company_domains.csv`
+- `docs_learning/upload_bundle/monday_people_found.csv`
+- `docs_learning/upload_bundle/monday_people_pipeline_qa.json`
+- `docs_learning/upload_bundle/monday_plusvibes_combined.csv`
+- `docs_learning/upload_bundle/monday_verified_catchall.csv`
+- `docs_learning/upload_bundle/monday_verified_invalid.csv`
+- `docs_learning/upload_bundle/monday_verified_valid.csv`
+- `docs_learning/upload_bundle/podcast_script.md`
+- `docs_learning/upload_bundle/qa_report.json`
+- `download_crane_images.sh`
+- `outreach/index.html`
+- `queue/index.html`
+- `runs/overnight_domain_notes.md`
+- `scripts/domain_discovery_benchmark.py`
+- `scripts/run_and_prepare_learning.py`
+- `send-queue/index.html`
+- `signals/index.html`
+- `src/company_selector.py`
+- `src/domain_dedupe.py`
+- `src/domain_discovery.py`
+- `src/monday_campaign_fast_path.py`
+- `src/monday_company_list_fast_path.py`
+- `src/monday_individual_contact_generation.py`
+- `src/monday_people_pipeline.py`
+- `src/people_discovery.py`
+- `src/people_email_generator.py`
+- `src/scrapers/bid_board_scraper.py`
+- `src/scrapers/contractor_directory_scraper.py`
+- `src/scrapers/industrial_project_scraper.py`
+- `src/scrapers/permit_multi_city_scraper.py`
+- `tests/test_domain_discovery.py`
+- `tests/test_people_email_generator.py`
+- `triage/index.html`
+
+## Files Only In Live
+- `runs/repo_backup_audit.md`
+- `scripts/audit_backup_repo.py`
+
+## Files That Differ
+- `.gitignore`
+- `CHANGELOG_AGENT.md`
+- `TASK.md`
+- `opportunities/detail.js`
+- `routing/index.html`
+- `src/candidate_builder.py`
+- `src/ingest.py`
+- `src/parse_normalize.py`
+- `src/pipeline.py`
+- `src/score_filter.py`
+- `src/scrapers/__init__.py`

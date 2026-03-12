@@ -1,0 +1,262 @@
+{
+  "run_id": "20260312T221640Z",
+  "generated_at": "2026-03-12T22:17:37.690261+00:00",
+  "repo_root": "/Users/lemueldavidleejr/Downloads/cranegenius_repo",
+  "status": "success",
+  "db_path": "/tmp/cranegenius_mvp_test.db",
+  "jobs_input": "/Users/lemueldavidleejr/Downloads/cranegenius_repo/data/jobs_imported.json",
+  "permits_input": "/Users/lemueldavidleejr/Downloads/cranegenius_repo/data/opportunities/permits_imported.json",
+  "export_dir": "/tmp/cranegenius_mvp_exports",
+  "json_output_dir": "/Users/lemueldavidleejr/Downloads/cranegenius_repo/data",
+  "stages": [
+    {
+      "name": "init_db",
+      "description": "Initialize SQLite runtime and base schema.",
+      "command": [
+        "python3",
+        "contact_intelligence/scripts/init_db.py",
+        "--db",
+        "/tmp/cranegenius_mvp_test.db"
+      ],
+      "status": "success",
+      "returncode": 0,
+      "duration_seconds": 0.06484198570251465,
+      "stdout": "[init_db] Initializing: /tmp/cranegenius_mvp_test.db\n[init_db]  Applying create_tables.sql...\n[init_db]  Applying indexes.sql...\n[init_db]  Applying seed_sectors.sql...\n[init_db] \u2713 Done. Runtime folders at: /tmp",
+      "stderr": "",
+      "outputs": [
+        {
+          "path": "/tmp/cranegenius_mvp_test.db",
+          "required": true,
+          "exists": true,
+          "size_bytes": 528384
+        }
+      ],
+      "metrics": {},
+      "failure_reason": ""
+    },
+    {
+      "name": "scrape_permits",
+      "description": "Fetch public permit opportunities into normalized JSON.",
+      "command": [
+        "python3",
+        "scripts/scrape_permits_public.py",
+        "--output",
+        "/Users/lemueldavidleejr/Downloads/cranegenius_repo/data/opportunities/permits_imported.json"
+      ],
+      "status": "success",
+      "returncode": 0,
+      "duration_seconds": 6.407407760620117,
+      "stdout": "Wrote 14 opportunity candidate permits to /Users/lemueldavidleejr/Downloads/cranegenius_repo/data/opportunities/permits_imported.json",
+      "stderr": "",
+      "outputs": [
+        {
+          "path": "/Users/lemueldavidleejr/Downloads/cranegenius_repo/data/opportunities/permits_imported.json",
+          "required": true,
+          "exists": true,
+          "size_bytes": 35951
+        }
+      ],
+      "metrics": {
+        "permit_candidate_rows": 14,
+        "permit_total_rows": 1000,
+        "used_previous_output": false
+      },
+      "failure_reason": ""
+    },
+    {
+      "name": "scrape_jobs",
+      "description": "Fetch public job signals into normalized JSON.",
+      "command": [
+        "python3",
+        "scripts/scrape_jobs_public.py",
+        "--output",
+        "/Users/lemueldavidleejr/Downloads/cranegenius_repo/data/jobs_imported.json"
+      ],
+      "status": "success",
+      "returncode": 0,
+      "duration_seconds": 50.03775191307068,
+      "stdout": "Wrote 12 jobs to /Users/lemueldavidleejr/Downloads/cranegenius_repo/data/jobs_imported.json (seed catalog fallback)\nSources attempted: 13\nSource raw counts: {'manual_import_csv': 1, 'remotive_api': 0, 'usajobs_api_crane': 0, 'usajobs_api_rigger': 0, 'usajobs_api_heavy': 0, 'arbeitnow_api': 1, 'themuse_api': 0, 'indeed_rss': 0, 'careerjet_rss': 0, 'craigslist_ny_rss': 0, 'craigslist_la_rss': 0, 'craigslist_chicago_rss': 0, 'craigslist_houston_rss': 0}\nSource errors captured:\n  remotive_api: crane operator: HTTPError: HTTP Error 403: Forbidden\n  usajobs_api_crane: crane operator: RuntimeError: USAJOBS_API_KEY and USAJOBS_USER_EMAIL are required for USAJobs API\n  usajobs_api_rigger: crane operator: RuntimeError: USAJOBS_API_KEY and USAJOBS_USER_EMAIL are required for USAJobs API\n  usajobs_api_heavy: crane operator: RuntimeError: USAJOBS_API_KEY and USAJOBS_USER_EMAIL are required for USAJobs API\n  themuse_api: crane operator: HTTPError: HTTP Error 403: Forbidden\n  indeed_rss: crane operator: HTTPError: HTTP Error 403: Forbidden\n  careerjet_rss: crane operator: HTTPError: HTTP Error 404: Not Found\n  craigslist_ny_rss: crane operator: HTTPError: HTTP Error 403: Forbidden\n  craigslist_la_rss: crane operator: HTTPError: HTTP Error 403: Forbidden\n  craigslist_chicago_rss: crane operator: HTTPError: HTTP Error 403: Forbidden\n  craigslist_houston_rss: crane operator: HTTPError: HTTP Error 403: Forbidden",
+      "stderr": "",
+      "outputs": [
+        {
+          "path": "/Users/lemueldavidleejr/Downloads/cranegenius_repo/data/jobs_imported.json",
+          "required": true,
+          "exists": true,
+          "size_bytes": 10157
+        }
+      ],
+      "metrics": {
+        "jobs_count": 12,
+        "jobs_raw_rows": 2,
+        "used_previous_output": false,
+        "used_seed_catalog": true
+      },
+      "failure_reason": ""
+    },
+    {
+      "name": "normalize_match",
+      "description": "Load feeds into CI tables and compute deterministic match candidates.",
+      "command": [
+        "python3",
+        "contact_intelligence/scripts/normalize_and_match_feeds.py",
+        "--db",
+        "/tmp/cranegenius_mvp_test.db",
+        "--jobs",
+        "/Users/lemueldavidleejr/Downloads/cranegenius_repo/data/jobs_imported.json",
+        "--permits",
+        "/Users/lemueldavidleejr/Downloads/cranegenius_repo/data/opportunities/permits_imported.json"
+      ],
+      "status": "success",
+      "returncode": 0,
+      "duration_seconds": 0.06818008422851562,
+      "stdout": "[phase2] feed normalization + matching complete\n[phase2] jobs_feed_items upserted: 12\n[phase2] opportunity_feed_items upserted: 14\n[phase2] manpower_profiles upserted: 0\n[phase2] job_contact_matches: 0\n[phase2] opportunity_company_matches: 0\n[phase2] manpower_job_matches: 0",
+      "stderr": "",
+      "outputs": [
+        {
+          "path": "/tmp/cranegenius_mvp_test.db",
+          "required": true,
+          "exists": true,
+          "size_bytes": 544768
+        }
+      ],
+      "metrics": {
+        "jobs_feed_items": 12,
+        "opportunity_feed_items": 14,
+        "manpower_profiles": 0,
+        "job_contact_matches": 0,
+        "opportunity_company_matches": 0,
+        "manpower_job_matches": 0
+      },
+      "failure_reason": ""
+    },
+    {
+      "name": "build_project_intelligence",
+      "description": "Create signal events and project candidate intelligence records.",
+      "command": [
+        "python3",
+        "contact_intelligence/scripts/build_project_intelligence.py",
+        "--db",
+        "/tmp/cranegenius_mvp_test.db",
+        "--repo-root",
+        "/Users/lemueldavidleejr/Downloads/cranegenius_repo"
+      ],
+      "status": "success",
+      "returncode": 0,
+      "duration_seconds": 0.06296706199645996,
+      "stdout": "[project-intel] build complete\n[project-intel] permit rows seen/ingested: 14/14\n[project-intel] jobs rows seen/ingested: 12/12\n[project-intel] db signals seen/ingested: 0/0\n[project-intel] candidate upserts: 26\n[project-intel] total signal_events: 26\n[project-intel] total project_candidates: 26",
+      "stderr": "",
+      "outputs": [
+        {
+          "path": "/tmp/cranegenius_mvp_test.db",
+          "required": true,
+          "exists": true,
+          "size_bytes": 798720
+        }
+      ],
+      "metrics": {
+        "signal_events": 26,
+        "project_candidates": 26,
+        "project_signal_links": 26,
+        "permit_signal_items": 14,
+        "jobs_signal_items": 12
+      },
+      "failure_reason": ""
+    },
+    {
+      "name": "export_project_intelligence",
+      "description": "Produce operator exports and static JSON payloads.",
+      "command": [
+        "python3",
+        "contact_intelligence/scripts/export_project_intelligence.py",
+        "--db",
+        "/tmp/cranegenius_mvp_test.db",
+        "--output",
+        "/tmp/cranegenius_mvp_exports",
+        "--json-output",
+        "/Users/lemueldavidleejr/Downloads/cranegenius_repo/data"
+      ],
+      "status": "success",
+      "returncode": 0,
+      "duration_seconds": 0.254777193069458,
+      "stdout": "[project-export] national_opportunity_candidates.xlsx: 21 rows -> /tmp/cranegenius_mvp_exports/national_opportunity_candidates.xlsx\n[project-export] top_project_candidates.xlsx: 20 rows -> /tmp/cranegenius_mvp_exports/top_project_candidates.xlsx\n[project-export] top_data_center_candidates.xlsx: 0 rows -> /tmp/cranegenius_mvp_exports/top_data_center_candidates.xlsx\n[project-export] top_energy_candidates.xlsx: 2 rows -> /tmp/cranegenius_mvp_exports/top_energy_candidates.xlsx\n[project-export] top_industrial_candidates.xlsx: 3 rows -> /tmp/cranegenius_mvp_exports/top_industrial_candidates.xlsx\n[project-export] top_logistics_candidates.xlsx: 1 rows -> /tmp/cranegenius_mvp_exports/top_logistics_candidates.xlsx\n[project-export] mini_opportunity_candidates.xlsx: 0 rows -> /tmp/cranegenius_mvp_exports/mini_opportunity_candidates.xlsx\n[project-export] recommended_expansion_candidates.xlsx: 3 rows -> /tmp/cranegenius_mvp_exports/recommended_expansion_candidates.xlsx\n[project-export] project_candidates.json: 21 records -> /Users/lemueldavidleejr/Downloads/cranegenius_repo/data/static_exports/project_candidates.json\n[project-export] top_project_candidates.json: 20 records -> /Users/lemueldavidleejr/Downloads/cranegenius_repo/data/static_exports/top_project_candidates.json\n[project-export] mini_opportunity_candidates.json: 0 records -> /Users/lemueldavidleejr/Downloads/cranegenius_repo/data/static_exports/mini_opportunity_candidates.json\n[project-export] recommended_expansion_candidates.json: 3 records -> /Users/lemueldavidleejr/Downloads/cranegenius_repo/data/static_exports/recommended_expansion_candidates.json\n[project-export] done\n[project-export] counts: {'national_opportunity_candidates': 21, 'top_project_candidates': 20, 'top_data_center_candidates': 0, 'top_energy_candidates': 2, 'top_industrial_candidates': 3, 'top_logistics_candidates': 1, 'mini_opportunity_candidates': 0, 'recommended_expansion_candidates': 3}",
+      "stderr": "",
+      "outputs": [
+        {
+          "path": "/Users/lemueldavidleejr/Downloads/cranegenius_repo/data/static_exports/project_candidates.json",
+          "required": true,
+          "exists": true,
+          "size_bytes": 13719
+        },
+        {
+          "path": "/Users/lemueldavidleejr/Downloads/cranegenius_repo/data/static_exports/top_project_candidates.json",
+          "required": true,
+          "exists": true,
+          "size_bytes": 13125
+        },
+        {
+          "path": "/tmp/cranegenius_mvp_exports/top_project_candidates.xlsx",
+          "required": false,
+          "exists": true,
+          "size_bytes": 7762
+        },
+        {
+          "path": "/tmp/cranegenius_mvp_exports/top_project_candidates.csv",
+          "required": false,
+          "exists": false,
+          "size_bytes": 0
+        },
+        {
+          "path": "/tmp/cranegenius_mvp_exports/recommended_expansion_candidates.xlsx",
+          "required": false,
+          "exists": true,
+          "size_bytes": 5936
+        },
+        {
+          "path": "/tmp/cranegenius_mvp_exports/recommended_expansion_candidates.csv",
+          "required": false,
+          "exists": false,
+          "size_bytes": 0
+        }
+      ],
+      "metrics": {
+        "top_project_candidates_records": 20,
+        "recommended_expansion_candidates_records": 3,
+        "export_files_present": [
+          "mini_opportunity_candidates.xlsx",
+          "national_opportunity_candidates.xlsx",
+          "recommended_expansion_candidates.xlsx",
+          "top_data_center_candidates.xlsx",
+          "top_energy_candidates.xlsx",
+          "top_industrial_candidates.xlsx",
+          "top_logistics_candidates.xlsx",
+          "top_project_candidates.xlsx"
+        ]
+      },
+      "failure_reason": ""
+    }
+  ],
+  "final_metrics": {
+    "signal_events": 26,
+    "project_candidates": 26,
+    "project_signal_links": 26,
+    "permit_signal_items": 14,
+    "jobs_signal_items": 12,
+    "top_project_candidates_records": 20,
+    "recommended_expansion_candidates_records": 3,
+    "export_files_present": [
+      "mini_opportunity_candidates.xlsx",
+      "national_opportunity_candidates.xlsx",
+      "recommended_expansion_candidates.xlsx",
+      "top_data_center_candidates.xlsx",
+      "top_energy_candidates.xlsx",
+      "top_industrial_candidates.xlsx",
+      "top_logistics_candidates.xlsx",
+      "top_project_candidates.xlsx"
+    ],
+    "status": "success",
+    "db_path": "/tmp/cranegenius_mvp_test.db",
+    "export_dir": "/tmp/cranegenius_mvp_exports",
+    "operator_exports_hint": "/tmp/cranegenius_mvp_exports",
+    "machine_summary_path": "/Users/lemueldavidleejr/Downloads/cranegenius_repo/runs/mvp_pipeline_test/20260312T221640Z/run_summary.json"
+  }
+}

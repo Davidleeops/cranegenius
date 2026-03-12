@@ -5,11 +5,13 @@ import pandas as pd
 from .utils import load_yaml, normalize_text
 
 log = logging.getLogger("cranegenius.candidates")
-MAX_CANDIDATES_PER_DOMAIN = 8
+MAX_CANDIDATES_PER_DOMAIN = 2
+ROLE_INBOX_PRIORITY = ["estimating", "bids", "projects", "operations", "info"]
 
 def build_candidates(enriched_df, keywords_yaml, contacts_df=None, patterns_df=None):
     cfg = load_yaml(keywords_yaml)
-    role_inboxes = [normalize_text(x).lower() for x in cfg.get("role_inboxes", []) if x]
+    configured = [normalize_text(x).lower().replace("@", "") for x in cfg.get("role_inboxes", []) if x]
+    role_inboxes = ROLE_INBOX_PRIORITY + [x for x in configured if x and x not in ROLE_INBOX_PRIORITY]
 
     known_persons: Dict[str, List[str]] = {}
     if contacts_df is not None and not contacts_df.empty:

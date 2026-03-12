@@ -72,18 +72,52 @@ select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0f
   var esc = function(s){ return String(s||'').replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); };
   var PRIMARY_OPPS_PATH = '/data/opportunities/opportunities.json';
   var BATCH2_OPPS_PATH = '/data/opportunities_batch_2.json';
+  var PERMITS_OPPS_PATH = '/data/opportunities/permits_imported.json';
+
+  function toSlug(v){
+    return String(v||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+  }
 
   function normalizeOpportunity(o, idx){
     var n = Object.assign({}, o || {});
     n.opportunity_id = n.opportunity_id || ('opp-auto-' + (idx + 1));
     n.project_name = n.project_name || ('Opportunity ' + (idx + 1));
-    n.project_slug = n.project_slug || String(n.project_name).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+    n.project_slug = n.project_slug || toSlug(n.project_name);
     n.city = n.city || '';
     n.state = n.state || '';
     n.project_type = n.project_type || 'infrastructure_upgrade';
     n.project_stage = n.project_stage || 'planning';
     n.recommended_lift_categories = Array.isArray(n.recommended_lift_categories) ? n.recommended_lift_categories : [];
+    n.source_type = n.source_type || 'opportunity';
+    n.source_url = n.source_url || '';
+    n.has_detail_page = (typeof n.has_detail_page === 'boolean') ? n.has_detail_page : true;
     return n;
+  }
+
+  function normalizePermitRow(row, idx){
+    var projectName = row.description || ('Permit Opportunity ' + (idx + 1));
+    var permitId = row.permit_id || ('permit-' + (idx + 1));
+    var city = row.city || '';
+    var state = row.state || '';
+    var source = row.source || 'public_permit_source';
+    var sourceUrl = row.source_url || '';
+    var summaryBits = [row.description, row.address].filter(Boolean);
+    return normalizeOpportunity({
+      opportunity_id: 'permit-' + toSlug(source + '-' + permitId + '-' + city + '-' + state),
+      project_name: projectName,
+      project_slug: toSlug(projectName + '-' + permitId),
+      city: city,
+      state: state,
+      project_type: 'permit_opportunity',
+      project_stage: 'planning',
+      lift_requirements_summary: summaryBits.join(' • ') || 'Public permit signal suggests lift-related scope; use AI to triage.',
+      recommended_lift_categories: ['mobile_cranes', 'specialty_lift_contractors'],
+      source_type: 'permit',
+      source_url: sourceUrl,
+      has_detail_page: false,
+      source_note: source,
+      permit_id: permitId
+    });
   }
 
   function extractList(data){
@@ -98,24 +132,26 @@ select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0f
     var sourceNotes = [];
     var responses = await Promise.allSettled([
       fetch(PRIMARY_OPPS_PATH, {cache:'no-store'}),
-      fetch(BATCH2_OPPS_PATH, {cache:'no-store'})
+      fetch(BATCH2_OPPS_PATH, {cache:'no-store'}),
+      fetch(PERMITS_OPPS_PATH, {cache:'no-store'})
     ]);
     for (var i = 0; i < responses.length; i++) {
       var resWrap = responses[i];
-      var path = i === 0 ? PRIMARY_OPPS_PATH : BATCH2_OPPS_PATH;
+      var path = i === 0 ? PRIMARY_OPPS_PATH : (i === 1 ? BATCH2_OPPS_PATH : PERMITS_OPPS_PATH);
       if (resWrap.status !== 'fulfilled') continue;
       var res = resWrap.value;
       if (!res.ok) continue;
       try{
         var data = await res.json();
-        var list = extractList(data);
+        var list = (path === PERMITS_OPPS_PATH)
+          ? (Array.isArray(data && data.rows) ? data.rows.map(normalizePermitRow) : [])
+          : extractList(data);
         if (list.length){
           sourceNotes.push(path.replace('/data/','data/'));
           out = out.concat(list);
         }
       }catch(e){}
     }
-    // De-dupe by opportunity_id then slug.
     var seen = {};
     var merged = [];
     out.map(normalizeOpportunity).forEach(function(x){
@@ -184,6 +220,10 @@ select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0f
       var primaryLiftCategory = cats[0] || 'specialty_lift_contractors';
       var estCapacity = inferEstimatedLiftCapacity(x);
       var tags = cats.slice(0,4).map(function(c){ return '<span class="tag">'+esc(c)+'</span>'; }).join('');
+      var viewAction = x.has_detail_page
+        ? '<a class="primary" href="/opportunities/'+encodeURIComponent(x.project_slug)+'/">View Opportunity</a>'
+        : '<a class="primary" href="#" onclick="askAiAboutOpportunity(\''+esc(x.project_name).replace(/'/g,'&#39;')+'\',\''+esc(x.city).replace(/'/g,'&#39;')+'\',\''+esc(x.state).replace(/'/g,'&#39;')+'\');return false;">AI Triage</a>';
+      var sourceAction = x.source_url ? '<a href="'+esc(x.source_url)+'" target="_blank" rel="noopener">Source</a>' : '';
       return '<div class="card">'+
         '<h3>'+esc(x.project_name)+'</h3>'+
         '<div class="meta"><span>'+esc(x.city)+', '+esc(x.state)+'</span><span>'+esc(x.project_type)+'</span><span>'+esc(primaryLiftCategory)+'</span></div>'+
@@ -191,13 +231,20 @@ select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0f
         '<div class="summary">'+esc(x.lift_requirements_summary)+'</div>'+
         '<div class="tags">'+tags+'</div>'+
         '<div class="card-actions">'+
-          '<a class="primary" href="/opportunities/'+encodeURIComponent(x.project_slug)+'/">View Opportunity</a>'+
+          viewAction+
+          sourceAction+
           '<a href="/marketplace/?lift='+encodeURIComponent(primaryLiftCategory)+'">Marketplace</a>'+
           '<a href="/data-centers/ai-planner">AI Lift Planner</a>'+
         '</div>'+
       '</div>';
     }).join('');
   }
+
+  window.askAiAboutOpportunity = function(projectName, city, state){
+    var msg = 'Triage this opportunity for crane scope and next steps: ' + [projectName, city, state].filter(Boolean).join(' | ');
+    if (window.CGPageBot && typeof window.CGPageBot.openAndSend === 'function' && window.CGPageBot.openAndSend(msg)) return;
+    alert('AI assistant is loading. Use the AI button in the bottom-right corner.');
+  };
 
   loadCombinedOpportunities()
     .then(function(result){

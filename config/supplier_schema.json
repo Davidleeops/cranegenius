@@ -1,0 +1,40 @@
+{
+  "version": "v0.1",
+  "entity": "supplier",
+  "fields": [
+    "supplier_id",
+    "company_name",
+    "city",
+    "state_or_province",
+    "country",
+    "service_regions",
+    "equipment_categories",
+    "specialties_optional",
+    "company_type",
+    "fleet_size_estimate_optional",
+    "contact_name_optional",
+    "contact_email_optional",
+    "website_optional",
+    "phone_optional",
+    "active_status",
+    "notes_optional"
+  ],
+  "enums": {
+    "company_type": [
+      "crane_rental_company",
+      "spider_crane_operator",
+      "mini_crane_operator",
+      "glass_handling_supplier",
+      "rigging_company",
+      "industrial_lift_provider",
+      "specialty_lift_contractor"
+    ],
+    "service_regions_examples": [
+      "west",
+      "south",
+      "midwest",
+      "northeast",
+      "national"
+    ]
+  }
+}

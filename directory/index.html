@@ -127,6 +127,19 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-si
 .chat-quick{padding:0 12px 12px;display:flex;gap:6px;flex-wrap:wrap}
 .quick-btn{font-size:11px;background:var(--bg3);border:1px solid rgba(255,255,255,.08);color:var(--text-dim);border-radius:12px;padding:4px 10px;cursor:pointer;transition:all .15s;font-family:var(--font-body)}
 .quick-btn:hover{border-color:var(--gold-border);color:var(--gold)}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:1200;align-items:center;justify-content:center;padding:16px}
+.modal-overlay.open{display:flex}
+.modal-card{width:min(560px,100%);max-height:92vh;overflow:auto;background:var(--bg2);border:1px solid var(--gold-border);border-radius:12px;padding:20px}
+.modal-title{font-family:var(--font-display);font-size:30px;letter-spacing:2px;color:var(--text);margin-bottom:8px}
+.modal-sub{font-size:13px;color:var(--text-dim);margin-bottom:14px;line-height:1.6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-group{margin-bottom:10px}
+.form-label{display:block;font-size:11px;color:var(--gold);font-family:var(--font-mono);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--bg3);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:var(--text);padding:9px 11px;font-size:13px;font-family:var(--font-body)}
+.form-textarea{min-height:90px;resize:vertical}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--gold-border)}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.modal-close{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--text-dim);padding:9px 12px;border-radius:6px;cursor:pointer}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 @media(max-width:768px){.nav{padding:0 16px}.hero{padding:48px 16px 40px}.search-wrap{padding:0 16px}.main{padding:32px 16px 60px}.cat-nav{padding:0 16px}.card-grid{grid-template-columns:1fr}.hero-stats{gap:24px}.cta-banner{padding:32px 24px}.hero h1{font-size:48px}}
@@ -670,7 +683,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-si
   <p>Get AI-matched crane availability and pricing in minutes — powered by permit data and real fleet intelligence.</p>
   <div class="cta-buttons">
     <a href="https://cranegenius.com/#estimator" class="btn-primary">Get Free Lift Estimate →</a>
-    <a href="mailto:hello@cranegenius.com" class="btn-secondary">List Your Company</a>
+    <a href="#" class="btn-secondary" onclick="openCompanyModal();return false">List Your Company</a>
   </div>
 </div>
 
@@ -688,6 +701,40 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-si
   </div>
   <div class="footer-copy">© 2025 CraneGenius / Dark 30 Ventures. Directory data sourced from public records, manufacturer websites, and verified industry sources.</div>
 </footer>
+
+<div class="modal-overlay" id="companyModal" onclick="if(event.target===this)closeCompanyModal()">
+  <div class="modal-card">
+    <div class="modal-title">ADD COMPANY LISTING</div>
+    <div class="modal-sub">Private companies, owners, operators, and authorized staff can submit listings. Regulatory/governing/standards authority entities are not accepted.</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Company Name *</label>
+        <input class="form-input" id="co_name" placeholder="Company legal name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Category *</label>
+        <select class="form-select" id="co_category">
+          <option>Crane Rental</option><option>Manufacturer</option><option>Training</option><option>Staffing</option><option>Rigging</option><option>Parts/Service</option><option>Engineering</option><option>Finance/Insurance</option><option>Software/Tech</option><option>Other Private Business</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Website</label><input class="form-input" id="co_site" placeholder="https://..."></div>
+      <div class="form-group"><label class="form-label">Contact Email *</label><input class="form-input" id="co_email" placeholder="name@company.com"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">City</label><input class="form-input" id="co_city" placeholder="City"></div>
+      <div class="form-group"><label class="form-label">State</label><input class="form-input" id="co_state" placeholder="State"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Summary *</label><textarea class="form-textarea" id="co_summary" placeholder="Describe services, fleet, specialties, and where you operate"></textarea></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="draftCompanyWithAi();return false">Use AI to Draft</button>
+      <button class="btn-primary" onclick="submitCompanyListing();return false">Submit Listing</button>
+      <button class="modal-close" onclick="closeCompanyModal()">Close</button>
+    </div>
+    <div id="co_success" style="display:none;color:var(--green);font-size:13px;margin-top:10px">Submitted. We will review and add your listing after verification.</div>
+  </div>
+</div>
 
 <div id="ai-panel">
   <div id="ai-chat">
@@ -712,14 +759,71 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-si
   <button id="ai-toggle" onclick="toggleChat()" title="Ask CraneGenius AI">🏗</button>
 </div>
 
+<script src="/config.js"></script>
+<script src="/assets/js/page_ai_context.js"></script>
+
 <script>
 function filterCards(q){q=q.toLowerCase().trim();document.querySelectorAll('.card').forEach(c=>{const n=(c.dataset.name||'').toLowerCase(),t=(c.dataset.tags||'').toLowerCase(),x=c.innerText.toLowerCase();c.classList.toggle('hidden',q.length>0&&!n.includes(q)&&!t.includes(q)&&!x.includes(q))})}
 document.querySelectorAll('.cat-pill').forEach(p=>{p.addEventListener('click',function(){document.querySelectorAll('.cat-pill').forEach(x=>x.classList.remove('active'));this.classList.add('active')})});
 function toggleFaq(el){el.classList.toggle('open')}
 let chatOpen=false;
 function toggleChat(){chatOpen=!chatOpen;document.getElementById('ai-chat').classList.toggle('open',chatOpen);if(chatOpen)document.getElementById('chatInput').focus()}
-const SYS=`You are the CraneGenius AI assistant, an expert in the crane and heavy lift industry. Help users find the right crane, get lift estimates, understand NCCCO certification, navigate the crane directory, and connect with crane rental companies. Always be specific and knowledgeable. When a user needs pricing or crane rental, guide them to the free CraneGenius lift estimator at cranegenius.com/#estimator. Key facts: Mobile/all-terrain cranes 40-500+ ton, need outriggers. Crawler cranes: stability for heavy lifts 200+ tons. Tower cranes: high-rise, self-climbing. Spider/mini cranes: 0.5-6 tons, compact indoor access. NCCCO required by OSHA 1926.1427, 5-year renewal. Typical rental: 40-ton ~$2,000-3,500/day; 100-ton ~$4,000-7,000/day. Top manufacturers: Liebherr, Grove/Manitowoc, Tadano, Link-Belt, Terex.`;
-async function sendChat(){const input=document.getElementById('chatInput'),msg=input.value.trim();if(!msg)return;input.value='';appendMsg(msg,'user');document.getElementById('quickBtns').style.display='none';appendMsg('...','bot typing');const hist=[];document.querySelectorAll('#chatMessages .msg:not(.typing)').forEach(m=>{hist.push({role:m.classList.contains('user')?'user':'assistant',content:m.innerText})});try{const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:[...hist.slice(-8),{role:'user',content:msg}]})});const d=await r.json();removeTyping();appendMsg(d.content?.[0]?.text||'Sorry, try again.','bot')}catch(e){removeTyping();appendMsg('Connection error. Try again or visit cranegenius.com/#estimator','bot')}}
+const DISALLOWED_AUTHORITY_RE = /(osha|asme|ansi|state board|licensing board|department of labor|federal|county|city of|commission|authority|regulator|regulatory|professional association|standards body)/i;
+function looksLikeAuthoritativeOrg(text){return DISALLOWED_AUTHORITY_RE.test(String(text||''));}
+function openCompanyModal(){document.getElementById('companyModal').classList.add('open');}
+function closeCompanyModal(){document.getElementById('companyModal').classList.remove('open');}
+function draftCompanyWithAi(){
+  const msg='Help me draft a private company directory listing with category, coverage area, services, and concise summary.';
+  if(window.CGPageBot&&typeof window.CGPageBot.openAndSend==='function'&&window.CGPageBot.openAndSend(msg)) return;
+  if(!chatOpen)toggleChat();
+  document.getElementById('chatInput').value=msg;sendChat();
+}
+function submitCompanyListing(){
+  const name=document.getElementById('co_name').value.trim();
+  const cat=document.getElementById('co_category').value;
+  const email=document.getElementById('co_email').value.trim();
+  const summary=document.getElementById('co_summary').value.trim();
+  if(!name||!email||!summary){alert('Company name, contact email, and summary are required.');return;}
+  if(looksLikeAuthoritativeOrg(name)||looksLikeAuthoritativeOrg(cat)){
+    alert('Regulatory/governing/professional authority entities are not accepted in this user-submitted listing flow.');
+    return;
+  }
+  fetch('https://formspree.io/f/mgoldjjb',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({form_type:'directory_company_submission',company_name:name,category:cat,website:document.getElementById('co_site').value,city:document.getElementById('co_city').value,state:document.getElementById('co_state').value,contact_email:email,summary:summary,submission_policy_ack:'private_business_only',moderation_status:'pending_review'})
+  }).catch(()=>{});
+  document.getElementById('co_success').style.display='block';
+}
+const DEFAULT_SYS = "You are the CraneGenius AI assistant. Keep responses concise, practical, and focused on helping users make decisions quickly.";
+async function sendChat(){
+  const input=document.getElementById('chatInput'),msg=input.value.trim();
+  if(!msg)return;
+  input.value='';
+  appendMsg(msg,'user');
+  document.getElementById('quickBtns').style.display='none';
+  appendMsg('...','bot typing');
+
+  const hist=[];
+  document.querySelectorAll('#chatMessages .msg:not(.typing)').forEach(m=>{
+    hist.push({role:m.classList.contains('user')?'user':'assistant',content:m.innerText});
+  });
+
+  try{
+    if(!window.CGPageBot||typeof window.CGPageBot.sendMessage!=='function'){
+      throw new Error('page_bot_not_ready');
+    }
+    const out=await window.CGPageBot.sendMessage({
+      message:msg,
+      history:hist.slice(-8),
+      systemPrompt:DEFAULT_SYS
+    });
+    removeTyping();
+    appendMsg((out&&out.reply)||'Sorry, try again.','bot');
+  }catch(e){
+    removeTyping();
+    appendMsg('Connection error. Try again or call 1 (503) 773-4659.','bot');
+  }
+}
 function sendQuick(t){document.getElementById('chatInput').value=t;sendChat()}
 function appendMsg(t,type){const d=document.createElement('div');d.className='msg '+type;d.innerText=t;const m=document.getElementById('chatMessages');m.appendChild(d);m.scrollTop=m.scrollHeight}
 function removeTyping(){const t=document.querySelector('.msg.typing');if(t)t.remove()}

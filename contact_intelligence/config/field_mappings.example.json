@@ -1,0 +1,21 @@
+{
+  "_comment": "Copy this file and pass with --mappings to import_csv.py or import_seed_data.py",
+  "_comment2": "Each key = canonical field. Values = CSV column names to try (priority order).",
+
+  "company_name":  ["company_name","company","business_name","employer","organization"],
+  "person_name":   ["full_name","contact_name","name","person_name","contact"],
+  "email":         ["email","email_address","work_email","contact_email","primary_email"],
+  "phone":         ["phone","phone_number","mobile","direct_phone","office_phone"],
+  "domain":        ["domain","website","company_domain","web","url"],
+  "title":         ["title","job_title","position","role"],
+  "industry":      ["industry","sector","vertical"],
+  "city":          ["city","location_city","company_city"],
+  "state":         ["state","location_state","st","company_state"],
+  "linkedin_url":  ["linkedin_url","linkedin","profile_url","li_url"],
+  "sector":        ["sector","sector_name","industry_vertical"],
+  "company_type":  ["company_type","type","firm_type"],
+  "alias_name":    ["alias","also_known_as","dba","alternate_name"],
+  "email_pattern": ["email_pattern","pattern","email_format"],
+  "evidence_type": ["evidence_type","domain_source","how_found"],
+  "notes":         ["notes","comment","comments","description"]
+}

@@ -32,6 +32,7 @@ def score_and_filter(df: pd.DataFrame, keywords_yaml: str, scoring_yaml: str) ->
 
     for _, r in df.iterrows():
         desc = normalize_text(r.get("description_raw")).lower()
+        signal_keywords = normalize_text(r.get("signal_keywords")).lower()
         status = normalize_text(r.get("record_status")).lower()
         date_iso = normalize_text(r.get("record_date_iso"))
 
@@ -51,7 +52,7 @@ def score_and_filter(df: pd.DataFrame, keywords_yaml: str, scoring_yaml: str) ->
             if rule.get("field") == "description_raw":
                 if "match_group" in rule:
                     phrases = _get_group({"keywords": kw}, "keywords." + rule["match_group"])
-                    if any(p and p in desc for p in phrases):
+                    if any(p and (p in desc or p in signal_keywords) for p in phrases):
                         score += pts
                         hits.append(rule["name"])
 
@@ -59,7 +60,7 @@ def score_and_filter(df: pd.DataFrame, keywords_yaml: str, scoring_yaml: str) ->
                     phrases_all: List[str] = []
                     for gp in rule["match_any_groups"]:
                         phrases_all.extend(_get_group({"keywords": kw}, "keywords." + gp))
-                    if any(p and p in desc for p in phrases_all):
+                    if any(p and (p in desc or p in signal_keywords) for p in phrases_all):
                         score += pts
                         hits.append(rule["name"])
 
@@ -72,6 +73,7 @@ def score_and_filter(df: pd.DataFrame, keywords_yaml: str, scoring_yaml: str) ->
                 recency_ok = False
 
         out = dict(r)
+        out["keyword_score"] = len(hits)
         out["lift_probability_score"] = score + (2 if recency_ok else 0)
         out["score_hits"] = ",".join(hits)
         out["recency_ok"] = recency_ok

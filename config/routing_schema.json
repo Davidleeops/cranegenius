@@ -1,0 +1,42 @@
+{
+  "version": "v0.1",
+  "entity": "routing_result",
+  "fields": [
+    "routing_id",
+    "source_type",
+    "source_id",
+    "source_slug_optional",
+    "supplier_id",
+    "routing_score",
+    "routing_reason_summary",
+    "matched_categories",
+    "created_timestamp",
+    "routing_status"
+  ],
+  "enums": {
+    "source_type": [
+      "opportunity",
+      "signal_derived_opportunity"
+    ],
+    "routing_status": [
+      "suggested",
+      "reviewed",
+      "routed",
+      "dismissed"
+    ]
+  },
+  "routing_ready_lead_fields": [
+    "lead_id",
+    "source_type",
+    "source_id",
+    "supplier_id",
+    "supplier_name",
+    "project_name",
+    "city",
+    "state",
+    "recommended_lift_categories",
+    "routing_score",
+    "lead_status",
+    "created_timestamp"
+  ]
+}

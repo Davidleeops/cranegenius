@@ -1,0 +1,73 @@
+{
+  "version": "v0.1",
+  "entity": "signal",
+  "fields": [
+    "signal_id",
+    "signal_type",
+    "source_name",
+    "source_url_optional",
+    "source_record_id_optional",
+    "title",
+    "summary",
+    "raw_location_text",
+    "city_optional",
+    "state_optional",
+    "country_optional",
+    "project_type_optional",
+    "industry_segment_optional",
+    "detected_keywords",
+    "inferred_lift_categories",
+    "signal_stage",
+    "signal_score",
+    "confidence_score_optional",
+    "event_date_optional",
+    "created_timestamp",
+    "updated_timestamp",
+    "raw_payload_optional",
+    "notes_optional"
+  ],
+  "enums": {
+    "signal_type": [
+      "building_permit",
+      "zoning_approval",
+      "planning_agenda",
+      "environmental_filing",
+      "utility_infrastructure",
+      "data_center_signal",
+      "industrial_permit",
+      "public_bid",
+      "hospital_construction",
+      "glass_facade_signal",
+      "manufacturing_expansion",
+      "infrastructure_upgrade"
+    ],
+    "signal_stage": [
+      "detected",
+      "normalized",
+      "scored",
+      "converted",
+      "dismissed"
+    ],
+    "priority_band": [
+      "hot",
+      "warm",
+      "low"
+    ],
+    "inferred_lift_categories": [
+      "mobile_cranes",
+      "tower_cranes",
+      "spider_cranes",
+      "mini_cranes",
+      "crawler_cranes",
+      "carry_deck_cranes",
+      "compact_lifting_equipment",
+      "glass_handling_systems",
+      "vacuum_lifts",
+      "rigging_and_lifting_accessories",
+      "specialized_lifting_attachments",
+      "industrial_lifting_systems",
+      "heavy_equipment_installation_lifts",
+      "specialty_lift_contractors"
+    ]
+  }
+}

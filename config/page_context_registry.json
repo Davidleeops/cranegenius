@@ -1,0 +1,153 @@
+{
+  "required_fields": [
+    "page_path",
+    "page_type",
+    "title",
+    "summary",
+    "manufacturers",
+    "represented_businesses",
+    "products_or_services",
+    "key_talking_points",
+    "faq_context",
+    "cta_context",
+    "bot_instructions"
+  ],
+  "pages": [
+    {
+      "page_path": "/",
+      "page_type": "homepage_estimator",
+      "title": "CraneGenius Lift Estimator",
+      "summary": "AI-assisted crane and lift planning estimator for rental, planning, and project intake.",
+      "manufacturers": ["Liebherr", "Grove", "Manitowoc", "Tadano", "Link-Belt", "Terex"],
+      "represented_businesses": ["Crane rental companies", "General contractors", "Lift planners"],
+      "products_or_services": ["Lift estimator", "Quote intake", "Planning support"],
+      "key_talking_points": ["Collect practical project inputs quickly", "Prioritize quote flow unless user explicitly wants listing", "Escalate to live specialist when needed"],
+      "faq_context": ["crane type selection", "capacity and timeline", "regional availability and quote process"],
+      "cta_context": {
+        "primary": "Get same-day quote",
+        "secondary": "Talk to a specialist",
+        "quick_actions": ["Get same-day quote", "Need full lift plan", "Talk to a specialist"]
+      },
+      "bot_instructions": "Act as CraneGenius estimator assistant. Keep answers practical and short. Ask only for required fields to progress quote or planning next steps."
+    },
+    {
+      "page_path": "/directory/",
+      "page_type": "directory",
+      "title": "Crane Industry Directory",
+      "summary": "Directory of crane rental companies, manufacturers, training organizations, staffing, rigging, and support services.",
+      "manufacturers": ["Liebherr", "Grove", "Manitowoc", "Tadano", "Link-Belt", "Terex", "Potain", "Comansa", "Maeda", "UNIC", "Jekko"],
+      "represented_businesses": ["Crane rental", "Heavy lift and rigging", "Training and certification", "Staffing", "Parts and service", "Engineering"],
+      "products_or_services": ["Company discovery", "Vendor comparison", "Industry FAQ", "Directory navigation"],
+      "key_talking_points": ["Help users navigate categories and specific listings", "Provide concise comparisons", "Direct quote seekers to estimator"],
+      "faq_context": ["NCCCO and OSHA requirements", "crane rental pricing ranges", "manufacturer differences"],
+      "cta_context": {
+        "primary": "Get Free Lift Estimate",
+        "secondary": "List Your Company",
+        "quick_actions": ["Get a quote", "Pick a crane", "NCCCO cert"]
+      },
+      "bot_instructions": "You are assisting on the crane directory page. Ground responses in directory categories and listed company/manufacturer context when possible."
+    },
+    {
+      "page_path": "/jobs/",
+      "page_type": "jobs_board",
+      "title": "Crane Jobs Board",
+      "summary": "Crane jobs board for operators, riggers, signalpersons, and lift supervisors.",
+      "manufacturers": ["Grove", "Liebherr", "Link-Belt", "Manitowoc", "Potain", "Comansa"],
+      "represented_businesses": ["Crane rental employers", "Industrial contractors", "Union and apprenticeship pathways"],
+      "products_or_services": ["Job search", "Apply flow", "Post-a-job flow"],
+      "key_talking_points": ["Guide to relevant roles and filters", "Clarify cert and experience requirements", "Encourage complete applications"],
+      "faq_context": ["required certifications", "job type differences", "application process"],
+      "cta_context": {
+        "primary": "Post a Job",
+        "secondary": "Apply Now",
+        "quick_actions": ["Find operator jobs", "What certs are required?", "Post a job"]
+      },
+      "bot_instructions": "You are assisting job seekers and employers on a crane jobs board. Keep recommendations actionable and map responses to listed job roles and filters."
+    },
+    {
+      "page_path": "/manpower/",
+      "page_type": "manpower_board",
+      "title": "Crane Manpower Board",
+      "summary": "Talent board for certified crane operators, riggers, and lift supervisors available for hire.",
+      "manufacturers": ["Grove", "Liebherr", "Link-Belt", "Manitowoc", "Maeda", "UNIC", "Jekko"],
+      "represented_businesses": ["Operators", "Riggers", "Recruiters", "Employers"],
+      "products_or_services": ["Operator profile browsing", "Contact operator workflow", "Add-profile workflow"],
+      "key_talking_points": ["Help employers find fit by role/certs/location", "Help operators improve profile quality", "Promote clear outreach details"],
+      "faq_context": ["operator availability", "union vs non-union context", "certification and equipment experience"],
+      "cta_context": {
+        "primary": "Add My Profile",
+        "secondary": "Contact Operator",
+        "quick_actions": ["Find certified operators", "How to add my profile", "Contact an operator"]
+      },
+      "bot_instructions": "You are assisting on a manpower board. Focus on matching role, certs, location, and availability. Keep responses concise and practical."
+    },
+    {
+      "page_path": "/marketplace/",
+      "page_type": "marketplace",
+      "title": "Crane Marketplace",
+      "summary": "Marketplace for listing and finding cranes and lift ecosystem equipment.",
+      "manufacturers": ["Liebherr", "Grove", "Link-Belt", "Manitowoc", "Tadano", "Terex", "Maeda", "Jekko"],
+      "represented_businesses": ["Equipment owners", "Rental buyers", "Sales buyers", "Lease-purchase seekers"],
+      "products_or_services": ["List for rent", "List for sale", "Find equipment"],
+      "key_talking_points": ["Collect listing fields accurately", "Prioritize buyer request completeness", "Support compact and specialty lift categories"],
+      "faq_context": ["listing requirements", "availability requests", "lease-purchase flow"],
+      "cta_context": {
+        "primary": "List equipment",
+        "secondary": "Request pricing",
+        "quick_actions": ["List for rent", "List for sale", "Find equipment"]
+      },
+      "bot_instructions": "You are assisting on the equipment marketplace. Keep flow-driven responses and collect only required details to complete the user's selected flow."
+    },
+    {
+      "page_path": "/data-centers/",
+      "page_type": "sector_page",
+      "title": "Data Center Lift Planning",
+      "summary": "Data-center focused crane and lift planning context.",
+      "manufacturers": ["Liebherr", "Grove", "Link-Belt", "Manitowoc"],
+      "represented_businesses": ["Data center GCs", "Lift planners", "Specialty lift providers"],
+      "products_or_services": ["Planning context", "Equipment category guidance", "Estimator handoff"],
+      "key_talking_points": ["Data-center constraints and timelines", "Equipment category fit", "Route to estimator bot flow"],
+      "faq_context": ["common data-center lift equipment", "site constraints", "planning handoff"],
+      "cta_context": {
+        "primary": "Open AI planner",
+        "secondary": "Get quote",
+        "quick_actions": ["Open AI planner", "What equipment fits", "Get quote"]
+      },
+      "bot_instructions": "Assist with data center lift planning context and guide users into the quote/planning workflow quickly."
+    },
+    {
+      "page_path": "/sell-your-company/",
+      "page_type": "business_page",
+      "title": "Sell Your Company",
+      "summary": "Confidential acquisition and succession conversations for crane and lift businesses.",
+      "manufacturers": [],
+      "represented_businesses": ["Crane rental companies", "Specialty lift businesses", "Dealers", "Service businesses"],
+      "products_or_services": ["Confidential discussion intake", "Succession pathway context"],
+      "key_talking_points": ["Confidential process", "Eligibility context", "Next-step intake forms"],
+      "faq_context": ["who is a fit", "process timeline", "confidentiality expectations"],
+      "cta_context": {
+        "primary": "Request confidential discussion",
+        "secondary": "Join demand network",
+        "quick_actions": ["Am I a fit to sell?", "What is the process?", "Start confidential discussion"]
+      },
+      "bot_instructions": "Keep tone professional and concise. Do not provide legal or investment advice; guide users to confidential discussion intake."
+    },
+    {
+      "page_path": "/acquisitions/",
+      "page_type": "internal_business_page",
+      "title": "Acquisitions Internal Table",
+      "summary": "Internal acquisition-target review table.",
+      "manufacturers": [],
+      "represented_businesses": ["Internal M&A review"],
+      "products_or_services": ["Target table review"],
+      "key_talking_points": ["Internal-only dataset context", "Row-level interpretation"],
+      "faq_context": ["field meaning", "target priority interpretation"],
+      "cta_context": {
+        "primary": "Review targets",
+        "secondary": "Export analysis",
+        "quick_actions": ["Explain fields", "Summarize priorities", "Highlight top targets"]
+      },
+      "bot_instructions": "Internal context only. Keep responses factual and scoped to table interpretation and prioritization notes."
+    }
+  ]
+}

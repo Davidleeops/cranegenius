@@ -1,0 +1,14 @@
+send_selection:
+  min_project_cost: 2000000
+  exclude_description_terms:
+    - single-family
+    - single family
+    - townhome
+    - townhouse
+    - duplex
+    - garage
+    - porch
+    - fence
+    - basement
+    - residential rehab
+    - minor addition
