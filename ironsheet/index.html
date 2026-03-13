@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Ironsheet — Construction Market Intelligence by CraneGenius</title>
+<meta name="description" content="Weekly construction market intelligence. Active crane jobs, permit signals, equipment deals, and field intel — sourced before the bid goes out. Free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080c14;--bg2:#0d1628;--bg3:#111e35;--gold:#F5A623;--gold-dim:rgba(245,166,35,.12);--gold-border:rgba(245,166,35,.22);--border:#1e3a5f;--text:#e8f0ff;--muted:#8899aa;--mono:'DM Mono',monospace}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;line-height:1.6}
+.site-nav{position:sticky;top:0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-bottom:1px solid var(--gold-border);background:rgba(8,12,20,.92);backdrop-filter:blur(12px)}
+.site-nav-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gold);text-decoration:none}
+.site-nav-links{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.site-nav-links a{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:.05em;text-transform:uppercase;transition:color .2s}
+.site-nav-links a:hover{color:var(--gold)}
+.site-nav-links a.active{color:var(--gold)}
+.nav-pill{background:var(--gold);color:#000 !important;border-radius:4px;padding:5px 14px !important;font-weight:700 !important;transition:opacity .2s !important}
+.nav-pill:hover{opacity:.88}
+@media(max-width:700px){.site-nav-links{gap:12px;overflow-x:auto}.site-nav-links a{white-space:nowrap}}
+.hero{padding:80px 24px 48px;text-align:center;max-width:760px;margin:0 auto}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,10vw,96px);line-height:.95;color:var(--text);margin-bottom:8px}
+.hero-title span{color:var(--gold)}
+.hero-sub{font-size:18px;color:var(--muted);max-width:560px;margin:16px auto 0;line-height:1.6}
+.hero-tagline{font-family:var(--mono);font-size:13px;color:var(--gold);margin-top:20px;letter-spacing:.04em}
+.divider{width:60px;height:2px;background:var(--gold);margin:40px auto;opacity:.4}
+.embed-section{max-width:600px;margin:0 auto;padding:0 24px 64px}
+.embed-label{font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;text-align:center;margin-bottom:24px}
+.beehiiv-wrap{background:var(--bg2);border:1px solid var(--gold-border);border-radius:8px;padding:32px;text-align:center}
+.sections-wrap{max-width:800px;margin:0 auto;padding:0 24px 80px}
+.sections-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:1px;color:var(--text);text-align:center;margin-bottom:40px}
+.sections-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.section-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;transition:border-color .2s}
+.section-card:hover{border-color:var(--gold-border)}
+.section-num{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.15em;margin-bottom:8px}
+.section-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--gold);margin-bottom:8px}
+.section-desc{font-size:14px;color:var(--muted);line-height:1.55}
+.tip-cta{max-width:700px;margin:0 auto;padding:0 24px 80px;text-align:center}
+.tip-box{background:var(--bg2);border:1px solid var(--gold-border);border-radius:8px;padding:40px 32px}
+.tip-box h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--text);margin-bottom:10px}
+.tip-box p{color:var(--muted);font-size:15px;margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto}
+.btn-gold{display:inline-block;background:var(--gold);color:#000;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;padding:13px 28px;border-radius:4px;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:opacity .2s}
+.btn-gold:hover{opacity:.88}
+.btn-outline{display:inline-block;border:1px solid var(--gold-border);color:var(--muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;padding:12px 24px;border-radius:4px;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:all .2s;margin-left:12px}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.proof-strip{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px;text-align:center}
+.proof-strip p{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.08em}
+.proof-strip span{color:var(--gold)}
+footer{padding:32px 24px;text-align:center;border-top:1px solid var(--border)}
+footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+footer a{color:var(--gold);text-decoration:none}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+<a href="/" class="site-nav-logo">CraneGenius</a>
+<div class="site-nav-links">
+<a href="/">Lift Estimator</a>
+<a href="/opportunities/">Opportunities</a>
+<a href="/directory/">Directory</a>
+<a href="/jobs/">Jobs</a>
+<a href="/education/">Education</a>
+<a href="/ironsheet/" class="active nav-pill">The Ironsheet</a>
+<a href="/data-centers/">Data Centers</a>
+<a href="/sell-your-company/">Sell Your Company</a>
+</div>
+</nav>
+<section class="hero">
+<div class="hero-eyebrow">// by CraneGenius</div>
+<h1 class="hero-title">The <span>Iron</span>sheet</h1>
+<p class="hero-sub">Construction market intelligence. Sourced before the bid goes out.</p>
+<p class="hero-tagline">// Weekly. Free. Built by the trades, for the trades.</p>
+</section>
+<div class="divider"></div>
+<section class="embed-section">
+<div class="embed-label">// Subscribe — Free</div>
+<div class="beehiiv-wrap">
+<iframe src="https://embeds.beehiiv.com/subscribe/pub_f56762cf-7183-4678-b901-e26ea596909c" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:4px;background:transparent;width:100%"></iframe>
+</div>
+</section>
+<div class="divider"></div>
+<section class="sections-wrap">
+<h2 class="sections-title">What's In Every Issue</h2>
+<div class="sections-grid">
+<div class="section-card"><div class="section-num">// 01</div><div class="section-name">Forged This Week</div><p class="section-desc">The top crane-ready projects in your market, sourced from municipal permit data. Addresses, project types, lift capacity estimates. Real jobs, not aggregator noise.</p></div>
+<div class="section-card"><div class="section-num">// 02</div><div class="section-name">Word of Mouth</div><p class="section-desc">Crowdsourced field intel from operators, riggers, and GCs across the network. Pre-permit sightings. Equipment moves. Jobs that haven't hit the boards yet. Submit yours at <a href="/tip/" style="color:var(--gold);text-decoration:none">cranegenius.com/tip</a>.</p></div>
+<div class="section-card"><div class="section-num">// 03</div><div class="section-name">The Scuttlebutt</div><p class="section-desc">Straight talk on what's happening in the market. No LinkedIn fluff. Two paragraphs, written from the field. The kind of intel that gets shared in the truck on the way to a job.</p></div>
+<div class="section-card"><div class="section-num">// 04</div><div class="section-name">Equipment Watch</div><p class="section-desc">Cranes, boom lifts, and rigging equipment for sale or lease. Sourced from the CraneGenius marketplace. Commission-free for buyers. Financing available through Ascentium Capital.</p></div>
+<div class="section-card"><div class="section-num">// 05</div><div class="section-name">Who's Hiring</div><p class="section-desc">Crane operators, riggers, ironworkers, and signalmen — active positions sourced from permit-verified projects. Real jobs starting soon in real markets.</p></div>
+</div>
+</section>
+<div class="proof-strip">
+<p>// Permit data from <span>Chicago</span> — <span>Dallas</span> — <span>Phoenix</span> — <span>New York</span> — <span>Pacific Northwest</span> — updated weekly</p>
+</div>
+<div class="divider"></div>
+<section class="tip-cta">
+<div class="tip-box">
+<h3>Heard Something? Submit It.</h3>
+<p>Word of Mouth runs on field intel. If you saw a tower crane go up before the permit filed, a steel package move, or a job your buddy's working that nobody's talking about yet — submit it. Stay anonymous or get credit in the next issue.</p>
+<a href="/tip/" class="btn-gold">Submit to Word of Mouth</a>
+<a href="/opportunities/" class="btn-outline">See Active Jobs</a>
+</div>
+</section>
+<footer>
+<p>The Ironsheet by <a href="/">CraneGenius</a> &mdash; Dark 30 Ventures &mdash; Construction market intelligence &mdash; <a href="/tip/">Submit a tip</a></p>
+</footer>
+</body>
+</html>
