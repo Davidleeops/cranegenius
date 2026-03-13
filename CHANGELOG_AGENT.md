@@ -1,19 +1,6 @@
 # Agent Changelog
 
-## Entry Format
-Date: YYYY-MM-DD  
-Agent: <controller or implementation agent name>  
-Task: <task unit or summary>  
-Files Changed: <comma-separated list or `None`>  
-Validation: <tests, checks, manual evidence>  
-Next Task: <upcoming unit or blocker>
-### Sample Entry
-Date: 2026-03-13  
-Agent: Claude  
-Task: Repo reconnaissance kickoff  
-Files Changed: None  
-Validation: Repository scanned, no writes performed.  
-Next Task: Autonomy architecture spec
+
 ---
 Timestamp: 2026-03-07
 Agent: GPT
@@ -110,10 +97,51 @@ Remaining gaps: sector assignment (~5%), LinkedIn (0%), title missing (58%)
 ### Next agent
 - /opportunities/ page same fetch pattern
 - Do NOT touch Codex-lane files (src/, contact_intelligence/)
-Date: 2026-03-13
-Agent: Codex
-Task: Initialize multi-agent coordination system
-Files Changed: docs/agent_operating_protocol.md, TASK.md, AGENT_CONTEXT.md, CHANGELOG_AGENT.md
-Validation: Files created and repository state verified.
-Next Task: Begin autonomy system architecture specification.
+
+
 ---
+
+## 2026-03-13 — Controller Audit + TASK.md Correction
+Agent: Claude (Controller)
+
+### What was audited
+Read AGENT_CONTEXT.md, TASK.md, and repo file tree. Inspected live files:
+- opportunities/index.html — live content inspection via raw.githubusercontent.com
+- data/opportunities/opportunities.json — schema confirmed
+- jobs/index.html — confirmed EXISTS and correct (GitHub blob tab was stale cache)
+- manpower/index.html — previously confirmed correct
+
+### What was found
+opportunities/index.html is a PROTOCOL VIOLATION. Codex built the wrong version:
+- Wrong font: Barlow Condensed (must be Bebas Neue / DM Sans / DM Mono)
+- Wrong colors: no --gold:#c9a84c, no --bg:#080e1a
+- Wrong data path: fetches /data/opportunities/ via external data_loader.js
+- Missing: "Get Crane Availability" CTA on cards
+- Missing: openBotWithPrefill() bot integration
+- Missing: Formspree modal (mgoldjjb)
+- Missing: LIVE DATA / error banners
+- Missing: project_address as primary card hook
+- Missing: /config.js script load
+
+### Data path clarification confirmed
+- /data/static_exports/ does NOT exist in repo (prior TASK.md spec was wrong)
+- Use /data/opportunities/opportunities.json (EXISTS, correct schema)
+- Also merge /data/opportunities_batch_2.json
+
+### What was changed
+- TASK.md: full replacement with corrected audit findings + precise Codex task spec
+  - Exact design tokens, font stack, data paths, CTA requirements, Formspree spec
+  - Bot integration: openBotWithPrefill() with fallback to /?bot=1&msg=
+  - Deploy pattern, agent boundary reminder, queue after this task
+
+### Files Modified
+- TASK.md — replaced with correction task for opportunities/index.html
+
+### Next Step for Codex
+Read TASK.md and execute: replace opportunities/index.html with correct version.
+Commit: "fix: opportunities page — correct design system, bot CTA, Formspree, live data"
+
+### Verified Correct (do not touch)
+- jobs/index.html — EXISTS, fetch-based
+- manpower/index.html — EXISTS, fetch-based
+- data/opportunities/opportunities.json — schema confirmed correct
