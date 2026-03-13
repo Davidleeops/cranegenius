@@ -3,265 +3,618 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CraneGenius — Opportunities</title>
-<meta name="description" content="Opportunity Intelligence: projects likely to require crane and lift ecosystem coverage.">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<title>CraneGenius — Live Crane Opportunities</title>
+<meta name="description" content="Live CraneGenius opportunity intelligence with filtering, stats, and bot-ready CTAs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script defer src="/config.js"></script>
 <style>
-:root{--bg:#0a0e1a;--panel:#10172a;--border:#233050;--text:#e7eef9;--muted:#97a8c2;--accent:#F5A623;--accent2:#00C4A7}
+:root{--bg:#080e1a;--bg2:#0d1628;--bg3:#111e35;--gold:#c9a84c;--text:#e8f0ff;--muted:#97a8c2;--border:#1e3a5f;--success:#21d899;--danger:#ff5d6c;--card-shadow:0 18px 45px rgba(3,6,14,.65);}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh}
-.site-nav{position:sticky;top:0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:12px 22px;border-bottom:1px solid var(--border);background:rgba(10,14,26,.95)}
-.site-nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:600}
-.site-nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;letter-spacing:.04em;color:var(--text)}
-.site-nav-logo span{color:var(--accent)}
-.site-nav-links{display:flex;gap:16px;flex-wrap:wrap}
-.site-nav-links a.active{color:var(--accent)}
-.wrap{max-width:1200px;margin:0 auto;padding:28px 18px 48px}
-.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:46px;line-height:1.02}
-.hero p{color:#ccdaee;max-width:780px;margin-top:8px;font-size:14px;line-height:1.5}
-.filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
-select,input{width:100%;background:#0f1526;border:1px solid #2b3e63;color:#e8f0ff;padding:10px;font-family:'Barlow',sans-serif}
-.count{font-size:12px;color:var(--muted);margin-bottom:10px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.card{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--border);padding:14px;transition:.15s transform,.15s border-color}
-.card:hover{transform:translateY(-2px);border-color:#36568b}
-.card h3{font-family:'Barlow Condensed',sans-serif;font-size:24px;line-height:1.05;margin-bottom:8px}
-.meta{font-size:12px;color:#9db0cd;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
-.summary{font-size:13px;color:#d6e3f6;line-height:1.45}
-.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.tag{font-size:10px;padding:3px 7px;border:1px solid #365689;color:#93c5ff;border-radius:4px}
-.card-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-.card-actions a{font-size:11px;text-transform:uppercase;letter-spacing:.04em;font-weight:700;text-decoration:none;padding:6px 9px;border:1px solid #365689;color:#9ec7ff}
-.card-actions a.primary{background:var(--accent);color:#101726;border-color:#b97a09}
-.empty{padding:20px;border:1px dashed #35517e;color:#9eb4d4}
-@media(max-width:1020px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:700px){.grid{grid-template-columns:1fr}.filters{grid-template-columns:1fr}.site-nav-links{overflow-x:auto;white-space:nowrap}}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;min-height:100vh}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,.stat-value,.site-nav-logo,.hero-eyebrow{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;letter-spacing:1px}
+.site-nav{position:sticky;top:0;z-index:80;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:rgba(8,14,26,.97);border-bottom:1px solid rgba(30,58,95,.65)}
+.site-nav-logo{font-size:26px;color:var(--text)}
+.site-nav-logo span{color:var(--gold)}
+.site-nav-links{display:flex;gap:18px;flex-wrap:wrap;font-family:'DM Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:1px}
+.site-nav-links a{color:var(--muted);padding-bottom:2px;border-bottom:2px solid transparent}
+.site-nav-links a.active{color:var(--gold);border-color:var(--gold)}
+.wrap{max-width:1200px;margin:0 auto;padding:32px 20px 64px}
+.hero{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:26px 32px;margin-bottom:20px;box-shadow:0 18px 55px rgba(2,6,18,.45)}
+.hero h1{font-size:44px;margin-bottom:8px}
+.hero p{max-width:720px;color:var(--muted);font-size:.95rem}
+.hero-eyebrow{font-size:15px;color:var(--gold);letter-spacing:3px}
+.cta-hero{align-self:flex-start;padding:0 26px;height:46px;border-radius:8px;border:none;background:var(--gold);color:#050608;font-weight:700;font-size:.9rem;cursor:pointer;transition:transform .15s,box-shadow .15s;font-family:'DM Sans',sans-serif}
+.cta-hero:hover{transform:translateY(-1px);box-shadow:0 10px 35px rgba(201,168,76,.35)}
+.status-banner{display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:10px;font-family:'DM Mono',monospace;font-size:.75rem;margin-bottom:16px;border:1px solid transparent}
+.status-banner.live{background:rgba(33,216,153,.12);border-color:rgba(33,216,153,.35);color:#8dfad1}
+.status-banner.danger{background:rgba(255,93,108,.12);border-color:rgba(255,93,108,.35);color:#ffbcc6}
+.status-banner.hidden{display:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:22px}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.stat-label{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.stat-value{font-size:36px;color:var(--gold);margin-top:6px}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:12px}
+.control label{display:block;font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;font-family:'DM Mono',monospace}
+input[type="search"],select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--text);font-size:.95rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .15s,box-shadow .15s}
+input[type="search"]::placeholder{color:#6d7d9b}
+input[type="search"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,168,76,.15)}
+.result-count{font-size:.85rem;color:var(--muted);margin:18px 0 12px;font-family:'DM Mono',monospace}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.op-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--card-shadow);min-height:280px}
+.card-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.card-location .location-main{font-family:'DM Mono',monospace;font-size:.85rem;color:#bcd0f6}
+.card-location .location-sub{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+.card-badges{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.badge{padding:4px 10px;border-radius:999px;font-size:.65rem;font-family:'DM Mono',monospace;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);text-transform:uppercase;letter-spacing:.5px}
+.badge-type{border-color:rgba(201,168,76,.4);color:var(--gold)}
+.badge-stage{border-color:rgba(59,130,246,.35);color:#9ec5ff}
+.badge-stage.stage-active{border-color:rgba(33,216,153,.5);color:#7df9c7}
+.badge-stage.stage-permit_filed{border-color:rgba(201,168,76,.5);color:var(--gold)}
+.badge-stage.stage-approved{border-color:rgba(94,234,212,.5);color:#94f5e2}
+.badge-stage.stage-planning{border-color:rgba(148,163,184,.6);color:#cbd5f5}
+.badge-stage.stage-new{border-color:rgba(248,113,113,.4);color:#fecaca}
+.op-card h3{font-size:28px;line-height:1.1}
+.meta-line{font-size:.75rem;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:.4px}
+.meta-line span{color:var(--text)}
+.summary{font-size:.93rem;color:#dbe6ff;line-height:1.5;min-height:48px}
+.chip-row{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-family:'DM Mono',monospace;font-size:.65rem;padding:4px 10px;border-radius:8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.35);color:var(--gold)}
+.card-ctas{display:flex;gap:10px;flex-wrap:wrap}
+.card-ctas .cta{flex:1;min-width:140px;text-align:center;padding:10px 12px;border-radius:10px;font-size:.85rem;font-weight:600;border:1px solid var(--border);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif}
+.card-ctas .cta.primary{background:var(--gold);color:#050608;border-color:var(--gold)}
+.card-ctas .cta.primary:hover{box-shadow:0 10px 30px rgba(201,168,76,.45)}
+.card-ctas .cta.secondary{background:transparent;color:var(--text)}
+.card-ctas .cta.secondary:hover{border-color:rgba(201,168,76,.4);color:var(--gold)}
+.empty-card{border:1px dashed rgba(201,168,76,.4);background:rgba(8,14,26,.8);text-align:center}
+.modal-overlay{position:fixed;inset:0;background:rgba(3,6,12,.8);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;z-index:120}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:16px;width:100%;max-width:520px;box-shadow:0 25px 70px rgba(0,0,0,.55)}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:20px;border-bottom:1px solid var(--border)}
+.modal-head h2{font-size:28px}
+.modal-close{background:none;border:none;color:var(--muted);font-size:28px;cursor:pointer;line-height:1}
+.modal form{padding:20px}
+.form-group{display:flex;flex-direction:column;margin-bottom:14px}
+.form-group label{font-size:.7rem;font-family:'DM Mono',monospace;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+.form-group input,.form-group select{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.95rem}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold)}
+.form-actions{display:flex;justify-content:flex-end;margin-top:10px}
+.form-actions button{padding:10px 16px;background:var(--gold);color:#050608;border:none;border-radius:10px;font-weight:700;font-size:.95rem;cursor:pointer}
+.form-status{margin-top:10px;font-size:.8rem;font-family:'DM Mono',monospace;color:var(--muted)}
+.form-status.error{color:#ffb1c1}
+@media(max-width:720px){
+  .site-nav{padding:14px 16px}
+  .hero{padding:22px}
+  .hero h1{font-size:34px}
+  .card-top{flex-direction:column}
+  .card-badges{justify-content:flex-start}
+}
 </style>
 </head>
 <body>
 <nav class="site-nav">
-  <a href="/" class="site-nav-logo">Crane<span>Genius</span></a>
+  <a class="site-nav-logo" href="/">Crane<span>Genius</span></a>
   <div class="site-nav-links">
     <a href="/">Lift Estimator</a>
+    <a href="/marketplace/">Marketplace</a>
     <a href="/data-centers/">Data Centers</a>
-    <a href="/marketplace/">Crane Marketplace</a>
     <a href="/opportunities/" class="active">Opportunities</a>
-    <a href="/sell-your-company/">Sell Your Company</a>
+    <a href="/sell-your-company/">Sell</a>
   </div>
 </nav>
-<div class="wrap">
-  <div class="hero">
-    <h1>Opportunity Intelligence Engine</h1>
-    <p>Structured project opportunities likely to need crane or lift-ecosystem coverage. This is the foundation layer for future signal ingestion from permits, planning agendas, utility filings, and public bid sources.</p>
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="hero-eyebrow">Opportunity Grid</p>
+      <h1>Live Crane Opportunity Grid</h1>
+      <p>Signal-driven view of projects likely to need crane partners. Every record maps back to /data/opportunities/ with bot-ready CTAs, recommended lift categories, and de-duplicated batch feeds.</p>
+    </div>
+    <button class="cta-hero" id="postOpportunityBtn">Post an Opportunity</button>
+  </section>
+  <div id="liveBanner" class="status-banner live hidden" role="status">
+    <span>LIVE DATA</span>
+    <span id="liveBannerCopy"></span>
   </div>
-
-  <div class="filters">
-    <select id="fLift"><option value="">All Lift Categories</option></select>
-    <select id="fType"><option value="">All Project Types</option></select>
-    <select id="fState"><option value="">All States</option></select>
+  <div id="errorBanner" class="status-banner danger hidden" role="alert">
+    <span>PIPELINE ALERT</span>
+    <span id="errorBannerCopy">Pipeline data unavailable. Check /data/opportunities/opportunities.json</span>
   </div>
-
-  <div class="count" id="resultCount">Loading opportunities...</div>
-  <div class="grid" id="grid"></div>
+  <section class="stats" aria-label="Pipeline stats">
+    <div class="stat-card">
+      <p class="stat-label">Opportunities</p>
+      <p class="stat-value" id="statOpps">0</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-label">Cities</p>
+      <p class="stat-value" id="statCities">0</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-label">Project Types</p>
+      <p class="stat-value" id="statTypes">0</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-label">Active / Permit</p>
+      <p class="stat-value" id="statStage">0</p>
+    </div>
+  </section>
+  <section class="controls">
+    <div class="control">
+      <label for="keywordInput">Keyword Search</label>
+      <input type="search" id="keywordInput" placeholder="Project, address, city, type">
+    </div>
+    <div class="control">
+      <label for="stateFilter">State</label>
+      <select id="stateFilter">
+        <option value="">All states</option>
+      </select>
+    </div>
+    <div class="control">
+      <label for="typeFilter">Project Type</label>
+      <select id="typeFilter">
+        <option value="">All project types</option>
+      </select>
+    </div>
+    <div class="control">
+      <label for="stageFilter">Stage</label>
+      <select id="stageFilter">
+        <option value="">All stages</option>
+      </select>
+    </div>
+    <div class="control">
+      <label for="sortSelect">Sort</label>
+      <select id="sortSelect">
+        <option value="newest">Newest (Est. start)</option>
+        <option value="alpha">A–Z (Project name)</option>
+        <option value="stage">Stage priority</option>
+      </select>
+    </div>
+  </section>
+  <p class="result-count" id="resultCount">Loading opportunities…</p>
+  <section class="grid" id="cardsGrid" aria-live="polite"></section>
+</main>
+<div class="modal-overlay" id="postModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h2 id="modalTitle">Post an Opportunity</h2>
+      <button type="button" class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+    </div>
+    <form id="postOpportunityForm">
+      <div class="form-group">
+        <label for="formProjectName">Project Name</label>
+        <input id="formProjectName" name="project_name" required>
+      </div>
+      <div class="form-group">
+        <label for="formProjectAddress">Project Address</label>
+        <input id="formProjectAddress" name="project_address" required>
+      </div>
+      <div class="form-group">
+        <label for="formCity">City</label>
+        <input id="formCity" name="city" required>
+      </div>
+      <div class="form-group">
+        <label for="formState">State</label>
+        <input id="formState" name="state" required maxlength="2">
+      </div>
+      <div class="form-group">
+        <label for="formType">Project Type</label>
+        <input id="formType" name="project_type" required>
+      </div>
+      <div class="form-group">
+        <label for="formEmail">Contact Email</label>
+        <input type="email" id="formEmail" name="contact_email" required>
+      </div>
+      <input type="hidden" name="moderation_status" value="pending_review">
+      <div class="form-actions">
+        <button type="submit">Submit Opportunity</button>
+      </div>
+      <p class="form-status" id="formStatus"></p>
+    </form>
+  </div>
 </div>
-<script src="/data/opportunities/opportunity_helpers.js"></script>
 <script>
 (function(){
-  var all = [];
-  var byId = function(id){ return document.getElementById(id); };
-  var esc = function(s){ return String(s||'').replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); };
-  var PRIMARY_OPPS_PATH = '/data/opportunities/opportunities.json';
-  var BATCH2_OPPS_PATH = '/data/opportunities_batch_2.json';
-  var PERMITS_OPPS_PATH = '/data/opportunities/permits_imported.json';
+  'use strict';
+  var PRIMARY_URL = '/data/opportunities/opportunities.json';
+  var SECONDARY_URL = '/data/opportunities_batch_2.json';
+  var AUTH_BLOCK = /(osha|asme|ansi|state board|licensing board|department of labor|federal|county|city of|commission|authority|regulator|regulatory)/i;
+  var stagePriority = ['active','permit_filed','approved','planning','new'];
+  var stageLabels = {active:'Active Construction',permit_filed:'Permit Filed',approved:'Approved / Awarded',planning:'Planning',new:'Emerging'};
+  var els = {
+    liveBanner: document.getElementById('liveBanner'),
+    liveBannerCopy: document.getElementById('liveBannerCopy'),
+    errorBanner: document.getElementById('errorBanner'),
+    errorBannerCopy: document.getElementById('errorBannerCopy'),
+    statOpps: document.getElementById('statOpps'),
+    statCities: document.getElementById('statCities'),
+    statTypes: document.getElementById('statTypes'),
+    statStage: document.getElementById('statStage'),
+    keyword: document.getElementById('keywordInput'),
+    state: document.getElementById('stateFilter'),
+    type: document.getElementById('typeFilter'),
+    stage: document.getElementById('stageFilter'),
+    sort: document.getElementById('sortSelect'),
+    grid: document.getElementById('cardsGrid'),
+    count: document.getElementById('resultCount'),
+    postBtn: document.getElementById('postOpportunityBtn'),
+    modal: document.getElementById('postModal'),
+    modalClose: document.getElementById('modalClose'),
+    form: document.getElementById('postOpportunityForm'),
+    formStatus: document.getElementById('formStatus')
+  };
+  var appState = {all:[],filtered:[],map:new Map()};
 
-  function toSlug(v){
-    return String(v||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+  bindControls();
+  loadData();
+
+  function bindControls(){
+    els.keyword.addEventListener('input', applyFilters);
+    [els.state, els.type, els.stage, els.sort].forEach(function(el){ el.addEventListener('change', applyFilters); });
+    els.grid.addEventListener('click', handleCardAction);
+    els.postBtn.addEventListener('click', openModal);
+    els.modalClose.addEventListener('click', closeModal);
+    els.modal.addEventListener('click', function(evt){ if (evt.target === els.modal) closeModal(); });
+    document.addEventListener('keydown', function(evt){ if (evt.key === 'Escape' && els.modal.classList.contains('open')) closeModal(); });
+    els.form.addEventListener('submit', handleFormSubmit);
   }
 
-  function normalizeOpportunity(o, idx){
-    var n = Object.assign({}, o || {});
-    n.opportunity_id = n.opportunity_id || ('opp-auto-' + (idx + 1));
-    n.project_name = n.project_name || ('Opportunity ' + (idx + 1));
-    n.project_slug = n.project_slug || toSlug(n.project_name);
-    n.city = n.city || '';
-    n.state = n.state || '';
-    n.project_type = n.project_type || 'infrastructure_upgrade';
-    n.project_stage = n.project_stage || 'planning';
-    n.recommended_lift_categories = Array.isArray(n.recommended_lift_categories) ? n.recommended_lift_categories : [];
-    n.source_type = n.source_type || 'opportunity';
-    n.source_url = n.source_url || '';
-    n.has_detail_page = (typeof n.has_detail_page === 'boolean') ? n.has_detail_page : true;
-    return n;
-  }
-
-  function normalizePermitRow(row, idx){
-    var projectName = row.description || ('Permit Opportunity ' + (idx + 1));
-    var permitId = row.permit_id || ('permit-' + (idx + 1));
-    var city = row.city || '';
-    var state = row.state || '';
-    var source = row.source || 'public_permit_source';
-    var sourceUrl = row.source_url || '';
-    var summaryBits = [row.description, row.address].filter(Boolean);
-    return normalizeOpportunity({
-      opportunity_id: 'permit-' + toSlug(source + '-' + permitId + '-' + city + '-' + state),
-      project_name: projectName,
-      project_slug: toSlug(projectName + '-' + permitId),
-      city: city,
-      state: state,
-      project_type: 'permit_opportunity',
-      project_stage: 'planning',
-      lift_requirements_summary: summaryBits.join(' • ') || 'Public permit signal suggests lift-related scope; use AI to triage.',
-      recommended_lift_categories: ['mobile_cranes', 'specialty_lift_contractors'],
-      source_type: 'permit',
-      source_url: sourceUrl,
-      has_detail_page: false,
-      source_note: source,
-      permit_id: permitId
-    });
-  }
-
-  function extractList(data){
-    if (Array.isArray(data)) return data;
-    if (data && Array.isArray(data.opportunities)) return data.opportunities;
-    if (data && Array.isArray(data.items)) return data.items;
-    return [];
-  }
-
-  async function loadCombinedOpportunities(){
-    var out = [];
-    var sourceNotes = [];
+  async function loadData(){
+    setCountMessage('Loading opportunities…');
+    toggleLiveBanner(false);
+    toggleErrorBanner(false);
     var responses = await Promise.allSettled([
-      fetch(PRIMARY_OPPS_PATH, {cache:'no-store'}),
-      fetch(BATCH2_OPPS_PATH, {cache:'no-store'}),
-      fetch(PERMITS_OPPS_PATH, {cache:'no-store'})
+      fetch(PRIMARY_URL,{cache:'no-store'}),
+      fetch(SECONDARY_URL,{cache:'no-store'})
     ]);
-    for (var i = 0; i < responses.length; i++) {
-      var resWrap = responses[i];
-      var path = i === 0 ? PRIMARY_OPPS_PATH : (i === 1 ? BATCH2_OPPS_PATH : PERMITS_OPPS_PATH);
-      if (resWrap.status !== 'fulfilled') continue;
-      var res = resWrap.value;
+    var combined = [];
+    var successfulSources = 0;
+    for (var i=0;i<responses.length;i++){
+      var wrap = responses[i];
+      if (wrap.status !== 'fulfilled') continue;
+      var res = wrap.value;
       if (!res.ok) continue;
       try{
-        var data = await res.json();
-        var list = (path === PERMITS_OPPS_PATH)
-          ? (Array.isArray(data && data.rows) ? data.rows.map(normalizePermitRow) : [])
-          : extractList(data);
-        if (list.length){
-          sourceNotes.push(path.replace('/data/','data/'));
-          out = out.concat(list);
+        var payload = await res.json();
+        var batch = transformPayload(payload,i===0 ? 'primary':'batch2');
+        successfulSources++;
+        if (batch.length){
+          combined = combined.concat(batch);
         }
-      }catch(e){}
+      }catch(err){
+        console.warn('Failed to parse opportunities feed', err);
+      }
     }
-    var seen = {};
-    var merged = [];
-    out.map(normalizeOpportunity).forEach(function(x){
-      var k = x.opportunity_id || x.project_slug;
-      if (!k || seen[k]) return;
-      seen[k] = true;
-      merged.push(x);
-    });
-    return { opportunities: merged, sources: sourceNotes };
-  }
-
-  function unique(arr){ return Array.from(new Set(arr.filter(Boolean))); }
-
-  function inferEstimatedLiftCapacity(op){
-    if (op.estimated_lift_capacity) return op.estimated_lift_capacity;
-    var cats = window.CGOpportunityHelpers.inferLiftCategories(op.project_type, op.recommended_lift_categories);
-    if (cats.indexOf('crawler_cranes') >= 0) return '250-1000T';
-    if (cats.indexOf('tower_cranes') >= 0) return '8-32T';
-    if (cats.indexOf('mobile_cranes') >= 0) return '40-400T';
-    if (cats.indexOf('glass_handling_systems') >= 0 || cats.indexOf('vacuum_lifts') >= 0) return '0.3-10T';
-    return 'TBD';
-  }
-
-  function seedFilters(list){
-    var typeSel = byId('fType');
-    var liftSel = byId('fLift');
-    var stateSel = byId('fState');
-    unique(list.map(function(x){ return x.project_type; })).forEach(function(t){
-      var o=document.createElement('option'); o.value=t; o.textContent=t; typeSel.appendChild(o);
-    });
-    unique(list.map(function(x){ return x.state; })).forEach(function(s){
-      var o=document.createElement('option'); o.value=s; o.textContent=s; stateSel.appendChild(o);
-    });
-    var lifts = [];
-    list.forEach(function(x){
-      var cats = window.CGOpportunityHelpers.inferLiftCategories(x.project_type, x.recommended_lift_categories);
-      cats.forEach(function(c){ lifts.push(c); });
-    });
-    unique(lifts).forEach(function(t){
-      var o=document.createElement('option'); o.value=t; o.textContent=t; liftSel.appendChild(o);
-    });
-  }
-
-  function render(sourceNotes){
-    var l = byId('fLift').value;
-    var t = byId('fType').value;
-    var st = byId('fState').value;
-
-    var filtered = all.filter(function(x){
-      var cats = window.CGOpportunityHelpers.inferLiftCategories(x.project_type, x.recommended_lift_categories);
-      if(l && cats.indexOf(l) === -1) return false;
-      if(t && x.project_type !== t) return false;
-      if(st && x.state !== st) return false;
-      return true;
-    });
-
-    var srcText = (sourceNotes && sourceNotes.length) ? sourceNotes.join(' + ') : 'data/opportunities/opportunities.json';
-    byId('resultCount').textContent = filtered.length + ' opportunities shown • source: ' + srcText;
-    var grid = byId('grid');
-    if(!filtered.length){
-      grid.innerHTML = '<div class="empty">No opportunities match your current filters.</div>';
+    if (!successfulSources){
+      renderErrorCard();
+      toggleErrorBanner(true,'Pipeline data unavailable. Check /data/opportunities/opportunities.json');
       return;
     }
-    grid.innerHTML = filtered.map(function(x){
-      var cats = window.CGOpportunityHelpers.inferLiftCategories(x.project_type, x.recommended_lift_categories);
-      var primaryLiftCategory = cats[0] || 'specialty_lift_contractors';
-      var estCapacity = inferEstimatedLiftCapacity(x);
-      var tags = cats.slice(0,4).map(function(c){ return '<span class="tag">'+esc(c)+'</span>'; }).join('');
-      var viewAction = x.has_detail_page
-        ? '<a class="primary" href="/opportunities/'+encodeURIComponent(x.project_slug)+'/">View Opportunity</a>'
-        : '<a class="primary" href="#" onclick="askAiAboutOpportunity(\''+esc(x.project_name).replace(/'/g,'&#39;')+'\',\''+esc(x.city).replace(/'/g,'&#39;')+'\',\''+esc(x.state).replace(/'/g,'&#39;')+'\');return false;">AI Triage</a>';
-      var sourceAction = x.source_url ? '<a href="'+esc(x.source_url)+'" target="_blank" rel="noopener">Source</a>' : '';
-      return '<div class="card">'+
-        '<h3>'+esc(x.project_name)+'</h3>'+
-        '<div class="meta"><span>'+esc(x.city)+', '+esc(x.state)+'</span><span>'+esc(x.project_type)+'</span><span>'+esc(primaryLiftCategory)+'</span></div>'+
-        '<div class="meta"><span>Estimated Lift Capacity: '+esc(estCapacity)+'</span></div>'+
-        '<div class="summary">'+esc(x.lift_requirements_summary)+'</div>'+
-        '<div class="tags">'+tags+'</div>'+
-        '<div class="card-actions">'+
-          viewAction+
-          sourceAction+
-          '<a href="/marketplace/?lift='+encodeURIComponent(primaryLiftCategory)+'">Marketplace</a>'+
-          '<a href="/data-centers/ai-planner">AI Lift Planner</a>'+
-        '</div>'+
-      '</div>';
-    }).join('');
+    var cleaned = dedupeAndFilter(combined);
+    appState.all = cleaned;
+    appState.map = new Map(cleaned.map(function(op){ return [op.opportunity_id, op]; }));
+    populateFilters(cleaned);
+    applyFilters();
+    toggleLiveBanner(true, cleaned.length);
   }
 
-  window.askAiAboutOpportunity = function(projectName, city, state){
-    var msg = 'Triage this opportunity for crane scope and next steps: ' + [projectName, city, state].filter(Boolean).join(' | ');
-    if (window.CGPageBot && typeof window.CGPageBot.openAndSend === 'function' && window.CGPageBot.openAndSend(msg)) return;
-    alert('AI assistant is loading. Use the AI button in the bottom-right corner.');
-  };
+  function transformPayload(payload,source){
+    var list = [];
+    if (source === 'primary'){
+      if (payload && Array.isArray(payload.opportunities)) list = payload.opportunities;
+      else if (Array.isArray(payload)) list = payload;
+    } else if (source === 'batch2'){
+      if (Array.isArray(payload)) list = payload;
+    }
+    return list.map(function(item,idx){ return normalizeOpportunity(item,{source:source,idx:idx}); });
+  }
 
-  loadCombinedOpportunities()
-    .then(function(result){
-      all = (result && result.opportunities ? result.opportunities : []).slice();
-      seedFilters(all);
-      var activeSources = result.sources || [];
-      render(activeSources);
-      ['fLift','fType','fState'].forEach(function(id){
-        byId(id).addEventListener('input', function(){ render(activeSources); });
-        byId(id).addEventListener('change', function(){ render(activeSources); });
-      });
-    })
-    .catch(function(){
-      byId('resultCount').textContent = 'Failed to load opportunities';
-      byId('grid').innerHTML = '<div class="empty">Could not load opportunity data.</div>';
+  function normalizeOpportunity(item,meta){
+    var rawName = (item.project_name || '').trim();
+    var manualSlug = item.project_slug || slugify(rawName + '-' + (item.project_address||item.city||'') + '-' + (item.state||''));
+    var fallbackSlug = manualSlug || slugify((meta.source || 'op') + '-' + (meta.idx + 1));
+    var lifts = Array.isArray(item.recommended_lift_categories) ? item.recommended_lift_categories.slice(0) : [];
+    if (!lifts.length && item.lift_category) lifts = [String(item.lift_category).toLowerCase()];
+    var normalizedStage = normalizeStage(item.project_stage || item.opportunity_stage || 'planning');
+    return {
+      opportunity_id: item.opportunity_id || (meta.source === 'batch2' ? 'batch2-' + fallbackSlug : fallbackSlug),
+      project_name: rawName || ('Opportunity ' + (meta.idx + 1)),
+      project_slug: manualSlug || fallbackSlug,
+      project_address: (item.project_address || '').trim(),
+      city: item.city || '',
+      state: item.state || '',
+      country: item.country || 'USA',
+      project_type: item.project_type || 'infrastructure',
+      project_stage: normalizedStage,
+      estimated_start_date_optional: item.estimated_start_date_optional || item.estimated_start_date || '',
+      lift_requirements_summary: buildSummary(item, meta.source),
+      recommended_lift_categories: lifts,
+      estimated_lift_capacity: item.estimated_lift_capacity || '',
+      data_source: meta.source
+    };
+  }
+
+  function buildSummary(item,source){
+    if (item.lift_requirements_summary) return item.lift_requirements_summary;
+    if (source === 'batch2'){
+      var parts = [];
+      if (item.lift_category) parts.push('Focus: ' + formatLabel(item.lift_category));
+      if (item.estimated_lift_capacity) parts.push('Est. capacity ' + item.estimated_lift_capacity);
+      parts.push('Batch 2 signal — confirm scope with developer.');
+      return parts.join(' • ');
+    }
+    return 'Lift scope pending structured note in opportunities.json.';
+  }
+
+  function normalizeStage(stage){
+    var value = String(stage || '').toLowerCase();
+    if (value.indexOf('active') > -1) return 'active';
+    if (value.indexOf('permit') > -1) return 'permit_filed';
+    if (value.indexOf('approve') > -1 || value.indexOf('award') > -1) return 'approved';
+    if (value.indexOf('new') > -1) return 'new';
+    return 'planning';
+  }
+
+  function dedupeAndFilter(records){
+    var seen = new Set();
+    var cleaned = [];
+    records.forEach(function(op){
+      var key = op.opportunity_id;
+      if (!key || seen.has(key)) return;
+      var blockField = (op.project_name || '') + ' ' + (op.project_address || '');
+      if (AUTH_BLOCK.test(blockField)) return;
+      seen.add(key);
+      cleaned.push(op);
     });
+    return cleaned;
+  }
+
+  function populateFilters(list){
+    setOptions(els.state, 'All states', uniqueSorted(list.map(function(op){ return op.state; })));
+    setOptions(els.type, 'All project types', uniqueSorted(list.map(function(op){ return op.project_type; })));
+    setOptions(els.stage, 'All stages', uniqueSorted(list.map(function(op){ return op.project_stage; })));
+  }
+
+  function setOptions(select, placeholder, options){
+    var current = select.value;
+    var html = '<option value="">' + placeholder + '</option>';
+    options.forEach(function(opt){
+      if (!opt) return;
+      html += '<option value="' + escapeHtml(opt) + '"' + (opt === current ? ' selected' : '') + '>' + formatLabel(opt) + '</option>';
+    });
+    select.innerHTML = html;
+  }
+
+  function uniqueSorted(list){
+    return Array.from(new Set(list.filter(Boolean))).sort(function(a,b){ return a.localeCompare(b, undefined, {sensitivity:'base'}); });
+  }
+
+  function applyFilters(){
+    if (!appState.all.length) return;
+    var keyword = (els.keyword.value || '').trim().toLowerCase();
+    var stateFilter = els.state.value;
+    var typeFilter = els.type.value;
+    var stageFilter = els.stage.value;
+    var sortMode = els.sort.value;
+    var filtered = appState.all.filter(function(op){
+      var matchesKeyword = !keyword || ['project_name','project_address','city','project_type'].some(function(field){
+        var val = (op[field] || '').toLowerCase();
+        return val.indexOf(keyword) > -1;
+      });
+      var matchesState = !stateFilter || op.state === stateFilter;
+      var matchesType = !typeFilter || op.project_type === typeFilter;
+      var matchesStage = !stageFilter || op.project_stage === stageFilter;
+      return matchesKeyword && matchesState && matchesType && matchesStage;
+    });
+    filtered.sort(function(a,b){ return sortByMode(a,b,sortMode); });
+    appState.filtered = filtered;
+    renderCards(filtered);
+    updateStats(filtered);
+    setCountMessage(filtered.length ? ('Showing ' + filtered.length + ' opportunities') : 'No opportunities match the filters.');
+  }
+
+  function sortByMode(a,b,mode){
+    if (mode === 'alpha'){
+      return a.project_name.localeCompare(b.project_name, undefined, {sensitivity:'base'});
+    }
+    if (mode === 'stage'){
+      return stagePriorityIndex(a.project_stage) - stagePriorityIndex(b.project_stage) || a.project_name.localeCompare(b.project_name);
+    }
+    var da = dateValue(a.estimated_start_date_optional);
+    var db = dateValue(b.estimated_start_date_optional);
+    return db - da;
+  }
+
+  function stagePriorityIndex(stage){
+    var idx = stagePriority.indexOf(stage);
+    return idx === -1 ? stagePriority.length : idx;
+  }
+
+  function dateValue(value){
+    if (!value) return 0;
+    var d = new Date(value);
+    return isNaN(d.getTime()) ? 0 : d.getTime();
+  }
+
+  function renderCards(list){
+    if (!list.length){
+      els.grid.innerHTML = '<article class="op-card empty-card"><h3>No opportunities match these filters.</h3><p class="summary">Expand filters or clear the keyword search to reload live records.</p></article>';
+      return;
+    }
+    var html = list.map(renderCard).join('');
+    els.grid.innerHTML = html;
+  }
+
+  function renderCard(op){
+    var locationMain = op.project_address || buildCityState(op) || 'Location pending release';
+    var secondary = op.project_address && buildCityState(op) ? buildCityState(op) : (op.country && op.country !== 'USA' ? op.country : buildCityState(op));
+    var stageClass = 'stage-' + op.project_stage;
+    var stageLabel = stageLabels[op.project_stage] || formatLabel(op.project_stage);
+    var typeLabel = formatLabel(op.project_type);
+    var startLabel = formatDate(op.estimated_start_date_optional);
+    var chips = (op.recommended_lift_categories || []).slice(0,3).map(function(cat){ return '<span class="chip">' + formatLabel(cat) + '</span>'; }).join('');
+    var chipsMarkup = chips ? '<div class="chip-row">' + chips + '</div>' : '';
+    var metaCopy = startLabel ? 'Est. start <span>' + startLabel + '</span>' : 'Stage: <span>' + escapeHtml(stageLabel) + '</span>';
+    return [
+      '<article class="op-card" data-id="' + escapeHtml(op.opportunity_id) + '">',
+      '  <div class="card-top">',
+      '    <div class="card-location">',
+      '      <p class="location-main">' + escapeHtml(locationMain) + '</p>',
+      '      <p class="location-sub">' + escapeHtml(secondary || '') + '</p>',
+      '    </div>',
+      '    <div class="card-badges">',
+      '      <span class="badge badge-type">' + escapeHtml(typeLabel) + '</span>',
+      '      <span class="badge badge-stage ' + stageClass + '">' + escapeHtml(stageLabel) + '</span>',
+      '    </div>',
+      '  </div>',
+      '  <h3>' + escapeHtml(op.project_name) + '</h3>',
+      '  <p class="meta-line">' + metaCopy + '</p>',
+      '  <p class="summary">' + escapeHtml(op.lift_requirements_summary || '') + '</p>',
+      (chipsMarkup ? '  ' + chipsMarkup : ''),
+      '  <div class="card-ctas">',
+      '    <button class="cta primary" data-action="availability" data-id="' + escapeHtml(op.opportunity_id) + '">Get Crane Availability</button>',
+      '    <a class="cta secondary" href="' + buildMarketplaceUrl(op) + '">View on Marketplace</a>',
+      '  </div>',
+      '</article>'
+    ].join('');
+  }
+
+  function buildCityState(op){
+    var cityState = [op.city, op.state].filter(Boolean).join(', ');
+    return cityState || '';
+  }
+
+  function formatDate(value){
+    if (!value) return '';
+    var date = new Date(value);
+    if (isNaN(date.getTime())) return '';
+    return new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric'}).format(date);
+  }
+
+  function buildMarketplaceUrl(op){
+    var cat = (op.recommended_lift_categories && op.recommended_lift_categories[0]) || 'mobile_cranes';
+    return '/marketplace/?type=' + encodeURIComponent(cat);
+  }
+
+  function handleCardAction(evt){
+    var target = evt.target;
+    if (target.dataset.action !== 'availability') return;
+    var id = target.getAttribute('data-id');
+    var record = appState.map.get(id);
+    if (!record) return;
+    var citySegment = [record.city, record.state].filter(Boolean).join(' ');
+    var locationLine = record.project_address ? record.project_address : '';
+    if (citySegment) locationLine += (locationLine ? ', ' : '') + citySegment;
+    if (!locationLine) locationLine = 'unspecified location';
+    var msg = 'Crane needed: ' + record.project_name + ' at ' + locationLine + ' | Type: ' + formatLabel(record.project_type);
+    if (typeof window.openBotWithPrefill === 'function'){
+      window.openBotWithPrefill(msg);
+    } else {
+      window.location.href = '/?bot=1&msg=' + encodeURIComponent(msg);
+    }
+  }
+
+  async function handleFormSubmit(evt){
+    evt.preventDefault();
+    setFormStatus('Submitting…', false);
+    var payload = {
+      project_name: (els.form.project_name.value || '').trim(),
+      project_address: (els.form.project_address.value || '').trim(),
+      city: (els.form.city.value || '').trim(),
+      state: (els.form.state.value || '').trim(),
+      project_type: (els.form.project_type.value || '').trim(),
+      contact_email: (els.form.contact_email.value || '').trim(),
+      moderation_status: 'pending_review'
+    };
+    try{
+      var res = await fetch('https://formspree.io/f/mgoldjjb',{
+        method:'POST',
+        headers:{'Accept':'application/json','Content-Type':'application/json'},
+        body:JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Formspree error');
+      setFormStatus('Opportunity received. We will confirm details shortly.', false);
+      els.form.reset();
+      setTimeout(closeModal,2000);
+    }catch(err){
+      console.error(err);
+      setFormStatus('Error submitting form. Please retry or email ops@cranegenius.com.', true);
+    }
+  }
+
+  function openModal(){
+    els.modal.classList.add('open');
+    els.modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    setFormStatus('', false);
+  }
+
+  function closeModal(){
+    els.modal.classList.remove('open');
+    els.modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+
+  function renderErrorCard(){
+    els.grid.innerHTML = '<article class="op-card empty-card"><h3>Pipeline data unavailable. Check /data/opportunities/opportunities.json</h3></article>';
+  }
+
+  function updateStats(list){
+    els.statOpps.textContent = list.length;
+    els.statCities.textContent = uniqueSorted(list.map(function(op){ return op.city; })).length;
+    els.statTypes.textContent = uniqueSorted(list.map(function(op){ return op.project_type; })).length;
+    var stageCount = list.filter(function(op){ return op.project_stage === 'permit_filed' || op.project_stage === 'active'; }).length;
+    els.statStage.textContent = stageCount;
+  }
+
+  function setCountMessage(msg){
+    els.count.textContent = msg;
+  }
+
+  function toggleLiveBanner(show,count){
+    if (!els.liveBanner) return;
+    if (show){
+      els.liveBanner.classList.remove('hidden');
+      els.liveBannerCopy.textContent = count + ' verified records from live JSON feeds';
+    } else {
+      els.liveBanner.classList.add('hidden');
+    }
+  }
+
+  function toggleErrorBanner(show,message){
+    if (!els.errorBanner) return;
+    if (show){
+      els.errorBanner.classList.remove('hidden');
+      els.errorBannerCopy.textContent = message;
+    } else {
+      els.errorBanner.classList.add('hidden');
+    }
+  }
+
+  function setFormStatus(message,isError){
+    els.formStatus.textContent = message || '';
+    if (isError){
+      els.formStatus.classList.add('error');
+    } else {
+      els.formStatus.classList.remove('error');
+    }
+  }
+
+  function formatLabel(value){
+    return String(value || '').replace(/[_-]+/g,' ').replace(/\b\w/g,function(l){ return l.toUpperCase(); }).trim();
+  }
+
+  function slugify(value){
+    return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+  }
+
+  function escapeHtml(value){
+    return String(value || '').replace(/[&<>"]/g,function(ch){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch] || ch;
+    });
+  }
 })();
 </script>
+<script src="/assets/js/page_ai_context.js"></script>
 </body>
 </html>
