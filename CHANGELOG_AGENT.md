@@ -1,6 +1,19 @@
 # Agent Changelog
 
-
+## Entry Format
+Date: YYYY-MM-DD  
+Agent: <controller or implementation agent name>  
+Task: <task unit or summary>  
+Files Changed: <comma-separated list or `None`>  
+Validation: <tests, checks, manual evidence>  
+Next Task: <upcoming unit or blocker>
+### Sample Entry
+Date: 2026-03-13  
+Agent: Claude  
+Task: Repo reconnaissance kickoff  
+Files Changed: None  
+Validation: Repository scanned, no writes performed.  
+Next Task: Autonomy architecture spec
 ---
 Timestamp: 2026-03-07
 Agent: GPT
