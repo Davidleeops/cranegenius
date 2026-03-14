@@ -1,4 +1,34 @@
-# Agent Changelog
+
+
+---
+
+## 2026-03-13 — opportunities/index.html Full Replacement
+Agent: Claude (Sonnet 4.6)
+
+### What was done
+- Full replacement of opportunities/index.html — TASK.md correction task executed
+- Previous file used Barlow Condensed, wrong colors, external data_loader.js dependency, no bot CTA
+- New file: Bebas Neue / DM Sans / DM Mono font stack, --bg:#080e1a / --gold:#c9a84c design tokens
+- Dual fetch from /data/opportunities/opportunities.json + /data/opportunities_batch_2.json (Promise.allSettled)
+- De-dupe by opportunity_id, authority regex filter
+- Stats bar: opps count, cities, types, permit_filed/active count
+- 4-filter toolbar: keyword search, state, project_type, project_stage
+- LIVE DATA green banner on success, red error banner on all-fetch failure
+- "Get Crane Availability" gold button on every card — openBotWithPrefill() with /?bot=1&msg= fallback
+- "View Marketplace" secondary button links to /marketplace/?type=
+- "Post Opportunity" modal — Formspree endpoint mgoldjjb, pending_review hidden field
+- Committed to main as 9c84ba7
+
+### Files Modified
+- opportunities/index.html — full replacement
+
+### Verified Correct (do not touch)
+- jobs/index.html, manpower/index.html — confirmed correct, fetch-based
+- data/opportunities/opportunities.json — 12 records, schema confirmed
+
+### Next Step for Next Agent
+Read TASK.md — active task is now: directory/index.html (new fetch-based page from contact_intelligence exports)
+After that: review acquisitions/index.html (Codex modified, not confirmed committed)# Agent Changelog
 
 
 ---
