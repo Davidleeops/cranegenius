@@ -4,617 +4,258 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CraneGenius — Live Crane Opportunities</title>
-<meta name="description" content="Live CraneGenius opportunity intelligence with filtering, stats, and bot-ready CTAs.">
+<meta name="description" content="Permit-sourced crane opportunity feed. Every record maps back to a real project address. Get crane availability on any job in seconds.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script defer src="/config.js"></script>
+<script src="/config.js" defer></script>
 <style>
-:root{--bg:#080e1a;--bg2:#0d1628;--bg3:#111e35;--gold:#c9a84c;--text:#e8f0ff;--muted:#97a8c2;--border:#1e3a5f;--success:#21d899;--danger:#ff5d6c;--card-shadow:0 18px 45px rgba(3,6,14,.65);}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;min-height:100vh}
-a{text-decoration:none;color:inherit}
-h1,h2,h3,.stat-value,.site-nav-logo,.hero-eyebrow{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;letter-spacing:1px}
-.site-nav{position:sticky;top:0;z-index:80;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:rgba(8,14,26,.97);border-bottom:1px solid rgba(30,58,95,.65)}
-.site-nav-logo{font-size:26px;color:var(--text)}
-.site-nav-logo span{color:var(--gold)}
-.site-nav-links{display:flex;gap:18px;flex-wrap:wrap;font-family:'DM Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:1px}
-.site-nav-links a{color:var(--muted);padding-bottom:2px;border-bottom:2px solid transparent}
-.site-nav-links a.active{color:var(--gold);border-color:var(--gold)}
-.wrap{max-width:1200px;margin:0 auto;padding:32px 20px 64px}
-.hero{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:26px 32px;margin-bottom:20px;box-shadow:0 18px 55px rgba(2,6,18,.45)}
-.hero h1{font-size:44px;margin-bottom:8px}
-.hero p{max-width:720px;color:var(--muted);font-size:.95rem}
-.hero-eyebrow{font-size:15px;color:var(--gold);letter-spacing:3px}
-.cta-hero{align-self:flex-start;padding:0 26px;height:46px;border-radius:8px;border:none;background:var(--gold);color:#050608;font-weight:700;font-size:.9rem;cursor:pointer;transition:transform .15s,box-shadow .15s;font-family:'DM Sans',sans-serif}
-.cta-hero:hover{transform:translateY(-1px);box-shadow:0 10px 35px rgba(201,168,76,.35)}
-.status-banner{display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:10px;font-family:'DM Mono',monospace;font-size:.75rem;margin-bottom:16px;border:1px solid transparent}
-.status-banner.live{background:rgba(33,216,153,.12);border-color:rgba(33,216,153,.35);color:#8dfad1}
-.status-banner.danger{background:rgba(255,93,108,.12);border-color:rgba(255,93,108,.35);color:#ffbcc6}
-.status-banner.hidden{display:none}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:22px}
-.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
-.stat-label{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
-.stat-value{font-size:36px;color:var(--gold);margin-top:6px}
-.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:12px}
-.control label{display:block;font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;font-family:'DM Mono',monospace}
-input[type="search"],select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--text);font-size:.95rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .15s,box-shadow .15s}
-input[type="search"]::placeholder{color:#6d7d9b}
-input[type="search"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,168,76,.15)}
-.result-count{font-size:.85rem;color:var(--muted);margin:18px 0 12px;font-family:'DM Mono',monospace}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-.op-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--card-shadow);min-height:280px}
-.card-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
-.card-location .location-main{font-family:'DM Mono',monospace;font-size:.85rem;color:#bcd0f6}
-.card-location .location-sub{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
-.card-badges{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
-.badge{padding:4px 10px;border-radius:999px;font-size:.65rem;font-family:'DM Mono',monospace;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);text-transform:uppercase;letter-spacing:.5px}
-.badge-type{border-color:rgba(201,168,76,.4);color:var(--gold)}
-.badge-stage{border-color:rgba(59,130,246,.35);color:#9ec5ff}
-.badge-stage.stage-active{border-color:rgba(33,216,153,.5);color:#7df9c7}
-.badge-stage.stage-permit_filed{border-color:rgba(201,168,76,.5);color:var(--gold)}
-.badge-stage.stage-approved{border-color:rgba(94,234,212,.5);color:#94f5e2}
-.badge-stage.stage-planning{border-color:rgba(148,163,184,.6);color:#cbd5f5}
-.badge-stage.stage-new{border-color:rgba(248,113,113,.4);color:#fecaca}
-.op-card h3{font-size:28px;line-height:1.1}
-.meta-line{font-size:.75rem;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:.4px}
-.meta-line span{color:var(--text)}
-.summary{font-size:.93rem;color:#dbe6ff;line-height:1.5;min-height:48px}
-.chip-row{display:flex;gap:8px;flex-wrap:wrap}
-.chip{font-family:'DM Mono',monospace;font-size:.65rem;padding:4px 10px;border-radius:8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.35);color:var(--gold)}
-.card-ctas{display:flex;gap:10px;flex-wrap:wrap}
-.card-ctas .cta{flex:1;min-width:140px;text-align:center;padding:10px 12px;border-radius:10px;font-size:.85rem;font-weight:600;border:1px solid var(--border);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif}
-.card-ctas .cta.primary{background:var(--gold);color:#050608;border-color:var(--gold)}
-.card-ctas .cta.primary:hover{box-shadow:0 10px 30px rgba(201,168,76,.45)}
-.card-ctas .cta.secondary{background:transparent;color:var(--text)}
-.card-ctas .cta.secondary:hover{border-color:rgba(201,168,76,.4);color:var(--gold)}
-.empty-card{border:1px dashed rgba(201,168,76,.4);background:rgba(8,14,26,.8);text-align:center}
-.modal-overlay{position:fixed;inset:0;background:rgba(3,6,12,.8);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;z-index:120}
-.modal-overlay.open{display:flex}
-.modal{background:var(--bg2);border:1px solid var(--border);border-radius:16px;width:100%;max-width:520px;box-shadow:0 25px 70px rgba(0,0,0,.55)}
-.modal-head{display:flex;justify-content:space-between;align-items:center;padding:20px;border-bottom:1px solid var(--border)}
-.modal-head h2{font-size:28px}
-.modal-close{background:none;border:none;color:var(--muted);font-size:28px;cursor:pointer;line-height:1}
-.modal form{padding:20px}
-.form-group{display:flex;flex-direction:column;margin-bottom:14px}
-.form-group label{font-size:.7rem;font-family:'DM Mono',monospace;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
-.form-group input,.form-group select{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.95rem}
-.form-group input:focus,.form-group select:focus{border-color:var(--gold)}
-.form-actions{display:flex;justify-content:flex-end;margin-top:10px}
-.form-actions button{padding:10px 16px;background:var(--gold);color:#050608;border:none;border-radius:10px;font-weight:700;font-size:.95rem;cursor:pointer}
-.form-status{margin-top:10px;font-size:.8rem;font-family:'DM Mono',monospace;color:var(--muted)}
-.form-status.error{color:#ffb1c1}
-@media(max-width:720px){
-  .site-nav{padding:14px 16px}
-  .hero{padding:22px}
-  .hero h1{font-size:34px}
-  .card-top{flex-direction:column}
-  .card-badges{justify-content:flex-start}
+:root {
+  --bg: #080e1a;
+  --bg2: #0d1628;
+  --bg3: #111e35;
+  --gold: #c9a84c;
+  --border: #1e3a5f;
+  --text: #e8f0ff;
+  --muted: #97a8c2;
+  --green: #22c55e;
+  --red: #ef4444;
 }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  min-height: 100vh;
+}
+.site-nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; height: 54px;
+  background: rgba(8,14,26,.96);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: .06em; color: var(--text); text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.nav-links a { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .15s; }
+.nav-links a:hover { color: var(--text); }
+.nav-links a.active { color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
+.banner { display: none; align-items: center; gap: 10px; padding: 10px 24px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .05em; }
+.banner.live { display: flex; background: rgba(34,197,94,.08); border-bottom: 1px solid rgba(34,197,94,.25); color: var(--green); }
+.banner.error { display: flex; background: rgba(239,68,68,.08); border-bottom: 1px solid rgba(239,68,68,.25); color: var(--red); }
+.banner-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 36px 24px 72px; }
+.hero { margin-bottom: 32px; }
+.hero-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 64px); line-height: 1; letter-spacing: .04em; color: var(--text); }
+.hero h1 span { color: var(--gold); }
+.hero p { color: var(--muted); max-width: 640px; margin-top: 10px; line-height: 1.55; }
+.stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 28px; }
+.stat { background: var(--bg2); padding: 16px 20px; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--gold); line-height: 1; }
+.stat-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.toolbar { display: grid; grid-template-columns: 1fr repeat(3, minmax(140px, 200px)) minmax(140px,180px); gap: 10px; align-items: end; margin-bottom: 16px; }
+.toolbar label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 5px; }
+.toolbar input, .toolbar select { width: 100%; height: 38px; background: var(--bg2); border: 1px solid var(--border); color: var(--text); padding: 0 12px; font-family: 'DM Sans', sans-serif; font-size: 13px; outline: none; transition: border-color .15s; }
+.toolbar input:focus, .toolbar select:focus { border-color: var(--gold); }
+.toolbar select option { background: var(--bg2); }
+.btn-post { height: 38px; padding: 0 16px; background: var(--gold); color: var(--bg); border: none; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; transition: opacity .15s; white-space: nowrap; }
+.btn-post:hover { opacity: .85; }
+.result-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 18px; letter-spacing: .04em; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.card { background: var(--bg3); border: 1px solid var(--border); padding: 18px; display: flex; flex-direction: column; transition: border-color .15s, transform .15s; }
+.card:hover { border-color: #2d5490; transform: translateY(-2px); }
+.card-address { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 6px; }
+.card-name { font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1.05; color: var(--text); margin-bottom: 10px; }
+.badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.badge { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--border); color: var(--muted); }
+.badge.type { border-color: var(--gold); color: var(--gold); }
+.badge.stage.permit_filed { color: #60a5fa; border-color: #1d4ed8; }
+.badge.stage.active_construction, .badge.stage.construction_starting { color: var(--green); border-color: #166534; }
+.badge.stage.approved { color: #a78bfa; border-color: #4c1d95; }
+.card-summary { font-size: 13px; color: var(--muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.chip-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.chip { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .04em; padding: 3px 8px; background: rgba(201,168,76,.07); border: 1px solid rgba(201,168,76,.2); color: var(--gold); }
+.card-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+.btn-primary { flex: 1; min-width: 140px; background: var(--gold); color: var(--bg); border: none; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; padding: 9px 12px; text-align: center; text-decoration: none; transition: opacity .15s; }
+.btn-primary:hover { opacity: .85; }
+.btn-secondary { padding: 9px 12px; background: transparent; border: 1px solid var(--border); color: var(--muted); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: border-color .15s, color .15s; }
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+.empty-state { grid-column: 1 / -1; padding: 40px 24px; text-align: center; border: 1px dashed var(--border); color: var(--muted); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .06em; }
+.modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(8,14,26,.9); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 20px; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--bg2); border: 1px solid var(--border); width: 100%; max-width: 520px; padding: 32px; position: relative; }
+.modal h2 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--text); margin-bottom: 6px; }
+.modal p { color: var(--muted); font-size: 13px; margin-bottom: 24px; line-height: 1.5; }
+.modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; line-height: 1; }
+.modal-close:hover { color: var(--text); }
+.form-row { margin-bottom: 14px; }
+.form-row label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 5px; }
+.form-row input, .form-row select { width: 100%; height: 40px; background: var(--bg3); border: 1px solid var(--border); color: var(--text); padding: 0 12px; font-family: 'DM Sans', sans-serif; font-size: 13px; outline: none; transition: border-color .15s; }
+.form-row input:focus, .form-row select:focus { border-color: var(--gold); }
+.form-row select option { background: var(--bg3); }
+.modal-submit { width: 100%; height: 44px; background: var(--gold); color: var(--bg); border: none; cursor: pointer; font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: .08em; margin-top: 8px; transition: opacity .15s; }
+.modal-submit:hover { opacity: .85; }
+.modal-feedback { margin-top: 12px; font-size: 12px; font-family: 'DM Mono', monospace; letter-spacing: .04em; display: none; }
+.modal-feedback.ok { color: var(--green); display: block; }
+.modal-feedback.err { color: var(--red); display: block; }
+@media (max-width: 1100px) { .grid { grid-template-columns: repeat(2, 1fr); } .stats-bar { grid-template-columns: repeat(2, 1fr); } .toolbar { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 680px) { .grid { grid-template-columns: 1fr; } .stats-bar { grid-template-columns: 1fr 1fr; } .toolbar { grid-template-columns: 1fr; } .nav-links { gap: 12px; overflow-x: auto; white-space: nowrap; } }
 </style>
 </head>
 <body>
 <nav class="site-nav">
-  <a class="site-nav-logo" href="/">Crane<span>Genius</span></a>
-  <div class="site-nav-links">
+  <a href="/" class="nav-logo">Crane<span>Genius</span></a>
+  <div class="nav-links">
     <a href="/">Lift Estimator</a>
-    <a href="/marketplace/">Marketplace</a>
     <a href="/data-centers/">Data Centers</a>
+    <a href="/marketplace/">Marketplace</a>
     <a href="/opportunities/" class="active">Opportunities</a>
+    <a href="/jobs/">Jobs</a>
     <a href="/sell-your-company/">Sell</a>
   </div>
 </nav>
-<main class="wrap">
-  <section class="hero">
-    <div>
-      <p class="hero-eyebrow">Opportunity Grid</p>
-      <h1>Live Crane Opportunity Grid</h1>
-      <p>Signal-driven view of projects likely to need crane partners. Every record maps back to /data/opportunities/ with bot-ready CTAs, recommended lift categories, and de-duplicated batch feeds.</p>
-    </div>
-    <button class="cta-hero" id="postOpportunityBtn">Post an Opportunity</button>
-  </section>
-  <div id="liveBanner" class="status-banner live hidden" role="status">
-    <span>LIVE DATA</span>
-    <span id="liveBannerCopy"></span>
+<div class="banner live" id="bannerLive">
+  <div class="banner-dot"></div>
+  <span id="bannerText">LOADING PIPELINE DATA...</span>
+</div>
+<div class="banner error" id="bannerError" style="display:none">
+  <div class="banner-dot"></div>
+  <span>PIPELINE DATA UNAVAILABLE — Check /data/opportunities/opportunities.json</span>
+</div>
+<div class="wrap">
+  <div class="hero">
+    <div class="hero-label">// Permit Signal Engine</div>
+    <h1>CRANE <span>OPPORTUNITY</span> FEED</h1>
+    <p>Live permit-sourced projects likely to need crane and lift coverage. Every record maps to a real address. Click any card to get crane availability in under 60 seconds.</p>
   </div>
-  <div id="errorBanner" class="status-banner danger hidden" role="alert">
-    <span>PIPELINE ALERT</span>
-    <span id="errorBannerCopy">Pipeline data unavailable. Check /data/opportunities/opportunities.json</span>
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-num" id="statOpps">--</div><div class="stat-label">Active Opportunities</div></div>
+    <div class="stat"><div class="stat-num" id="statCities">--</div><div class="stat-label">Cities Covered</div></div>
+    <div class="stat"><div class="stat-num" id="statTypes">--</div><div class="stat-label">Project Types</div></div>
+    <div class="stat"><div class="stat-num" id="statActive">--</div><div class="stat-label">Permit Filed / Active</div></div>
   </div>
-  <section class="stats" aria-label="Pipeline stats">
-    <div class="stat-card">
-      <p class="stat-label">Opportunities</p>
-      <p class="stat-value" id="statOpps">0</p>
-    </div>
-    <div class="stat-card">
-      <p class="stat-label">Cities</p>
-      <p class="stat-value" id="statCities">0</p>
-    </div>
-    <div class="stat-card">
-      <p class="stat-label">Project Types</p>
-      <p class="stat-value" id="statTypes">0</p>
-    </div>
-    <div class="stat-card">
-      <p class="stat-label">Active / Permit</p>
-      <p class="stat-value" id="statStage">0</p>
-    </div>
-  </section>
-  <section class="controls">
-    <div class="control">
-      <label for="keywordInput">Keyword Search</label>
-      <input type="search" id="keywordInput" placeholder="Project, address, city, type">
-    </div>
-    <div class="control">
-      <label for="stateFilter">State</label>
-      <select id="stateFilter">
-        <option value="">All states</option>
-      </select>
-    </div>
-    <div class="control">
-      <label for="typeFilter">Project Type</label>
-      <select id="typeFilter">
-        <option value="">All project types</option>
-      </select>
-    </div>
-    <div class="control">
-      <label for="stageFilter">Stage</label>
-      <select id="stageFilter">
-        <option value="">All stages</option>
-      </select>
-    </div>
-    <div class="control">
-      <label for="sortSelect">Sort</label>
-      <select id="sortSelect">
-        <option value="newest">Newest (Est. start)</option>
-        <option value="alpha">A–Z (Project name)</option>
-        <option value="stage">Stage priority</option>
-      </select>
-    </div>
-  </section>
-  <p class="result-count" id="resultCount">Loading opportunities…</p>
-  <section class="grid" id="cardsGrid" aria-live="polite"></section>
-</main>
-<div class="modal-overlay" id="postModal" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-head">
-      <h2 id="modalTitle">Post an Opportunity</h2>
-      <button type="button" class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
-    </div>
-    <form id="postOpportunityForm">
-      <div class="form-group">
-        <label for="formProjectName">Project Name</label>
-        <input id="formProjectName" name="project_name" required>
-      </div>
-      <div class="form-group">
-        <label for="formProjectAddress">Project Address</label>
-        <input id="formProjectAddress" name="project_address" required>
-      </div>
-      <div class="form-group">
-        <label for="formCity">City</label>
-        <input id="formCity" name="city" required>
-      </div>
-      <div class="form-group">
-        <label for="formState">State</label>
-        <input id="formState" name="state" required maxlength="2">
-      </div>
-      <div class="form-group">
-        <label for="formType">Project Type</label>
-        <input id="formType" name="project_type" required>
-      </div>
-      <div class="form-group">
-        <label for="formEmail">Contact Email</label>
-        <input type="email" id="formEmail" name="contact_email" required>
-      </div>
+  <div class="toolbar">
+    <div><label>Search</label><input type="text" id="fSearch" placeholder="Address, project, city..."></div>
+    <div><label>State</label><select id="fState"><option value="">All States</option></select></div>
+    <div><label>Project Type</label><select id="fType"><option value="">All Types</option></select></div>
+    <div><label>Stage</label><select id="fStage"><option value="">All Stages</option></select></div>
+    <div><label>&nbsp;</label><button class="btn-post" onclick="openPostModal()">+ Post Opportunity</button></div>
+  </div>
+  <div class="result-meta" id="resultMeta">Loading...</div>
+  <div class="grid" id="grid"><div class="empty-state">Loading opportunity data...</div></div>
+</div>
+<div class="modal-overlay" id="postModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closePostModal()">&times;</button>
+    <h2>POST AN OPPORTUNITY</h2>
+    <p>Submit a project that needs crane coverage. Our team will review and add it to the feed within 24 hours.</p>
+    <form id="postForm" onsubmit="submitPost(event)">
       <input type="hidden" name="moderation_status" value="pending_review">
-      <div class="form-actions">
-        <button type="submit">Submit Opportunity</button>
+      <div class="form-row"><label>Project Name</label><input type="text" name="project_name" placeholder="e.g. Downtown Tower Phase 2" required></div>
+      <div class="form-row"><label>Project Address</label><input type="text" name="project_address" placeholder="123 Main St" required></div>
+      <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div><label>City</label><input type="text" name="city" placeholder="Chicago" required></div>
+        <div><label>State</label><input type="text" name="state" placeholder="IL" required></div>
       </div>
-      <p class="form-status" id="formStatus"></p>
+      <div class="form-row"><label>Project Type</label>
+        <select name="project_type" required>
+          <option value="">Select type...</option>
+          <option value="data_center_construction">Data Center Construction</option>
+          <option value="commercial_tower">Commercial Tower</option>
+          <option value="hospital_construction">Hospital / Healthcare</option>
+          <option value="industrial_equipment_installation">Industrial Equipment Install</option>
+          <option value="infrastructure_upgrade">Infrastructure Upgrade</option>
+          <option value="manufacturing_expansion">Manufacturing Expansion</option>
+          <option value="logistics_distribution_center">Logistics / Distribution</option>
+          <option value="glass_facade_project">Glass / Facade</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-row"><label>Your Email</label><input type="email" name="contact_email" placeholder="you@yourcompany.com" required></div>
+      <button type="submit" class="modal-submit">SUBMIT OPPORTUNITY</button>
+      <div class="modal-feedback" id="postFeedback"></div>
     </form>
   </div>
 </div>
+<script src="/assets/js/page_ai_context.js" onerror="void 0"></script>
 <script>
-(function(){
+(function () {
   'use strict';
-  var PRIMARY_URL = '/data/opportunities/opportunities.json';
-  var SECONDARY_URL = '/data/opportunities_batch_2.json';
-  var AUTH_BLOCK = /(osha|asme|ansi|state board|licensing board|department of labor|federal|county|city of|commission|authority|regulator|regulatory)/i;
-  var stagePriority = ['active','permit_filed','approved','planning','new'];
-  var stageLabels = {active:'Active Construction',permit_filed:'Permit Filed',approved:'Approved / Awarded',planning:'Planning',new:'Emerging'};
-  var els = {
-    liveBanner: document.getElementById('liveBanner'),
-    liveBannerCopy: document.getElementById('liveBannerCopy'),
-    errorBanner: document.getElementById('errorBanner'),
-    errorBannerCopy: document.getElementById('errorBannerCopy'),
-    statOpps: document.getElementById('statOpps'),
-    statCities: document.getElementById('statCities'),
-    statTypes: document.getElementById('statTypes'),
-    statStage: document.getElementById('statStage'),
-    keyword: document.getElementById('keywordInput'),
-    state: document.getElementById('stateFilter'),
-    type: document.getElementById('typeFilter'),
-    stage: document.getElementById('stageFilter'),
-    sort: document.getElementById('sortSelect'),
-    grid: document.getElementById('cardsGrid'),
-    count: document.getElementById('resultCount'),
-    postBtn: document.getElementById('postOpportunityBtn'),
-    modal: document.getElementById('postModal'),
-    modalClose: document.getElementById('modalClose'),
-    form: document.getElementById('postOpportunityForm'),
-    formStatus: document.getElementById('formStatus')
-  };
-  var appState = {all:[],filtered:[],map:new Map()};
-
-  bindControls();
-  loadData();
-
-  function bindControls(){
-    els.keyword.addEventListener('input', applyFilters);
-    [els.state, els.type, els.stage, els.sort].forEach(function(el){ el.addEventListener('change', applyFilters); });
-    els.grid.addEventListener('click', handleCardAction);
-    els.postBtn.addEventListener('click', openModal);
-    els.modalClose.addEventListener('click', closeModal);
-    els.modal.addEventListener('click', function(evt){ if (evt.target === els.modal) closeModal(); });
-    document.addEventListener('keydown', function(evt){ if (evt.key === 'Escape' && els.modal.classList.contains('open')) closeModal(); });
-    els.form.addEventListener('submit', handleFormSubmit);
-  }
-
-  async function loadData(){
-    setCountMessage('Loading opportunities…');
-    toggleLiveBanner(false);
-    toggleErrorBanner(false);
-    var responses = await Promise.allSettled([
-      fetch(PRIMARY_URL,{cache:'no-store'}),
-      fetch(SECONDARY_URL,{cache:'no-store'})
+  var AUTHORITY_RE = /(osha|asme|ansi|state board|licensing board|department of labor|federal|county|city of|commission|authority|regulator|regulatory)/i;
+  var all = [];
+  function $id(id) { return document.getElementById(id); }
+  function esc(s) { return String(s || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function uniq(arr) { return Array.from(new Set(arr.filter(Boolean).map(function(s){return String(s).trim();}).filter(Boolean))); }
+  async function loadData() {
+    var results = await Promise.allSettled([
+      fetch('/data/opportunities/opportunities.json', { cache: 'no-store' }),
+      fetch('/data/opportunities_batch_2.json', { cache: 'no-store' })
     ]);
-    var combined = [];
-    var successfulSources = 0;
-    for (var i=0;i<responses.length;i++){
-      var wrap = responses[i];
-      if (wrap.status !== 'fulfilled') continue;
-      var res = wrap.value;
-      if (!res.ok) continue;
-      try{
-        var payload = await res.json();
-        var batch = transformPayload(payload,i===0 ? 'primary':'batch2');
-        successfulSources++;
-        if (batch.length){
-          combined = combined.concat(batch);
-        }
-      }catch(err){
-        console.warn('Failed to parse opportunities feed', err);
-      }
+    var merged = []; var loadedAny = false;
+    for (var i = 0; i < results.length; i++) {
+      var r = results[i];
+      if (r.status !== 'fulfilled' || !r.value.ok) continue;
+      try { var data = await r.value.json(); var list = Array.isArray(data) ? data : Array.isArray(data.opportunities) ? data.opportunities : []; merged = merged.concat(list); if (list.length) loadedAny = true; } catch (e) {}
     }
-    if (!successfulSources){
-      renderErrorCard();
-      toggleErrorBanner(true,'Pipeline data unavailable. Check /data/opportunities/opportunities.json');
-      return;
-    }
-    var cleaned = dedupeAndFilter(combined);
-    appState.all = cleaned;
-    appState.map = new Map(cleaned.map(function(op){ return [op.opportunity_id, op]; }));
-    populateFilters(cleaned);
-    applyFilters();
-    toggleLiveBanner(true, cleaned.length);
+    if (!loadedAny) { showError(); renderCards([]); return; }
+    var seen = {}; var deduped = [];
+    merged.forEach(function (o) { var k = o.opportunity_id || o.project_slug; if (!k || seen[k]) return; seen[k] = true; deduped.push(o); });
+    deduped = deduped.filter(function (o) { var name = String(o.project_name || ''); var addr = String(o.project_address || ''); return !AUTHORITY_RE.test(name) && !AUTHORITY_RE.test(addr); });
+    all = deduped; showLive(all.length); populateFilters(all); updateStats(all); renderCards(all); bindFilters();
   }
-
-  function transformPayload(payload,source){
-    var list = [];
-    if (source === 'primary'){
-      if (payload && Array.isArray(payload.opportunities)) list = payload.opportunities;
-      else if (Array.isArray(payload)) list = payload;
-    } else if (source === 'batch2'){
-      if (Array.isArray(payload)) list = payload;
-    }
-    return list.map(function(item,idx){ return normalizeOpportunity(item,{source:source,idx:idx}); });
+  function showLive(count) { $id('bannerLive').classList.add('live'); $id('bannerText').textContent = 'LIVE DATA — ' + count + ' opportunities loaded from pipeline'; $id('bannerError').style.display = 'none'; }
+  function showError() { $id('bannerLive').style.display = 'none'; $id('bannerError').style.display = 'flex'; }
+  function updateStats(list) {
+    $id('statOpps').textContent = list.length;
+    $id('statCities').textContent = uniq(list.map(function(o){return o.city;})).length;
+    $id('statTypes').textContent = uniq(list.map(function(o){return o.project_type;})).length;
+    $id('statActive').textContent = list.filter(function(o){ var s = String(o.project_stage || ''); return s === 'permit_filed' || s === 'active' || s === 'active_construction'; }).length;
   }
-
-  function normalizeOpportunity(item,meta){
-    var rawName = (item.project_name || '').trim();
-    var manualSlug = item.project_slug || slugify(rawName + '-' + (item.project_address||item.city||'') + '-' + (item.state||''));
-    var fallbackSlug = manualSlug || slugify((meta.source || 'op') + '-' + (meta.idx + 1));
-    var lifts = Array.isArray(item.recommended_lift_categories) ? item.recommended_lift_categories.slice(0) : [];
-    if (!lifts.length && item.lift_category) lifts = [String(item.lift_category).toLowerCase()];
-    var normalizedStage = normalizeStage(item.project_stage || item.opportunity_stage || 'planning');
-    return {
-      opportunity_id: item.opportunity_id || (meta.source === 'batch2' ? 'batch2-' + fallbackSlug : fallbackSlug),
-      project_name: rawName || ('Opportunity ' + (meta.idx + 1)),
-      project_slug: manualSlug || fallbackSlug,
-      project_address: (item.project_address || '').trim(),
-      city: item.city || '',
-      state: item.state || '',
-      country: item.country || 'USA',
-      project_type: item.project_type || 'infrastructure',
-      project_stage: normalizedStage,
-      estimated_start_date_optional: item.estimated_start_date_optional || item.estimated_start_date || '',
-      lift_requirements_summary: buildSummary(item, meta.source),
-      recommended_lift_categories: lifts,
-      estimated_lift_capacity: item.estimated_lift_capacity || '',
-      data_source: meta.source
-    };
+  function populateFilters(list) { fillSelect('fState', uniq(list.map(function(o){return o.state;})).sort()); fillSelect('fType', uniq(list.map(function(o){return o.project_type;})).sort()); fillSelect('fStage', uniq(list.map(function(o){return o.project_stage;})).sort()); }
+  function fillSelect(id, vals) { var sel = $id(id); vals.forEach(function (v) { var o = document.createElement('option'); o.value = v; o.textContent = v.replace(/_/g, ' '); sel.appendChild(o); }); }
+  function bindFilters() { ['fSearch', 'fState', 'fType', 'fStage'].forEach(function (id) { $id(id).addEventListener('input', applyFilters); $id(id).addEventListener('change', applyFilters); }); }
+  function applyFilters() {
+    var q = $id('fSearch').value.toLowerCase().trim(); var st = $id('fState').value; var ty = $id('fType').value; var sg = $id('fStage').value;
+    var filtered = all.filter(function (o) { if (st && o.state !== st) return false; if (ty && o.project_type !== ty) return false; if (sg && o.project_stage !== sg) return false; if (q) { var hay = [o.project_name, o.project_address, o.city, o.project_type, o.lift_requirements_summary].join(' ').toLowerCase(); if (hay.indexOf(q) === -1) return false; } return true; });
+    $id('resultMeta').textContent = filtered.length + ' of ' + all.length + ' opportunities'; renderCards(filtered);
   }
-
-  function buildSummary(item,source){
-    if (item.lift_requirements_summary) return item.lift_requirements_summary;
-    if (source === 'batch2'){
-      var parts = [];
-      if (item.lift_category) parts.push('Focus: ' + formatLabel(item.lift_category));
-      if (item.estimated_lift_capacity) parts.push('Est. capacity ' + item.estimated_lift_capacity);
-      parts.push('Batch 2 signal — confirm scope with developer.');
-      return parts.join(' • ');
-    }
-    return 'Lift scope pending structured note in opportunities.json.';
+  function getBotMsg(o) { return 'Crane needed: ' + (o.project_name || '') + ' at ' + (o.project_address || '') + ', ' + (o.city || '') + ' ' + (o.state || '') + ' | Type: ' + (o.project_type || ''); }
+  function getCraneAvailability(o) { var msg = getBotMsg(o); if (typeof window.openBotWithPrefill === 'function') { window.openBotWithPrefill(msg); } else { window.location.href = '/?bot=1&msg=' + encodeURIComponent(msg); } }
+  function renderCards(list) {
+    var grid = $id('grid'); $id('resultMeta').textContent = list.length + ' of ' + all.length + ' opportunities';
+    if (!list.length) { grid.innerHTML = '<div class="empty-state">No opportunities match your filters. <a href="#" onclick="resetFilters();return false;" style="color:var(--gold)">Clear filters</a></div>'; return; }
+    grid.innerHTML = list.map(function (o, idx) {
+      var cats = Array.isArray(o.recommended_lift_categories) ? o.recommended_lift_categories : [];
+      var chips = cats.slice(0, 3).map(function (c) { return '<span class="chip">' + esc(c.replace(/_/g, ' ')) + '</span>'; }).join('');
+      var stageClass = String(o.project_stage || '').replace(/s+/g, '_');
+      var addrLine = [o.project_address, o.city, o.state].filter(Boolean).join(', ');
+      var mktUrl = '/marketplace/?type=' + encodeURIComponent(cats[0] || 'mobile_cranes');
+      return '<div class="card">' +
+        '<div class="card-address">' + esc(addrLine) + '</div>' +
+        '<div class="card-name">' + esc(o.project_name) + '</div>' +
+        '<div class="badge-row"><span class="badge type">' + esc((o.project_type || '').replace(/_/g, ' ')) + '</span><span class="badge stage ' + esc(stageClass) + '">' + esc((o.project_stage || '').replace(/_/g, ' ')) + '</span></div>' +
+        '<div class="card-summary">' + esc(o.lift_requirements_summary || 'Lift requirements pending assessment.') + '</div>' +
+        (chips ? '<div class="chip-row">' + chips + '</div>' : '') +
+        '<div class="card-actions"><button class="btn-primary" onclick="window._getCrane(' + idx + ')">Get Crane Availability</button><a class="btn-secondary" href="' + mktUrl + '">View Marketplace</a></div>' +
+        '</div>';
+    }).join('');
+    window._getCrane = function (idx) { getCraneAvailability(list[idx]); };
   }
-
-  function normalizeStage(stage){
-    var value = String(stage || '').toLowerCase();
-    if (value.indexOf('active') > -1) return 'active';
-    if (value.indexOf('permit') > -1) return 'permit_filed';
-    if (value.indexOf('approve') > -1 || value.indexOf('award') > -1) return 'approved';
-    if (value.indexOf('new') > -1) return 'new';
-    return 'planning';
-  }
-
-  function dedupeAndFilter(records){
-    var seen = new Set();
-    var cleaned = [];
-    records.forEach(function(op){
-      var key = op.opportunity_id;
-      if (!key || seen.has(key)) return;
-      var blockField = (op.project_name || '') + ' ' + (op.project_address || '');
-      if (AUTH_BLOCK.test(blockField)) return;
-      seen.add(key);
-      cleaned.push(op);
-    });
-    return cleaned;
-  }
-
-  function populateFilters(list){
-    setOptions(els.state, 'All states', uniqueSorted(list.map(function(op){ return op.state; })));
-    setOptions(els.type, 'All project types', uniqueSorted(list.map(function(op){ return op.project_type; })));
-    setOptions(els.stage, 'All stages', uniqueSorted(list.map(function(op){ return op.project_stage; })));
-  }
-
-  function setOptions(select, placeholder, options){
-    var current = select.value;
-    var html = '<option value="">' + placeholder + '</option>';
-    options.forEach(function(opt){
-      if (!opt) return;
-      html += '<option value="' + escapeHtml(opt) + '"' + (opt === current ? ' selected' : '') + '>' + formatLabel(opt) + '</option>';
-    });
-    select.innerHTML = html;
-  }
-
-  function uniqueSorted(list){
-    return Array.from(new Set(list.filter(Boolean))).sort(function(a,b){ return a.localeCompare(b, undefined, {sensitivity:'base'}); });
-  }
-
-  function applyFilters(){
-    if (!appState.all.length) return;
-    var keyword = (els.keyword.value || '').trim().toLowerCase();
-    var stateFilter = els.state.value;
-    var typeFilter = els.type.value;
-    var stageFilter = els.stage.value;
-    var sortMode = els.sort.value;
-    var filtered = appState.all.filter(function(op){
-      var matchesKeyword = !keyword || ['project_name','project_address','city','project_type'].some(function(field){
-        var val = (op[field] || '').toLowerCase();
-        return val.indexOf(keyword) > -1;
-      });
-      var matchesState = !stateFilter || op.state === stateFilter;
-      var matchesType = !typeFilter || op.project_type === typeFilter;
-      var matchesStage = !stageFilter || op.project_stage === stageFilter;
-      return matchesKeyword && matchesState && matchesType && matchesStage;
-    });
-    filtered.sort(function(a,b){ return sortByMode(a,b,sortMode); });
-    appState.filtered = filtered;
-    renderCards(filtered);
-    updateStats(filtered);
-    setCountMessage(filtered.length ? ('Showing ' + filtered.length + ' opportunities') : 'No opportunities match the filters.');
-  }
-
-  function sortByMode(a,b,mode){
-    if (mode === 'alpha'){
-      return a.project_name.localeCompare(b.project_name, undefined, {sensitivity:'base'});
-    }
-    if (mode === 'stage'){
-      return stagePriorityIndex(a.project_stage) - stagePriorityIndex(b.project_stage) || a.project_name.localeCompare(b.project_name);
-    }
-    var da = dateValue(a.estimated_start_date_optional);
-    var db = dateValue(b.estimated_start_date_optional);
-    return db - da;
-  }
-
-  function stagePriorityIndex(stage){
-    var idx = stagePriority.indexOf(stage);
-    return idx === -1 ? stagePriority.length : idx;
-  }
-
-  function dateValue(value){
-    if (!value) return 0;
-    var d = new Date(value);
-    return isNaN(d.getTime()) ? 0 : d.getTime();
-  }
-
-  function renderCards(list){
-    if (!list.length){
-      els.grid.innerHTML = '<article class="op-card empty-card"><h3>No opportunities match these filters.</h3><p class="summary">Expand filters or clear the keyword search to reload live records.</p></article>';
-      return;
-    }
-    var html = list.map(renderCard).join('');
-    els.grid.innerHTML = html;
-  }
-
-  function renderCard(op){
-    var locationMain = op.project_address || buildCityState(op) || 'Location pending release';
-    var secondary = op.project_address && buildCityState(op) ? buildCityState(op) : (op.country && op.country !== 'USA' ? op.country : buildCityState(op));
-    var stageClass = 'stage-' + op.project_stage;
-    var stageLabel = stageLabels[op.project_stage] || formatLabel(op.project_stage);
-    var typeLabel = formatLabel(op.project_type);
-    var startLabel = formatDate(op.estimated_start_date_optional);
-    var chips = (op.recommended_lift_categories || []).slice(0,3).map(function(cat){ return '<span class="chip">' + formatLabel(cat) + '</span>'; }).join('');
-    var chipsMarkup = chips ? '<div class="chip-row">' + chips + '</div>' : '';
-    var metaCopy = startLabel ? 'Est. start <span>' + startLabel + '</span>' : 'Stage: <span>' + escapeHtml(stageLabel) + '</span>';
-    return [
-      '<article class="op-card" data-id="' + escapeHtml(op.opportunity_id) + '">',
-      '  <div class="card-top">',
-      '    <div class="card-location">',
-      '      <p class="location-main">' + escapeHtml(locationMain) + '</p>',
-      '      <p class="location-sub">' + escapeHtml(secondary || '') + '</p>',
-      '    </div>',
-      '    <div class="card-badges">',
-      '      <span class="badge badge-type">' + escapeHtml(typeLabel) + '</span>',
-      '      <span class="badge badge-stage ' + stageClass + '">' + escapeHtml(stageLabel) + '</span>',
-      '    </div>',
-      '  </div>',
-      '  <h3>' + escapeHtml(op.project_name) + '</h3>',
-      '  <p class="meta-line">' + metaCopy + '</p>',
-      '  <p class="summary">' + escapeHtml(op.lift_requirements_summary || '') + '</p>',
-      (chipsMarkup ? '  ' + chipsMarkup : ''),
-      '  <div class="card-ctas">',
-      '    <button class="cta primary" data-action="availability" data-id="' + escapeHtml(op.opportunity_id) + '">Get Crane Availability</button>',
-      '    <a class="cta secondary" href="' + buildMarketplaceUrl(op) + '">View on Marketplace</a>',
-      '  </div>',
-      '</article>'
-    ].join('');
-  }
-
-  function buildCityState(op){
-    var cityState = [op.city, op.state].filter(Boolean).join(', ');
-    return cityState || '';
-  }
-
-  function formatDate(value){
-    if (!value) return '';
-    var date = new Date(value);
-    if (isNaN(date.getTime())) return '';
-    return new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric'}).format(date);
-  }
-
-  function buildMarketplaceUrl(op){
-    var cat = (op.recommended_lift_categories && op.recommended_lift_categories[0]) || 'mobile_cranes';
-    return '/marketplace/?type=' + encodeURIComponent(cat);
-  }
-
-  function handleCardAction(evt){
-    var target = evt.target;
-    if (target.dataset.action !== 'availability') return;
-    var id = target.getAttribute('data-id');
-    var record = appState.map.get(id);
-    if (!record) return;
-    var citySegment = [record.city, record.state].filter(Boolean).join(' ');
-    var locationLine = record.project_address ? record.project_address : '';
-    if (citySegment) locationLine += (locationLine ? ', ' : '') + citySegment;
-    if (!locationLine) locationLine = 'unspecified location';
-    var msg = 'Crane needed: ' + record.project_name + ' at ' + locationLine + ' | Type: ' + formatLabel(record.project_type);
-    if (typeof window.openBotWithPrefill === 'function'){
-      window.openBotWithPrefill(msg);
-    } else {
-      window.location.href = '/?bot=1&msg=' + encodeURIComponent(msg);
-    }
-  }
-
-  async function handleFormSubmit(evt){
-    evt.preventDefault();
-    setFormStatus('Submitting…', false);
-    var payload = {
-      project_name: (els.form.project_name.value || '').trim(),
-      project_address: (els.form.project_address.value || '').trim(),
-      city: (els.form.city.value || '').trim(),
-      state: (els.form.state.value || '').trim(),
-      project_type: (els.form.project_type.value || '').trim(),
-      contact_email: (els.form.contact_email.value || '').trim(),
-      moderation_status: 'pending_review'
-    };
-    try{
-      var res = await fetch('https://formspree.io/f/mgoldjjb',{
-        method:'POST',
-        headers:{'Accept':'application/json','Content-Type':'application/json'},
-        body:JSON.stringify(payload)
-      });
-      if (!res.ok) throw new Error('Formspree error');
-      setFormStatus('Opportunity received. We will confirm details shortly.', false);
-      els.form.reset();
-      setTimeout(closeModal,2000);
-    }catch(err){
-      console.error(err);
-      setFormStatus('Error submitting form. Please retry or email ops@cranegenius.com.', true);
-    }
-  }
-
-  function openModal(){
-    els.modal.classList.add('open');
-    els.modal.setAttribute('aria-hidden','false');
-    document.body.style.overflow='hidden';
-    setFormStatus('', false);
-  }
-
-  function closeModal(){
-    els.modal.classList.remove('open');
-    els.modal.setAttribute('aria-hidden','true');
-    document.body.style.overflow='';
-  }
-
-  function renderErrorCard(){
-    els.grid.innerHTML = '<article class="op-card empty-card"><h3>Pipeline data unavailable. Check /data/opportunities/opportunities.json</h3></article>';
-  }
-
-  function updateStats(list){
-    els.statOpps.textContent = list.length;
-    els.statCities.textContent = uniqueSorted(list.map(function(op){ return op.city; })).length;
-    els.statTypes.textContent = uniqueSorted(list.map(function(op){ return op.project_type; })).length;
-    var stageCount = list.filter(function(op){ return op.project_stage === 'permit_filed' || op.project_stage === 'active'; }).length;
-    els.statStage.textContent = stageCount;
-  }
-
-  function setCountMessage(msg){
-    els.count.textContent = msg;
-  }
-
-  function toggleLiveBanner(show,count){
-    if (!els.liveBanner) return;
-    if (show){
-      els.liveBanner.classList.remove('hidden');
-      els.liveBannerCopy.textContent = count + ' verified records from live JSON feeds';
-    } else {
-      els.liveBanner.classList.add('hidden');
-    }
-  }
-
-  function toggleErrorBanner(show,message){
-    if (!els.errorBanner) return;
-    if (show){
-      els.errorBanner.classList.remove('hidden');
-      els.errorBannerCopy.textContent = message;
-    } else {
-      els.errorBanner.classList.add('hidden');
-    }
-  }
-
-  function setFormStatus(message,isError){
-    els.formStatus.textContent = message || '';
-    if (isError){
-      els.formStatus.classList.add('error');
-    } else {
-      els.formStatus.classList.remove('error');
-    }
-  }
-
-  function formatLabel(value){
-    return String(value || '').replace(/[_-]+/g,' ').replace(/\b\w/g,function(l){ return l.toUpperCase(); }).trim();
-  }
-
-  function slugify(value){
-    return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-  }
-
-  function escapeHtml(value){
-    return String(value || '').replace(/[&<>"]/g,function(ch){
-      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch] || ch;
-    });
-  }
+  function resetFilters() { ['fSearch', 'fState', 'fType', 'fStage'].forEach(function(id) { var el = $id(id); if (el.tagName === 'INPUT') el.value = ''; else el.selectedIndex = 0; }); renderCards(all); }
+  window.openPostModal = function () { $id('postModal').classList.add('open'); };
+  window.closePostModal = function () { $id('postModal').classList.remove('open'); };
+  $id('postModal').addEventListener('click', function (e) { if (e.target === this) closePostModal(); });
+  window.submitPost = async function (e) {
+    e.preventDefault(); var fb = $id('postFeedback'); fb.className = 'modal-feedback'; var form = e.target; var data = {}; new FormData(form).forEach(function (v, k) { data[k] = v; });
+    try { var res = await fetch('https://formspree.io/f/mgoldjjb', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) }); if (res.ok) { fb.className = 'modal-feedback ok'; fb.textContent = 'Submitted. We review within 24 hours.'; form.reset(); setTimeout(closePostModal, 2000); } else { throw new Error('bad response'); } } catch (err) { fb.className = 'modal-feedback err'; fb.textContent = 'Submission failed. Try again or email us directly.'; }
+  };
+  loadData();
 })();
 </script>
-<script src="/assets/js/page_ai_context.js"></script>
 </body>
 </html>
