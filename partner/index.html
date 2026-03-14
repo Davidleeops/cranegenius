@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Partner With CraneGenius — Remote Sales for Crane Companies</title>
+<meta name="description" content="CraneGenius sources verified crane jobs from permit data in your market, handles GC outreach, and hands you warm opportunities. Monthly retainer. Commission on close.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080c14;--bg2:#0d1628;--bg3:#111e35;--gold:#F5A623;--gold-dim:rgba(245,166,35,.1);--gold-border:rgba(245,166,35,.22);--border:#1e3a5f;--text:#e8f0ff;--muted:#8899aa;--mono:'DM Mono',monospace}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;line-height:1.6}
+.site-nav{position:sticky;top:0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-bottom:1px solid var(--gold-border);background:rgba(8,12,20,.92);backdrop-filter:blur(12px)}
+.site-nav-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gold);text-decoration:none}
+.site-nav-links{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.site-nav-links a{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:.05em;text-transform:uppercase;transition:color .2s}
+.site-nav-links a:hover{color:var(--gold)}
+.nav-pill{background:var(--gold);color:#000 !important;border-radius:4px;padding:5px 14px !important;font-weight:700 !important}
+@media(max-width:700px){.site-nav-links{gap:12px;overflow-x:auto}.site-nav-links a{white-space:nowrap}}
+.hero{padding:80px 24px 64px;max-width:820px;margin:0 auto}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,9vw,90px);line-height:.95;margin-bottom:20px}
+.hero h1 span{color:var(--gold)}
+.hero-sub{font-size:19px;color:var(--muted);max-width:600px;line-height:1.6;margin-bottom:32px}
+.hero-note{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.06em;margin-top:-16px;margin-bottom:32px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-primary{display:inline-block;background:var(--gold);color:#000;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:15px 32px;border-radius:4px;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:opacity .2s}
+.btn-primary:hover{opacity:.88}
+.btn-secondary{display:inline-block;border:1px solid var(--gold-border);color:var(--muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;padding:14px 24px;border-radius:4px;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:all .2s}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.stats-strip{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 24px}
+.stats-inner{max-width:820px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;text-align:center}
+.stat-val{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--gold);line-height:1}
+.stat-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+.how-wrap{max-width:820px;margin:0 auto;padding:72px 24px}
+.section-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,52px);letter-spacing:1px;margin-bottom:40px}
+.steps{display:flex;flex-direction:column;gap:0}
+.step{display:grid;grid-template-columns:60px 1fr;gap:0 24px;padding:32px 0;border-bottom:1px solid var(--border)}
+.step:last-child{border-bottom:none}
+.step-num{font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--gold);line-height:1;opacity:.35}
+.step-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.5px;color:var(--text);margin-bottom:8px}
+.step-body{font-size:15px;color:var(--muted);line-height:1.65;max-width:560px}
+.step-detail{font-family:var(--mono);font-size:12px;color:var(--gold);margin-top:10px;letter-spacing:.04em}
+.tiers-wrap{background:var(--bg2);padding:72px 24px}
+.tiers-inner{max-width:900px;margin:0 auto}
+.tiers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:40px}
+.tier{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:32px 28px;position:relative;transition:border-color .2s}
+.tier:hover{border-color:var(--gold-border)}
+.tier.featured{border-color:var(--gold-border);background:linear-gradient(135deg,var(--bg3) 0%,rgba(245,166,35,.06) 100%)}
+.tier-badge{position:absolute;top:-1px;right:20px;background:var(--gold);color:#000;font-family:var(--mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:0 0 4px 4px;letter-spacing:.08em;text-transform:uppercase}
+.tier-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--text);margin-bottom:4px}
+.tier-price{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--gold);line-height:1;margin-bottom:4px}
+.tier-price-note{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em;margin-bottom:20px}
+.tier-features{list-style:none;margin-bottom:24px}
+.tier-features li{font-size:14px;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--border);line-height:1.45}
+.tier-features li:last-child{border-bottom:none}
+.tier-features li::before{content:"// ";font-family:var(--mono);color:var(--gold);font-size:11px}
+.tier-cta{display:block;text-align:center;background:var(--gold);color:#000;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;padding:13px;border-radius:4px;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:opacity .2s}
+.tier-cta:hover{opacity:.88}
+.tier-cta.outline{background:transparent;border:1px solid var(--gold-border);color:var(--muted)}
+.tier-cta.outline:hover{border-color:var(--gold);color:var(--gold)}
+.why-wrap{max-width:820px;margin:0 auto;padding:72px 24px}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:36px}
+.why-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:24px 20px}
+.why-icon{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.12em;margin-bottom:10px}
+.why-card h4{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--text);margin-bottom:8px}
+.why-card p{font-size:13px;color:var(--muted);line-height:1.55}
+.bottom-cta{background:linear-gradient(135deg,var(--bg2) 0%,rgba(245,166,35,.07) 100%);border-top:1px solid var(--gold-border);border-bottom:1px solid var(--gold-border);padding:72px 24px;text-align:center}
+.bottom-cta h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,60px);letter-spacing:1px;margin-bottom:16px}
+.bottom-cta p{font-size:16px;color:var(--muted);max-width:500px;margin:0 auto 32px}
+.bottom-note{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em;margin-top:20px}
+.bottom-note span{color:var(--gold)}
+footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border)}
+footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+footer a{color:var(--gold);text-decoration:none}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+<a href="/" class="site-nav-logo">CraneGenius</a>
+<div class="site-nav-links">
+<a href="/">Lift Estimator</a>
+<a href="/opportunities/">Opportunities</a>
+<a href="/directory/">Directory</a>
+<a href="/jobs/">Jobs</a>
+<a href="/education/">Education</a>
+<a href="/ironsheet/" class="nav-pill">The Ironsheet</a>
+<a href="/data-centers/">Data Centers</a>
+<a href="/sell-your-company/">Sell Your Company</a>
+</div>
+</nav>
+<section class="hero">
+<div class="hero-eyebrow">// For Crane Companies</div>
+<h1>We Run Your <span>Outbound.</span> You Close the Jobs.</h1>
+<p class="hero-sub">CraneGenius sources verified crane jobs from permit data in your market, handles outreach to GCs on your behalf, and hands you warm opportunities. You pay a monthly retainer. We earn a cut on close.</p>
+<p class="hero-note">// Former Operating Engineer owned and operated. We know this business.</p>
+<div class="cta-row">
+<a href="https://calendly.com/lemuel-lee-jr/15min" class="btn-primary">Book a 15-Minute Call</a>
+<a href="/opportunities/" class="btn-secondary">See Active Jobs in Your Market</a>
+</div>
+</section>
+<div class="stats-strip">
+<div class="stats-inner">
+<div><div class="stat-val" id="statOpps">500+</div><div class="stat-label">Active crane-ready projects</div></div>
+<div><div class="stat-val">7,800+</div><div class="stat-label">GC contacts in database</div></div>
+<div><div class="stat-val">5</div><div class="stat-label">Markets covered</div></div>
+<div><div class="stat-val">2&ndash;3</div><div class="stat-label">Days permit to outreach</div></div>
+</div>
+</div>
+<section class="how-wrap">
+<div class="section-eyebrow">// How It Works</div>
+<h2 class="section-title">Three Steps. No Guesswork.</h2>
+<div class="steps">
+<div class="step"><div class="step-num">01</div><div class="step-content"><div class="step-title">We Scan Your Market</div><p class="step-body">Every week, our pipeline pulls active crane-ready projects from municipal permit data across Chicago, Dallas, Phoenix, NYC, and the Pacific Northwest. Steel erection, demolition, tower crane installs, data center builds, utility infrastructure — filtered for real crane jobs, not noise.</p><div class="step-detail">// Chicago, Dallas, Phoenix, NYC, Pacific Northwest — more markets added quarterly</div></div></div>
+<div class="step"><div class="step-num">02</div><div class="step-content"><div class="step-title">We Reach Out to GCs on Your Behalf</div><p class="step-body">We contact general contractors at the permit address using your company name and your credentials. The outreach is permit-specific — we reference the exact job, the exact address, and the exact equipment need. GCs respond because it's relevant, not because it's a generic pitch.</p><div class="step-detail">// 150+ GC contacts per month on the Standard plan. Personalized, not blasted.</div></div></div>
+<div class="step"><div class="step-num">03</div><div class="step-content"><div class="step-title">You Get Warm Handoffs</div><p class="step-body">Replies come to you. Interested GCs are passed directly — name, number, project details. You close it in your market, your way. We don't get in the middle of your relationship with the customer.</p><div class="step-detail">// We get paid on retainer. Commission kicks in on deals we directly source.</div></div></div>
+</div>
+</section>
+<section class="tiers-wrap">
+<div class="tiers-inner">
+<div class="section-eyebrow">// Retainer Tiers</div>
+<h2 class="section-title">Pick Your Level</h2>
+<div class="tiers-grid">
+<div class="tier"><div class="tier-name">Pilot</div><div class="tier-price">$500</div><div class="tier-price-note">// per month — 30-day trial</div><ul class="tier-features"><li>50 GC contacts in your market</li><li>Permit-specific outreach, your name</li><li>Weekly opportunity report</li><li>No close = no renewal required</li><li>Cancel after 30 days, no questions</li></ul><a href="https://calendly.com/lemuel-lee-jr/15min" class="tier-cta outline">Start the Pilot</a></div>
+<div class="tier featured"><div class="tier-badge">Most Popular</div><div class="tier-name">Standard</div><div class="tier-price">$1,500</div><div class="tier-price-note">// per month — ongoing</div><ul class="tier-features"><li>150+ GC contacts per month</li><li>Permit-specific outreach, your name</li><li>Priority market intel — Ironsheet access</li><li>Weekly pipeline report</li><li>Direct reply handoffs</li><li>Monthly strategy call</li></ul><a href="https://calendly.com/lemuel-lee-jr/15min" class="tier-cta">Book a Call</a></div>
+<div class="tier"><div class="tier-name">Full</div><div class="tier-price">$2,500</div><div class="tier-price-note">// per month + 3% on close</div><ul class="tier-features"><li>Unlimited GC contacts in coverage area</li><li>Full remote sales arm</li><li>Commission deal sourcing included</li><li>Equipment marketplace placement</li><li>Ironsheet feature placement</li><li>Weekly call + dedicated coverage</li></ul><a href="https://calendly.com/lemuel-lee-jr/15min" class="tier-cta">Book a Call</a></div>
+</div>
+</div>
+</section>
+<section class="why-wrap">
+<div class="section-eyebrow">// Why CraneGenius</div>
+<h2 class="section-title">Built From the Field Up</h2>
+<div class="why-grid">
+<div class="why-card"><div class="why-icon">// 01</div><h4>Former Operating Engineer</h4><p>This wasn't built by a tech company. The founder ran the hook. We know the difference between a pick and a carry, and we know what a GC actually needs to hear before they call you.</p></div>
+<div class="why-card"><div class="why-icon">// 02</div><h4>Permit-Referenced Outreach</h4><p>We don't blast generic emails. Every outreach references a specific permit at a specific address. GCs respond because the message is relevant to a job they're actually running.</p></div>
+<div class="why-card"><div class="why-icon">// 03</div><h4>Free to GCs</h4><p>We never charge the general contractor. We get paid by crane companies. That means GCs have no reason to ignore us — which is why they don't.</p></div>
+<div class="why-card"><div class="why-icon">// 04</div><h4>You Own the Relationship</h4><p>We hand you the lead and step back. Your customer, your rate, your relationship. We're your remote sales arm — not a middleman who sits between you and the job.</p></div>
+<div class="why-card"><div class="why-icon">// 05</div><h4>Cancel Anytime</h4><p>Start with the pilot. If we don't bring you a qualified opportunity in 30 days, don't renew. No contracts, no lock-in, no drama. We earn our keep every month.</p></div>
+<div class="why-card"><div class="why-icon">// 06</div><h4>Intelligence That Compounds</h4><p>The longer we work your market, the better the outreach gets. We track which GCs respond, which jobs move, and which permits matter. That intelligence stays working for you.</p></div>
+</div>
+</section>
+<section class="bottom-cta">
+<h2>Ready to Put Your Pipeline to Work?</h2>
+<p>15 minutes. We'll show you exactly which permits are active in your market right now and how we'd approach them on your behalf.</p>
+<div class="cta-row" style="justify-content:center">
+<a href="https://calendly.com/lemuel-lee-jr/15min" class="btn-primary">Book a 15-Minute Call</a>
+<a href="/opportunities/" class="btn-secondary">See Active Jobs First</a>
+</div>
+<p class="bottom-note">// <span>Paid by crane companies.</span> Free to GCs. We get paid when you win.</p>
+</section>
+<footer>
+<p><a href="/">CraneGenius</a> &mdash; Dark 30 Ventures &mdash; <a href="/ironsheet/">The Ironsheet</a> &mdash; <a href="/opportunities/">Active Opportunities</a></p>
+</footer>
+<script>
+fetch('/data/opportunities/opportunities.json').then(r=>r.json()).then(d=>{const c=(d.opportunities||[]).length;if(c>0)document.getElementById('statOpps').textContent=c+'+';}).catch(()=>{});
+</script>
+</body>
+</html>
