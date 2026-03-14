@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Word of Mouth — Submit Field Intel — The Ironsheet by CraneGenius</title>
+<meta name="description" content="Seen something on a jobsite? Submit pre-permit sightings, equipment moves, and project rumors to Word of Mouth — The Ironsheet's crowdsourced field intel section.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080c14;--bg2:#0d1628;--bg3:#111e35;--gold:#F5A623;--gold-dim:rgba(245,166,35,.12);--gold-border:rgba(245,166,35,.22);--border:#1e3a5f;--text:#e8f0ff;--muted:#8899aa;--mono:'DM Mono',monospace}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;line-height:1.6}
+.site-nav{position:sticky;top:0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-bottom:1px solid var(--gold-border);background:rgba(8,12,20,.92);backdrop-filter:blur(12px)}
+.site-nav-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gold);text-decoration:none}
+.site-nav-links{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.site-nav-links a{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:.05em;text-transform:uppercase;transition:color .2s}
+.site-nav-links a:hover{color:var(--gold)}
+.site-nav-links a.active{color:var(--gold)}
+.nav-pill{background:var(--gold);color:#000 !important;border-radius:4px;padding:5px 14px !important;font-weight:700 !important}
+@media(max-width:700px){.site-nav-links{gap:12px;overflow-x:auto}.site-nav-links a{white-space:nowrap}}
+.hero{padding:72px 24px 40px;max-width:700px;margin:0 auto}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,9vw,84px);line-height:.95;color:var(--text);margin-bottom:16px}
+.hero-title span{color:var(--gold)}
+.hero-body{font-size:16px;color:var(--muted);max-width:540px;line-height:1.65;margin-bottom:8px}
+.hero-note{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.06em;margin-top:12px}
+.form-wrap{max-width:700px;margin:0 auto;padding:40px 24px 80px}
+.form-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:40px 36px}
+.field{margin-bottom:24px}
+.field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.field .label-note{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--muted);letter-spacing:0;text-transform:none;margin-left:8px}
+textarea,input[type=text],select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;padding:13px 16px;transition:border-color .2s;outline:none;appearance:none;-webkit-appearance:none}
+textarea{min-height:140px;resize:vertical;line-height:1.55}
+textarea:focus,input[type=text]:focus,select:focus{border-color:var(--gold)}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%238899aa' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
+select option{background:#0d1628}
+.optional-note{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:6px;letter-spacing:.04em}
+.submit-row{display:flex;align-items:center;gap:16px;margin-top:32px;flex-wrap:wrap}
+.btn-submit{background:var(--gold);color:#000;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;padding:14px 32px;border:none;border-radius:4px;cursor:pointer;letter-spacing:.05em;text-transform:uppercase;transition:opacity .2s}
+.btn-submit:hover{opacity:.88}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed}
+.submit-note{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+.success-state{display:none;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:6px;padding:28px 24px;text-align:center;margin-top:24px}
+.success-state h3{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);letter-spacing:1px;margin-bottom:8px}
+.success-state p{color:var(--muted);font-size:14px}
+.error-msg{display:none;font-family:var(--mono);font-size:12px;color:#ff6b6b;margin-top:12px;letter-spacing:.04em}
+.examples-wrap{max-width:700px;margin:0 auto 64px;padding:0 24px}
+.examples-title{font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
+.examples-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.ex-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:16px 18px}
+.ex-card p{font-size:13px;color:var(--muted);line-height:1.5}
+.ex-card p::before{content:"// ";color:var(--gold);font-family:var(--mono)}
+footer{padding:28px 24px;text-align:center;border-top:1px solid var(--border)}
+footer p{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+footer a{color:var(--gold);text-decoration:none}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+<a href="/" class="site-nav-logo">CraneGenius</a>
+<div class="site-nav-links">
+<a href="/">Lift Estimator</a>
+<a href="/opportunities/">Opportunities</a>
+<a href="/directory/">Directory</a>
+<a href="/jobs/">Jobs</a>
+<a href="/education/">Education</a>
+<a href="/ironsheet/" class="nav-pill">The Ironsheet</a>
+<a href="/data-centers/">Data Centers</a>
+<a href="/sell-your-company/">Sell Your Company</a>
+</div>
+</nav>
+<section class="hero">
+<div class="hero-eyebrow">// The Ironsheet &mdash; Field Intel</div>
+<h1 class="hero-title">Word of <span>Mouth</span></h1>
+<p class="hero-body">Heard something? Seen something on a jobsite? This is how the intel stays ahead of the data. Pre-permit sightings, equipment moves, project rumors — submit it here and it goes into the next Ironsheet.</p>
+<p class="hero-note">// Stay anonymous or get credit. Your call.</p>
+</section>
+<div class="form-wrap">
+<div class="form-card">
+<form id="tipForm">
+<input type="hidden" name="_subject" value="Word of Mouth Tip — The Ironsheet">
+<input type="hidden" name="source" value="tip-page">
+<div class="field">
+<label>What did you see or hear? <span class="label-note">Required</span></label>
+<textarea name="tip" placeholder="Tower crane going up on 5th and Main before the permit's been filed. Looks like a 16-story multifamily. Nobody's called it yet..." required></textarea>
+</div>
+<div class="field">
+<label>City / Market <span class="label-note">Required</span></label>
+<input type="text" name="city_market" placeholder="e.g. Chicago, Phoenix, Seattle" required>
+</div>
+<div class="field">
+<label>Type of Work</label>
+<select name="work_type">
+<option value="">Select work type</option>
+<option value="crane">Crane / Heavy Lift</option>
+<option value="steel">Steel Erection</option>
+<option value="demo">Demolition</option>
+<option value="hvac">HVAC / Mechanical</option>
+<option value="electrical">Electrical</option>
+<option value="concrete">Concrete / Foundation</option>
+<option value="telecom">Telecom / Tower</option>
+<option value="data_center">Data Center</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="field">
+<label>Your Name <span class="label-note">Optional</span></label>
+<input type="text" name="submitter_name" placeholder="Stay anonymous or get credit in the next issue">
+<div class="optional-note">// If we use it, we'll attribute it as "Submitted by an operator in [your market]" unless you say otherwise.</div>
+</div>
+<div class="submit-row">
+<button type="submit" class="btn-submit" id="submitBtn">Submit to Word of Mouth</button>
+<span class="submit-note">// Goes into review. Best intel makes the next issue.</span>
+</div>
+<div class="success-state" id="successState">
+<h3>You're In.</h3>
+<p>If we use it, you'll be in the next Ironsheet. Keep your eyes open out there.</p>
+</div>
+<div class="error-msg" id="errorMsg">// Something went wrong. Try again or email intel@cranegenius.com</div>
+</form>
+</div>
+</div>
+<div style="max-width:700px;margin:0 auto 16px;padding:0 24px">
+<div class="examples-title">// What counts as Word of Mouth intel</div>
+</div>
+<div class="examples-wrap">
+<div class="examples-grid">
+<div class="ex-card"><p>Tower crane setup before a permit's been filed</p></div>
+<div class="ex-card"><p>Steel package moving to a jobsite this week</p></div>
+<div class="ex-card"><p>Data center groundbreaking you drove past</p></div>
+<div class="ex-card"><p>GC you know just won a bid on a major job</p></div>
+<div class="ex-card"><p>Equipment you saw mobilizing to a new site</p></div>
+<div class="ex-card"><p>Project rumored to break ground next month</p></div>
+</div>
+</div>
+<footer>
+<p><a href="/ironsheet/">The Ironsheet</a> by <a href="/">CraneGenius</a> &mdash; <a href="/opportunities/">Active Opportunities</a> &mdash; Dark 30 Ventures</p>
+</footer>
+<script>
+document.getElementById('tipForm').addEventListener('submit',async function(e){
+e.preventDefault();
+const btn=document.getElementById('submitBtn');
+const success=document.getElementById('successState');
+const err=document.getElementById('errorMsg');
+btn.disabled=true;btn.textContent='Submitting...';err.style.display='none';
+const data={};new FormData(this).forEach((v,k)=>data[k]=v);
+try{const res=await fetch('https://formspree.io/f/mgoldjjb',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
+if(res.ok){this.style.display='none';success.style.display='block';}else{throw new Error('err');}}
+catch(ex){btn.disabled=false;btn.textContent='Submit to Word of Mouth';err.style.display='block';}
+});
+</script>
+</body>
+</html>
