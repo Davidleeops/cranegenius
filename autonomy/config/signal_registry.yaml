@@ -1,0 +1,1100 @@
+signals:
+  - id: oversize_transport_notices
+    name: Oversize Transport Notices
+    category: core_project_signal
+    priority: 9
+    status: needs_qa
+    collector_script: scripts/signal_oversize_loads.py
+    expected_outputs:
+      - project_signal_json
+      - source_stats
+      - coverage_gap_report
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Capture >=5 fresh oversize/overweight permits across TX, OR, and GA every cycle."
+      - "Each row includes escort requirement, axle weight, and estimated lift window."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs Midwest DOT integrations plus better escort metadata.
+
+  - id: road_closures_crane_notices
+    name: Road Closures / Crane Notices
+    category: core_project_signal
+    priority: 10
+    status: needs_qa
+    collector_script: scripts/signal_lift_permits.py
+    expected_outputs:
+      - project_signal_json
+      - operator_alert
+      - source_stats
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Seattle, NYC, and Chicago feeds emit >3 high-confidence closures per run."
+      - "Confidence scoring reflects closure type (full lane vs partial) within 0.1 tolerance."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Schema drift handling works but SF/LA feeds still pending onboarding.
+
+  - id: subcontractor_registration_signals
+    name: Subcontractor Registration Signals
+    category: core_project_signal
+    priority: 8
+    status: partial
+    collector_script: scripts/signal_subcontractor_registrations.py
+    expected_outputs:
+      - project_signal_json
+      - registry_delta_log
+      - qa_checklist
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Emit registry deltas for at least two DOTs (TXDOT + FDOT) each cycle."
+      - "Normalize contractor type, expiration, and location across feeds."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Parser covers TXDOT only; multi-state normalization remains open.
+
+  - id: procurement_rfp_notices_expansion
+    name: Procurement / RFP Notices Expansion (beyond NYC)
+    category: core_project_signal
+    priority: 8
+    status: partial
+    collector_script: scripts/signal_construction_bids.py
+    expected_outputs:
+      - project_signal_json
+      - rfp_calendar
+      - source_stats
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Blend NYC CityRecord, SAM.gov, and TxDOT feeds into a single JSON payload."
+      - "Tag each notice with delivery method and due date coverage %."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: SAM.gov auth throttles cause frequent fallback usage.
+
+  - id: design_build_team_shortlists
+    name: Design-Build Team Shortlists
+    category: supplemental_project_signal
+    priority: 7
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - shortlist_table
+      - pdf_extracts
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Parse DOT shortlist PDFs into normalized team/company rows."
+      - "Surface shortlist announcement date plus anticipated award timeline."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs PDF table extraction workflow + DOT source inventory.
+
+  - id: pre_bid_meeting_attendance_lists
+    name: Pre-bid Meeting Attendance Lists
+    category: supplemental_project_signal
+    priority: 6
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - contact_rollup
+      - intel_brief
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Capture attendee rosters with firm + role metadata for at least 3 plan rooms."
+      - "Link attendees back to procurement notices for follow-up routing."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Requires plan-room session capture + OCR for sign-in sheets.
+
+  - id: environmental_army_corps_permit_filings
+    name: Environmental / Army Corps Permit Filings
+    category: supplemental_project_signal
+    priority: 6
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - pdf_extracts
+      - qa_checklist
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Pull USACE + EPA public notices into structured JSON within 12h of posting."
+      - "Extract jurisdiction, waterbody, and construction scope fields per notice."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Blocked on PDF-to-JSON reliability + docket discovery.
+
+  - id: steel_erection_permits
+    name: Steel Erection Permits
+    category: core_project_signal
+    priority: 7
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - coverage_gap_report
+      - qa_checklist
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Monitor NYC/LA/Chicago structural permit queues for crane keywords."
+      - "Emit install month + contractor for each permit."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs schema mapper support for disparate municipal permit APIs.
+
+  - id: industrial_equipment_installs
+    name: Industrial Equipment Installs
+    category: supplemental_project_signal
+    priority: 6
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - intel_brief
+      - trend_snapshot
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Capture OEM retrofit announcements with city/state + go-live quarter."
+      - "Score each notice for crane tonnage impact."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs OEM/niche trade wire monitoring.
+
+  - id: municipal_lift_row_street_closure_permits
+    name: Municipal Lift / ROW / Street Closure Permits
+    category: core_project_signal
+    priority: 9
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - operator_alert
+      - coverage_gap_report
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Expand beyond Seattle to LADOT + SF within one sprint."
+      - "Provide auto-tagged crane justification + closure geometry."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs multi-city feed discovery and geospatial normalization.
+
+  - id: heavy_transport_oversize_load_signals
+    name: Heavy Transport / Oversize-load Signals
+    category: core_project_signal
+    priority: 8
+    status: partial
+    collector_script: scripts/signal_oversize_loads.py
+    expected_outputs:
+      - project_signal_json
+      - escort_requirement_log
+      - coverage_gap_report
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Blend DOT permits with freight advisories into a single confidence-ranked feed."
+      - "Emit cargo type + lead time for every record."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Need to stitch modular bulletin + freight corridor RSS feeds.
+
+  - id: building_structural_permits_with_crane_keywords
+    name: Building / Structural Permits with Crane Keywords
+    category: core_project_signal
+    priority: 7
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - keyword_match_log
+      - qa_checklist
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Tag structural/bldg permits mentioning cranes or rigging in 5 key metros."
+      - "Surface structural valuation + contractor contact details."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Requires NLP filter tuned on permit descriptions.
+
+  - id: project_schedule_critical_path_updates
+    name: Project Schedule / Critical Path Updates
+    category: supplemental_project_signal
+    priority: 6
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - cpm_snapshot
+      - intel_brief
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Parse CPM exports or owner updates to surface crane mobilization dates."
+      - "Highlight slips >30 days with impact summary."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Waiting on CPM export corpus + parser selection.
+
+  - id: labor_requests_hiring_spikes
+    name: Labor Requests / Hiring Spikes
+    category: supplemental_project_signal
+    priority: 6
+    status: partial
+    collector_script: intel/04_job_posting_scraper.py
+    expected_outputs:
+      - project_signal_json
+      - trend_snapshot
+      - contact_rollup
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Detect >10 crane/rigging job postings per metro when spikes occur."
+      - "Attach hiring urgency + employer contact metadata."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs better dedupe + skill tagging for union vs GC roles.
+
+  - id: logistics_oversize_load_notices
+    name: Logistics / Oversize Load Notices
+    category: supplemental_project_signal
+    priority: 5
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - escort_requirement_log
+      - intel_brief
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Ingest port bulletins + freight advisories for wind/industrial cargos."
+      - "Map notice back to state permit or logistics corridor."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs maritime + DOT RSS coverage beyond current permit feeds.
+
+  - id: faa_obstruction_notices
+    name: FAA Obstruction Notices
+    category: supplemental_project_signal
+    priority: 5
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - geospatial_view
+      - qa_checklist
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Fetch OE/AAA cases >200' within 24h and classify crane vs structure."
+      - "Provide lat/long + airport buffer analysis."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Waiting on FAA API credentials + rate limit strategy.
+
+  - id: utility_and_substation_irp_signals
+    name: Utility + Substation Integrated Resource Plans
+    category: supplemental_project_signal
+    priority: 8
+    status: needs_qa
+    collector_script: scripts/signal_utility_irp.py
+    expected_outputs:
+      - project_signal_json
+      - source_stats
+      - coverage_gap_report
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Ingest TVA, CAISO, Duke, and PNM IRPs with structured milestone tables."
+      - "Annotate load forecast, budget, and build year per asset."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Parser exists but Duke/PNM filings still manual.
+
+  - id: usace_environmental_permits
+    name: USACE / Environmental Permits
+    category: supplemental_project_signal
+    priority: 5
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - pdf_extracts
+      - qa_checklist
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Normalize USACE district notices with waterbody + contractor metadata."
+      - "Detect notices implying crane mobilization >100-ton."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Requires PDF parsing pipeline w/ jurisdiction metadata.
+
+  - id: utility_and_substation_expansion_signals
+    name: Utility and Substation Expansion Signals
+    category: supplemental_project_signal
+    priority: 8
+    status: partial
+    collector_script: scripts/signal_utility_expansion.py
+    expected_outputs:
+      - project_signal_json
+      - coverage_gap_report
+      - qa_checklist
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Emit upcoming substation expansions with MW increase + in-service date."
+      - "Score urgency using regulatory docket milestones."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Coverage limited to TVA + CAISO; ISO-NE missing.
+
+  - id: utility_infrastructure_notices
+    name: Utility Infrastructure Notices (Federal/State)
+    category: supplemental_project_signal
+    priority: 8
+    status: needs_qa
+    collector_script: scripts/signal_utility_infrastructure.py
+    expected_outputs:
+      - project_signal_json
+      - operator_alert
+      - coverage_gap_report
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Track PSC/PUC bulletins for transmission + generation builds."
+      - "Provide docket id, capex, and region coverage tags."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Need additional ISO filings (SPP, MISO) + QA harness.
+
+  - id: federal_infrastructure_program_earmarks
+    name: Federal Infrastructure Program Earmarks
+    category: supplemental_project_signal
+    priority: 7
+    status: partial
+    collector_script: scripts/signal_infrastructure_projects.py
+    expected_outputs:
+      - project_signal_json
+      - funding_summary
+      - coverage_gap_report
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Merge DOT INFRA + MEGA award feeds with funding year metadata."
+      - "Expose award amount and sponsoring agency per project."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: SAM.gov + Federal Register deltas occasionally drop rows.
+
+  - id: state_city_capital_improvement_plans
+    name: State/City Capital Improvement Plans
+    category: supplemental_project_signal
+    priority: 7
+    status: needs_qa
+    collector_script: scripts/signal_capital_improvement_plans.py
+    expected_outputs:
+      - project_signal_json
+      - pdf_extracts
+      - coverage_gap_report
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Ingest at least 5 CIP PDFs (TxDOT, Caltrans, Fairfax, Manatee, Sioux Falls)."
+      - "Tag each project with funding source, fiscal year, and asset type."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Need automated QA on PDF table extractions.
+
+  - id: zoning_variance_filings
+    name: Zoning / Variance Filings for Tall Structures
+    category: core_project_signal
+    priority: 7
+    status: needs_qa
+    collector_script: scripts/signal_zoning_filings.py
+    expected_outputs:
+      - project_signal_json
+      - operator_alert
+      - coverage_gap_report
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Monitor NYC BSA + Chicago ZBA for tower variances within 24h."
+      - "Emit height, applicant, and zoning board calendar details."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Need LA + SF planning feeds to expand coverage.
+
+  - id: corporate_capex_guidance_extraction
+    name: Corporate Capex / Earnings Guidance Extraction
+    category: market_signal
+    priority: 8
+    status: needs_qa
+    collector_script: scripts/signal_corporate_capex.py
+    expected_outputs:
+      - market_indicator
+      - project_signal_json
+      - watchlist_update
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Pull SEC/XBRL capex guidance for hyperscale + industrial issuers weekly."
+      - "Translate filings into spend category + timeline tags."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs QA to ensure new watchlist tickers ingest cleanly.
+
+  - id: utility_integrated_resource_plans
+    name: Utility Integrated Resource Plans (Future Coverage)
+    category: supplemental_project_signal
+    priority: 7
+    status: partial
+    collector_script: scripts/signal_utility_irp.py
+    expected_outputs:
+      - project_signal_json
+      - coverage_gap_report
+      - intel_brief
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Add Duke Carbon Plan + PNM filings with milestone extraction."
+      - "Expose scenario mix + build schedule for each IRP asset."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Pipeline exists but only TVA/CAISO live, rest pending QA.
+
+  - id: corporate_capex_watchlist
+    name: Corporate Capex / Earnings Guidance (Watchlist Refresh)
+    category: market_signal
+    priority: 7
+    status: partial
+    collector_script: scripts/signal_corporate_capex.py
+    expected_outputs:
+      - watchlist_update
+      - trend_snapshot
+      - market_indicator
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Alert router when key hyperscale/OEM issuers change capex guidance by >=5%."
+      - "Maintain rolling 90-day trendline per issuer."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Requires better dedupe with EDGAR intel CSV outputs.
+
+  - id: design_build_shortlists
+    name: Design-Build Shortlists
+    category: supplemental_project_signal
+    priority: 6
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - shortlist_table
+      - pdf_extracts
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Ingest TxDOT/FDOT shortlist PDFs and capture teaming partners."
+      - "Tag shortlist stage/date + associated procurement id."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Dependent on PDF table OCR workflow.
+
+  - id: rental_spikes_equipment_swaps
+    name: Rental Spikes / Equipment Swaps
+    category: market_signal
+    priority: 7
+    status: needs_qa
+    collector_script: scripts/signal_equipment_rentals.py
+    expected_outputs:
+      - market_indicator
+      - project_signal_json
+      - trend_snapshot
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Detect utilization spikes >15% week-over-week in TX + Gulf markets."
+      - "Flag rental class, duration, and renter vertical per record."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Only BigRentz feed live; need LiftingGear + Sunbelt connectors.
+
+  - id: equipment_rental_utilization_signals
+    name: Equipment Rental Utilization Signals
+    category: market_signal
+    priority: 6
+    status: needs_qa
+    collector_script: scripts/signal_equipment_rentals.py
+    expected_outputs:
+      - market_indicator
+      - coverage_gap_report
+      - trend_snapshot
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Maintain city-level utilization indices with 7-day smoothing."
+      - "Correlate utilization spikes with active opportunities."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs cross-market linking to router views; downgrade priority until QA of new marketplaces completes.
+
+  - id: equipment_marketplace_pricing_spikes
+    name: Equipment Marketplace Pricing Spikes
+    category: market_signal
+    priority: 6
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - market_indicator
+      - trend_snapshot
+      - operator_alert
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Track rate deltas across at least 2 marketplaces weekly."
+      - "Alert when pricing exceeds trailing 30-day avg by >12%."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Awaiting pricing API agreements.
+
+  - id: specialized_rigging_strand_jack_bookings
+    name: Specialized Rigging / Strand Jack Bookings
+    category: market_signal
+    priority: 5
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - market_indicator
+      - intel_brief
+      - contact_rollup
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Capture bookings/backlogs from specialty rigging partners monthly."
+      - "Provide project type + mobilization window."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Requires partner API + NDA access.
+
+  - id: wind_component_delivery_trackers
+    name: Wind Component Delivery Trackers
+    category: supplemental_project_signal
+    priority: 5
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - geospatial_view
+      - trend_snapshot
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Ingest AIS/port bulletins for nacelle/blade arrivals."
+      - "Project delivery date + destination wind farm."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Blocked on AIS vendor selection.
+
+  - id: major_equipment_decommission_notices
+    name: Major Equipment Decommission / Swap Notices
+    category: supplemental_project_signal
+    priority: 5
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - intel_brief
+      - operator_alert
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Detect refinery/plant decommission RFQs within 7 days of posting."
+      - "Surface scope (demo vs swap) and crane class required."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs facility maintenance bid data source.
+
+  - id: sec_edgar_turnaround_alerts
+    name: SEC EDGAR Turnaround Alerts
+    category: market_signal
+    priority: 6
+    status: partial
+    collector_script: intel/01_edgar_scraper.py
+    expected_outputs:
+      - market_indicator
+      - intel_brief
+      - watchlist_update
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Scan 10-K/8-K filings for turnaround language within 24h."
+      - "Emit company, SIC, geography, and estimated outage window."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: CSV output exists but not yet piped into router.
+
+  - id: epa_turnaround_outage_alerts
+    name: EPA Turnaround / Outage Alerts
+    category: supplemental_project_signal
+    priority: 5
+    status: partial
+    collector_script: intel/02_epa_turnaround_scraper.py
+    expected_outputs:
+      - project_signal_json
+      - intel_brief
+      - coverage_gap_report
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Surface refinery/chemical turnarounds filed with EPA within 48h."
+      - "Provide facility, outage dates, and scope classification."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs facility-to-company matching + severity scoring.
+
+  - id: utility_interconnection_queue_signals
+    name: Utility Interconnection Queue Signals
+    category: supplemental_project_signal
+    priority: 6
+    status: partial
+    collector_script: intel/03_utility_interconnection_scraper.py
+    expected_outputs:
+      - project_signal_json
+      - geospatial_view
+      - coverage_gap_report
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Fetch interconnection queue updates for ISO-NE, PJM, and ERCOT monthly."
+      - "Classify queue entries by asset type + milestone stage."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Need incremental diffing + cancellation detection.
+
+  - id: blm_mining_solar_leases
+    name: BLM Mining & Solar Lease Signals
+    category: supplemental_project_signal
+    priority: 5
+    status: partial
+    collector_script: intel/05_blm_mining_solar_scraper.py
+    expected_outputs:
+      - project_signal_json
+      - geospatial_view
+      - intel_brief
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Capture BLM lease filings with land coordinates + commodity focus."
+      - "Emit project phase (lease pending, approved, active)."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Need ESG crosswalk + roof on solar vs mining segmentation.
+
+  - id: port_modular_delivery_bulletins
+    name: Port Modular Delivery Bulletins
+    category: supplemental_project_signal
+    priority: 6
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - geospatial_view
+      - operator_alert
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Capture modular cargo bulletins from LA/LB, Houston, and Savannah within 24h of posting."
+      - "Tag cargo type, consignee, tonnage, and inland routing hints for each arrival."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Requires AIS feed plus per-port bulletin parsers.
+
+  - id: data_center_site_plan_reviews
+    name: Data Center Site Plan Reviews
+    category: core_project_signal
+    priority: 8
+    status: partial
+    collector_script: scripts/signal_data_center_site_plan_reviews.py
+    expected_outputs:
+      - project_signal_json
+      - permit_dossier
+      - qa_checklist
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Monitor site plan/DRB agendas for Ashburn, Phoenix, and Columbus metro data center hubs."
+      - "Emit developer, MW size, and estimated crane mobilization quarter."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Python collector scaffolding emits normalized rows; needs live source wiring + QA pass.
+
+  - id: hydrogen_hub_award_announcements
+    name: Hydrogen Hub Award Announcements
+    category: market_signal
+    priority: 7
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - market_indicator
+      - intel_brief
+      - project_signal_json
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Aggregate DOE hydrogen hub award press releases and budget notices."
+      - "Link each hub to planned electrolyzer capacity, state, and EPC lead."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Waiting on DOE RSS normalization + sponsor-to-project crosswalk.
+
+  - id: battery_storage_procurement_notices
+    name: Battery Storage Procurement Notices
+    category: supplemental_project_signal
+    priority: 6
+    status: partial
+    collector_script: scripts/signal_battery_storage_procurements.py
+    expected_outputs:
+      - project_signal_json
+      - rfp_calendar
+      - intel_brief
+    implementation:
+      collector_exists: true
+      normalizer_exists: true
+      tests_exist: false
+      qa_status: needs_review
+    acceptance_criteria:
+      - "Surface utility-scale BESS procurements from CAISO, NYISO, and SE RTO portals."
+      - "Include MW/MWh, commercial operation date, and interconnection status."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Fallback collector emits normalized procurement rows; link to live ISO/utility APIs next.
+
+  - id: grid_hardening_grant_signals
+    name: Grid Hardening Grant Signals
+    category: supplemental_project_signal
+    priority: 6
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - coverage_gap_report
+      - intel_brief
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Track DOE and FEMA grid-resilience grant awards with county + spend totals."
+      - "Identify transmission vs distribution scope plus required equipment class."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs grant API ingestion + asset-type classifier.
+
+  - id: airport_modernization_programs
+    name: Airport Modernization Programs
+    category: core_project_signal
+    priority: 7
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - capital_plan_digest
+      - operator_alert
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Capture airport authority CIP updates (LAX, ATL, JFK) within five business days."
+      - "Output terminal, concourse, or tower scope plus estimated bid window."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Requires PDF scraping + FAA grant crosswalk.
+
+  - id: rail_terminal_expansion_permits
+    name: Rail Terminal Expansion Permits
+    category: core_project_signal
+    priority: 6
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - permit_dossier
+      - geospatial_view
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Monitor STB/FTA filings plus municipal permits tied to intermodal terminal expansions."
+      - "Include track miles added, crane mix impacts, and construction start estimates."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs STB docket parser + GIS overlay for yards.
+
+  - id: bridge_rehabilitation_bids
+    name: Bridge Rehabilitation Bids
+    category: core_project_signal
+    priority: 6
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - rfp_calendar
+      - qa_checklist
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Aggregate major bridge rehab solicitations from TxDOT, Caltrans, and PennDOT portals."
+      - "Attach estimated deck area, lift duration, and traffic maintenance notes."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Blocked on plan-room credentialing for sealed bid packets.
+
+  - id: industrial_demolition_permits
+    name: Industrial Demolition Permits
+    category: core_project_signal
+    priority: 5
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - permit_dossier
+      - operator_alert
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Fetch demo permits for refineries, mills, and heavy industrial campuses in 10 metros."
+      - "Emit structure height, demolition contractor, and disposal timeline."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Dependent on municipal open data + manual PDF scraping.
+
+  - id: mega_project_financing_bonds
+    name: Mega Project Financing Bonds
+    category: market_signal
+    priority: 5
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - market_indicator
+      - intel_brief
+      - project_signal_json
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Monitor municipal + private activity bond issuances above $200M tied to infrastructure/industrial builds."
+      - "Map bond use of proceeds to project geography and schedule."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs EMMA RSS ingestion + NLP use-of-proceeds classifier.
+
+  - id: transmission_condemnation_filings
+    name: Transmission Condemnation Filings
+    category: supplemental_project_signal
+    priority: 6
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - project_signal_json
+      - intel_brief
+      - geospatial_view
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Trace eminent-domain filings tied to high-voltage line expansions across ERCOT, SPP, and MISO."
+      - "Output county, route miles, structure type, and construction phase."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Requires PACER/state court monitoring + GIS trace builder.
+
+  - id: utility_rate_case_capex_signals
+    name: Utility Rate Case Capex Signals
+    category: market_signal
+    priority: 6
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - market_indicator
+      - project_signal_json
+      - intel_brief
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Parse PUC rate-case filings to extract approved capex buckets over $50M."
+      - "Tie spend buckets to asset class (substations, generation, transmission) with start year."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Build on PSC docket scraper plus budget NLP.
+
+  - id: greenfield_fab_investments
+    name: Greenfield Fab Investments
+    category: market_signal
+    priority: 7
+    status: planned
+    collector_script: null
+    expected_outputs:
+      - market_indicator
+      - project_signal_json
+      - intel_brief
+    implementation:
+      collector_exists: false
+      normalizer_exists: false
+      tests_exist: false
+      qa_status: not_started
+    acceptance_criteria:
+      - "Track semiconductor fab announcements (TSMC, Intel, Samsung, GlobalFoundries) with capex >$1B."
+      - "Return location, square footage, process node, and construction ramp timing."
+    owner_agent: signal_builder
+    retry_budget: 3
+    notes: Needs investor-relations scraping + company-to-project linking.

@@ -119,6 +119,10 @@ def compute_stage_metrics(name: str, db_path: Path, jobs_path: Path, permits_pat
         metrics["top_project_candidates_records"] = len(load_json(static_dir / "top_project_candidates.json")) if (static_dir / "top_project_candidates.json").exists() else 0
         metrics["recommended_expansion_candidates_records"] = len(load_json(static_dir / "recommended_expansion_candidates.json")) if (static_dir / "recommended_expansion_candidates.json").exists() else 0
         metrics["export_files_present"] = sorted([p.name for p in export_dir.glob("*") if p.is_file()])[:25]
+    elif name == "export_directory_json":
+        directory_path = json_output_dir / "static_exports" / "directory_suppliers.json"
+        payload = load_json(directory_path)
+        metrics["directory_suppliers_records"] = len(payload.get("suppliers", [])) if isinstance(payload, dict) else 0
     return metrics
 
 
@@ -297,6 +301,22 @@ def build_stages(db_path: Path, jobs_path: Path, permits_path: Path, export_dir:
                 export_dir / "recommended_expansion_candidates.csv",
             ],
         ),
+        StageDefinition(
+            name="export_directory_json",
+            description="Build supplier directory JSON for the public directory page.",
+            command=[
+                "python3",
+                "scripts/export_directory_json.py",
+                "--db",
+                str(db_path),
+                "--seed",
+                str(ROOT / "data" / "suppliers" / "suppliers_seed.json"),
+                "--output",
+                str(json_output_dir / "static_exports" / "directory_suppliers.json"),
+            ],
+            outputs=[json_output_dir / "static_exports" / "directory_suppliers.json"],
+            required_outputs=[json_output_dir / "static_exports" / "directory_suppliers.json"],
+        ),
     ]
 
 
@@ -335,6 +355,7 @@ def main() -> int:
 
     final_metrics = compute_stage_metrics("build_project_intelligence", db_path, jobs_path, permits_path, export_dir, json_output_dir)
     final_metrics.update(compute_stage_metrics("export_project_intelligence", db_path, jobs_path, permits_path, export_dir, json_output_dir))
+    final_metrics.update(compute_stage_metrics("export_directory_json", db_path, jobs_path, permits_path, export_dir, json_output_dir))
     final_metrics.update(
         {
             "status": overall_status,
